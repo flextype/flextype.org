@@ -28,12 +28,39 @@ p {
 
 
 .content {
-    padding-top: 40px;
+    padding-top: 0;
+}
+
+.section {
+    margin-top: 40px;
+}
+
+.section .fa {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+.container {
+    padding-left: 60px;
+    padding-right: 60px;
 }
 
 .navbar-brand {
     letter-spacing: 3px;
     text-transform: uppercase;
+}
+
+.heading-h2 {
+    font-size: 44px;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    padding: 0;
+    text-align: center;
+}
+
+.section a {
+    color: black;
+    text-decoration: none;
 }
 
 .powered {
