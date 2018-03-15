@@ -6,15 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Rawilum\\Cache' => $baseDir . '/Rawilum/Cache.php',
-    'Rawilum\\Config' => $baseDir . '/Rawilum/Config.php',
-    'Rawilum\\Events' => $baseDir . '/Rawilum/Events.php',
-    'Rawilum\\Filters' => $baseDir . '/Rawilum/Filters.php',
-    'Rawilum\\I18n' => $baseDir . '/Rawilum/I18n.php',
-    'Rawilum\\Pages' => $baseDir . '/Rawilum/Pages.php',
-    'Rawilum\\Plugins' => $baseDir . '/Rawilum/Plugins.php',
-    'Rawilum\\Rawilum' => $baseDir . '/Rawilum/Rawilum.php',
-    'Rawilum\\RawilumTrait' => $baseDir . '/Rawilum/RawilumTrait.php',
-    'Rawilum\\Shortcodes' => $baseDir . '/Rawilum/Shortcodes.php',
-    'Rawilum\\Themes' => $baseDir . '/Rawilum/Themes.php',
+    'Rawilum\\Cache' => $baseDir . '/rawilum/Cache.php',
+    'Rawilum\\Config' => $baseDir . '/rawilum/Config.php',
+    'Rawilum\\Events' => $baseDir . '/rawilum/Events.php',
+    'Rawilum\\Filters' => $baseDir . '/rawilum/Filters.php',
+    'Rawilum\\I18n' => $baseDir . '/rawilum/I18n.php',
+    'Rawilum\\Pages' => $baseDir . '/rawilum/Pages.php',
+    'Rawilum\\Plugins' => $baseDir . '/rawilum/Plugins.php',
+    'Rawilum\\Rawilum' => $baseDir . '/rawilum/Rawilum.php',
+    'Rawilum\\RawilumTrait' => $baseDir . '/rawilum/RawilumTrait.php',
+    'Rawilum\\Shortcodes' => $baseDir . '/rawilum/Shortcodes.php',
+    'Rawilum\\Themes' => $baseDir . '/rawilum/Themes.php',
 );

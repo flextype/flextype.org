@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita569dd53ee0772e48f027aeb5fb5ce9a
+class ComposerStaticInit5807ab37ca0273b250021bbd4d0b388d
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -87,26 +87,26 @@ class ComposerStaticInita569dd53ee0772e48f027aeb5fb5ce9a
     );
 
     public static $classMap = array (
-        'Rawilum\\Cache' => __DIR__ . '/../..' . '/Rawilum/Cache.php',
-        'Rawilum\\Config' => __DIR__ . '/../..' . '/Rawilum/Config.php',
-        'Rawilum\\Events' => __DIR__ . '/../..' . '/Rawilum/Events.php',
-        'Rawilum\\Filters' => __DIR__ . '/../..' . '/Rawilum/Filters.php',
-        'Rawilum\\I18n' => __DIR__ . '/../..' . '/Rawilum/I18n.php',
-        'Rawilum\\Pages' => __DIR__ . '/../..' . '/Rawilum/Pages.php',
-        'Rawilum\\Plugins' => __DIR__ . '/../..' . '/Rawilum/Plugins.php',
-        'Rawilum\\Rawilum' => __DIR__ . '/../..' . '/Rawilum/Rawilum.php',
-        'Rawilum\\RawilumTrait' => __DIR__ . '/../..' . '/Rawilum/RawilumTrait.php',
-        'Rawilum\\Shortcodes' => __DIR__ . '/../..' . '/Rawilum/Shortcodes.php',
-        'Rawilum\\Themes' => __DIR__ . '/../..' . '/Rawilum/Themes.php',
+        'Rawilum\\Cache' => __DIR__ . '/../..' . '/rawilum/Cache.php',
+        'Rawilum\\Config' => __DIR__ . '/../..' . '/rawilum/Config.php',
+        'Rawilum\\Events' => __DIR__ . '/../..' . '/rawilum/Events.php',
+        'Rawilum\\Filters' => __DIR__ . '/../..' . '/rawilum/Filters.php',
+        'Rawilum\\I18n' => __DIR__ . '/../..' . '/rawilum/I18n.php',
+        'Rawilum\\Pages' => __DIR__ . '/../..' . '/rawilum/Pages.php',
+        'Rawilum\\Plugins' => __DIR__ . '/../..' . '/rawilum/Plugins.php',
+        'Rawilum\\Rawilum' => __DIR__ . '/../..' . '/rawilum/Rawilum.php',
+        'Rawilum\\RawilumTrait' => __DIR__ . '/../..' . '/rawilum/RawilumTrait.php',
+        'Rawilum\\Shortcodes' => __DIR__ . '/../..' . '/rawilum/Shortcodes.php',
+        'Rawilum\\Themes' => __DIR__ . '/../..' . '/rawilum/Themes.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita569dd53ee0772e48f027aeb5fb5ce9a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita569dd53ee0772e48f027aeb5fb5ce9a::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInita569dd53ee0772e48f027aeb5fb5ce9a::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInita569dd53ee0772e48f027aeb5fb5ce9a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit5807ab37ca0273b250021bbd4d0b388d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit5807ab37ca0273b250021bbd4d0b388d::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit5807ab37ca0273b250021bbd4d0b388d::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit5807ab37ca0273b250021bbd4d0b388d::$classMap;
 
         }, null, ClassLoader::class);
     }

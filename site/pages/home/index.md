@@ -4,7 +4,7 @@ description: Rawilum is a simple and light-weighted Content Management System
 template: index  
 ---
 
-## Rawilum is succesfully installed!  
+## Rawilum is succesfully installed!!! 
 You can start editing the content and customising your site.
 
 ### Edit this Page
