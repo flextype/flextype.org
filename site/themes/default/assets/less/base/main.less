@@ -1,0 +1,56 @@
+//
+// Main
+//
+
+html,
+body {
+    font-family: @base-font-family;
+    font-size: @base-font-size;
+
+    height: 100%;
+
+    color: @base-font-color;
+    background: @white;
+}
+
+body,
+button,
+input,
+select,
+textarea,
+p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+
+    color: @black;
+}
+
+body,
+p {
+    line-height: 26px;
+}
+
+pre {
+    padding: 0;
+
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+
+    bodrder-radius: 4px;
+}
+
+code {
+    color: #000;
+    background-color: #f3eded;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+    height: auto;
+    min-height: 100%;
+    /* Negative indent footer by its height */
+    margin: 0 auto -60px;
+    /* Pad bottom by footer height */
+    padding: 0 0 60px;
+}

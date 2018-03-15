@@ -1,0 +1,58 @@
+//
+// Tesimonials
+//
+
+.testimonial {
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    padding: 90px 0;
+
+    text-align: center;
+
+    color: @black;
+    background: #eeeeee url('../img/tile-grey.png') repeat 0 0;
+    background-repeat: no-repeat;
+
+    .carousel-caption {
+        position: relative;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        margin: 0 auto;
+
+        .container {
+            max-width: 770px;
+        }
+
+        h4 {
+            font-size: 24px;
+
+            margin-bottom: 20px;
+
+            color: @black;
+            text-shadow: none;
+        }
+
+        h5 {
+            font-size: 16px;
+            font-style: italic;
+
+            text-shadow: none;
+        }
+    }
+}
+
+
+
+@media (max-width: 600px) {
+    .testimonial .carousel-caption h4 {
+        font-size: 22px;
+
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
