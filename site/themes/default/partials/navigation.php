@@ -7,7 +7,16 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link <?php if (Url::getUriSegment(0) == 'home' || Url::getUriSegment(0) == '') echo 'active'; ?>" href="<?php echo Url::getBase(); ?>">Home</a>
+        <a class="nav-link <?php if (Url::getUriSegment(0) == 'home' || Url::getUriSegment(0) == '') echo 'active'; ?>" href="<?php echo Url::getBase(); ?>">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <?php if (Url::getUriSegment(0) == 'home' || Url::getUriSegment(0) == '') echo 'active'; ?>" href="<?php echo Url::getBase(); ?>">Download</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <?php if (Url::getUriSegment(0) == 'home' || Url::getUriSegment(0) == '') echo 'active'; ?>" href="<?php echo Url::getBase(); ?>">Support</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <?php if (Url::getUriSegment(0) == 'home' || Url::getUriSegment(0) == '') echo 'active'; ?>" href="<?php echo Url::getBase(); ?>">About</a>
       </li>
     </ul>
   </div>

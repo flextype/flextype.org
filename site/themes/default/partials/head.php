@@ -13,7 +13,8 @@
 	<title><?php echo $this->rawilum['config']->get('site.title'); ?> | <?php echo $page['title']; ?></title>
 
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
-
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+       
     <!-- Bootstrap core CSS -->
 	<link href="<?php echo Url::getBase(); ?>/site/themes/<?php echo $this->rawilum['config']->get('site.theme'); ?>/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
