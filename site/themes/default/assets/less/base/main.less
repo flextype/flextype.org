@@ -11,6 +11,7 @@ body {
 
     color: @base-font-color;
     background: @white;
+
 }
 
 body,
@@ -27,7 +28,14 @@ p {
 
 body,
 p {
-    line-height: 26px;
+
+}
+
+p {
+    &.p-big {
+        font-size: 2.5rem;
+        font-weight: 200
+    }
 }
 
 pre {
