@@ -61,7 +61,7 @@
   <div class="row">
     <div class="col-sm">
         <center>
-            <a href="#">
+            <a href="http://forum.rawilum.org">
             <i class="fa fa-comments" aria-hidden="true"></i>
             <h4>Forum</h4>
             </a>
@@ -69,7 +69,7 @@
     </div>
     <div class="col-sm">
         <center>
-            <a href="#">
+            <a href="https://github.com/rawilum">
             <i class="fa fa-github" aria-hidden="true"></i>
             <h4>GitHub</h4>
             </a>
@@ -77,7 +77,7 @@
     </div>
     <div class="col-sm">
         <center>
-            <a href="#">
+            <a href="http://t.me/rawilum">
             <i class="fa fa-telegram" aria-hidden="true"></i>
             <h4>Telegram</h4>
             </a>
