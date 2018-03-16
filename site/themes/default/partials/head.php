@@ -25,4 +25,3 @@
   </head>
   <body>
   <?php $this->rawilum['themes']->getTemplate('partials/navigation'); ?>
-  <main role="main" class="container content">

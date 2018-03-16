@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
 <div class="container">
-  <a class="navbar-brand" href="<?php echo Url::getBase(); ?>"><img src="<?php echo Url::getBase(); ?>/site/themes/default/assets/img/logo.jpg" width=200 title="<?php echo $this->rawilum['config']->get('site.title'); ?>"></a>
+  <a class="navbar-brand" href="<?php echo Url::getBase(); ?>"><img src="<?php echo Url::getBase(); ?>/site/themes/default/assets/img/logo.jpg" width=220 title="<?php echo $this->rawilum['config']->get('site.title'); ?>"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
