@@ -4,22 +4,35 @@
 
 .navbar-expand-lg {
     > .container {
-        margin-top: 40px;
+
     }
 }
 
 
 .navbar-light {
+    background: @body-bg;
+
+    .navbar-brand {
+        .h1 {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
     .navbar-nav {
         .nav-link {
             padding-left: 15px;
             padding-right: 15px;
             border-radius: .25rem;
-            color: @black;
+            color: @base-font-color;
+            text-transform: uppercase;
+
+
+            font-size: 12px;
+            letter-spacing: .08em;
 
             &.active {
-                color: @white;
-                background: @black;
+                color: @black;
             }
         }
     }
