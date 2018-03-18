@@ -1,0 +1,14 @@
+name: Highlight
+version: 1.0.0
+description: "Highlight plugin for Rawilum adds a powerful code highlighting functionality with Highlight.js"
+author:
+  name: Sergey Romanenko
+  email: awilum@yandex.com
+  url: http://rawilum.org
+homepage: https://github.com/rawilum-plugins/highlight
+bugs: https://github.com/rawilum-plugins/highlight/issues
+license: MIT
+
+# Plugin settings
+enabled: true
+theme: monokai
