@@ -1,5 +1,6 @@
 ---
-title: Welcome  
+title: Blog  
 description: Rawilum is a simple and light-weighted Content Management System
-template: home  
+template: blog  
+date: 1
 ---
