@@ -15,17 +15,11 @@ use Symfony\Component\Yaml\Yaml;
 class Plugins
 {
     /**
-     * @var Rawilum
+     * An instance of the Cache class
+     *
+     * @var object
      */
-    protected $rawilum;
-
-    /**
-     * __construct
-     */
-    public function __construct(Rawilum $c)
-    {
-        $this->rawilum = $c;
-    }
+    protected static $instance = null;
 
     /**
      * Init Plugins
@@ -33,33 +27,78 @@ class Plugins
      * @access public
      * @return mixed
      */
-    public function init()
+    protected function __construct()
     {
         // Plugin manifest
         $plugin_manifest = [];
 
-        // Get Plugins List
-        $plugins_list = $this->rawilum['config']->get('site.plugins');
+        // Plugin cache id
+        $plugins_cache_id = '';
 
-        // If Plugins List isnt empty
+        // Get Plugins List
+        $plugins_list = Config::get('site.plugins');
+
+        // If Plugins List isnt empty then create plugin cache ID
         if (is_array($plugins_list) && count($plugins_list) > 0) {
 
             // Go through...
             foreach ($plugins_list as $plugin) {
-                if (file_exists($_plugin_manifest = PLUGINS_PATH . '/' . $plugin . '/' . $plugin . '.yml')) {
-                    $plugin_manifest = Yaml::parse(file_get_contents($_plugin_manifest));
+                if (Rawilum::$filesystem->exists($_plugin = PLUGINS_PATH . '/' . $plugin . '/' . $plugin . '.yml')) {
+                    $plugins_cache_id .= filemtime($_plugin);
+                }
+            }
+
+            // Create Unique Cache ID for Plugins
+            $plugins_cache_id = md5('plugins' . PLUGINS_PATH . $plugins_cache_id);
+        }
+
+        // Get plugins list from cache or scan plugins folder and create new plugins cache item
+        if (Cache::driver()->contains($plugins_cache_id)) {
+            Config::set('plugins', Cache::driver()->fetch($plugins_cache_id));
+        } else {
+
+            // If Plugins List isnt empty
+            if (is_array($plugins_list) && count($plugins_list) > 0) {
+
+                // Go through...
+                foreach ($plugins_list as $plugin) {
+
+                    if (Rawilum::$filesystem->exists($_plugin_manifest = PLUGINS_PATH . '/' . $plugin . '/' . $plugin . '.yml')) {
+                        $plugin_manifest = Yaml::parseFile($_plugin_manifest);
+                    }
+
+                    $_plugins_config[basename($_plugin_manifest, '.yml')] = $plugin_manifest;
                 }
 
-                $_plugins_config[basename($_plugin_manifest)] = $plugin_manifest;
+                Config::set('plugins', $_plugins_config);
+                Cache::driver()->save($plugins_cache_id, $_plugins_config);
             }
         }
 
-        $rawilum = $this->rawilum;
-
-        if (is_array($this->rawilum['config']->get('site.plugins')) && count($this->rawilum['config']->get('site.plugins')) > 0) {
-            foreach ($this->rawilum['config']->get('site.plugins') as $plugin_id => $plugin_name) {
-                include_once PLUGINS_PATH .'/'. $plugin_name .'/'. $plugin_name . '.php';
+        // Include enabled plugins
+        if (is_array(Config::get('plugins')) && count(Config::get('plugins')) > 0) {
+            foreach (Config::get('plugins') as $plugin_name => $plugin) {
+                if (Config::get('plugins.'.$plugin_name.'.enabled')) {
+                    include_once PLUGINS_PATH .'/'. $plugin_name .'/'. $plugin_name . '.php';
+                }
             }
         }
+
+        Events::dispatch('onPluginsInitialized');
+    }
+
+    /**
+     * Initialize Rawilum Plugins
+     *
+     *  <code>
+     *      Plugins::init();
+     *  </code>
+     *
+     * @access public
+     * @return object
+     */
+    public static function init()
+    {
+        return !isset(self::$instance) and self::$instance = new Plugins();
     }
 }

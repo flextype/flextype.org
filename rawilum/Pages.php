@@ -19,39 +19,43 @@ use Symfony\Component\Yaml\Yaml;
 class Pages
 {
     /**
-     * @var Rawilum
+     * An instance of the Cache class
+     *
+     * @var object
      */
-    protected $rawilum;
+    protected static $instance = null;
 
     /**
+     * Page
+     *
      * @var Page
      */
-    public $page;
+    public static $page;
 
     /**
      * Constructor
      *
      * @param Rawilum $rawilum
      */
-    public function __construct(Rawilum $c)
+    protected function __construct()
     {
-        $this->rawilum = $c;
+        // The page is not processed and not sent to the display.
+        Events::dispatch('onPageBeforeRender');
 
-        // Register page shortcodes
-        $this->pageShortcodes();
-    }
+        // Get current page
+        static::$page = static::getPage(Url::getUriString());
 
-    protected function pageShortcodes() {
-        // {site_url}
-        $this->rawilum['shortcodes']->add('site_url', function() {
-            return Url::getBase();
-        });
+        // Display page for current requested url
+        static::renderPage(static::$page);
+
+        // The page has been fully processed and sent to the display.
+        Events::dispatch('onPageAfterRender');
     }
 
     /**
      * Page finder
      */
-    public function finder($url = '', $url_abs = false)
+    public static function finder($url = '', $url_abs = false)
     {
 
         // If url is empty that its a homepage
@@ -59,18 +63,18 @@ class Pages
             if ($url) {
                 $file = $url;
             } else {
-                $file = PAGES_PATH . '/' . $this->rawilum['config']->get('site.pages.main') . '/' . 'index.md';
+                $file = PAGES_PATH . '/' . Config::get('site.pages.main') . '/' . 'index.md';
             }
         } else {
             if ($url) {
                 $file = PAGES_PATH . '/' . $url . '/index.md';
             } else {
-                $file = PAGES_PATH . '/' . $this->rawilum['config']->get('site.pages.main') . '/' . 'index.md';
+                $file = PAGES_PATH . '/' . Config::get('site.pages.main') . '/' . 'index.md';
             }
         }
 
         // Get 404 page if file not exists
-        if ($this->rawilum['filesystem']->exists($file)) {
+        if (Rawilum::$filesystem->exists($file)) {
             $file = $file;
         } else {
             $file = PAGES_PATH . '/404/index.md';
@@ -83,16 +87,14 @@ class Pages
     /**
      * Render page
      */
-    public function renderPage()
+    public static function renderPage($page)
     {
-        $page = $this->page ;
-
         $template_ext  = '.php';
         $template_name = empty($page['template']) ? 'index' : $page['template'];
-        $site_theme    = $this->rawilum['config']->get('site.theme');
+        $site_theme    = Config::get('site.theme');
         $template_path = THEMES_PATH . '/' . $site_theme . '/' . $template_name . $template_ext;
 
-        if ($this->rawilum['filesystem']->exists($template_path)) {
+        if (Rawilum::$filesystem->exists($template_path)) {
             include $template_path;
         } else {
             throw new RuntimeException("Template {$template_name} does not exist.");
@@ -102,13 +104,28 @@ class Pages
     /**
      * Page parser
      */
-    public function parse($file)
+    public static function parse($file)
     {
         $page = trim(file_get_contents($file));
         $page = explode('---', $page, 3);
 
-        $frontmatter = $this->rawilum['shortcodes']->parse($page[1]);
+        $frontmatter = Shortcodes::parse($page[1]);
         $result_page = Yaml::parse($frontmatter);
+
+        // Get page url
+        $url = str_replace(PAGES_PATH, Url::getBase(), $file);
+        $url = str_replace('index.md', '', $url);
+        $url = str_replace('.md', '', $url);
+        $url = str_replace('\\', '/', $url);
+        $url = rtrim($url, '/');
+        $result_page['url'] = $url;
+
+        // Get page slug
+        $url = str_replace(Url::getBase(), '', $url);
+        $url = ltrim($url, '/');
+        $url = rtrim($url, '/');
+        $result_page['slug'] = str_replace(Url::getBase(), '', $url);
+
         $result_page['content'] = $page[2];
 
         return $result_page;
@@ -118,28 +135,28 @@ class Pages
     /**
      * Get page
      */
-    public function getPage($url = '', $raw = false, $url_abs = false)
+    public static function getPage(string $url = '', bool $raw = false, bool $url_abs = false)
     {
-        $file = $this->finder($url, $url_abs);
+        $file = static::finder($url, $url_abs);
 
         if ($raw) {
             $page = trim(file_get_contents($file));
-            $this->page = $page;
-            $this->rawilum['events']->dispatch('onPageContentRawAfter');
+            static::$page = $page;
+            Events::dispatch('onPageContentRawAfter');
         } else {
-            $page = $this->parse($file);
-            $this->page = $page;
-            $this->page['content'] = $this->rawilum['filters']->dispatch('content', $this->parseContent($this->page['content']));
-            $this->rawilum['events']->dispatch('onPageContentAfter');
+            $page = static::parse($file);
+            static::$page = $page;
+            static::$page['content'] = Filters::dispatch('content', static::parseContent(static::$page['content']));
+            Events::dispatch('onPageContentAfter');
         }
 
-        return $this->page;
+        return static::$page;
     }
 
-    public function parseContent($content)
+    public static function parseContent(string $content) : string
     {
-        $content = $this->rawilum['shortcodes']->parse($content);
-        $content = $this->rawilum['markdown']->text($content);
+        $content = Shortcodes::parse($content);
+        $content = Markdown::parse($content);
 
         return $content;
     }
@@ -147,14 +164,18 @@ class Pages
     /**
      * getPage
      */
-    public function getPages($url = '', $raw = false, $order_by = 'title', $order_type = 'DESC', $ignore = ['404', 'index'], $limit = null)
+    public static function getPages($url = '', $raw = false, $order_by = 'title', $order_type = 'DESC', $limit = null)
     {
         // Get pages list for current $url
-        $pages_list = $this->rawilum['finder']->files()->name('*.md')->in(PAGES_PATH . '/' . $url);
+        $pages_list = Rawilum::$finder->files()->name('*.md')->in(PAGES_PATH . '/' . $url);
 
         // Go trough pages list
         foreach ($pages_list as $key => $page) {
-            $pages[$key] = $this->getPage($page->getPathname(), $raw, true);
+            if (strpos($page->getPathname(), $url.'/index.md') !== false) {
+
+            } else {
+                $pages[$key] = static::getPage($page->getPathname(), $raw, true);
+            }
         }
 
         // Sort and Slice pages if !$raw
@@ -167,5 +188,20 @@ class Pages
         }
 
         return $pages;
+    }
+
+    /**
+     * Initialize Rawilum Pages
+     *
+     *  <code>
+     *      Pages::init();
+     *  </code>
+     *
+     * @access public
+     * @return object
+     */
+    public static function init()
+    {
+        return !isset(self::$instance) and self::$instance = new Pages();
     }
 }

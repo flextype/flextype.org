@@ -1,10 +1,9 @@
 <?php namespace Rawilum;
 
-use Pimple\Container as Container;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
-use ParsedownExtra;
 use Url;
+use Session;
 
  /**
   * @package Rawilum
@@ -16,7 +15,7 @@ use Url;
   * file that was distributed with this source code.
   */
 
-class Rawilum extends Container
+class Rawilum
 {
     /**
      * An instance of the Rawilum class
@@ -24,7 +23,33 @@ class Rawilum extends Container
      * @var object
      * @access protected
      */
-    protected static $instance;
+    protected static $instance = null;
+
+    /**
+     * Filesystem
+     *
+     * @var object
+     * @access public
+     */
+    public static $filesystem = null;
+
+    /**
+     * Finder
+     *
+     * @var object
+     * @access public
+     */
+    public static $finder = null;
+
+    /**
+     * Protected clone method to enforce singleton behavior.
+     *
+     * @access protected
+     */
+    protected function __clone()
+    {
+        // Nothing here.
+    }
 
     /**
      * The version of Rawilum
@@ -34,100 +59,24 @@ class Rawilum extends Container
     const VERSION = '0.0.0';
 
     /**
-     * Init Rawilum Application
+     * Constructor.
      *
      * @access protected
      */
-    protected static function init()
+    protected function __construct()
     {
-        // Create container
-        $container = new static();
 
-        // Define markdown service
-        $container['markdown'] = function ($c) {
-            return new ParsedownExtra();
-        };
+        static::$finder     = new Finder();
+        static::$filesystem = new Filesystem();
 
-        // Define filesystem service
-        $container['filesystem'] = function ($c) {
-            return new Filesystem();
-        };
+        // Init Config
+        Config::init();
 
-        // Define finder service
-        $container['finder'] = function ($c) {
-            return new Finder();
-        };
-
-        // Define cache service
-        $container['cache'] = function ($c) {
-            return new Cache($c);
-        };
-
-        // Define config service
-        $container['config'] = function ($c) {
-            return new Config($c);
-        };
-
-        // Define shortcodes service
-        $container['shortcodes'] = function ($c) {
-            return new Shortcodes($c);
-        };
-
-        // Define events service
-        $container['events'] = function ($c) {
-            return new Events($c);
-        };
-
-        // Define filters service
-        $container['filters'] = function ($c) {
-            return new Filters($c);
-        };
-
-        // Define i18n service
-        $container['i18n'] = function ($c) {
-            return new I18n($c);
-        };
-
-        // Define plugins service
-        $container['plugins'] = function ($c) {
-            return new Plugins($c);
-        };
-
-        // Define pages service
-        $container['pages'] = function ($c) {
-            return new Pages($c);
-        };
-
-        // Define themes service
-        $container['themes'] = function ($c) {
-            return new Themes($c);
-        };
-
-        // Init I18n
-        $container['i18n']->init();
-
-        // Init Plugins
-        $container['plugins']->init();
-
-        // Get current page
-        $container['pages']->getPage(Url::getUriString());
-
-        // Return container
-        return $container;
-    }
-
-    /**
-     * Run Rawilum Application
-     *
-     * @access public
-     */
-    public function run()
-    {
         // Turn on output buffering
         ob_start();
 
         // Display Errors
-        if ($this['config']->get('site.errors.display')) {
+        if (Config::get('site.errors.display')) {
             define('DEVELOPMENT', true);
             error_reporting(-1);
         } else {
@@ -137,8 +86,8 @@ class Rawilum extends Container
 
         // Set internal encoding
         function_exists('mb_language') and mb_language('uni');
-        function_exists('mb_regex_encoding') and mb_regex_encoding($this['config']->get('site.charset'));
-        function_exists('mb_internal_encoding') and mb_internal_encoding($this['config']->get('site.charset'));
+        function_exists('mb_regex_encoding') and mb_regex_encoding(Config::get('site.charset'));
+        function_exists('mb_internal_encoding') and mb_internal_encoding(Config::get('site.charset'));
 
         // Set Error handler
         set_error_handler('ErrorHandler::error');
@@ -146,33 +95,42 @@ class Rawilum extends Container
         set_exception_handler('ErrorHandler::exception');
 
         // Set default timezone
-        date_default_timezone_set($this['config']->get('site.timezone'));
+        date_default_timezone_set(Config::get('site.timezone'));
 
-        // The page is not processed and not sent to the display.
-        $this['events']->dispatch('onPageBeforeRender');
+        // Start the session
+        Session::start();
+
+        // Init Cache
+        Cache::init();
+
+        // Init I18n
+        I18n::init();
+
+        // Init Themes
+        Themes::init();
+
+        // Init Plugins
+        Plugins::init();
 
         // Render current page
-        $this['pages']->renderPage();
-
-        // The page has been fully processed and sent to the display.
-        $this['events']->dispatch('onPageAfterRender');
+        Pages::init();
 
         // Flush (send) the output buffer and turn off output buffering
         ob_end_flush();
     }
 
     /**
-     * Get Rawilum Application Instance
-     *
-     * @access public
-     * @return object
-     */
-    public static function instance()
-    {
-        if (!self::$instance) {
-            self::$instance = static::init();
-            RawilumTrait::setRawilum(self::$instance);
-        }
-        return self::$instance;
-    }
+      * Initialize Rawilum Application
+      *
+      *  <code>
+      *      Rawium::init();
+      *  </code>
+      *
+      * @access public
+      * @return object
+      */
+     public static function init()
+     {
+         return !isset(self::$instance) and self::$instance = new Rawilum();
+     }
 }

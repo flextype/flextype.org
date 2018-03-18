@@ -1,5 +1,7 @@
 <?php namespace Rawilum;
 
+use Symfony\Component\Yaml\Yaml;
+
 /**
  * @package Rawilum
  *
@@ -13,37 +15,44 @@
 class Themes
 {
     /**
-     * @var Rawilum
+     * An instance of the Themes class
+     *
+     * @var object
      */
-    protected $rawilum;
+    protected static $instance = null;
 
     /**
-     * __construct
+     * Init Themes
+     *
+     * @access public
+     * @return mixed
      */
-    public function __construct(Rawilum $c)
+    protected function __construct()
     {
-        $this->rawilum = $c;
+        // Theme Manifest
+        $theme_manifest = [];
+
+        // Get current theme
+        $theme = Config::get('site.theme');
+
+        if (Rawilum::$filesystem->exists($theme_manifest_file = THEMES_PATH . '/' . $theme . '/' . $theme . '.yml')) {
+            $theme_manifest = Yaml::parseFile($theme_manifest_file);
+            Config::set('themes.'.Config::get('site.theme'), $theme_manifest);
+        }
     }
 
     /**
-     * Get Themes template
+     * Initialize Rawilum Themes
+     *
+     *  <code>
+     *      Themes::init();
+     *  </code>
      *
      * @access public
-     * @param  string $template_name Template name
-     * @return mixed
+     * @return object
      */
-    public function getTemplate($template_name)
+    public static function init()
     {
-        $template_ext = '.php';
-
-        $page = $this->rawilum['pages']->page;
-
-        $template_path = THEMES_PATH . '/' . $this->rawilum['config']->get('site.theme') . '/' . $template_name . $template_ext;
-
-        if ($this->rawilum['filesystem']->exists($template_path)) {
-            include $template_path;
-        } else {
-            throw new RuntimeException("Template {$template_name} does not exist.");
-        }
+        return !isset(self::$instance) and self::$instance = new Themes();
     }
 }
