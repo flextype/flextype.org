@@ -1,8 +1,10 @@
-<?php $this->rawilum['themes']->getTemplate('partials/head'); ?>
+<?php Rawilum\Templates::display('partials/head'); ?>
 <center>
-    <img src="rawilum-logo-big.jpg" width=400 alt="Rawilum" />
-    <br>
-    <button type="button" class="btn btn-outline-dark btn-download-rawilum">Download Rawilum</button>
+    <div class="mega-header">
+        <h2 class="h2">Introducing Rawilum</h2>
+        <p class="p">Modern Open Source Flat-File Content Management System</p>
+        <a href="button" class="btn btn-outline-dark btn-download-rawilum">Download Rawilum 0.1.0</a>
+    </div>
 </center>
 
 <div class="container section">
@@ -48,7 +50,7 @@
     </div>
     <div class="col-sm">
         <center>
-            <i class="fa fa-github" aria-hidden="true"></i>
+            <i class="fab fa-github" aria-hidden="true"></i>
             <h4>Open Source</h4>
             <p>Rawilum is an open-source project licensed under the MIT LICENSE to set the world free!</p>
         </center>
@@ -70,7 +72,7 @@
     <div class="col-sm">
         <center>
             <a href="https://github.com/rawilum">
-            <i class="fa fa-github" aria-hidden="true"></i>
+            <i class="fab fa-github" aria-hidden="true"></i>
             <h4>GitHub</h4>
             </a>
         </center>
@@ -78,8 +80,8 @@
     <div class="col-sm">
         <center>
             <a href="http://t.me/rawilum">
-            <i class="fa fa-telegram" aria-hidden="true"></i>
-            <h4>Telegram</h4>
+            <i class="fab fa-gitter"></i>
+            <h4>Gitter</h4>
             </a>
         </center>
     </div>
@@ -89,4 +91,4 @@
 
 <?php echo $page['content']; ?>
 
-<?php $this->rawilum['themes']->getTemplate('partials/footer'); ?>
+<?php Rawilum\Templates::display('partials/footer'); ?>
