@@ -13,6 +13,7 @@ charset: UTF-8
 theme: default
 
 plugins:
+  - highlight
 
 locale: "en"
 locales: [en]
@@ -22,7 +23,7 @@ pages:
   main: home
 
 errors:
-  display: false
+  display: true
 
 cache:
   enabled: false
