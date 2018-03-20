@@ -1,6 +1,6 @@
 ---
-title: Moving Fansoro or Migrating Hosts
-description: Documentation for Fansoro Developers and Fansoro Users.
+title: Moving Flextype or Migrating Hosts
+description: Documentation for Flextype Developers and Flextype Users.
 template: index
 ---
 

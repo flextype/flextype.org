@@ -1,7 +1,7 @@
 ---
 title: Requirements
-description: Documentation for Fansoro Developers and Fansoro Users.
-template: index
+description: Documentation for Flextype Developers and Flextype Users.
+template: documentation
 ---
 
 PHP 5.5 or higher with PHP's [Multibyte String module](http://php.net/mbstring)     

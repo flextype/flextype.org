@@ -1,6 +1,6 @@
 ---
 title: Theme Basics
-description: Documentation for Fansoro Developers and Fansoro Users.
+description: Documentation for Flextype Developers and Flextype Users.
 template: index
 ---
 

@@ -1,21 +1,19 @@
 ---
 title: Pages
-description: Documentation for Fansoro Developers and Fansoro Users.
-template: index
+description: Documentation for Flextype Developers and Flextype Users.
+template: documentation
 ---
 
-### Pages and Urls structure in Fansoro:{.margin-top-hard}
+### Pages and Urls structure in Flextype:{.margin-top-hard}
 
 <table class="table">
     <thead>
         <tr><th>Physical Location</th><th>URL</th></tr>
     </thead>
     <tbody>
-        <tr><td>storage/content/index.md</td><td>/</td></tr>
-        <tr><td>storage/content/sub.md</td><td>/sub</td></tr>
-        <tr><td>storage/content/sub/index.md</td><td>/sub (same as above)</td></tr>
-        <tr><td>storage/content/sub/page.md</td><td>/sub/page</td></tr>
-        <tr><td>storage/content/a/very/long/url.md</td><td>/a/very/long/url</td></tr>
+        <tr><td>site/pages/home/index.md</td><td>/</td></tr>
+        <tr><td>site/pages/blog/my-post/index.md</td><td>/blog/my-post</td></tr>
+        <tr><td>site/pages/a/very/long/url/index.md</td><td>/a/very/long/url</td></tr>
     </tbody>
 </table>
 

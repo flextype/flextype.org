@@ -2,7 +2,7 @@
 # Site configuration
 #
 
-title: "Rawilum"
+title: "Flextype"
 description: "Modern Open Source Flat-File Content Management System"
 author:
   email: ""
@@ -25,8 +25,16 @@ pages:
 errors:
   display: true
 
+social_link:
+  facebook: "https://www.facebook.com/flexgine"
+  twitter: "https://twitter.com/flexgine"
+  github: "https://github.com/flexgine"
+  gitter: "https://gitter.im/flexgine/flexgine"
+  vkontakte: "https://vk.com/flexgine"
+  telegram: "http://t.me/flexgine"
+
 cache:
   enabled: false
-  prefix: Rawilum
+  prefix: Flextype
   driver: auto
   lifetime: 604800

@@ -1,7 +1,7 @@
 ---
 title: Theme Installation
-description: Documentation for Fansoro Developers and Fansoro Users.
-template: index
+description: Documentation for Flextype Developers and Flextype Users.
+template: documentation
 ---
 
 ## Steps to install themes{.margin-top-hard}

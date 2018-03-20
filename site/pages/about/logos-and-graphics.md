@@ -1,12 +1,12 @@
 ---
 title: Logos and Graphics
-description: Logos to promote Fansoro CMS around the web
+description: Logos to promote Flextype CMS around the web
 template: about
 redirect: media
 ---
 
-## Fansoro Icon{.margin-top-hard}
-![Fansoro Icon]({site_url}/public/assets/img/fansoro-icon.png){.img-responsive}
+## Flextype Icon{.margin-top-hard}
+![Flextype Icon]({site_url}/public/assets/img/Flextype-icon.png){.img-responsive}
 
-## Fansoro Logo
-![Fansoro Logo]({site_url}/public/assets/img/fansoro-logo.png){.img-responsive}
+## Flextype Logo
+![Flextype Logo]({site_url}/public/assets/img/Flextype-logo.png){.img-responsive}

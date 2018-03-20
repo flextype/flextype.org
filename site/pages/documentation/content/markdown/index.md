@@ -1,7 +1,7 @@
 ---
 title: Markdown
-description: Documentation for Fansoro Developers and Fansoro Users.
-template: index
+description: Documentation for Flextype Developers and Flextype Users.
+template: documentation
 ---
 
 Markdown is a way to style text on the web. You control the display of the document; formatting words as bold or italic, adding images. etc... with specific symbols like ```#``` or ```*```  
@@ -144,30 +144,30 @@ Renders to:
 ##Links
 
 ```
-[Fansoro site](http://fansoro.org)
+[Flextype site](http://Flextype.org)
 ```
 
 Renders to:  
 
-[Fansoro site](http://fansoro.org)
+[Flextype site](http://Flextype.org)
 
 
 ##Images
 
 
 ```
-![Fansoro Logo](http://fansoro.org/public/assets/img/fansoro-logo.png)
+![Flextype Logo](http://Flextype.org/public/assets/img/Flextype-logo.png)
 ```
 
 Renders to:  
 
-![Fansoro Logo](http://fansoro.org/public/assets/img/fansoro-logo.png)  
+![Flextype Logo](http://Flextype.org/public/assets/img/Flextype-logo.png)  
 
 
 ```
-![Fansoro Logo](http://fansoro.org/public/assets/img/fansoro-logo.png){.img-responsive}
+![Flextype Logo](http://Flextype.org/public/assets/img/Flextype-logo.png){.img-responsive}
 ```
 
 Renders to:
 
-![Fansoro Logo](http://fansoro.org/public/assets/img/fansoro-logo.png){.img-responsive}  
+![Flextype Logo](http://Flextype.org/public/assets/img/Flextype-logo.png){.img-responsive}  

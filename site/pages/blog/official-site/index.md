@@ -1,6 +1,6 @@
 ---
 title: Official Site launched
-date: 2015-09-08 23:00
+date: 2018-03-12 08:00
 template: index
 author:
   name: Sergey Romanenko
@@ -8,14 +8,8 @@ author:
 
 Hello Everyone!
 
-New Offical Fansoro website and forum (http://forum.fansoro.org) - launched! :)
-
-Plans for upcoming future:  
-1) Move Fansoro infrastucture from Monstra. Now it's a standalone project :)  
-2) Fansoro logo and mascot must be created.   
-3) new Fansoro release.  
-4) Keep Moving Forward!  
+New Offical Flextype website and forum (http://forum.flexgine.org) - launched! :)
 
 <hr>  
 
-[<i class="fa fa-comments"></i> Discuss this article on the Gitter Chat](https://gitter.im/fansoro/fansoro)  
+[<i class="fa fa-comments"></i> Discuss this article on the Gitter Chat](https://gitter.im/flexgine/flexgine)  

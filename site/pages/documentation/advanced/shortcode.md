@@ -1,6 +1,6 @@
 ---
 title: Shortcode
-description: Documentation for Fansoro Developers and Fansoro Users.
+description: Documentation for Flextype Developers and Flextype Users.
 template: documentation
 ---
 
@@ -23,7 +23,7 @@ Example of escaping shortcodes:
 Your shorcode function:  
 ```
 function returnSiteUrl() {
-   return Fansoro::$site['url'];
+   return Flextype::$site['url'];
 }
 ```
 

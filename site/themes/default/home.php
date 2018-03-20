@@ -1,12 +1,11 @@
 <?php Rawilum\Templates::display('partials/head'); ?>
 <center>
     <div class="mega-header">
-        <h2 class="h2">Introducing Rawilum</h2>
+        <h2 class="h2">Introducing Flextype</h2>
         <p class="p">Modern Open Source Flat-File Content Management System</p>
-        <a href="button" class="btn btn-outline-dark btn-download-rawilum">Download Rawilum 0.1.0</a>
+        <a href="button" class="btn btn-outline-dark btn-download-rawilum">Download Flextype 0.1.0</a>
     </div>
 </center>
-
 <div class="container section">
 <h2 class="h1">Features</h2>
   <div class="row">
@@ -21,14 +20,14 @@
         <center>
             <i class="fa fa-rocket" aria-hidden="true"></i>
             <h4>Fast</h4>
-            <p>Rawilum is realy fast and lightweight!<br> No database required, flat files only!</p>
+            <p>Flextype is realy fast and lightweight!<br> No database required, flat files only!</p>
         </center>
     </div>
     <div class="col-sm">
         <center>
             <i class="fa fa-cogs" aria-hidden="true"></i>
             <h4>Flexible</h4>
-            <p>Rawilum provides amazing API for plugins, themes and core developers!</p>
+            <p>Flextype provides amazing API for plugins, themes and core developers!</p>
         </center>
     </div>
   </div>
@@ -45,14 +44,14 @@
         <center>
             <i class="fa fa-list-alt" aria-hidden="true"></i>
             <h4>Dynamic Content Types</h4>
-            <p>The flat-file nature of Rawilum lets you define custom fields for any of your pages.</p>
+            <p>The flat-file nature of Flextype lets you define custom fields for any of your pages.</p>
         </center>
     </div>
     <div class="col-sm">
         <center>
             <i class="fab fa-github" aria-hidden="true"></i>
             <h4>Open Source</h4>
-            <p>Rawilum is an open-source project licensed under the MIT LICENSE to set the world free!</p>
+            <p>Flextype is an open-source project licensed under the MIT LICENSE to set the world free!</p>
         </center>
     </div>
   </div>

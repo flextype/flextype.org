@@ -1,11 +1,11 @@
 ---
 title: Coding standards
-description: Documentation for Fansoro Developers and Fansoro Users.
+description: Documentation for Flextype Developers and Flextype Users.
 template: documentation
 ---
 
 
-These standards for code formatting and documentation must be followed by anyone contributing to Fansoro.  
+These standards for code formatting and documentation must be followed by anyone contributing to Flextype.  
 Any contributions that do not meet these guidelines will not be accepted.
 
 https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md  
