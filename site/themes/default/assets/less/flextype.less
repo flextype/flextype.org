@@ -1,0 +1,38 @@
+//
+// Flextype Compile File
+// (c) Sergey Romanenko <https://github.com/Awilum>
+//
+
+//@import "../vendor/bootstrap/less/bootstrap";
+
+// Generic
+// Low-specificity, far-reaching rulesets
+@import "generic/variables";
+
+// Base
+// Unclassed HTML elements
+@import "base/fonts";
+@import "base/main";
+@import "base/headings";
+@import "base/links";
+
+// Objects
+// Abstractions, Objects and design patterns
+@import "objects/container";
+@import "objects/buttons";
+
+// Components
+// Discrete, complete chunks of UI
+@import "components/benefits";
+@import "components/nav";
+@import "components/plugins";
+@import "components/themes";
+@import "components/blog";
+@import "components/live-chat";
+@import "components/mega-header";
+@import "components/testimonials";
+@import "components/footer";
+
+// Thumps
+// High-specificity, very explicit selectors. Overrides and helper classes
+@import "generic/utilities";
