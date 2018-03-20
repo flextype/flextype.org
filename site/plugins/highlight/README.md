@@ -1,11 +1,11 @@
-# Highlight Plugin for [Rawilum](http://rawilum.org/)
+# Highlight Plugin for [Flextype](http://flextype.org/)
 ![version](https://img.shields.io/badge/version-1.0.0-brightgreen.svg?style=flat-square "Version")
-![Rawilum](https://img.shields.io/badge/Rawilum-0.x-green.svg?style=flat-square "Rawilum Version")
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/rawilum-plugins/highlight/blob/master/LICENSE.txt)
+![Flextype](https://img.shields.io/badge/Flextype-0.x-green.svg?style=flat-square "Flextype Version")
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/flextype-plugins/highlight/blob/master/LICENSE.txt)
 
 ![Highlight](screenshot.jpg)  
 
-Highlight plugin for [Rawilum](https://github.com/rawilum/rawilum) adds a powerful code highlighting functionality with [Highlight.js](https://highlightjs.org/)
+Highlight plugin for [Flextype](https://github.com/flextype/flextype) adds a powerful code highlighting functionality with [Highlight.js](https://highlightjs.org/)
 
 * 176 languages and 79 styles [(live demo)](https://highlightjs.org/static/demo/)   
 * automatic language detection
@@ -78,4 +78,4 @@ Check out a [live demo](https://highlightjs.org/static/demo/) of these themes!
 | school_bank            |                          |                           |
 
 ## License
-See [LICENSE](https://github.com/rawilum-plugins/highlight/blob/master/LICENSE)
+See [LICENSE](https://github.com/flextype-plugins/highlight/blob/master/LICENSE)

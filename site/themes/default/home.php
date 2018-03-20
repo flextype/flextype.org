@@ -1,9 +1,9 @@
-<?php Rawilum\Templates::display('partials/head'); ?>
+<?php Flextype\Templates::display('partials/head'); ?>
 <center>
     <div class="mega-header">
         <h2 class="h2">Introducing Flextype</h2>
         <p class="p">Modern Open Source Flat-File Content Management System</p>
-        <a href="button" class="btn btn-outline-dark btn-download-rawilum">Download Flextype 0.1.0</a>
+        <a href="button" class="btn btn-outline-dark btn-download-flextype">Download Flextype 0.1.0</a>
     </div>
 </center>
 <div class="container section">
@@ -62,7 +62,7 @@
   <div class="row">
     <div class="col-sm">
         <center>
-            <a href="http://forum.rawilum.org">
+            <a href="http://forum.flextype.org">
             <i class="fa fa-comments" aria-hidden="true"></i>
             <h4>Forum</h4>
             </a>
@@ -70,7 +70,7 @@
     </div>
     <div class="col-sm">
         <center>
-            <a href="https://github.com/rawilum">
+            <a href="https://github.com/flextype">
             <i class="fab fa-github" aria-hidden="true"></i>
             <h4>GitHub</h4>
             </a>
@@ -78,7 +78,7 @@
     </div>
     <div class="col-sm">
         <center>
-            <a href="http://t.me/rawilum">
+            <a href="http://t.me/flextype">
             <i class="fab fa-gitter"></i>
             <h4>Gitter</h4>
             </a>
@@ -90,4 +90,4 @@
 
 <?php echo $page['content']; ?>
 
-<?php Rawilum\Templates::display('partials/footer'); ?>
+<?php Flextype\Templates::display('partials/footer'); ?>

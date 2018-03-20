@@ -1,6 +1,6 @@
 ---
 title: Documentation
-description: Documentation for Rawilum Developers and Rawilum Users.
+description: Documentation for Flextype Developers and Flextype Users.
 template: documentation
 ---
 

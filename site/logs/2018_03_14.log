@@ -1,5 +1,0 @@
-[14-Mar-2018 17:16:37] Error: Class 'Theme' not found in /Applications/MAMP/htdocs/rawilum/site/themes/default/index.php at line 1
-[14-Mar-2018 18:23:31] Error: Class 'Rawilum\RuntimeException' not found in /Applications/MAMP/htdocs/rawilum/Rawilum/Pages.php at line 98
-[14-Mar-2018 18:36:27] Error: Call to a member function get() on null in /Applications/MAMP/htdocs/rawilum/site/themes/default/partials/navigation.php at line 3
-[14-Mar-2018 18:36:27] Error: Call to a member function get() on null in /Applications/MAMP/htdocs/rawilum/site/themes/default/partials/navigation.php at line 3
-[14-Mar-2018 18:36:27] Error: Call to a member function get() on null in /Applications/MAMP/htdocs/rawilum/site/themes/default/partials/navigation.php at line 3

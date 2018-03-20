@@ -14,5 +14,7 @@ return array(
     'a146f1cbd76d5caba4c6a68cf7f609ba' => $vendorDir . '/force/http/Response.php',
     'df2e3621b9acf882aad1af34b58cb70c' => $vendorDir . '/force/token/Token.php',
     'f632497f26100cf16773001ede15070d' => $vendorDir . '/force/url/Url.php',
-    '69a1aeeab9c3acd7093753f497d32bc6' => $baseDir . '/rawilum/boot/defines.php',
+    '27889c667ac3bf52a46253c17c022f6c' => $baseDir . '/flextype/boot/defines.php',
+    '9e4c4dfe9e08210fcb671893ca6d559a' => $baseDir . '/flextype/boot/shortcodes.php',
+    '0ac41af6027d0abe1a3849f823a39882' => $baseDir . '/flextype/boot/events.php',
 );

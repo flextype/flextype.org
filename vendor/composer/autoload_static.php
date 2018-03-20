@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit5807ab37ca0273b250021bbd4d0b388d
+class ComposerStaticInitd63c0c596b9ea778aa611e22df40efef
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -15,7 +15,9 @@ class ComposerStaticInit5807ab37ca0273b250021bbd4d0b388d
         'a146f1cbd76d5caba4c6a68cf7f609ba' => __DIR__ . '/..' . '/force/http/Response.php',
         'df2e3621b9acf882aad1af34b58cb70c' => __DIR__ . '/..' . '/force/token/Token.php',
         'f632497f26100cf16773001ede15070d' => __DIR__ . '/..' . '/force/url/Url.php',
-        '69a1aeeab9c3acd7093753f497d32bc6' => __DIR__ . '/../..' . '/rawilum/boot/defines.php',
+        '27889c667ac3bf52a46253c17c022f6c' => __DIR__ . '/../..' . '/flextype/boot/defines.php',
+        '9e4c4dfe9e08210fcb671893ca6d559a' => __DIR__ . '/../..' . '/flextype/boot/shortcodes.php',
+        '0ac41af6027d0abe1a3849f823a39882' => __DIR__ . '/../..' . '/flextype/boot/events.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -87,26 +89,27 @@ class ComposerStaticInit5807ab37ca0273b250021bbd4d0b388d
     );
 
     public static $classMap = array (
-        'Rawilum\\Cache' => __DIR__ . '/../..' . '/rawilum/Cache.php',
-        'Rawilum\\Config' => __DIR__ . '/../..' . '/rawilum/Config.php',
-        'Rawilum\\Events' => __DIR__ . '/../..' . '/rawilum/Events.php',
-        'Rawilum\\Filters' => __DIR__ . '/../..' . '/rawilum/Filters.php',
-        'Rawilum\\I18n' => __DIR__ . '/../..' . '/rawilum/I18n.php',
-        'Rawilum\\Pages' => __DIR__ . '/../..' . '/rawilum/Pages.php',
-        'Rawilum\\Plugins' => __DIR__ . '/../..' . '/rawilum/Plugins.php',
-        'Rawilum\\Rawilum' => __DIR__ . '/../..' . '/rawilum/Rawilum.php',
-        'Rawilum\\RawilumTrait' => __DIR__ . '/../..' . '/rawilum/RawilumTrait.php',
-        'Rawilum\\Shortcodes' => __DIR__ . '/../..' . '/rawilum/Shortcodes.php',
-        'Rawilum\\Themes' => __DIR__ . '/../..' . '/rawilum/Themes.php',
+        'Flextype\\Cache' => __DIR__ . '/../..' . '/flextype/Cache.php',
+        'Flextype\\Config' => __DIR__ . '/../..' . '/flextype/Config.php',
+        'Flextype\\Events' => __DIR__ . '/../..' . '/flextype/Events.php',
+        'Flextype\\Filters' => __DIR__ . '/../..' . '/flextype/Filters.php',
+        'Flextype\\Flextype' => __DIR__ . '/../..' . '/flextype/Flextype.php',
+        'Flextype\\I18n' => __DIR__ . '/../..' . '/flextype/I18n.php',
+        'Flextype\\Markdown' => __DIR__ . '/../..' . '/flextype/Markdown.php',
+        'Flextype\\Pages' => __DIR__ . '/../..' . '/flextype/Pages.php',
+        'Flextype\\Plugins' => __DIR__ . '/../..' . '/flextype/Plugins.php',
+        'Flextype\\Shortcodes' => __DIR__ . '/../..' . '/flextype/Shortcodes.php',
+        'Flextype\\Templates' => __DIR__ . '/../..' . '/flextype/Templates.php',
+        'Flextype\\Themes' => __DIR__ . '/../..' . '/flextype/Themes.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit5807ab37ca0273b250021bbd4d0b388d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit5807ab37ca0273b250021bbd4d0b388d::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit5807ab37ca0273b250021bbd4d0b388d::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit5807ab37ca0273b250021bbd4d0b388d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd63c0c596b9ea778aa611e22df40efef::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd63c0c596b9ea778aa611e22df40efef::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitd63c0c596b9ea778aa611e22df40efef::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitd63c0c596b9ea778aa611e22df40efef::$classMap;
 
         }, null, ClassLoader::class);
     }

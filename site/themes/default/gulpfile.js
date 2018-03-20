@@ -1,5 +1,5 @@
 //
-// Rawilum Gulp.js
+// Flextype Gulp.js
 // (c) Sergey Romanenko <https://github.com/Awilum>
 //
 
@@ -10,7 +10,7 @@ var Promise = require("es6-promise").Promise,
     csso = require('gulp-csso');
 
 gulp.task('process-css', function() {
-      return gulp.src('assets/less/rawilum.less')
+      return gulp.src('assets/less/flextype.less')
         .pipe(less())
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],

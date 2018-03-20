@@ -6,15 +6,16 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Rawilum\\Cache' => $baseDir . '/rawilum/Cache.php',
-    'Rawilum\\Config' => $baseDir . '/rawilum/Config.php',
-    'Rawilum\\Events' => $baseDir . '/rawilum/Events.php',
-    'Rawilum\\Filters' => $baseDir . '/rawilum/Filters.php',
-    'Rawilum\\I18n' => $baseDir . '/rawilum/I18n.php',
-    'Rawilum\\Pages' => $baseDir . '/rawilum/Pages.php',
-    'Rawilum\\Plugins' => $baseDir . '/rawilum/Plugins.php',
-    'Rawilum\\Rawilum' => $baseDir . '/rawilum/Rawilum.php',
-    'Rawilum\\RawilumTrait' => $baseDir . '/rawilum/RawilumTrait.php',
-    'Rawilum\\Shortcodes' => $baseDir . '/rawilum/Shortcodes.php',
-    'Rawilum\\Themes' => $baseDir . '/rawilum/Themes.php',
+    'Flextype\\Cache' => $baseDir . '/flextype/Cache.php',
+    'Flextype\\Config' => $baseDir . '/flextype/Config.php',
+    'Flextype\\Events' => $baseDir . '/flextype/Events.php',
+    'Flextype\\Filters' => $baseDir . '/flextype/Filters.php',
+    'Flextype\\Flextype' => $baseDir . '/flextype/Flextype.php',
+    'Flextype\\I18n' => $baseDir . '/flextype/I18n.php',
+    'Flextype\\Markdown' => $baseDir . '/flextype/Markdown.php',
+    'Flextype\\Pages' => $baseDir . '/flextype/Pages.php',
+    'Flextype\\Plugins' => $baseDir . '/flextype/Plugins.php',
+    'Flextype\\Shortcodes' => $baseDir . '/flextype/Shortcodes.php',
+    'Flextype\\Templates' => $baseDir . '/flextype/Templates.php',
+    'Flextype\\Themes' => $baseDir . '/flextype/Themes.php',
 );
