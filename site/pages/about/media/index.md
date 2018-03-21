@@ -17,11 +17,6 @@ Twitter: https://twitter.com/flexgine
 Forum: http://forum.flexgine.org   
 Live Chat: https://gitter.im/flexgine/flexgine  
 
-### Flextype Logo
-
-![Flextype Icon]({site_url}/flexgine-logo-2.png){.img-responsive}
-
-
 ### Flextype Credits
 
 ```
