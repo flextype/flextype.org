@@ -10,8 +10,8 @@
             </p>
             <p>
                 <ul class="locales">
-                    <li><a href="#">English</a></li>
-                    <li><a href="#">Русский</a></li>
+                    <li><a href="http://flextype.org">English</a></li>
+                    <li><a href="http://flextype.ru">Русский</a></li>
                 </ul>
             </p>
             <p>
