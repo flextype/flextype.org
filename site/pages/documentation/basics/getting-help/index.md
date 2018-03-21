@@ -9,7 +9,7 @@ There are several channels to reach the developers and the Flextype community to
 If you can't find the right answers to your questions, you can turn to one of our other sources to get help and discuss your issues, but also to receive news and update notifications.
 
 
-## Flextype Forum
+## Forum
 A passionate Flextype user has started a [forum](http://forum.flextype.org) for the community to discuss and share their knowledge.
 
 ## Gitter
@@ -21,5 +21,5 @@ If you want to report a bug or contribute your ideas, you can use the [Flextype 
 ## Twitter
 Follow [Flextype on Twitter](https://twitter.com/getflextype) to get real-time news regarding the development and all events we are attending.
 
-## Flextype Blog
+## Blog
 Read major project news and articles for developers on the [flextype Blog](http://flextype.org/blog). Stay up to date with new releases and join the discussion in the comments section.
