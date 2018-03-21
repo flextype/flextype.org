@@ -20,5 +20,5 @@ Live Chat: https://gitter.im/flexgine/flexgine
 ### Flextype Credits
 
 ```
-Powered by <a href="http://flaxgine.org">Flextype</a>
+Powered by <a href="http://flextype.org">Flextype</a>
 ```
