@@ -1,6 +1,6 @@
 ---
-title: First official Flextype 0.1.0 release
-date: 2018-03-12 08:00
+title: First official Flextype release
+date: 2018-03-21 08:00
 template: blog-post
 author:
   name: Sergey Romanenko
@@ -9,6 +9,8 @@ author:
 Hello Everyone!  
 
 First official Flextype release is already published!  
+
+Download: [flextype-0.1.0.zip](https://github.com/flextype/flextype/releases/download/v0.1.0/flextype-0.1.0.zip)
 
 Flextype is next generation of Legendary Monstra Engine!
 Flextype is Open Source, fast and flexible file-based Content Management System. That's Easy to install, upgrade and use. Flextype provides amazing API's for plugins, themes and core developers! Content in Flextype is just a simple files written with markdown syntax in pages folder. You simply create markdown files in the pages folder and that becomes a page.
