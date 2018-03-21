@@ -16,7 +16,7 @@
         <a class="nav-link <?php if (Url::getUriSegment(0) == 'documentation') echo 'active'; ?>" href="<?php echo Url::getBase(); ?>/documentation"><span class="span">Documentation</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link <?php if (Url::getUriSegment(0) == 'support') echo 'active'; ?>" href="http://forum.flatgear.org"><span class="span">Forum</span></a>
+        <a class="nav-link <?php if (Url::getUriSegment(0) == 'support') echo 'active'; ?>" href="http://forum.flextype.org"><span class="span">Forum</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link <?php if (Url::getUriSegment(0) == 'about') echo 'active'; ?>" href="<?php echo Url::getBase(); ?>/about"><span class="span">About</span></a>

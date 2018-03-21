@@ -1,12 +1,12 @@
     <footer class="footer">
         <div class="container">
             <p class="social-links text-center">
-                <a rel="nofollow" href="<?php echo Flextype\Config::get('social_urls.twitter'); ?>"><i class="fab fa-twitter"></i></a>
-                <a rel="nofollow" href="<?php echo Flextype\Config::get('social_urls.github'); ?>"><i class="fab fa-github"></i></a>
-                <a rel="nofollow" href="<?php echo Flextype\Config::get('social_urls.gitter'); ?>"><i class="fab fa-gitter"></i></a>
-                <a rel="nofollow" href="<?php echo Flextype\Config::get('social_urls.facebook'); ?>"><i class="fab fa-facebook"></i></a>
-                <a rel="nofollow" href="<?php echo Flextype\Config::get('social_urls.telegram'); ?>"><i class="fab fa-telegram"></i></a>
-                <a rel="nofollow" href="<?php echo Flextype\Config::get('social_urls.vkontakte'); ?>"><i class="fab fa-vk"></i></a>
+                <a rel="nofollow" href="<?php echo Flextype\Config::get('site.social_link.twitter'); ?>"><i class="fab fa-twitter"></i></a>
+                <a rel="nofollow" href="<?php echo Flextype\Config::get('site.social_link.github'); ?>"><i class="fab fa-github"></i></a>
+                <a rel="nofollow" href="<?php echo Flextype\Config::get('site.social_link.gitter'); ?>"><i class="fab fa-gitter"></i></a>
+                <a rel="nofollow" href="<?php echo Flextype\Config::get('site.social_link.facebook'); ?>"><i class="fab fa-facebook"></i></a>
+                <a rel="nofollow" href="<?php echo Flextype\Config::get('site.social_link.telegram'); ?>"><i class="fab fa-telegram"></i></a>
+                <a rel="nofollow" href="<?php echo Flextype\Config::get('site.social_link.vkontakte'); ?>"><i class="fab fa-vk"></i></a>
             </p>
             <p>
                 <ul class="locales">
