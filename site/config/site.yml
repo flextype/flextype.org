@@ -26,12 +26,11 @@ errors:
   display: true
 
 social_link:
-  facebook: "https://www.facebook.com/flexgine"
-  twitter: "https://twitter.com/flexgine"
-  github: "https://github.com/flexgine"
-  gitter: "https://gitter.im/flexgine/flexgine"
-  vkontakte: "https://vk.com/flexgine"
-  telegram: "http://t.me/flexgine"
+  twitter: "https://twitter.com/getflextype"
+  github: "https://github.com/flextype"
+  gitter: "https://gitter.im/flextype/flextype"
+  vkontakte: "https://vk.com/flextype"
+  telegram: "http://t.me/flextype"
 
 cache:
   enabled: false
