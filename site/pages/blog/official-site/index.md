@@ -1,5 +1,5 @@
 ---
-title: Official Site launched
+title: First official Flextype 0.1.0 release
 date: 2018-03-12 08:00
 template: index
 author:
@@ -8,7 +8,8 @@ author:
 
 Hello Everyone!
 
-New Offical Flextype website and forum (http://forum.flexgine.org) - launched! :)
+First official Flextype release is already published!  
+Also offical website and forum (http://forum.flexgine.org) - launched!  
 
 <hr>  
 
