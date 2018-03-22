@@ -1,4 +1,4 @@
-<?php namespace Flextype;
+<?php
 
 /**
  * @package Flextype
@@ -10,6 +10,8 @@
  * file that was distributed with this source code.
  */
 
+namespace Flextype;
+
 class Cache
 {
     /**
@@ -18,30 +20,35 @@ class Cache
      * @var object
      */
     protected static $instance = null;
+
     /**
      * Unique cache key
      *
      * @var string Cache key.
      */
     protected static $key;
+
     /**
      * Lifetime
      *
      * @var int Lifetime.
      */
     protected static $lifetime;
+
     /**
      * Current time
      *
      * @var int Current time.
      */
     protected static $now;
+
     /**
      * Cache Driver
      *
      * @var DoctrineCache
      */
     protected static $driver;
+
     /**
      * Protected clone method to enforce singleton behavior.
      *
@@ -51,6 +58,7 @@ class Cache
     {
         // Nothing here.
     }
+
     /**
      * Constructor.
      *
@@ -60,13 +68,17 @@ class Cache
     {
         // Set current time
         static::$now = time();
+
         // Cache key allows us to invalidate all cache on configuration changes.
-        static::$key = (Config::get('site.cache.prefix') ? Config::get('site.cache.prefix') : 'fansoro') . '-' . md5(ROOT_DIR . 'Fansoro::VERSION');
+        static::$key = (Config::get('site.cache.prefix') ? Config::get('site.cache.prefix') : 'flextype') . '-' . md5(ROOT_DIR . Flextype::VERSION);
+
         // Get Cache Driver
         static::$driver = static::getCacheDriver();
+
         // Set the cache namespace to our unique key
         static::$driver->setNamespace(static::$key);
     }
+
     /**
      * Get Cache Driver
      *
@@ -113,7 +125,7 @@ class Cache
                 break;
             default:
                 // Create doctrine cache directory if its not exists
-                !Flextype::$filesystem->exists($cache_directory = CACHE_PATH . '/doctrine/') and Flextype::$filesystem->mkdir($cache_directory);
+                !Flextype::filesystem()->exists($cache_directory = CACHE_PATH . '/doctrine/') and Flextype::filesystem()->mkdir($cache_directory);
                 $driver = new \Doctrine\Common\Cache\FilesystemCache($cache_directory);
                 break;
         }
@@ -130,6 +142,7 @@ class Cache
     {
         return static::$driver;
     }
+
     /**
      * Get cache key.
      *
@@ -140,6 +153,7 @@ class Cache
     {
         return static::$key;
     }
+
     /**
      * Fetches an entry from the cache.
      *
@@ -155,6 +169,7 @@ class Cache
             return false;
         }
     }
+
     /**
      * Puts data into the cache.
      *
@@ -174,13 +189,15 @@ class Cache
             static::$driver->save($id, $data, $lifetime);
         }
     }
+
     /**
      * Clear Cache
      */
     public static function clear()
     {
-        Flextype::$filesystem->remove(CACHE_PATH . '/doctrine/');
+        Flextype::filesystem()->remove(CACHE_PATH . '/doctrine/');
     }
+
     /**
      * Set the cache lifetime.
      *
@@ -197,6 +214,7 @@ class Cache
             static::$lifetime = $interval;
         }
     }
+
     /**
      * Retrieve the cache lifetime (in seconds)
      *
@@ -210,12 +228,9 @@ class Cache
         }
         return static::$lifetime;
     }
+
     /**
-     * Initialize Fansoro Cache
-     *
-     *  <code>
-     *      Cache::init();
-     *  </code>
+     * Initialize Flextype Cache
      *
      * @access public
      * @return object
