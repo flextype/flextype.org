@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => $vendorDir . '/symfony/polyfill-mbstring/bootstrap.php',
     'd89bc1c93c985a6081695a032655c6c5' => $vendorDir . '/force/arr/Arr.php',
     '41383ea590ab15546f7fd24763c5cd38' => $vendorDir . '/force/session/Session.php',
     'fa7a96292b9ab72605a7e3f56883bdb0' => $vendorDir . '/force/errorhandler/ErrorHandler.php',
@@ -15,6 +14,4 @@ return array(
     'df2e3621b9acf882aad1af34b58cb70c' => $vendorDir . '/force/token/Token.php',
     'f632497f26100cf16773001ede15070d' => $vendorDir . '/force/url/Url.php',
     '27889c667ac3bf52a46253c17c022f6c' => $baseDir . '/flextype/boot/defines.php',
-    '9e4c4dfe9e08210fcb671893ca6d559a' => $baseDir . '/flextype/boot/shortcodes.php',
-    '0ac41af6027d0abe1a3849f823a39882' => $baseDir . '/flextype/boot/events.php',
 );
