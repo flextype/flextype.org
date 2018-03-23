@@ -39,5 +39,5 @@ You can create your own custom page headers using any valid YAML syntax.
 Example:   
 ```
 author:
-  twitter: @Flextype_cms
+  twitter: @getflextype
 ```

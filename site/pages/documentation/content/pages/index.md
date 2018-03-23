@@ -21,17 +21,16 @@ template: documentation
 ### Text File Markup
 
 Text files are marked up using Markdown. They can also contain regular HTML.  
-At the top of text files should place a [page header]({site_url}/documentation/content/pages-headers) to specify attributes of the page.
+At the top of text files should place a [page header]({site_url}/documentation/content/headers) to specify attributes of the page.
 
 
-### Text File Vars
+### Text File shortcodes
 
 <table class="table">
     <thead>
         <tr><th>Name</th><th>Description</th></tr>
     </thead>
     <tbody>
-        <tr><td>{{site_url}}</td><td>Outputs site url</td></tr>
-        <tr><td>{{block name=block-name}}</td><td>Display page block</td></tr>
+        <tr><td>[[site_url]]</td><td>Outputs site url</td></tr>
     </tbody>
 </table>

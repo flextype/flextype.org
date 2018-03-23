@@ -156,18 +156,18 @@ Renders to:
 
 
 ```
-![Flextype Logo](http://Flextype.org/public/assets/img/Flextype-logo.png)
+![Flextype Logo](http://flextype.org/flextype.jpg)
 ```
 
 Renders to:  
 
-![Flextype Logo](http://Flextype.org/public/assets/img/Flextype-logo.png)  
+![Flextype Logo](http://flextype.org/flextype.jpg)  
 
 
 ```
-![Flextype Logo](http://Flextype.org/public/assets/img/Flextype-logo.png){.img-responsive}
+![Flextype Logo](http://flextype.org/flextype.jpg){.img-responsive}
 ```
 
 Renders to:
 
-![Flextype Logo](http://Flextype.org/public/assets/img/Flextype-logo.png){.img-responsive}  
+![Flextype Logo](http://flextype.org/flextype.jpg){.img-responsive}  
