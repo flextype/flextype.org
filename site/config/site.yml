@@ -9,6 +9,7 @@ author:
 
 timezone: UTC
 charset: UTF-8
+date_format: "F d Y H:i:s."
 
 theme: default
 
