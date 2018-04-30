@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light">
 <div class="container">
-  <a class="navbar-brand" href="<?php echo Url::getBase(); ?>"><h1 class="h1"><img src="<?php echo Url::getBase(); ?>/flextype.jpg" class="site-logo" width=40 /> <b>flextype</b></h1></a>
+  <a class="navbar-brand" href="<?php echo Url::getBase(); ?>"><h1 class="h1"><img src="https://avatars3.githubusercontent.com/u/17710808?s=200&v=4" class="site-logo" width=40 /> <b>flextype</b></h1></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
