@@ -1,0 +1,7 @@
+[05-May-2018 10:56:42] Error: Class 'Flextype\Templates' not found in /Applications/MAMP/htdocs/flextype.org/site/themes/default/views/templates/home.php at line 1
+[05-May-2018 10:57:26] Error: Class 'Flextype\Config' not found in /Applications/MAMP/htdocs/flextype.org/site/plugins/highlight/highlight.php at line 21
+[05-May-2018 10:58:11] Error: Class 'Url' not found in /Applications/MAMP/htdocs/flextype.org/site/themes/default/views/partials/navigation.php at line 3
+[05-May-2018 10:59:45] ArgumentCountError: Too few arguments to function Flextype\Component\Http\Http::getUriSegment(), 0 passed in /Applications/MAMP/htdocs/flextype.org/site/themes/default/views/partials/navigation.php on line 14 and exactly 1 expected in /Applications/MAMP/htdocs/flextype.org/vendor/flextype-components/http/Http.php at line 255
+[05-May-2018 11:00:02] RuntimeException: No item "site.social_link.facebook" exists in the registry. in /Applications/MAMP/htdocs/flextype.org/vendor/flextype-components/registry/Registry.php at line 71
+[05-May-2018 11:01:04] RuntimeException: No item "site.social_link.facebook" exists in the registry. in /Applications/MAMP/htdocs/flextype.org/vendor/flextype-components/registry/Registry.php at line 71
+[05-May-2018 11:07:18] Error: Class 'Flextype\Http' not found in /Applications/MAMP/htdocs/flextype.org/site/themes/default/views/templates/about.php at line 12
