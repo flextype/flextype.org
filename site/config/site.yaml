@@ -14,7 +14,7 @@ date_format: "F d Y H:i:s."
 theme: default
 
 plugins:
-  - snipplr
+  - highlight
 
 locale: "en"
 locales: [en]

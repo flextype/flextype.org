@@ -29,31 +29,6 @@ template: index
     </tbody>
 </table>
 
-## System Config
-
-<table class="table table-striped table-bordered">
-    <thead>
-        <tr>
-            <th>Variable</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>$config.system.timezone</td>
-            <td>System timezone</td>
-        </tr>
-        <tr>
-            <td>$config.system.charset</td>
-            <td>System charset</td>
-        </tr>
-        <tr>
-            <td>$config.system.theme</td>
-            <td>System theme</td>
-        </tr>
-    </tbody>
-</table>
-
 ## Page
 
 <table class="table table-striped table-bordered">
