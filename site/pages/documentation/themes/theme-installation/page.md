@@ -7,7 +7,7 @@ template: documentation
 ## Steps to install themes{.margin-top-hard}
 
 1. Unzip theme to the folder `/themes/`
-2. Go to `/site/config/site.yml` and update `theme:` setting with your theme name.
+2. Go to `/site/config/site.yaml` and update `theme:` setting with your theme name.
 3. Save your changes.
 
 Example:
