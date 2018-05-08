@@ -1,5 +1,5 @@
 ---
 title: Welcome  
-description: Flextype is a simple and light-weighted Content Management System
+description: The Best Open Source Flat-File Content Management System
 template: home  
 ---

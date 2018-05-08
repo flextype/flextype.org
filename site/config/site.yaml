@@ -3,7 +3,7 @@
 #
 
 title: "Flextype"
-description: "Modern Open Source Flat-File Content Management System"
+description: "The Best Open Source Flat-File Content Management System"
 author:
   email: ""
 
@@ -14,7 +14,7 @@ date_format: "F d Y H:i:s."
 theme: default
 
 plugins:
-  - highlight
+  - snipplr
 
 locale: "en"
 locales: [en]

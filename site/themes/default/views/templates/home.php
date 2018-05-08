@@ -3,7 +3,7 @@
 <center>
     <div class="mega-header">
         <h2 class="h2">Introducing Flextype</h2>
-        <p class="p">Modern Open Source Flat-File Content Management System</p>
+        <p class="p">The Best Open Source Flat-File Content Management System</p>
         <a href="https://github.com/flextype/flextype/releases/download/v0.3.0/flextype-0.3.0.zip" class="btn btn-outline-dark btn-download-flextype">Download Flextype 0.3.0</a>
     </div>
 </center>
