@@ -30,7 +30,7 @@ author:
 date: 2015-10-18 16:00
 tags: tag1, tag2
 robots: noindex, nofollow  
-template: index (allows you to use different templates in your theme)  
+template: default (allows you to use different templates in your theme)  
 ```
 
 
