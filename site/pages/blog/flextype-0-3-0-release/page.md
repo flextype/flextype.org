@@ -1,5 +1,6 @@
 ---
 title: Flextype 0.3.0 release
+date: 2018-05-06 08:00
 template: blog-post
 author:
   name: Sergey Romanenko
