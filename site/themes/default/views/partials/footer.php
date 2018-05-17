@@ -28,6 +28,6 @@
             </p>
         </div>
     </footer>
-    <?php Themes::template('partials/tail')->display(); ?>
+    <?php Themes::view('partials/tail')->display(); ?>
   </body>
 </html>

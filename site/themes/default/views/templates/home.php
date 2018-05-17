@@ -1,5 +1,5 @@
 <?php namespace Flextype; ?>
-<?php Themes::template('partials/head')->display(); ?>
+<?php Themes::view('partials/head')->display(); ?>
 <center>
     <div class="mega-header">
         <h2 class="h2">Introducing Flextype</h2>
@@ -93,4 +93,4 @@
 
 <?php echo $page['content']; ?>
 
-<?php Themes::template('partials/footer')->display(); ?>
+<?php Themes::view('partials/footer')->display(); ?>
