@@ -14,6 +14,7 @@
                 <nav class="nav flex-column">
                   <a class="nav-link <?php if (Http::getUriSegment(0) == 'about' && Http::getUriSegment(1) == '') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/about">About</a>
                   <a class="nav-link <?php if (Http::getUriSegment(1) == 'media') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/about/media">Media</a>
+                  <a class="nav-link <?php if (Http::getUriSegment(1) == 'sponsors') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/about/sponsors">Sponsors</a>
                   <a class="nav-link <?php if (Http::getUriSegment(1) == 'license') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/about/license">License</a>
                 </nav>
             </div>
