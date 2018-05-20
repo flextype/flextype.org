@@ -7,10 +7,12 @@
         <a href="https://github.com/flextype/flextype/releases/download/v0.4.0/flextype-0.4.0.zip" class="btn btn-outline-dark btn-download-flextype">Download Flextype 0.4.0</a>
     </div>
 </center>
+
 <div class="container section">
-<h2 class="h1">Features</h2>
+<h3 class="section-heading">Features</h2>
+<p class="section-description"></p>
   <div class="row">
-    <div class="col-sm">
+    <div class="col-sm section-benefit">
         <center>
             <i class="fa fa-magic" aria-hidden="true"></i>
             <h4>Simple</h4>
@@ -59,7 +61,8 @@
 </div>
 
 <div class="container section">
-<h2 class="h1">Community</h2>
+<h3 class="section-heading">Community</h2>
+<p class="section-description">Flextype is open source, community driven project,<br> and maintained by community!</p>
   <div class="row">
     <div class="col-sm">
         <center>
@@ -88,8 +91,51 @@
   </div>
 </div>
 
+<div class="container section">
+<h3 class="section-heading">NO LIMITS</h2>
+<p class="section-description">With Flextype you can create any project you whant.</p>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-sm">
+        <p class="section-item"><i class="fas fa-star"></i> Business site</p>
+        <p class="section-item"><i class="fas fa-star"></i> Landing page</p>
+        <p class="section-item"><i class="fas fa-star"></i> Personal site</p>
+        <p class="section-item"><i class="fas fa-star"></i> Portfolio</p>
+    </div>
+    <div class="col-sm">
+        <p class="section-item"><i class="fas fa-star"></i> Product site</p>
+        <p class="section-item"><i class="fas fa-star"></i> Documenation</p>
+        <p class="section-item"><i class="fas fa-star"></i> Personal resume</p>
+        <p class="section-item"><i class="fas fa-star"></i> Blog</p>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
 
-<br><br><br><br>
+
+<div class="container section">
+<h3 class="section-heading">CONTRIBUTE</h2>
+<p class="section-description">
+Flextype is an open source project and community contributions are essential to its growing and success.
+Contributing to the Flextype is easy and you can give as little or as much time as you want.
+</p>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-sm">
+        <p class="section-item"><i class="fas fa-star"></i> Help on the <a href="http://forum.flextype.org">Forum</a>.</p>
+        <p class="section-item"><i class="fas fa-star"></i> Develop a new plugin.</p>
+        <p class="section-item"><i class="fas fa-star"></i> Create a new theme.</p>
+    </div>
+    <div class="col-sm">
+        <p class="section-item"><i class="fas fa-star"></i> Find and <a href="https://github.com/flextype/flextype/issues">report issues</a>.</p>
+        <p class="section-item"><i class="fas fa-star"></i> Link back to <a href="http://flextype.org">Flextype</a>.</p>
+        <p class="section-item"><i class="fas fa-star"></i> Donate to keep Flextype free.</p>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>
+
+<br><br><br><br><br><br><br>
 
 <?php echo $page['content']; ?>
 
