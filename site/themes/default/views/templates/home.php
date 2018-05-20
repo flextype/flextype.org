@@ -129,7 +129,7 @@ Contributing to the Flextype is easy and you can give as little or as much time 
     <div class="col-sm">
         <p class="section-item"><i class="fas fa-star"></i> Find and <a href="https://github.com/flextype/flextype/issues">report issues</a>.</p>
         <p class="section-item"><i class="fas fa-star"></i> Link back to <a href="http://flextype.org">Flextype</a>.</p>
-        <p class="section-item"><i class="fas fa-star"></i> Donate to keep Flextype free.</p>
+        <p class="section-item"><i class="fas fa-star"></i> <a href="http://flextype.org/about/sponsors">Donate to keep Flextype free.</a></p>
     </div>
     <div class="col-2"></div>
   </div>
