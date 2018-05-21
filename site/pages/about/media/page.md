@@ -12,7 +12,7 @@ Flextype is an Open Source, fast and light-weighted file-based Content Managemen
 
 ### Flextype Links
 Homepage: http://flextype.org   
-GitHub: https://github.com/flexgine/flextype  
+GitHub: https://github.com/flextype/flextype  
 Twitter: https://twitter.com/getflextype  
 Forum: http://forum.flextype.org   
 Live Chat: https://gitter.im/flextype/flextype  

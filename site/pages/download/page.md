@@ -4,6 +4,6 @@ template: downloads
 description: Download simple and light-weighted Content Management System written in PHP
 ---
 
-<a href="https://github.com/flextype/flextype/releases/download/v0.4.0/flextype-0.4.0.zip" class="btn btn btn-outline-dark btn-download-flextype no-margin">Download Flextype</a>  
+<a href="https://github.com/flextype/flextype/releases/download/v0.4.1/flextype-0.4.1.zip" class="btn btn btn-outline-dark btn-download-flextype no-margin">Download Flextype</a>  
 
-Latest release: 0.4.0. [View the release notes in the Changelog.](https://github.com/flextype/flextype/blob/master/CHANGELOG.md)
+Latest release: 0.4.1. [View the release notes in the Changelog.](https://github.com/flextype/flextype/blob/master/CHANGELOG.md)
