@@ -156,18 +156,18 @@ Renders to:
 
 
 ```
-![Flextype Logo](http://flextype.org/flextype.jpg)
+![filmtocat](https://octodex.github.com/images/filmtocat.png)
 ```
 
 Renders to:  
 
-![Flextype Logo](http://flextype.org/flextype.jpg)  
+![filmtocat](https://octodex.github.com/images/filmtocat.png)
 
 
 ```
-![Flextype Logo](http://flextype.org/flextype.jpg){.img-responsive}
+![filmtocat](https://octodex.github.com/images/filmtocat.png){.img-responsive}
 ```
 
 Renders to:
 
-![Flextype Logo](http://flextype.org/flextype.jpg){.img-responsive}  
+![filmtocat](https://octodex.github.com/images/filmtocat.png){.img-responsive}  

@@ -58,8 +58,7 @@ author:
     </tbody>
 </table>
 
-### Page File shortcodes
-
+### Page shortcodes
 <table class="table">
     <thead>
         <tr><th>Name</th><th>Description</th></tr>
