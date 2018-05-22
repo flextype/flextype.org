@@ -73,7 +73,7 @@
     </div>
     <div class="col-sm">
         <center>
-            <i class="fab fa-blogger-b" aria-hidden="true"></i>
+            <i class="fas fa-bold"></i>
             <h4>Responsive Framework</h4>
             <p>Develop responsive, mobile first projects with Twitter Bootstrap.</p>
         </center>
