@@ -4,7 +4,7 @@
     <div class="mega-header">
         <h2 class="h2">Introducing Flextype</h2>
         <p class="p">The Best Open Source Flat-File Content Management System</p>
-        <a href="https://github.com/flextype/flextype/releases/download/v0.4.1/flextype-0.4.1.zip" class="btn btn-outline-dark btn-download-flextype">Download Flextype 0.4.1</a>
+        <a href="https://github.com/flextype/flextype/releases/download/v0.4.2/flextype-0.4.2.zip" class="btn btn-outline-dark btn-download-flextype">Download Flextype 0.4.2</a>
     </div>
 </center>
 
@@ -55,6 +55,34 @@
             <i class="fab fa-github" aria-hidden="true"></i>
             <h4>Open Source</h4>
             <p>Flextype is an open-source project licensed under the MIT LICENSE to set the world free!</p>
+        </center>
+    </div>
+  </div>
+</div>
+
+<div class="container section">
+<h3 class="section-heading">Technologies</h2>
+<p class="section-description">Flextype built on top of modern technologies.</p>
+  <div class="row">
+    <div class="col-sm section-benefit">
+        <center>
+            <i class="fab fa-php" aria-hidden="true"></i>
+            <h4>Install Anywhere</h4>
+            <p>To install Flextype, all you need is a server running PHP 7</p>
+        <center>
+    </div>
+    <div class="col-sm">
+        <center>
+            <i class="fab fa-blogger-b" aria-hidden="true"></i>
+            <h4>Responsive Framework</h4>
+            <p>Develop responsive, mobile first projects with Twitter Bootstrap.</p>
+        </center>
+    </div>
+    <div class="col-sm">
+        <center>
+            <i class="fab fa-sass" aria-hidden="true"></i>
+            <h4>CSS with Superpowers</h4>
+            <p>The most mature, stable, and powerful CSS extension language</p>
         </center>
     </div>
   </div>

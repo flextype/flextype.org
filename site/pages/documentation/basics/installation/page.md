@@ -32,7 +32,7 @@ bower install
 If you have command-line access, you can easily install Flextype by executing a few commands. First, create the directory where you want to install Flextype, if it doesn’t already exist. Enter the directory, and execute the following commands:  
 
 ```
-wget https://github.com/flextype/flextype/releases/download/v0.4.1/flextype-0.4.1.zip
-unzip flextype-0.4.1.zip
+wget https://github.com/flextype/flextype/releases/download/v0.4.2/flextype-0.4.2.zip
+unzip flextype-0.4.2.zip
 chmod -R 0777 site/
 ```
