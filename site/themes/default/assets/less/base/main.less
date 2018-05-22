@@ -7,6 +7,7 @@ body {
     font-family: 'FLEXTYPE_300', "Helvetica Neue", Helvetica, arial, sans-serif;
 
     font-size: @base-font-size;
+    line-height: @base-line-height;
 
     height: 100%;
 
@@ -24,7 +25,8 @@ p {
     font-family: 'FLEXTYPE_300', "Helvetica Neue", Helvetica, arial, sans-serif;
 
     font-weight: 400;
-
+    font-size: @base-font-size;
+    line-height: @base-line-height;
     color: @base-font-color;
 }
 
@@ -43,13 +45,21 @@ pre {
     background-color: transparent;
     box-shadow: none;
 
-    bodrder-radius: 4px;
+    border-radius: 0;
+    font-size: 16px;
+    line-height: 26px;
 }
 
 code {
     background: #272822;
     color: #ddd;
     padding: 2px 5px;
+    font-size: 15px;
+    line-height: 25px;
+}
+
+.hljs {
+    padding: 15px!important;
 }
 
 a {

@@ -23,7 +23,7 @@
         <center>
             <i class="fa fa-rocket" aria-hidden="true"></i>
             <h4>Fast</h4>
-            <p>Flextype is realy fast and lightweight!<br> No database required, flat files only!</p>
+            <p>Flextype is realy fast and lightweight! No database required, flat files only!</p>
         </center>
     </div>
     <div class="col-sm">
@@ -40,7 +40,7 @@
           <center>
               <i class="fa fa-font" aria-hidden="true"></i>
               <h4>Markdown Syntax</h4>
-              <p>Use your favorite editor to write your content with plain Markdown syntax.</p>
+              <p>Use your favorite editor to write your content with plain<br>Markdown syntax.</p>
           </center>
       </div>
     <div class="col-sm">
