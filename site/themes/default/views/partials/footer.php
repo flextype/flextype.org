@@ -12,12 +12,13 @@
                 <a rel="nofollow" href="<?php echo Registry::get('site.social_link.telegram'); ?>"><i class="fab fa-telegram"></i></a>
                 <a rel="nofollow" href="<?php echo Registry::get('site.social_link.vkontakte'); ?>"><i class="fab fa-vk"></i></a>
             </p>
-            <p>
+            <!--<p>
                 <ul class="locales">
                     <li><a href="http://flextype.org">English</a></li>
                     <li><a href="http://flextype.ru">Русский</a></li>
                 </ul>
             </p>
+            -->
             <p>
                 <ul class="copyright">
                     <li>
