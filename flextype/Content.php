@@ -73,14 +73,11 @@ class Content
         // Event: The page is not processed and not sent to the display.
         Event::dispatch('onPageBeforeRender');
 
-        // Create Markdown Parser object
-        Content::$markdown = new Markdown();
+        // Init Markdown
+        Content::initMarkdown();
 
-        // Create Shortcode Parser object
-        Content::$shortcode = new ShortcodeFacade();
-
-        // Register default shortcodes
-        Content::registerDefaultShortcodes();
+        // Init Shortcodes
+        Content::initShortcodes();
 
         // Set current requested page data to $page array
         Content::$page = Content::getPage(Http::getUriString());
@@ -300,7 +297,7 @@ class Content
         $block_cache_id = '';
 
         if (Filesystem::fileExists($block_path)) {
-            $block_cache_id = md5('block' . filemtime($block_path) . (($raw === true) ? 'true' : 'false'));
+            $block_cache_id = md5('block' . $block_path . filemtime($block_path) . (($raw === true) ? 'true' : 'false'));
         }
 
         // Try to get block from cache
@@ -321,6 +318,17 @@ class Content
                 throw new \RuntimeException("Block does not exist.");
             }
         }
+    }
+
+    /**
+     * Returns $markdown object
+     *
+     * @access public
+     * @return object
+     */
+    public static function markdown() : Markdown
+    {
+        return Content::$markdown;
     }
 
     /**
@@ -459,6 +467,39 @@ class Content
         Content::shortcode()->addHandler('registry', function(ShortcodeInterface $s) {
             return Registry::get($s->getParameter('item'));
         });
+    }
+
+    /**
+     * Init Markdown
+     *
+     * @access protected
+     * @return void
+     */
+    protected static function initMarkdown() : void
+    {
+        // Create Markdown Parser object
+        Content::$markdown = new Markdown();
+
+        // Event: Markdown initialized
+        Event::dispatch('onMarkdownInitialized');
+    }
+
+    /**
+     * Init Shortcodes
+     *
+     * @access protected
+     * @return void
+     */
+    protected static function initShortcodes() : void
+    {
+        // Create Shortcode Parser object
+        Content::$shortcode = new ShortcodeFacade();
+
+        // Register default shortcodes
+        Content::registerDefaultShortcodes();
+
+        // Event: Shortcodes initialized and now we can add our custom shortcodes
+        Event::dispatch('onShortcodesInitialized');
     }
 
     /**
