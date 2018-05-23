@@ -66,6 +66,6 @@ author:
     <tbody>
         <tr><td>site_url</td><td>Outputs site url</td></tr>
         <tr><td>block</td><td>Get blocks</td></tr>
-        <tr><td>registry</td><td>Access registry</td></tr>
+        <tr><td>registry</td><td>Access registry itemes</td></tr>
     </tbody>
 </table>
