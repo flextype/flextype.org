@@ -92,20 +92,25 @@
 <h3 class="section-heading">NO LIMITS</h2>
 <p class="section-description">With Flextype you can create any project you whant.</p>
   <div class="row">
-    <div class="col-3"></div>
+    <div class="col-2"></div>
     <div class="col-sm">
         <p class="section-item"><i class="fas fa-star"></i> Business site</p>
         <p class="section-item"><i class="fas fa-star"></i> Landing page</p>
         <p class="section-item"><i class="fas fa-star"></i> Personal site</p>
-        <p class="section-item"><i class="fas fa-star"></i> Portfolio</p>
+
     </div>
     <div class="col-sm">
+        <p class="section-item"><i class="fas fa-star"></i> Portfolio</p>
         <p class="section-item"><i class="fas fa-star"></i> Product site</p>
+        <p class="section-item"><i class="fas fa-star"></i> E-Commerce</p>
+    </div>
+    <div class="col-sm">
+
         <p class="section-item"><i class="fas fa-star"></i> Documenation</p>
         <p class="section-item"><i class="fas fa-star"></i> Personal resume</p>
         <p class="section-item"><i class="fas fa-star"></i> Blog</p>
     </div>
-    <div class="col-3"></div>
+    <div class="col-2"></div>
   </div>
 </div>
 
