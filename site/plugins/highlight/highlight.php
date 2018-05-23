@@ -29,3 +29,12 @@ Event::addListener('onThemeFooter', function () {
     echo('<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
           <script>hljs.initHighlightingOnLoad();</script>');
 });
+
+Event::addListener('onShortcodesInitialized', function () {
+    Content::shortcode()->addHandler('s_start', function() {
+        return '[';
+    });
+    Content::shortcode()->addHandler('s_end', function() {
+        return ']';
+    });
+});
