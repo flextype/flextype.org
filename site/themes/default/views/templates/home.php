@@ -167,7 +167,27 @@ Contributing to the Flextype is easy and you can give as little or as much time 
   </div>
 </div>
 
-<br><br><br><br><br><br><br>
+
+<div class="container section">
+<h3 class="section-heading">Sponsors</h2>
+<p class="section-description">
+<a href="http://flextype.org/about/sponsors">Donate</a> to keep Flextype free and we will add you<br>
+to this section and our <a href="http://flextype.org/about/sponsors">sponsors page</a>!
+</p>
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-sm">
+        <center>
+            <p class="section-item"><a href="https://vk.com/anastasiia.greca" target="_blank">Anastasiia Greca</a></p>
+            <p class="section-item"><a href="https://vk.com/katerina.sitnikova" target="_blank">Katerina Sitnikova</a></p>
+            <p class="section-item"><a href="https://vk.com/fantast21" target="_blank">Alexander Kuznetsov</a></p>
+        </center>
+    </div>
+    <div class="col-4"></div>
+  </div>
+</div>
+
+<br><br><br><br><br>
 
 <?php echo $page['content']; ?>
 
