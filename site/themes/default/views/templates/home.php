@@ -4,7 +4,7 @@
     <div class="mega-header">
         <h2 class="h2">Introducing Flextype</h2>
         <p class="p">The Best Open Source Flat-File Content Management System</p>
-        <a href="https://github.com/flextype/flextype/releases/download/v0.4.2/flextype-0.4.2.zip" class="btn btn-outline-dark btn-download-flextype">Download Flextype 0.4.2</a>
+        <a href="https://github.com/flextype/flextype/releases/download/v<?php echo Flextype::VERSION; ?>/flextype-<?php echo Flextype::VERSION; ?>.zip" class="btn btn-outline-dark btn-download-flextype">Download Flextype <?php echo Flextype::VERSION; ?></a>
     </div>
 </center>
 

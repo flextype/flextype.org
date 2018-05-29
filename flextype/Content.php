@@ -53,6 +53,14 @@ class Content
     private static $page = [];
 
     /**
+     * Sections data array
+     *
+     * @var array
+     * @access protected
+     */
+    private static $sections = [];
+
+    /**
      * Protected constructor since this is a static class.
      *
      * @access  protected
@@ -63,15 +71,26 @@ class Content
     }
 
     /**
-     * Init Pages
+     * Init Content
      *
      * @access protected
      * @return void
      */
     protected static function init() : void
     {
+        Content::processCurrentPage();
+    }
+
+    /**
+     * Process Current Page
+     *
+     * @access protected
+     * @return void
+     */
+    protected static function processCurrentPage() : void
+    {
         // Event: The page is not processed and not sent to the display.
-        Event::dispatch('onPageBeforeRender');
+        Event::dispatch('onCurrentPageBeforeProcessed');
 
         // Init Markdown
         Content::initMarkdown();
@@ -79,14 +98,17 @@ class Content
         // Init Shortcodes
         Content::initShortcodes();
 
-        // Set current requested page data to $page array
+        // Set current requested page data to global $page array
         Content::$page = Content::getPage(Http::getUriString());
+
+        // Event: The page has been fully processed and not sent to the display.
+        Event::dispatch('onCurrentPageBeforeDisplayed');
 
         // Display page for current requested url
         Content::displayCurrentPage();
 
         // Event: The page has been fully processed and sent to the display.
-        Event::dispatch('onPageAfterRender');
+        Event::dispatch('onCurrentPageAfterProcessed');
     }
 
     /**
@@ -162,16 +184,14 @@ class Content
 
             // Get raw page if $raw is true
             if ($raw) {
-                Content::$page = Content::processPage($file_path, true);
-                Event::dispatch('onPageContentRawAfter');
+                $page = Content::processPage($file_path, true);
             } else {
-                Content::$page = Content::processPage($file_path);
-                Event::dispatch('onPageContentAfter');
+                $page = Content::processPage($file_path);
 
                 // Get 404 page if page is not published
-                if (isset(Content::$page['published']) && Content::$page['published'] === false) {
+                if (isset($page['published']) && $page['published'] === false) {
                     if (Filesystem::fileExists($file_path = PATH['pages'] . '/404/page.md')) {
-                        Content::$page = Content::processPage($file_path);
+                        $page = Content::processPage($file_path);
                         Http::setResponseStatus(404);
                     } else {
                         throw new \RuntimeException("404 page file does not exist.");
@@ -179,8 +199,8 @@ class Content
                 }
             }
 
-            Cache::save($page_cache_id, Content::$page);
-            return Content::$page;
+            Cache::save($page_cache_id, $page);
+            return $page;
         }
     }
 
@@ -442,9 +462,8 @@ class Content
      */
     public static function processContent(string $content) : string
     {
-        $content = Content::processShortcodes($content);
         $content = Content::processMarkdown($content);
-
+        $content = Content::processShortcodes($content);
         return $content;
     }
 
@@ -456,16 +475,29 @@ class Content
      */
     protected static function registerDefaultShortcodes() : void
     {
+        // Shortcode: [site_url]
         Content::shortcode()->addHandler('site_url', function() {
             return Http::getBaseUrl();
         });
 
+        // Shortcode: [block name=block-name]
         Content::shortcode()->addHandler('block', function(ShortcodeInterface $s) {
             return Content::getBlock($s->getParameter('name'), (($s->getParameter('raw') === 'true') ? true : false));
         });
 
+        // Shortcode: [registry item=site.title]
         Content::shortcode()->addHandler('registry', function(ShortcodeInterface $s) {
             return Registry::get($s->getParameter('item'));
+        });
+
+        // Shortcode: [section_create name=test]Section text here[/section_create]
+        Content::shortcode()->addHandler('section_create', function(ShortcodeInterface $s) {
+            Content::$sections[$s->getParameter('name')] = $s->getContent();
+        });
+
+        // Shortcode: [section name=test]
+        Content::shortcode()->addHandler('section', function(ShortcodeInterface $s) {
+            return Content::$sections[$s->getParameter('name')];
         });
     }
 
@@ -510,6 +542,7 @@ class Content
      */
     protected static function displayCurrentPage() : void
     {
+        Http::setRequestHeaders('Content-Type: text/html; charset='.Registry::get('site.charset'));
         Themes::view(empty(Content::$page['template']) ? 'templates/default' : 'templates/' . Content::$page['template'])
             ->assign('page', Content::$page, true)
             ->display();

@@ -15,7 +15,7 @@ title: My Page
 description: My page description
 my-block: "[s_start]block name='my-block'[s_end]"
 ---
-My page content.
+My page content.  
 
 [s_start]block name='my-block'[s_end]
 ```

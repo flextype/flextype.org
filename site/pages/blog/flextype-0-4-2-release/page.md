@@ -19,7 +19,7 @@ Flextype 0.4.2 release is already published!
 
 ##### Update from Flextype 0.4.1 to Flextype 0.4.2
 * Backup your Site First!
-* Download: [flextype-0.4.1.zip](https://github.com/flextype/flextype/releases/download/v0.4.2/flextype-0.4.2.zip)
+* Download: [flextype-0.4.2.zip](https://github.com/flextype/flextype/releases/download/v0.4.2/flextype-0.4.2.zip)
 * Unzip the contents to a new folder on your local computer.
 * Upload ```/flextype/```, ```/vendor/```, ```/index.php```, with an FTP client to your host.
 
