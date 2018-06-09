@@ -6,69 +6,72 @@ author:
   name: Sergey Romanenko
 ---
 
-Hello Everyone!  
+<p>Hello Everyone!</p>
 
-Flextype 0.2.0 release is already published with improved core Architecture and with a new advanced Thunderer Shortcode Framework that will allow easily create and manage your shortcodes.  
+<p>Flextype 0.2.0 release is already published with improved core Architecture and with a new advanced Thunderer Shortcode Framework that will allow easily create and manage your shortcodes.</p>
 
-Here is an example of creating and using the Thunderer Shortcode Framework in Flextype:   
+<p>Here is an example of creating and using the Thunderer Shortcode Framework in Flextype:</p>
 
-##### Create Shortcode
-```php
+<h4>Create Shortcode</h4>
+<pre>
+<code>
 use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 
 Shortcodes::driver()->addHandler('msg', function(ShortcodeInterface $s) {
-    return '<div style="color:' . $s->getParameter('class') . '">' . $s->getContent() . '</div>';
+    return [escape]'<div style="color:' . $s->getParameter('class') . '">' . $s->getContent() . '</div>';[/escape]
 });
-```
+</code>
+</pre>
 
-##### Use Shortcode in the page content
-```md
-[msg color="red"]Hello World![/msg]
-```
 
-##### Result on the page
-```html
-<div style="color:red">Hello world!</div>
-```
+<h4>Use Shortcode in the page content</h4>
+<pre><code class="html">[msg color="red"]Hello World![/msg]</code></pre>
+
+<h4>Result on the page</h4>
+<pre><code>[escape]<div style="color:red">Hello world!</div>[/escape]</code></pre>
+
 
 <br>
 
-##### New public functions for filesystem and finder
+<h4>New public functions for filesystem and finder</h4>
 
-From now, you can work with filesystem and finder with this new public static functions in the Flextype class:
-```php
-Flextype::finder()
-Flextype::filesystem()
-```
-Example of using this functions:
-```php
-if (Flextype::filesystem()->exists('path/to/the/file.md')) {
+<p>From now, you can work with filesystem and finder with this new public static functions in the Flextype class:</p>
+
+<pre><code class="html">Flextype::finder();
+Flextype::filesystem();
+</code></pre>
+
+<p>Example of using this functions:</p>
+<pre><code class="html">if (Flextype::filesystem()->exists('path/to/the/file.md')) {
     // do something...
 }
 
 $pages = Flextype::finder()->files()->name('*.md')->in(PAGES_PATH);
-```
+</code></pre>
 
 <br>
 
-##### Other minor changes
-* Cache: Flextype::VERSION for cache key - added
-* flextype/boot/shortcodes.php	- removed
-* flextype/boot/events.php - removed
-* General Code cleanup and Refactoring
+<h4>Other minor changes</h4>
+<ul>
+    <li>Cache: Flextype::VERSION for cache key - added</li>
+    <li>flextype/boot/shortcodes.php - removed</li>
+    <li>flextype/boot/events.php - removed</li>
+    <li>General Code cleanup and Refactoring</li>
+</ul>
 
 <br>
 
-##### Update from Flextype 0.1.0 to Flextype 0.2.0
-* Backup your Site First!
-* Download: [flextype-0.2.0.zip](https://github.com/flextype/flextype/releases/download/v0.2.0/flextype-0.2.0.zip)
-* Unzip the contents to a new folder on your local computer.
-* Remove ```/flextype/```, ```/vendor/``` from your host.
-* Upload ```/flextype/```, ```/vendor/```, ```/site/themes/default/```, ```/index.php```, with an FTP client to your host.
-
+<h4>Update from Flextype 0.1.0 to Flextype 0.2.0</h4>
+<ul>
+    <li>Backup your Site First!</li>
+    <li>Download: [flextype-0.2.0.zip](https://github.com/flextype/flextype/releases/download/v0.2.0/flextype-0.2.0.zip)</li>
+    <li>Unzip the contents to a new folder on your local computer.</li>
+    <li>Remove <code>/flextype/</code>, <code>/vendor/</code> from your host.</li>
+    <li>Upload <code>/flextype/</code>, <code>/vendor/</code>, <code>/site/themes/default/</code>, <code>/index.php</code>, with an FTP client to your host.</li>
+</ul>
 
 <br>
 
-Download: [flextype-0.2.0.zip](https://github.com/flextype/flextype/releases/download/v0.2.0/flextype-0.2.0.zip)
+<p>Download: <a href="https://github.com/flextype/flextype/releases/download/v0.2.0/flextype-0.2.0.zip">flextype-0.2.0.zip</a></p>
 
 <br>
