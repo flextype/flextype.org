@@ -17,6 +17,7 @@ theme: default
 
 plugins:
   - highlight
+  - escape
 
 locale: "en"
 
