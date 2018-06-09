@@ -23,7 +23,7 @@ composer create-project flextype/flextype
 Also you may need to install vendor libs for default Simple Theme
 ```
 cd /flextype/site/themes/simple  
-bower install
+npm install
 ```
 
 
