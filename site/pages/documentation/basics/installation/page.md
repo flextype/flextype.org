@@ -23,7 +23,9 @@ composer create-project flextype/flextype
 Also you may need to install vendor libs for default Simple Theme
 ```
 cd /flextype/site/themes/simple  
+npm install -g gulp
 npm install
+gulp
 ```
 
 
