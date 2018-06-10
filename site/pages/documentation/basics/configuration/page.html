@@ -4,17 +4,15 @@ description: Documentation for Flextype Developers and Flextype Users.
 template: documentation
 ---
 
-Flextype allows you to configure your site in any way you can dream up, and it’s thanks to the powerful and flexible configuration options that make this possible. Configuration files are written in YAML syntax with a .yaml file extension. YAML is a data serialisation language designed to be directly writable and readable by humans. You can check out this [YAML help page](https://learnxinyminutes.com/docs/yaml/) to get a complete understanding of the syntax available.
+<p>Flextype allows you to configure your site in any way you can dream up, and it’s thanks to the powerful and flexible configuration options that make this possible. Configuration files are written in YAML syntax with a .yaml file extension. YAML is a data serialisation language designed to be directly writable and readable by humans. You can check out this <a href="https://learnxinyminutes.com/docs/yaml/">YAML help page</a> to get a complete understanding of the syntax available.</p>
 
-## Site configuration
+<h2>Site configuration</h2>
+<p>You can update and create site configuration by editing file <code>/site/config/site.yaml</code></p>
 
-You can update and create site configuration by editing file `/site/config/site.yaml`
-
-```
-title: "Site title here"
+<pre><code>title: "Site title here"
 description: "Site description here"
 author:
-  email: ""
+email: ""
 
 timezone: UTC
 charset: UTF-8
@@ -27,14 +25,13 @@ plugins:
 locale: "en"
 
 pages:
-  main: home
+main: home
 
 errors:
-  display: true
+display: true
 
 cache:
-  enabled: true
-  prefix: Flextype
-  driver: auto
-  lifetime: 604800
-```
+enabled: true
+prefix: Flextype
+driver: auto
+lifetime: 604800</code></pre>

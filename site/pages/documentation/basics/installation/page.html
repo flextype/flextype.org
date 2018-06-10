@@ -4,37 +4,22 @@ description: Documentation for Flextype Developers and Flextype Users.
 template: documentation
 ---
 
-## Using (S)FTP{.margin-top-hard}
-
-[Download the latest version.](http://Flextype.org/download)  
-
-Unzip the contents to a new folder on your local computer, and upload to your webhost using the (S)FTP client of your choice. After you’ve done this, be sure to chmod the following directories (with containing files) to `777`, so they are readable and writable by Flextype:  
-* `site/`
-
-
-## Using Composer
-
-You can easily install Flextype with Composer.
-
-```
-composer create-project flextype/flextype
-```
-
-Also you may need to install vendor libs for default Simple Theme
-```
-cd /flextype/site/themes/simple  
+<h2 class="margin-top-hard">Using (S)FTP</h2>
+<p><a href="http://Flextype.org/download">Download the latest version.</a>  </p>
+<p>Unzip the contents to a new folder on your local computer, and upload to your webhost using the (S)FTP client of your choice. After you’ve done this, be sure to chmod the following directories (with containing files) to <code>777</code>, so they are readable and writable by Flextype:  </p>
+<ul>
+<li><code>site/</code></li>
+</ul>
+<h2>Using Composer</h2>
+<p>You can easily install Flextype with Composer.</p>
+<pre><code>composer create-project flextype/flextype</code></pre>
+<p>Also you may need to install vendor libs for default Simple Theme</p>
+<pre><code>cd /flextype/site/themes/simple
 npm install -g gulp
 npm install
-gulp
-```
-
-
-## Using command-line
-
-If you have command-line access, you can easily install Flextype by executing a few commands. First, create the directory where you want to install Flextype, if it doesn’t already exist. Enter the directory, and execute the following commands:  
-
-```
-wget https://github.com/flextype/flextype/releases/download/v0.4.2/flextype-0.4.2.zip
+gulp</code></pre>
+<h2>Using command-line</h2>
+<p>If you have command-line access, you can easily install Flextype by executing a few commands. First, create the directory where you want to install Flextype, if it doesn’t already exist. Enter the directory, and execute the following commands:  </p>
+<pre><code>wget https://github.com/flextype/flextype/releases/download/v0.4.2/flextype-0.4.2.zip
 unzip flextype-0.4.2.zip
-chmod -R 0777 site/
-```
+chmod -R 0777 site/</code></pre>
