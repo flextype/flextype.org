@@ -21,8 +21,6 @@
                 <h3 class="h3">Content</h3>
                 <nav class="nav flex-column">
                   <a class="nav-link <?php if (Http::getUriSegment(2) == 'pages') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/content/pages">Pages</a>
-                  <a class="nav-link <?php if (Http::getUriSegment(2) == 'blocks') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/content/blocks">Blocks</a>
-                  <a class="nav-link <?php if (Http::getUriSegment(2) == 'markdown') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/content/markdown">Markdown</a>
                 </nav>
                 <h3 class="h3">Themes</h3>
                 <nav class="nav flex-column">
