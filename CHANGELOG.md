@@ -1,3 +1,44 @@
+# Flextype 0.6.0, 2018-06-09
+* Content: Markdown(Parsedown) parser removed! From now we are using plain HTML + Shortcodes
+* Theme Simple: Cross-site scripting Vulnerabilities fixes
+* Improving main .htaccess
+* Code cleanup and refactoring #5
+
+# Flextype 0.5.0, 2018-06-03
+* Delete folders: site/data and site/accounts
+* Delete folders: site/blocks and site/cache and site/logs
+* Constants: accounts, blocks, data - removed.
+* Flextype: new method setSiteConfig() added
+* Flextype: new method setErrorHandler() updates
+* Flextype: new method setErrorHandler() added
+* Content: new protected method initParsers()
+* Content: Blocks functionality removed - use Block Plugin
+* Content: Section shortcode removed - use Section plugin
+* Content: Site Url shortcode removed - use Site Url plugin
+* Content: Registry shotcode remobed - use Registry plugin
+* Content: Prevents automatic linking of URLs for Markdown parser
+* Content: Method registerDefaultShortcodes() removed
+
+# Flextype 0.4.4, 2018-05-29
+* Content: added ability to work with CONTENT SECTIONS with help of shortcodes [section] and [section_create]
+* Content: getPage() method will only return data about requested page and will not insert them in global $page array.
+* Content: events: onPageContentAfter and onPageContentRawAfter was removed from getPage(), use event onCurrentPageBeforeDisplayed instead.
+* Site Config: new items added: robots and description
+* Theme Simple: Using Assets Component for css and js
+* Theme Simple: New head meta added: description, keywords, robots, generator
+* Theme Simple: Meta charset getting from registry site.charset
+* Theme Simple: Fixed issue with broken paths for JS
+* Theme Simple: gulpfile: build process updated
+* Theme Simple: package.json: added gulp-concat and gulp-sourcemaps
+
+# Flextype 0.4.3, 2018-05-28
+* Content: set text/html request headers for displayCurrentPage() method
+* Content: processCurrentPage() method added
+* Content: event names changed: onPageBeforeRender to onCurrentPageBeforeProcessed
+* Content: event names changed: onPageAfterRender to onCurrentPageAfterProcessed
+* robots.txt file was removed, use Robots plugin instead
+* Code cleanup and refactoring #5
+
 # Flextype 0.4.2, 2018-05-22
 * Settings: cache.enabled is true from now
 * Content: new methods added: initShortcodes() initMarkdown() markdown()
