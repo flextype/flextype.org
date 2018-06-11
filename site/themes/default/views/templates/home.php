@@ -39,8 +39,8 @@
       <div class="col-sm">
           <center>
               <i class="fa fa-font" aria-hidden="true"></i>
-              <h4>Markdown Syntax</h4>
-              <p>Use your favorite editor to write your content with plain<br>Markdown syntax.</p>
+              <h4>Easy editing</h4>
+              <p>Use your favorite editor to write your content with plain HTML and Flextype Shortcodes.</p>
           </center>
       </div>
     <div class="col-sm">
