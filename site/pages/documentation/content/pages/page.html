@@ -3,7 +3,7 @@ title: Pages
 description: Documentation for Flextype Developers and Flextype Users.
 template: documentation
 ---
-<p>Pages are the fundamental building-blocks of your site. Each page in Flextype should contains <strong>page header</strong> block in YAML format at the top of the file and <strong>page content</strong> marked up using Markdown and regular HTML at the bottom of the file.</p>
+<p>Pages are the fundamental building-blocks of your site. Each page in Flextype should contains <strong>page header</strong> block in YAML format at the top of the file and <strong>page content</strong> marked up using HTML + Shortcodes at the bottom of the file.</p>
 <p>Here is a basic example:  </p>
 <pre><code>---
 title: My Page
@@ -18,9 +18,9 @@ description: Some description here
 keywords: key, words
 published: false
 author:
-name: Sergey Romanenko
-email: awilum@msn.com
-url: https://github.com/Awilum
+&nbsp;&nbsp;name: Sergey Romanenko
+&nbsp;&nbsp;email: awilum@msn.com
+&nbsp;&nbsp;url: https://github.com/Awilum
 date: 2015-10-18 16:00
 robots: noindex, nofollow
 template: default (allows you to use different templates in your theme)  </code></pre>
@@ -28,7 +28,7 @@ template: default (allows you to use different templates in your theme)  </code>
 <p>You can create your own custom page header variables using any valid YAML syntax.</p>
 <p>Example:   </p>
 <pre><code>author:
-twitter: @getflextype</code></pre>
+twitter: "@getflextype"</code></pre>
 <h3>Pages and Urls structure in Flextype:</h3>
 <table class="table"><thead><tr><th>Physical Location</th>
 <th>URL</th>
@@ -39,13 +39,3 @@ twitter: @getflextype</code></pre>
 </tr><tr><td>site/pages/a/very/long/url/page.md</td>
 <td>/a/very/long/url</td>
 </tr></tbody></table>
-<h3>Page shortcodes</h3>
-<table class="table"><thead><tr><th>Name</th>
-<th>Description</th>
-</tr></thead><tbody><tr><td>site_url</td>
-<td>Outputs site url</td>
-</tr><tr><td>block</td>
-<td>Get blocks</td>
-</tr><tr><td>registry</td>
-<td>Access registry itemes</td>
-</tr></tbody></table>                     
