@@ -18,6 +18,7 @@ theme: default
 plugins:
   - highlight
   - escape
+  - markdown
 
 locale: "en"
 
