@@ -11,8 +11,8 @@
 <main role="main" class="container content">
     <?php $posts = Content::getPages('blog', false , 'date'); ?>
     <?php foreach ($posts as $post) { ?>
-        <h3 class="blog-post-header"><a href="<?php echo $post['url']; ?>"><?php echo $post['title']; ?></a></h3>
-        <p class="blog-post-author"><?php echo date(Registry::get('site.date_format'), strtotime($post['date'])); ?> / <?php echo $post['author']['name']; ?></p>
+        <h3 class="blog-post__header"><a href="<?php echo $post['url']; ?>"><?php echo $post['title']; ?></a></h3>
+        <p class="blog-post__author"><?php echo date(Registry::get('site.date_format'), strtotime($post['date'])); ?> / <?php echo $post['author']['name']; ?></p>
     <?php } ?>
 </main>
 <?php Themes::view('partials/footer')->display(); ?>
