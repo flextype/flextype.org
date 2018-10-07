@@ -1,0 +1,16 @@
+//
+// Links
+//
+
+a {
+    transition: all .3s ease;
+    text-decoration: none;
+
+    color: $base-font-color;
+
+    &:hover {
+        text-decoration: none;
+
+        color: $black;
+    }
+}
