@@ -5,19 +5,28 @@
 
 var Promise = require("es6-promise").Promise,
     gulp = require('gulp'),
-    less = require('gulp-less'),
+    csso = require('gulp-csso'),
+    concat = require('gulp-concat'),
+    sourcemaps = require('gulp-sourcemaps'),
     autoprefixer = require('gulp-autoprefixer'),
-    csso = require('gulp-csso');
+    sass = require('gulp-sass');
 
-gulp.task('process-css', function() {
-      return gulp.src('assets/less/flextype.less')
-        .pipe(less())
+gulp.task('flextype-css', function() {
+    return gulp.src('assets/scss/flextype.scss')
+        .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
         }))
         .pipe(csso())
+        .pipe(concat('flextype.min.css'))
         .pipe(gulp.dest('assets/css/'));
 });
 
-gulp.task('default', ['process-css'], function() { });
+
+gulp.task('bootstrap-css', function() {
+    return gulp.src('node_modules/bootstrap/dist/css/bootstrap.min.css')
+        .pipe(gulp.dest('assets/css/'));
+});
+
+gulp.task('default', ['flextype-css', 'bootstrap-css']);
