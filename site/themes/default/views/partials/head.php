@@ -34,7 +34,7 @@
 	<link href="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('site.theme'); ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-	<link href="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('site.theme'); ?>/assets/css/flextype.css" rel="stylesheet">
+	<link href="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('site.theme'); ?>/assets/css/flextype.min.css" rel="stylesheet">
 	<?php Event::dispatch('onThemeHeader'); ?>
   </head>
   <body>
