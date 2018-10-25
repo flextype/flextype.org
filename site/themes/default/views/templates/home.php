@@ -8,7 +8,7 @@
     </div>
 </center>
 
-<div class="container section">
+<div class="container section wow fadeIn">
 <h3 class="section-heading">Features</h2>
 <p class="section-description"></p>
   <div class="row">
@@ -60,7 +60,7 @@
   </div>
 </div>
 
-<div class="container section">
+<div class="container section wow fadeIn">
 <h3 class="section-heading">Technologies</h2>
 <p class="section-description">Flextype built on top of modern technologies.</p>
   <div class="row">
@@ -88,7 +88,7 @@
   </div>
 </div>
 
-<div class="container section">
+<div class="container section wow fadeIn">
 <h3 class="section-heading">NO LIMITS</h2>
 <p class="section-description">With Flextype you can create any project you whant.</p>
   <div class="row">
@@ -114,7 +114,7 @@
   </div>
 </div>
 
-<div class="container section">
+<div class="container section wow fadeIn">
 <h3 class="section-heading">Community</h2>
 <p class="section-description">Flextype is open source, community driven project,<br> and maintained by community!</p>
   <div class="row">
@@ -145,7 +145,7 @@
   </div>
 </div>
 
-<div class="container section">
+<div class="container section wow fadeIn">
 <h3 class="section-heading">CONTRIBUTE</h2>
 <p class="section-description">
 Flextype is an open source project and community contributions are essential to its growing and success.
@@ -168,7 +168,7 @@ Contributing to the Flextype is easy and you can give as little or as much time 
 </div>
 
 
-<div class="container section">
+<div class="container section wow fadeIn">
 <h3 class="section-heading">Sponsors</h2>
 <p class="section-description">
 <a href="http://flextype.org/about/sponsors">Donate</a> to keep Flextype free and we will add you<br>

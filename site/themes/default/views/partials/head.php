@@ -35,7 +35,9 @@
 
     <!-- Custom styles for this template -->
 	<link href="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('site.theme'); ?>/assets/css/flextype.min.css" rel="stylesheet">
-	<?php Event::dispatch('onThemeHeader'); ?>
+    <link href="https://daneden.github.io/animate.css/animate.min.css" rel="stylesheet">
+    
+    <?php Event::dispatch('onThemeHeader'); ?>
   </head>
   <body>
   <?php Themes::view('partials/navigation')->display(); ?>
