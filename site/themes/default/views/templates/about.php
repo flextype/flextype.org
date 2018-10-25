@@ -7,7 +7,7 @@
     <h2 class="h2"><?php echo $page['title']; ?></h2>
     <div class="content">
           <div class="row">
-              <div class="col-9 flex-content">
+              <div class="col-9 flextype-content">
                   <?php echo $page['content']; ?>
               </div>
             <div class="col-3 right-nav">
