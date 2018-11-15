@@ -12,7 +12,7 @@
     <?php $posts = Content::getPages('blog', false , 'date'); ?>
     <?php foreach ($posts as $post) { ?>
         <h3 class="blog-post__header"><a href="<?php echo $post['url']; ?>"><?php echo $post['title']; ?></a></h3>
-        <p class="blog-post__author"><?php echo date(Registry::get('site.date_format'), strtotime($post['date'])); ?> / <?php echo $post['author']['name']; ?></p>
+        <p class="blog-post__author"><?php echo date(Registry::get('system.date_format'), strtotime($post['date'])); ?> / <?php echo $post['author']['name']; ?></p>
     <?php } ?>
 </main>
 <?php Themes::view('partials/footer')->display(); ?>
