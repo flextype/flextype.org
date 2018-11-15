@@ -1,0 +1,10 @@
+name: Escape
+version: 1.0.0
+description: "Escape plugin for escaping HTML elements with HTML entities encoding."
+author:
+  name: Sergey Romanenko
+  email: awilum@yandex.ru
+  url: http://flextype.org
+homepage: https://github.com/flextype-plugins/escape
+bugs: https://github.com/flextype-plugins/escape/issues
+license: MIT
