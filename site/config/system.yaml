@@ -1,0 +1,19 @@
+timezone: UTC
+charset: UTF-8
+date_format: "F d Y H:i:s."
+
+theme: default
+
+locale: "en"
+
+pages:
+  main: home
+
+errors:
+  display: true
+
+cache:
+  enabled: true
+  prefix: Flextype
+  driver: auto
+  lifetime: 604800
