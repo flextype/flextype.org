@@ -1,0 +1,129 @@
+// Nav
+
+.nav .nav-item .nav-link:focus,
+.nav .nav-item .nav-link:hover {
+    background-color: transparent;
+}
+
+.navbar {
+    border: 0;
+    font-size: 1rem;
+    border-radius: 0;
+    min-height: 50px;
+    max-height: 61px;
+    background-color: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.navbar .navbar-brand {
+    font-weight: 400;
+    margin: 5px 0;
+    font-size: 18px;
+    color: black;
+    opacity: .8;
+}
+
+.navbar .navbar-brand:hover {
+    color: black;
+    opacity: 1;
+}
+
+.navbar .navbar-wrapper {
+    display: inline-flex;
+    align-items: center;
+}
+
+.navbar .navbar-toggler {
+    width: 37px;
+    height: 27px;
+    vertical-align: middle;
+    outline: 0;
+    cursor: pointer;
+}
+
+.navbar .navbar-toggler .navbar-toggler-bar {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.navbar .navbar-toggler .burger-lines {
+    display: block;
+    position: relative;
+    background-color: #888;
+    width: 24px;
+    height: 2px;
+    border-radius: 1px;
+    margin: 4px auto;
+}
+
+.navbar .navbar-nav .nav-item .nav-link {
+    color: #888888;
+    padding: 10px 15px;
+    margin: 10px 3px;
+    position: relative;
+    display: inline-flex;
+    line-height: 40px;
+}
+
+.navbar .navbar-nav .nav-item .nav-link.btn {
+    margin: 15px 3px;
+    padding: 8px 16px;
+}
+
+.navbar .navbar-nav .nav-item .nav-link.btn-round {
+    margin: 16px 3px;
+}
+
+.navbar .navbar-nav .nav-item .nav-link:hover {
+    color: #23CCEF;
+}
+
+.navbar .btn {
+    margin: 15px 3px;
+    font-size: .875rem;
+}
+
+.navbar.fixed {
+    width: calc(100% - $sidebar-width);
+    right: 0;
+    left: auto;
+    border-radius: 0;
+}
+
+.navbar-form {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.navbar-form .form-control {
+    border-radius: 0;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    height: 22px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #E3E3E3;
+}
+
+.navbar-toggle {
+    margin-top: 19px;
+    margin-bottom: 19px;
+    border: 0;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #FFFFFF;
+}
+
+.navbar-toggle .navbar-collapse,
+.navbar-toggle .navbar-form {
+    border-color: transparent;
+}
+
+.navbar-toggle.navbar-default .navbar-toggle:focus,
+.navbar-toggle.navbar-default .navbar-toggle:hover {
+    background-color: transparent;
+}

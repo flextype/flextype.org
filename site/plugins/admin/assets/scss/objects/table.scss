@@ -1,0 +1,28 @@
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+.table > tfoot > tr > td,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > thead > tr > th {
+    padding: 12px 20px;
+    vertical-align: middle;
+    border-color: #E3E3E3;
+    font-size: .95rem;
+    font-weight: 400;
+}
+
+.table > thead > tr > th {
+    border-bottom-width: 1px;
+    text-transform: uppercase;
+    color: #9A9A9A;
+    font-size: .75rem;
+    font-weight: 400;
+}
+
+.table th {
+    border-top: 0;
+}
+
+.table tr:first-of-type td {
+    border-top: 0;
+}

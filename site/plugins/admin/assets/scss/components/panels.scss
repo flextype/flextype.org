@@ -1,0 +1,31 @@
+// Panels
+
+.main-panel {
+
+    -webkit-overflow-scrolling: touch;
+
+    background: rgba(203, 203, 210, 0.15);
+    position: relative;
+    float: right;
+    width: calc(100% - 260px);
+
+    .content {
+        padding: 30px 15px;
+        min-height: calc(100vh);
+    }
+
+    .navbar {
+        margin-bottom: 0;
+    }
+
+    .navbar-fixed {
+        position: fixed;
+        right: 0;
+        width: calc(100% - 260px);
+        z-index: 1030;
+    }
+
+    .navbar-fixed + .content {
+        padding-top: 90px;
+    }
+}
