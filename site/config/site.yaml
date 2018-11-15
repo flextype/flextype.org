@@ -1,32 +1,10 @@
-#
-# Site configuration
-#
-
 title: "Flextype"
 description: "The Best Open Source Flat-File Content Management System"
 keywords: "flextype, php, cms, flat-file cms, flat cms, flatfile cms, markdown"
 robots: "index, follow"
 author:
+  name: "Sergey Romanenko"
   email: ""
-
-timezone: UTC
-charset: UTF-8
-date_format: "F d Y H:i:s."
-
-theme: default
-
-plugins:
-  - highlight
-  - escape
-  - markdown
-
-locale: "en"
-
-pages:
-  main: home
-
-errors:
-  display: true
 
 social_link:
   twitter: "https://twitter.com/getflextype"
@@ -34,9 +12,3 @@ social_link:
   gitter: "https://gitter.im/flextype/flextype"
   vkontakte: "https://vk.com/flextype"
   telegram: "http://t.me/flextype"
-
-cache:
-  enabled: true
-  prefix: Flextype
-  driver: auto
-  lifetime: 604800

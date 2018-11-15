@@ -31,12 +31,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
     <!-- Bootstrap core CSS -->
-	<link href="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('site.theme'); ?>/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-	<link href="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('site.theme'); ?>/assets/css/flextype.min.css" rel="stylesheet">
+	<link href="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/css/flextype.min.css" rel="stylesheet">
     <link href="https://daneden.github.io/animate.css/animate.min.css" rel="stylesheet">
-    
+
     <?php Event::dispatch('onThemeHeader'); ?>
   </head>
   <body>
