@@ -1,5 +1,5 @@
 //
-// Flextype Gulp.js
+// Flextype Admin Gulp.js
 // (c) Sergey Romanenko <https://github.com/Awilum>
 //
 

@@ -110,6 +110,8 @@ class Admin
 
                 Filesystem::setFileContent(PATH['plugins'] . '/' . Http::post('plugin')  . '/' . 'settings.yaml', $plugin_settings);
 
+                Cache::clear();
+
             } else { die('Request was denied because it contained an invalid security token. Please refresh the page and try again.'); }
         }
     }
@@ -152,6 +154,12 @@ class Admin
         $settings_site_save = Http::post('settings_site_save');
         $settings_system_save = Http::post('settings_system_save');
 
+        // Clear cache
+        if (Http::get('clear_cache')) {
+            if (Token::check((Http::get('token')))) {
+                Cache::clear();
+            }
+        }
 
         if (isset($settings_site_save)) {
             if (Token::check((Http::post('token')))) {
@@ -205,10 +213,10 @@ class Admin
             throw new \RuntimeException("Flextype system config file does not exist.");
         }
 
-
         Themes::view('admin/views/templates/system/settings/list')
             ->assign('site_settings', $site_settings)
             ->assign('system_settings', $system_settings)
+            ->assign('locales', Plugins::getLocales())
             ->display();
     }
 
@@ -266,7 +274,6 @@ class Admin
                                                   $page_frontmatter."\n".
                                                   '---'."\n".
                                                   $content);
-
 
                         $path = pathinfo($page_new_current);
 
@@ -329,7 +336,7 @@ class Admin
                     if (isset($page_save)) {
                         if (Token::check((Http::post('token')))) {
 
-                            $page = Content::processPage(PATH['pages'] . '/' . Http::post('page_name') . '/page.html');
+                            $page = Content::processPage(PATH['pages'] . '/' . Http::post('page_name') . '/page.html', false, true);
 
                             Arr::set($page, 'title', Http::post('page_title'));
                             Arr::set($page, 'visibility', Http::post('page_visibility'));
@@ -352,7 +359,7 @@ class Admin
                         } else { die('Request was denied because it contained an invalid security token. Please refresh the page and try again.'); }
                     }
 
-                    $page = Content::processPage(PATH['pages'] . '/' . Http::get('page') . '/page.html');
+                    $page = Content::processPage(PATH['pages'] . '/' . Http::get('page') . '/page.html', false, true);
 
                     // Array of forbidden types
                     $forbidden_types = array('html', 'htm', 'js', 'jsb', 'mhtml', 'mht',
@@ -402,14 +409,24 @@ class Admin
                         } else { die('Request was denied because it contained an invalid security token. Please refresh the page and try again.'); }
                     }
 
+                    $_templates = Filesystem::getFilesList(PATH['themes'] . '/' . Registry::get('system.theme') . '/views/templates/', 'php');
+
+                    foreach ($_templates as $template) {
+                        if (!is_bool(Admin::_strrevpos($template, '/templates/'))) {
+                            $_t = str_replace('.php', '', substr($template, Admin::_strrevpos($template, '/templates/')+strlen('/templates/')));
+                            $templates[$_t] = $_t;
+                        }
+                    }
+
                     Themes::view('admin/views/templates/content/pages/editor')
                         ->assign('page_name', Http::get('page'))
                         ->assign('page_title', $page['title'])
                         ->assign('page_description', (isset($page['description']) ? $page['description'] : ''))
-                        ->assign('page_template',(isset($page['temlate']) ? $page['template'] : ''))
+                        ->assign('page_template',(isset($page['template']) ? $page['template'] : 'default'))
                         ->assign('page_date',(isset($page['date']) ? $page['date'] : ''))
                         ->assign('page_visibility', (isset($page['visibility']) ? $page['visibility'] : ''))
                         ->assign('page_content', $page['content'])
+                        ->assign('templates', $templates)
                         ->assign('files', Filesystem::getFilesList(PATH['pages'] . '/' . Http::get('page'), 'jpg'))
                         ->display();
                 }
@@ -422,6 +439,13 @@ class Admin
                     ->display();
             break;
         }
+    }
+
+    private static function _strrevpos($instr, $needle)
+    {
+        $rev_pos = strpos(strrev($instr), strrev($needle));
+        if ($rev_pos===false) return false;
+        else return strlen($instr) - $rev_pos - strlen($needle);
     }
 
     protected static function getAuthPage()
@@ -534,4 +558,3 @@ Admin::addSidebarMenu('extends', 'plugins', I18n::find('admin_menu_extends_plugi
 Admin::addSidebarMenu('settings', 'settings', I18n::find('admin_menu_system_settings', Registry::get('system.locale')), Http::getBaseUrl() . '/admin/settings');
 Admin::addSidebarMenu('settings', 'infomation', I18n::find('admin_menu_system_information', Registry::get('system.locale')), Http::getBaseUrl() . '/admin/information');
 Admin::addSidebarMenu('help', 'documentation', I18n::find('admin_menu_help_documentation', Registry::get('system.locale')), 'http://flextype.org/documentation');
-Admin::addSidebarMenu('help', 'support_forum', I18n::find('admin_menu_help_support_forum', Registry::get('system.locale')), 'http://forum.flextype.org');

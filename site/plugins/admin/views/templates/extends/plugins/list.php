@@ -27,16 +27,17 @@ use Flextype\Component\{Http\Http, Registry\Registry, I18n\I18n, Token\Token};
             </thead>
             <tbody>
                 <?php foreach($plugins_list as $key => $plugin) { ?>
-
                 <tr>
                     <td><?php echo $plugin['name']; ?></td>
                     <td class="text-right">
-                        <div class="form-group no-margin">
-                          <span class="switch switch-sm">
-                            <input id="switch-sm-<?php echo $plugin['name']; ?>" type="checkbox" class="switch js-switch" data-plugin="<?php echo $key; ?>" data-token="<?php echo Token::generate(); ?>" <?php if ($plugin['enabled'] == 'true') echo 'checked'; else echo ''; ?> >
-                            <label for="switch-sm-<?php echo $plugin['name']; ?>"></label>
-                          </span>
-                        </div>
+                        <?php if ($key !== 'admin') { ?>
+                            <div class="form-group no-margin">
+                              <span class="switch switch-sm">
+                                <input id="switch-sm-<?php echo $plugin['name']; ?>" type="checkbox" class="switch js-switch" data-plugin="<?php echo $key; ?>" data-token="<?php echo Token::generate(); ?>" <?php if ($plugin['enabled'] == 'true') echo 'checked'; else echo ''; ?> >
+                                <label for="switch-sm-<?php echo $plugin['name']; ?>"></label>
+                              </span>
+                            </div>
+                        <?php } ?>
                     </td>
                 </tr>
                 <?php } ?>

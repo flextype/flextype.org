@@ -1,6 +1,6 @@
 {
   "name": "admin",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "devDependencies": {
     "es6-promise": "^4.2.4",
     "gulp": "^3.9.1",

@@ -8,7 +8,7 @@ use Flextype\Component\{Http\Http, Registry\Registry, I18n\I18n, Token\Token, Fo
     Themes::view('admin/views/partials/navbar')
         ->assign('links',   ['settings' => ['url' => Http::getBaseUrl() . '/admin/settings', 'title' => I18n::find('admin_system_settings_heading', Registry::get('system.locale'))]])
         ->assign('buttons', ['settings' =>
-                                            ['url' => Http::getBaseUrl() . '/admin/settings',
+                                            ['url' => Http::getBaseUrl() . '/admin/settings?clear_cache=1&token='.Token::generate(),
                                             'title' => I18n::find('admin_system_clear_cache', Registry::get('system.locale')),
                                             'class' => 'btn-light']])
         ->display();
@@ -112,7 +112,7 @@ use Flextype\Component\{Http\Http, Registry\Registry, I18n\I18n, Token\Token, Fo
                 <?php
                     echo (
                         Form::label('locale', I18n::find('admin_system_settings_system_locale', Registry::get('system.locale')), ['for' => 'systemSettingsSystemLocale']).
-                        Form::input('locale', $system_settings['locale'], ['class' => 'form-control', 'id' => 'systemSettingsSystemLocale', 'required'])
+                        Form::select('locale', $locales, $system_settings['locale'], ['class' => 'form-control', 'id' => 'pageTemplate'])
                     );
                 ?>
             </div>

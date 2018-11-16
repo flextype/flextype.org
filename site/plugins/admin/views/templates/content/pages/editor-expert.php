@@ -8,7 +8,7 @@ use Flextype\Component\{I18n\I18n, Registry\Registry, Html\Html, Form\Form, Http
     Themes::view('admin/views/partials/navbar')
         ->assign('links',   ['pages' => ['url' => Http::getBaseUrl() . '/admin/pages/edit?page=' . $page_name, 'title' => I18n::find('admin_pages_edit_page', Registry::get('system.locale'))]])
         ->assign('buttons', ['pages' =>
-                                        ['url' => Http::getBaseUrl() . '/admin/pages/edit?page=' . $page_name, 'title' => 'Switch back to editor mode']])
+                                        ['url' => Http::getBaseUrl() . '/admin/pages/edit?page=' . $page_name, 'title' => I18n::find('admin_pages_switch_back_to_editor_mode', Registry::get('system.locale'))]])
         ->display();
     Themes::view('admin/views/partials/content-start')->display();
 ?>
