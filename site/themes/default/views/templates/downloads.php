@@ -30,7 +30,7 @@
                         ?>
 
                         <a href="https://github.com/flextype/flextype/releases/download/v<?php echo Flextype::VERSION; ?>/flextype-<?php echo Flextype::VERSION; ?>.zip" class="btn btn-outline-dark btn-download-flextype">Flextype <?php echo Flextype::VERSION; ?></a>
-                        <a href="https://github.com/flextype/flextype/releases/download/v0.7.0/flextype-0.7.0-admin-0.1.0.zip" class="btn btn-outline-dark btn-download-flextype">Flextype <?php echo Flextype::VERSION; ?> + Admin 0.1.0</a>
+                        <a href="https://github.com/flextype/flextype/releases/download/v<?php echo Flextype::VERSION; ?>/flextype-<?php echo Flextype::VERSION; ?>-admin-0.1.2.zip" class="btn btn-outline-dark btn-download-flextype">Flextype <?php echo Flextype::VERSION; ?> + Admin 0.1.2</a>
 
                         <br><br>
 
