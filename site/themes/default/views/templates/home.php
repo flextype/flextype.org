@@ -1,4 +1,8 @@
-<?php namespace Flextype; ?>
+<?php
+    namespace Flextype;
+    use Flextype\Component\{Event\Event, Http\Http, Registry\Registry};
+?>
+
 <?php Themes::view('partials/head')->display(); ?>
 <center>
     <div class="mega-header">
@@ -97,7 +101,6 @@
         <p class="section-item"><i class="fas fa-star"></i> Business site</p>
         <p class="section-item"><i class="fas fa-star"></i> Landing page</p>
         <p class="section-item"><i class="fas fa-star"></i> Personal site</p>
-
     </div>
     <div class="col-sm">
         <p class="section-item"><i class="fas fa-star"></i> Portfolio</p>
@@ -105,7 +108,6 @@
         <p class="section-item"><i class="fas fa-star"></i> E-Commerce</p>
     </div>
     <div class="col-sm">
-
         <p class="section-item"><i class="fas fa-star"></i> Documenation</p>
         <p class="section-item"><i class="fas fa-star"></i> Personal resume</p>
         <p class="section-item"><i class="fas fa-star"></i> Blog</p>
@@ -120,25 +122,33 @@
   <div class="row">
     <div class="col-sm">
         <center>
-            <a href="http://forum.flextype.org">
-            <i class="fa fa-comments" aria-hidden="true"></i>
-            <h4>Forum</h4>
+            <a rel="nofollow" href="<?php echo Registry::get('site.social_link.discord'); ?>">
+            <i class="fab fa-discord"></i>
+            <h4>Discord</h4>
             </a>
         <center>
     </div>
     <div class="col-sm">
         <center>
-            <a href="https://github.com/flextype">
-            <i class="fab fa-github" aria-hidden="true"></i>
+            <a rel="nofollow" target="_blank" href="<?php echo Registry::get('site.social_link.github'); ?>">
+            <i class="fab fa-github"></i>
             <h4>GitHub</h4>
             </a>
         </center>
     </div>
     <div class="col-sm">
         <center>
-            <a href="https://gitter.im/flextype/flextype">
-            <i class="fab fa-gitter"></i>
-            <h4>Gitter</h4>
+            <a rel="nofollow" target="_blank" href="<?php echo Registry::get('site.social_link.vkontakte'); ?>">
+            <i class="fab fa-vk"></i>
+            <h4>Vkontakte</h4>
+            </a>
+        </center>
+    </div>
+    <div class="col-sm">
+        <center>
+            <a rel="nofollow" target="_blank" href="<?php echo Registry::get('site.social_link.twitter'); ?>">
+            <i class="fab fa-twitter"></i>
+            <h4>Twitter</h4>
             </a>
         </center>
     </div>

@@ -20,7 +20,7 @@
         <a class="nav-link <?php if (Http::getUriSegment(0) == 'documentation') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation"><span class="span">Documentation</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link <?php if (Http::getUriSegment(0) == 'support') echo 'active'; ?>" href="http://forum.flextype.org"><span class="span">Forum</span></a>
+        <a class="nav-link <?php if (Http::getUriSegment(2) == 'getting-help') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>//documentation/basics/getting-help"><span class="span">Community</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link <?php if (Http::getUriSegment(0) == 'about') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/about"><span class="span">About</span></a>
