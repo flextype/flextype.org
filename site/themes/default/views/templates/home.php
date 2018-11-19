@@ -6,7 +6,7 @@
 <?php Themes::view('partials/head')->display(); ?>
 <center>
     <div class="mega-header">
-        <img class="admin-preview" src="http://localhost:8888/flextype.org/site/themes/default/assets/img/admin.png" alt="">
+        <img class="admin-preview" src="http://flextype.org/site/themes/default/assets/img/admin.png" alt="">
         <h2 class="h2">Introducing Flextype</h2>
         <p class="p">The Best Open Source Flat-File Content Management System</p>
         <a href="http://flextype.org/download" class="btn btn-outline-dark btn-download-flextype">Download Flextype</a>
