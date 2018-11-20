@@ -9,18 +9,23 @@ template: documentation
 <h2>Site configuration</h2>
 <p>You can update and create site configuration by editing file <code>/site/config/site.yaml</code></p>
 
-<pre><code>title: "Site title here"
+<pre><code class="yaml">title: "Site title here"
 description: "Site description here"
 author:
   email: ""
+  name: ""
+</code></pre>
 
-timezone: UTC
+
+<h2>System configuration</h2>
+<p>You can update and create site configuration by editing file <code>/site/config/system.yaml</code></p>
+
+
+<pre><code class="yaml">timezone: UTC
 charset: UTF-8
 date_format: "F d Y H:i:s."
 
 theme: default
-
-plugins:
 
 locale: "en"
 

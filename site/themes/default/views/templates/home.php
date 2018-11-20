@@ -165,7 +165,7 @@ Contributing to the Flextype is easy and you can give as little or as much time 
   <div class="row">
     <div class="col-2"></div>
     <div class="col-sm">
-        <p class="section-item"><i class="fas fa-star"></i> Help on the <a href="http://forum.flextype.org">Forum</a>.</p>
+        <p class="section-item"><i class="fas fa-star"></i> Help on the <a href="http://flextype.org/documentation/basics/getting-help">Communities</a>.</p>
         <p class="section-item"><i class="fas fa-star"></i> Develop a new plugin.</p>
         <p class="section-item"><i class="fas fa-star"></i> Create a new theme.</p>
     </div>
