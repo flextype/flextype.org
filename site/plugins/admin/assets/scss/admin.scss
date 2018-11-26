@@ -15,6 +15,7 @@
 @import "objects/buttons";
 @import "objects/table";
 @import "objects/form-control";
+@import "objects/modal";
 
 // Components
 // Discrete, complete chunks of UI
@@ -23,6 +24,7 @@
 @import "components/footer";
 @import "components/panels";
 @import "components/card";
+@import "components/filesmanager";
 
 // Thumps
 // High-specificity, very explicit selectors. Overrides and helper classes

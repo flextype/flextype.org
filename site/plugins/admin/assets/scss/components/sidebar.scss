@@ -25,7 +25,6 @@
         z-index: 2;
 
         background: black;
-        background-image: url("https://farm4.static.flickr.com/3742/13589258334_0a3550cd1c_b.jpg");
         background-size: cover;
         opacity: .25;
     }
@@ -135,7 +134,7 @@
         .nav .nav-item [data-toggle="collapse"]~div .nav .nav-item .nav-link {
             background: transparent;
             text-transform: capitalize;
-            padding: 5px 72px;
+            padding: 10px 72px;
             font-weight: 400;
             font-size: 14px;
         }

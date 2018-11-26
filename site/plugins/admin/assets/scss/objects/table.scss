@@ -4,7 +4,7 @@
 .table > tfoot > tr > th,
 .table > thead > tr > td,
 .table > thead > tr > th {
-    padding: 12px 20px;
+    padding: 12.5px 20px;
     vertical-align: middle;
     border-color: #E3E3E3;
     font-size: .95rem;
@@ -17,6 +17,11 @@
     color: #9A9A9A;
     font-size: .75rem;
     font-weight: 400;
+
+    padding: 15.5px 20px;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+
 }
 
 .table th {
@@ -25,4 +30,16 @@
 
 .table tr:first-of-type td {
     border-top: 0;
+}
+
+.table tbody tr:hover td,
+.table tbody tr:hover th {
+    background-color: rgba(0,0,0,.03);
+}
+
+.table {
+    .btn {
+        margin: 0;
+        padding: 1px 13px;
+    }
 }

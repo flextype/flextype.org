@@ -1,0 +1,30 @@
+.modal-header {
+    border-bottom-width: 1px;
+    text-transform: uppercase;
+    color: #9a9a9a;
+    font-size: .75rem;
+    font-weight: 400;
+
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-radius: 4px;
+}
+
+.modal-body {
+    .alert-dark {
+        border-radius: 4px;
+        font-size: .8rem;
+    }
+}
+
+.modal-footer {
+    border-radius: 4px;
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+}
+
+.modal-content {
+    border-radius: 4px;
+}

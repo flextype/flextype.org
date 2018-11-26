@@ -13,7 +13,8 @@ namespace Flextype;
  * file that was distributed with this source code.
  */
 
-use Flextype\Component\{Arr\Arr, Number\Number, Http\Http, Event\Event, Filesystem\Filesystem, Session\Session, Registry\Registry, Token\Token, Text\Text, Form\Form, I18n\I18n};
+use Flextype\Component\{Arr\Arr, Number\Number, Http\Http, Event\Event, Filesystem\Filesystem, Session\Session, Registry\Registry, Token\Token, Text\Text, Form\Form};
+use function Flextype\Component\I18n\__;
 use Symfony\Component\Yaml\Yaml;
 
 //
@@ -61,11 +62,12 @@ class Admin
 
     protected static function init()
     {
-        Event::addListener('onAdminArea', function () {
-            Admin::_pluginsChangeStatusAjax();
-        });
-
         if (Admin::isLoggedIn()) {
+
+            Event::addListener('onAdminArea', function () {
+                Admin::_pluginsChangeStatusAjax();
+            });
+
             Admin::getAdminArea();
         } else {
             if (Admin::isUsersExists()) {
@@ -99,16 +101,13 @@ class Admin
     protected static function _pluginsChangeStatusAjax()
     {
         if (Http::post('plugin_change_status')) {
-
             if (Token::check((Http::post('token')))) {
 
                 $plugin_settings = Yaml::parseFile(PATH['plugins'] . '/' . Http::post('plugin')  . '/' . 'settings.yaml');
 
                 Arr::set($plugin_settings, 'enabled', (Http::post('status') == 'true' ? true : false));
 
-                $plugin_settings = Yaml::dump($plugin_settings);
-
-                Filesystem::setFileContent(PATH['plugins'] . '/' . Http::post('plugin')  . '/' . 'settings.yaml', $plugin_settings);
+                Filesystem::setFileContent(PATH['plugins'] . '/' . Http::post('plugin')  . '/' . 'settings.yaml', Yaml::dump($plugin_settings));
 
                 Cache::clear();
 
@@ -141,7 +140,6 @@ class Admin
             ->display();
     }
 
-
     protected static function getThemesPage()
     {
         Themes::view('admin/views/templates/extends/themes/list')
@@ -167,9 +165,7 @@ class Admin
                 Arr::delete($_POST, 'token');
                 Arr::delete($_POST, 'settings_site_save');
 
-                $settings = Yaml::dump($_POST);
-
-                if (Filesystem::setFileContent(PATH['config'] . '/' . 'site.yaml', $settings)) {
+                if (Filesystem::setFileContent(PATH['config'] . '/' . 'site.yaml', Yaml::dump($_POST))) {
                     Http::redirect(Http::getBaseUrl().'/admin/settings');
                 }
 
@@ -187,9 +183,7 @@ class Admin
                 Arr::set($_POST, 'cache.enabled', (Http::post('cache.enabled') == '1' ? true : false));
                 Arr::set($_POST, 'cache.lifetime', (int) Http::post('cache.lifetime'));
 
-                $settings = Yaml::dump($_POST);
-
-                if (Filesystem::setFileContent(PATH['config'] . '/' . 'system.yaml', $settings)) {
+                if (Filesystem::setFileContent(PATH['config'] . '/' . 'system.yaml', Yaml::dump($_POST))) {
                     Http::redirect(Http::getBaseUrl().'/admin/settings');
                 }
 
@@ -232,8 +226,6 @@ class Admin
                 }
             break;
             case 'add':
-                $pages_list = Content::getPages('', false , 'slug');
-
                 $create_page = Http::post('create_page');
 
                 if (isset($create_page)) {
@@ -249,8 +241,18 @@ class Admin
                 }
 
                 Themes::view('admin/views/templates/content/pages/add')
-                    ->assign('pages_list', $pages_list)
+                    ->assign('pages_list', Content::getPages('', false , 'slug'))
                     ->display();
+            break;
+            case 'clone':
+                if (Http::get('page') != '') {
+                    if (Token::check((Http::get('token')))) {
+                        $new_cloned_page_dir = PATH['pages'] . '/' . Http::get('page') . '-clone-' . date("Ymd_His");
+                        Filesystem::createDir($new_cloned_page_dir);
+                        Filesystem::copy(PATH['pages'] . '/' . Http::get('page') . '/page.html', $new_cloned_page_dir . '/page.html');
+                        Http::redirect(Http::getBaseUrl().'/admin/pages/');
+                    } else { die('Request was denied because it contained an invalid security token. Please refresh the page and try again.'); }
+                }
             break;
             case 'rename';
                 $rename_page = Http::post('rename_page');
@@ -311,6 +313,8 @@ class Admin
             case 'edit':
                 if (Http::get('expert') && Http::get('expert') == 'true') {
 
+                    Admin::processFilesManager();
+
                     $page_save = Http::post('page_save_expert');
 
                     if (isset($page_save)) {
@@ -328,8 +332,11 @@ class Admin
                     Themes::view('admin/views/templates/content/pages/editor-expert')
                         ->assign('page_name', Http::get('page'))
                         ->assign('page_content', $page_content)
+                        ->assign('files', Admin::getPageFilesList(Http::get('page')), true)
                         ->display();
                 } else {
+
+                    Admin::processFilesManager();
 
                     $page_save = Http::post('page_save');
 
@@ -361,54 +368,6 @@ class Admin
 
                     $page = Content::processPage(PATH['pages'] . '/' . Http::get('page') . '/page.html', false, true);
 
-                    // Array of forbidden types
-                    $forbidden_types = array('html', 'htm', 'js', 'jsb', 'mhtml', 'mht',
-                                             'php', 'phtml', 'php3', 'php4', 'php5', 'phps',
-                                             'shtml', 'jhtml', 'pl', 'py', 'cgi', 'sh', 'ksh', 'bsh', 'c', 'htaccess', 'htpasswd',
-                                             'exe', 'scr', 'dll', 'msi', 'vbs', 'bat', 'com', 'pif', 'cmd', 'vxd', 'cpl', 'empty');
-
-                    // Array of image types
-                    $image_types = array('jpg', 'png', 'bmp', 'gif', 'tif');
-
-                    $files_path = PATH['pages'] . '/' . Http::get('page') . '/';
-
-                    if (Http::get('delete_file') != '') {
-                        if (Token::check((Http::get('token')))) {
-                            Filesystem::deleteFile($files_path . Http::get('delete_file'));
-                            Http::redirect(Http::getBaseUrl().'/admin/pages/edit?page='.Http::get('page'));
-                        }
-                    }
-
-                    if (Http::post('upload_file')) {
-
-                        if (Token::check(Http::post('token'))) {
-
-                            $error = false;
-                            if ($_FILES['file']) {
-                                if ( ! in_array(Filesystem::fileExt($_FILES['file']['name']), $forbidden_types)) {
-                                    $filepath = $files_path.Text::safeString(basename($_FILES['file']['name'], Filesystem::fileExt($_FILES['file']['name']))).'.'.Filesystem::fileExt($_FILES['file']['name']);
-                                    $uploaded = move_uploaded_file($_FILES['file']['tmp_name'], $filepath);
-                                    if ($uploaded !== false && is_file($filepath)) {
-                                        //Notification::set('success', __('File was uploaded', 'filesmanager'));
-                                    } else {
-                                        $error = 'File was not uploaded';
-                                    }
-                                } else {
-                                    $error = 'Forbidden file type';
-                                }
-                            } else {
-                                $error = 'File was not uploaded';
-                            }
-
-                            if ($error) {
-                                //Notification::set('error', __($error, 'filesmanager'));
-                            }
-
-                            //Request::redirect($site_url.'/admin/index.php?id=filesmanager&path='.$path);
-
-                        } else { die('Request was denied because it contained an invalid security token. Please refresh the page and try again.'); }
-                    }
-
                     $_templates = Filesystem::getFilesList(PATH['themes'] . '/' . Registry::get('system.theme') . '/views/templates/', 'php');
 
                     foreach ($_templates as $template) {
@@ -417,6 +376,7 @@ class Admin
                             $templates[$_t] = $_t;
                         }
                     }
+
 
                     Themes::view('admin/views/templates/content/pages/editor')
                         ->assign('page_name', Http::get('page'))
@@ -427,30 +387,20 @@ class Admin
                         ->assign('page_visibility', (isset($page['visibility']) ? $page['visibility'] : ''))
                         ->assign('page_content', $page['content'])
                         ->assign('templates', $templates)
-                        ->assign('files', Filesystem::getFilesList(PATH['pages'] . '/' . Http::get('page'), 'jpg'))
+                        ->assign('files', Admin::getPageFilesList(Http::get('page')), true)
                         ->display();
                 }
             break;
             default:
-                $pages_list = Content::getPages('', false , 'slug', 'ASC');
-
                 Themes::view('admin/views/templates/content/pages/list')
-                    ->assign('pages_list', $pages_list)
+                    ->assign('pages_list', Content::getPages('', false , 'slug', 'ASC'))
                     ->display();
             break;
         }
     }
 
-    private static function _strrevpos($instr, $needle)
-    {
-        $rev_pos = strpos(strrev($instr), strrev($needle));
-        if ($rev_pos===false) return false;
-        else return strlen($instr) - $rev_pos - strlen($needle);
-    }
-
     protected static function getAuthPage()
     {
-
         $login = Http::post('login');
 
         if (isset($login)) {
@@ -471,6 +421,51 @@ class Admin
             ->display();
     }
 
+    public static function getPageFilesList($page)
+    {
+        $files = [];
+
+        foreach (array_diff(scandir(PATH['pages'] . '/' . $page), array('..', '.')) as $file) {
+            if (in_array($file_ext = substr(strrchr($file, '.'), 1), ['jpeg', 'png', 'gif', 'jpg'])) {
+                if (strpos($file, $file_ext, 1)) {
+                    $files[] = $file;
+                }
+            }
+        }
+
+        return $files;
+    }
+
+    public static function isUsersExists()
+    {
+        // Get Users Profiles
+        $users = Filesystem::getFilesList(PATH['site'] . '/accounts/', 'yaml');
+
+        // If any users exists then return true
+        return ($users && count($users) > 0) ? true : false;
+    }
+
+    public static function isLoggedIn()
+    {
+        return (Session::exists('role') && Session::get('role') == 'admin') ? true : false;
+    }
+
+    public static function addSidebarMenu(string $area, string $item, string $title, string $link, array $attributes = [])
+    {
+        Registry::set("sidebar_menu.{$area}.{$item}.title", $title);
+        Registry::set("sidebar_menu.{$area}.{$item}.link", $link);
+        Registry::set("sidebar_menu.{$area}.{$item}.attributes", $attributes);
+    }
+
+    public static function getSidebarMenu(string $area)
+    {
+        return Registry::get("sidebar_menu.{$area}");
+    }
+
+    public static function isAdminArea() {
+        return (Http::getUriSegment(0) == 'admin') ? true : false;
+    }
+
     protected static function getRegistrationPage()
     {
 
@@ -481,13 +476,13 @@ class Admin
                 if (Filesystem::fileExists($_user_file = PATH['site'] . '/accounts/' . Text::safeString(Http::post('username')) . '.yaml')) {
 
                 } else {
-                    $user = ['username' => Text::safeString(Http::post('username')),
-                             'password' => Text::encryptPassword(Http::post('password')),
-                             'email' => Http::post('email'),
-                             'role'  => 'admin',
-                             'state' => 'enabled'];
 
-                    Filesystem::setFileContent(PATH['site'] . '/accounts/' . Http::post('username') . '.yaml', Yaml::dump($user));
+                    Filesystem::setFileContent(PATH['site'] . '/accounts/' . Http::post('username') . '.yaml',
+                                               Yaml::dump(['username' => Text::safeString(Http::post('username')),
+                                                           'password' => Text::encryptPassword(Http::post('password')),
+                                                           'email' => Http::post('email'),
+                                                           'role'  => 'admin',
+                                                           'state' => 'enabled']));
 
                     Http::redirect(Http::getBaseUrl().'/admin/pages');
                 }
@@ -498,43 +493,29 @@ class Admin
             ->display();
     }
 
-    public static function isUsersExists()
+    protected static function processFilesManager()
     {
-        $users = Filesystem::getFilesList(PATH['site'] . '/accounts/', 'yaml');
+        $files_directory = PATH['pages'] . '/' . Http::get('page') . '/';
 
-        if ($users && count($users) > 0) {
-            return true;
-        } else {
-            return false;
+        if (Http::get('delete_file') != '') {
+            if (Token::check((Http::get('token')))) {
+                Filesystem::deleteFile($files_directory . Http::get('delete_file'));
+                Http::redirect(Http::getBaseUrl().'/admin/pages/edit?page='.Http::get('page'));
+            }
+        }
+
+        if (Http::post('upload_file')) {
+            if (Token::check(Http::post('token'))) {
+                Filesystem::uploadFile($_FILES['file'], $files_directory);
+            } else { die('Request was denied because it contained an invalid security token. Please refresh the page and try again.'); }
         }
     }
 
-    public static function isLoggedIn()
+    private static function _strrevpos($instr, $needle)
     {
-        if (Session::exists('role') && Session::get('role') == 'admin') {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public static function addSidebarMenu(string $area, string $item, string $title, string $link)
-    {
-        Registry::set("sidebar_menu.{$area}.{$item}.title", $title);
-        Registry::set("sidebar_menu.{$area}.{$item}.link", $link);
-    }
-
-    public static function getSidebarMenu(string $area)
-    {
-        return Registry::get("sidebar_menu.{$area}");
-    }
-
-    public static function isAdminArea() {
-        if (Http::getUriSegment(0) == 'admin') {
-            return true;
-        } else {
-            return false;
-        }
+        $rev_pos = strpos(strrev($instr), strrev($needle));
+        if ($rev_pos===false) return false;
+        else return strlen($instr) - $rev_pos - strlen($needle);
     }
 
     /**
@@ -553,8 +534,8 @@ class Admin
      }
 }
 
-Admin::addSidebarMenu('content', 'pages', I18n::find('admin_menu_content_pages', Registry::get('system.locale')), Http::getBaseUrl() . '/admin/pages');
-Admin::addSidebarMenu('extends', 'plugins', I18n::find('admin_menu_extends_plugins', Registry::get('system.locale')), Http::getBaseUrl() . '/admin/plugins');
-Admin::addSidebarMenu('settings', 'settings', I18n::find('admin_menu_system_settings', Registry::get('system.locale')), Http::getBaseUrl() . '/admin/settings');
-Admin::addSidebarMenu('settings', 'infomation', I18n::find('admin_menu_system_information', Registry::get('system.locale')), Http::getBaseUrl() . '/admin/information');
-Admin::addSidebarMenu('help', 'documentation', I18n::find('admin_menu_help_documentation', Registry::get('system.locale')), 'http://flextype.org/documentation');
+Admin::addSidebarMenu('content', 'pages', __('admin_menu_content_pages', Registry::get('system.locale')), Http::getBaseUrl() . '/admin/pages', ['class' => 'nav-link']);
+Admin::addSidebarMenu('extends', 'plugins', __('admin_menu_extends_plugins', Registry::get('system.locale')), Http::getBaseUrl() . '/admin/plugins', ['class' => 'nav-link']);
+Admin::addSidebarMenu('settings', 'settings', __('admin_menu_system_settings', Registry::get('system.locale')), Http::getBaseUrl() . '/admin/settings', ['class' => 'nav-link']);
+Admin::addSidebarMenu('settings', 'infomation', __('admin_menu_system_information', Registry::get('system.locale')), Http::getBaseUrl() . '/admin/information', ['class' => 'nav-link']);
+Admin::addSidebarMenu('help', 'documentation', __('admin_menu_help_documentation', Registry::get('system.locale')), 'http://flextype.org/documentation', ['class' => 'nav-link', 'target' => '_blank']);

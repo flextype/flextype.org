@@ -1,6 +1,7 @@
 <?php
 namespace Flextype;
-use Flextype\Component\{Http\Http, Registry\Registry, I18n\I18n, Token\Token};
+use Flextype\Component\{Http\Http, Registry\Registry, Token\Token};
+use function Flextype\Component\I18n\__;
 ?>
 
 <!-- Navbar -->

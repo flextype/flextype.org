@@ -1,6 +1,7 @@
 <?php
 namespace Flextype;
-use Flextype\Component\{Http\Http, Registry\Registry, Event\Event, Assets\Assets, I18n\I18n};
+use Flextype\Component\{Http\Http, Registry\Registry, Event\Event, Assets\Assets};
+use function Flextype\Component\I18n\__;
 ?>
 <!doctype html>
 <html lang="<?php echo Registry::get('system.locale'); ?>">
