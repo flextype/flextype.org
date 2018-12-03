@@ -95,7 +95,7 @@
 
 <div class="container section wow fadeIn">
 <h3 class="section-heading">NO LIMITS</h2>
-<p class="section-description">With Flextype you can create any project you whant.</p>
+<p class="section-description">With Flextype you can create any project you want.</p>
   <div class="row">
     <div class="col-2"></div>
     <div class="col-sm">
