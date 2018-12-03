@@ -109,7 +109,7 @@
         <p class="section-item"><i class="fas fa-star"></i> E-Commerce</p>
     </div>
     <div class="col-sm">
-        <p class="section-item"><i class="fas fa-star"></i> Documenation</p>
+        <p class="section-item"><i class="fas fa-star"></i> Documentation</p>
         <p class="section-item"><i class="fas fa-star"></i> Personal resume</p>
         <p class="section-item"><i class="fas fa-star"></i> Blog</p>
     </div>
