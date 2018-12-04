@@ -17,5 +17,11 @@
 
     .admin-preview {
         width: 800px;
+        overflow: hidden;
+        position: relative;
+
+        > ul {
+            position: initial!important;
+        }
     }
 }

@@ -6,7 +6,25 @@
 <?php Themes::view('partials/head')->display(); ?>
 <center>
     <div class="mega-header">
-        <img class="admin-preview" src="http://flextype.org/site/themes/default/assets/img/admin.png" alt="">
+        <div class="js-admin-showcase admin-preview wow fadeIn">
+                <ul>
+                    <li>
+                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/img/admin.png" alt="" />
+                    </li>
+                    <li>
+                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/img/admin-2.png" alt="" />
+                    </li>
+                    <li>
+                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/img/admin-3.png" alt="" />
+                    </li>
+                    <li>
+                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/img/admin-4.png" alt="" />
+                    </li>
+                    <li>
+                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/img/admin-5.png" alt="" />
+                    </li>
+                </ul>
+        </div>
         <h2 class="h2">Introducing Flextype</h2>
         <p class="p">Modern Open Source Flat-File Content Management System</p>
         <a href="http://flextype.org/download" class="btn btn-outline-dark btn-download-flextype">Download Flextype</a>
