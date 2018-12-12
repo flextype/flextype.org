@@ -1,6 +1,12 @@
 <?php
     namespace Flextype;
     use Flextype\Component\{Event\Event, Http\Http, Registry\Registry};
+
+    Registry::set('settings.social_link.discord', 'https://discord.gg/CCKPKVG');
+    Registry::set('settings.social_link.twitter', 'https://twitter.com/getflextype');
+    Registry::set('settings.social_link.github', 'https://github.com/flextype');
+    Registry::set('settings.social_link.vkontakte', 'https://vk.com/flextype');
+    Registry::set('settings.social_link.blog', 'http://flextype.org/blog');
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,15 +33,15 @@
 
 	<link rel="shortcut icon" href="<?php echo Http::getBaseUrl(); ?>/favicon.ico">
 
-	<title><?php echo Registry::get('site.title'); ?> | <?php echo $page['title']; ?></title>
+	<title><?php echo Registry::get('settings.title'); ?> | <?php echo $page['title']; ?></title>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
     <!-- Bootstrap core CSS -->
-	<link href="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('settings.theme'); ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-	<link href="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/css/flextype.min.css" rel="stylesheet">
+	<link href="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('settings.theme'); ?>/assets/css/flextype.min.css" rel="stylesheet">
     <link href="https://daneden.github.io/animate.css/animate.min.css" rel="stylesheet">
 
     <?php Event::dispatch('onThemeHeader'); ?>

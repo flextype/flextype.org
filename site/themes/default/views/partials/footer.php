@@ -6,11 +6,11 @@
     <footer class="footer">
         <div class="container">
             <p class="social-links text-center">
-                <a rel="nofollow" href="<?php echo Registry::get('site.social_link.discord'); ?>"><i class="fab fa-discord"></i></a>
-                <a rel="nofollow" href="<?php echo Registry::get('site.social_link.github'); ?>"><i class="fab fa-github"></i></a>
-                <a rel="nofollow" href="<?php echo Registry::get('site.social_link.vkontakte'); ?>"><i class="fab fa-vk"></i></a>
-                <a rel="nofollow" href="<?php echo Registry::get('site.social_link.twitter'); ?>"><i class="fab fa-twitter"></i></a>
-                <a rel="nofollow" href="<?php echo Registry::get('site.social_link.blog'); ?>"><i class="fas fa-rss-square"></i></a>
+                <a rel="nofollow" href="<?php echo Registry::get('settings.social_link.discord'); ?>"><i class="fab fa-discord"></i></a>
+                <a rel="nofollow" href="<?php echo Registry::get('settings.social_link.github'); ?>"><i class="fab fa-github"></i></a>
+                <a rel="nofollow" href="<?php echo Registry::get('settings.social_link.vkontakte'); ?>"><i class="fab fa-vk"></i></a>
+                <a rel="nofollow" href="<?php echo Registry::get('settings.social_link.twitter'); ?>"><i class="fab fa-twitter"></i></a>
+                <a rel="nofollow" href="<?php echo Registry::get('settings.social_link.blog'); ?>"><i class="fas fa-rss-square"></i></a>
 
             </p>
             <!--<p>

@@ -9,25 +9,25 @@
         <div class="js-admin-showcase admin-preview wow fadeIn">
                 <ul>
                     <li>
-                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/img/admin.png" alt="" />
+                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('settings.theme'); ?>/assets/img/admin.png" alt="" />
                     </li>
                     <li>
-                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/img/admin-2.png" alt="" />
+                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('settings.theme'); ?>/assets/img/admin-2.png" alt="" />
                     </li>
                     <li>
-                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/img/admin-3.png" alt="" />
+                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('settings.theme'); ?>/assets/img/admin-3.png" alt="" />
                     </li>
                     <li>
-                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/img/admin-4.png" alt="" />
+                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('settings.theme'); ?>/assets/img/admin-4.png" alt="" />
                     </li>
                     <li>
-                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/img/admin-5.png" alt="" />
+                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('settings.theme'); ?>/assets/img/admin-5.png" alt="" />
                     </li>
                     <li>
-                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/img/admin-6.png" alt="" />
+                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('settings.theme'); ?>/assets/img/admin-6.png" alt="" />
                     </li>
                     <li>
-                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/img/admin-7.png" alt="" />
+                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('settings.theme'); ?>/assets/img/admin-7.png" alt="" />
                     </li>
                 </ul>
         </div>
@@ -147,7 +147,7 @@
   <div class="row">
     <div class="col-sm">
         <center>
-            <a rel="nofollow" href="<?php echo Registry::get('site.social_link.discord'); ?>">
+            <a rel="nofollow" href="<?php echo Registry::get('settings.social_link.discord'); ?>">
             <i class="fab fa-discord"></i>
             <h4>Discord</h4>
             </a>
@@ -155,7 +155,7 @@
     </div>
     <div class="col-sm">
         <center>
-            <a rel="nofollow" target="_blank" href="<?php echo Registry::get('site.social_link.github'); ?>">
+            <a rel="nofollow" target="_blank" href="<?php echo Registry::get('settings.social_link.github'); ?>">
             <i class="fab fa-github"></i>
             <h4>GitHub</h4>
             </a>
@@ -163,7 +163,7 @@
     </div>
     <div class="col-sm">
         <center>
-            <a rel="nofollow" target="_blank" href="<?php echo Registry::get('site.social_link.vkontakte'); ?>">
+            <a rel="nofollow" target="_blank" href="<?php echo Registry::get('settings.social_link.vkontakte'); ?>">
             <i class="fab fa-vk"></i>
             <h4>Vkontakte</h4>
             </a>
@@ -171,7 +171,7 @@
     </div>
     <div class="col-sm">
         <center>
-            <a rel="nofollow" target="_blank" href="<?php echo Registry::get('site.social_link.twitter'); ?>">
+            <a rel="nofollow" target="_blank" href="<?php echo Registry::get('settings.social_link.twitter'); ?>">
             <i class="fab fa-twitter"></i>
             <h4>Twitter</h4>
             </a>
