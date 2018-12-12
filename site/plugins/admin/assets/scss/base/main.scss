@@ -21,6 +21,7 @@ td {
     -webkit-font-smoothing: antialiased;
     font-family: $base-font-family;
     font-weight: $base-font-weight;
+    color: $base-font-color;
 }
 
 .h1,
@@ -71,7 +72,7 @@ h6 {
 }
 
 p {
-    font-size: 1rem;
+    font-size: $base-font-size;
     line-height: 1.5;
 }
 
@@ -86,16 +87,7 @@ blockquote {
 body {
     min-height: 100vh;
     position: relative;
-}
-
-a {
-    color: black;
-}
-
-a:focus,
-a:hover {
-    color: #333;
-    text-decoration: none;
+    background: $body-bg;
 }
 
 a:active,
@@ -113,4 +105,20 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 .navbar-toggle,
 input:focus {
     outline: 0 !important;
+}
+
+code {
+    font-size: 14px;
+    font-family: $base-font-family;
+    font-weight: $base-font-weight;
+}
+
+a {
+    color: $base-font-color;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+        color: $btn-text-color-hover;
+    }
 }

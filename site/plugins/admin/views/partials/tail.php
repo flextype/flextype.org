@@ -1,10 +1,25 @@
 <?php
 namespace Flextype;
-use Flextype\Component\{Http\Http, Event\Event};
+use Flextype\Component\{Http\Http, Event\Event, Registry\Registry, Assets\Assets, Notification\Notification};
 ?>
-<script src="<?php echo Http::getBaseUrl(); ?>/site/plugins/admin/assets/dist/js/admin.min.js"></script>
+
+<?php Assets::add('js', Http::getBaseUrl() . '/site/plugins/admin/assets/dist/js/build.min.js', 'admin', 1); ?>
+<?php if (Registry::get("settings.locale") != 'en') Assets::add('js', Http::getBaseUrl() . '/site/plugins/admin/assets/dist/langs/trumbowyg/langs/'.Registry::get("settings.locale").'.min.js', 'admin', 10); ?>
+<?php foreach (Assets::get('js', 'admin') as $assets_by_priorities) { foreach ($assets_by_priorities as $assets) { ?>
+    <script type="text/javascript" src="<?php echo $assets['asset']; ?>"></script>
+<?php } } ?>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 
 <script>
+
+    Messenger.options = {
+        extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
+        theme: 'flat'
+    }
+
+    <?php if (Notification::get('success')) { ?> Messenger().post({ type: "success", message : "<?php echo Notification::get('success'); ?>", hideAfter: '3' }); <?php } ?>
+    <?php if (Notification::get('warning')) { ?> Messenger().post({ type: "warning", message : "<?php echo Notification::get('warning'); ?>", hideAfter: '3' }); <?php } ?>
+    <?php if (Notification::get('error'))   { ?> Messenger().post({ type: "error", message : "<?php echo Notification::get('error'); ?>", hideAfter: '3' });     <?php } ?>
 
     if (typeof $.flextype == 'undefined') $.flextype = {};
 
@@ -35,7 +50,37 @@ use Flextype\Component\{Http\Http, Event\Event};
 
     $(document).ready(function() {
 
+        $.trumbowyg.svgPath = '<?php echo Http::getBaseUrl(); ?>/site/plugins/admin/assets/dist/fonts/trumbowyg/icons.svg';
+
+        $('.js-html-editor').trumbowyg({
+            btnsDef: {
+                // Customizables dropdowns
+                image: {
+                    dropdown: ['insertImage', 'noembed'],
+                    ico: 'insertImage'
+                }
+            },
+            btns: [
+                ['undo', 'redo'], // Only supported in Blink browsers
+                ['formatting'],
+                ['strong', 'em', 'del'],
+                ['link'],
+                ['image'],
+                ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                ['unorderedList', 'orderedList'],
+                ['removeformat'],
+                ['fullscreen']
+            ],
+            lang: '<?php echo Registry::get("settings.locale"); ?>',
+            autogrow: true,
+            removeformatPasted: true
+        });
+
         $.flextype.plugins.init();
+
+        $('.js-page-save-submit').click(function() {
+            $("#editorForm" ).submit();
+        });
 
         $('.navbar-toggler').click(function () {
             $('.sidebar').addClass('show-sidebar');
@@ -62,9 +107,55 @@ use Flextype\Component\{Http\Http, Event\Event};
 
         $('.js-pages-image-preview').click(function () {
             $('#pagesImagePreview').modal();
-            $('.js-page-image-preview-placeholder').attr('src', $(this).attr('data-image-url'));
-            $('.js-page-image-url-placeholder').html($(this).attr('data-image-url'));
+            $('.js-page-image-preview-placeholder').css('background-image', 'url(' + $(this).attr('data-image-url') + ')');
+            $('.js-page-image-url-placeholder').val($(this).attr('data-image-url'));
             $('.js-page-image-delete-url-placeholder').attr('href', $(this).attr('data-image-delete-url'));
+        });
+
+        $('.js-settings-page-modal').click(function () {
+            $('#settingsPageModal').modal();
+        });
+
+        $.validate({});
+
+        var editor = CodeMirror.fromTextArea(document.getElementById("codeMirrorEditor"), {
+            lineNumbers: true,
+            <?php if ((Http::get('blueprint') && Http::get('blueprint') == 'true') || (Http::get('source') && Http::get('source') == 'true')) { ?>
+            indentUnit: 2,
+            tabSize: 2,
+            <?php } else { ?>
+            tabSize: 4,
+            indentUnit: 4,
+            <?php } ?>
+            <?php if ((Http::get('blueprint') && Http::get('blueprint') == 'true') || (Http::get('source') && Http::get('source') == 'true')) { ?>
+            mode: "yaml",
+            <?php } else { ?>
+            mode: "text/html",
+            <?php } ?>
+            indentWithTabs: false,
+            theme: "monokai",
+            styleActiveLine: true,
+        });
+
+        editor.addKeyMap({
+            "Tab": function (cm) {
+                if (cm.somethingSelected()) {
+                    var sel = editor.getSelection("\n");
+                    // Indent only if there are multiple lines selected, or if the selection spans a full line
+                    if (sel.length > 0 && (sel.indexOf("\n") > -1 || sel.length === cm.getLine(cm.getCursor().line).length)) {
+                        cm.indentSelection("add");
+                        return;
+                    }
+                }
+
+                if (cm.options.indentWithTabs)
+                    cm.execCommand("insertTab");
+                else
+                    cm.execCommand("insertSoftTab");
+            },
+            "Shift-Tab": function (cm) {
+                cm.indentSelection("subtract");
+            }
         });
     });
 </script>

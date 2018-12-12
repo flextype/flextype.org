@@ -9,10 +9,14 @@
     border: 0;
     font-size: 1rem;
     border-radius: 0;
-    min-height: 50px;
-    max-height: 61px;
-    background-color: rgba(255, 255, 255, 0.96);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    min-height: 44px;
+    max-height: 44px;
+    background-color: #21252b;
+    color: #b7b9bd;
+
+    .container-fluid {
+        padding-left: 0;
+    }
 }
 
 .navbar .navbar-brand {
@@ -82,6 +86,7 @@
 
 .navbar .btn {
     margin: 15px 3px;
+    padding: 1px 20px;
     font-size: .875rem;
 }
 
@@ -115,7 +120,7 @@
 }
 
 .navbar-toggle .icon-bar {
-    background-color: #FFFFFF;
+    background-color: #b7b9bd;
 }
 
 .navbar-toggle .navbar-collapse,
@@ -126,4 +131,47 @@
 .navbar-toggle.navbar-default .navbar-toggle:focus,
 .navbar-toggle.navbar-default .navbar-toggle:hover {
     background-color: transparent;
+}
+
+.navbar-item {
+    margin-top: 2px;
+    padding: 11px 28px;
+    font-size: 14px;
+    color: $navbar-item-text-color;
+}
+
+.navbar-item.active,
+.navbar-item:focus,
+.navbar-item:hover {
+    color: $navbar-item-text-color-hover;
+    background-color: $body-bg;
+    text-decoration: none;
+}
+
+.flextype-user {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #000;
+
+    .nav .nav-item .nav-link {
+        padding: 9.5px 25px !important;
+    }
+}
+
+.page-editor-heading {
+    border-bottom: 1px solid #000;
+    font-size: 14px;
+    position: fixed;
+    width: calc(100% - 240px);
+    top: 44px;
+    z-index: 10;
+    background: $body-bg;
+    padding: 11px 30px;
+    text-align: left;
+
+    .delimeter {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }

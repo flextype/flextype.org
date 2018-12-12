@@ -1,7 +1,17 @@
-// Container
-
 .wrapper {
     position: relative;
     top: 0;
     height: 100vh;
+}
+
+.page-tree-dash {
+    width: 10px;
+    background: #b7b9bd;
+    display: inline-block;
+    margin-bottom: 3px;
+    height: 1px;
+
+    &:last-of-type {
+        margin-right: 3px;
+    }
 }

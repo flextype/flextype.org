@@ -1,59 +1,56 @@
 <?php
 namespace Flextype;
-use Flextype\Component\{Registry\Registry, Http\Http, Form\Form, Token\Token};
+
+use Flextype\Component\Registry\Registry;
+use Flextype\Component\Http\Http;
+use Flextype\Component\Form\Form;
+use Flextype\Component\Token\Token;
 use function Flextype\Component\I18n\__;
+
+Themes::view('admin/views/partials/head')->display();
+Themes::view('admin/views/partials/navbar')
+    ->assign('links', [
+                            'pages'     => [
+                                                'link'  => Http::getBaseUrl() . '/admin/pages',
+                                                'title' => __('admin_pages_heading'),
+                                                'attributes' => ['class' => 'navbar-item']
+                                            ],
+                            'pages_add' => [
+                                                'link' => Http::getBaseUrl() . '/admin/pages/rename',
+                                                'title' => __('admin_pages_rename'),
+                                                'attributes' => ['class' => 'navbar-item active']
+                                            ]
+                     ])
+    ->assign('page', $page)
+    ->display();
+Themes::view('admin/views/partials/content-start')->display();
 ?>
 
-<?php
-    Themes::view('admin/views/partials/head')->display();
-    Themes::view('admin/views/partials/navbar')
-        ->assign('links', ['pages' => ['url' => Http::getBaseUrl() . '/admin/pages', 'title' => __('admin_pages_heading', Registry::get('system.locale'))],
-                                      ['url' => '#', 'title' => __('admin_pages_rename_page', Registry::get('system.locale'))]])
-        ->display();
-    Themes::view('admin/views/partials/content-start')->display();
-?>
-
-<div class="card card-400">
-    <div class="card-body">
+<div class="row">
+    <div class="col-md-6">
 
         <?php echo Form::open(); ?>
         <?php echo Form::hidden('token', Token::generate()); ?>
         <?php echo Form::hidden('page_path_current', $page_path_current); ?>
-        <?php echo Form::hidden('page_name_current', $page_name); ?>
+        <?php echo Form::hidden('page_parent', $page_parent); ?>
+        <?php echo Form::hidden('name_current', $name_current); ?>
 
         <div class="form-group">
             <?php
-                echo (
-                    Form::label('title', __('admin_pages_title', Registry::get('system.locale')), ['for' => 'pageTitle']).
-                    Form::input('title', $page_title, ['class' => 'form-control', 'id' => 'pageTitle', 'required'])
+                echo(
+                    Form::label('name', __('admin_pages_name'), ['for' => 'pageName']).
+                    Form::input('name', $name_current, ['class' => 'form-control', 'id' => 'pageName',  'required', 'data-validation' => 'length required', 'data-validation-allowing' => '-_', 'data-validation-length' => 'min1', 'data-validation-error-msg' => __('admin_pages_error_title_empty_input')])
                 );
             ?>
         </div>
-        <div class="form-group">
-            <?php
-                echo (
-                    Form::label('name', __('admin_pages_name', Registry::get('system.locale')), ['for' => 'pageName']).
-                    Form::input('name', $page_name, ['class' => 'form-control', 'id' => 'pageName', 'required'])
-                );
-            ?>
-        </div>
-        <div class="form-group">
-           <?php
-               echo (
-                   Form::label('parent_page', __('admin_pages_parent_page', Registry::get('system.locale'))).
-                   Form::select('parent_page', $pages_list, $page_parent, array('class' => 'form-control'))
-               );
-           ?>
-         </div>
-     </div>
-     <div class="card-footer text-center">
-         <?php echo Form::submit('rename_page', __('admin_save', Registry::get('system.locale')), ['class' => 'btn btn-black btn-fill btn-wd']); ?>
-     </div>
+
+         <?php echo Form::submit('rename_page', __('admin_save'), ['class' => 'btn btn-black btn-fill btn-wd']); ?>
      <?php echo Form::close(); ?>
- </div>
 
+ </div>
+</div>
 
 <?php
-    Themes::view('admin/views/partials/content-end')->display();
-    Themes::view('admin/views/partials/footer')->display();
+Themes::view('admin/views/partials/content-end')->display();
+Themes::view('admin/views/partials/footer')->display();
 ?>

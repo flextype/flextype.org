@@ -3,15 +3,13 @@
     top: 0;
     bottom: 0;
     left: 0;
-    width: 260px;
+    width: 240px;
     display: block;
-    z-index: 9999;
-    color: #fff;
+    z-index: 2;
+    color: #b7b9bd;
     font-weight: 200;
-    background-size: cover;
-    background-position: center center;
-    background: black;
-    filter: grayscale(1);
+    background: #21252b;
+    border-right: 1px solid #000;
 
     &:after,
     &:before {
@@ -23,21 +21,26 @@
         top: 0;
         left: 0;
         z-index: 2;
+        background: #21252b;
+    }
 
-        background: black;
-        background-size: cover;
-        opacity: .25;
+    .view-site-link {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 44px;
+        text-align: center;
+        font-size: 16px;
     }
 
     .flextype-logo > a {
         letter-spacing: 3px;
-        color: white;
+        color: #b7b9bd;
         display: block;
-        padding-top: 18px;
-        padding-bottom: 18px;
+        padding-top: 10px;
+        padding-bottom: 9px;
         text-align: center;
-        border-bottom: 1px solid #3b3b3b;
-        margin-bottom: 18px;
+        border-bottom: 1px solid #000;
 
         &:focus,
         &:hover {
@@ -51,21 +54,6 @@
         transform: rotate(180deg);
     }
 
-    .caret {
-        display: inline-block;
-        width: 0;
-        height: 0;
-        vertical-align: middle;
-        border-top: 4px dashed;
-        border-top: 4px solid\9;
-        border-right: 4px solid transparent;
-        border-left: 4px solid transparent;
-        margin-top: 13px;
-        position: absolute;
-        right: 0;
-        transition: all 150ms ease-in;
-    }
-
     .nav {
         float: none;
         display: block;
@@ -76,41 +64,49 @@
     }
 
     .nav .nav-item .nav-link {
-        color: #FFFFFF;
-        margin: 5px 0 0;
+        color: #b7b9bd;
+        margin: 0;
+        padding-top: 2px;
+        padding-bottom: 2px;
         opacity: .86;
         border-radius: 0;
-        text-transform: uppercase;
-        line-height: 30px;
-        font-size: 12px;
-        font-weight: 600;
-        padding: 10px 25px;
+        text-transform: none;
+        line-height: 19px;
+        font-size: 14px;
+        font-weight: 300;
+        padding: 12.5px 25px;
         white-space: nowrap;
+        margin-right: 1px;
+    }
+
+    .flextype-user > .nav .nav-item .nav-link i {
+        position: relative;
+        top: 2px;
     }
 
     .nav .nav-item .nav-link:hover {
-        background: rgba(255, 255, 255, 0.13);
+        background: #3b404b;
         opacity: 1;
     }
 
     .nav .nav-item .nav-link i {
-        font-size: 28px;
+        font-size: 18px;
         margin-right: 15px;
-        width: 30px;
+        width: 15px;
         text-align: center;
         vertical-align: middle;
         float: left;
     }
 
     .nav .nav-item:not(.collapse .nav-link):hover .nav-link {
-        background: rgba(255, 255, 255, 0.13);
+        background: #3b404b;
         opacity: 1;
     }
 
     .nav .nav-item.active .nav-link {
-        color: #FFFFFF;
+        color: #b7b9bd;
         opacity: 1;
-        background: rgba(255, 255, 255, 0.23);
+        background: #3b404b;
     }
 
     .nav .nav-item.separator {
@@ -127,7 +123,7 @@
         max-height: calc(100vh - 75px);
         min-height: 100%;
         overflow: auto;
-        width: 260px;
+        width: 240px;
         z-index: 4;
         padding-bottom: 100px;
 
@@ -142,7 +138,7 @@
         .nav .nav-item [data-toggle="collapse"]~div .nav .nav-item:hover .nav-link,
         .nav .nav-item [data-toggle="collapse"]~div .nav .nav-item:focus .nav-link,
         .nav .nav-item [data-toggle="collapse"]~div .nav .nav-item.active .nav-link {
-            background: rgba(255, 255, 255, 0.13);
+            background: #3b404b;
         }
 
         .nav .nav-item [data-toggle="collapse"]~div .nav .sidebar-normal {
@@ -151,13 +147,13 @@
 
         .nav .nav-link p {
             margin: 0;
-            line-height: 30px;
+            line-height: 24px;
             font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
             white-space: nowrap;
             position: relative;
-            color: white;
+            color: #b7b9bd;
             transform: translate3d(0px, 0, 0);
             display: block;
             height: auto;
@@ -182,7 +178,7 @@
     background: rgba(0,0,0,.6);
     position: fixed;
     z-index: 9999;
-    left: 260px;
+    left: 240px;
     display: none;
     max-height: calc(100vh);
     min-height: 100%;
@@ -199,7 +195,7 @@
 
 @media (max-width: 992px) {
     .sidebar {
-        left: -260px;
+        left: -240px;
     }
 
     .main-panel {

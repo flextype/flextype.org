@@ -1,13 +1,10 @@
-// Buttons
-
 .btn {
     border-radius: 4px;
-    border-width: 2px;
     font-weight: 400;
     padding: 8px 16px;
     border: 1px solid black;
-    color: white;
-    background-color: black;
+    color: $btn-text-color;
+    background-color: $btn-background-color;
     cursor: pointer;
     margin-bottom: 5px;
     font-size: .875rem;
@@ -17,26 +14,36 @@
     &:active,
     &:focus,
     &:hover {
-        background-color: black;
-        color: white;
+        background-color: $btn-background-color-hover;
+        color: $btn-text-color-hover;
         border-color: black;
         outline: 0 !important;
         box-shadow: none;
     }
 }
 
-.btn-light {
-    background-color: white;
-    background: white;
-    color: black;
-}
-
 .btn-group > .btn-group:not(:last-child) > .btn,
 .btn-group > .btn:not(:last-child):not(.dropdown-toggle) {
-    border-right: 2px solid #ccc;
+    border-right: none;
 }
 
 .btn-group > .btn:hover,
 .btn-group-vertical > .btn:hover {
     z-index: 0;
+}
+
+.dropdown-menu {
+    color: $btn-text-color;
+    background-color: $btn-background-color;
+    border: 1px solid #000;
+}
+
+.dropdown-item {
+    color: $btn-text-color;
+
+    &:focus,
+    &:hover {
+        color: $btn-text-color-hover;
+        background-color: $btn-background-color-hover;
+    }
 }
