@@ -23,6 +23,12 @@
                     <li>
                         <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/img/admin-5.png" alt="" />
                     </li>
+                    <li>
+                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/img/admin-6.png" alt="" />
+                    </li>
+                    <li>
+                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('system.theme'); ?>/assets/img/admin-7.png" alt="" />
+                    </li>
                 </ul>
         </div>
         <h2 class="h2">Introducing Flextype</h2>
@@ -207,6 +213,7 @@ to this section and our <a href="http://flextype.org/about/sponsors">sponsors pa
     <div class="col-4"></div>
     <div class="col-sm">
         <center>
+            <p class="section-item"><a href="https://clusteric.com/" target="_blank">Pawel Sokolowski</a></p>
             <p class="section-item"><a href="https://vk.com/anastasiia.greca" target="_blank">Anastasiia Greca</a></p>
             <p class="section-item"><a href="https://vk.com/katerina.sitnikova" target="_blank">Katerina Sitnikova</a></p>
             <p class="section-item"><a href="https://vk.com/fantast21" target="_blank">Alexander Kuznetsov</a></p>
