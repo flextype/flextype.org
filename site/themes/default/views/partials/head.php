@@ -41,7 +41,7 @@
     <?php Event::dispatch('onThemeHeader'); ?>
   </head>
   <body>
-      <div style="font-size: 14px; background: #000; padding: 10px; color: #fff; text-align: center;">
-          Keep Calm and wait for new Gorgeous Flextype Admin Plugin! Join our <a style="text-decoration: underline; color: #fff; font-weight: bold;" href="https://discord.gg/CCKPKVG">Discord Chat Server</a> to be up to date on all the news!
+      <div style="font-size: 14px; background: #21252b; padding: 10px; color: #fff; text-align: center;">
+         Join our <a style="text-decoration: underline; color: #fff; font-weight: bold;" href="https://discord.gg/CCKPKVG">Discord Chat Server</a> to be up to date on all the news!
       </div>
   <?php Themes::view('partials/navigation')->display(); ?>
