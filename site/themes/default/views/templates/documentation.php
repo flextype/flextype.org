@@ -25,6 +25,7 @@
                 <h3 class="h3">Themes</h3>
                 <nav class="nav flex-column">
                   <a class="nav-link <?php if (Http::getUriSegment(2) == 'theme-installation') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/themes/theme-installation">Themes Installation</a>
+                  <a class="nav-link <?php if (Http::getUriSegment(2) == 'theme-templates-syntax-guidelines') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/themes/theme-templates-syntax-guidelines">Syntax guidelines</a>
                 </nav>
                 <h3 class="h3">Plugins</h3>
                 <nav class="nav flex-column">
