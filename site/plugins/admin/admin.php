@@ -30,16 +30,20 @@ use Symfony\Component\Yaml\Yaml;
 use Gajus\Dindent\Indenter;
 
 //
-// Add listner for onCurrentPageBeforeLoaded event
+// If isAdminArea
 //
 if (Admin::isAdminArea()) {
+
+    // Ensure vendor libraries exist
+    !is_file($autoload = __DIR__ . '/vendor/autoload.php') and exit("Please run: <i>composer install</i>");
+
+    // Register The Auto Loader
+    $loader = require_once $autoload;
+
+    //
+    // Add listner for onCurrentPageBeforeLoaded event
+    //
     Event::addListener('onCurrentPageBeforeLoaded', function () {
-
-        // Ensure vendor libraries exist
-        !is_file($autoload = __DIR__ . '/vendor/autoload.php') and exit("Please run: <i>composer install</i>");
-
-        // Register The Auto Loader
-        $loader = require_once $autoload;
 
         // Add navigation links
         NavigationManager::addItem('content', 'pages', '<i class="far fa-file"></i>' . __('admin_menu_content_pages', Registry::get('settings.locale')), Http::getBaseUrl() . '/admin/pages', ['class' => 'nav-link']);

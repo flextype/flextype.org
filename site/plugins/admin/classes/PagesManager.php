@@ -17,7 +17,6 @@ use Flextype\Component\Notification\Notification;
 use function Flextype\Component\I18n\__;
 use Symfony\Component\Yaml\Yaml;
 use Gajus\Dindent\Indenter;
-use Flextype\Navigation;
 
 class PagesManager
 {
@@ -308,7 +307,7 @@ class PagesManager
 
     public static function displayPageForm(array $form, array $values = [], string $content)
     {
-        echo Form::open(null, ['id' => 'editorForm', 'class' => 'row']);
+        echo Form::open(null, ['id' => 'form', 'class' => 'row']);
         echo Form::hidden('token', Token::generate());
         echo Form::hidden('action', 'save-form');
 

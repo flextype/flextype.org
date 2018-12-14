@@ -1,3 +1,9 @@
+# v0.3.1, 2018-12-14
+* General: critical issues with autoload - fixed
+* General: .js-page-save-submit changed to .js-save-form-submit
+* General: #editorForm changed to #form
+* Pages Manager: unused Navigation class removed
+
 # v0.3.0, 2018-12-13
 * New Gorgeous Admin theme in dark colors!
 * Information: Display information about core and admin plugin version

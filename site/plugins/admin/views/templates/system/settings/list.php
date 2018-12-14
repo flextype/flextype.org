@@ -21,14 +21,14 @@ Themes::view('admin/views/partials/navbar')
                               'save' => [
                                                   'link'       => 'javascript:;',
                                                   'title'      => __('admin_save'),
-                                                  'attributes' => ['class' => 'js-page-save-submit float-right btn']
+                                                  'attributes' => ['class' => 'js-save-form-submit float-right btn']
                                               ]
                         ])
     ->display();
 Themes::view('admin/views/partials/content-start')->display();
 ?>
 
-<?php echo Form::open(null, ['id' => 'editorForm']); ?>
+<?php echo Form::open(null, ['id' => 'form']); ?>
 <?php echo Form::hidden('token', Token::generate()); ?>
 <?php echo Form::hidden('action', 'save-form'); ?>
 <div class="row">
