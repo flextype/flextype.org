@@ -8,31 +8,18 @@
     <div class="content">
           <div class="row">
               <div class="col-9 flextype-content">
-                  <?php echo $page['content']; ?>
+                  <?php if(Http::getUriSegment(1) == 'cookbook' && Http::getUriSegment(2) == ''): ?>
+                      <?php foreach(Content::getPages('documentation/cookbook') as $page): ?>
+                        <h3><a href="<?= $page['url'] ?>"><?= $page['title'] ?></a></h3>
+                      <?php endforeach ?>
+                  <?php else: ?>
+                      <?= $page['content'] ?>
+                  <?php endif ?>
               </div>
             <div class="col-3 right-nav">
-                <h3 class="h3">Basics</h3>
-                <nav class="nav flex-column">
-                  <a class="nav-link <?php if (Http::getUriSegment(2) == 'requirements') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/basics/requirements">Requirements</a>
-                  <a class="nav-link <?php if (Http::getUriSegment(2) == 'installation') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/basics/installation">Installation</a>
-                  <a class="nav-link <?php if (Http::getUriSegment(2) == 'configuration') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/basics/configuration">Configuration</a>
-                  <a class="nav-link <?php if (Http::getUriSegment(2) == 'getting-help') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/basics/getting-help">Getting Help</a>
-                </nav>
-                <h3 class="h3">Content</h3>
-                <nav class="nav flex-column">
-                  <a class="nav-link <?php if (Http::getUriSegment(2) == 'pages') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/content/pages">Pages</a>
-                </nav>
-                <h3 class="h3">Themes</h3>
-                <nav class="nav flex-column">
-                  <a class="nav-link <?php if (Http::getUriSegment(2) == 'theme-installation') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/themes/theme-installation">Themes Installation</a>
-                  <a class="nav-link <?php if (Http::getUriSegment(2) == 'theme-templates-syntax-guidelines') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/themes/theme-templates-syntax-guidelines">Syntax guidelines</a>
-                </nav>
-                <h3 class="h3">Plugins</h3>
-                <nav class="nav flex-column">
-                  <a class="nav-link <?php if (Http::getUriSegment(2) == 'plugins-installation') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/plugins/plugins-installation">Plugins Installation</a>
-                </nav>
+                <?php Themes::view('partials/navigation-documentation')->display() ?>
             </div>
           </div>
     </div>
 </main>
-<?php Themes::view('partials/footer')->display(); ?>
+<?php Themes::view('partials/footer')->display() ?>
