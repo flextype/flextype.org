@@ -147,33 +147,33 @@
   <div class="row">
     <div class="col-sm">
         <center>
-            <a rel="nofollow" href="<?php echo Registry::get('settings.social_link.discord'); ?>">
-            <i class="fab fa-discord"></i>
-            <h4>Discord</h4>
+            <a rel="nofollow" class="link-community" href="<?php echo Registry::get('settings.social_link.discord'); ?>">
+                <i class="fab fa-discord"></i>
+                <h4>Discord</h4>
             </a>
         <center>
     </div>
     <div class="col-sm">
         <center>
-            <a rel="nofollow" target="_blank" href="<?php echo Registry::get('settings.social_link.github'); ?>">
-            <i class="fab fa-github"></i>
-            <h4>GitHub</h4>
-            </a>
-        </center>
-    </div>
-    <div class="col-sm">
-        <center>
-            <a rel="nofollow" target="_blank" href="<?php echo Registry::get('settings.social_link.vkontakte'); ?>">
-            <i class="fab fa-vk"></i>
-            <h4>Vkontakte</h4>
+            <a rel="nofollow" class="link-community" target="_blank" href="<?php echo Registry::get('settings.social_link.github'); ?>">
+                <i class="fab fa-github"></i>
+                <h4>GitHub</h4>
             </a>
         </center>
     </div>
     <div class="col-sm">
         <center>
-            <a rel="nofollow" target="_blank" href="<?php echo Registry::get('settings.social_link.twitter'); ?>">
-            <i class="fab fa-twitter"></i>
-            <h4>Twitter</h4>
+            <a rel="nofollow" class="link-community" target="_blank" href="<?php echo Registry::get('settings.social_link.vkontakte'); ?>">
+                <i class="fab fa-vk"></i>
+                <h4>Vkontakte</h4>
+            </a>
+        </center>
+    </div>
+    <div class="col-sm">
+        <center>
+            <a rel="nofollow" class="link-community" target="_blank" href="<?php echo Registry::get('settings.social_link.twitter'); ?>">
+                <i class="fab fa-twitter"></i>
+                <h4>Twitter</h4>
             </a>
         </center>
     </div>
