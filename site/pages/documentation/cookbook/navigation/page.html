@@ -1,0 +1,15 @@
+---
+title: Navigation
+description: Documentation for Flextype Developers and Flextype Users.
+template: documentation
+---
+
+<h3>Creating basic navigation.</h3>
+<pre><code>&lt;ul class="navbar-nav"&gt;
+&lt;?php foreach(Content::getPages('', false, 'slug') as $page): ?&gt;
+    &lt;?php if($page['slug'] !== '404' && !(isset($page['visibility']) && ($page['visibility'] === 'draft' || $page['visibility'] === 'hidden'))): ?&gt;
+        &lt;a class="&lt;?php if(Http::getUriString() == $page['slug']): ?&gt; active &lt;?php endif ?&gt;" href="&lt;?= Http::getBaseUrl().'/'.$page['slug']; ?&gt;"&gt;&lt;?= $page['title']; ?&gt;&lt;/a&gt;
+    &lt;?php endif ?&gt;
+&lt;?php endforeach ?&gt;
+&lt;/ul&gt;
+</code></pre>
