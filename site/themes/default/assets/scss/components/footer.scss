@@ -32,6 +32,7 @@ $footer-text-color: #b7b7b7;
 
     a {
         color: $footer-text-color;
+        text-decoration: none;
     }
 
     .copyright,
@@ -73,8 +74,8 @@ $footer-text-color: #b7b7b7;
         padding-bottom: 10px;
 
         > a > .fa,
-         > a > .fab,
-        > a > .fas {
+         > a > .fas,
+        > a > .fab {
             font-size: 28px;
 
             width: 34px;

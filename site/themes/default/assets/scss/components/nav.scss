@@ -13,6 +13,8 @@
     background: $body-bg;
 
     .navbar-brand {
+        text-decoration: none;
+
         .h1 {
             margin: 0;
             padding: 0;
@@ -31,6 +33,7 @@
             border-radius: .25rem;
             color: $base-font-color;
             text-transform: uppercase;
+            text-decoration: none;
 
             font-size: 12px;
             letter-spacing: .08em;
@@ -62,6 +65,9 @@
     }
 
     .nav-link {
+        text-decoration: none;
+        font-size: 16px;
+
         &.active {
             background: #1c1c1c;
             color: white;
