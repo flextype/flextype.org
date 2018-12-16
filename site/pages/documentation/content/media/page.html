@@ -1,0 +1,17 @@
+---
+title: Media
+description: Documentation for Flextype Developers and Flextype Users.
+template: documentation
+---
+<p>
+    Pages can have any number and kind of images, videos, documents or other files.<br>
+    Those files are being stored directly in the page folder.
+</p>
+<h3>Getting list of images for page in your template</h3>
+<pre><code class="php hljs">&lt;?php $images = Filesystem::getFilesList(PATH['pages'] . '/portfolio', 'jpg') ?&gt;</code></pre>
+
+<h3>Displaying images</h3>
+<pre><code class="html hljs">&lt;?php foreach($images as $image): ?>
+    &lt;img src="&lt;?= Http::getBaseUrl() . '/site/pages/portfolio/' . basename($image); ?&gt;" /&gt;
+&lt;?php endforeach ?&gt;
+</code></pre>
