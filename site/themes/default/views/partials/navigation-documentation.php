@@ -14,6 +14,7 @@
 <h3 class="h3">Content</h3>
 <nav class="nav flex-column">
     <a class="nav-link <?php if (Http::getUriSegment(2) == 'pages') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/content/pages">Pages</a>
+    <a class="nav-link <?php if (Http::getUriSegment(2) == 'media') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/content/media">Media</a>
 </nav>
 
 <h3 class="h3">Themes</h3>
