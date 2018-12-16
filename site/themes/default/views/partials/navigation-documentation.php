@@ -17,18 +17,12 @@
     <a class="nav-link <?php if (Http::getUriSegment(2) == 'media') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/content/media">Media</a>
 </nav>
 
-<h3 class="h3">Themes</h3>
+<h3 class="h3">Development</h3>
 <nav class="nav flex-column">
-    <a class="nav-link <?php if (Http::getUriSegment(2) == 'theme-installation') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/themes/theme-installation">Themes Installation</a>
-    <a class="nav-link <?php if (Http::getUriSegment(2) == 'theme-templates-syntax-guidelines') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/themes/theme-templates-syntax-guidelines">Syntax guidelines</a>
-</nav>
-
-<h3 class="h3">Plugins</h3>
-<nav class="nav flex-column">
-    <a class="nav-link <?php if (Http::getUriSegment(2) == 'plugins-installation') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/plugins/plugins-installation">Plugins Installation</a>
+    <a class="nav-link <?php if (Http::getUriSegment(2) == 'constants') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/development/constants">Constants</a>
 </nav>
 
 <h3 class="h3">Other</h3>
 <nav class="nav flex-column">
-    <a class="nav-link <?php if(Http::getUriSegment(2) == 'cookbook'): ?> active <?php endif ?>" href="<?= Http::getBaseUrl() ?>/documentation/cookbook">Cookbook</a>
+    <a class="nav-link <?php if(Http::getUriSegment(1) == 'cookbook'): ?> active <?php endif ?>" href="<?= Http::getBaseUrl() ?>/documentation/cookbook">Cookbook</a>
 </nav>
