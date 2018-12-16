@@ -115,7 +115,7 @@ code {
 
 a {
     color: $base-font-color;
-    text-decoration: none;
+    text-decoration: underline;
 
     &:hover {
         text-decoration: none;
