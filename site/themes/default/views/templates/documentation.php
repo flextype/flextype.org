@@ -4,7 +4,7 @@
 ?>
 <?php Themes::view('partials/head')->display(); ?>
 <main role="main" class="container">
-    <h2 class="h2"><?php echo $page['title']; ?></h2>
+    <h2 class="h2"><?= $page['title']; ?></h2>
     <div class="content">
           <div class="row">
               <div class="col-9 flextype-content">
