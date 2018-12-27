@@ -4,14 +4,10 @@
     height: 100vh;
 }
 
-.page-tree-dash {
-    width: 10px;
-    background: #b7b9bd;
-    display: inline-block;
-    margin-bottom: 3px;
-    height: 1px;
-
-    &:last-of-type {
-        margin-right: 3px;
-    }
+.no-data-message {
+    opacity: .6;
+    width: 100%;
+    text-align: center;
+    margin-top: 28%;
+    padding: 0;
 }

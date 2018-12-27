@@ -1,16 +1,16 @@
 <?php namespace Flextype; ?>
 <?php Themes::view('partials/head')->display(); ?>
 <main role="main" class="container">
-    <h2 class="h2"><?php echo $page['title']; ?></h2>
+    <h2 class="h2"><?php echo $entry['title']; ?></h2>
     <div class="content">
-        <?php echo $page['content']; ?>
+        <?php echo $entry['content']; ?>
 
         <div id="disqus_thread"></div>
         <script>
 
         var disqus_config = function () {
-            this.page.url = "<?php echo $page['url']; ?>";  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = "<?php echo $page['slug']; ?>"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            this.entry.url = "<?php echo $entry['url']; ?>";  // Replace PAGE_URL with your entry's canonical URL variable
+            this.entry.identifier = "<?php echo $entry['slug']; ?>"; // Replace PAGE_IDENTIFIER with your entry's unique identifier variable
         };
 
         (function() { // DON'T EDIT BELOW THIS LINE

@@ -16,24 +16,20 @@ Themes::view('admin/views/partials/navbar')
 Themes::view('admin/views/partials/content-start')->display();
 ?>
 
-<h3 class="h3"><?php echo  __('admin_system_settings_system'); ?></h3>
+<h3 class="h3"><?= __('admin_system_settings_system') ?></h3>
 
 <table class="table no-margin">
     <tbody>
         <tr>
-            <td width="200"><?php echo __('admin_flextype_core_version'); ?></td>
-            <td><?php echo Flextype::VERSION; ?></td>
+            <td width="200"><?= __('admin_flextype_version') ?></td>
+            <td><?= Flextype::VERSION ?></td>
         </tr>
         <tr>
-            <td width="200"><?php echo __('admin_flextype_admin_version'); ?></td>
-            <td><?php echo Registry::get('plugins.admin.version'); ?></td>
-        </tr>
-        <tr>
-            <td><?php echo __('admin_debugging'); ?></td>
+            <td><?= __('admin_debugging'); ?></td>
             <td><?php if (Registry::get('settings.errors.display')) echo __('admin_on'); else echo __('admin_off'); ?></td>
         </tr>
         <tr>
-            <td><?php echo __('admin_cache'); ?></td>
+            <td><?= __('admin_cache'); ?></td>
             <td><?php if (Registry::get('settings.cache.enabled')) echo __('admin_on'); else echo __('admin_off'); ?></td>
         </tr>
     </tbody>
@@ -41,25 +37,25 @@ Themes::view('admin/views/partials/content-start')->display();
 <br><br>
 
 
-<h3 class="h3"><?php echo  __('admin_server'); ?></h3>
+<h3 class="h3"><?=  __('admin_server'); ?></h3>
 
 <table class="table no-margin">
     <tbody>
         <tr>
-            <td width="180"><?php echo __('admin_php_version'); ?></td>
-            <td><?php echo PHP_VERSION; ?></td>
+            <td width="180"><?= __('admin_php_version') ?></td>
+            <td><?= PHP_VERSION; ?></td>
         </tr>
         <tr>
-            <td><?php echo __('admin_php_built_on'); ?></td>
-            <td><?php echo php_uname(); ?></td>
+            <td><?= __('admin_php_built_on') ?></td>
+            <td><?= php_uname(); ?></td>
         </tr>
         <tr>
-            <td><?php echo __('admin_web_server'); ?></td>
-            <td><?php echo (isset($_SERVER['SERVER_SOFTWARE'])) ? $_SERVER['SERVER_SOFTWARE'] : @getenv('SERVER_SOFTWARE'); ?></td>
+            <td><?= __('admin_web_server'); ?></td>
+            <td><?= (isset($_SERVER['SERVER_SOFTWARE'])) ? $_SERVER['SERVER_SOFTWARE'] : @getenv('SERVER_SOFTWARE'); ?></td>
         </tr>
         <tr>
-            <td><?php echo __('admin_web_server_php_interface'); ?></td>
-            <td><?php echo php_sapi_name(); ?></td>
+            <td><?= __('admin_web_server_php_interface') ?></td>
+            <td><?= php_sapi_name() ?></td>
         </tr>
         <?php
             if (function_exists('apache_get_modules')) {
@@ -96,23 +92,23 @@ Themes::view('admin/views/partials/content-start')->display();
           Filesystem::isFileWritable(ROOT_DIR . '/index.php') or
           Registry::get('settings.errors.display') === true) { ?>
 
-        <h3 class="h3"><?php echo  __('admin_security_check_results'); ?></h3>
+        <h3 class="h3"><?=  __('admin_security_check_results') ?></h3>
 
         <table class="table no-margin">
             <tbody>
                 <?php if (Filesystem::isFileWritable(ROOT_DIR . '/.htaccess')) { ?>
                 <tr>
-                    <td><?php echo __('admin_security_check_results_htaccess', null, [':path' => ROOT_DIR . '/.htaccess']); ?></td>
+                    <td><?= __('admin_security_check_results_htaccess', null, [':path' => ROOT_DIR . '/.htaccess']) ?></td>
                 </tr>
                 <?php } ?>
                 <?php if (Filesystem::isFileWritable(ROOT_DIR . '/index.php')) { ?>
                 <tr>
-                    <td><?php echo __('admin_security_check_results_index', null, [':path' => ROOT_DIR . '/index.php']); ?></td>
+                    <td><?= __('admin_security_check_results_index', null, [':path' => ROOT_DIR . '/index.php']) ?></td>
                 </tr>
                 <?php } ?>
                 <?php if (Registry::get('settings.errors.display') === true) { ?>
                 <tr>
-                    <td><?php echo __('admin_security_check_results_debug'); ?></td>
+                    <td><?= __('admin_security_check_results_debug') ?></td>
                 </tr>
                 <?php } ?>
             </tbody>
@@ -120,7 +116,5 @@ Themes::view('admin/views/partials/content-start')->display();
         <br><br>
 <?php } ?>
 
-<?php
-Themes::view('admin/views/partials/content-end')->display();
-Themes::view('admin/views/partials/footer')->display();
-?>
+<?php Themes::view('admin/views/partials/content-end')->display() ?>
+<?php Themes::view('admin/views/partials/footer')->display() ?>

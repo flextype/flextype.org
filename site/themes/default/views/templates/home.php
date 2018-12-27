@@ -76,7 +76,7 @@
         <center>
             <i class="fa fa-list-alt" aria-hidden="true"></i>
             <h4>Dynamic Content Types</h4>
-            <p>The flat-file nature of Flextype lets you define custom fields for any of your pages.</p>
+            <p>The flat-file nature of Flextype lets you define custom fields for any of your entrys.</p>
         </center>
     </div>
     <div class="col-sm">
@@ -124,7 +124,7 @@
     <div class="col-2"></div>
     <div class="col-sm">
         <p class="section-item"><i class="fas fa-star"></i> Business site</p>
-        <p class="section-item"><i class="fas fa-star"></i> Landing page</p>
+        <p class="section-item"><i class="fas fa-star"></i> Landing entry</p>
         <p class="section-item"><i class="fas fa-star"></i> Personal site</p>
     </div>
     <div class="col-sm">
@@ -207,7 +207,7 @@ Contributing to the Flextype is easy and you can give as little or as much time 
 <h3 class="section-heading">Sponsors</h2>
 <p class="section-description">
 <a href="http://flextype.org/about/sponsors">Donate</a> to keep Flextype free and we will add you<br>
-to this section and our <a href="http://flextype.org/about/sponsors">sponsors page</a>!
+to this section and our <a href="http://flextype.org/about/sponsors">sponsors entry</a>!
 </p>
   <div class="row">
     <div class="col-4"></div>
@@ -225,6 +225,6 @@ to this section and our <a href="http://flextype.org/about/sponsors">sponsors pa
 
 <br><br><br><br><br>
 
-<?php echo $page['content']; ?>
+<?php echo $entry['content']; ?>
 
 <?php Themes::view('partials/footer')->display(); ?>

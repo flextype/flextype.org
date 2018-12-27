@@ -113,9 +113,14 @@ code {
     font-weight: $base-font-weight;
 }
 
+b,
+strong {
+    font-weight: bold;
+}
+
 a {
     color: $base-font-color;
-    text-decoration: underline;
+    text-decoration: none;
 
     &:hover {
         text-decoration: none;

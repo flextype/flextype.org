@@ -8,7 +8,6 @@ use Flextype\Component\Event\Event;
 use Flextype\Component\Filesystem\Filesystem;
 use Flextype\Component\Registry\Registry;
 use Flextype\Component\Token\Token;
-use Symfony\Component\Yaml\Yaml;
 
 
 class PluginsManager
@@ -21,17 +20,17 @@ class PluginsManager
     {
         if (Http::post('plugin_change_status')) {
             if (Token::check((Http::post('token')))) {
-                $plugin_settings = Yaml::parseFile(PATH['plugins'] . '/' . Http::post('plugin')  . '/' . 'settings.yaml');
+                $plugin_settings = YamlParser::decode(Filesystem::getFileContent(PATH['plugins'] . '/' . Http::post('plugin')  . '/' . 'settings.yaml'));
                 Arr::set($plugin_settings, 'enabled', (Http::post('status') == 'true' ? true : false));
-                Filesystem::setFileContent(PATH['plugins'] . '/' . Http::post('plugin')  . '/' . 'settings.yaml', Yaml::dump($plugin_settings));
+                Filesystem::setFileContent(PATH['plugins'] . '/' . Http::post('plugin')  . '/' . 'settings.yaml', YamlParser::encode($plugin_settings));
                 Cache::clear();
             } else {
-                die('Request was denied because it contained an invalid security token. Please refresh the page and try again.');
+                die('Request was denied because it contained an invalid security token. Please refresh the entry and try again.');
             }
         }
     }
 
-    public static function getPluginsPage()
+    public static function getPluginsManager()
     {
         Registry::set('sidebar_menu_item', 'plugins');
 

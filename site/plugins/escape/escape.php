@@ -20,7 +20,7 @@ use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 Event::addListener('onShortcodesInitialized', function () {
 
     // Shortcode: [escape]<b>Some text here</b>[/escape]
-    Content::shortcode()->addHandler('escape', function(ShortcodeInterface $s) {
+    Entries::shortcode()->addHandler('escape', function(ShortcodeInterface $s) {
         return htmlspecialchars($s->getContent(), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     });
 });

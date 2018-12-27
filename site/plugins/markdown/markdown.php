@@ -24,8 +24,8 @@ use Parsedown;
 Event::addListener('onShortcodesInitialized', function () {
 
     // Shortcode: [markdown]__Some Text Here__[/markdown]
-    Content::shortcode()->addHandler('markdown', function(ShortcodeInterface $s) {
-        return Markdown::parse($s->getContent(),
+    Entries::shortcode()->addHandler('markdown', function(ShortcodeInterface $s) {
+        return Markdown::parse($s->getEntries(),
          (($s->getParameter('line') === 'true') ? true : false),
          (($s->getParameter('urls_linked') === 'false') ? false : true),
          (($s->getParameter('breaks_enabled') === 'false') ? false : true),
@@ -53,7 +53,7 @@ class Markdown
      * <p><b>Some Text Here</b></p>
      *
      * @access  public
-     * @param   string $content Content to parse
+     * @param   string $content Entries to parse
      * @return  string Formatted content
      */
     public static function parse(string $content, bool $line = false, bool $urls_linked = true, bool $breaks_enabled = true, bool $markup_escaped = true, bool $safe_mode = true) : string

@@ -8,8 +8,13 @@
         border: 1px solid black;
         margin-bottom: 30px;
 
-        .item-wrapper {
-            }
+        .item-wrapper {}
+
+        .file-ext {
+            position: absolute;
+            bottom: 40%;
+            display: block;
+        }
 
         .fa-eye {
             display: none;
@@ -26,6 +31,7 @@
 
         > .img-item {
             text-decoration: none;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;

@@ -13,7 +13,7 @@ use Flextype\Component\{Http\Http, Event\Event, Registry\Registry, Assets\Assets
 <script>
 
     Messenger.options = {
-        extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
+        extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
         theme: 'flat'
     }
 
@@ -68,6 +68,7 @@ use Flextype\Component\{Http\Http, Event\Event, Registry\Registry, Assets\Assets
                 ['image'],
                 ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
                 ['unorderedList', 'orderedList'],
+                ['table'],
                 ['removeformat'],
                 ['fullscreen']
             ],
@@ -100,43 +101,43 @@ use Flextype\Component\{Http\Http, Event\Event, Registry\Registry, Assets\Assets
             $('.js-plugin-author-name-placeholder').html($(this).attr('data-author-name'));
             $('.js-plugin-author-email-placeholder').html($(this).attr('data-author-email'));
             $('.js-plugin-author-url-placeholder').html($(this).attr('data-author-url'));
-            $('.js-plugin-homepage-placeholder').html($(this).attr('data-homepage'));
+            $('.js-plugin-homeentry-placeholder').html($(this).attr('data-homeentry'));
             $('.js-plugin-bugs-placeholder').html($(this).attr('data-bugs'));
             $('.js-plugin-license-placeholder').html($(this).attr('data-license'));
         });
 
-        $('.js-pages-image-preview').click(function () {
-            $('#pagesImagePreview').modal();
-            $('.js-page-image-preview-placeholder').css('background-image', 'url(' + $(this).attr('data-image-url') + ')');
-            $('.js-page-image-url-placeholder').val($(this).attr('data-image-url'));
-            $('.js-page-image-delete-url-placeholder').attr('href', $(this).attr('data-image-delete-url'));
+        $('.js-entries-image-preview').click(function () {
+            $('#entriesImagePreview').modal();
+            $('.js-entry-image-preview-placeholder').css('background-image', 'url(' + $(this).attr('data-image-url') + ')');
+            $('.js-entry-image-url-placeholder').val($(this).attr('data-image-url'));
+            $('.js-entry-image-delete-url-placeholder').attr('href', $(this).attr('data-image-delete-url'));
         });
 
-        $('.js-settings-page-modal').click(function () {
-            $('#settingsPageModal').modal();
+        $('.js-settings-entry-modal').click(function () {
+            $('#settingsEntryModal').modal();
         });
 
         $.validate({});
 
         var editor = CodeMirror.fromTextArea(document.getElementById("codeMirrorEditor"), {
             lineNumbers: true,
-            <?php if ((Http::get('blueprint') && Http::get('blueprint') == 'true') || (Http::get('source') && Http::get('source') == 'true')) { ?>
+            <?php if (Http::get('fieldset') || Http::get('menu')) { ?>
             indentUnit: 2,
             tabSize: 2,
             <?php } else { ?>
             tabSize: 4,
             indentUnit: 4,
             <?php } ?>
-            <?php if ((Http::get('blueprint') && Http::get('blueprint') == 'true') || (Http::get('source') && Http::get('source') == 'true')) { ?>
+            <?php if (Http::get('fieldset') || Http::get('menu')) { ?>
             mode: "yaml",
             <?php } else { ?>
-            mode: "text/html",
+            mode: "application/x-httpd-php",
             <?php } ?>
             indentWithTabs: false,
             theme: "monokai",
             styleActiveLine: true,
         });
-
+        
         editor.addKeyMap({
             "Tab": function (cm) {
                 if (cm.somethingSelected()) {

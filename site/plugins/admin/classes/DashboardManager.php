@@ -6,8 +6,8 @@ use Flextype\Component\Http\Http;
 
 class DashboardManager
 {
-    public static function getDashboard()
+    public static function getDashboardManager()
     {
-        Http::redirect(Http::getBaseUrl().'/admin/pages');
+        Http::redirect(Http::getBaseUrl().'/admin/entries');
     }
 }

@@ -33,13 +33,13 @@ Event::addListener('onThemeFooter', function () {
 });
 
 Event::addListener('onShortcodesInitialized', function () {
-    Content::shortcode()->addHandler('code', function(ShortcodeInterface $s) {
-        return Html::toText($s->getContent());
+    Entries::shortcode()->addHandler('code', function(ShortcodeInterface $s) {
+        return Html::toText($s->getEntries());
     });
-    Content::shortcode()->addHandler('s_start', function() {
+    Entries::shortcode()->addHandler('s_start', function() {
         return '[';
     });
-    Content::shortcode()->addHandler('s_end', function() {
+    Entries::shortcode()->addHandler('s_end', function() {
         return ']';
     });
 });

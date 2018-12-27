@@ -8,7 +8,7 @@ Themes::view('admin/views/partials/head')->display();
 Themes::view('admin/views/partials/navbar')
     ->assign('links', [
                         'information' => [
-                                            'link' => Http::getBaseUrl() . '/admin/information',
+                                            'link' => Http::getBaseUrl() . '/admin/profile',
                                             'title' => __('admin_menu_profile'),
                                             'attributes' => ['class' => 'navbar-item active']
                                          ],
@@ -17,14 +17,13 @@ Themes::view('admin/views/partials/navbar')
 Themes::view('admin/views/partials/content-start')->display();
 ?>
 
-<?php echo __('admin_username'); ?>: <?php echo Session::get('username'); ?> <br>
-<?php echo __('admin_role'); ?>: <?php echo Session::get('role'); ?> <br>
+<div class="profile">
+    <i class="fas fa-user-circle"></i>
+    <?= __('admin_username') ?>: <?= Session::get('username') ?> <br>
+    <?= __('admin_role') ?>: <?= Session::get('role') ?> <br>
+    <br>
+    <a class="btn btn-default" href="<?= Http::getBaseUrl() ?>/admin/logout?token=<?= Token::generate() ?>"><?= __('admin_menu_logout') ?></a>
+</div>
 
-<br>
-
-<a class="btn btn-default" href="<?php echo Http::getBaseUrl();?>/admin/logout?token=<?php echo Token::generate(); ?>"><?php echo __('admin_menu_logout'); ?></a>
-
-<?php
-Themes::view('admin/views/partials/content-end')->display();
-Themes::view('admin/views/partials/footer')->display();
-?>
+<?php Themes::view('admin/views/partials/content-end')->display() ?>
+<?php Themes::view('admin/views/partials/footer')->display() ?>
