@@ -207,7 +207,7 @@ Contributing to the Flextype is easy and you can give as little or as much time 
 <h3 class="section-heading">Sponsors</h2>
 <p class="section-description">
 <a href="http://flextype.org/about/sponsors">Donate</a> to keep Flextype free and we will add you<br>
-to this section and our <a href="http://flextype.org/about/sponsors">sponsors entry</a>!
+to this section and our <a href="http://flextype.org/about/sponsors">sponsors page</a>!
 </p>
   <div class="row">
     <div class="col-4"></div>
