@@ -30,10 +30,11 @@
                     } else {
                         ?>
 
-                        <a href="https://github.com/flextype/flextype/releases/download/v<?php echo Flextype::VERSION; ?>/flextype-<?php echo Flextype::VERSION; ?>-admin-0.3.1.zip" class="btn btn-outline-dark btn-download-flextype">Flextype Core + Admin Plugin</a>
-                        <a href="https://github.com/flextype/flextype/releases/download/v<?php echo Flextype::VERSION; ?>/flextype-<?php echo Flextype::VERSION; ?>.zip" class="btn btn-outline-dark btn-download-flextype">Flextype Core</a>
+                        <a href="https://github.com/flextype/flextype/releases/download/v<?php echo Flextype::VERSION; ?>/flextype-<?php echo Flextype::VERSION; ?>.zip" class="btn btn-outline-dark btn-download-flextype-2">Flextype</a>
+                        <a href="http://flextype.org/about/sponsors" class="btn btn-outline-dark btn-download-flextype-2 donate">Donate to keep Flextype free and we will add<br> you to home page and this sponsors page!</a>
+
                         <br><br>
-                        Current stable Flextype version: 0.7.4
+                        Current stable Flextype version: 0.8.0
                         <p><a href="https://github.com/flextype/flextype/blob/master/CHANGELOG.md">View the release notes in the Changelog.</a></p>
 
                 <?php

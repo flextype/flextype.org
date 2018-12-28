@@ -17,3 +17,20 @@
         color: white;
     }
 }
+
+.btn-download-flextype-2 {
+    padding: 16px 90px;
+    font-size: 20px;
+    text-decoration: none;
+
+    &.donate {
+        padding: 10px 30px;
+        font-size: 14px;
+    }
+
+    &:hover {
+        background-color: black;
+        border-color: black;
+        color: white;
+    }
+}
