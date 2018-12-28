@@ -31,7 +31,7 @@
                         ?>
 
                         <a href="https://github.com/flextype/flextype/releases/download/v<?php echo Flextype::VERSION; ?>/flextype-<?php echo Flextype::VERSION; ?>.zip" class="btn btn-outline-dark btn-download-flextype-2">Flextype</a>
-                        <a href="http://flextype.org/about/sponsors" class="btn btn-outline-dark btn-download-flextype-2 donate">Donate to keep Flextype free and we will add<br> you to home page and this sponsors page!</a>
+                        <a href="http://flextype.org/about/sponsors" class="btn btn-outline-dark btn-download-flextype-2 donate">Donate to keep Flextype free and we will add<br> you to the home page and sponsors page!</a>
 
                         <br><br>
                         Current stable Flextype version: 0.8.0
