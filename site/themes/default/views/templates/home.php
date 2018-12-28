@@ -12,6 +12,9 @@
                         <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('settings.theme'); ?>/assets/img/admin.png" alt="" />
                     </li>
                     <li>
+                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('settings.theme'); ?>/assets/img/admin-1.png" alt="" />
+                    </li>
+                    <li>
                         <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('settings.theme'); ?>/assets/img/admin-2.png" alt="" />
                     </li>
                     <li>
@@ -25,9 +28,6 @@
                     </li>
                     <li>
                         <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('settings.theme'); ?>/assets/img/admin-6.png" alt="" />
-                    </li>
-                    <li>
-                        <img src="<?php echo Http::getBaseUrl(); ?>/site/themes/<?php echo Registry::get('settings.theme'); ?>/assets/img/admin-7.png" alt="" />
                     </li>
                 </ul>
         </div>

@@ -11,7 +11,7 @@
     new WOW().init();
 
     $('.js-admin-showcase').carousel({
-        num: 5,
+        num: 7,
         maxWidth: 800,
         maxHeight: 517,
         distance: 50,
