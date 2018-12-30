@@ -217,6 +217,7 @@ to this section and our <a href="http://flextype.org/about/sponsors">sponsors pa
             <p class="section-item"><a href="https://vk.com/anastasiia.greca" target="_blank">Anastasiia Greca</a></p>
             <p class="section-item"><a href="https://vk.com/katerina.sitnikova" target="_blank">Katerina Sitnikova</a></p>
             <p class="section-item"><a href="https://vk.com/fantast21" target="_blank">Alexander Kuznetsov</a></p>
+            <p class="section-item"><a href="https://vk.com/andrey.kuzmichev.official" target="_blank">Andrey Kuzmichev</a></p>
         </center>
     </div>
     <div class="col-4"></div>
