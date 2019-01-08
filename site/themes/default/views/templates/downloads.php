@@ -34,7 +34,7 @@
                         <a href="http://flextype.org/about/sponsors" class="btn btn-outline-dark btn-download-flextype-2 donate">Donate to keep Flextype free and we will add<br> you to the home page and sponsors page!</a>
 
                         <br><br>
-                        Current stable Flextype version: 0.8.1
+                        Current stable Flextype version: 0.8.2
                         <p><a href="https://github.com/flextype/flextype/blob/master/CHANGELOG.md">View the release notes in the Changelog.</a></p>
 
                 <?php
