@@ -23,7 +23,7 @@
                 <ul class="copyright">
                     <li>
                         <p><a href="<?php echo Http::getBaseUrl(); ?>">Flextype</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="http://awilum.github.io" class="highlight">Sergey Romanenko</a> and <a href="https://github.com/flextype/flextype/graphs/contributors" class="highlight">Flextype Community</a></p>
-                        <p>Copyright © 2018 - <a href="<?php echo Http::getBaseUrl(); ?>/about/license">Flextype</a> - All rights reserved</p>
+                        <p>Copyright © 2019 - <a href="<?php echo Http::getBaseUrl(); ?>/about/license">Flextype</a> - All rights reserved</p>
                     </li>
                 </ul>
             </p>
