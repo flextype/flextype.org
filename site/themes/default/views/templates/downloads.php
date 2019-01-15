@@ -35,7 +35,7 @@
 
                         <br><br>
                         <div id="stats-result"></div>
-                        Current stable Flextype version: 0.8.2
+                        Current stable Flextype version: <?= Flextype::VERSION; ?>
                         <p><a href="https://github.com/flextype/flextype/blob/master/CHANGELOG.md">View the release notes in the Changelog.</a></p>
 
                 <?php
