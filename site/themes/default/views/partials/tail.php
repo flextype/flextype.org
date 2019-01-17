@@ -12,6 +12,23 @@
 
     var apiRoot = "https://api.github.com/";
 
+   window.onload = function ()
+   {
+     var imgs = document.querySelectorAll('.js-slide-message'),
+     		len = imgs.length,
+     		i = len - 1;
+
+     (function go()
+     {
+           imgs[i].classList.remove('active');
+           i++;
+           if ( i == len) i = 0;
+           imgs[i].classList.add('active');
+           window.setTimeout(go, 10000);
+
+     })()
+   }
+
     // Return a HTTP query variable
     function getQueryVariable(variable) {
         var query = window.location.search.substring(1);
