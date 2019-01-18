@@ -133,14 +133,5 @@
 
     getStats();
 
-    $('.js-admin-showcase').carousel({
-        num: 7,
-        maxWidth: 800,
-        maxHeight: 517,
-        distance: 50,
-        scale: 0.6,
-        animationTime: 1000,
-        showTime: 5000
-    });
 </script>
 <?php Event::dispatch('onThemeFooter'); ?>
