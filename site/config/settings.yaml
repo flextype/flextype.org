@@ -57,3 +57,6 @@ pages:
   main: home
 redirects:
   blog: en/blog
+  download: en/download
+  basics/getting-help: en/basics/getting-help
+  about: en/about
