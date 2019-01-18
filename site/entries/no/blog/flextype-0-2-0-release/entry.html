@@ -1,0 +1,78 @@
+---
+title: Flextype 0.2.0 release
+date: 2018-03-23 08:00
+template: blog-post
+author:
+  name: Sergey Romanenko
+---
+
+
+<p>Hello Everyone!</p>
+
+<p>Flextype 0.2.0 release is already published with improved core Architecture and with a new advanced Thunderer Shortcode Framework that will allow easily create and manage your shortcodes.</p>
+
+<p>Here is an example of creating and using the Thunderer Shortcode Framework in Flextype:</p>
+
+<h4>Create Shortcode</h4>
+<pre>
+<code>
+use Thunder\Shortcode\Shortcode\ShortcodeInterface;
+
+Shortcodes::driver()->addHandler('msg', function(ShortcodeInterface $s) {
+    return [escape]'<div style="color:' . $s->getParameter('class') . '">' . $s->getContent() . '</div>';[/escape]
+});
+</code>
+</pre>
+
+
+<h4>Use Shortcode in the page content</h4>
+<pre><code class="html">[msg color="red"]Hello World![/msg]</code></pre>
+
+<h4>Result on the page</h4>
+<pre><code>[escape]<div style="color:red">Hello world!</div>[/escape]</code></pre>
+
+
+<br>
+
+<h4>New public functions for filesystem and finder</h4>
+
+<p>From now, you can work with filesystem and finder with this new public static functions in the Flextype class:</p>
+
+<pre><code class="html">Flextype::finder();
+Flextype::filesystem();
+</code></pre>
+
+<p>Example of using this functions:</p>
+<pre><code class="html">if (Flextype::filesystem()->exists('path/to/the/file.md')) {
+    // do something...
+}
+
+$pages = Flextype::finder()->files()->name('*.md')->in(PAGES_PATH);
+</code></pre>
+
+<br>
+
+<h4>Other minor changes</h4>
+<ul>
+    <li>Cache: Flextype::VERSION for cache key - added</li>
+    <li>flextype/boot/shortcodes.php - removed</li>
+    <li>flextype/boot/events.php - removed</li>
+    <li>General Code cleanup and Refactoring</li>
+</ul>
+
+<br>
+
+<h4>Update from Flextype 0.1.0 to Flextype 0.2.0</h4>
+<ul>
+    <li>Backup your Site First!</li>
+    <li>Download: [flextype-0.2.0.zip](https://github.com/flextype/flextype/releases/download/v0.2.0/flextype-0.2.0.zip)</li>
+    <li>Unzip the contents to a new folder on your local computer.</li>
+    <li>Remove <code>/flextype/</code>, <code>/vendor/</code> from your host.</li>
+    <li>Upload <code>/flextype/</code>, <code>/vendor/</code>, <code>/site/themes/default/</code>, <code>/index.php</code>, with an FTP client to your host.</li>
+</ul>
+
+<br>
+
+<p>Download: <a href="https://github.com/flextype/flextype/releases/download/v0.2.0/flextype-0.2.0.zip">flextype-0.2.0.zip</a></p>
+
+<br>
