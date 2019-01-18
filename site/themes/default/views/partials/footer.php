@@ -16,8 +16,12 @@
             <p>
                 <ul class="locales">
                     <li><a href="<?= Http::getBaseUrl() ?>/en">English</a></li>
+                    <li><a href="<?= Http::getBaseUrl() ?>/de">Deutsch</a></li>
+                    <li><a href="<?= Http::getBaseUrl() ?>/fr">Français</a></li>
+                    <li><a href="<?= Http::getBaseUrl() ?>/it">Italiano</a></li>
+                    <li><a href="<?= Http::getBaseUrl() ?>/pl">Polski</a></li>
                     <li><a href="<?= Http::getBaseUrl() ?>/ru">Русский</a></li>
-                    <li><a href="<?= Http::getBaseUrl() ?>/de">German</a></li>
+                    <li><a href="<?= Http::getBaseUrl() ?>/uk">Українська</a></li>
                 </ul>
             </p>
             <p>
