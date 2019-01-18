@@ -2,6 +2,7 @@
     namespace Flextype;
     use Flextype\Component\Http\Http;
 ?>
+<?php $locale = in_array(Http::getUriSegment(0), ['en', 'ru', 'de']) ? Http::getUriSegment(0) : 'en' ?>
 <nav class="navbar navbar-expand-lg navbar-light">
 <div class="container">
   <a class="navbar-brand" href="<?php echo Http::getBaseUrl(); ?>"><h1 class="h1"><img src="https://avatars3.githubusercontent.com/u/17710808?s=200&v=4" class="site-logo" width=40 /> <b>flextype</b></h1></a>
@@ -16,7 +17,7 @@
       </li>
         -->
       <li class="nav-item">
-        <a class="nav-link <?php if (Http::getUriSegment(0) == 'download') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/download"><span class="span">Download</span></a>
+        <a class="nav-link <?php if (Http::getUriSegment(0) == 'download') echo 'active'; ?>" href="<?= Http::getBaseUrl() ?>/<?= $locale ?>/download"><span class="span"><?= Entries::getEntry($locale)['navigation_header']['download']['title'] ?></span></a>
       </li>
       <!--
       <li class="nav-item">
@@ -28,7 +29,7 @@
       </li>
     -->
       <li class="nav-item">
-        <a class="nav-link <?php if (Http::getUriSegment(0) == 'about') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/about"><span class="span">About</span></a>
+        <a class="nav-link <?php if (Http::getUriSegment(0) == 'about') echo 'active'; ?>" href="<?= Http::getBaseUrl() ?>/<?= $locale ?>/about"><span class="span"><?= Entries::getEntry($locale)['navigation_header']['about']['title'] ?></span></a>
       </li>
     </ul>
   </div>
