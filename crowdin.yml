@@ -1,0 +1,3 @@
+files:
+  - source: /site/entries/**/*.html
+    translation: /site/entries/%two_letters_code%/**/%original_file_name%
