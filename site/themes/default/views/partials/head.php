@@ -52,7 +52,7 @@
              Join our <a target="_blank" style="text-decoration: underline; color: #fff; font-weight: bold;" href="https://discord.gg/CCKPKVG">Discord Chat Server</a> to be up to date on all the news!
          </span>
          <span class="animated fadeIn message-slide js-slide-message">
-             Join Flextype International <a target="_blank" style="text-decoration: underline; color: #fff; font-weight: bold;" href="https://www.transifex.com/flextype">Translator Team</a>
+             Join Flextype International <a target="_blank" style="text-decoration: underline; color: #fff; font-weight: bold;" href="https://crwd.in/flextype">Translator Team</a>
          </span>
       </div>
   <?php Themes::view('partials/navigation')->display(); ?>
