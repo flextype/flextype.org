@@ -1,3 +1,6 @@
+# v1.2.4, 2019-01-06
+* returned type for method createFromString() changed to array
+
 # v1.2.3, 2018-05-31
 * method toJson() can take new parameters with predefined variables: int $options = 0, int $depth = 512
 * method createFromJson() can take new parameters with predefined variables: bool $assoc = true, int $depth = 512 , int $options = 0

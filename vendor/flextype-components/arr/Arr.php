@@ -249,7 +249,7 @@ class Arr
      *
      * @return array
      */
-    public static function createFromString(string $str, string $delimiter = null, string $regEx = null) : string
+    public static function createFromString(string $str, string $delimiter = null, string $regEx = null) : array
     {
         if ($regEx) {
             preg_match_all($regEx, $str, $array);

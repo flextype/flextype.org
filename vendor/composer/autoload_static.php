@@ -4,9 +4,11 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit007bf9b7d72b626897f846475e0ead13
+class ComposerStaticInit2c482f31639330b67c53a53f8e339e70
 {
     public static $files = array (
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
     );
 
@@ -20,6 +22,23 @@ class ComposerStaticInit007bf9b7d72b626897f846475e0ead13
         array (
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\Yaml\\' => 23,
+        ),
+        'P' => 
+        array (
+            'Psr\\Http\\Message\\' => 17,
+        ),
+        'L' => 
+        array (
+            'League\\Glide\\' => 13,
+            'League\\Flysystem\\' => 17,
+        ),
+        'I' => 
+        array (
+            'Intervention\\Image\\' => 19,
+        ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Psr7\\' => 16,
         ),
         'F' => 
         array (
@@ -65,6 +84,26 @@ class ComposerStaticInit007bf9b7d72b626897f846475e0ead13
         'Symfony\\Component\\Yaml\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'League\\Glide\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/glide/src',
+        ),
+        'League\\Flysystem\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/flysystem/src',
+        ),
+        'Intervention\\Image\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
+        ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
         'Flextype\\Component\\View\\' => 
         array (
@@ -163,9 +202,9 @@ class ComposerStaticInit007bf9b7d72b626897f846475e0ead13
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit007bf9b7d72b626897f846475e0ead13::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit007bf9b7d72b626897f846475e0ead13::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit007bf9b7d72b626897f846475e0ead13::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2c482f31639330b67c53a53f8e339e70::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2c482f31639330b67c53a53f8e339e70::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit2c482f31639330b67c53a53f8e339e70::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -78,23 +78,23 @@
     },
     {
         "name": "flextype-components/arr",
-        "version": "v1.2.3",
-        "version_normalized": "1.2.3.0",
+        "version": "v1.2.4",
+        "version_normalized": "1.2.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/flextype-components/arr.git",
-            "reference": "d551e75da5c467fe12d35167691337afcf360ec1"
+            "reference": "56170a22ed4f4846e6b056e02cff46d193d012bb"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/flextype-components/arr/zipball/d551e75da5c467fe12d35167691337afcf360ec1",
-            "reference": "d551e75da5c467fe12d35167691337afcf360ec1",
+            "url": "https://api.github.com/repos/flextype-components/arr/zipball/56170a22ed4f4846e6b056e02cff46d193d012bb",
+            "reference": "56170a22ed4f4846e6b056e02cff46d193d012bb",
             "shasum": ""
         },
         "require": {
             "php": "^7.1.3"
         },
-        "time": "2018-05-31T13:56:04+00:00",
+        "time": "2019-01-06T17:54:08+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -767,23 +767,23 @@
     },
     {
         "name": "flextype-components/text",
-        "version": "v1.1.0",
-        "version_normalized": "1.1.0.0",
+        "version": "v1.1.2",
+        "version_normalized": "1.1.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/flextype-components/text.git",
-            "reference": "1ecfd376aa615670a337939625d24cbefb83c6d2"
+            "reference": "8d707eec2dd9025cb17ae3b0c3e995e67580ece3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/flextype-components/text/zipball/1ecfd376aa615670a337939625d24cbefb83c6d2",
-            "reference": "1ecfd376aa615670a337939625d24cbefb83c6d2",
+            "url": "https://api.github.com/repos/flextype-components/text/zipball/8d707eec2dd9025cb17ae3b0c3e995e67580ece3",
+            "reference": "8d707eec2dd9025cb17ae3b0c3e995e67580ece3",
             "shasum": ""
         },
         "require": {
             "php": "^7.1.3"
         },
-        "time": "2018-06-30T14:25:02+00:00",
+        "time": "2019-01-08T09:43:26+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -895,6 +895,390 @@
         ]
     },
     {
+        "name": "guzzlehttp/psr7",
+        "version": "1.5.2",
+        "version_normalized": "1.5.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/guzzle/psr7.git",
+            "reference": "9f83dded91781a01c63574e387eaa769be769115"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/guzzle/psr7/zipball/9f83dded91781a01c63574e387eaa769be769115",
+            "reference": "9f83dded91781a01c63574e387eaa769be769115",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0",
+            "psr/http-message": "~1.0",
+            "ralouphie/getallheaders": "^2.0.5"
+        },
+        "provide": {
+            "psr/http-message-implementation": "1.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.8"
+        },
+        "time": "2018-12-04T20:46:45+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.5-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "GuzzleHttp\\Psr7\\": "src/"
+            },
+            "files": [
+                "src/functions_include.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Michael Dowling",
+                "email": "mtdowling@gmail.com",
+                "homepage": "https://github.com/mtdowling"
+            },
+            {
+                "name": "Tobias Schultze",
+                "homepage": "https://github.com/Tobion"
+            }
+        ],
+        "description": "PSR-7 message implementation that also provides common utility methods",
+        "keywords": [
+            "http",
+            "message",
+            "psr-7",
+            "request",
+            "response",
+            "stream",
+            "uri",
+            "url"
+        ]
+    },
+    {
+        "name": "intervention/image",
+        "version": "2.4.2",
+        "version_normalized": "2.4.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Intervention/image.git",
+            "reference": "e82d274f786e3d4b866a59b173f42e716f0783eb"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Intervention/image/zipball/e82d274f786e3d4b866a59b173f42e716f0783eb",
+            "reference": "e82d274f786e3d4b866a59b173f42e716f0783eb",
+            "shasum": ""
+        },
+        "require": {
+            "ext-fileinfo": "*",
+            "guzzlehttp/psr7": "~1.1",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "~0.9.2",
+            "phpunit/phpunit": "^4.8 || ^5.7"
+        },
+        "suggest": {
+            "ext-gd": "to use GD library based image processing.",
+            "ext-imagick": "to use Imagick based image processing.",
+            "intervention/imagecache": "Caching extension for the Intervention Image library"
+        },
+        "time": "2018-05-29T14:19:03+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.4-dev"
+            },
+            "laravel": {
+                "providers": [
+                    "Intervention\\Image\\ImageServiceProvider"
+                ],
+                "aliases": {
+                    "Image": "Intervention\\Image\\Facades\\Image"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Intervention\\Image\\": "src/Intervention/Image"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Oliver Vogel",
+                "email": "oliver@olivervogel.com",
+                "homepage": "http://olivervogel.com/"
+            }
+        ],
+        "description": "Image handling and manipulation library with support for Laravel integration",
+        "homepage": "http://image.intervention.io/",
+        "keywords": [
+            "gd",
+            "image",
+            "imagick",
+            "laravel",
+            "thumbnail",
+            "watermark"
+        ]
+    },
+    {
+        "name": "league/flysystem",
+        "version": "1.0.49",
+        "version_normalized": "1.0.49.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/thephpleague/flysystem.git",
+            "reference": "a63cc83d8a931b271be45148fa39ba7156782ffd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a63cc83d8a931b271be45148fa39ba7156782ffd",
+            "reference": "a63cc83d8a931b271be45148fa39ba7156782ffd",
+            "shasum": ""
+        },
+        "require": {
+            "ext-fileinfo": "*",
+            "php": ">=5.5.9"
+        },
+        "conflict": {
+            "league/flysystem-sftp": "<1.0.6"
+        },
+        "require-dev": {
+            "phpspec/phpspec": "^3.4",
+            "phpunit/phpunit": "^5.7.10"
+        },
+        "suggest": {
+            "ext-fileinfo": "Required for MimeType",
+            "ext-ftp": "Allows you to use FTP server storage",
+            "ext-openssl": "Allows you to use FTPS server storage",
+            "league/flysystem-aws-s3-v2": "Allows you to use S3 storage with AWS SDK v2",
+            "league/flysystem-aws-s3-v3": "Allows you to use S3 storage with AWS SDK v3",
+            "league/flysystem-azure": "Allows you to use Windows Azure Blob storage",
+            "league/flysystem-cached-adapter": "Flysystem adapter decorator for metadata caching",
+            "league/flysystem-eventable-filesystem": "Allows you to use EventableFilesystem",
+            "league/flysystem-rackspace": "Allows you to use Rackspace Cloud Files",
+            "league/flysystem-sftp": "Allows you to use SFTP server storage via phpseclib",
+            "league/flysystem-webdav": "Allows you to use WebDAV storage",
+            "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter",
+            "spatie/flysystem-dropbox": "Allows you to use Dropbox storage",
+            "srmklive/flysystem-dropbox-v2": "Allows you to use Dropbox storage for PHP 5 applications"
+        },
+        "time": "2018-11-23T23:41:29+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "League\\Flysystem\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Frank de Jonge",
+                "email": "info@frenky.net"
+            }
+        ],
+        "description": "Filesystem abstraction: Many filesystems, one API.",
+        "keywords": [
+            "Cloud Files",
+            "WebDAV",
+            "abstraction",
+            "aws",
+            "cloud",
+            "copy.com",
+            "dropbox",
+            "file systems",
+            "files",
+            "filesystem",
+            "filesystems",
+            "ftp",
+            "rackspace",
+            "remote",
+            "s3",
+            "sftp",
+            "storage"
+        ]
+    },
+    {
+        "name": "league/glide",
+        "version": "1.4.0",
+        "version_normalized": "1.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/thephpleague/glide.git",
+            "reference": "72430fbdb446c754910f0bab97e1ef14baab1e80"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/thephpleague/glide/zipball/72430fbdb446c754910f0bab97e1ef14baab1e80",
+            "reference": "72430fbdb446c754910f0bab97e1ef14baab1e80",
+            "shasum": ""
+        },
+        "require": {
+            "intervention/image": "^2.4",
+            "league/flysystem": "^1.0",
+            "php": "^5.4 | ^7.0",
+            "psr/http-message": "^1.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "~0.9",
+            "phpunit/php-token-stream": "^1.4",
+            "phpunit/phpunit": "~4.4"
+        },
+        "time": "2018-12-22T17:56:55+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "League\\Glide\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jonathan Reinink",
+                "email": "jonathan@reinink.ca",
+                "homepage": "http://reinink.ca"
+            }
+        ],
+        "description": "Wonderfully easy on-demand image manipulation library with an HTTP based API.",
+        "homepage": "http://glide.thephpleague.com",
+        "keywords": [
+            "ImageMagick",
+            "editing",
+            "gd",
+            "image",
+            "imagick",
+            "league",
+            "manipulation",
+            "processing"
+        ]
+    },
+    {
+        "name": "psr/http-message",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-fig/http-message.git",
+            "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
+            "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2016-08-06T14:39:51+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Psr\\Http\\Message\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }
+        ],
+        "description": "Common interface for HTTP messages",
+        "homepage": "https://github.com/php-fig/http-message",
+        "keywords": [
+            "http",
+            "http-message",
+            "psr",
+            "psr-7",
+            "request",
+            "response"
+        ]
+    },
+    {
+        "name": "ralouphie/getallheaders",
+        "version": "2.0.5",
+        "version_normalized": "2.0.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ralouphie/getallheaders.git",
+            "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
+            "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~3.7.0",
+            "satooshi/php-coveralls": ">=1.0"
+        },
+        "time": "2016-02-11T07:05:27+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/getallheaders.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ralph Khattar",
+                "email": "ralph.khattar@gmail.com"
+            }
+        ],
+        "description": "A polyfill for getallheaders."
+    },
+    {
         "name": "symfony/polyfill-ctype",
         "version": "v1.10.0",
         "version_normalized": "1.10.0.0",
@@ -956,17 +1340,17 @@
     },
     {
         "name": "symfony/yaml",
-        "version": "v4.2.1",
-        "version_normalized": "4.2.1.0",
+        "version": "v4.2.2",
+        "version_normalized": "4.2.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/yaml.git",
-            "reference": "c41175c801e3edfda90f32e292619d10c27103d7"
+            "reference": "d0aa6c0ea484087927b49fd513383a7d36190ca6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/yaml/zipball/c41175c801e3edfda90f32e292619d10c27103d7",
-            "reference": "c41175c801e3edfda90f32e292619d10c27103d7",
+            "url": "https://api.github.com/repos/symfony/yaml/zipball/d0aa6c0ea484087927b49fd513383a7d36190ca6",
+            "reference": "d0aa6c0ea484087927b49fd513383a7d36190ca6",
             "shasum": ""
         },
         "require": {
@@ -982,7 +1366,7 @@
         "suggest": {
             "symfony/console": "For validating YAML files using the lint command"
         },
-        "time": "2018-11-11T19:52:12+00:00",
+        "time": "2019-01-03T09:07:35+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1017,31 +1401,32 @@
     },
     {
         "name": "thunderer/shortcode",
-        "version": "v0.6.5",
-        "version_normalized": "0.6.5.0",
+        "version": "v0.7.0",
+        "version_normalized": "0.7.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thunderer/Shortcode.git",
-            "reference": "997418e71f997de98a73a41cf102b3310372ac64"
+            "reference": "ccf16e8ebc8a8beab613356a76aca5f44a62cc75"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thunderer/Shortcode/zipball/997418e71f997de98a73a41cf102b3310372ac64",
-            "reference": "997418e71f997de98a73a41cf102b3310372ac64",
+            "url": "https://api.github.com/repos/thunderer/Shortcode/zipball/ccf16e8ebc8a8beab613356a76aca5f44a62cc75",
+            "reference": "ccf16e8ebc8a8beab613356a76aca5f44a62cc75",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3"
         },
         "require-dev": {
-            "phpunit/phpunit": "^4.1|^5.0"
+            "phpunit/phpunit": "^4.1|^5.0|^6.0",
+            "symfony/yaml": "^2.0|^3.0"
         },
         "suggest": {
             "ext-dom": "if you want to use XML serializer",
             "ext-json": "if you want to use JSON serializer",
             "symfony/yaml": "if you want to use YAML serializer"
         },
-        "time": "2017-01-08T00:22:37+00:00",
+        "time": "2018-12-09T23:07:21+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
