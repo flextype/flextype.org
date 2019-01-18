@@ -1,0 +1,3 @@
+files:
+  - source: /site/entries/
+    translation: /site/entries/%locale%
