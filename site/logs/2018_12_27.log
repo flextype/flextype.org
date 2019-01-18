@@ -1,1 +1,0 @@
-[27-Dec-2018 21:27:17] ErrorException: Notice: Undefined index: hashed_password in /Applications/MAMP/htdocs/flextype.org/site/plugins/admin/classes/UsersManager.php at line 89
