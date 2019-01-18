@@ -1,5 +1,5 @@
 files:
   - source: /site/entries/en/**/*.*
     ignore:
-      - /site/entries/en/blog/
+      - /site/entries/en/blog/**/*.*
     translation: /site/entries/%two_letters_code%/**/%original_file_name%
