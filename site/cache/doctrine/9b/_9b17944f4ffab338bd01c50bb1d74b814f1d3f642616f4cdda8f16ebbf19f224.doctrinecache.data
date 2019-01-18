@@ -1,0 +1,123 @@
+1548415604
+a:4:{i:0;a:8:{s:5:"title";s:12:"Theme Basics";s:11:"description";s:57:"Documentation for Flextype Developers and Flextype Users.";s:8:"template";s:5:"index";s:3:"url";s:71:"http://localhost:8888/flextype.org/en/documentation/themes/theme-basics";s:4:"slug";s:36:"en/documentation/themes/theme-basics";s:8:"base_url";s:48:"http://localhost:8888/flextype.org/site/entries/";s:4:"date";s:23:"March 20 2018 20:07:54.";s:7:"content";s:35:"
+
+This page is under construction.";}i:1;a:8:{s:5:"title";s:18:"Theme Installation";s:11:"description";s:57:"Documentation for Flextype Developers and Flextype Users.";s:8:"template";s:13:"documentation";s:3:"url";s:77:"http://localhost:8888/flextype.org/en/documentation/themes/theme-installation";s:4:"slug";s:42:"en/documentation/themes/theme-installation";s:8:"base_url";s:48:"http://localhost:8888/flextype.org/site/entries/";s:4:"date";s:26:"December 14 2018 14:15:01.";s:7:"content";s:341:"
+
+<h2 class="margin-top-hard">Steps to install themes</h2>
+<ol>
+<li>Unzip theme to the folder <code>/site/themes/</code></li>
+<li>Go to <code>/site/config/settings.yaml</code> and update <code>theme:</code> setting with your theme name.</li>
+<li>Save your changes.</li>
+</ol>
+<p>Example:</p>
+<pre><code>theme: theme-name</code></pre>";}i:2;a:8:{s:5:"title";s:26:"Template syntax guidelines";s:11:"description";s:57:"Documentation for Flextype Developers and Flextype Users.";s:8:"template";s:13:"documentation";s:3:"url";s:92:"http://localhost:8888/flextype.org/en/documentation/themes/theme-templates-syntax-guidelines";s:4:"slug";s:57:"en/documentation/themes/theme-templates-syntax-guidelines";s:8:"base_url";s:48:"http://localhost:8888/flextype.org/site/entries/";s:4:"date";s:26:"December 14 2018 14:34:12.";s:7:"content";s:1814:"
+
+<h2 class="margin-top-hard">Guidelines</h2>
+<ul>
+<li>Always use HTML with inline PHP. Never use blocks of PHP.</li>
+<li>Always escape potentially dangerous variables prior to outputting using the built-in escape functions.</li>
+<li>Always use the short echo syntax (<code>&lt;?=</code>) when outputting variables. For all other inline PHP code, use full the <code>&lt;?php</code> tag. Do not use <a href="http://us3.php.net/manual/en/ini.core.php#ini.short-open-tag" target="_blank">short tags</a>.</li>
+<li>Always use the <a href="http://php.net/manual/en/control-structures.alternative-syntax.php" target="_blank">alternative syntax for control structures</a>, which are designed to make templates more legible.</li>
+<li>Never use PHP curly brackets.</li>
+<li>Only ever have one statement in each PHP tag.</li>
+<li>Avoid using semicolons. They are not needed when there is only one statement per PHP tag.</li>
+<li>Never use the <code>for</code>, <code>while</code> or <code>switch</code> control structures. Instead use <code>if</code> and <code>foreach</code>.</li>
+</ul>
+
+<h2>Syntax example</h2>
+
+<p>Here is an example of a template that complies with the above syntax rules.</p>
+
+<pre><code>
+&lt;h1&gt;Welcome!&lt;/h1&gt;
+&lt;p&gt;Hello &lt;?= Html::toText($name) ?&gt;&lt;/p&gt;
+
+&lt;h2&gt;Friends&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;?php foreach($friends as $friend): ?&gt;
+        &lt;li&gt;
+            &lt;a href="/profile/&lt;?= Html::toText($friend['id']) ?&gt;"&gt;
+                &lt;?= Html::toText($friend['name']) ?&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;?php endforeach ?&gt;
+&lt;/ul&gt;
+
+&lt;?php if ($invitations): ?&gt;
+    &lt;h2&gt;Invitations&lt;/h2&gt;
+    &lt;p&gt;You have some friend invites!&lt;/p&gt;
+&lt;?php endif ?&gt;
+</code></pre>";}i:3;a:8:{s:5:"title";s:9:"Variables";s:11:"description";s:57:"Documentation for Flextype Developers and Flextype Users.";s:8:"template";s:5:"index";s:3:"url";s:74:"http://localhost:8888/flextype.org/en/documentation/themes/theme-variables";s:4:"slug";s:39:"en/documentation/themes/theme-variables";s:8:"base_url";s:48:"http://localhost:8888/flextype.org/site/entries/";s:4:"date";s:21:"May 08 2018 14:36:11.";s:7:"content";s:1580:"
+## Site Config{.margin-top-hard}
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Variable</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>$config.site.title</td>
+            <td>Site title</td>
+        </tr>
+        <tr>
+            <td>$config.site.description</td>
+            <td>Site description</td>
+        </tr>
+        <tr>
+            <td>$config.site.author.email</td>
+            <td>Site author email</td>
+        </tr>
+    </tbody>
+</table>
+
+## Page
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Variable</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>$title</td>
+            <td>Page title</td>
+        </tr>
+        <tr>
+            <td>$description</td>
+            <td>Page description</td>
+        </tr>
+        <tr>
+            <td>$keywords</td>
+            <td>Page keywords</td>
+        </tr>
+        <tr>
+            <td>$tags</td>
+            <td>Page tags</td>
+        </tr>
+        <tr>
+            <td>$url</td>
+            <td>Page url</td>
+        </tr>
+        <tr>
+            <td>$author.name</td>
+            <td>Page author name</td>
+        </tr>
+        <tr>
+            <td>$date</td>
+            <td>Page date</td>
+        </tr>
+        <tr>
+            <td>$robots</td>
+            <td>Page robots</td>
+        </tr>
+        <tr>
+            <td>$template</td>
+            <td>Page template</td>
+        </tr>
+    </tbody>
+</table>";}}

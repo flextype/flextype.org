@@ -1,0 +1,375 @@
+1548415604
+a:4:{i:0;a:8:{s:5:"title";s:6:"Blocks";s:11:"description";s:57:"Documentation for Flextype Developers and Flextype Users.";s:8:"template";s:13:"documentation";s:3:"url";s:66:"http://localhost:8888/flextype.org/en/documentation/content/blocks";s:4:"slug";s:31:"en/documentation/content/blocks";s:8:"base_url";s:48:"http://localhost:8888/flextype.org/site/entries/";s:4:"date";s:21:"May 29 2018 15:58:45.";s:7:"content";s:480:"
+Flextype allows you to create custom content blocks marked up using Markdown and regular HTML and saved with `.md` extension in the folder `/site/blocks/`  
+
+## Getting blocks inside pages
+Flextype allows you easily get any content blocks with help of shortcodes inside pages and inside page headers variables, here is example:   
+
+```
+
+---
+
+title: My Page
+description: My page description
+my-block: "[block name='my-block']"
+
+---
+
+My page content.  
+
+[block name='my-block']
+```";}i:1;a:8:{s:5:"title";s:7:"Entries";s:11:"description";s:57:"Documentation for Flextype Developers and Flextype Users.";s:8:"template";s:13:"documentation";s:3:"url";s:67:"http://localhost:8888/flextype.org/en/documentation/content/entries";s:4:"slug";s:32:"en/documentation/content/entries";s:8:"base_url";s:48:"http://localhost:8888/flextype.org/site/entries/";s:4:"date";s:25:"January 14 2019 13:34:11.";s:7:"content";s:1769:"
+<p>Entries are the fundamental building-blocks of your site. Each page in Flextype should contains <strong>page header</strong> block in YAML format at the top of the file and <strong>page content</strong> marked up using HTML + Shortcodes at the bottom of the file.</p>
+<p>Here is a basic example (site/pages/my-page/page.html):</p>
+<pre><code class="text hljs">---
+title: My Page
+description: My page description
+
+---
+
+My page content.</code></pre>
+<p>Between these triple-dashed lines, you can set predefined page header variables or even create custom ones of your own. These variables will then be available to you to access in site templates.  </p>
+<h3>Entries and Urls structure in Flextype:</h3>
+<table class="table"><thead><tr><th>Physical Location</th>
+<th>URL</th>
+</tr></thead><tbody><tr><td>site/pages/home/page.md</td>
+<td>/</td>
+</tr><tr><td>site/pages/blog/my-post/page.md</td>
+<td>/blog/my-post</td>
+</tr><tr><td>site/pages/a/very/long/url/page.md</td>
+<td>/a/very/long/url</td>
+</tr></tbody></table>
+<h3>Predefined Page Header Variables</h3>
+<p>Here is a list of predefined page header variables with example values:  </p>
+<pre><code>title: Welcome title
+description: Some welcome description here
+keywords: key, words
+visibility: draft (or or hidden or empty for published pages)
+author:
+&nbsp;&nbsp;name: Sergey Romanenko
+&nbsp;&nbsp;email: awilum@msn.com
+&nbsp;&nbsp;url: https://github.com/Awilum
+date: 2015-10-18 16:00
+robots: noindex, nofollow
+template: default (allows you to use different templates in your theme)  </code></pre>
+<h3>Custom Page Header Variables</h3>
+<p>You can create your own custom page header variables using any valid YAML syntax.</p>
+<p>Example:   </p>
+<pre><code>author:
+&nbsp;&nbsp;twitter: "@getflextype"</code></pre>";}i:2;a:8:{s:5:"title";s:8:"Markdown";s:11:"description";s:57:"Documentation for Flextype Developers and Flextype Users.";s:8:"template";s:13:"documentation";s:3:"url";s:68:"http://localhost:8888/flextype.org/en/documentation/content/markdown";s:4:"slug";s:33:"en/documentation/content/markdown";s:8:"base_url";s:48:"http://localhost:8888/flextype.org/site/entries/";s:4:"date";s:21:"May 22 2018 23:42:52.";s:7:"content";s:6981:"
+
+Markdown is a way to style text on the web. You control the display of the document; formatting words as bold or italic, adding images. etc... with specific symbols like ```#``` or ```*```  
+
+Markdown benefits:  
+
+- Human readable and easy to learn.  
+- Produces valid XHTML output.  
+- Platform independent. Use any text editor or Markdown application you like.  
+- Markdown best choice for flat file CMS  
+
+##Headings
+
+Headings from ```h1``` through ```h6``` are constructed with a ```#``` for each level:  
+
+```
+# h1 Heading
+## h2 Heading
+### h3 Heading
+#### h4 Heading
+##### h5 Heading
+###### h6 Heading
+```
+
+Renders to:  
+# h1 Heading
+## h2 Heading
+### h3 Heading
+#### h4 Heading
+##### h5 Heading
+###### h6 Heading
+
+HTML:  
+```  
+<h1>h1 Heading</h1>
+<h2>h2 Heading</h2>
+<h3>h3 Heading</h3>
+<h4>h4 Heading</h4>
+<h5>h5 Heading</h5>
+<h6>h6 Heading</h6>
+```  
+
+
+## Comments
+Comments should be HTML compatible
+```  
+<!--
+This is a comment
+-->
+```
+Comment below should NOT be seen.
+
+
+## Inline HTML
+If you need a certain HTML tags you can simply use HTML  
+```  
+Paragraph in Markdown.  
+
+<p class="class">Some text here</p>  
+
+Paragraph in Markdown.  
+```
+
+Renders to:   
+
+Paragraph in Markdown.  
+
+<p class="class">Some text here</p>  
+
+Paragraph in Markdown.  
+
+HTML:  
+```  
+<p>Paragraph in Markdown.</p>  
+<p class="class">Some text here</p>  
+<p>Paragraph in Markdown.</p>  
+```
+
+
+## Emphasis
+
+```
+*This text will be italic*
+_This will also be italic_
+
+**This text will be bold**
+__This will also be bold__
+
+_You **can** combine them_
+
+~~Strike through this text.~~
+```
+
+Renders to:  
+
+*This text will be italic*  
+_This will also be italic_  
+**This text will be bold**  
+__This will also be bold__  
+_You **can** combine them_     
+~~Strike through this text.~~  
+
+HTML:  
+```  
+<em>This text will be italic</em>
+<em>This will also be italic</em>
+<strong>This text will be bold</strong>
+<strong>This will also be bold</strong>
+<em>You <strong>can</strong> combine them</em>
+<del>Strike through this text.</del>
+```
+
+## Blockquotes
+
+```
+> Coffee. The finest organic suspension ever devised… I beat the Borg with it. - Captain Janeway
+```
+Renders to:  
+
+> Coffee. The finest organic suspension ever devised… I beat the Borg with it. - Captain Janeway
+
+HTML:  
+```  
+<blockquote>
+    <p>Coffee. The finest organic suspension ever devised… I beat the Borg with it. - Captain Janeway</p>
+</blockquote>
+```
+
+## Lists
+
+### Unordered
+
+```
++ Lorem ipsum dolor sit amet
++ Consectetur adipiscing elit
++ Integer molestie lorem at massa
++ Facilisis in pretium nisl aliquet
++ Nulla volutpat aliquam velit
+  - Phasellus iaculis neque
+  - Purus sodales ultricies
+  - Vestibulum laoreet porttitor sem
+  - Ac tristique libero volutpat at
++ Faucibus porta lacus fringilla vel
++ Aenean sit amet erat nunc
++ Eget porttitor lorem
+```
+
+Renders to:  
++ Lorem ipsum dolor sit amet  
++ Consectetur adipiscing elit  
++ Integer molestie lorem at massa  
++ Facilisis in pretium nisl aliquet  
++ Nulla volutpat aliquam velit  
+  - Phasellus iaculis neque  
+  - Purus sodales ultricies  
+  - Vestibulum laoreet porttitor sem  
+  - Ac tristique libero volutpat at    
++ Faucibus porta lacus fringilla vel  
++ Aenean sit amet erat nunc  
++ Eget porttitor lorem  
+
+HTML:  
+```  
+<ul>
+    <li>Lorem ipsum dolor sit amet</li>
+    <li>Consectetur adipiscing elit</li>
+    <li>Integer molestie lorem at massa</li>
+    <li>Facilisis in pretium nisl aliquet</li>
+    <li>Nulla volutpat aliquam velit  
+        <ul>
+            <li>Phasellus iaculis neque</li>
+            <li>Purus sodales ultricies</li>
+            <li>Vestibulum laoreet porttitor sem</li>
+            <li>Ac tristique libero volutpat at</li>
+        </ul>
+    </li>
+    <li>Faucibus porta lacus fringilla vel</li>
+    <li>Aenean sit amet erat nunc</li>
+    <li>Eget porttitor lorem</li>
+</ul>
+```  
+
+###Ordered
+
+```
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+4. Facilisis in pretium nisl aliquet
+5. Nulla volutpat aliquam velit
+6. Faucibus porta lacus fringilla vel
+7. Aenean sit amet erat nunc
+8. Eget porttitor lorem
+```
+
+Renders to:  
+1. Lorem ipsum dolor sit amet  
+2. Consectetur adipiscing elit  
+3. Integer molestie lorem at massa  
+4. Facilisis in pretium nisl aliquet  
+5. Nulla volutpat aliquam velit  
+6. Faucibus porta lacus fringilla vel  
+7. Aenean sit amet erat nunc  
+8. Eget porttitor lorem  
+
+HTML:  
+```  
+<ol>
+    <li>Lorem ipsum dolor sit amet</li>
+    <li>Consectetur adipiscing elit</li>
+    <li>Integer molestie lorem at massa</li>
+    <li>Facilisis in pretium nisl aliquet</li>
+    <li>Nulla volutpat aliquam velit</li>
+    <li>Faucibus porta lacus fringilla vel</li>
+    <li>Aenean sit amet erat nunc</li>
+    <li>Eget porttitor lorem</li>
+</ol>
+```
+
+## Tables
+
+```
+| Option | Description |
+| ------ | ----------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+```
+
+Renders to:   
+
+| Option | Description |  
+| ------ | ----------- |  
+| data   | path to data files to supply the data that will be passed into templates. |  
+| engine | engine to be used for processing templates. Handlebars is the default. |   
+| ext    | extension to be used for dest files. |
+<br>
+HTML:  
+```  
+<table>
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>data</td>
+            <td>path to data files to supply the data that will be passed into templates.</td>
+        </tr>
+        <tr>
+            <td>engine</td>
+            <td>engine to be used for processing templates. Handlebars is the default.</td>
+        </tr>
+        <tr>
+            <td>ext</td>
+            <td>extension to be used for dest files.</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+## Links
+
+```
+[Flextype site](http://Flextype.org)
+```
+
+Renders to:  
+
+[Flextype site](http://Flextype.org)
+
+HTML:  
+```  
+<a href="http://Flextype.org">Flextype site</a>
+```
+
+## Images
+
+```
+![filmtocat](https://octodex.github.com/images/filmtocat.png)
+```
+
+Renders to:  
+
+![filmtocat](https://octodex.github.com/images/filmtocat.png)
+
+HTML:  
+```  
+<img src="https://octodex.github.com/images/filmtocat.png" alt="filmtocat" />
+```
+
+```
+![filmtocat](https://octodex.github.com/images/filmtocat.png){.img-responsive}
+```
+
+Renders to:
+
+![filmtocat](https://octodex.github.com/images/filmtocat.png){.img-responsive}
+
+HTML:  
+```  
+<img src="https://octodex.github.com/images/filmtocat.png" alt="filmtocat" class="img-responsive" />
+```";}i:3;a:8:{s:5:"title";s:5:"Media";s:11:"description";s:57:"Documentation for Flextype Developers and Flextype Users.";s:8:"template";s:13:"documentation";s:3:"url";s:65:"http://localhost:8888/flextype.org/en/documentation/content/media";s:4:"slug";s:30:"en/documentation/content/media";s:8:"base_url";s:48:"http://localhost:8888/flextype.org/site/entries/";s:4:"date";s:26:"December 28 2018 19:02:55.";s:7:"content";s:580:"
+<p>
+    Entries can have any number and kind of images, videos, documents or other files.<br>
+    Those files are being stored directly in the entry folder.
+</p>
+<h3>Getting list of images for entry in your template</h3>
+<pre><code class="php hljs">&lt;?php $images = Filesystem::getFilesList(PATH['entries'] . '/portfolio', 'jpg') ?&gt;</code></pre>
+
+<h3>Displaying images</h3>
+<pre><code class="html hljs">&lt;?php foreach($images as $image): ?>
+    &lt;img src="&lt;?= $entry['base_url'] . '/portfolio/' . basename($image); ?&gt;" /&gt;
+&lt;?php endforeach ?&gt;
+</code></pre>";}}

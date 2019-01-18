@@ -1,0 +1,7 @@
+1548415604
+a:1:{i:0;a:8:{s:5:"title";s:20:"Plugins Installation";s:11:"description";s:57:"Documentation for Flextype Developers and Flextype Users.";s:8:"template";s:13:"documentation";s:3:"url";s:80:"http://localhost:8888/flextype.org/en/documentation/plugins/plugins-installation";s:4:"slug";s:45:"en/documentation/plugins/plugins-installation";s:8:"base_url";s:48:"http://localhost:8888/flextype.org/site/entries/";s:4:"date";s:26:"November 20 2018 10:06:28.";s:7:"content";s:138:"
+
+<h2 class="margin-top-hard">Steps to install plugins</h2>
+<ul>
+<li>Unzip plugin to the folder <code>/site/plugins/</code></li>
+</ul>";}}

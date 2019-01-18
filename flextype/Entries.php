@@ -102,7 +102,7 @@ class Entries
         // Event: The entry has been not loaded.
         Event::dispatch('onCurrentEntryBeforeLoaded');
 
-        // Set current requested entry data to global $entry array
+
         Entries::$entry = Entries::getEntry(Http::getUriString());
 
         // Event: The entry has been fully processed and not sent to the display.
@@ -131,14 +131,28 @@ class Entries
     /**
      * Update current entry
      *
-     * Entries::updateCurrentPage('title', 'New entry title');
+     * Entries::updateCurrentEntry(['title' => "New Title"]);
+     *
+     * @access  public
+     * @param   string $data  Data
+     * @return  void
+     */
+    public static function updateCurrentEntry(array $data) : void
+    {
+        Entries::$entry = $data;
+    }
+
+    /**
+     * Update current entry field
+     *
+     * Entries::updateCurrentEntryField('title', "New Title");
      *
      * @access  public
      * @param   string $path  Array path
      * @param   mixed  $value Value to set
      * @return  void
      */
-    public static function updateCurrentEntry(string $path, $value) : void
+    public static function updateCurrentEntryField(string $path, $value) : void
     {
         Arr::set(Entries::$entry, $path, $value);
     }

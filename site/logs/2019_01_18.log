@@ -1,0 +1,19 @@
+[18-Jan-2019 11:50:07] ParseError: syntax error, unexpected 'foreach' (T_FOREACH) in /Applications/MAMP/htdocs/flextype.org/flextype/Entries.php at line 107
+[18-Jan-2019 12:07:12] ErrorException: Notice: Undefined index: title in /Applications/MAMP/htdocs/flextype.org/site/themes/default/views/partials/head.php at line 36
+[18-Jan-2019 12:09:18] ErrorException: Notice: Undefined index: title in /Applications/MAMP/htdocs/flextype.org/site/themes/default/views/partials/head.php at line 36
+[18-Jan-2019 12:09:18] ErrorException: Notice: Undefined index: title in /Applications/MAMP/htdocs/flextype.org/site/themes/default/views/partials/head.php at line 36
+[18-Jan-2019 12:14:43] ErrorException: Warning: strpos(): Empty needle in /Applications/MAMP/htdocs/flextype.org/flextype/Entries.php at line 111
+[18-Jan-2019 12:14:44] ErrorException: Warning: strpos(): Empty needle in /Applications/MAMP/htdocs/flextype.org/flextype/Entries.php at line 111
+[18-Jan-2019 12:29:04] ParseError: syntax error, unexpected '$current_locale' (T_VARIABLE) in /Applications/MAMP/htdocs/flextype.org/flextype/Entries.php at line 109
+[18-Jan-2019 12:32:36] ErrorException: Notice: Undefined index: title in /Applications/MAMP/htdocs/flextype.org/site/themes/default/views/partials/head.php at line 36
+[18-Jan-2019 12:33:12] ErrorException: Notice: Undefined index: title in /Applications/MAMP/htdocs/flextype.org/site/themes/default/views/partials/head.php at line 36
+[18-Jan-2019 12:33:16] ErrorException: Notice: Undefined index: title in /Applications/MAMP/htdocs/flextype.org/site/themes/default/views/partials/head.php at line 36
+[18-Jan-2019 12:36:37] TypeError: Argument 1 passed to Flextype\Entries::updateCurrentEntry() must be of the type string, array given, called in /Applications/MAMP/htdocs/flextype.org/flextype/Entries.php on line 110 in /Applications/MAMP/htdocs/flextype.org/flextype/Entries.php at line 155
+[18-Jan-2019 12:36:52] TypeError: Argument 1 passed to Flextype\Entries::updateCurrentEntry() must be of the type string, array given, called in /Applications/MAMP/htdocs/flextype.org/flextype/Entries.php on line 110 in /Applications/MAMP/htdocs/flextype.org/flextype/Entries.php at line 155
+[18-Jan-2019 12:37:08] ErrorException: Notice: Undefined variable: path in /Applications/MAMP/htdocs/flextype.org/flextype/Entries.php at line 157
+[18-Jan-2019 12:46:32] ErrorException: Notice: Undefined variable: multi_language_entries in /Applications/MAMP/htdocs/flextype.org/flextype/Entries.php at line 106
+[18-Jan-2019 12:56:33] ErrorException: Notice: Array to string conversion in /Applications/MAMP/htdocs/flextype.org/flextype/Entries.php at line 118
+[18-Jan-2019 12:56:45] ErrorException: Notice: Array to string conversion in /Applications/MAMP/htdocs/flextype.org/flextype/Entries.php at line 120
+[18-Jan-2019 12:57:14] ErrorException: Notice: Array to string conversion in /Applications/MAMP/htdocs/flextype.org/flextype/Entries.php at line 120
+[18-Jan-2019 13:03:08] ErrorException: Notice: Undefined index: title in /Applications/MAMP/htdocs/flextype.org/site/themes/default/views/partials/head.php at line 36
+[18-Jan-2019 13:03:13] ErrorException: Notice: Undefined index: title in /Applications/MAMP/htdocs/flextype.org/site/themes/default/views/partials/head.php at line 36

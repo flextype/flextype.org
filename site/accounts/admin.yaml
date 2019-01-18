@@ -1,0 +1,5 @@
+username: admin
+hashed_password: $2y$10$3r8IfHPvwJ3IR8Ds.X5oZewX4/MoD7YVXTi8NIDlmzr7ywcD.av0y
+email: admin@admin.com
+role: admin
+state: enabled

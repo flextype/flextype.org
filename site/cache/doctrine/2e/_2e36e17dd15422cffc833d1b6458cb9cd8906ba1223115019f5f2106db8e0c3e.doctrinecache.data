@@ -1,0 +1,266 @@
+1548415604
+a:6:{i:0;a:8:{s:5:"title";s:13:"Configuration";s:11:"description";s:57:"Documentation for Flextype Developers and Flextype Users.";s:8:"template";s:13:"documentation";s:3:"url";s:72:"http://localhost:8888/flextype.org/en/documentation/basics/configuration";s:4:"slug";s:37:"en/documentation/basics/configuration";s:8:"base_url";s:48:"http://localhost:8888/flextype.org/site/entries/";s:4:"date";s:26:"December 28 2018 18:53:42.";s:7:"content";s:2519:"
+
+<p>Flextype allows you to configure your site in any way you can dream up, and it’s thanks to the powerful and flexible configuration options that make this possible. Configuration files are written in YAML syntax with a .yaml file extension. YAML is a data serialisation language designed to be directly writable and readable by humans. You can check out this <a href="https://learnxinyminutes.com/docs/yaml/">YAML help page</a> to get a complete understanding of the syntax available.</p>
+
+<p>You can update and create site configuration by editing file <code>/site/config/settings.yaml</code></p>
+
+<pre><code class="yaml"># The title of the website
+title: "Site title here"
+
+# The description of the website
+description: "Site description here"
+
+# The name and email address of the website author
+author:
+  email: ""
+  name: ""
+
+# Set the timezone to be used on the website.
+# For a list of valid timezone settings, see:
+# http://php.net/manual/en/timezones.php
+timezone: UTC
+
+# Charset
+#
+# Set internal character encoding.
+#
+# Currently the following names are supported:
+# http://php.net/manual/ru/function.mb-regex-encoding.php#121645
+charset: UTF-8
+
+# Valid date format
+# see: http://php.net/manual/ru/function.date.php
+date_format: "F d Y H:i:s."
+
+# The theme to use.
+#
+# Don't edit the provided theme templates directly, because they get updated
+# in next releases. If you wish to modify a default theme, copy its folder, and
+# change the name here accordingly.
+theme: simple
+
+# The locale that'll be used by the Flextype.
+locale: "en"
+
+# The default page to use for the homepage.
+entries:
+  main: home
+  error404:
+    title: 'Error 404'
+    description: 'We''re sorry but the page you are looking for doesn''t appear to exist!'
+    content: 'We''re sorry but the page you are looking for doesn''t appear to exist!'
+    template: default
+    
+# Display errors
+errors:
+  display: true
+
+# Cache
+# available drivers: auto (will get one from installed cache drivers), apcu,
+# apc, wincache, xcache, memcache, memcached, redis, file.
+cache:
+  enabled: true
+  prefix: Flextype
+  driver: auto
+  lifetime: 604800
+
+# Define the file types (extensions to be exact) that are acceptable for upload.
+accept_file_types: [ gif, jpg, jpeg, png, ico, zip, tgz, txt, md, doc, docx, pdf, epub, xls, xlsx, ppt, pptx, mp3, ogg, wav, m4a, mp4, m4v, ogv, wmv, avi, webm, svg]
+</code></pre>
+
+Also you can update site setting in Admin Panel on the Settings page.";}i:1;a:8:{s:5:"title";s:12:"Getting Help";s:11:"description";s:57:"Documentation for Flextype Developers and Flextype Users.";s:8:"template";s:13:"documentation";s:3:"url";s:71:"http://localhost:8888/flextype.org/en/documentation/basics/getting-help";s:4:"slug";s:36:"en/documentation/basics/getting-help";s:8:"base_url";s:48:"http://localhost:8888/flextype.org/site/entries/";s:4:"date";s:26:"November 19 2018 12:16:23.";s:7:"content";s:1808:"
+
+<p>There are several channels to reach the developers and the Flextype community to get direct assistance.</p>
+<p>If you can't find the right answers to your questions, you can turn to one of our other sources to get help and discuss your issues, but also to receive news and update notifications.</p>
+<h2><i class="fab fa-discord"></i> Discord</h2>
+<p>
+    Got a question about setting up or using Flextype? We'll do our best to help you out.
+    Also here you may start discussions about core, plugin and themes development.
+    <br><br>
+    Link: <a href="https://discord.gg/CCKPKVG">https://discord.gg/CCKPKVG</a>
+</p>
+
+<h2><i class="fab fa-github"></i> Github</h2>
+<p>
+    If you want to report a bug or contribute your ideas, you can use the <a href="https://github.com/flextype/flextype/issues">Flextype GitHub Issues tracker</a>.
+    <br><br>
+    Link: <a href="https://github.com/flextype">https://github.com/flextype</a>
+</p>
+
+<h2><i class="fab fa-vk"></i> Vkontakte</h2>
+<p>
+    Russian Flextype Community!
+    <br><br>
+    Link: <a href="https://vk.com/flextype">https://vk.com/flextype</a>
+</p>
+
+<h2><i class="fab fa-twitter"></i> Twitter</h2>
+<p>
+    Follow <a href="https://twitter.com/getflextype">Flextype on Twitter</a> to get real-time news regarding the development and all events we are attending.
+    <br><br>
+    Link: <a href="https://twitter.com/getflextype">https://twitter.com/getflextype</a>
+</p>
+
+<h2><i class="fas fa-rss-square"></i> Blog</h2>
+<p>
+    Read major project news and articles for developers on the <a href="http://flextype.org/blog">flextype Blog</a>. Stay up to date with new releases and join the discussion in the comments section.
+    <br><br>
+    Link: <a href="http://flextype.org/blog">http://flextype.org/blog</a>
+</p>";}i:2;a:8:{s:5:"title";s:12:"Installation";s:11:"description";s:57:"Documentation for Flextype Developers and Flextype Users.";s:8:"template";s:13:"documentation";s:3:"url";s:71:"http://localhost:8888/flextype.org/en/documentation/basics/installation";s:4:"slug";s:36:"en/documentation/basics/installation";s:8:"base_url";s:48:"http://localhost:8888/flextype.org/site/entries/";s:4:"date";s:25:"January 15 2019 23:01:25.";s:7:"content";s:2291:"
+
+<h2 class="margin-top-hard">Flextype Installation</h2>
+<h3>Using (S)FTP</h3>
+<p><a href="http://flextype.org/download">Download the latest version.</a>  </p>
+<p>Unzip the contents to a new folder on your local computer, and upload to your webhost using the (S)FTP client of your choice. After you’ve done this, be sure to chmod the following directories (with containing files) to <code>755</code> (or <code>777</code>), so they are readable and writable by Flextype:  </p>
+<ul>
+<li><code>site/</code></li>
+</ul>
+<h3>Using Composer</h3>
+<p>You can easily install Flextype with Composer.</p>
+<pre><code>composer create-project flextype/flextype</code></pre>
+<p>Also you may need to install vendor libs for Default Theme</p>
+<pre><code>composer install
+cd site/themes/default
+npm install
+gulp
+</code></pre>
+<h3>Using command-line</h3>
+<p>If you have command-line access, you can easily install Flextype by executing a few commands. First, create the directory where you want to install Flextype, if it doesn’t already exist. Enter the directory, and execute the following commands:  </p>
+<pre><code>wget https://github.com/flextype/flextype/releases/download/v0.8.3/flextype-0.8.3.zip
+unzip flextype-0.8.3.zip
+chmod -R 0777 site/</code></pre>
+
+<h3>Installation issues</h3>
+<h5>Broken subpages</h5>
+<p>Your homepage is working, but subpages won't open or lead to a server error?</p>
+<ol>
+    <li>Make sure that the .htaccess file is present in your Flextype folder.</li>
+    <li>Check if mod_rewrite is enabled on your server.</li>
+    <li>Please try setting the RewriteBase in the .htaccess file:</li>
+</ol>
+<pre><code>RewriteBase /</code></pre>
+<p>If you run Flextype in a subfolder, make sure to set the RewriteBase according to the name of your subfolder:</p>
+<pre><code>RewriteBase /my-subfolder/</code></pre>
+
+<br>
+
+<h2>Themes Installation</h2>
+<ol>
+<li>Unzip theme to the folder <code>/site/themes/</code></li>
+<li>Go to <code>/site/config/settings.yaml</code> and update <code>theme:</code> setting with your theme name.</li>
+<li>Save your changes.</li>
+</ol>
+<p>Example:</p>
+<pre><code>theme: theme-name</code></pre>
+
+<br>
+
+<h2>Plugins Installation</h2>
+<ol>
+<li>Unzip plugin to the folder <code>/site/plugins/</code></li>
+</ol>";}i:3;a:8:{s:5:"title";s:34:"Moving Flextype or Migrating Hosts";s:11:"description";s:57:"Documentation for Flextype Developers and Flextype Users.";s:8:"template";s:5:"index";s:3:"url";s:68:"http://localhost:8888/flextype.org/en/documentation/basics/migrating";s:4:"slug";s:33:"en/documentation/basics/migrating";s:8:"base_url";s:48:"http://localhost:8888/flextype.org/site/entries/";s:4:"date";s:23:"March 20 2018 20:07:54.";s:7:"content";s:75:"
+
+Edit main `.htaccess` file and correct the `RewriteBase` rule if needed.";}i:4;a:8:{s:5:"title";s:12:"Requirements";s:11:"description";s:57:"Documentation for Flextype Developers and Flextype Users.";s:8:"template";s:13:"documentation";s:3:"url";s:71:"http://localhost:8888/flextype.org/en/documentation/basics/requirements";s:4:"slug";s:36:"en/documentation/basics/requirements";s:8:"base_url";s:48:"http://localhost:8888/flextype.org/site/entries/";s:4:"date";s:26:"December 14 2018 22:19:21.";s:7:"content";s:1057:"
+
+<h3>System requirements</h3>
+<p>Make sure your server meets the following requirements.</p>
+<ul>
+<li>Webserver (Apache with <a href="http://httpd.apache.org/docs/current/mod/mod_rewrite.html">Mod Rewrite</a>)  </li>
+<li>PHP 7.1.3 or higher</li>
+</ul>
+
+<h3>PHP extensions</h3>
+<p>Flextype needs the following PHP extensions to be enabled:</p>
+<ul>
+    <li><a href="http://php.net/manual/en/book.mbstring.php">Multibyte String</a></li>
+    <li><a href="http://php.net/manual/en/book.spl.php">SPL</a></li>
+</ul>
+<p>Although it is optional, we strongly recommend enabling the following PHP extensions: <br> APC, APCu, XCache, Memcached, or Redis for better performance.</p>
+
+<h3>Browser requirements</h3>
+<p>The admin panel of Flextype is compatible with:</p>
+<h5>Windows and macOS</h5>
+<ul>
+    <li>Chrome 29 or later</li>
+    <li>Firefox 28 or later</li>
+    <li>Safari 9.0 or later</li>
+    <li>Microsoft Edge</li>
+</ul>
+<h5>Mobile</h5>
+<ul>
+    <li>iOS: Safari 9.1 or later</li>
+    <li>Android: Chrome 4.4 or later</li>
+</ul>";}i:5;a:8:{s:5:"title";s:31:"Upgrading to the Latest Version";s:11:"description";s:57:"Documentation for Flextype Developers and Flextype Users.";s:8:"template";s:5:"index";s:3:"url";s:66:"http://localhost:8888/flextype.org/en/documentation/basics/upgrade";s:4:"slug";s:31:"en/documentation/basics/upgrade";s:8:"base_url";s:48:"http://localhost:8888/flextype.org/site/entries/";s:4:"date";s:23:"March 20 2018 20:07:54.";s:7:"content";s:4299:"
+
+### Update from **Flextype 2.0.3** to **Flextype 2.0.4**{.margin-top-hard}
+1. **Backup your Site First!**
+2. Download [Flextype 2.0.4](https://github.com/Flextype/Flextype/releases/download/v2.0.4/Flextype-2.0.4.zip)
+3. Unzip the contents to a new folder on your local computer.
+4. Upload `/Flextype/`, `/vendor/` with an (s)FTP client to your host.
+
+### Update from **Flextype 2.0.2** to **Flextype 2.0.3**
+1. **Backup your Site First!**
+2. Download [Flextype 2.0.3](https://github.com/Flextype/Flextype/releases/download/v2.0.3/Flextype-2.0.3.zip)
+3. Unzip the contents to a new folder on your local computer.
+4. Upload `/Flextype/`, `/vendor/`, `/.gitignore`, `/composer.json`, `/LICENSE.md`, `/index.php` with an (s)FTP client to your host.
+
+### Update from **Flextype 2.0.1** to **Flextype 2.0.2**
+1. **Backup your Site First!**
+2. Download [Flextype 2.0.2](https://github.com/Flextype/Flextype/releases/download/v2.0.2/Flextype-2.0.2.zip)
+3. Unzip the contents to a new folder on your local computer.
+4. Upload `/themes/default/`, `/Flextype/`, `/vendor/doctrine/`, `/.gitignore`, `/composer.json` with an (s)FTP client to your host.
+
+### Update from **Flextype 2.0.0** to **Flextype 2.0.1**
+1. **Backup your Site First!**
+2. Download [Flextype 2.0.1](https://github.com/Flextype/Flextype/releases/download/v2.0.1/Flextype-2.0.1.zip)
+3. Unzip the contents to a new folder on your local computer.
+4. Upload `/Flextype/boot/defines.php`, `/robots.txt`, `/composer.json` with an (s)FTP client to your host.
+
+### Update from **Flextype 1.1.4** to **Flextype 2.0.0**
+1. **Backup your Site First!**
+2. Download [Flextype 2.0.0](https://github.com/Flextype/Flextype/releases/download/v2.0.0/Flextype-2.0.0.zip)
+3. Unzip the contents to a new folder on your local computer.
+4. Upload `/vendors/`, `/Flextype/`, `/themes/default/`, `/index.php`, `/config/system.yml` with an FTP client to your host.
+5. Remove `/libraries/` from your host.
+
+### Update from **Flextype 1.1.3** to **Flextype 1.1.4**
+1. **Backup your Site First!**    
+2. Download [Flextype 1.1.4](https://github.com/Flextype/Flextype/releases/download/v1.1.4/Flextype-1.1.4.zip)    
+3. Unzip the contents to a new folder on your local computer.  
+4. Upload `/libraries/Flextype/`, `/libraries/Force/` with an FTP client to your host.
+
+### Update from **Flextype 1.1.2** to **Flextype 1.1.3**
+1. **Backup your Site First!**    
+2. Download [Flextype 1.1.3](https://github.com/Flextype/Flextype/releases/download/v1.1.3/Flextype-1.1.3.zip)    
+3. Unzip the contents to a new folder on your local computer.  
+4. Upload `/libraries/Flextype/`, with an FTP client to your host.
+5. Update in .htaccess this   
+`<FilesMatch "(^#.*#|\.(md|txt|html|tpl)|~)$">`   
+to this:  
+`<FilesMatch "(^#.*#|\.(md|txt|html|tpl|yml|yaml)|~)$">`  
+
+
+### Update from **Flextype 1.1.1** to **Flextype 1.1.2**  
+1. **Backup your Site First!**    
+2. Download [Flextype 1.1.2](https://github.com/Flextype/Flextype/releases/download/v1.1.2/Flextype-1.1.2.zip)    
+3. Unzip the contents to a new folder on your local computer.  
+4. Upload `/libraries/`, with an FTP client to your host.  
+
+
+### Update from **Flextype 1.1.0** to **Flextype 1.1.1**  
+1. **Backup your Site First!**    
+2. Download [Flextype 1.1.1](https://github.com/Flextype/Flextype/releases/download/v1.1.1/Flextype-1.1.1.zip)    
+3. Unzip the contents to a new folder on your local computer.  
+4. Upload `/themes/default/`, `/libraries/`, `/index.php`, with an FTP client to your host.  
+5. Rename `content` folder to `storage`  
+
+
+### Update from **Flextype 1.0.6** to **Flextype 1.1.0**
+1. **Backup your Site First!**    
+2. Download [Flextype 1.1.0](https://github.com/Flextype/Flextype/releases/download/v1.1.0/Flextype-1.1.0.zip)    
+3. Unzip the contents to a new folder on your local computer.  
+4. Upload `/config/`, `/themes/default/`, `/libraries/`, `/cache/`, `/content/`,  `/index.php`, `/robots.txt` with an FTP client to your host.  
+5. Move all your pages from `content` to `/content/pages/`  
+6. Update all your page headers in [valid YAML format](http://Flextype.org/documentation/content/pages-headers)
+7. Set your correct `url`, `title`, `description`, `keywords` and other settings in `/config/site.yml`";}}
