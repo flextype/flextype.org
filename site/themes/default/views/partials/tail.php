@@ -134,4 +134,21 @@
     getStats();
 
 </script>
+
+<script
+  type="text/javascript"
+  src="https://crowdin.com/js/crowdjet/crowdjet.js">
+</script>
+
+<div
+  id="crowdjet-container"
+  data-project-id="342667"
+  style="bottom: 90px; right: 20px;">
+</div>
+
+<div
+  id="crowdjet-expand-container"
+  style="bottom: 10px; right: 20px;">
+</div>
+
 <?php Event::dispatch('onThemeFooter'); ?>
