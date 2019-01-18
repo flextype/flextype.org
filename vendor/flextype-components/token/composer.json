@@ -1,0 +1,24 @@
+{
+  "name": "flextype-components/token",
+  "keywords": ["token"],
+  "type": "library",
+  "license": "MIT",
+  "homepage": "https://github.com/flextype-components/token",
+  "description": "Simple Token Class",
+  "authors": [
+    {
+        "name": "Sergey Romanenko",
+        "email": "awilum@yandex.ru"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/flextype-components/token/issues"
+  },
+  "require": {
+      "php": "^7.1.3",
+      "flextype-components/session": "*"
+  },
+  "autoload": {
+      "psr-4": { "Flextype\\Component\\Token\\": "" }
+  }
+}
