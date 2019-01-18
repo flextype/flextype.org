@@ -1,0 +1,160 @@
+---
+title: Flextype 0.8.0 release
+date: 2018-12-28 08:00
+template: blog-post
+author:
+  name: Sergey Romanenko
+---
+
+
+<p>Hello Everyone!</p>
+
+<p>Flextype 0.8.0 is alreay published!</p>
+<p>There is a lot of improvements and new feature!<br> Admin Panel is a part of Flextype by default!</p>
+<p>
+    More than 90 hours were spent on development and testing, more than 250 commits were pushed in the project repository, and tones of coffee were destroyed for Flextype 0.8.0 release! Many new features and fixes thats improve stability and performance of the system! Flextype has already outgrown many times the capabilities of its ancestor Monstra!
+</p>
+<br>
+<h5>Changes in Flextype 0.8.0</h5>
+<h3 id="added">Added</h3>
+
+<ul>
+<li>Flextype Core: To improve engine flexibility was decided to use entity name Entries/Entry instead of entity name Pages/Page.</li>
+
+<li>Flextype Core: New folder <code>/site/entries/</code> added.</li>
+
+<li>Flextype Core: New entry variable <code>base_url</code> added.</li>
+
+<li>Flextype Core: Snippets functionality added.</li>
+
+<li>Flextype Core: New constant PATH['snippets'] added for Snippets.</li>
+
+<li>Flextype Core: New folder <code>/site/snippets/</code> added.</li>
+
+<li>Flextype Core: Menus functionality added.</li>
+
+<li>Flextype Core: New folder <code>/site/menus/</code> added.</li>
+
+<li>Flextype Core: Fieldsets functionality added.</li>
+
+<li>Flextype Core: Fallback functionality for settings added.</li>
+
+<li>Flextype Core: New settings item <code>accept_file_types</code> added.</li>
+
+<li>Flextype Core: Common PHP Overrides added to .htaccess</li>
+
+<li>Flextype Core: Custom YamlParser with native support to increase system performance added.</li>
+
+<li>Flextype Core: Ability to get hidden entries for method getEntries() added.</li>
+
+<li>Flextype Core: New setting options <code>entries.error404</code> for error404 page added.</li>
+
+<li>Admin Panel: Fieldsets Manager added.</li>
+
+<li>Admin Panel: Menus Manager added.</li>
+
+<li>Admin Panel: Snippets Manager added.</li>
+
+<li>Admin Panel: Templates Manager added.</li>
+
+<li>Admin Panel: Entries Manager with nice one level tree view for pages list added.</li>
+
+<li>Admin Panel: Português locale added.</li>
+
+<li>Admin Panel: General - trumbowyg - table plugin added.</li>
+
+<li>Flextype new Default Theme with predefined Fieldsets and Entries templates added.</li>
+</ul>
+
+<h3 id="changed">Changed</h3>
+
+<ul>
+<li>Flextype Core: Plugins - Locales Array updated.</li>
+
+<li>Flextype Core: Form Components updated to 1.0.2.</li>
+
+<li>Flextype Core: Filesystem Components updated to 1.1.5.</li>
+
+<li>Flextype Core: Content - used new updated getFilesList() method.</li>
+
+<li>Flextype Core: Updated order of params in getEntries() method.</li>
+
+<li>Admin Panel: Settings Manager - display only available locales.</li>
+
+<li>Admin Panel: Profile Manager - improvements for profile look and feel.</li>
+
+<li>Admin Panel: Entries Manager - Form Genetator will not create labels for hidden inputs.</li>
+
+<li>Admin Panel: Plugins Manager - Get More Plugins button moved to the right.</li>
+
+<li>Admin Panel: General - trumbowyg editor styles updates.</li>
+
+<li>Admin Panel: General - trumbowyg updated to 2.13.0</li>
+
+<li>Admin Panel: Font Awesome updated to 5.6.3.</li>
+
+<li>Admin Panel: General - Messenger moved to to the bottom.</li>
+
+<li>Admin Panel: General - updates according to the php template syntax guidelines.</li>
+
+<li>Admin Panel: Pages Manager - use defined file types (extensions to be exact) that are acceptable for upload.</li>
+</ul>
+
+<h3 id="fixed">Fixed</h3>
+
+<ul>
+<li>Flextype Core: Content - Issue with returned value of Arr::sort() fixed.</li>
+
+<li>Admin Panel: General - translates fixes.</li>
+</ul>
+
+<h3 id="removed">Removed</h3>
+
+<ul>
+<li>Flextype Core: Blueprints functionality removed.</li>
+
+<li>Flextype Core: Pages functionality removed.</li>
+
+<li>Flextype Core: Error404 page removed from <code>/site/entries/</code> folder.</li>
+
+<li>Flextype Core: Folder <code>/site/pages/</code> removed.</li>
+
+<li>Flextype Core: Dot from <code>date_format</code> setting removed.</li>
+
+<li>Flextype Simple Theme removed.</li>
+</ul>
+
+<br>
+
+Update Notes:
+<p>
+    <ul>
+<li>/site/pages/ renamed to /site/entries/</li>
+
+<li>all page.html files renamed to entry.html</li>
+
+<li>index.php updated</li>
+
+<li>flextype folder updated</li>
+
+<li>vendor folder updated</li>
+
+<li>admin plugin folder updated</li>
+
+<li>all Content::getPages() in theme templates updated to Entries::getEntries()</li>
+
+<li>folder /blueprints/ renamed to /fieldsets/</li>
+
+<li>for all FIELDSETS title field was added BECAUSE IT IS REQUIRED!</li>
+</ul>
+</p>
+
+<br><br>
+
+<b>Download:</b>
+<br>
+<a href="https://github.com/flextype/flextype/releases/download/v0.8.0/flextype-0.8.0.zip" class="">Flextype 0.8.0</a>
+<br>
+<a href="http://flextype.org/about/sponsors" class="">Donate to keep Flextype free and we will add you to this section and our sponsors entry!</a>
+
+<br><br><br>
