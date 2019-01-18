@@ -10,18 +10,23 @@
   </button>
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav">
+        <!--
       <li class="nav-item">
         <a class="nav-link <?php if (Http::getUriSegment(0) == 'blog') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/blog"><span class="span">Blog</span></a>
       </li>
+        -->
       <li class="nav-item">
         <a class="nav-link <?php if (Http::getUriSegment(0) == 'download') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/download"><span class="span">Download</span></a>
       </li>
+      <!--
       <li class="nav-item">
         <a class="nav-link <?php if (Http::getUriSegment(0) == 'documentation') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation"><span class="span">Documentation</span></a>
       </li>
+
       <li class="nav-item">
         <a class="nav-link <?php if (Http::getUriSegment(2) == 'getting-help') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/documentation/basics/getting-help"><span class="span">Community</span></a>
       </li>
+    -->
       <li class="nav-item">
         <a class="nav-link <?php if (Http::getUriSegment(0) == 'about') echo 'active'; ?>" href="<?php echo Http::getBaseUrl(); ?>/about"><span class="span">About</span></a>
       </li>
