@@ -27,7 +27,7 @@ class ComposerAutoloaderInit2c482f31639330b67c53a53f8e339e70
         if ($useStaticLoader) {
             require_once __DIR__ . '/autoload_static.php';
 
-            call_user_func(\Composer\Autoload\ComposerStaticInit2c482f31639330b67c53a53f8e339e70::getInitializer($loader));
+call_user_func(\Composer\Autoload\ComposerStaticInit2c482f31639330b67c53a53f8e339e70::getInitializer($loader));
         } else {
             $map = require __DIR__ . '/autoload_namespaces.php';
             foreach ($map as $namespace => $path) {
@@ -48,7 +48,7 @@ class ComposerAutoloaderInit2c482f31639330b67c53a53f8e339e70
         $loader->register(true);
 
         if ($useStaticLoader) {
-            $includeFiles = Composer\Autoload\ComposerStaticInit2c482f31639330b67c53a53f8e339e70::$files;
+$includeFiles = Composer\Autoload\ComposerStaticInit2c482f31639330b67c53a53f8e339e70::$files;
         } else {
             $includeFiles = require __DIR__ . '/autoload_files.php';
         }
