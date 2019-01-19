@@ -6,23 +6,17 @@
     <footer class="footer">
         <div class="container">
             <p class="social-links text-center">
-                <a rel="nofollow" href="https://discord.gg/CCKPKVG"><i class="fab fa-discord"></i></a>
-                <a rel="nofollow" href="https://twitter.com/getflextype"><i class="fab fa-github"></i></a>
-                <a rel="nofollow" href="https://github.com/flextype"><i class="fab fa-vk"></i></a>
-                <a rel="nofollow" href="https://vk.com/flextype"><i class="fab fa-twitter"></i></a>
-                <a rel="nofollow" href="http://flextype.org/blog"><i class="fas fa-rss-square"></i></a>
+                <a rel="nofollow" href="<?php echo Registry::get('settings.social_link.discord'); ?>"><i class="fab fa-discord"></i></a>
+                <a rel="nofollow" href="<?php echo Registry::get('settings.social_link.github'); ?>"><i class="fab fa-github"></i></a>
+                <a rel="nofollow" href="<?php echo Registry::get('settings.social_link.vkontakte'); ?>"><i class="fab fa-vk"></i></a>
+                <a rel="nofollow" href="<?php echo Registry::get('settings.social_link.twitter'); ?>"><i class="fab fa-twitter"></i></a>
+                <a rel="nofollow" href="<?php echo Registry::get('settings.social_link.blog'); ?>"><i class="fas fa-rss-square"></i></a>
 
             </p>
             <p>
                 <ul class="locales">
-                    <li><a href="<?= Http::getBaseUrl() ?>/en">English</a></li>
-                    <li><a href="<?= Http::getBaseUrl() ?>/de">Deutsch</a></li>
-                    <li><a href="<?= Http::getBaseUrl() ?>/fr">Français</a></li>
-                    <li><a href="<?= Http::getBaseUrl() ?>/it">Italiano</a></li>
-                    <li><a href="<?= Http::getBaseUrl() ?>/pt">Português</a></li>
-                    <li><a href="<?= Http::getBaseUrl() ?>/pl">Polski</a></li>
-                    <li><a href="<?= Http::getBaseUrl() ?>/ru">Русский</a></li>
-                    <li><a href="<?= Http::getBaseUrl() ?>/uk">Українська</a></li>
+                    <li><a href="http://flextype.org">English</a></li>
+                    <li><a href="http://flextype.ru">Русский</a></li>
                 </ul>
             </p>
             <p>
