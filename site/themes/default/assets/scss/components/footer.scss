@@ -15,6 +15,8 @@ $footer-text-color: #b7b7b7;
     justify-content: center;
     align-items: center;
 
+    margin-top: 60px;
+
     font-size: 16px;
 
     color: $footer-text-color;
@@ -73,9 +75,9 @@ $footer-text-color: #b7b7b7;
         padding-top: 10px;
         padding-bottom: 10px;
 
-        > a > .fa,
+        > a > .fab,
          > a > .fas,
-        > a > .fab {
+        > a > .fa {
             font-size: 28px;
 
             width: 34px;
