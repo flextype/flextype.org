@@ -200,8 +200,4 @@ to this section and our <a href="http://flextype.org/about/sponsors">sponsors pa
   </div>
 </div>
 
-<br><br><br><br><br>
-
-<?php echo $entry['content']; ?>
-
 <?php Themes::view('partials/footer')->display(); ?>
