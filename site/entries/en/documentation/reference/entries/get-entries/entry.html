@@ -1,9 +1,83 @@
 ---
 title: 'Entries::getEntries()'
-description: Get list of entries for specific entry.
-template: documentation-reference-item
+description: Documentation for Flextype
+template: documentation-reference
 ---
-<p>
-    Get list of subentries for entry 'projects'
-</p>
-<pre><code class="html hljs">$entries = Entries::getEntries('projects');</code></pre>
+
+<h2>
+    <a href="[site_url]/en/documentation">Documentation</a> /
+    <a href="[site_url]/en/documentation/reference">Reference</a> /
+    <a href="[site_url]/en/documentation/reference/entries">Entries</a> /
+    <a href="[site_url]/en/documentation/reference/entries/get-entries">Entries::getEntries()</a>
+</h2>
+
+<p class="card-text">Get entries</p>
+
+<pre><code class="php hljs">getEntries(string $url = '', string $order_by = 'date', string $order_type = 'DESC', int $offset = null, int $length = null, bool $multilevel = false, bool $raw = false) : array</code></pre>
+
+<h4>Parameters</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>url</td>
+            <td>string</td>
+            <td></td>
+            <td>Page url.</td>
+        </tr>
+        <tr>
+            <td>order_by</td>
+            <td>string</td>
+            <td>date</td>
+            <td>Specific entry field.</td>
+        </tr>
+        <tr>
+            <td>order_type</td>
+            <td>string</td>
+            <td>DESC</td>
+            <td>Order type: DESC or ASC</td>
+        </tr>
+        <tr>
+            <td>offset</td>
+            <td>int</td>
+            <td>null</td>
+            <td>Offset</td>
+        </tr>
+        <tr>
+            <td>length</td>
+            <td>int</td>
+            <td>null</td>
+            <td>Length</td>
+        </tr>
+        <tr>
+            <td>multilevel</td>
+            <td>bool</td>
+            <td>false</td>
+            <td>Get nested entries or not.</td>
+        </tr>
+        <tr>
+            <td>raw</td>
+            <td>bool</td>
+            <td>false</td>
+            <td>Parse content or raw content without parsing.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Return type</h4>
+<p>array</p>
+
+<h4>Examples</h4>
+
+<h5>Get list of entries for entry projects</h5>
+<pre><code class="php hljs">$entries = Entries::getEntries('projects');</code></pre>
+
+<h5>Get list of entries for entry projects and order them by date with order type DESC</h5>
+<pre><code class="php hljs">$entries = Entries::getEntries('projects', 'date', 'DESC');</code></pre>
