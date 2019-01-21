@@ -5,3 +5,82 @@
 .content {
     padding-top: 40px;
 }
+
+.introducing {
+    text-align: center;
+
+    .h1 {
+        font-size: 60px;
+        font-weight: bold;
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+
+    .btn {
+        margin-bottom: 80px;
+        padding: 16px 80px;
+    }
+}
+
+.section {
+    margin-top: 40px;
+
+    padding-left: 40px;
+    padding-right: 40px;
+
+    a {
+        color: black;
+
+        &:hover {
+            color: #333;
+        }
+    }
+
+    .fa,
+    .fab,
+    .fas.fa-bold {
+        color: black;
+        font-size: 64px;
+        margin-bottom: 20px;
+    }
+}
+
+.section-heading {
+    font-size: 60px;
+    line-height: 70px;
+    margin-bottom: 20px;
+    margin-top: 180px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.section-description {
+    text-align: center;
+    font-size: 30px;
+    line-height: 40px;
+    margin-bottom: 80px;
+}
+
+.section-item {
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.section-benefit {
+    margin-bottom: 10px;
+}
+
+.link-community {
+    .h4 {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+}
+
+.reference-item {
+    background: #fafafa;
+    color: #383a42;
+    display: inline-block;
+    margin: 5px;
+    padding: 5px 10px;
+}
