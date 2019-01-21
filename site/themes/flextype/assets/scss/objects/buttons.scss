@@ -1,0 +1,16 @@
+.btn {
+    text-decoration: none;
+    background-color: white;
+    border-color: black;
+    color: black;
+    border: 3px solid black;
+
+    position: relative;
+    transition: all .3s;
+    border-radius: 0;
+
+    &:hover {
+        background-color: black;
+        color: white;
+    }
+}
