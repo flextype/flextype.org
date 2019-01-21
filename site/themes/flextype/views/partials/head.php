@@ -28,4 +28,3 @@
   </head>
   <body>
   <?php Themes::view('partials/navigation')->display() ?>
-  <main role="main" class="container content">
