@@ -1,14 +1,11 @@
 <?php namespace Flextype ?>
 <?php Themes::view('partials/head')->display() ?>
-<center>
-    <h2><?= $entry['title'] ?></h2>
-    <p>
-        <a href="<?= $entry['links']['download']['url'] ?>" class="btn btn-primary"><?= $entry['links']['download']['title'] ?></a>
-        <a href="<?= $entry['links']['donate']['url'] ?>" class="btn btn-default"><?= $entry['links']['donate']['title'] ?></a>
-    </p>
-    <p>
-        <?= $entry['text']['current_stable_version'] ?>: <?= Flextype::VERSION ?><br>
-        <a href="<?= $entry['links']['view_release_notes']['url'] ?>"><?= $entry['links']['view_release_notes']['title'] ?></a>
-    </p>
-</center>
+<div class="page-content container">
+    <h2 class="h2">Download</h2>
+    <div class="inner">
+        <?= $entry['content'] ?>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+</div>
 <?php Themes::view('partials/footer')->display() ?>

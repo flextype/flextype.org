@@ -1,6 +1,17 @@
-<?php namespace Flextype ?>
+<?php
+
+namespace Flextype;
+use Flextype\Component\{Http\Http, Registry\Registry};
+?>
+
 <?php Themes::view('partials/head')->display() ?>
-<main role="main" class="container">
-    <?= $entry['content'] ?>
-</main>
+<div class="page-content container">
+    <h2 class="h2 <?php if (in_array('reference', Http::getUriSegments()) && isset(Http::getUriSegments()[4])): ?>none-text-transform<?php endif ?>">
+        <?= $entry['title'] ?>
+        <p class="p"><?= Snippets::get('breadcrumbs'); ?></p>
+    </h2>
+    <div class="inner">
+        <?= $entry['content'] ?>
+    </div>
+</div>
 <?php Themes::view('partials/footer')->display() ?>
