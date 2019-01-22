@@ -14,29 +14,8 @@
         }
     }
 
-    .navbar-nav {
-        margin: 0 auto;
-    }
-}
-
-.navbar-expand-lg {
-    > .container {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-}
-
-.navbar-light {
-    background: $body-bg;
-
     .navbar-brand {
         text-decoration: none;
-
-        .h1 {
-            margin: 0;
-            padding: 0;
-            font-size: 28px;
-        }
 
         .site-logo {
             margin-bottom: 5px;
@@ -44,6 +23,8 @@
     }
 
     .navbar-nav {
+        margin: 0 auto;
+
         .nav-link {
             padding-left: 15px;
             padding-right: 15px;
@@ -63,5 +44,12 @@
                 padding-bottom: 10px;
             }
         }
+    }
+}
+
+.navbar-expand-lg {
+    > .container {
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 }

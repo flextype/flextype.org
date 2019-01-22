@@ -6,14 +6,58 @@
     padding-top: 40px;
 }
 
+.section-international {
+    background: black;
+    background-color: black;
+    color: white;
+
+    &.navbar {
+        .navbar-brand {
+            color: white;
+        }
+
+        .social-links {
+            > a {
+                color: white;
+
+                &:hover {
+                    color: white;
+                }
+            }
+        }
+
+        .navbar-nav {
+            .nav-link {
+                color: white;
+
+                &.active > span,
+                &:hover > span {
+                    color: white;
+                    border-bottom: 2px solid white;
+                }
+            }
+        }
+    }
+}
+
+.section-international-gray {
+    background: #fafafa;
+    background-color: #fafafa;
+    color: black;
+
+    border-top: 20px solid #fefefe;
+    border-bottom: 20px solid #fefefe;
+}
+
 .introducing {
     text-align: center;
+    padding-bottom: 220px;
 
     .h1 {
         font-size: 60px;
         font-weight: bold;
-        margin-top: 80px;
-        margin-bottom: 80px;
+        padding-top: 80px;
+        padding-bottom: 80px;
     }
 
     .btn {
@@ -23,10 +67,52 @@
 }
 
 .section {
-    margin-top: 40px;
 
-    padding-left: 40px;
-    padding-right: 40px;
+    margin-top: 40px;
+    padding: 160px 40px;
+
+    &.first {
+        padding-top: 580px;
+    }
+
+    .col-sm {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .section-heading {
+        font-size: 60px;
+        line-height: 70px;
+        margin-bottom: 20px;
+        margin-top: 0;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .section-description {
+        text-align: center;
+        font-size: 30px;
+        line-height: 40px;
+        margin-bottom: 80px;
+    }
+
+    .section-item {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .section-benefit {
+        margin-bottom: 10px;
+    }
+
+    .h4 {
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    .p {
+        margin-bottom: 0;
+    }
 
     a {
         color: black;
@@ -45,31 +131,6 @@
     }
 }
 
-.section-heading {
-    font-size: 60px;
-    line-height: 70px;
-    margin-bottom: 20px;
-    margin-top: 180px;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.section-description {
-    text-align: center;
-    font-size: 30px;
-    line-height: 40px;
-    margin-bottom: 80px;
-}
-
-.section-item {
-    font-size: 20px;
-    line-height: 30px;
-}
-
-.section-benefit {
-    margin-bottom: 10px;
-}
-
 .link-community {
     .h4 {
         margin-bottom: 0;
@@ -83,4 +144,12 @@
     display: inline-block;
     margin: 5px;
     padding: 5px 10px;
+}
+
+.admin-wrapper {
+    position: absolute;
+    display: block;
+    z-index: 1000;
+    width: 100%;
+    left: 0;
 }
