@@ -6,4 +6,8 @@
         <script src="<?= $assets['asset'] ?>"></script>
     <?php endforeach ?>
 <?php endforeach ?>
+<script src="https://wowjs.uk/dist/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
 <?php Event::dispatch('onThemeFooter') ?>
