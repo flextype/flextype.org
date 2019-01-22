@@ -1,6 +1,6 @@
 <?php namespace Flextype ?>
 <?php use Flextype\Component\{Http\Http, Registry\Registry, Arr\Arr} ?>
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg section-international">
     <div class="container">
         <a class="navbar-brand" href="<?= Http::getBaseUrl() ?>"><?= strtolower(Registry::get('settings.title')) ?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,6 +19,7 @@
         <div class="my-2 my-lg-0 social-links">
             <a rel="nofollow" href="#"><i class="fab fa-discord"></i></a>
             <a rel="nofollow" href="#"><i class="fab fa-github"></i></a>
+            <a rel="nofollow" href="#"><i class="fab fa-vk"></i></a>
             <a rel="nofollow" href="#"><i class="fab fa-twitter"></i></a>
         </div>
         </div>
