@@ -1,7 +1,6 @@
 <?php
-
 namespace Flextype;
-use Flextype\Component\{Http\Http, Registry\Registry};
+use Flextype\Component\Http\Http;
 ?>
 
 <?php Themes::view('partials/head')->display() ?>
