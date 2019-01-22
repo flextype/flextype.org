@@ -1,13 +1,16 @@
-<?php namespace Flextype ?>
+<?php
+namespace Flextype;
+use Flextype\Component\Http\Http;
+?>
 <?php Themes::view('partials/head')->display() ?>
 <div class="page-content container">
     <h2 class="h2"><?= $entry['title'] ?></h2>
     <div class="inner">
         <nav>
           <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Flextype</a>
-            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Plugins</a>
-            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Themes</a>
+            <a class="nav-item nav-link <?php if ((\strpos(Http::getUriString(), 'plugins') === false) && (\strpos(Http::getUriString(), 'themes') === false)): ?>active<?php endif ?>" id="nav-home-tab" href="<?= Http::getBaseUrl() ?>/<?= Snippets::get('locale') ?>/downloads" role="tab" aria-controls="nav-home" aria-selected="true">Flextype</a>
+            <a class="nav-item nav-link <?php if (\strpos(Http::getUriString(), 'plugins') !== false): ?>active<?php endif ?>" id="nav-profile-tab" href="<?= Http::getBaseUrl() ?>/<?= Snippets::get('locale') ?>/downloads/plugins" role="tab" aria-controls="nav-profile" aria-selected="false">Plugins</a>
+            <a class="nav-item nav-link <?php if (\strpos(Http::getUriString(), 'themes') !== false): ?>active<?php endif ?>" id="nav-contact-tab" href="<?= Http::getBaseUrl() ?>/<?= Snippets::get('locale') ?>/downloads/themes" role="tab" aria-controls="nav-contact" aria-selected="false">Themes</a>
           </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
@@ -19,6 +22,7 @@
               </p>
           </div>
           <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
           </div>
           <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 
