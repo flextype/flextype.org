@@ -11,7 +11,7 @@
             <?php foreach (Entries::getEntries('en', 'menu.order', 'ASC') as $entry): ?>
                 <?php if (!(isset($entry['visibility']) && ($entry['visibility'] === 'draft' || $entry['visibility'] === 'hidden'))): ?>
                     <li class="nav-item">
-                        <a class="nav-link <?php if (Http::getUriString() == $entry['slug']): ?>active<?php endif ?>" href="<?= Http::getBaseUrl() ?>/<?= $entry['slug'] ?>"><span><?= $entry['menu']['title'] ?></span></a>
+                        <a class="nav-link <?php if (\strpos(Http::getUriString(), $entry['slug']) !== false): ?>active<?php endif ?>" href="<?= Http::getBaseUrl() ?>/<?= $entry['slug'] ?>"><span><?= $entry['menu']['title'] ?></span></a>
                     </li>
                 <?php endif ?>
             <?php endforeach ?>
