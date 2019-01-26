@@ -1,0 +1,43 @@
+---
+title: Entries
+description: Documentation for Flextype Developers and Flextype Users.
+template: documentation
+---
+
+
+<p>Entries are the fundamental building-blocks of your site. Each page in Flextype should contains <strong>page header</strong> block in YAML format at the top of the file and <strong>page content</strong> marked up using HTML + Shortcodes at the bottom of the file.</p>
+<p>Here is a basic example (site/pages/my-page/page.html):</p>
+<pre><code class="text hljs">---
+title: My Page
+description: My page description
+---
+My page content.</code></pre>
+<p>Between these triple-dashed lines, you can set predefined page header variables or even create custom ones of your own. These variables will then be available to you to access in site templates.  </p>
+<h3>Entries and Urls structure in Flextype:</h3>
+<table class="table"><thead><tr><th>Physical Location</th>
+<th>URL</th>
+</tr></thead><tbody><tr><td>site/pages/home/page.md</td>
+<td>/</td>
+</tr><tr><td>site/pages/blog/my-post/page.md</td>
+<td>/blog/my-post</td>
+</tr><tr><td>site/pages/a/very/long/url/page.md</td>
+<td>/a/very/long/url</td>
+</tr></tbody></table>
+<h3>Predefined Page Header Variables</h3>
+<p>Here is a list of predefined page header variables with example values:  </p>
+<pre><code>title: Welcome title
+description: Some welcome description here
+keywords: key, words
+visibility: draft (or or hidden or empty for published pages)
+author:
+&nbsp;&nbsp;name: Sergey Romanenko
+&nbsp;&nbsp;email: awilum@msn.com
+&nbsp;&nbsp;url: https://github.com/Awilum
+date: 2015-10-18 16:00
+robots: noindex, nofollow
+template: default (allows you to use different templates in your theme)  </code></pre>
+<h3>Custom Page Header Variables</h3>
+<p>You can create your own custom page header variables using any valid YAML syntax.</p>
+<p>Example:   </p>
+<pre><code>author:
+&nbsp;&nbsp;twitter: "@getflextype"</code></pre>
