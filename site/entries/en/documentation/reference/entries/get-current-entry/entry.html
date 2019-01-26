@@ -1,0 +1,24 @@
+---
+title: 'Entries::getEntry()'
+description: Documentation for Flextype
+template: documentation
+---
+
+<p>Get current entry</p>
+
+<pre><code class="php hljs">getCurrentEntry() : array</code></pre>
+
+<h4 class="h4"><a id="return-type" href="#return-type">Return type</a></h4>
+<p>array</p>
+
+<h4><a id="examples" href="#examples">Examples</a></h4>
+
+<h5>Get current entry</h5>
+<pre><code class="php hljs">$entry = Entries::getCurrentEntry();</code></pre>
+
+<h5>Display entry field in the template</h5>
+<pre><code class="php hljs">&lt;?= $entry['title'] ?&gt;
+</code></pre>
+
+<h4><a id="source" href="#source">Source</a></h4>
+<a target="_blank" href="https://github.com/flextype/flextype/blob/master/flextype/Entries.php#L126">flextype/Entries.php#L126</a>

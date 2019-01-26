@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit09caf89e6ec87219e2050c6d98ac97b2
+class ComposerStaticInita30d6ed00c4eebe385994da78855fe5f
 {
     public static $files = array (
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
@@ -191,9 +191,12 @@ class ComposerStaticInit09caf89e6ec87219e2050c6d98ac97b2
         'Flextype\\Cache' => __DIR__ . '/../..' . '/flextype/Cache.php',
         'Flextype\\Entries' => __DIR__ . '/../..' . '/flextype/Entries.php',
         'Flextype\\Flextype' => __DIR__ . '/../..' . '/flextype/Flextype.php',
+        'Flextype\\FrontmatterParser' => __DIR__ . '/../..' . '/flextype/parsers/FrontmatterParser.php',
         'Flextype\\Images' => __DIR__ . '/../..' . '/flextype/Images.php',
+        'Flextype\\JsonParser' => __DIR__ . '/../..' . '/flextype/parsers/JsonParser.php',
         'Flextype\\Menus' => __DIR__ . '/../..' . '/flextype/Menus.php',
         'Flextype\\Plugins' => __DIR__ . '/../..' . '/flextype/Plugins.php',
+        'Flextype\\Shortcodes' => __DIR__ . '/../..' . '/flextype/Shortcodes.php',
         'Flextype\\Snippets' => __DIR__ . '/../..' . '/flextype/Snippets.php',
         'Flextype\\Themes' => __DIR__ . '/../..' . '/flextype/Themes.php',
         'Flextype\\YamlParser' => __DIR__ . '/../..' . '/flextype/parsers/YamlParser.php',
@@ -202,9 +205,9 @@ class ComposerStaticInit09caf89e6ec87219e2050c6d98ac97b2
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit09caf89e6ec87219e2050c6d98ac97b2::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit09caf89e6ec87219e2050c6d98ac97b2::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit09caf89e6ec87219e2050c6d98ac97b2::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita30d6ed00c4eebe385994da78855fe5f::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita30d6ed00c4eebe385994da78855fe5f::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInita30d6ed00c4eebe385994da78855fe5f::$classMap;
 
         }, null, ClassLoader::class);
     }

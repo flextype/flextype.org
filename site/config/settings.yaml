@@ -1,27 +1,50 @@
 title: Flextype
 description: 'Modern Open Source Flat-File Content Management System'
+keywords: 'flextype, php, cms, flat-file cms, flat cms, flatfile cms, markdown'
+robots: 'index, follow'
 author:
   name: 'Sergey Romanenko'
   email: ''
-timezone: UTC
+timezone: Kwajalein
 charset: UTF-8
 date_format: 'F d Y H:i:s.'
-theme: default
+theme: flextype
 locale: en
 entries:
-  main: home
+  main: en
+  media:
+    upload_images_quality: 70
+    accept_file_types: 'gif, jpg, jpeg, png, ico, zip, tgz, txt, md, doc, docx, pdf, epub, xls, xlsx, ppt, pptx, mp3, ogg, wav, m4a, mp4, m4v, ogv, wmv, avi, webm, svg'
+    upload_images_width: 1600
+    upload_images_height: 0
   error404:
     title: 'Error 404'
     description: 'We''re sorry but the page you are looking for doesn''t appear to exist!'
-    content: 'We''re sorry but the page you are looking for doesn''t appear to exist!'
+    content: '<center style="padding: 200px 100px;"><h1 style="font-size:80px;">We''re sorry but the page you are looking for doesn''t appear to exist!</h1></center>'
     template: default
 errors:
-  display: true
+  display: false
 cache:
   enabled: true
   prefix: Flextype
   driver: auto
   lifetime: 604800
+  memcache:
+    server: localhost
+    port: '11211'
+  memcached:
+    server: localhost
+    port: '11211'
+  redis:
+    socket: ''
+    password: ''
+    server: localhost
+    port: '6379'
+  sqlite3:
+    database: flextype
+    table: flextype
+admin_panel:
+  theme: light
 accept_file_types:
   - gif
   - jpg
@@ -51,7 +74,5 @@ accept_file_types:
   - avi
   - webm
   - svg
-keywords: 'flextype, php, cms, flat-file cms, flat cms, flatfile cms, markdown'
-robots: 'index, follow'
 pages:
-  main: home
+  main: en

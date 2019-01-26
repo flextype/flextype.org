@@ -1,0 +1,31 @@
+.btn {
+    text-decoration: none;
+    background-color: black;
+    border-color: white;
+    color: white;
+    border: 3px solid white;
+
+    position: relative;
+    transition: all .3s;
+    border-radius: 0;
+
+    &:hover {
+        background-color: white;
+        color: black;
+    }
+
+    &.btn-download {
+        background-color: transparent;
+        margin-bottom: 80px;
+        margin-top: 80px;
+        padding: 16px 80px;
+        border: 3px solid black;
+        color: black;
+
+        &:hover {
+            background-color: black;
+            color: white;
+        }
+
+    }
+}
