@@ -2,7 +2,7 @@
 title: "Flextype"
 
 # The description of the website
-description: "Modern Open Source Flat-File Content Management System"
+description: "Build fast, flexible, easier to manage websites with Flextype."
 
 # The keywords of the website
 keywords: "flextype, php, cms, flat-file cms, flat cms, flatfile cms, html"
@@ -40,7 +40,7 @@ date_format: "F d Y H:i:s"
 theme: default
 
 # The locale that'll be used by the Flextype.
-locale: "en"
+locale: "en_US"
 
 # The entries settings
 # Define the file types (extensions to be exact) that are acceptable for upload.

@@ -17,8 +17,6 @@ use Flextype\Component\Http\Http;
 use Flextype\Component\Filesystem\Filesystem;
 use Flextype\Component\Event\Event;
 use Flextype\Component\Registry\Registry;
-use Thunder\Shortcode\ShortcodeFacade;
-use Thunder\Shortcode\Shortcode\ShortcodeInterface;
 
 class Entries
 {
@@ -29,14 +27,6 @@ class Entries
      * @access private
      */
     private static $instance = null;
-
-    /**
-     * Shortcode object
-     *
-     * @var object
-     * @access private
-     */
-    private static $shortcode = null;
 
     /**
      * Current entry data array
@@ -96,12 +86,6 @@ class Entries
         // Event: The entry is not processed and not sent to the display.
         Event::dispatch('onCurrentEntryBeforeProcessed');
 
-        // Init Parsers
-        Entries::initParsers();
-
-        // Event: The entry has been not loaded.
-        Event::dispatch('onCurrentEntryBeforeLoaded');
-
         // Set current requested entry data to global $entry array
         Entries::$entry = Entries::getEntry(Http::getUriString());
 
@@ -118,7 +102,7 @@ class Entries
     /**
      * Get current entry
      *
-     * $entry = Entries::getCurrentPage();
+     * $entry = Entries::getCurrentEntry();
      *
      * @access  public
      * @return  array
@@ -329,35 +313,6 @@ class Entries
     }
 
     /**
-     * Returns $shortcode object
-     *
-     * @access public
-     * @return object
-     */
-    public static function shortcode() : ShortcodeFacade
-    {
-        return Entries::$shortcode;
-    }
-
-    /**
-     * Front matter parser
-     *
-     * $content = Entries::frontMatterParser($content);
-     *
-     * @param  string $content Content to parse
-     * @access public
-     * @return array
-     */
-    public static function frontMatterParser(string $content) : array
-    {
-       $parts = preg_split('/^[\s\r\n]?---[\s\r\n]?$/sm', PHP_EOL.ltrim($content));
-
-       if (count($parts) < 3) return ['matter' => [], 'body' => $content];
-
-       return ['matter' => trim($parts[1]), 'body' => implode(PHP_EOL.'---'.PHP_EOL, array_slice($parts, 2))];
-    }
-
-    /**
      * Process entry
      *
      * $entry = Entries::processEntry(PATH['entries'] . '/home/entry.html');
@@ -379,7 +334,7 @@ class Entries
         } else {
 
             // Create $entry_frontmatter and $entry_content
-            $entry = Entries::frontMatterParser($entry);
+            $entry = FrontmatterParser::parse($entry);
             $entry_frontmatter = $entry['matter'];
             $entry_content     = $entry['body'];
 
@@ -387,7 +342,7 @@ class Entries
             $_entry = [];
 
             // Process $entry_frontmatter with YAML and Shortcodes parsers
-            $_entry = YamlParser::decode(Entries::processShortcodes($entry_frontmatter));
+            $_entry = YamlParser::decode(Shortcodes::process($entry_frontmatter));
 
             // Create entry url item
             $url = str_replace(PATH['entries'], Http::getBaseUrl(), $file_path);
@@ -420,67 +375,12 @@ class Entries
             if ($ignore_content) {
                 $_entry['content'] = $entry_content;
             } else {
-                $_entry['content'] = Entries::processContent($entry_content);
+                $_entry['content'] = Shortcodes::process($entry_content);
             }
 
             // Return entry
             return $_entry;
         }
-    }
-
-    /**
-     * Process shortcodes
-     *
-     * $content = Entries::processShortcodes($content);
-     *
-     * @access public
-     * @param  string $content Content to parse
-     * @return string
-     */
-    public static function processShortcodes(string $content) : string
-    {
-        return Entries::shortcode()->process($content);
-    }
-
-    /**
-     * Process content with markdown and shortcodes processors
-     *
-     * $content = Entries::processContent($content);
-     *
-     * @access public
-     * @param  string $content Content to parse
-     * @return string
-     */
-    public static function processContent(string $content) : string
-    {
-        return Entries::processShortcodes($content);
-    }
-
-    /**
-     * Init Parsers
-     *
-     * @access private
-     * @return void
-     */
-    private static function initParsers() : void
-    {
-        // Init Shortcodes
-        Entries::initShortcodes();
-    }
-
-    /**
-     * Init Shortcodes
-     *
-     * @access private
-     * @return void
-     */
-    private static function initShortcodes() : void
-    {
-        // Create Shortcode Parser object
-        Entries::$shortcode = new ShortcodeFacade();
-
-        // Event: Shortcodes initialized and now we can add our custom shortcodes
-        Event::dispatch('onShortcodesInitialized');
     }
 
     /**
