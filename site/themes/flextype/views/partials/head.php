@@ -41,6 +41,7 @@
         <?php endforeach ?>
     <?php endforeach ?>
 
+    <?= Snippets::get('google-verification') ?>
     <?= Snippets::get('yandex-verification') ?>
     <?= Snippets::get('yandex-metrika') ?>
 
