@@ -18,8 +18,8 @@
                     <h4 class="h4"><?= Entries::getEntry(locale())['text']['downloads'] ?></h4>
                     <ul class="ul">
                         <li><a href="<?= Http::getBaseUrl() ?>/<?= locale() ?>/downloads">Flextype</a></li>
-                        <li><a href="<?= Http::getBaseUrl() ?>/<?= locale() ?>/downloads/plugins"><?= Entries::getEntry(locale())['text']['plugins'] ?></a></li>
-                        <li><a href="<?= Http::getBaseUrl() ?>/<?= locale() ?>/downloads/themes"><?= Entries::getEntry(locale())['text']['themes'] ?></a></li>
+                        <li><a href="https://github.com/flextype/plugins"><?= Entries::getEntry(locale())['text']['plugins'] ?></a></li>
+                        <li><a href="https://github.com/flextype/themes"><?= Entries::getEntry(locale())['text']['themes'] ?></a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 footer-nav-items">
