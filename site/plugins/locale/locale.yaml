@@ -1,0 +1,10 @@
+name: Locale
+version: 1.0.0
+description: "Locale plugin"
+author:
+  name: Sergey Romanenko
+  email: awilum@yandex.ru
+  url: http://flextype.org
+homepage: ''
+bugs: ''
+license: MIT
