@@ -41,6 +41,8 @@
                 <div class="col-md-12 footer-locales">
                     <p class="p">
                         <a href="<?= Http::getBaseUrl() ?>/en">English</a>
+                        <a href="<?= Http::getBaseUrl() ?>/de">Deutsch</a>
+                        <a href="<?= Http::getBaseUrl() ?>/fr">Français</a>
                         <a href="<?= Http::getBaseUrl() ?>/ru">Русский</a>
                     </p>
                 </div>
