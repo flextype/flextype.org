@@ -8,9 +8,9 @@ use Flextype\Component\Http\Http;
     <div class="inner">
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link <?php if ((\strpos(Http::getUriString(), 'media') === false) && (\strpos(Http::getUriString(), 'sponsors') === false)): ?>active<?php endif ?>" id="nav-home-tab" href="<?= Http::getBaseUrl() ?>/<?= Snippets::get('locale') ?>/about" role="tab" aria-controls="nav-about" aria-selected="true">About</a>
-              <a class="nav-item nav-link <?php if (\strpos(Http::getUriString(), 'media') !== false): ?>active<?php endif ?>" id="nav-profile-tab" href="<?= Http::getBaseUrl() ?>/<?= Snippets::get('locale') ?>/about/media" role="tab" aria-controls="nav-media" aria-selected="false">Media</a>
-              <a class="nav-item nav-link <?php if (\strpos(Http::getUriString(), 'sponsors') !== false): ?>active<?php endif ?>" id="nav-contact-tab" href="<?= Http::getBaseUrl() ?>/<?= Snippets::get('locale') ?>/about/sponsors" role="tab" aria-controls="nav-sponsors" aria-selected="false">Sponsors</a>
+              <a class="nav-item nav-link <?php if ((\strpos(Http::getUriString(), 'media') === false) && (\strpos(Http::getUriString(), 'sponsors') === false)): ?>active<?php endif ?>" id="nav-home-tab" href="<?= Http::getBaseUrl() ?>/<?= Snippets::get('locale') ?>/about" role="tab" aria-controls="nav-about" aria-selected="true"><?= Entries::getEntry(locale())['text']['about'] ?></a>
+              <a class="nav-item nav-link <?php if (\strpos(Http::getUriString(), 'media') !== false): ?>active<?php endif ?>" id="nav-profile-tab" href="<?= Http::getBaseUrl() ?>/<?= Snippets::get('locale') ?>/about/media" role="tab" aria-controls="nav-media" aria-selected="false"><?= Entries::getEntry(locale())['text']['media'] ?></a>
+              <a class="nav-item nav-link <?php if (\strpos(Http::getUriString(), 'sponsors') !== false): ?>active<?php endif ?>" id="nav-contact-tab" href="<?= Http::getBaseUrl() ?>/<?= Snippets::get('locale') ?>/about/sponsors" role="tab" aria-controls="nav-sponsors" aria-selected="false"><?= Entries::getEntry(locale())['text']['sponsors'] ?></a>
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
