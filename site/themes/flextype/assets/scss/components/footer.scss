@@ -8,7 +8,7 @@ $footer-bg: black;
 .footer {
     position: relative;
 
-    height: $footer-height;
+    min-height: $footer-height;
 
     display: flex;
     flex-direction: column;

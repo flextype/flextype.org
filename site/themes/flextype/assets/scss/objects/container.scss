@@ -41,12 +41,8 @@
 }
 
 .section-international-gray {
+    color: #383a42;
     background: #fafafa;
-    background-color: 1px solid #fafafa;
-    color: black;
-
-    //border-top: 20px solid #fefefe;
-    //border-bottom: 20px solid #fefefe;
 }
 
 .introducing {
@@ -75,11 +71,6 @@
         padding-top: 580px;
     }
 
-    .col-sm {
-        padding-left: 25px;
-        padding-right: 25px;
-    }
-
     .section-heading {
         font-size: 60px;
         line-height: 70px;
@@ -96,15 +87,6 @@
         margin-bottom: 80px;
     }
 
-    .section-item {
-        font-size: 20px;
-        line-height: 30px;
-    }
-
-    .section-benefit {
-        margin-bottom: 10px;
-    }
-
     .h4 {
         font-size: 26px;
         font-weight: bold;
@@ -114,39 +96,23 @@
         margin-bottom: 0;
     }
 
-    a {
-        color: black;
-
-        &:hover {
-            color: #333;
-        }
-    }
-
     .fa,
     .fab,
     .fas.fa-bold {
         color: black;
         font-size: 64px;
-        margin-bottom: 20px;
-    }
-}
-
-.link-community {
-    .h4 {
-        margin-bottom: 0;
-        margin-top: 0;
     }
 }
 
 .reference-item {
     background: #fafafa;
-    color: #383a42;
+    color: black;
     display: inline-block;
     margin: 5px;
     padding: 5px 10px;
 }
 
-.admin-wrapper {
+.admin-preview-wrapper {
     position: absolute;
     display: block;
     z-index: 1000;
@@ -175,5 +141,39 @@
 
     .inner {
         padding-bottom: 60px;
+    }
+}
+
+.section-item {
+    margin-bottom: 80px;
+    text-align: center;
+
+    > i {
+        margin-bottom: 0;
+    }
+}
+
+.section-item-social {
+    text-align: center;
+
+    > i {
+        margin-bottom: 0;
+    }
+}
+
+.section-item-badge {
+    margin-bottom: 80px;
+    text-align: center;
+    color: black;
+    background: #fafafa;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    > a {
+        color: black;
+
+        &:hover {
+            color: inherit;
+        }
     }
 }
