@@ -8,10 +8,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <?php foreach (Entries::getEntries(locale(), 'menu.order', 'ASC') as $entry): ?>
-                <?php if (!(isset($entry['visibility']) && ($entry['visibility'] === 'draft' || $entry['visibility'] === 'hidden'))): ?>
+            <?php foreach (Entries::getEntries(locale(), 'menu.order', 'ASC') as $_entry): ?>
+                <?php if (!(isset($_entry['visibility']) && ($_entry['visibility'] === 'draft' || $_entry['visibility'] === 'hidden'))): ?>
                     <li class="nav-item">
-                        <a class="nav-link <?php if (\strpos(Http::getUriString(), $entry['slug']) !== false): ?>active<?php endif ?>" href="<?= Http::getBaseUrl() ?>/<?= $entry['slug'] ?>"><span><?= $entry['menu']['title'] ?></span></a>
+                        <a class="nav-link <?php if (\strpos(Http::getUriString(), $_entry['slug']) !== false): ?>active<?php endif ?>" href="<?= Http::getBaseUrl() ?>/<?= $_entry['slug'] ?>"><span><?= $_entry['menu']['title'] ?></span></a>
                     </li>
                 <?php endif ?>
             <?php endforeach ?>
