@@ -8,9 +8,9 @@ use Flextype\Component\Http\Http;
     <div class="inner">
         <nav>
           <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link <?php if ((\strpos(Http::getUriString(), 'plugins') === false) && (\strpos(Http::getUriString(), 'themes') === false)): ?>active<?php endif ?>" id="nav-home-tab" href="<?= Http::getBaseUrl() ?>/<?= Snippets::get('locale') ?>/downloads" role="tab" aria-controls="nav-home" aria-selected="true">Flextype</a>
-            <a class="nav-item nav-link <?php if (\strpos(Http::getUriString(), 'plugins') !== false): ?>active<?php endif ?>" id="nav-profile-tab" href="<?= Http::getBaseUrl() ?>/<?= Snippets::get('locale') ?>/downloads/plugins" role="tab" aria-controls="nav-profile" aria-selected="false"><?= Entries::getEntry(locale())['text']['plugins'] ?></a>
-            <a class="nav-item nav-link <?php if (\strpos(Http::getUriString(), 'themes') !== false): ?>active<?php endif ?>" id="nav-contact-tab" href="<?= Http::getBaseUrl() ?>/<?= Snippets::get('locale') ?>/downloads/themes" role="tab" aria-controls="nav-contact" aria-selected="false"><?= Entries::getEntry(locale())['text']['themes'] ?></a>
+            <a class="nav-item nav-link <?php if ((\strpos(Http::getUriString(), 'plugins') === false) && (\strpos(Http::getUriString(), 'themes') === false)): ?>active<?php endif ?>" id="nav-home-tab" href="<?= Http::getBaseUrl() ?>/<?= locale() ?>/downloads" role="tab" aria-controls="nav-home" aria-selected="true">Flextype</a>
+            <a class="nav-item nav-link <?php if (\strpos(Http::getUriString(), 'plugins') !== false): ?>active<?php endif ?>" id="nav-profile-tab" href="https://github.com/flextype/plugins" role="tab" aria-controls="nav-profile" aria-selected="false"><?= Entries::getEntry(locale())['text']['plugins'] ?></a>
+            <a class="nav-item nav-link <?php if (\strpos(Http::getUriString(), 'themes') !== false): ?>active<?php endif ?>" id="nav-contact-tab" href="https://github.com/flextype/themes" role="tab" aria-controls="nav-contact" aria-selected="false"><?= Entries::getEntry(locale())['text']['themes'] ?></a>
           </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
