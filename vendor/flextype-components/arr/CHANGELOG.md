@@ -1,3 +1,6 @@
+# v1.2.5, 2019-01-20
+* method sort() improved
+
 # v1.2.4, 2019-01-06
 * returned type for method createFromString() changed to array
 

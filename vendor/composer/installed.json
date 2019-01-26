@@ -78,23 +78,23 @@
     },
     {
         "name": "flextype-components/arr",
-        "version": "v1.2.4",
-        "version_normalized": "1.2.4.0",
+        "version": "v1.2.5",
+        "version_normalized": "1.2.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/flextype-components/arr.git",
-            "reference": "56170a22ed4f4846e6b056e02cff46d193d012bb"
+            "reference": "56ba878de83dff02f9455caf4e80c85e265f3488"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/flextype-components/arr/zipball/56170a22ed4f4846e6b056e02cff46d193d012bb",
-            "reference": "56170a22ed4f4846e6b056e02cff46d193d012bb",
+            "url": "https://api.github.com/repos/flextype-components/arr/zipball/56ba878de83dff02f9455caf4e80c85e265f3488",
+            "reference": "56ba878de83dff02f9455caf4e80c85e265f3488",
             "shasum": ""
         },
         "require": {
             "php": "^7.1.3"
         },
-        "time": "2019-01-06T17:54:08+00:00",
+        "time": "2019-01-20T09:34:18+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
