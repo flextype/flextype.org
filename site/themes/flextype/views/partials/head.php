@@ -10,7 +10,6 @@
     <meta name="robots" content="<?= (isset($entry['robots']) ? $entry['robots'] : Registry::get('settings.robots')) ?>">
     <meta name="generator" content="Powered by Flextype <?= Flextype::VERSION ?>" />
 
-
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@getflextype">
@@ -41,6 +40,9 @@
             <link href="<?= $assets['asset'] ?>" rel="stylesheet">
         <?php endforeach ?>
     <?php endforeach ?>
+
+    <?= Snippets::get('yandex-verification') ?>
+    <?= Snippets::get('yandex-metrika') ?>
 
     <?php Event::dispatch('onThemeHeader') ?>
   </head>
