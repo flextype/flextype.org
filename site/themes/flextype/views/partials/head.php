@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link href="https://daneden.github.io/animate.css/animate.min.css" rel="stylesheet">
 
-    <?php Assets::add('css', Http::getBaseUrl() . '/site/themes/' . Registry::get('settings.theme') . '/assets/dist/css/default.min.css', 'site', 2) ?>
+    <?php Assets::add('css', Http::getBaseUrl() . '/site/themes/' . Registry::get('settings.theme') . '/assets/dist/css/flextype.min.css', 'site', 2) ?>
     <?php foreach(Assets::get('css', 'site') as $assets_by_priorities): ?>
         <?php foreach($assets_by_priorities as $assets): ?>
             <link href="<?= $assets['asset'] ?>" rel="stylesheet">
