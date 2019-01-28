@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-md-1"></div>
                 <div class="col-md-5">
-                    <p class="p"><a href="<?= Http::getBaseUrl() ?>/<?= locale() ?>">Flextype</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="http://awilum.github.io" class="highlight">Sergey Romanenko</a><br> and <a href="https://github.com/flextype/flextype/graphs/contributors" class="highlight">Flextype Community</a></p>
+                    <p class="p"><a href="<?= Http::getBaseUrl() ?>/<?= locale() ?>">Flextype</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="http://romanenko.digital" class="highlight">Sergey Romanenko</a><br> and <a href="https://github.com/flextype/flextype/graphs/contributors" class="highlight">Flextype Community</a></p>
                     <p class="p">Copyright © 2019 - <a href="https://github.com/flextype/flextype/blob/dev/LICENSE.txt">Flextype</a> - All rights reserved</p>
                 </div>
             </div>
