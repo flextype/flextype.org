@@ -99,3 +99,22 @@
     color: black;
     border: 0;
 }
+
+@media (max-width: 991.98px) {
+    .navbar-toggler {
+        color: white;
+    }
+
+    .navbar {
+        .social-links {
+            text-align: center;
+        }
+
+        .navbar-nav {
+            .nav-link {
+                padding-left: 0;
+                text-align: center;
+            }
+        }
+    }
+}
