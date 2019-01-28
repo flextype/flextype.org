@@ -185,3 +185,27 @@
     padding: 100px 0;
     border: 3px solid #fff;
 }
+
+@media (max-width: 736px) {
+    .page-content .h2 {
+        font-size: 40px;
+        line-height: 50px;
+        padding-bottom: 10px;
+    }
+
+    .section {
+        .section-heading {
+            font-size: 40px;
+            line-height: 50px;
+        }
+
+        .section-description {
+            font-size: 20px;
+            line-height: 30px;
+        }
+
+        &.first {
+            padding-top: 80px;
+        }
+    }
+}

@@ -67,3 +67,13 @@ $footer-bg: black;
         }
     }
 }
+
+@media (max-width: 736px) {
+    footer {
+        text-align: center;
+
+        .footer-nav-items {
+            margin-bottom: 20px;
+        }
+    }
+}
