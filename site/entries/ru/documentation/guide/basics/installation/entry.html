@@ -27,16 +27,16 @@ gulp
 unzip flextype-0.8.3.zip
 chmod -R 0777 site/</code></pre>
 
-<h3>Installation issues</h3>
-<h5>Broken subpages</h5>
-<p>Your homepage is working, but subpages won't open or lead to a server error?</p>
+<h3>Проблемы при установке</h3>
+<h5>Не работают под-страницы</h5>
+<p>Домашняя страница вашего сайта работает, но не работают под-страницы сайта?</p>
 <ol>
-    <li>Make sure that the .htaccess file is present in your Flextype folder.</li>
-    <li>Check if mod_rewrite is enabled on your server.</li>
-    <li>Please try setting the RewriteBase in the .htaccess file:</li>
+    <li>Удостоверьтесь, что в папке с установленным Flextype присутствует файл .htaccess</li>
+    <li>Проверьте, активирован ли на вашем сервере mod_rewrite</li>
+    <li>Также попробуйте установить RewriteBase в файле .htaccess:</li>
 </ol>
 <pre><code>RewriteBase /</code></pre>
-<p>If you run Flextype in a subfolder, make sure to set the RewriteBase according to the name of your subfolder:</p>
+<p>Если вы запускаете Flextype в под-папке сайта, установите RewriteBase в соответствии с именем под-папки:</p>
 <pre><code>RewriteBase /my-subfolder/</code></pre>
 
 <br>
