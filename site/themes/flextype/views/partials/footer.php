@@ -26,6 +26,7 @@
                     <h4 class="h4"><?= Entries::getEntry(locale())['text']['community'] ?></h4>
                     <ul class="ul">
                         <li><a href="https://discord.gg/CCKPKVG">Discord</a></li>
+                        <li><a href="http://forum.flextype.org">Forum</a></li>
                         <li><a href="https://github.com/flextype">Github</a></li>
                         <li><a href="https://vk.com/flextype">Vkontakte</a></li>
                         <li><a href="https://twitter.com/getflextype">Twitter</a></li>
