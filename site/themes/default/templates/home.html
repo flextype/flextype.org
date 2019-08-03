@@ -1,0 +1,209 @@
+{% extends "themes/default/templates/partials/base.html" %}
+
+{% block content %}
+
+    <!-- introducing section -->
+    <div class="introducing section-international">
+        <div class="container">
+            <h1 class="h1 wow fadeIn">{{ entry.intro_section_h1|raw }}</h1>
+            <a href="{{ base_url() }}/{{ locale }}/downloads" class="btn wow fadeIn">{{ entry.intro_section_button|raw }}</a>
+            <div class="admin-preview-wrapper wow fadeIn">
+                <img src="https://github.com/flextype/flextype/raw/dev/site/plugins/admin/preview.png" width="1100" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- /introducing section -->
+
+    <!-- features section -->
+    <div class="section first wow fadeIn">
+        <div class="container">
+            <h3 class="section-heading">{{ entry.features_heading|raw }}</h3>
+            <p class="section-description">{{ entry.features_description|raw }}</p>
+            <div class="row">
+                <div class="section-item col-md-4">
+                    <i class="fa fa-magic" aria-hidden="true"></i>
+                    <h4 class="h4">{{ entry.features_simple_heading|raw }}</h4>
+                    <p class="p">
+                        {{ entry.features_simple_p|raw }}
+                    </p>
+                </div>
+                <div class="section-item col-md-4">
+                    <i class="fa fa-rocket" aria-hidden="true"></i>
+                    <h4 class="h4">{{ entry.features_fast_heading|raw }}</h4>
+                    <p class="p">
+                        {{ entry.features_fast_p|raw }}
+                    </p>
+                </div>
+                <div class="section-item col-md-4">
+                    <i class="fa fa-cogs" aria-hidden="true"></i>
+                    <h4 class="h4">{{ entry.features_flexible_heading|raw }}</h4>
+                    <p class="p">
+                        {{ entry.features_flexible_p|raw }}
+                    </p>
+                </div>
+                <div class="section-item col-md-4">
+                    <i class="fa fa-font" aria-hidden="true"></i>
+                    <h4 class="h4">{{ entry.features_easy_editing_heading|raw }}</h4>
+                    <p class="p">
+                        {{ entry.features_easy_editing_p|raw }}
+                    </p>
+                </div>
+                <div class="section-item col-md-4">
+                    <i class="fa fa-list-alt" aria-hidden="true"></i>
+                    <h4 class="h4">{{ entry.features_dynamic_content_types_heading|raw }}</h4>
+                    <p class="p">
+                        {{ entry.features_dynamic_content_types_p|raw }}
+                    </p>
+                </div>
+                <div class="section-item col-md-4">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    <h4 class="h4">{{ entry.features_open_source_heading|raw }}</h4>
+                    <p class="p">
+                        {{ entry.features_open_source_p|raw }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /features section -->
+
+    <!-- technologies section -->
+    <div class="section section-international-gray wow fadeIn">
+        <div class="container">
+            <h3 class="section-heading">{{ entry.features_technologies_heading|raw }}</h3>
+            <p class="section-description">{{ entry.features_technologies_p|raw }}</p>
+            <div class="row">
+                <div class="section-item col-md-4">
+                    <i class="fab fa-php" aria-hidden="true"></i>
+                    <h4 class="h4">{{ entry.features_install_anywhere_heading|raw }}</h4>
+                    <p class="p">
+                        {{ entry.features_install_anywhere_p|raw }}
+                    </p>
+                </div>
+                <div class="section-item col-md-4">
+                    <i class="fas fa-bold"></i>
+                    <h4 class="h4">{{ entry.features_install_anywhere_heading|raw }}</h4>
+                    <p class="p">
+                        {{ entry.features_responsive_framework_p|raw }}
+                    </p>
+                </div>
+                <div class="section-item col-md-4">
+                    <i class="fab fa-sass" aria-hidden="true"></i>
+                    <h4 class="h4">{{ entry.features_css_with_superpowers_heading|raw }}</h4>
+                    <p class="p">
+                        {{ entry.features_css_with_superpowers_p|raw }}
+                    </p>
+                </div>
+                <div class="section-item col-md-4">
+                    <i class="fab fa-dev" aria-hidden="true"></i>
+                    <h4 class="h4">{{ entry.features_slimphp_heading|raw }}</h4>
+                    <p class="p">
+                        {{ entry.features_slimphp_p|raw }}
+                    </p>
+                </div>
+                <div class="section-item col-md-4">
+                    <i class="fab fa-redhat" aria-hidden="true"></i>
+                    <h4 class="h4">{{ entry.features_the_php_league_heading|raw }}</h4>
+                    <p class="p">
+                        {{ entry.features_the_php_league_p|raw }}
+                    </p>
+                </div>
+                <div class="section-item col-md-4">
+                    <i class="fas fa-arrow-circle-right" aria-hidden="true"></i>
+                    <h4 class="h4">{{ entry.features_doctrine_heading|raw }}</h4>
+                    <p class="p">
+                       {{ entry.features_doctrine_p|raw }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /technologies section -->
+
+    <!-- no limits section -->
+    <div class="container section wow fadeIn">
+        <h3 class="section-heading">{{ entry.features_no_limits_heading|raw }}</h3>
+        <p class="section-description">{{ entry.features_no_limits_p|raw }}</p>
+        <div class="row">
+            <div class="col-md-4">
+                <p class="section-item-badge">{{ entry.project_business_site|raw }}</p>
+                <p class="section-item-badge">{{ entry.project_landing_page|raw }}</p>
+                <p class="section-item-badge">{{ entry.project_personal_site|raw }}</p>
+            </div>
+            <div class="col-md-4">
+                <p class="section-item-badge">{{ entry.project_portfolio|raw }}</p>
+                <p class="section-item-badge">{{ entry.project_product_site|raw }}</p>
+                <p class="section-item-badge">{{ entry.project_e_commerce|raw }}</p>
+            </div>
+            <div class="col-md-4">
+                <p class="section-item-badge">{{ entry.project_documentation|raw }}</p>
+                <p class="section-item-badge">{{ entry.project_documentation|raw }}</p>
+                <p class="section-item-badge">{{ entry.project_blog|raw }}</p>
+            </div>
+        </div>
+    </div>
+    <!-- /no limits section -->
+
+    <!-- community section -->
+    <div class="section section-international-gray wow fadeIn">
+        <div class="container">
+            <h3 class="section-heading">{{ entry.community_heading|raw }}</h3>
+            <p class="section-description">
+                {{ entry.community_p|raw }}
+            </p>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="section-item-social col-md-2">
+                    <a rel="nofollow" class="link-community" href="https://discord.gg/CCKPKVG">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                </div>
+                <div class="section-item-social col-md-2">
+                    <a rel="nofollow" class="link-community" href="http://forum.flextype.org">
+                        <i class="fas fa-comments"></i>
+                    </a>
+                </div>
+                <div class="section-item-social col-md-2">
+                    <a rel="nofollow" class="link-community" target="_blank" href="https://github.com/flextype">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <div class="section-item-social col-md-2">
+                    <a rel="nofollow" class="link-community" target="_blank" href="https://vk.com/flextype">
+                        <i class="fab fa-vk"></i>
+                    </a>
+                </div>
+                <div class="section-item-social col-md-2">
+                    <a rel="nofollow" class="link-community" target="_blank" href="https://twitter.com/getflextype">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+    </div>
+    <!-- /community section -->
+
+    <!-- /contribution section -->
+    <div class="section wow fadeIn">
+        <div class="container">
+            <h3 class="section-heading">{{ entry.contribution_heading|raw }}</h3>
+            <p class="section-description">
+                {{ entry.contribution_p|raw }}
+            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="section-item-badge">Help on the <a href="{{ base_url() }}/{{ locale }}/documentation/basics/getting-help">Communities</a>.</p>
+                    <p class="section-item-badge">Develop a new plugin.</p>
+                    <p class="section-item-badge">Create a new theme.</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="section-item-badge">Find and <a href="https://github.com/flextype/flextype/issues">report issues</a>.</p>
+                    <p class="section-item-badge">Link back to <a href="{{ base_url() }}/{{ locale }}">Flextype</a>.</p>
+                    <p class="section-item-badge"><a href="{{ base_url() }}/{{ locale }}/about/sponsors">Donate to keep Flextype free.</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /contribution section -->
+{% endblock %}
