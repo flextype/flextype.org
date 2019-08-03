@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="{{ registry.settings.locale }}">
+<html lang="{{ locale }}">
+    {% set entry_locale = entries.fetch(locale) %}
     <head>
         {% block head %}
             <meta charset="{{ registry.settings.charset|lower }}">
@@ -61,16 +62,16 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link {% if entry.slug == 'en/downloads' %}active{% endif %}" href="http://flextype.org/en/downloads"><span>Downloads</span></a>
+                        <a class="nav-link {% if entry.slug == 'en/downloads' %}active{% endif %}" href="{{ base_url() }}/{{ locale }}/downloads"><span>{{ entry_locale.link_downloads }}</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if entry.slug == 'en/documentation' %}active{% endif %}" href="http://flextype.org/en/documentation"><span>Documentation</span></a>
+                        <a class="nav-link {% if entry.slug == 'en/documentation' %}active{% endif %}" href="{{ base_url() }}/{{ locale }}/documentation"><span>{{ entry_locale.link_documentation }}</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if entry.slug == 'en/community' %}active{% endif %}" href="http://flextype.org/en/community"><span>Community</span></a>
+                        <a class="nav-link {% if entry.slug == 'en/community' %}active{% endif %}" href="{{ base_url() }}/{{ locale }}/community"><span>{{ entry_locale.link_community }}</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if entry.slug == 'en/about' %}active{% endif %}" href="http://flextype.org/en/about"><span>About</span></a>
+                        <a class="nav-link {% if entry.slug == 'en/about' %}active{% endif %}" href="{{ base_url() }}/{{ locale }}/about"><span>{{ entry_locale.link_about }}</span></a>
                     </li>
                 </ul>
                 <div class="my-2 my-lg-0 social-links">
@@ -92,22 +93,22 @@
                     <div class="col-md-2 footer-nav-items">
                         <h4 class="h4">Flextype</h4>
                         <ul class="ul">
-                            <li><a href="<?= Http::getBaseUrl() ?>/<?= locale() ?>/about"><?= Entries::getEntry(locale())['text']['about'] ?></a></li>
-                            <li><a href="<?= Http::getBaseUrl() ?>/<?= locale() ?>/about/media"><?= Entries::getEntry(locale())['text']['media'] ?></a></li>
-                            <li><a href="<?= Http::getBaseUrl() ?>/<?= locale() ?>/about/sponsors"><?= Entries::getEntry(locale())['text']['donate'] ?></a></li>
-                            <li><a href="<?= Http::getBaseUrl() ?>/<?= locale() ?>/about/sponsors"><?= Entries::getEntry(locale())['text']['sponsors'] ?></a></li>
+                            <li><a href="{{ base_url() }}/{{ locale }}/about">{{ entry_locale.link_about }}</a></li>
+                            <li><a href="{{ base_url() }}/{{ locale }}/about/media">{{ entry_locale.link_media }}</a></li>
+                            <li><a href="{{ base_url() }}/{{ locale }}/about/sponsors">{{ entry_locale.link_donate }}</a></li>
+                            <li><a href="{{ base_url() }}/{{ locale }}/about/sponsors">{{ entry_locale.link_sponsors }}</a></li>
                         </ul>
                     </div>
                     <div class="col-md-2 footer-nav-items">
-                        <h4 class="h4"><?= Entries::getEntry(locale())['text']['downloads'] ?></h4>
+                        <h4 class="h4">{{ entry_locale.link_downloads }}</h4>
                         <ul class="ul">
-                            <li><a href="<?= Http::getBaseUrl() ?>/<?= locale() ?>/downloads">Flextype</a></li>
-                            <li><a href="https://github.com/flextype/plugins"><?= Entries::getEntry(locale())['text']['plugins'] ?></a></li>
-                            <li><a href="https://github.com/flextype/themes"><?= Entries::getEntry(locale())['text']['themes'] ?></a></li>
+                            <li><a href="{{ base_url() }}/{{ locale }}/downloads">Flextype</a></li>
+                            <li><a href="https://github.com/flextype/plugins">{{ entry_locale.link_plugins }}</a></li>
+                            <li><a href="https://github.com/flextype/themes">{{ entry_locale.link_themes }}</a></li>
                         </ul>
                     </div>
                     <div class="col-md-2 footer-nav-items">
-                        <h4 class="h4"><?= Entries::getEntry(locale())['text']['community'] ?></h4>
+                        <h4 class="h4">{{ entry_locale.link_community }}</h4>
                         <ul class="ul">
                             <li><a href="https://discord.gg/CCKPKVG">Discord</a></li>
                             <li><a href="http://forum.flextype.org">Forum</a></li>
@@ -126,9 +127,9 @@
                     <div class="col-md-12 footer-locales">
                         <p class="p">
                             <a href="{{ base_url() }}/en">English</a>
-                            <!--<a href="<?= Http::getBaseUrl() ?>/de">Deutsch</a>
+                            <a href="<?= Http::getBaseUrl() ?>/de">Deutsch</a>
                             <a href="<?= Http::getBaseUrl() ?>/fr">Français</a>
-                            <a href="<?= Http::getBaseUrl() ?>/it">Italiano</a>-->
+                            <a href="<?= Http::getBaseUrl() ?>/it">Italiano</a>
                             <a href="{{ base_url() }}/ru">Русский</a>
                         </p>
                     </div>

@@ -53,5 +53,14 @@
     "community_heading": "Community",
     "community_p": "Flextype is open source, community driven project,<br>and maintained by community!",
     "contribution_heading": "CONTRIBUTE",
-    "contribution_p": "Flextype is an open source project and community contributions are essential to its growing and success. Contributing to the Flextype is easy and you can give as little or as much time as you want."
+    "contribution_p": "Flextype is an open source project and community contributions are essential to its growing and success. Contributing to the Flextype is easy and you can give as little or as much time as you want.",
+    "link_about": "About",
+    "link_media": "Media",
+    "link_donate": "Donate",
+    "link_sponsors": "Sponsors",
+    "link_plugins": "Plugins",
+    "link_themes": "Themes",
+    "link_downloads": "Downloads",
+    "link_community": "Community",
+    "link_documentation": "Documentation"
 }
