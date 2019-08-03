@@ -3,7 +3,7 @@
 /**
  * @package Flextype Components
  *
- * @author Sergey Romanenko <awilum@yandex.ru>
+ * @author Sergey Romanenko <hello@romanenko.digital>
  * @link http://components.flextype.org
  *
  * For the full copyright and license information, please view the LICENSE
@@ -21,21 +21,27 @@ class Registry
      *
      * @var array
      */
-    private static $registry = [];
+    private $registry = [];
+
+    /**
+     * Get registry array
+     *
+     * @return array
+     */
+    public function dump() : array
+    {
+        return $this->registry;
+    }
 
     /**
      * Checks if an object with this name is in the registry.
      *
-     * if (Registry::exists('var')) {
-     *     // Do something...
-     * }
-     *
      * @param  string $name The name of the registry item to check for existence.
      * @return bool
      */
-    public static function exists(string $name) : bool
+    public function has(string $name) : bool
     {
-        if (Arr::keyExists(Registry::$registry, $name)) {
+        if (Arr::keyExists($this->registry, $name)) {
             return true;
         } else {
             return false;
@@ -45,33 +51,29 @@ class Registry
     /**
      * Registers a given value under a given name.
      *
-     * Registry::set('var', 'value');
-     *
-     * @param  string          $name  The name of the value to store.
-     * @param  mixed $value The value that needs to be stored.
+     * @param  string $name  The name of the value to store.
+     * @param  mixed  $value The value that needs to be stored.
      * @return void
      */
-    public static function set(string $name, $value = null) : void
+    public function set(string $name, $value = null) : void
     {
-        Arr::set(Registry::$registry, $name, $value);
+        Arr::set($this->registry, $name, $value);
     }
 
     /**
-     * Fetch an item from the registry.
-     *
-     * $var = Registry::get('var', 'value');
+     * Get item from the registry.
      *
      * @param  string $name The name of the item to fetch.
      * @param  mixed  $default Default value
      * @return mixed
      */
-    public static function get(string $name, $default = null)
+    public function get(string $name, $default = null)
     {
-        if ( ! Registry::exists($name)) {
+        if ( ! $this->has($name)) {
             throw new \RuntimeException('No item "' . $name . '" exists in the registry.');
         }
 
-        return Arr::get(Registry::$registry, $name, $default);
+        return Arr::get($this->registry, $name, $default);
     }
 
 }

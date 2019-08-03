@@ -57,6 +57,11 @@ final class RegularParser implements ParserInterface
             $names = array();
             $this->beginBacktrack();
             $matches = $this->shortcode($names);
+            if(false === $matches) {
+                $this->backtrack();
+                $this->match(null, true);
+                continue;
+            }
             if(\is_array($matches)) {
                 foreach($matches as $shortcode) {
                     $shortcodes[] = $shortcode;
@@ -151,11 +156,13 @@ final class RegularParser implements ParserInterface
         if(false === $content || $closingName !== $name) {
             $this->backtrack(false);
             $text = $this->backtrack(false);
+            array_pop($names);
 
             return array_merge(array($this->getObject($name, $parameters, $bbCode, $offset, null, $text)), $shortcodes);
         }
         $content = $this->getBacktrack();
         if(!$this->close($names)) { return false; }
+        array_pop($names);
 
         return array($this->getObject($name, $parameters, $bbCode, $offset, $content, $this->getBacktrack()));
     }
@@ -200,9 +207,9 @@ final class RegularParser implements ParserInterface
             return $this->match(self::TOKEN_DELIMITER, false) ? $value : false;
         }
 
-        if($tmp = $this->match(self::TOKEN_STRING, false)) {
+        if('' !== $tmp = $this->match(self::TOKEN_STRING, false)) {
             $value .= $tmp;
-            while($tmp = $this->match(self::TOKEN_STRING, false)) {
+            while('' !== $tmp = $this->match(self::TOKEN_STRING, false)) {
                 $value .= $tmp;
             }
 

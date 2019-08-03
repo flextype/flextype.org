@@ -1,6 +1,6 @@
 # Assets Component
-![version](https://img.shields.io/badge/version-1.0.1-brightgreen.svg?style=flat-square "Version")
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/flextype-components/assets/blob/master/LICENSE)
+![version](https://img.shields.io/badge/version-1.0.3-brightgreen.svg "Version")
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/flextype-components/assets/blob/master/LICENSE)
 
 Assets Component for managing assets in your application.
 

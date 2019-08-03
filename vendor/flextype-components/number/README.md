@@ -16,14 +16,20 @@ composer require flextype-components/number
 use Flextype\Component\Number\Number;
 ```
 
-Convert bytes in 'KB','MB','GB','TiB','PiB'
+Converts a number of bytes to a human readable number by taking the
+number of that unit that the bytes will go into it.
 ```php
-echo Number::byteFormat(10000);
+echo Num::format_bytes('204800');     // 200 kB
+echo Num::format_bytes('214901', 1);  // 209.9 kB
+echo Num::format_bytes('2249010', 1); // 2.1 MB
+echo Num::format_bytes('badbyteshere'); // false
 ```
 
-Convert 'KB','MB','GB' in bytes
+Converts a file size number to a byte value.
 ```php
-echo Number::convertToBytes('10MB');
+echo Number::convertToBytes('200K');  // 204800
+echo Number::convertToBytes('5MiB');  // 5242880
+echo Number::convertToBytes('2.5GB'); // 2684354560
 ```
 
 Converts a number into a more readable human-type number.
@@ -82,6 +88,58 @@ if (Number::odd(2)) {
      // do something...
 }
 ```
+
+Transforms a number by masking characters in a specified mask format, and
+ignoring characters that should be injected into the string without
+matching a character from the original string (defaults to space).
+```php
+// ************5678
+echo Number::maskString('1234567812345678', '************0000');
+
+// **** **** **** 5678
+echo Number::maskString('1234567812345678', '**** **** **** 0000');
+
+// **** - **** - **** - 5678
+echo Number::maskString('1234567812345678', '**** - **** - **** - 0000', ' -');
+```
+
+Formats a number by injecting non-numeric characters in a specified
+format into the string in the positions they appear in the format.
+```php
+// (123) 456-7890
+echo Number::format('1234567890', '(000) 000-0000');
+
+// 123.456.7890
+echo Number::format('1234567890', '000.000.0000');
+```
+
+Formats a phone number.
+```php
+// (061) 234 5678
+echo Number::formatPhone('0612345678');
+
+// (06) 123 456 78
+echo Number::formatPhone('0612345678', '(00) 000 000 00');
+```
+
+Formats (masks) a credit card.
+```php
+// **** **** **** 2938
+echo Number::maskСreditСard('1234263583742938');
+
+// 1234 **** **** ****
+echo Number::maskСreditСard('1234123412341234', '0000 **** **** ****');
+```
+
+Formats a credit card expiration string. Expects 4-digit string (MMYY).
+```php
+// 12-34
+echo Number::formatExp('1234');
+
+// 12/34
+echo Number::formatExp('1234', '00/00');
+```
+
 
 ## License
 See [LICENSE](https://github.com/flextype-components/number/blob/master/LICENSE)

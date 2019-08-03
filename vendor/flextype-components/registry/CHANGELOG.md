@@ -1,3 +1,9 @@
+# v2.0.0, 2019-03-01
+* new infrastructure
+
+# v1.2.0, 2019-02-23
+* general infrastructure changes
+
 # v1.1.0, 2018-05-05
 * general infrastructure changes
 

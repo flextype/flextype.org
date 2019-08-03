@@ -4,37 +4,60 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita30d6ed00c4eebe385994da78855fe5f
+class ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579
 {
     public static $files = array (
+        '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'Whoops\\' => 7,
+        ),
         'T' => 
         array (
-            'Thunder\\Shortcode\\Tests\\' => 24,
+            'Twig\\' => 5,
             'Thunder\\Shortcode\\' => 18,
         ),
         'S' => 
         array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
-            'Symfony\\Component\\Yaml\\' => 23,
+            'Slim\\Views\\' => 11,
+            'Slim\\Flash\\' => 11,
+            'Slim\\Csrf\\' => 10,
+            'Slim\\' => 5,
+        ),
+        'R' => 
+        array (
+            'Respect\\Validation\\' => 19,
         ),
         'P' => 
         array (
+            'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
+            'Psr\\Container\\' => 14,
+            'Psr7Middlewares\\' => 16,
+        ),
+        'M' => 
+        array (
+            'Monolog\\' => 8,
         ),
         'L' => 
         array (
             'League\\Glide\\' => 13,
             'League\\Flysystem\\' => 17,
+            'League\\Event\\' => 13,
         ),
         'I' => 
         array (
             'Intervention\\Image\\' => 19,
+            'Interop\\Container\\' => 18,
         ),
         'G' => 
         array (
@@ -42,76 +65,117 @@ class ComposerStaticInita30d6ed00c4eebe385994da78855fe5f
         ),
         'F' => 
         array (
-            'Flextype\\Component\\View\\' => 24,
-            'Flextype\\Component\\Token\\' => 25,
             'Flextype\\Component\\Text\\' => 24,
             'Flextype\\Component\\Session\\' => 27,
             'Flextype\\Component\\Registry\\' => 28,
             'Flextype\\Component\\Number\\' => 26,
-            'Flextype\\Component\\Notification\\' => 32,
             'Flextype\\Component\\I18n\\' => 24,
-            'Flextype\\Component\\Http\\' => 24,
             'Flextype\\Component\\Html\\' => 24,
             'Flextype\\Component\\Form\\' => 24,
             'Flextype\\Component\\Filesystem\\' => 30,
-            'Flextype\\Component\\Event\\' => 25,
-            'Flextype\\Component\\ErrorHandler\\' => 32,
             'Flextype\\Component\\Debug\\' => 25,
             'Flextype\\Component\\Date\\' => 24,
             'Flextype\\Component\\Cookie\\' => 26,
             'Flextype\\Component\\Assets\\' => 26,
             'Flextype\\Component\\Arr\\' => 23,
+            'FastRoute\\' => 10,
         ),
         'D' => 
         array (
+            'Doctrine\\Common\\Collections\\' => 28,
             'Doctrine\\Common\\Cache\\' => 22,
+        ),
+        'C' => 
+        array (
+            'Cocur\\Slugify\\' => 14,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Thunder\\Shortcode\\Tests\\' => 
+        'Whoops\\' => 
         array (
-            0 => __DIR__ . '/..' . '/thunderer/shortcode/tests',
+            0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
+        ),
+        'Twig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
         'Thunder\\Shortcode\\' => 
         array (
             0 => __DIR__ . '/..' . '/thunderer/shortcode/src',
         ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
-        'Symfony\\Component\\Yaml\\' => 
+        'Slim\\Views\\' => 
         array (
-            0 => __DIR__ . '/..' . '/symfony/yaml',
+            0 => __DIR__ . '/..' . '/slim/twig-view/src',
+        ),
+        'Slim\\Flash\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slim/flash/src',
+        ),
+        'Slim\\Csrf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slim/csrf/src',
+        ),
+        'Slim\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slim/slim/Slim',
+        ),
+        'Respect\\Validation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/respect/validation/library',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Psr7Middlewares\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/oscarotero/psr7-middlewares/src',
+        ),
+        'Monolog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
         'League\\Glide\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/glide/src',
+            1 => __DIR__ . '/..' . '/league/glide-slim/src',
         ),
         'League\\Flysystem\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
         ),
+        'League\\Event\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/event/src',
+        ),
         'Intervention\\Image\\' => 
         array (
             0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
         ),
+        'Interop\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
-        ),
-        'Flextype\\Component\\View\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/flextype-components/view',
-        ),
-        'Flextype\\Component\\Token\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/flextype-components/token',
         ),
         'Flextype\\Component\\Text\\' => 
         array (
@@ -129,17 +193,9 @@ class ComposerStaticInita30d6ed00c4eebe385994da78855fe5f
         array (
             0 => __DIR__ . '/..' . '/flextype-components/number',
         ),
-        'Flextype\\Component\\Notification\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/flextype-components/notification',
-        ),
         'Flextype\\Component\\I18n\\' => 
         array (
             0 => __DIR__ . '/..' . '/flextype-components/i18n',
-        ),
-        'Flextype\\Component\\Http\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/flextype-components/http',
         ),
         'Flextype\\Component\\Html\\' => 
         array (
@@ -152,14 +208,6 @@ class ComposerStaticInita30d6ed00c4eebe385994da78855fe5f
         'Flextype\\Component\\Filesystem\\' => 
         array (
             0 => __DIR__ . '/..' . '/flextype-components/filesystem',
-        ),
-        'Flextype\\Component\\Event\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/flextype-components/event',
-        ),
-        'Flextype\\Component\\ErrorHandler\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/flextype-components/errorhandler',
         ),
         'Flextype\\Component\\Debug\\' => 
         array (
@@ -181,33 +229,82 @@ class ComposerStaticInita30d6ed00c4eebe385994da78855fe5f
         array (
             0 => __DIR__ . '/..' . '/flextype-components/arr',
         ),
+        'FastRoute\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+        ),
+        'Doctrine\\Common\\Collections\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections',
+        ),
         'Doctrine\\Common\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
         ),
+        'Cocur\\Slugify\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cocur/slugify/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'Z' => 
+        array (
+            'Zeuxisoo\\Whoops\\Provider\\Slim' => 
+            array (
+                0 => __DIR__ . '/..' . '/zeuxisoo/slim-whoops/src',
+            ),
+        ),
+        'T' => 
+        array (
+            'Twig_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/twig/lib',
+            ),
+        ),
+        'P' => 
+        array (
+            'Pimple' => 
+            array (
+                0 => __DIR__ . '/..' . '/pimple/pimple/src',
+            ),
+        ),
     );
 
     public static $classMap = array (
-        'Flextype\\Cache' => __DIR__ . '/../..' . '/flextype/Cache.php',
-        'Flextype\\Entries' => __DIR__ . '/../..' . '/flextype/Entries.php',
-        'Flextype\\Flextype' => __DIR__ . '/../..' . '/flextype/Flextype.php',
-        'Flextype\\FrontmatterParser' => __DIR__ . '/../..' . '/flextype/parsers/FrontmatterParser.php',
-        'Flextype\\Images' => __DIR__ . '/../..' . '/flextype/Images.php',
+        'Flextype\\AssetsTwig' => __DIR__ . '/../..' . '/flextype/twig/AssetsTwigExtension.php',
+        'Flextype\\AssetsTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/AssetsTwigExtension.php',
+        'Flextype\\Cache' => __DIR__ . '/../..' . '/flextype/core/Cache.php',
+        'Flextype\\Controller' => __DIR__ . '/../..' . '/flextype/core/Controller.php',
+        'Flextype\\CsrfTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/CsrfTwigExtension.php',
+        'Flextype\\EmitterTwig' => __DIR__ . '/../..' . '/flextype/twig/EmitterTwigExtension.php',
+        'Flextype\\EmitterTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/EmitterTwigExtension.php',
+        'Flextype\\Entries' => __DIR__ . '/../..' . '/flextype/core/Entries.php',
+        'Flextype\\EntriesTwig' => __DIR__ . '/../..' . '/flextype/twig/EntriesTwigExtension.php',
+        'Flextype\\EntriesTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/EntriesTwigExtension.php',
+        'Flextype\\Fieldsets' => __DIR__ . '/../..' . '/flextype/core/Fieldsets.php',
+        'Flextype\\FilesystemTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/FilesystemTwigExtension.php',
+        'Flextype\\FlashTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/FlashTwigExtension.php',
+        'Flextype\\GlobalVarsTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/GlobalVarsTwigExtension.php',
+        'Flextype\\I18nTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/I18nTwigExtension.php',
         'Flextype\\JsonParser' => __DIR__ . '/../..' . '/flextype/parsers/JsonParser.php',
-        'Flextype\\Menus' => __DIR__ . '/../..' . '/flextype/Menus.php',
-        'Flextype\\Plugins' => __DIR__ . '/../..' . '/flextype/Plugins.php',
-        'Flextype\\Shortcodes' => __DIR__ . '/../..' . '/flextype/Shortcodes.php',
-        'Flextype\\Snippets' => __DIR__ . '/../..' . '/flextype/Snippets.php',
-        'Flextype\\Themes' => __DIR__ . '/../..' . '/flextype/Themes.php',
-        'Flextype\\YamlParser' => __DIR__ . '/../..' . '/flextype/parsers/YamlParser.php',
+        'Flextype\\JsonParserTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/JsonParserTwigExtension.php',
+        'Flextype\\Middleware' => __DIR__ . '/../..' . '/flextype/core/Middleware.php',
+        'Flextype\\Plugins' => __DIR__ . '/../..' . '/flextype/core/Plugins.php',
+        'Flextype\\ShortcodesTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/ShortcodesTwigExtension.php',
+        'Flextype\\Snippets' => __DIR__ . '/../..' . '/flextype/core/Snippets.php',
+        'Flextype\\SnippetsTwig' => __DIR__ . '/../..' . '/flextype/twig/SnippetsTwigExtension.php',
+        'Flextype\\SnippetsTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/SnippetsTwigExtension.php',
+        'Flextype\\Themes' => __DIR__ . '/../..' . '/flextype/core/Themes.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita30d6ed00c4eebe385994da78855fe5f::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita30d6ed00c4eebe385994da78855fe5f::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInita30d6ed00c4eebe385994da78855fe5f::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579::$classMap;
 
         }, null, ClassLoader::class);
     }
