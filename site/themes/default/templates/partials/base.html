@@ -34,13 +34,9 @@
             <script src="https://kit.fontawesome.com/588226d8c5.js"></script>
 
             {% set bootstrap = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/css/bootstrap.min.css' %}
-            {% set animate = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/css/animate.min.css' %}
-            {% set lightbox = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/css/simplelightbox.min.css' %}
-            {% set default = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/css/flextype.min.css' %}
+            {% set flextype = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/css/flextype.min.css' %}
             {% do assets.add('css', bootstrap, 'site', 1) %}
-            {% do assets.add('css', animate, 'site', 2) %}
-            {% do assets.add('css', lightbox, 'site', 3) %}
-            {% do assets.add('css', default, 'site', 4) %}
+            {% do assets.add('css', flextype, 'site', 2) %}
             {% for assets_site in assets.get('css', 'site') %}
                 {% for assets_by_priorities in assets_site %}
                     <link href="{{ assets_by_priorities.asset }}" rel="stylesheet">
@@ -127,9 +123,9 @@
                     <div class="col-md-12 footer-locales">
                         <p class="p">
                             <a href="{{ base_url() }}/en">English</a>
-                            <a href="<?= Http::getBaseUrl() ?>/de">Deutsch</a>
-                            <a href="<?= Http::getBaseUrl() ?>/fr">Français</a>
-                            <a href="<?= Http::getBaseUrl() ?>/it">Italiano</a>
+                            <a href="{{ base_url() }}/de">Deutsch</a>
+                            <a href="{{ base_url() }}/fr">Français</a>
+                            <a href="{{ base_url() }}/it">Italiano</a>
                             <a href="{{ base_url() }}/ru">Русский</a>
                         </p>
                     </div>
@@ -138,37 +134,16 @@
         </footer>
 
         {% set default = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/js/default.min.js' %}
-        {% set lightbox = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/js/simple-lightbox.min.js' %}
         {% do assets.add('js', default, 'site', 1) %}
-        {% do assets.add('js', lightbox, 'site', 2) %}
         {% for assets_site in assets.get('js', 'site') %}
             {% for assets_by_priorities in assets_site %}
                 <script src="{{ assets_by_priorities.asset }}"></script>
             {% endfor %}
         {% endfor %}
 
-        <script src="//cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/8.7.1/lazyload.min.js"></script>
-        <script src="//unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-        <script src="//unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-        <script type="text/javascript">
-
-        if ($('.gallery-grid a').length) {
-             var lightbox = $('.gallery-grid a').simpleLightbox({'fileExt': false});
-        }
-
-        if ($('.gallery-grid').length) {
-          var $grid = $('.gallery-grid').imagesLoaded()
-            .done( function( instance ) {
-               $('.preloader').hide();
-               $grid.masonry({
-                   visibleStyle: { transform: 'translateY(0)', opacity: 1 },
-                   hiddenStyle: { transform: 'translateY(100px)', opacity: 0 },
-               });
-            })
-            .progress( function( instance, image ) {
-
-            });
-        }
+        <script src="https://wowjs.uk/dist/wow.min.js"></script>
+        <script>
+            new WOW().init();
         </script>
 
         {{ emitter.emit('onThemeTail') }}
