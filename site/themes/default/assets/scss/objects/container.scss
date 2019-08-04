@@ -100,7 +100,7 @@
     .fab,
     .fas.fa-arrow-circle-right,
     .fas.fa-bold,
-.fas.fa-comments{
+    .fas.fa-comments {
         color: black;
         font-size: 64px;
     }
@@ -139,6 +139,15 @@
             margin-top: 10px;
             font-size: 16px;
         }
+    }
+
+    .h3 {
+        margin: 0;
+        font-size: 40px;
+        padding-top: 60px;
+        padding-bottom: 50px;
+        text-transform: uppercase;
+        text-align: center;
     }
 
     .inner {
