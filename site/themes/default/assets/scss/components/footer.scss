@@ -24,6 +24,11 @@ $footer-bg: black;
     background-position: bottom;
     background-size: cover;
 
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
     .p {
         color: white;
 
