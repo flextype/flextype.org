@@ -1,0 +1,13 @@
+{
+    "title": "Documentation",
+    "content": "<p style=\"text-align: center;\"><span style=\"font-size: 1rem;\"><a href=\"./documentation/guide\">Guide</a></span></p>",
+    "template": "documentation",
+    "fieldset": "default",
+    "visibility": "visible",
+    "description": "",
+    "date": "August 05 2019 12:50:05",
+    "menu_item_title": "",
+    "menu_item_url": "",
+    "menu_item_target": "_self",
+    "menu_item_order": ""
+}
