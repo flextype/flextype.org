@@ -1,0 +1,34 @@
+{% extends "themes/default/templates/partials/base.html" %}
+
+{% block content %}
+<div class="page-content container">
+    <h1 class="h2">
+        {{ entry.title }}
+        <p class="p" stylxe="text-align: center; max-width: 650px; margin:0 auto;">{{ entry.description }}</p>
+    </h1>
+    <div class="row">
+        <div class="col-md-4">
+            <nav class="nav flex-column">
+                <a class="nav-link" href="#">Introduction</a>
+            </nav>
+            <h3>Basics</h3>
+            <nav class="nav flex-column">
+                <a class="nav-link" href="#">Requirements</a>
+                <a class="nav-link" href="#">Installation</a>
+                <a class="nav-link" href="#">Configuration</a>
+                <a class="nav-link" href="#">Folder Structure</a>
+                <a class="nav-link" href="#">Constants</a>
+                <a class="nav-link" href="#">Getting Help</a>
+            </nav>
+            <h3>Content</h3>
+            <nav class="nav flex-column">
+                <a class="nav-link" href="#">Entries</a>
+                <a class="nav-link" href="#">Media</a>
+                <a class="nav-link" href="#">Snippets</a>
+            </nav>
+        </div>
+        <div class="col-md-8">{{ entry.content|shortcode|raw}}</div>
+    </div>
+    <br><br><br>
+</div>
+{% endblock %}
