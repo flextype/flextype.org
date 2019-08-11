@@ -1,18 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * @package Flextype
- *
- * @author Romanenko Sergey <hello@romanenko.digital>
- * @link http://romanenko.digital
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * Flextype (http://flextype.org)
+ * Founded by Sergey Romanenko and maintained by Flextype Community.
  */
 
 namespace Flextype;
 
-use Psr7Middlewares\Middleware;
+use Psr7Middlewares\Middleware\ResponseTime;
 use Psr7Middlewares\Middleware\TrailingSlash;
 
 /**
@@ -24,3 +21,8 @@ $app->add($flextype->get('csrf'));
  * Add middleware TrailingSlash for all routes
  */
 $app->add((new TrailingSlash(false))->redirect(301));
+
+/**
+ * Add middleware ResponseTime for all routes
+ */
+$app->add((new ResponseTime()));

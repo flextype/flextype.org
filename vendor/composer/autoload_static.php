@@ -4,13 +4,13 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579
+class ComposerStaticInite159472ab924df8df633b1bccbe96810
 {
     public static $files = array (
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
     );
 
@@ -28,14 +28,17 @@ class ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
+            'Symfony\\Component\\Yaml\\' => 23,
             'Slim\\Views\\' => 11,
             'Slim\\Flash\\' => 11,
             'Slim\\Csrf\\' => 10,
             'Slim\\' => 5,
+            'SlevomatCodingStandard\\' => 23,
         ),
         'R' => 
         array (
             'Respect\\Validation\\' => 19,
+            'Ramsey\\Uuid\\' => 12,
         ),
         'P' => 
         array (
@@ -43,6 +46,7 @@ class ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
             'Psr7Middlewares\\' => 16,
+            'PHPStan\\PhpDocParser\\' => 21,
         ),
         'M' => 
         array (
@@ -82,8 +86,10 @@ class ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579
         ),
         'D' => 
         array (
+            'Doctrine\\Sniffs\\' => 16,
             'Doctrine\\Common\\Collections\\' => 28,
             'Doctrine\\Common\\Cache\\' => 22,
+            'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 55,
         ),
         'C' => 
         array (
@@ -112,6 +118,10 @@ class ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
+        'Symfony\\Component\\Yaml\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/yaml',
+        ),
         'Slim\\Views\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/twig-view/src',
@@ -128,9 +138,17 @@ class ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579
         array (
             0 => __DIR__ . '/..' . '/slim/slim/Slim',
         ),
+        'SlevomatCodingStandard\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slevomat/coding-standard/SlevomatCodingStandard',
+        ),
         'Respect\\Validation\\' => 
         array (
             0 => __DIR__ . '/..' . '/respect/validation/library',
+        ),
+        'Ramsey\\Uuid\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ramsey/uuid/src',
         ),
         'Psr\\Log\\' => 
         array (
@@ -147,6 +165,10 @@ class ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579
         'Psr7Middlewares\\' => 
         array (
             0 => __DIR__ . '/..' . '/oscarotero/psr7-middlewares/src',
+        ),
+        'PHPStan\\PhpDocParser\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src',
         ),
         'Monolog\\' => 
         array (
@@ -233,6 +255,10 @@ class ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
         ),
+        'Doctrine\\Sniffs\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/coding-standard/lib/Doctrine/Sniffs',
+        ),
         'Doctrine\\Common\\Collections\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections',
@@ -240,6 +266,10 @@ class ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579
         'Doctrine\\Common\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
+        ),
+        'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src',
         ),
         'Cocur\\Slugify\\' => 
         array (
@@ -285,26 +315,29 @@ class ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579
         'Flextype\\Fieldsets' => __DIR__ . '/../..' . '/flextype/core/Fieldsets.php',
         'Flextype\\FilesystemTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/FilesystemTwigExtension.php',
         'Flextype\\FlashTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/FlashTwigExtension.php',
+        'Flextype\\FrontmatterParser' => __DIR__ . '/../..' . '/flextype/parsers/FrontmatterParser.php',
         'Flextype\\GlobalVarsTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/GlobalVarsTwigExtension.php',
         'Flextype\\I18nTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/I18nTwigExtension.php',
         'Flextype\\JsonParser' => __DIR__ . '/../..' . '/flextype/parsers/JsonParser.php',
         'Flextype\\JsonParserTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/JsonParserTwigExtension.php',
         'Flextype\\Middleware' => __DIR__ . '/../..' . '/flextype/core/Middleware.php',
+        'Flextype\\Parser' => __DIR__ . '/../..' . '/flextype/parsers/Parser.php',
         'Flextype\\Plugins' => __DIR__ . '/../..' . '/flextype/core/Plugins.php',
         'Flextype\\ShortcodesTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/ShortcodesTwigExtension.php',
         'Flextype\\Snippets' => __DIR__ . '/../..' . '/flextype/core/Snippets.php',
         'Flextype\\SnippetsTwig' => __DIR__ . '/../..' . '/flextype/twig/SnippetsTwigExtension.php',
         'Flextype\\SnippetsTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/SnippetsTwigExtension.php',
         'Flextype\\Themes' => __DIR__ . '/../..' . '/flextype/core/Themes.php',
+        'Flextype\\YamlParser' => __DIR__ . '/../..' . '/flextype/parsers/YamlParser.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit40e93297cfdc0a4ec89c64a2cbc11579::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInite159472ab924df8df633b1bccbe96810::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite159472ab924df8df633b1bccbe96810::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInite159472ab924df8df633b1bccbe96810::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInite159472ab924df8df633b1bccbe96810::$classMap;
 
         }, null, ClassLoader::class);
     }
