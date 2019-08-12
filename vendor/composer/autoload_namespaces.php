@@ -9,4 +9,6 @@ return array(
     'Zeuxisoo\\Whoops\\Provider\\Slim' => array($vendorDir . '/zeuxisoo/slim-whoops/src'),
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
     'Pimple' => array($vendorDir . '/pimple/pimple/src'),
+    'ParsedownExtra' => array($vendorDir . '/erusev/parsedown-extra'),
+    'Parsedown' => array($vendorDir . '/erusev/parsedown'),
 );

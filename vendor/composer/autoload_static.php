@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite159472ab924df8df633b1bccbe96810
+class ComposerStaticInit0793921ef050a373934c2d4e7b022762
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -298,6 +298,14 @@ class ComposerStaticInite159472ab924df8df633b1bccbe96810
             array (
                 0 => __DIR__ . '/..' . '/pimple/pimple/src',
             ),
+            'ParsedownExtra' => 
+            array (
+                0 => __DIR__ . '/..' . '/erusev/parsedown-extra',
+            ),
+            'Parsedown' => 
+            array (
+                0 => __DIR__ . '/..' . '/erusev/parsedown',
+            ),
         ),
     );
 
@@ -320,6 +328,7 @@ class ComposerStaticInite159472ab924df8df633b1bccbe96810
         'Flextype\\I18nTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/I18nTwigExtension.php',
         'Flextype\\JsonParser' => __DIR__ . '/../..' . '/flextype/parsers/JsonParser.php',
         'Flextype\\JsonParserTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/JsonParserTwigExtension.php',
+        'Flextype\\MarkdownTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/MarkdownTwigExtension.php',
         'Flextype\\Middleware' => __DIR__ . '/../..' . '/flextype/core/Middleware.php',
         'Flextype\\Parser' => __DIR__ . '/../..' . '/flextype/parsers/Parser.php',
         'Flextype\\Plugins' => __DIR__ . '/../..' . '/flextype/core/Plugins.php',
@@ -334,10 +343,10 @@ class ComposerStaticInite159472ab924df8df633b1bccbe96810
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite159472ab924df8df633b1bccbe96810::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite159472ab924df8df633b1bccbe96810::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInite159472ab924df8df633b1bccbe96810::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInite159472ab924df8df633b1bccbe96810::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit0793921ef050a373934c2d4e7b022762::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit0793921ef050a373934c2d4e7b022762::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit0793921ef050a373934c2d4e7b022762::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit0793921ef050a373934c2d4e7b022762::$classMap;
 
         }, null, ClassLoader::class);
     }

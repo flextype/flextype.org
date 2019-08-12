@@ -1,20 +1,29 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * @package Flextype Components
- *
- * @author Sergey Romanenko <awilum@yandex.ru>
- * @link http://components.flextype.org
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * Filesystem Component
+ * Founded by Sergey Romanenko and maintained by Community.
  */
 
 namespace Flextype\Component\Filesystem;
 
+use SplFileInfo;
+use const FILEINFO_MIME_TYPE;
+use const PATHINFO_EXTENSION;
+use function array_filter;
+use function finfo_close;
+use function finfo_file;
+use function finfo_open;
+use function function_exists;
+use function is_dir;
+use function pathinfo;
+use function preg_match;
+use function clearstatcache;
+
 class Filesystem
 {
-
     /**
      * Permissions
      *
@@ -105,26 +114,27 @@ class Filesystem
      *
      * @param string $directory The directory to list.
      * @param bool   $recursive Whether to list recursively.
+     *
      * @return array A list of file metadata.
      */
-    public static function listContents(string $directory = '', bool $recursive = false)
+    public static function listContents(string $directory = '', bool $recursive = false) : array
     {
         $result = [];
 
-        if (!is_dir($directory)) {
+        if (! is_dir($directory)) {
             return [];
         }
 
-        $iterator = $recursive ? Filesystem::getRecursiveDirectoryIterator($directory) : Filesystem::getDirectoryIterator($directory);
+        $iterator = $recursive ? self::getRecursiveDirectoryIterator($directory) : self::getDirectoryIterator($directory);
 
         foreach ($iterator as $file) {
-            $path = Filesystem::getFilePath($file);
+            $path = self::getFilePath($file);
 
             if (preg_match('#(^|/|\\\\)\.{1,2}$#', $path)) {
                 continue;
             }
 
-            $result[] = Filesystem::normalizeFileInfo($file);
+            $result[] = self::normalizeFileInfo($file);
         }
 
         return array_filter($result);
@@ -133,8 +143,9 @@ class Filesystem
     /**
      * Returns the mime type of a file. Returns false if the mime type is not found.
      *
-     * @param  string  $file  Full path to the file
-     * @param  bool    $guess Set to false to disable mime type guessing
+     * @param  string $file  Full path to the file
+     * @param  bool   $guess Set to false to disable mime type guessing
+     *
      * @return mixed
      */
     public static function getMimeType(string $file, bool $guess = true)
@@ -148,70 +159,71 @@ class Filesystem
             finfo_close($info);
 
             return $mime;
-
-        } else {
-
-            // Just guess mime by using the file extension
-            if ($guess === true) {
-                $mime_types = Filesystem::$mime_types;
-
-                $extension = pathinfo($file, PATHINFO_EXTENSION);
-
-                return isset($mime_types[$extension]) ? $mime_types[$extension] : false;
-            } else {
-                return false;
-            }
         }
+
+        // Just guess mime by using the file extension
+        if ($guess === true) {
+            $mime_types = self::$mime_types;
+
+            $extension = pathinfo($file, PATHINFO_EXTENSION);
+
+            return $mime_types[$extension] ?? false;
+        }
+
+        return false;
     }
 
     /**
      * Get a file's timestamp.
      *
      * @param string $path The path to the file.
+     *
      * @return string|false The timestamp or false on failure.
      */
     public static function getTimestamp(string $path)
     {
-        return Filesystem::getMetadata($path)['timestamp'];
+        return self::getMetadata($path)['timestamp'];
     }
 
     /**
      * Get a file's size.
      *
      * @param string $path The path to the file.
+     *
      * @return int|false The file size or false on failure.
      */
     public static function getSize(string $path)
     {
-        return Filesystem::getMetadata($path)['size'];
+        return self::getMetadata($path)['size'];
     }
 
     /**
      * Get a file's metadata.
      *
      * @param string $path The path to the file.
+     *
      * @return array|false The file metadata or false on failure.
      */
     public static function getMetadata(string $path)
     {
-        $info = new \SplFileInfo($path);
+        $info = new SplFileInfo($path);
 
-        return Filesystem::normalizeFileInfo($info);
+        return self::normalizeFileInfo($info);
     }
 
     /**
      * Get a file's visibility.
      *
      * @param string $path The path to the file.
+     *
      * @return string|false The visibility (public|private) or false on failure.
      */
     public static function getVisibility(string $path)
     {
         clearstatcache(false, $path);
         $permissions = octdec(substr(sprintf('%o', fileperms($path)), -4));
-        $visibility = $permissions & 0044 ? 'public' : 'private';
 
-        return $visibility;
+        return $permissions & 0044 ? 'public' : 'private';
     }
 
     /**
@@ -219,27 +231,23 @@ class Filesystem
      *
      * @param string $path       The path to the file.
      * @param string $visibility One of 'public' or 'private'.
+     *
      * @return bool True on success, false on failure.
      */
-    public static function setVisibility(string $path, string $visibility)
+    public static function setVisibility(string $path, string $visibility) : bool
     {
-        $type = is_dir($path) ? 'dir' : 'file';
-        $success = chmod($path, Filesystem::$permissions[$type][$visibility]);
+        $type    = is_dir($path) ? 'dir' : 'file';
+        $success = chmod($path, self::$permissions[$type][$visibility]);
 
-        if ($success === false) {
-            return false;
-        }
-
-        return true;
+        return $success !== false;
     }
 
     /**
      * Delete a file.
      *
-     * @param string $path
      * @return bool True on success, false on failure.
      */
-    public static function delete(string $path)
+    public static function delete(string $path) : bool
     {
         return @unlink($path);
     }
@@ -247,47 +255,49 @@ class Filesystem
     /**
      * Delete a directory.
      *
-     * @param string $dirname
      * @return bool True on success, false on failure.
      */
-     public static function deleteDir(string $dirname) : bool
-     {
-         if (!is_dir($dirname)) {
-             return false;
-         }
+    public static function deleteDir(string $dirname) : bool
+    {
+        if (! is_dir($dirname)) {
+            return false;
+        }
 
-         // Delete dir
-         if (is_dir($dirname)) {
-             $ob = scandir($dirname);
-             foreach ($ob as $o) {
-                 if ($o != '.' && $o != '..') {
-                     if (filetype($dirname.'/'.$o) == 'dir') {
-                         Filesystem::deleteDir($dirname.'/'.$o);
-                     } else {
-                         unlink($dirname.'/'.$o);
-                     }
-                 }
-             }
-         }
+        // Delete dir
+        if (is_dir($dirname)) {
+            $ob = scandir($dirname);
+            foreach ($ob as $o) {
+                if ($o === '.' || $o === '..') {
+                    continue;
+                }
 
-         reset($ob);
-         rmdir($dirname);
+                if (filetype($dirname . '/' . $o) === 'dir') {
+                    self::deleteDir($dirname . '/' . $o);
+                } else {
+                    unlink($dirname . '/' . $o);
+                }
+            }
+        }
 
-         return true;
-     }
+        reset($ob);
+        rmdir($dirname);
+
+        return true;
+    }
 
     /**
      * Create a directory.
      *
-     * @param string $dirname     The name of the new directory.
-     * @param string  $visibility  Visibility
+     * @param string $dirname    The name of the new directory.
+     * @param string $visibility Visibility
+     *
      * @return bool True on success, false on failure.
      */
-    public static function createDir(string $dirname, string $visibility = 'public')
+    public static function createDir(string $dirname, string $visibility = 'public') : bool
     {
         $umask = umask(0);
 
-        if (!is_dir($dirname) && !mkdir($dirname, Filesystem::$permissions['dir'][$visibility], true)) {
+        if (! is_dir($dirname) && ! mkdir($dirname, self::$permissions['dir'][$visibility], true)) {
             return false;
         }
 
@@ -299,38 +309,38 @@ class Filesystem
     /**
      * Copy a file(s).
      *
-     * @param string $path       Path to the existing file.
-     * @param string $newpath    The new path of the file.
-     * @param bool   $recursive  Recursive copy files.
+     * @param string $path      Path to the existing file.
+     * @param string $newpath   The new path of the file.
+     * @param bool   $recursive Recursive copy files.
+     *
      * @return bool True on success, false on failure.
      */
-    public static function copy(string $path, string $newpath, bool $recursive = false)
+    public static function copy(string $path, string $newpath, bool $recursive = false) : bool
     {
-        if ($recursive) {
-
-            if (!Filesystem::has($newpath)) {
-                mkdir($newpath);
-            }
-
-            $splFileInfoArr = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path), \RecursiveIteratorIterator::SELF_FIRST);
-
-            foreach ($splFileInfoArr as $fullPath => $splFileinfo) {
-                //skip . ..
-                if (in_array($splFileinfo->getBasename(), [".", ".."])) {
-                    continue;
-                }
-
-                //get relative path of source file or folder
-                $_path = str_replace($path, "", $splFileinfo->getPathname());
-
-                if ($splFileinfo->isDir()) {
-                    mkdir($newpath."/".$_path);
-                } else {
-                    copy($fullPath, $newpath."/".$_path);
-                }
-            }
-        } else {
+        if (! $recursive) {
             return copy($path, $newpath);
+        }
+
+        if (! self::has($newpath)) {
+            mkdir($newpath);
+        }
+
+        $splFileInfoArr = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path), \RecursiveIteratorIterator::SELF_FIRST);
+
+        foreach ($splFileInfoArr as $fullPath => $splFileinfo) {
+            //skip . ..
+            if (in_array($splFileinfo->getBasename(), ['.', '..'])) {
+                continue;
+            }
+
+            //get relative path of source file or folder
+            $_path = str_replace($path, '', $splFileinfo->getPathname());
+
+            if ($splFileinfo->isDir()) {
+                mkdir($newpath . '/' . $_path);
+            } else {
+                copy($fullPath, $newpath . '/' . $_path);
+            }
         }
     }
 
@@ -339,9 +349,10 @@ class Filesystem
      *
      * @param string $path    Path to the existing file.
      * @param string $newpath The new path of the file.
+     *
      * @return bool True on success, false on failure.
      */
-    public static function rename(string $path, string $newpath)
+    public static function rename(string $path, string $newpath) : bool
     {
         return rename($path, $newpath);
     }
@@ -349,30 +360,28 @@ class Filesystem
     /**
      * Write a file.
      *
-     * @param string  $path           The path of the new file.
-     * @param string  $contents       The file contents.
-     * @param string  $visibility     An optional configuration array.
-     * @param int     $flags          Flags
+     * @param string $path       The path of the new file.
+     * @param string $contents   The file contents.
+     * @param string $visibility An optional configuration array.
+     * @param int    $flags      Flags
+     *
      * @return bool True on success, false on failure.
      */
-    public static function write(string $path, string $contents, string $visibility = 'public', int $flags = LOCK_EX)
+    public static function write(string $path, string $contents, string $visibility = 'public', int $flags = LOCK_EX) : bool
     {
         if (file_put_contents($path, $contents, $flags) === false) {
             return false;
         }
 
-        Filesystem::setVisibility($path, $visibility);
+        self::setVisibility($path, $visibility);
 
         return true;
     }
 
     /**
      * Check whether a file exists.
-     *
-     * @param string $path
-     * @return bool
      */
-    public static function has(string $path)
+    public static function has(string $path) : bool
     {
         return file_exists($path);
     }
@@ -381,9 +390,10 @@ class Filesystem
      * Read a file.
      *
      * @param string $path The path to the file.
+     *
      * @return string|false The file contents or false on failure.
      */
-    public static function read($path)
+    public static function read(string $path)
     {
         $contents = file_get_contents($path);
 
@@ -397,31 +407,29 @@ class Filesystem
     /**
      * Normalize the file info.
      *
-     * @param \SplFileInfo $file
      * @return array|void
      */
-    protected static function normalizeFileInfo(\SplFileInfo $file)
+    protected static function normalizeFileInfo(SplFileInfo $file)
     {
-        return Filesystem::mapFileInfo($file);
+        return self::mapFileInfo($file);
     }
 
     /**
-     * @param \SplFileInfo $file
      * @return array
      */
-    protected static function mapFileInfo(\SplFileInfo $file)
+    protected static function mapFileInfo(SplFileInfo $file) : array
     {
         $normalized = [
             'type' => $file->getType(),
-            'path' => Filesystem::getFilePath($file),
+            'path' => self::getFilePath($file),
         ];
 
         $normalized['timestamp'] = $file->getMTime();
 
         if ($normalized['type'] === 'file') {
-            $normalized['size'] = $file->getSize();
-            $normalized['filename'] = $file->getFilename();
-            $normalized['basename'] = $file->getBasename('.'.$file->getExtension());
+            $normalized['size']      = $file->getSize();
+            $normalized['filename']  = $file->getFilename();
+            $normalized['basename']  = $file->getBasename('.' . $file->getExtension());
             $normalized['extension'] = $file->getExtension();
         }
 
@@ -434,11 +442,8 @@ class Filesystem
 
     /**
      * Get the normalized path from a SplFileInfo object.
-     *
-     * @param \SplFileInfo $file
-     * @return string
      */
-    protected static function getFilePath(\SplFileInfo $file)
+    protected static function getFilePath(SplFileInfo $file) : string
     {
         $path = $file->getPathname();
 
@@ -447,12 +452,7 @@ class Filesystem
         return $path;
     }
 
-    /**
-     * @param string $path
-     * @param int    $mode
-     * @return \RecursiveIteratorIterator
-     */
-    protected static function getRecursiveDirectoryIterator(string $path, int $mode = \RecursiveIteratorIterator::SELF_FIRST)
+    protected static function getRecursiveDirectoryIterator(string $path, int $mode = \RecursiveIteratorIterator::SELF_FIRST) : \RecursiveIteratorIterator
     {
         return new \RecursiveIteratorIterator(
             new \RecursiveDirectoryIterator($path, \FilesystemIterator::SKIP_DOTS),
@@ -460,14 +460,8 @@ class Filesystem
         );
     }
 
-    /**
-     * @param string $path
-     * @return \DirectoryIterator
-     */
-    protected static function getDirectoryIterator(string $path)
+    protected static function getDirectoryIterator(string $path) : \DirectoryIterator
     {
-        $iterator = new \DirectoryIterator($path);
-
-        return $iterator;
+        return new \DirectoryIterator($path);
     }
 }

@@ -12,7 +12,7 @@ namespace Flextype;
 use Twig_Extension;
 use Twig_SimpleFilter;
 
-class ShortcodesTwigExtension extends Twig_Extension
+class MarkdownTwigExtension extends Twig_Extension
 {
     /**
      * Flextype Dependency Container
@@ -35,17 +35,17 @@ class ShortcodesTwigExtension extends Twig_Extension
     public function getFilters() : array
     {
         return [
-            new Twig_SimpleFilter('shortcode', [$this, 'shortcode']),
+            new Twig_SimpleFilter('markdown', [$this, 'markdown']),
         ];
     }
 
     /**
-     * Shorcode process
+     * Markdown process
      */
-    public function shortcode($value) : string
+    public function markdown($value) : string
     {
         if ($value !== null) {
-            return $this->flextype->shortcodes->process($value);
+            return $this->flextype->markdown->text($value);
         }
 
         return '';

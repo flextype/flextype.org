@@ -33,6 +33,7 @@ use League\Glide\Responses\SlimResponseFactory;
 use League\Glide\ServerFactory;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
+use ParsedownExtra as Markdown;
 use Slim\Csrf\Guard;
 use Slim\Flash\Messages;
 use Slim\Http\Environment;
@@ -180,6 +181,13 @@ $flextype['shortcodes'] = static function ($container) {
 };
 
 /**
+ * Add Markdown service to Flextype container
+ */
+$flextype['markdown'] = static function ($container) {
+    return new Markdown();
+};
+
+/**
  * Add entries service to Flextype container
  */
 $flextype['entries'] = static function ($container) {
@@ -235,6 +243,9 @@ $flextype['view'] = static function ($container) {
 
     // Add Global Shortcodes Twig Extension
     $view->addExtension(new ShortcodesTwigExtension($container));
+
+    // Add Global Markdown Twig Extension
+    $view->addExtension(new MarkdownTwigExtension($container));
 
     // Add Global Snippets Twig Extension
     $view->addExtension(new SnippetsTwigExtension($container));

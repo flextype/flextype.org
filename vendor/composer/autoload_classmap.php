@@ -24,6 +24,7 @@ return array(
     'Flextype\\I18nTwigExtension' => $baseDir . '/flextype/twig/I18nTwigExtension.php',
     'Flextype\\JsonParser' => $baseDir . '/flextype/parsers/JsonParser.php',
     'Flextype\\JsonParserTwigExtension' => $baseDir . '/flextype/twig/JsonParserTwigExtension.php',
+    'Flextype\\MarkdownTwigExtension' => $baseDir . '/flextype/twig/MarkdownTwigExtension.php',
     'Flextype\\Middleware' => $baseDir . '/flextype/core/Middleware.php',
     'Flextype\\Parser' => $baseDir . '/flextype/parsers/Parser.php',
     'Flextype\\Plugins' => $baseDir . '/flextype/core/Plugins.php',

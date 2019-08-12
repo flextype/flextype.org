@@ -1,3 +1,6 @@
+# v2.0.4, 2019-08-11
+* Doctrine Coding Standard fixes
+
 # v2.0.3, 2019-02-18
 * deleteDir() method return type - fixed.
 
