@@ -37,7 +37,7 @@ class Assets
      */
     public static function add(string $asset_type, string $asset, string $namespace, int $priority = 1) : void
     {
-        static::$assets[$namespace][$asset_type][$priority][] = [
+        Assets::$assets[$namespace][$asset_type][$priority][] = [
             'asset'  => $asset
         ];
     }
@@ -54,19 +54,21 @@ class Assets
      */
     public static function get(string $asset_type, string $namespace) : array
     {
+        $assets = [];
+
         // is there some registered $assets for current $namespace ?
-        if (isset(static::$assets[$namespace])
-            && isset(static::$assets[$namespace][$asset_type])
-            && count(static::$assets[$namespace][$asset_type]) > 0) {
+        if (isset(Assets::$assets[$namespace])
+            && isset(Assets::$assets[$namespace][$asset_type])
+            && count(Assets::$assets[$namespace][$asset_type]) > 0) {
 
             // Get all $assets for given $namespace and $asset_type.
-            $assets = static::$assets[$namespace][$asset_type];
+            $assets = Assets::$assets[$namespace][$asset_type];
 
             // Sort $assets by priority from low to high
             ksort($assets);
-
-            // Return $assets
-            return $assets;
         }
+
+        // Return $assets
+        return $assets;
     }
 }

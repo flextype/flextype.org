@@ -1,3 +1,18 @@
+# v2.0.4, 2019-08-11
+* Doctrine Coding Standard fixes
+
+# v2.0.3, 2019-02-18
+* deleteDir() method return type - fixed.
+
+# v2.0.2, 2019-02-02
+* all methods params types - fixed.
+
+# v2.0.1, 2019-02-01
+* typo fixes.
+
+# v2.0.0, 2019-02-01
+* Total code cleanup and refactoring!
+
 # v1.1.5, 2018-12-23
 * recursiveCopy fixes
 

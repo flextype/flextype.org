@@ -1,9 +1,8 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * @package Flextype
- *
- * @author Sergey Romanenko <awilum@yandex.ru>
  * @link http://flextype.org
  *
  * For the full copyright and license information, please view the LICENSE
@@ -12,12 +11,16 @@
 
 namespace Flextype;
 
-use Symfony\Component\Yaml\Yaml;
+use RuntimeException;
 use Symfony\Component\Yaml\Exception\DumpException;
 use Symfony\Component\Yaml\Exception\ParseException;
+use Symfony\Component\Yaml\Yaml;
+use function function_exists;
+use function ini_get;
+use function ini_set;
 
-class YamlParser {
-
+class YamlParser
+{
     /**
      * Inline
      *
@@ -72,12 +75,12 @@ class YamlParser {
         try {
             return Yaml::dump(
                 $input,
-                $inline ? $inline : YamlParser::$inline,
-                $indent ? $indent : YamlParser::$indent,
-                $flags  ? $flags  : YamlParser::$flag
+                $inline ? $inline : self::$inline,
+                $indent ? $indent : self::$indent,
+                $flags  ? $flags  : self::$flag
             );
         } catch (DumpException $e) {
-            throw new \RuntimeException('Encoding YAML failed: ' . $e->getMessage(), 0, $e);
+            throw new RuntimeException('Encoding YAML failed: ' . $e->getMessage(), 0, $e);
         }
     }
 
@@ -96,8 +99,7 @@ class YamlParser {
     public static function decode(string $input, int $flags = 0)
     {
         // Try native PECL YAML PHP extension first if available.
-        if (YamlParser::$native && function_exists('yaml_parse')) {
-
+        if (self::$native && function_exists('yaml_parse')) {
             // Safely decode YAML.
             $saved = @ini_get('yaml.decode_php');
             @ini_set('yaml.decode_php', 0);
@@ -112,7 +114,7 @@ class YamlParser {
         try {
             return (array) Yaml::parse($input);
         } catch (ParseException $e) {
-            throw new \RuntimeException('Decoding YAML failed: ' . $e->getMessage(), 0, $e);
+            throw new RuntimeException('Decoding YAML failed: ' . $e->getMessage(), 0, $e);
         }
     }
 }

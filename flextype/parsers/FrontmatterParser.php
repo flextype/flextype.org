@@ -1,35 +1,65 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * @package Flextype
- *
- * @author Sergey Romanenko <awilum@yandex.ru>
- * @link http://flextype.org
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * Flextype (http://flextype.org)
+ * Founded by Sergey Romanenko and maintained by Flextype Community.
  */
 
 namespace Flextype;
 
-class FrontmatterParser {
+use Flextype\Component\Arr\Arr;
+use const PHP_EOL;
+use function array_slice;
+use function count;
+use function implode;
+use function ltrim;
+use function preg_split;
+use function trim;
 
+class FrontmatterParser
+{
     /**
-     * Get [matter] and [body] from a content.
-     * PHP implementation of Jekyll Front Matter.
-     *
-     * $content = Entries::frontMatterParser($content);
+     * Front matter parser
      *
      * @param  string $content Content to parse
-     * @access public
+     *
      * @return array
+     *
+     * @access public
      */
-    public static function parse(string $content) : array
+    public static function parser(string $content) : array
     {
-       $parts = preg_split('/^[\s\r\n]?---[\s\r\n]?$/sm', PHP_EOL.ltrim($content));
+        $parts = preg_split('/^[\s\r\n]?---[\s\r\n]?$/sm', PHP_EOL . ltrim($content));
+        if (count($parts) < 3) {
+            return ['content' => $content];
+        }
 
-       if (count($parts) < 3) return ['matter' => [], 'body' => $content];
+        return YamlParser::decode(trim($parts[1])) + ['content' => implode(PHP_EOL . '---' . PHP_EOL, array_slice($parts, 2))];
+    }
 
-       return ['matter' => trim($parts[1]), 'body' => implode(PHP_EOL.'---'.PHP_EOL, array_slice($parts, 2))];
+    public static function encode($input) : string
+    {
+        if ($input['content']) {
+            $content = $input['content'];
+            Arr::delete($input, 'content');
+            $matter = YamlParser::encode($input);
+        } else {
+            $content = '';
+            $matter  = YamlParser::encode($input);
+        }
+
+        $encoded = '---' . "\n" .
+                   $matter .
+                   '---' . "\n" .
+                   $content;
+
+        return $encoded;
+    }
+
+    public static function decode(string $input)
+    {
+        return self::parser($input);
     }
 }

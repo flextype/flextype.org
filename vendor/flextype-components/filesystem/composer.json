@@ -19,5 +19,8 @@
   },
   "autoload": {
       "psr-4": { "Flextype\\Component\\Filesystem\\": "" }
+  },
+  "require-dev": {
+      "doctrine/coding-standard": "^6.0"
   }
 }
