@@ -1,8 +1,13 @@
-# Composer
+# Global
 .composer
 composer.lock
-vendor/*
-!*/vendor/*
+package-lock.json
+node_modules/
+
+# Flextype Site Specific
+site/cache/
+site/accounts/
+site/watermarks/
 
 # OS Generated
 .DS_Store*
