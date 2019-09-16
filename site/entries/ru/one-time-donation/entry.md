@@ -1,5 +1,5 @@
 ---
-title: One time donation
+title: Одноразовое пожертвование
 ---
 
 QIWI: +79805359141  
