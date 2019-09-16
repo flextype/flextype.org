@@ -1,13 +1,13 @@
 {
-    "title": "Community",
-    "content": "<p>There are several channels to reach the developers and the Flextype community to get direct assistance.</p>\r\n<p>If you can't find the right answers to your questions on our Website, you can turn to one of our other official sources to get help and discuss your issues, but also to receive news and update notifications.</p>\r\n<h2 class=\"h2\"><i class=\"fab fa-discord\"></i> Discord</h2>\r\n<p>\r\n    Got a question about setting up or using Flextype? We'll do our best to help you out.\r\n    Also here you may start discussions about core, plugin and themes development.\r\n    <br><br>\r\n    Link: <a href=\"https://discord.gg/CCKPKVG\">https://discord.gg/CCKPKVG</a>\r\n</p>\r\n\r\n<h2 class=\"h2\"><i class=\"fab fa-github\"></i> Github</h2>\r\n<p>\r\n    If you want to report a bug or contribute your ideas, you can use the <a href=\"https://github.com/flextype/flextype/issues\">Flextype GitHub Issues tracker</a>.\r\n    <br><br>\r\n    Link: <a href=\"https://github.com/flextype\">https://github.com/flextype</a>\r\n</p>\r\n\r\n<h2 class=\"h2\"><i class=\"fab fa-vk\"></i> Vkontakte</h2>\r\n<p>\r\n    Russian Flextype Community!\r\n    <br><br>\r\n    Link: <a href=\"https://vk.com/flextype\">https://vk.com/flextype</a>\r\n</p>\r\n\r\n<h2 class=\"h2\"><i class=\"fab fa-twitter\"></i> Twitter</h2>\r\n<p>\r\n    Follow <a href=\"https://twitter.com/getflextype\">Flextype on Twitter</a> to get real-time news regarding the development and all events we are attending.\r\n    <br><br>\r\n    Link: <a href=\"https://twitter.com/getflextype\">https://twitter.com/getflextype</a>\r\n</p>",
-    "template": "default",
-    "fieldset": "default",
-    "visibility": "visible",
+    "title": "Сообщество",
+    "content": "<p>Есть несколько каналов для получения прямой помощи разработчикам и сообществу Flextype.</p>\n<p>Если вы не можете найти правильные ответы на ваши вопросы на нашем сайте, вы можете обратиться к одному из наших официальных источников, чтобы получить помощь и обсудить ваши проблемы, но также получать новости и уведомления об обновлении.</p>\n<h2 class=\"h2\"><i class=\"fab fa-discord\"></i> Discord</h2>\n<p>\n    Есть вопрос о настройке или использовании Flextype? Мы сделаем все возможное, чтобы помочь вам.\n    Также здесь вы можете начать обсуждение по разработке ключевых, плагинов и тем.\n    <br><br>\n    Ссылка: <a href=\"https://discord.gg/CCKPKVG\">https://discord.gg/CCKPKVG</a>\n</p>\n\n<h2 class=\"h2\"><i class=\"fab fa-github\"></i> Github</h2>\n<p>\n    Если вы хотите сообщить об ошибке или внести свой вклад в свои идеи, вы можете использовать <a href=\"https://github.com/flextype/flextype/issues\">Flextype GitHub Issues tracker</a>.\n    <br><br>\n    Ссылка: <a href=\"https://github.com/flextype\">https://github.com/flextype</a>\n</p>\n\n<h2 class=\"h2\"><i class=\"fab fa-vk\"></i> Vkontakte</h2>\n<p>\n    Русское Flextype Community!\n    <br><br>\n    Ссылка: <a href=\"https://vk.com/flextype\">https://vk.com/flextype</a>\n</p>\n\n<h2 class=\"h2\"><i class=\"fab fa-twitter\"></i> Twitter</h2>\n<p>\n    Следуйте <a href=\"https://twitter.com/getflextype\">Flextype на Twitter</a> чтобы получить новости в реальном времени о развитии и всех событиях, которые мы посещаем.\n    <br><br>\n    Ссылка: <a href=\"https://twitter.com/getflextype\">https://twitter.com/getflextype</a>\n</p>",
+    "template": "по умолчанию",
+    "fieldset": "по умолчанию",
+    "visibility": "заметный",
     "description": "",
-    "date": "August 04 2019 10:16:23",
+    "date": "04 августа 2019 10:16:23",
     "menu_item_title": "",
     "menu_item_url": "",
-    "menu_item_target": "_self",
+    "menu_item_target": "_самому",
     "menu_item_order": ""
 }
