@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Flextype;
 
+use Bnf\Slim3Psr15\CallableResolver;
 use Cocur\Slugify\Slugify;
 use Intervention\Image\ImageManager;
 use League\Event\Emitter;
@@ -43,6 +44,13 @@ use Slim\Views\TwigExtension;
 use Thunder\Shortcode\ShortcodeFacade;
 use Twig\Extension\DebugExtension;
 use function date;
+
+/**
+ * Supply a custom callable resolver, which resolves PSR-15 middlewares.
+ */
+$flextype['callableResolver'] = static function ($container) {
+    return new CallableResolver($container);
+};
 
 /**
  * Add registry service to Flextype container
@@ -167,6 +175,13 @@ $flextype['fieldsets'] = static function ($container) use ($flextype) {
 };
 
 /**
+ * Add forms service to Flextype container
+ */
+$flextype['forms'] = static function ($container) use ($flextype) {
+    return new Forms($flextype);
+};
+
+/**
  * Add snippets service to Flextype container
  */
 $flextype['snippets'] = static function ($container) use ($flextype, $app) {
@@ -226,11 +241,20 @@ $flextype['view'] = static function ($container) {
     // Add I18n Twig Extension
     $view->addExtension(new I18nTwigExtension());
 
-    // Add JsonParser Extension
-    $view->addExtension(new JsonParserTwigExtension());
+    // Add Json Twig Extension
+    $view->addExtension(new JsonTwigExtension());
 
-    // Add Filesystem Extension
+    // Add Yaml Twig Extension
+    $view->addExtension(new YamlTwigExtension());
+
+    // Add Markdown Twig Extension
+    $view->addExtension(new MarkdownTwigExtension($container));
+
+    // Add Filesystem Twig Extension
     $view->addExtension(new FilesystemTwigExtension());
+
+    // Add Date Twig Extension
+    $view->addExtension(new DateTwigExtension());
 
     // Add Assets Twig Extension
     $view->addExtension(new AssetsTwigExtension());
@@ -243,9 +267,6 @@ $flextype['view'] = static function ($container) {
 
     // Add Global Shortcodes Twig Extension
     $view->addExtension(new ShortcodesTwigExtension($container));
-
-    // Add Global Markdown Twig Extension
-    $view->addExtension(new MarkdownTwigExtension($container));
 
     // Add Global Snippets Twig Extension
     $view->addExtension(new SnippetsTwigExtension($container));

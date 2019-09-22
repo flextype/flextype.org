@@ -33,15 +33,15 @@ class FrontmatterParser
     {
         $parts = preg_split('/^[\s\r\n]?---[\s\r\n]?$/sm', PHP_EOL . ltrim($content));
         if (count($parts) < 3) {
-            return ['content' => $content];
+            return ['content' => trim($content)];
         }
 
-        return YamlParser::decode(trim($parts[1])) + ['content' => implode(PHP_EOL . '---' . PHP_EOL, array_slice($parts, 2))];
+        return YamlParser::decode(trim($parts[1])) + ['content' => trim(implode(PHP_EOL . '---' . PHP_EOL, array_slice($parts, 2)))];
     }
 
     public static function encode($input) : string
     {
-        if ($input['content']) {
+        if (isset($input['content'])) {
             $content = $input['content'];
             Arr::delete($input, 'content');
             $matter = YamlParser::encode($input);

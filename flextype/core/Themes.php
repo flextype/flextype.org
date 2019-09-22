@@ -57,31 +57,31 @@ class Themes
                     // Go through the themes list...
                 foreach ($themes_list as $theme) {
                     // Get theme settings
-                    if (Filesystem::has($theme_settings_file = PATH['themes'] . '/' . $theme['dirname'] . '/settings.json')) {
+                    if (Filesystem::has($theme_settings_file = PATH['themes'] . '/' . $theme['dirname'] . '/settings.yaml')) {
                         if (($content = Filesystem::read($theme_settings_file)) === false) {
                             throw new RuntimeException('Load file: ' . $theme_settings_file . ' - failed!');
                         }
 
-                        $theme_settings = JsonParser::decode($content);
+                        $theme_settings = Parser::decode($content, 'yaml');
                     }
 
                     // Get theme manifest
-                    if (Filesystem::has($theme_manifest_file = PATH['themes'] . '/' . $theme['dirname'] . '/theme.json')) {
+                    if (Filesystem::has($theme_manifest_file = PATH['themes'] . '/' . $theme['dirname'] . '/theme.yaml')) {
                         if (($content = Filesystem::read($theme_manifest_file)) === false) {
                             throw new RuntimeException('Load file: ' . $theme_manifest_file . ' - failed!');
                         }
 
-                        $theme_manifest = JsonParser::decode($content);
+                        $theme_manifest = Parser::decode($content, 'yaml');
                     }
 
                     $themes[$theme['dirname']] = array_merge($theme_settings, $theme_manifest);
                 }
 
-                    // Save parsed themes list in the registry themes
-                    $this->flextype['registry']->set('themes', $themes);
+                // Save parsed themes list in the registry themes
+                $this->flextype['registry']->set('themes', $themes);
 
-                    // Save parsed themes list in the cache
-                    $this->flextype['cache']->save($themes_cache_id, $themes);
+                // Save parsed themes list in the cache
+                $this->flextype['cache']->save($themes_cache_id, $themes);
             }
         }
 
@@ -104,12 +104,12 @@ class Themes
         // Go through themes list...
         if (is_array($themes_list) && count($themes_list) > 0) {
             foreach ($themes_list as $theme) {
-                if (! Filesystem::has($_themes_settings = PATH['themes'] . '/' . $theme['dirname'] . '/settings.json') or
-                    ! Filesystem::has($_themes_manifest = PATH['themes'] . '/' . $theme['dirname'] . '/plugin.json')) {
+                if (! Filesystem::has($_themes_settings = PATH['themes'] . '/' . $theme['dirname'] . '/settings.yaml') or
+                    ! Filesystem::has($_themes_manifest = PATH['themes'] . '/' . $theme['dirname'] . '/theme.yaml')) {
                     continue;
                 }
 
-                $_themes_cache_id .= filemtime($_themes_settings) . filemtime($_themes_manifest);
+                $_themes_cache_id .= $_themes_settings . filemtime($_themes_settings) . $_themes_manifest . filemtime($_themes_manifest);
             }
         }
 
@@ -137,7 +137,7 @@ class Themes
 
         // Go through founded themes
         foreach ($_themes_list as $theme) {
-            if ($theme['type'] !== 'dir' || ! Filesystem::has($theme['path'] . '/' . 'theme.json')) {
+            if ($theme['type'] !== 'dir' || ! Filesystem::has($theme['path'] . '/' . 'theme.yaml')) {
                 continue;
             }
 

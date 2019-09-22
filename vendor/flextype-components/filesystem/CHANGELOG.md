@@ -1,3 +1,9 @@
+# v2.0.6, 2019-09-06
+* typo fixes.
+
+# v2.0.5, 2019-08-21
+* New method getDirTimestamp() added.
+
 # v2.0.4, 2019-08-11
 * Doctrine Coding Standard fixes
 

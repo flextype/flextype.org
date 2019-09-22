@@ -26,7 +26,7 @@
             <meta property="og:image" content="https://github.com/flextype/flextype/raw/dev/site/plugins/admin/preview.png">
             <meta property="og:image:type" content="image/png">
 
-            {{ emitter.emit('onThemeMeta') }}
+            {% do emitter.emit('onThemeMeta') %}
 
             <title>{% if entry.title %}{{ entry.title|e('html') }} | {% endif %}{{ registry.settings.title|e('html') }}</title>
 
@@ -44,7 +44,7 @@
                 {% endfor %}
             {% endfor %}
 
-            {{ emitter.emit('onThemeHeader') }}
+            {% do emitter.emit('onThemeHeader') %}
             {{ snippets.exec('yandex-verification')|raw }}
             {{ snippets.exec('yandex-metrika')|raw }}
         {% endblock %}
@@ -145,6 +145,6 @@
             new WOW().init();
         </script>
 
-        {{ emitter.emit('onThemeTail') }}
+        {% do emitter.emit('onThemeTail') %}
     </body>
 </html>
