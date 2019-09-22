@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit527e697234bd60c88d373567382eec9b
+class ComposerStaticInitaaf662bda9bcee5d086d51fd42a8427d
 {
     public static $classMap = array (
         'Flextype\\SiteController' => __DIR__ . '/../..' . '/app/Controllers/SiteController.php',
@@ -13,7 +13,7 @@ class ComposerStaticInit527e697234bd60c88d373567382eec9b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit527e697234bd60c88d373567382eec9b::$classMap;
+            $loader->classMap = ComposerStaticInitaaf662bda9bcee5d086d51fd42a8427d::$classMap;
 
         }, null, ClassLoader::class);
     }

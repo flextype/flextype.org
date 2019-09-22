@@ -1,0 +1,23 @@
+{
+    "name": "bnf/slim3-psr15",
+    "type" : "library",
+    "description": "PSR-15 middleware support for Slim Framework v3",
+    "keywords": ["slim","framework","psr", "middleware"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Benjamin Franzke",
+            "email": "benjaminfranzke@gmail.com"
+        }
+    ],
+    "require": {
+        "psr/http-message": "^1.0",
+        "psr/http-server-middleware": "^1.0",
+        "slim/slim": "^3.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bnf\\Slim3Psr15\\": "src"
+        }
+    }
+}

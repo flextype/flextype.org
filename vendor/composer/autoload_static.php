@@ -4,14 +4,15 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit0793921ef050a373934c2d4e7b022762
+class ComposerStaticInit679ea22d3f665020bae3f9ad6c218514
 {
     public static $files = array (
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -26,9 +27,12 @@ class ComposerStaticInit0793921ef050a373934c2d4e7b022762
         ),
         'S' => 
         array (
+            'Symfony\\Polyfill\\Php73\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
+            'Symfony\\Contracts\\Service\\' => 26,
             'Symfony\\Component\\Yaml\\' => 23,
+            'Symfony\\Component\\Console\\' => 26,
             'Slim\\Views\\' => 11,
             'Slim\\Flash\\' => 11,
             'Slim\\Csrf\\' => 10,
@@ -43,14 +47,16 @@ class ComposerStaticInit0793921ef050a373934c2d4e7b022762
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Psr\\Http\\Server\\' => 16,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
-            'Psr7Middlewares\\' => 16,
             'PHPStan\\PhpDocParser\\' => 21,
         ),
         'M' => 
         array (
             'Monolog\\' => 8,
+            'Middlewares\\Utils\\' => 18,
+            'Middlewares\\' => 12,
         ),
         'L' => 
         array (
@@ -95,6 +101,10 @@ class ComposerStaticInit0793921ef050a373934c2d4e7b022762
         array (
             'Cocur\\Slugify\\' => 14,
         ),
+        'B' => 
+        array (
+            'Bnf\\Slim3Psr15\\' => 15,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -110,6 +120,10 @@ class ComposerStaticInit0793921ef050a373934c2d4e7b022762
         array (
             0 => __DIR__ . '/..' . '/thunderer/shortcode/src',
         ),
+        'Symfony\\Polyfill\\Php73\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php73',
+        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
@@ -118,9 +132,17 @@ class ComposerStaticInit0793921ef050a373934c2d4e7b022762
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
+        'Symfony\\Contracts\\Service\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/service-contracts',
+        ),
         'Symfony\\Component\\Yaml\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
+        ),
+        'Symfony\\Component\\Console\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/console',
         ),
         'Slim\\Views\\' => 
         array (
@@ -154,17 +176,19 @@ class ComposerStaticInit0793921ef050a373934c2d4e7b022762
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Psr\\Http\\Server\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-server-handler/src',
+            1 => __DIR__ . '/..' . '/psr/http-server-middleware/src',
+        ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
-        ),
-        'Psr7Middlewares\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/oscarotero/psr7-middlewares/src',
         ),
         'PHPStan\\PhpDocParser\\' => 
         array (
@@ -173,6 +197,15 @@ class ComposerStaticInit0793921ef050a373934c2d4e7b022762
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Middlewares\\Utils\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/middlewares/utils/src',
+        ),
+        'Middlewares\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/middlewares/response-time/src',
+            1 => __DIR__ . '/..' . '/middlewares/trailing-slash/src',
         ),
         'League\\Glide\\' => 
         array (
@@ -275,6 +308,10 @@ class ComposerStaticInit0793921ef050a373934c2d4e7b022762
         array (
             0 => __DIR__ . '/..' . '/cocur/slugify/src',
         ),
+        'Bnf\\Slim3Psr15\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bnf/slim3-psr15/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -306,15 +343,21 @@ class ComposerStaticInit0793921ef050a373934c2d4e7b022762
             array (
                 0 => __DIR__ . '/..' . '/erusev/parsedown',
             ),
+            'PHPDocsMD' => 
+            array (
+                0 => __DIR__ . '/..' . '/victorjonsson/markdowndocs/src',
+            ),
         ),
     );
 
     public static $classMap = array (
         'Flextype\\AssetsTwig' => __DIR__ . '/../..' . '/flextype/twig/AssetsTwigExtension.php',
         'Flextype\\AssetsTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/AssetsTwigExtension.php',
+        'Flextype\\AuthMiddleware' => __DIR__ . '/../..' . '/flextype/middlewares/AuthMiddleware.php',
         'Flextype\\Cache' => __DIR__ . '/../..' . '/flextype/core/Cache.php',
         'Flextype\\Controller' => __DIR__ . '/../..' . '/flextype/core/Controller.php',
         'Flextype\\CsrfTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/CsrfTwigExtension.php',
+        'Flextype\\DateTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/DateTwigExtension.php',
         'Flextype\\EmitterTwig' => __DIR__ . '/../..' . '/flextype/twig/EmitterTwigExtension.php',
         'Flextype\\EmitterTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/EmitterTwigExtension.php',
         'Flextype\\Entries' => __DIR__ . '/../..' . '/flextype/core/Entries.php',
@@ -323,11 +366,12 @@ class ComposerStaticInit0793921ef050a373934c2d4e7b022762
         'Flextype\\Fieldsets' => __DIR__ . '/../..' . '/flextype/core/Fieldsets.php',
         'Flextype\\FilesystemTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/FilesystemTwigExtension.php',
         'Flextype\\FlashTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/FlashTwigExtension.php',
+        'Flextype\\Forms' => __DIR__ . '/../..' . '/flextype/core/Forms.php',
         'Flextype\\FrontmatterParser' => __DIR__ . '/../..' . '/flextype/parsers/FrontmatterParser.php',
         'Flextype\\GlobalVarsTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/GlobalVarsTwigExtension.php',
         'Flextype\\I18nTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/I18nTwigExtension.php',
         'Flextype\\JsonParser' => __DIR__ . '/../..' . '/flextype/parsers/JsonParser.php',
-        'Flextype\\JsonParserTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/JsonParserTwigExtension.php',
+        'Flextype\\JsonTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/JsonTwigExtension.php',
         'Flextype\\MarkdownTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/MarkdownTwigExtension.php',
         'Flextype\\Middleware' => __DIR__ . '/../..' . '/flextype/core/Middleware.php',
         'Flextype\\Parser' => __DIR__ . '/../..' . '/flextype/parsers/Parser.php',
@@ -338,15 +382,17 @@ class ComposerStaticInit0793921ef050a373934c2d4e7b022762
         'Flextype\\SnippetsTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/SnippetsTwigExtension.php',
         'Flextype\\Themes' => __DIR__ . '/../..' . '/flextype/core/Themes.php',
         'Flextype\\YamlParser' => __DIR__ . '/../..' . '/flextype/parsers/YamlParser.php',
+        'Flextype\\YamlTwigExtension' => __DIR__ . '/../..' . '/flextype/twig/YamlTwigExtension.php',
+        'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit0793921ef050a373934c2d4e7b022762::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit0793921ef050a373934c2d4e7b022762::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit0793921ef050a373934c2d4e7b022762::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit0793921ef050a373934c2d4e7b022762::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit679ea22d3f665020bae3f9ad6c218514::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit679ea22d3f665020bae3f9ad6c218514::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit679ea22d3f665020bae3f9ad6c218514::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit679ea22d3f665020bae3f9ad6c218514::$classMap;
 
         }, null, ClassLoader::class);
     }

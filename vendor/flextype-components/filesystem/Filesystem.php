@@ -9,18 +9,30 @@ declare(strict_types=1);
 
 namespace Flextype\Component\Filesystem;
 
+use FilesystemIterator;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 use SplFileInfo;
 use const FILEINFO_MIME_TYPE;
 use const PATHINFO_EXTENSION;
 use function array_filter;
+use function chmod;
+use function clearstatcache;
+use function fileperms;
+use function filetype;
 use function finfo_close;
 use function finfo_file;
 use function finfo_open;
 use function function_exists;
 use function is_dir;
+use function octdec;
 use function pathinfo;
 use function preg_match;
-use function clearstatcache;
+use function scandir;
+use function sprintf;
+use function substr;
+use function unlink;
+use function reset;
 
 class Filesystem
 {
@@ -138,6 +150,37 @@ class Filesystem
         }
 
         return array_filter($result);
+    }
+
+    /**
+     * Get directory timestamp
+     *
+     * @param string $directory The directory
+     *
+     * @return int directory timestamp
+     */
+    public static function getDirTimestamp(string $directory) : int
+    {
+        $_directory  = new RecursiveDirectoryIterator(
+            $directory,
+            FilesystemIterator::KEY_AS_PATHNAME |
+            FilesystemIterator::CURRENT_AS_FILEINFO |
+            FilesystemIterator::SKIP_DOTS
+        );
+        $_iterator   = new RecursiveIteratorIterator(
+            $_directory,
+            RecursiveIteratorIterator::SELF_FIRST
+        );
+        $_resultFile = $_iterator->current();
+        foreach ($_iterator as $file) {
+            if ($file->getMtime() <= $_resultFile->getMtime()) {
+                continue;
+            }
+
+            $_resultFile = $file;
+        }
+
+        return $_resultFile->getMtime();
     }
 
     /**
@@ -315,7 +358,7 @@ class Filesystem
      *
      * @return bool True on success, false on failure.
      */
-    public static function copy(string $path, string $newpath, bool $recursive = false) : bool
+    public static function copy(string $path, string $newpath, bool $recursive = false)
     {
         if (! $recursive) {
             return copy($path, $newpath);
@@ -325,7 +368,7 @@ class Filesystem
             mkdir($newpath);
         }
 
-        $splFileInfoArr = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path), \RecursiveIteratorIterator::SELF_FIRST);
+        $splFileInfoArr = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), RecursiveIteratorIterator::SELF_FIRST);
 
         foreach ($splFileInfoArr as $fullPath => $splFileinfo) {
             //skip . ..
@@ -452,10 +495,10 @@ class Filesystem
         return $path;
     }
 
-    protected static function getRecursiveDirectoryIterator(string $path, int $mode = \RecursiveIteratorIterator::SELF_FIRST) : \RecursiveIteratorIterator
+    protected static function getRecursiveDirectoryIterator(string $path, int $mode = RecursiveIteratorIterator::SELF_FIRST) : RecursiveIteratorIterator
     {
-        return new \RecursiveIteratorIterator(
-            new \RecursiveDirectoryIterator($path, \FilesystemIterator::SKIP_DOTS),
+        return new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS),
             $mode
         );
     }
