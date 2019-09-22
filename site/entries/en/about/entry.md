@@ -125,7 +125,7 @@ date: 'August 04 2019 10:16:23'
     </tbody>
 </table>
 
-<br />
+  
 
 <h3 class="h3" style="text-align: center;">Supporting Flextype</h3>
 
@@ -134,6 +134,6 @@ date: 'August 04 2019 10:16:23'
 <a href="https://www.patreon.com/awilum">Become a backer or sponsor on Patreon.</a><br />
 <a href="http://flextype.org/en/one-time-donation">One-time donation via PayPal, QIWI, Sberbank, Yandex</a>
 
-</p>
 
-<br /> <br /> <br /> <br />
+
+</p>
