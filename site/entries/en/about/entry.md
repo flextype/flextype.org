@@ -125,14 +125,13 @@ date: 'August 04 2019 10:16:23'
     </tbody>
 </table>
 
-  
-
 <h3 class="h3" style="text-align: center;">Supporting Flextype</h3>
 
 <p>
   Flextype is an MIT-licensed open source project and completely free to use.<br /> <br /> However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. You can support it's ongoing development by being a backer or a sponsor:<br /> <br />
 <a href="https://www.patreon.com/awilum">Become a backer or sponsor on Patreon.</a><br />
 <a href="http://flextype.org/en/one-time-donation">One-time donation via PayPal, QIWI, Sberbank, Yandex</a>
+
 
 
 
