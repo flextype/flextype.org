@@ -1,8 +1,8 @@
 {
     "title": "Создавайте быстрые, гибкие, простые в управлении веб-сайты!",
     "content": "",
-    "template": "главная",
-    "fieldset": "по умолчанию",
+    "template": "home",
+    "fieldset": "default",
     "visibility": "видимый",
     "description": "Создавайте быстрые и легкие в управлении веб-сайты c Flextype.",
     "menu_item_title": "Главная",
