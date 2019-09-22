@@ -6,7 +6,7 @@
     "visibility": "видимый",
     "description": "Создавайте быстрые и легкие в управлении веб-сайты c Flextype.",
     "menu_item_title": "Главная",
-    "menu_item_url": "главная",
+    "menu_item_url": "home",
     "menu_item_target": "_самому",
     "menu_item_order": "1",
     "intro_section_h1": "Создавайте быстрые и легкие в управлении веб-сайты c Flextype.",
