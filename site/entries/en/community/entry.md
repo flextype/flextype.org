@@ -15,9 +15,13 @@ published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 date: 'August 04 2019 10:16:23'
 ---
+
 <p>There are several channels to reach the developers and the Flextype community to get direct assistance.</p>
+
 <p>If you can't find the right answers to your questions on our Website, you can turn to one of our other official sources to get help and discuss your issues, but also to receive news and update notifications.</p>
+
 <h2 class="h2"><i class="fab fa-discord"></i> Discord</h2>
+
 <p>
     Got a question about setting up or using Flextype? We'll do our best to help you out.
     Also here you may start discussions about core, plugin and themes development.
@@ -26,6 +30,7 @@ date: 'August 04 2019 10:16:23'
 </p>
 
 <h2 class="h2"><i class="fab fa-github"></i> Github</h2>
+
 <p>
     If you want to report a bug or contribute your ideas, you can use the <a href="https://github.com/flextype/flextype/issues">Flextype GitHub Issues tracker</a>.
     <br><br>
@@ -33,6 +38,7 @@ date: 'August 04 2019 10:16:23'
 </p>
 
 <h2 class="h2"><i class="fab fa-vk"></i> Vkontakte</h2>
+
 <p>
     Russian Flextype Community!
     <br><br>
@@ -40,6 +46,7 @@ date: 'August 04 2019 10:16:23'
 </p>
 
 <h2 class="h2"><i class="fab fa-twitter"></i> Twitter</h2>
+
 <p>
     Follow <a href="https://twitter.com/getflextype">Flextype on Twitter</a> to get real-time news regarding the development and all events we are attending.
     <br><br>

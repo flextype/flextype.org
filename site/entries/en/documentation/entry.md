@@ -15,4 +15,14 @@ published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 date: 'August 04 2019 10:16:23'
 ---
-<center><h2>New documentation in progress!<br><br>There are several channels to reach the developers and the Flextype community to get direct assistance.<br><br> <a href="http://flextype.org/en/documentation/guide/basics/getting-help">&gt; Getting Help &lt;</a></h2></center>
+
+<center>
+  </p> 
+  
+  <h2>
+    New documentation in progress!<br /><br />There are several channels to reach the developers and the Flextype community to get direct assistance.<br /><br /> <a href="http://flextype.org/en/documentation/guide/basics/getting-help">&gt; Getting Help &lt;</a>
+  </h2>
+  
+  <p>
+    </center>
+  </p>
