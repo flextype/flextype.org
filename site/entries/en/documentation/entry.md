@@ -17,7 +17,7 @@ date: 'August 04 2019 10:16:23'
 ---
 
 <center>
-  </p></p></p>
+  </p></p></p></p>
 
 <h2>
     New documentation in progress!<br /><br />There are several channels to reach the developers and the Flextype community to get direct assistance.<br /><br /> <a href="http://flextype.org/en/documentation/guide/basics/getting-help">&gt; Getting Help &lt;</a>
@@ -25,5 +25,7 @@ date: 'August 04 2019 10:16:23'
 
 <p><</p>
 
-<p>p>
+<p><</p>
+
+<p>p>p>
     </center>
