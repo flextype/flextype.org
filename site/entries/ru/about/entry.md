@@ -74,29 +74,29 @@ date: 'August 04 2019 10:16:23'
         </tr>
         <tr>
             <td><strong>Dany Fernandes</strong> - Французский</td>
-            <td><strong>Haihua Deng</strong> - Chinese Simplified</td>
+            <td><strong>Haihua Deng</strong> - Китайский упрощенный</td>
         </tr>
         <tr>
-            <td><strong>Sergey Dmytryshyn</strong> - Ukrainian</td>
-            <td><strong>AndiLeni</strong> - German</td>
+            <td><strong>Сергей Дмитришихин</strong> - Украинский</td>
+            <td><strong>AndiLeni</strong> - Немецкий</td>
         </tr>
         <tr>
-            <td><strong>Kruno H</strong> - Croatian</td>
-            <td><strong>Kamil</strong> - Polish</td>
+            <td><strong>Kruno H</strong> - Хорватский</td>
+            <td><strong>Kamil</strong> - Турецкий</td>
         </tr>
         <tr>
-            <td><strong><a href="https://github.com/Awilum">Sergey Romanenko</a></strong> - English, Russia</td>
-            <td><strong><a href="https://github.com/seregajd999">Sergey Vishnyakov</a></strong> - Russia</td>
+            <td><strong><a href="https://github.com/Awilum">Сергей Романенко</a></strong> - Английский, Русский</td>
+            <td><strong><a href="https://github.com/seregajd999">Сергей Вишняков</a></strong> - Русский</td>
         </tr>
     </tbody>
 </table>
 
-<h3 class="h3">Supporting Flextype</h3>
+<h3 class="h3">Поддержка Flextype</h3>
 
 <p>
-  Flextype is an MIT-licensed open source project and completely free to use.<br /> <br /> However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. You can support it's ongoing development by being a backer or a sponsor:<br /> <br />
-<a href="https://www.patreon.com/awilum">Become a backer or sponsor on Patreon.</a><br />
-<a href="http://flextype.org/en/one-time-donation">One-time donation via PayPal, QIWI, Sberbank, Yandex</a>
+  Flextype - это проект с открытым исходным кодом, который полностью свободен для использования.<br /> <br /> Однако, количество усилий, необходимых для поддержания и разработки новых возможностей для проекта, не является устойчивым без надлежащей финансовой поддержки. Вы можете поддержать это текущее развитие, будучи брокером или спонсором:<br /> <br />
+<a href="https://www.patreon.com/awilum">Стать брокером или спонсором на Patreon.</a><br />
+<a href="http://flextype.org/en/one-time-donation">Одноразовое пожертвование через PayPal, QIWI, Sberbank, Яндекс</a>
 
 
 </p>
