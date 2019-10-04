@@ -56,17 +56,17 @@ project_documentation: 'Личное резюме'
 project_blog: Блог
 community_heading: Сообщество
 community_p: "Flextype - это проект с открытым исходным кодом,\nуправляемый сообществом и поддерживаемый сообществом!"
-contribution_heading: CONTRIBUTE
-contribution_p: 'Flextype is an open source project and community contributions are essential to its growing and success. Contributing to the Flextype is easy and you can give as little or as much time as you want.'
-link_about: About
-link_media: Media
-link_donate: Donate
-link_sponsors: Sponsors
-link_plugins: Plugins
-link_themes: Themes
-link_downloads: Downloads
-link_community: Community
-link_documentation: Documentation
-link_changelog: Changelog
+contribution_heading: Внести свой вклад
+contribution_p: 'Flextype - это проект с открытым исходным кодом, и вклад сообщества важен для его роста и успеха. Внести свой вклад в Flextype легко, и вы можете выделить столько времени, сколько захотите.'
+link_about: О Проекте
+link_media: Медиа
+link_donate: Пожертвование
+link_sponsors: Спонсоры
+link_plugins: Плагины
+link_themes: Темы
+link_downloads: Скачать
+link_community: Сообщество
+link_documentation: Документация
+link_changelog: Список изменений
 ---
 
