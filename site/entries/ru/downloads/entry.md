@@ -1,14 +1,14 @@
 ---
-title: Downloads
+title: Скачать
 content: ''
-template: downloads
-fieldset: default
+template: загрузки
+fieldset: по умолчанию
 visibility: visible
-description: Build fast, flexible, easier to manage websites with Flextype.
-current_stable_version: Current stable Flextype version
-view_changelog: View the release notes in the Changelog.
-download_flextype: Download Flextype
-link_plugins: Plugins
-link_themes: Themes
+description: Создавайте быстрые и легкие в управлении веб-сайты c Flextype.
+current_stable_version: Текущая стабильная версия Flextype
+view_changelog: Просмотреть список изменений.
+download_flextype: Скачать Flextype
+link_plugins: Плагины
+link_themes: Темы
 ---
 
