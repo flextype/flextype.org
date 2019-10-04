@@ -34,46 +34,46 @@ date: 'August 04 2019 10:16:23'
 
 <p class="text-center">
   
-<strong>Sergey Romanenko</strong><br /> Founder & Lead Developer<br />
+<strong>Сергей Романенко</strong><br /> Основатель и ведущий разработчик<br />
 <a href="http://romanenko.digital">romanenko.digital</a>
 </p>
 
-<h3 class="h3">Translation Team</h3>
+<h3 class="h3">Команда Переводчиков</h3>
 
-<p>If you wish to participate in the translation of Flextype, please <a href="https://crowdin.com/project/flextype/invite">Join Flextype International Translator Team</a> and start translating!</p>
+<p>Если вы хотите принять участие в переводе Flextype, пожалуйста, <a href="https://crowdin.com/project/flextype/invite">Присоединяйтесь к международной команде переводчиков Flextype</a> и начните перевод!</p>
 
 <table class="table">
     <tbody>
         <tr>
-            <td><strong>Kristofer Olsson</strong> - Swedish</td>
-            <td><strong>Mjohansen</strong> - Danish</td>
+            <td><strong>Кристофер Олссон</strong> - Шведский</td>
+            <td><strong>Мjohansen</strong> - Датский</td>
         </tr>
         <tr>
-            <td><strong>Splash</strong> - Hungarian</td>
-            <td><strong>Oleg</strong> <strong>Hmelevskiy</strong> - Ukrainian</td>
+            <td><strong>Splash</strong> - Венгерское</td>
+            <td><strong>Олег</strong> <strong>Хмелевский</strong> - Украинский</td>
         </tr>
         <tr>
-            <td><strong>Cagatayldzz</strong> - Turkish</td>
-            <td><strong>Ivoivano</strong> - Italian</td>
+            <td><strong>Cagatayldzz</strong> - Турецкий</td>
+            <td><strong>Ivoivano</strong> - Итальянский</td>
         </tr>
         <tr>
-            <td><strong>Zizoramzi</strong> - Arabic, French</td>
-            <td><strong>Андрей Кузьмичёв</strong> - Russian, Ukrainian</td>
+            <td><strong>Zizoramzi</strong> - Арабский, французский</td>
+            <td><strong>Андрей Кузьмичёв</strong> - Русский, украинский</td>
         </tr>
         <tr>
-            <td><strong>Pascoal</strong> - Portuguese, Brazilian</td>
-            <td><strong>gibob8</strong> - German</td>
+            <td><strong>Pascoal</strong> - Португальский, бразильский</td>
+            <td><strong>gibob8</strong> - Немецкий</td>
         </tr>
         <tr>
-            <td><strong>Dirk Gerber</strong> - German</td>
-            <td><strong>Anton Gudkov</strong> - Russian</td>
+            <td><strong>Dirk Gerber</strong> - Немецкий</td>
+            <td><strong>Антон Гудков</strong> - Русский</td>
         </tr>
         <tr>
-            <td><strong>Eliepse</strong> - French</td>
-            <td><strong>Tyfn</strong> - Turkish</td>
+            <td><strong>Eliepse</strong> - Французский</td>
+            <td><strong>Tyfn</strong> - Турецкий</td>
         </tr>
         <tr>
-            <td><strong>Dany Fernandes</strong> - French</td>
+            <td><strong>Dany Fernandes</strong> - Французский</td>
             <td><strong>Haihua Deng</strong> - Chinese Simplified</td>
         </tr>
         <tr>
