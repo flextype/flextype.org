@@ -13,7 +13,6 @@ created_at: '22-09-2019 19:15'
 uuid: 94f5eff7-28fb-4fce-a4d0-7dffcda31f4a
 published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
-date: 'August 04 2019 10:16:23'
 ---
 
 <h3 class="h3">Introducing</h3>
@@ -39,10 +38,18 @@ With Flextype, you are in complete control. Design your data structure the way y
 
 <h3 class="h3">Translation Team</h3>
 
-<p>If you wish to participate in the translation of Flextype, please <a href="https://crowdin.com/project/flextype/invite">Join Flextype International Translator Team</a> and start translating!</p>
+<p>If you wish to participate in the translation of Flextype, please <b>Join Flextype International Translator Team</b> and start translating!</p>
+
+<p>
+Our crowdin projects: <a href="https://crowdin.com/project/flextype">Flextype CMS</a>, <a href="https://crowdin.com/project/flextype-website">Flextype Website</a>, <a href="https://crowdin.com/project/flextype-documentation">Flextype Documentation</a>
+</p>
 
 <table class="table">
     <tbody>
+        <tr>
+            <td><strong><a href="https://github.com/Awilum">Sergey Romanenko</a></strong> - English, Russia</td>
+            <td><strong><a href="https://github.com/seregajd999">Sergey Vishnyakov</a></strong> - Russia</td>
+        </tr>
         <tr>
             <td><strong>Kristofer Olsson</strong> - Swedish</td>
             <td><strong>Mjohansen</strong> - Danish</td>
@@ -82,10 +89,6 @@ With Flextype, you are in complete control. Design your data structure the way y
         <tr>
             <td><strong>Kruno H</strong> - Croatian</td>
             <td><strong>Kamil</strong> - Polish</td>
-        </tr>
-        <tr>
-            <td><strong><a href="https://github.com/Awilum">Sergey Romanenko</a></strong> - English, Russia</td>
-            <td><strong><a href="https://github.com/seregajd999">Sergey Vishnyakov</a></strong> - Russia</td>
         </tr>
     </tbody>
 </table>
