@@ -1,8 +1,8 @@
 ---
 title: Скачать
 content: ''
-template: загрузки
-fieldset: по умолчанию
+template: downloads
+fieldset: default
 visibility: visible
 description: Создавайте быстрые и легкие в управлении веб-сайты c Flextype.
 current_stable_version: Текущая стабильная версия Flextype
