@@ -1,6 +1,6 @@
 ---
 title: 'Создавайте быстрые, гибкие, простые в управлении веб-сайты!'
-template: главная
+template: home
 visibility: visible
 published_at: '22-09-2019 19:12'
 description: 'Создавайте быстрые и легкие в управлении веб-сайты c Flextype.'
@@ -8,7 +8,7 @@ menu_item_title: Главная
 menu_item_url: home
 menu_item_target: _self
 menu_item_order: '1'
-fieldset: по умолчанию
+fieldset: default
 created_at: '22-09-2019 19:12'
 uuid: d080816b-0973-4fac-8964-4f6ecf8f3561
 published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
