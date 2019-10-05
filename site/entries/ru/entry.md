@@ -14,9 +14,9 @@ uuid: d080816b-0973-4fac-8964-4f6ecf8f3561
 published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 date: 'August 04 2019 10:16:23'
-intro_section_h1: 'Build fast, flexible, easier to manage websites with Flextype.'
-intro_section_button: 'Get Flextype'
-features_heading: Features
+intro_section_h1: 'Создавайте быстрые и легкие в управлении веб-сайты c Flextype.'
+intro_section_button: 'Скачать Flextype'
+features_heading: Преимущества
 features_description: 'Flextype предлагает быстрый и продуктивный способ<br> создания и управлениями веб-сайтами.'
 features_simple_heading: Простая
 features_simple_p: 'Просто установить, обновить и использовать.<br>Не требуется установки, просто скопируйте файлы на ваш сервер!'
