@@ -13,7 +13,6 @@ created_at: '22-09-2019 19:15'
 uuid: 94f5eff7-28fb-4fce-a4d0-7dffcda31f4a
 published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
-date: 'August 04 2019 10:16:23'
 ---
 
 <h3 class="h3">Введение</h3>
@@ -40,53 +39,57 @@ date: 'August 04 2019 10:16:23'
 
 <h3 class="h3">Команда Переводчиков</h3>
 
-<p>Если вы хотите принять участие в переводе Flextype, пожалуйста, <a href="https://crowdin.com/project/flextype/invite">Присоединяйтесь к международной команде переводчиков Flextype</a> и начните перевод!</p>
+<p>If you wish to participate in the translation of Flextype, please <b>Join Flextype International Translator Team</b> and start translating!</p>
+
+<p>
+Our crowdin projects: <a href="https://crowdin.com/project/flextype">Flextype CMS</a>, <a href="https://crowdin.com/project/flextype-website">Flextype Website</a>, <a href="https://crowdin.com/project/flextype-documentation">Flextype Documentation</a>
+</p>
 
 <table class="table">
     <tbody>
         <tr>
-            <td><strong>Кристофер Олссон</strong> - Шведский</td>
-            <td><strong>Мjohansen</strong> - Датский</td>
+            <td><strong><a href="https://github.com/Awilum">Sergey Romanenko</a></strong> - English, Russia</td>
+            <td><strong><a href="https://github.com/seregajd999">Sergey Vishnyakov</a></strong> - Russia</td>
         </tr>
         <tr>
-            <td><strong>Splash</strong> - Венгерское</td>
-            <td><strong>Олег</strong> <strong>Хмелевский</strong> - Украинский</td>
+            <td><strong>Kristofer Olsson</strong> - Swedish</td>
+            <td><strong>Mjohansen</strong> - Danish</td>
         </tr>
         <tr>
-            <td><strong>Cagatayldzz</strong> - Турецкий</td>
-            <td><strong>Ivoivano</strong> - Итальянский</td>
+            <td><strong>Splash</strong> - Hungarian</td>
+            <td><strong>Oleg</strong> <strong>Hmelevskiy</strong> - Ukrainian</td>
         </tr>
         <tr>
-            <td><strong>Zizoramzi</strong> - Арабский, французский</td>
-            <td><strong>Андрей Кузьмичёв</strong> - Русский, украинский</td>
+            <td><strong>Cagatayldzz</strong> - Turkish</td>
+            <td><strong>Ivoivano</strong> - Italian</td>
         </tr>
         <tr>
-            <td><strong>Pascoal</strong> - Португальский, бразильский</td>
-            <td><strong>gibob8</strong> - Немецкий</td>
+            <td><strong>Zizoramzi</strong> - Arabic, French</td>
+            <td><strong>Андрей Кузьмичёв</strong> - Russian, Ukrainian</td>
         </tr>
         <tr>
-            <td><strong>Dirk Gerber</strong> - Немецкий</td>
-            <td><strong>Антон Гудков</strong> - Русский</td>
+            <td><strong>Pascoal</strong> - Portuguese, Brazilian</td>
+            <td><strong>gibob8</strong> - German</td>
         </tr>
         <tr>
-            <td><strong>Eliepse</strong> - Французский</td>
-            <td><strong>Tyfn</strong> - Турецкий</td>
+            <td><strong>Dirk Gerber</strong> - German</td>
+            <td><strong>Anton Gudkov</strong> - Russian</td>
         </tr>
         <tr>
-            <td><strong>Dany Fernandes</strong> - Французский</td>
-            <td><strong>Haihua Deng</strong> - Китайский упрощенный</td>
+            <td><strong>Eliepse</strong> - French</td>
+            <td><strong>Tyfn</strong> - Turkish</td>
         </tr>
         <tr>
-            <td><strong>Сергей Дмитришихин</strong> - Украинский</td>
-            <td><strong>AndiLeni</strong> - Немецкий</td>
+            <td><strong>Dany Fernandes</strong> - French</td>
+            <td><strong>Haihua Deng</strong> - Chinese Simplified</td>
         </tr>
         <tr>
-            <td><strong>Kruno H</strong> - Хорватский</td>
-            <td><strong>Kamil</strong> - Турецкий</td>
+            <td><strong>Sergey Dmytryshyn</strong> - Ukrainian</td>
+            <td><strong>AndiLeni</strong> - German</td>
         </tr>
         <tr>
-            <td><strong><a href="https://github.com/Awilum">Сергей Романенко</a></strong> - Английский, Русский</td>
-            <td><strong><a href="https://github.com/seregajd999">Сергей Вишняков</a></strong> - Русский</td>
+            <td><strong>Kruno H</strong> - Croatian</td>
+            <td><strong>Kamil</strong> - Polish</td>
         </tr>
     </tbody>
 </table>
@@ -94,9 +97,9 @@ date: 'August 04 2019 10:16:23'
 <h3 class="h3">Поддержка Flextype</h3>
 
 <p>
-  Flextype - это проект с открытым исходным кодом, который полностью свободен для использования.<br /> <br /> Однако, количество усилий, необходимых для поддержания и разработки новых возможностей для проекта, не является устойчивым без надлежащей финансовой поддержки. Вы можете поддержать это текущее развитие, будучи брокером или спонсором:<br /> <br />
-<a href="https://www.patreon.com/awilum">Стать брокером или спонсором на Patreon.</a><br />
-<a href="http://flextype.org/en/one-time-donation">Одноразовое пожертвование через PayPal, QIWI, Sberbank, Яндекс</a>
+  Flextype is an MIT-licensed open source project and completely free to use.<br /> <br /> However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. You can support it's ongoing development by being a backer or a sponsor:<br /> <br />
+<a href="https://www.patreon.com/awilum">Become a backer or sponsor on Patreon.</a><br />
+<a href="http://flextype.org/en/one-time-donation">One-time donation via PayPal, QIWI, Sberbank, Yandex</a>
 
 
 </p>
