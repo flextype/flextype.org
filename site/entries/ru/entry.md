@@ -43,7 +43,7 @@ features_slimphp_p: 'Фреймворк для мощных веб-прилож�
 features_the_php_league_heading: 'The PHP League'
 features_the_php_league_p: 'The League of Extraordinary PHP Packages хорошо протестирована и использует современные стандарты кодирования.'
 features_doctrine_heading: 'Doctrine Project'
-features_doctrine_p: 'A set of decoupled and reusable PHP libraries for powerful web applications.'
+features_doctrine_p: 'Набор отдельных и многоразовых PHP библиотек для мощных веб-приложений.'
 features_no_limits_heading: 'ЛИМИТОВ НЕТ'
 features_no_limits_p: 'Вы можете создать любой проект, который захотите.'
 project_business_site: 'Бизнес сайт'
