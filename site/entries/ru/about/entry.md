@@ -39,10 +39,10 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 
 <h3 class="h3">Команда Переводчиков</h3>
 
-<p>If you wish to participate in the translation of Flextype, please <b>Join Flextype International Translator Team</b> and start translating!</p>
+<p>Если вы хотите принять участие в переводе Flextype, пожалуйста, <b>Присоединяйтесь к международной команде переводчиков Flextype</b> и начните перевод!</p>
 
 <p>
-Our crowdin projects: <a href="https://crowdin.com/project/flextype">Flextype CMS</a>, <a href="https://crowdin.com/project/flextype-website">Flextype Website</a>, <a href="https://crowdin.com/project/flextype-documentation">Flextype Documentation</a>
+Наши crowding проекты: <a href="https://crowdin.com/project/flextype">Flextype CMS</a>, <a href="https://crowdin.com/project/flextype-website">Веб-сайт Flextype</a>, <a href="https://crowdin.com/project/flextype-documentation">Документация Flextype</a>
 </p>
 
 <table class="table">
