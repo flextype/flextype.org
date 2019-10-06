@@ -18,7 +18,7 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 <h3 class="h3">Введение</h3>
 
 <p>
-Компания Flextype была<strong> основана в марте 2018 года</strong> как легкая альтернатива другим тяжелым и устаревшим CMS. Многие люди используют сложные решения для простых страниц без необходимости. Построив эту систему управления контентом, мы сосредоточились на простоте - даже начинающий веб-мастер адаптирует свой шаблон и пишет собственный плагин. Для этого мы внедрили простой, но мощный API.
+Проект Flextype был<strong> основан в марте 2018 году</strong>, как легкая альтернатива другим тяжелым и устаревшим CMS. Многие люди используют сложные решения для простых страниц без необходимости. Построив эту систему управления контентом, мы сосредоточились на простоте - даже начинающий веб-мастер адаптирует свой шаблон и пишет собственный плагин. Для этого мы внедрили простой, но мощный API.
 </p>
 
 <p>
@@ -97,9 +97,9 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 <h3 class="h3">Поддержка Flextype</h3>
 
 <p>
-  Flextype is an MIT-licensed open source project and completely free to use.<br /> <br /> However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. You can support it's ongoing development by being a backer or a sponsor:<br /> <br />
-<a href="https://www.patreon.com/awilum">Become a backer or sponsor on Patreon.</a><br />
-<a href="http://flextype.org/en/one-time-donation">One-time donation via PayPal, QIWI, Sberbank, Yandex</a>
+  Flextype - это проект с открытым исходным кодом, который полностью свободен для использования.<br /> <br /> Однако, количество усилий, необходимых для поддержания и разработки новых возможностей для проекта, не является устойчивым без надлежащей финансовой поддержки. Вы можете поддержать развитие проекта, будучи cпонсором:<br /> <br />
+<a href="https://www.patreon.com/awilum">Стать спонсором на Patreon.</a><br />
+<a href="http://flextype.org/en/one-time-donation">Одноразовое пожертвование через PayPal, QIWI, Sberbank, Яндекс</a>
 
 
 </p>
