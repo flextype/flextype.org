@@ -16,7 +16,9 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 date: 'August 04 2019 10:16:23'
 ---
 
-<p>There are several channels to reach the developers and the Flextype community to get direct assistance.</p>
+<p>
+    There are several channels to reach the developers and the Flextype community to get direct assistance.
+</p>
 
 <p>If you can't find the right answers to your questions on our Website, you can turn to one of our other official sources to get help and discuss your issues, but also to receive news and update notifications.</p>
 
