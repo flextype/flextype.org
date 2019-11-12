@@ -20,7 +20,7 @@ date: 'August 04 2019 10:16:23'
   </p></p></p></p>
 
 <h2>
-    New documentation in progress!<br /><br />There are several channels to reach the developers and the Flextype community to get direct assistance.<br /><br /> <a href="http://flextype.org/en/documentation/guide/basics/getting-help">&gt; Getting Help &lt;</a>
+    <center><h2>Новая документация в процессе разработки!<br><br><br>Наличие нескольких каналов связи с разработчиками и сообществом Flextype для получения прямой помощи.<br><br><br> <a href="http://flextype.org/en/documentation/guide/basics/getting-help">&gt; Получить помощь &lt;</a></h2></center>
   </h2>
 
 <p><</p>

@@ -1,5 +1,5 @@
 ---
-title: Community
+title: Сообщество
 template: default
 visibility: visible
 published_at: '22-09-2019 19:12'
@@ -16,15 +16,17 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 date: 'August 04 2019 10:16:23'
 ---
 
-<p>There are several channels to reach the developers and the Flextype community to get direct assistance.</p>
+<p>
+    Существует несколько каналов для связи с разработчиками и сообществом Flextype для получения прямой помощи.
+</p>
 
-<p>If you can't find the right answers to your questions on our Website, you can turn to one of our other official sources to get help and discuss your issues, but also to receive news and update notifications.</p>
+<p>Если вы не можете найти правильные ответы на свои вопросы, вы можете обратиться к одному из других наших источников, чтобы получить помощь и обсудить ваши проблемы, а также получать новости и уведомления об обновлениях.</p>
 
 <h2 class="h2"><i class="fab fa-discord"></i> Discord</h2>
 
 <p>
-    Got a question about setting up or using Flextype? We'll do our best to help you out.
-    Also here you may start discussions about core, plugin and themes development.
+    У вас есть вопрос о настройке или использовании Flextype? Мы сделаем все возможное, чтобы помочь вам.
+    Также здесь вы можете начать обсуждение разработки ядра, плагинов и тем.
     <br><br>
     Link: <a href="https://discord.gg/CCKPKVG">https://discord.gg/CCKPKVG</a>
 </p>
@@ -32,7 +34,7 @@ date: 'August 04 2019 10:16:23'
 <h2 class="h2"><i class="fab fa-github"></i> Github</h2>
 
 <p>
-    If you want to report a bug or contribute your ideas, you can use the <a href="https://github.com/flextype/flextype/issues">Flextype GitHub Issues tracker</a>.
+    Если вы хотите сообщить об ошибке или поделиться своими идеями, вы можете использовать <a href="https://github.com/flextype/flextype/issues">Flextype GitHub Issues tracker</a>.
     <br><br>
     Link: <a href="https://github.com/flextype">https://github.com/flextype</a>
 </p>
@@ -40,7 +42,7 @@ date: 'August 04 2019 10:16:23'
 <h2 class="h2"><i class="fab fa-vk"></i> Vkontakte</h2>
 
 <p>
-    Russian Flextype Community!
+    Российское Flextype сообщество!
     <br><br>
     Link: <a href="https://vk.com/flextype">https://vk.com/flextype</a>
 </p>
@@ -48,7 +50,7 @@ date: 'August 04 2019 10:16:23'
 <h2 class="h2"><i class="fab fa-twitter"></i> Twitter</h2>
 
 <p>
-    Follow <a href="https://twitter.com/getflextype">Flextype on Twitter</a> to get real-time news regarding the development and all events we are attending.
+    Подписывайтесь на наш <a href="https://twitter.com/getflextype">официальный Twitter</a> чтобы получать в режиме реального времени новости о разработке и всех мероприятиях, которые мы посещаем.
     <br><br>
     Link: <a href="https://twitter.com/getflextype">https://twitter.com/getflextype</a>
 </p>
