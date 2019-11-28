@@ -52,7 +52,7 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
             <td><strong><a href="https://github.com/seregajd999">Sergey Vishnyakov</a></strong> - Russia</td>
         </tr>
         <tr>
-            <td><strong>Kristofer Olsson</strong> - Swedish</td>
+            <td><strong><a href="https://github.com/kreativmind">Jeremy Monroe</a></strong> - English, French, German</td>
             <td><strong>Mjohansen</strong> - Danish</td>
         </tr>
         <tr>
@@ -90,6 +90,10 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
         <tr>
             <td><strong>Kruno H</strong> - Croatian</td>
             <td><strong>Kamil</strong> - Polish</td>
+        </tr>
+        <tr>
+            <td><strong>Kristofer Olsson</strong> - Swedish</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
