@@ -51,7 +51,7 @@ Our crowdin projects: <a href="https://crowdin.com/project/flextype">Flextype CM
             <td><strong><a href="https://github.com/seregajd999">Sergey Vishnyakov</a></strong> - Russia</td>
         </tr>
         <tr>
-            <td><strong>Kristofer Olsson</strong> - Swedish</td>
+            <td><strong><a href="https://github.com/kreativmind">Jeremy Monroe</a></strong> - English, French, German</td>
             <td><strong>Mjohansen</strong> - Danish</td>
         </tr>
         <tr>
@@ -89,6 +89,10 @@ Our crowdin projects: <a href="https://crowdin.com/project/flextype">Flextype CM
         <tr>
             <td><strong>Kruno H</strong> - Croatian</td>
             <td><strong>Kamil</strong> - Polish</td>
+        </tr>
+        <tr>
+            <td><strong>Kristofer Olsson</strong> - Swedish</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
