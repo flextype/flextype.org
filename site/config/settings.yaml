@@ -1,2 +1,4 @@
 entries:
   main: en
+cache:
+  enabled: true
