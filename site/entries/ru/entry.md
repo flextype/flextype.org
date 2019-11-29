@@ -68,5 +68,6 @@ link_downloads: Скачать
 link_community: Сообщество
 link_documentation: Документация
 link_changelog: Список изменений
+link_team: Team
 ---
 
