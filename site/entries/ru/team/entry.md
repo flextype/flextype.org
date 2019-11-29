@@ -87,4 +87,3 @@ Our crowdin projects: <a href="https://crowdin.com/project/flextype">Flextype CM
     </tbody>
 </table>
 
-<br /><br />
