@@ -1,13 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * @package Flextype Components
- *
- * @author Sergey Romanenko <awilum@yandex.ru>
- * @link http://components.flextype.org
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * i18n Component
+ * Founded by Sergey Romanenko and maintained by Community.
  */
 
 namespace Flextype\Component\I18n;
@@ -19,19 +16,23 @@ class I18n
      *
      * @var array
      */
-    private static $dictionary = [];
+    public static $dictionary = [];
 
     /**
      * Default locale
      *
      * @var string
      */
-    public static $locale = 'en';
+    public static $locale = 'en_US';
 
     /**
      * Add translation keys
      *
-     * I18n::add(['auth_login' => 'Login', 'auth_password' => 'Password'], 'ru');
+     * New translation keus for default locale
+     * I18n::add(['auth_login' => 'Login', 'auth_password' => 'Password']);
+     *
+     * New translation keys for `en_US` locale
+     * I18n::add(['auth_login' => 'Login', 'auth_password' => 'Password'], 'en_US');
      *
      * @param  string $translates Translation keys and values to add
      * @param  string $locale     Locale
@@ -52,14 +53,15 @@ class I18n
      * Returns translation of a string. If no translation exists, the original
      * string will be returned. No parameters are replaced.
      *
-     * $translated_string = I18n::find('auth_login', 'ru');
+     * Get translated string for `auth_login` for default locale
+     * $translated_string = I18n::find('auth_login');
      *
      * @param  string $translate Translate to find
-     * @param  string $locale    Locale
      * @param  array  $values    Values to replace in the translated text
+     * @param  string $locale    Locale
      * @return string
      */
-    public static function find(string $translate, string $locale = null, array $values = []) : string
+    public static function find(string $translate, array $values = [], string $locale = null) : string
     {
         $locale = ($locale === null) ? I18n::$locale : $locale;
 
@@ -83,19 +85,22 @@ if ( ! function_exists('__')) {
      * If the given translation key is not available in the current dictionary the
      * translation key will be returned.
      *
+     * Dislay a translated message for default locale
+     * echo __('auth_login');
+     *
      * // Display a translated message
-     * echo __('auth_login', 'auth', 'ru');
+     * echo __('auth_login', [], 'en_US');
      *
      * // With parameter replacement
-     * echo __('auth_welcome_message', 'ru', [':username' => $username]);
+     * echo __('auth_welcome_message', [':username' => $username], 'en_US');
      *
      * @param  string $translate Translate to find
-     * @param  string $locale    Locale
      * @param  array  $values    Values to replace in the translated text
+     * @param  string $locale    Locale
      * @return string
      */
-    function __(string $translate, string $locale = null, array $values = []) : string
+    function __(string $translate, array $values = [], string $locale = null) : string
     {
-        return I18n::find($translate, $locale, $values);
+        return I18n::find($translate, $values, $locale);
     }
 }

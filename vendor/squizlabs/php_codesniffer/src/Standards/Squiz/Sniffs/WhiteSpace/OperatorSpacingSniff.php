@@ -33,6 +33,15 @@ class OperatorSpacingSniff implements Sniff
      */
     public $ignoreNewlines = false;
 
+    /**
+     * Don't check spacing for assignment operators.
+     *
+     * This allows multiple assignment statements to be aligned.
+     *
+     * @var boolean
+     */
+    public $ignoreSpacingBeforeAssignments = true;
+
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -46,6 +55,7 @@ class OperatorSpacingSniff implements Sniff
         $targets  += Tokens::$assignmentTokens;
         $targets[] = T_INLINE_THEN;
         $targets[] = T_INLINE_ELSE;
+        $targets[] = T_INSTANCEOF;
 
         return $targets;
 
@@ -99,6 +109,12 @@ class OperatorSpacingSniff implements Sniff
                 }
             }//end if
 
+            $hasNext = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
+            if ($hasNext === false) {
+                // Live coding/parse error at end of file.
+                return;
+            }
+
             // Check there is one space after the & operator.
             if ($tokens[($stackPtr + 1)]['code'] !== T_WHITESPACE) {
                 $error = 'Expected 1 space after "&" operator; 0 found';
@@ -144,9 +160,11 @@ class OperatorSpacingSniff implements Sniff
             }
 
             $phpcsFile->recordMetric($stackPtr, 'Space before operator', 0);
-        } else if (isset(Tokens::$assignmentTokens[$tokens[$stackPtr]['code']]) === false) {
-            // Don't throw an error for assignments, because other standards allow
-            // multiple spaces there to align multiple assignments.
+        } else if (isset(Tokens::$assignmentTokens[$tokens[$stackPtr]['code']]) === false
+            || $this->ignoreSpacingBeforeAssignments === false
+        ) {
+            // Throw an error for assignments only if enabled using the sniff property
+            // because other standards allow multiple spaces to align assignments.
             if ($tokens[($stackPtr - 2)]['line'] !== $tokens[$stackPtr]['line']) {
                 $found = 'newline';
             } else {
@@ -179,7 +197,9 @@ class OperatorSpacingSniff implements Sniff
             }//end if
         }//end if
 
-        if (isset($tokens[($stackPtr + 1)]) === false) {
+        $hasNext = $phpcsFile->findNext(T_WHITESPACE, ($stackPtr + 1), null, true);
+        if ($hasNext === false) {
+            // Live coding/parse error at end of file.
             return;
         }
 

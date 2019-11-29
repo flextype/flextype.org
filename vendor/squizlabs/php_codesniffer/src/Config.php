@@ -23,7 +23,7 @@ class Config
      *
      * @var string
      */
-    const VERSION = '3.4.2';
+    const VERSION = '3.5.2';
 
     /**
      * Package stability; either stable, beta or alpha.
@@ -357,7 +357,7 @@ class Config
 
                 $lastDir    = $currentDir;
                 $currentDir = dirname($currentDir);
-            } while ($currentDir !== '.' && $currentDir !== $lastDir);
+            } while ($currentDir !== '.' && $currentDir !== $lastDir && @is_readable($currentDir) === true);
         }//end if
 
         if (defined('STDIN') === false
@@ -417,7 +417,7 @@ class Config
                 continue;
             }
 
-            if ($arg{0} === '-') {
+            if ($arg[0] === '-') {
                 if ($arg === '-') {
                     // Asking to read from STDIN.
                     $this->stdin = true;
@@ -430,7 +430,7 @@ class Config
                     continue;
                 }
 
-                if ($arg{1} === '-') {
+                if ($arg[1] === '-') {
                     $this->processLongArgument(substr($arg, 2), $i);
                 } else {
                     $switches = str_split($arg);
@@ -584,6 +584,7 @@ class Config
      * @param int    $pos The position of the argument on the command line.
      *
      * @return void
+     * @throws \PHP_CodeSniffer\Exceptions\DeepExitException
      */
     public function processShortArgument($arg, $pos)
     {
@@ -688,6 +689,7 @@ class Config
      * @param int    $pos The position of the argument on the command line.
      *
      * @return void
+     * @throws \PHP_CodeSniffer\Exceptions\DeepExitException
      */
     public function processLongArgument($arg, $pos)
     {
@@ -886,7 +888,7 @@ class Config
                         // Passed cache file is a file in the current directory.
                         $this->cacheFile = getcwd().'/'.basename($this->cacheFile);
                     } else {
-                        if ($dir{0} === '/') {
+                        if ($dir[0] === '/') {
                             // An absolute path.
                             $dir = Util\Common::realpath($dir);
                         } else {
@@ -978,7 +980,7 @@ class Config
                         // Passed report file is a file in the current directory.
                         $this->reportFile = getcwd().'/'.basename($this->reportFile);
                     } else {
-                        if ($dir{0} === '/') {
+                        if ($dir[0] === '/') {
                             // An absolute path.
                             $dir = Util\Common::realpath($dir);
                         } else {
@@ -1056,7 +1058,7 @@ class Config
                                 // Passed report file is a filename in the current directory.
                                 $output = getcwd().'/'.basename($output);
                             } else {
-                                if ($dir{0} === '/') {
+                                if ($dir[0] === '/') {
                                     // An absolute path.
                                     $dir = Util\Common::realpath($dir);
                                 } else {
@@ -1249,11 +1251,12 @@ class Config
      * @param int    $pos The position of the argument on the command line.
      *
      * @return void
+     * @throws \PHP_CodeSniffer\Exceptions\DeepExitException
      */
     public function processUnknownArgument($arg, $pos)
     {
         // We don't know about any additional switches; just files.
-        if ($arg{0} === '-') {
+        if ($arg[0] === '-') {
             if ($this->dieOnUnknownArg === false) {
                 return;
             }
@@ -1274,6 +1277,7 @@ class Config
      * @param string $path The path to the file to add.
      *
      * @return void
+     * @throws \PHP_CodeSniffer\Exceptions\DeepExitException
      */
     public function processFilePath($path)
     {
@@ -1402,8 +1406,9 @@ class Config
         echo '                e.g., module/php,es/js'.PHP_EOL;
         echo ' <file>         One or more files and/or directories to check'.PHP_EOL;
         echo ' <fileList>     A file containing a list of files and/or directories to check (one per line)'.PHP_EOL;
-        echo ' <filter>       Use the "gitmodified" filter, or specify the path to a custom filter class'.PHP_EOL;
-        echo ' <generator>    Uses either the "HTML", "Markdown" or "Text" generator'.PHP_EOL;
+        echo ' <filter>       Use either the "gitmodified" or "gitstaged" filter,'.PHP_EOL;
+        echo '                or specify the path to a custom filter class'.PHP_EOL;
+        echo ' <generator>    Use either the "HTML", "Markdown" or "Text" generator'.PHP_EOL;
         echo '                (forces documentation generation instead of checking)'.PHP_EOL;
         echo ' <patterns>     A comma separated list of patterns to ignore files and directories'.PHP_EOL;
         echo ' <processes>    How many files should be checked simultaneously (default is 1)'.PHP_EOL;
@@ -1463,7 +1468,8 @@ class Config
         echo '               e.g., module/php,es/js'.PHP_EOL;
         echo ' <file>        One or more files and/or directories to fix'.PHP_EOL;
         echo ' <fileList>    A file containing a list of files and/or directories to fix (one per line)'.PHP_EOL;
-        echo ' <filter>      Use the "gitmodified" filter, or specify the path to a custom filter class'.PHP_EOL;
+        echo ' <filter>      Use either the "gitmodified" or "gitstaged" filter,'.PHP_EOL;
+        echo '               or specify the path to a custom filter class'.PHP_EOL;
         echo ' <patterns>    A comma separated list of patterns to ignore files and directories'.PHP_EOL;
         echo ' <processes>   How many files should be fixed simultaneously (default is 1)'.PHP_EOL;
         echo ' <severity>    The minimum severity required to fix an error or warning'.PHP_EOL;
@@ -1558,7 +1564,7 @@ class Config
      *
      * @return bool
      * @see    getConfigData()
-     * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If the config file can not be written.
+     * @throws \PHP_CodeSniffer\Exceptions\DeepExitException If the config file can not be written.
      */
     public static function setConfigData($key, $value, $temp=false)
     {
@@ -1639,6 +1645,7 @@ class Config
      *
      * @return array<string, string>
      * @see    getConfigData()
+     * @throws \PHP_CodeSniffer\Exceptions\DeepExitException If the config file could not be read.
      */
     public static function getAllConfigData()
     {

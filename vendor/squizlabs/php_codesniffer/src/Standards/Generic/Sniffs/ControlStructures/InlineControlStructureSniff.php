@@ -140,6 +140,15 @@ class InlineControlStructureSniff implements Sniff
             return;
         }
 
+        if ($tokens[$nextNonEmpty]['code'] === T_COLON) {
+            // Alternative control structure.
+            // T_END... missing. Either live coding, parse error or end
+            // tag in short open tags and scan run with short_open_tag=Off.
+            // Bow out completely as any further detection will be unreliable
+            // and create incorrect fixes or cause fixer conflicts.
+            return ($phpcsFile->numTokens + 1);
+        }
+
         unset($nextNonEmpty, $start);
 
         // This is a control structure without an opening brace,

@@ -1405,6 +1405,35 @@ switch($foo)
         $value = 0;
 }
 
+switch ($x) {
+    case 'a':
+        switch ($y) {
+            case 'c':
+                return true;
+        }
+    case 'b':
+        switch ($z) {
+            case 'd':
+                return true;
+        }
+}
+
+$foo = [
+    [
+        'a' => [
+        ],
+        'b' => <<<'FOO'
+foo;
+FOO
+    ],
+    $a,
+];
+
+$query = Model::query()
+   ->when($a, function () {
+        static $b = '';
+   });
+
 ?>
 
 <?php
