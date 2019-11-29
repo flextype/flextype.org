@@ -171,6 +171,13 @@ class File
     protected $fixedCount = 0;
 
     /**
+     * TRUE if errors are being replayed from the cache.
+     *
+     * @var boolean
+     */
+    protected $replayingErrors = false;
+
+    /**
      * An array of sniffs that are being ignored.
      *
      * @var array
@@ -1029,8 +1036,13 @@ class File
             return true;
         }
 
-        // Work out the error message.
-        if (isset($this->ruleset->ruleset[$sniffCode]['message']) === true) {
+        // See if there is a custom error message format to use.
+        // But don't do this if we are replaying errors because replayed
+        // errors have already used the custom format and have had their
+        // data replaced.
+        if ($this->replayingErrors === false
+            && isset($this->ruleset->ruleset[$sniffCode]['message']) === true
+        ) {
             $message = $this->ruleset->ruleset[$sniffCode]['message'];
         }
 
@@ -1256,53 +1268,88 @@ class File
     /**
      * Returns the method parameters for the specified function token.
      *
+     * Also supports passing in a USE token for a closure use group.
+     *
      * Each parameter is in the following format:
      *
      * <code>
      *   0 => array(
-     *         'name'              => '$var',  // The variable name.
-     *         'token'             => integer, // The stack pointer to the variable name.
-     *         'content'           => string,  // The full content of the variable definition.
-     *         'pass_by_reference' => boolean, // Is the variable passed by reference?
-     *         'variable_length'   => boolean, // Is the param of variable length through use of `...` ?
-     *         'type_hint'         => string,  // The type hint for the variable.
-     *         'type_hint_token'   => integer, // The stack pointer to the type hint
-     *                                         // or false if there is no type hint.
-     *         'nullable_type'     => boolean, // Is the variable using a nullable type?
+     *         'name'                => '$var',  // The variable name.
+     *         'token'               => integer, // The stack pointer to the variable name.
+     *         'content'             => string,  // The full content of the variable definition.
+     *         'pass_by_reference'   => boolean, // Is the variable passed by reference?
+     *         'reference_token'     => integer, // The stack pointer to the reference operator
+     *                                           // or FALSE if the param is not passed by reference.
+     *         'variable_length'     => boolean, // Is the param of variable length through use of `...` ?
+     *         'variadic_token'      => integer, // The stack pointer to the ... operator
+     *                                           // or FALSE if the param is not variable length.
+     *         'type_hint'           => string,  // The type hint for the variable.
+     *         'type_hint_token'     => integer, // The stack pointer to the start of the type hint
+     *                                           // or FALSE if there is no type hint.
+     *         'type_hint_end_token' => integer, // The stack pointer to the end of the type hint
+     *                                           // or FALSE if there is no type hint.
+     *         'nullable_type'       => boolean, // TRUE if the var type is nullable.
+     *         'comma_token'         => integer, // The stack pointer to the comma after the param
+     *                                           // or FALSE if this is the last param.
      *        )
      * </code>
      *
-     * Parameters with default values have an additional array index of
-     * 'default' with the value of the default as a string.
+     * Parameters with default values have an additional array indexs of:
+     *         'default'             => string,  // The full content of the default value.
+     *         'default_token'       => integer, // The stack pointer to the start of the default value.
+     *         'default_equal_token' => integer, // The stack pointer to the equals sign.
      *
      * @param int $stackPtr The position in the stack of the function token
      *                      to acquire the parameters for.
      *
      * @return array
-     * @throws \PHP_CodeSniffer\Exceptions\TokenizerException If the specified $stackPtr is not of
-     *                                                        type T_FUNCTION or T_CLOSURE.
+     * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If the specified $stackPtr is not of
+     *                                                      type T_FUNCTION, T_CLOSURE, or T_USE.
      */
     public function getMethodParameters($stackPtr)
     {
         if ($this->tokens[$stackPtr]['code'] !== T_FUNCTION
             && $this->tokens[$stackPtr]['code'] !== T_CLOSURE
+            && $this->tokens[$stackPtr]['code'] !== T_USE
         ) {
-            throw new TokenizerException('$stackPtr must be of type T_FUNCTION or T_CLOSURE');
+            throw new RuntimeException('$stackPtr must be of type T_FUNCTION or T_CLOSURE or T_USE');
         }
 
-        $opener = $this->tokens[$stackPtr]['parenthesis_opener'];
-        $closer = $this->tokens[$stackPtr]['parenthesis_closer'];
+        if ($this->tokens[$stackPtr]['code'] === T_USE) {
+            $opener = $this->findNext(T_OPEN_PARENTHESIS, ($stackPtr + 1));
+            if ($opener === false || isset($this->tokens[$opener]['parenthesis_owner']) === true) {
+                throw new RuntimeException('$stackPtr was not a valid T_USE');
+            }
+        } else {
+            if (isset($this->tokens[$stackPtr]['parenthesis_opener']) === false) {
+                // Live coding or syntax error, so no params to find.
+                return [];
+            }
+
+            $opener = $this->tokens[$stackPtr]['parenthesis_opener'];
+        }
+
+        if (isset($this->tokens[$opener]['parenthesis_closer']) === false) {
+            // Live coding or syntax error, so no params to find.
+            return [];
+        }
+
+        $closer = $this->tokens[$opener]['parenthesis_closer'];
 
         $vars            = [];
         $currVar         = null;
         $paramStart      = ($opener + 1);
         $defaultStart    = null;
+        $equalToken      = null;
         $paramCount      = 0;
         $passByReference = false;
+        $referenceToken  = false;
         $variableLength  = false;
+        $variadicToken   = false;
         $typeHint        = '';
         $typeHintToken   = false;
-        $nullableType    = false;
+        $typeHintEndToken = false;
+        $nullableType     = false;
 
         for ($i = $paramStart; $i <= $closer; $i++) {
             // Check to see if this token has a parenthesis or bracket opener. If it does
@@ -1327,6 +1374,7 @@ class File
             case T_BITWISE_AND:
                 if ($defaultStart === null) {
                     $passByReference = true;
+                    $referenceToken  = $i;
                 }
                 break;
             case T_VARIABLE:
@@ -1334,13 +1382,15 @@ class File
                 break;
             case T_ELLIPSIS:
                 $variableLength = true;
+                $variadicToken  = $i;
                 break;
             case T_CALLABLE:
                 if ($typeHintToken === false) {
                     $typeHintToken = $i;
                 }
 
-                $typeHint .= $this->tokens[$i]['content'];
+                $typeHint        .= $this->tokens[$i]['content'];
+                $typeHintEndToken = $i;
                 break;
             case T_SELF:
             case T_PARENT:
@@ -1351,7 +1401,8 @@ class File
                         $typeHintToken = $i;
                     }
 
-                    $typeHint .= $this->tokens[$i]['content'];
+                    $typeHint        .= $this->tokens[$i]['content'];
+                    $typeHintEndToken = $i;
                 }
                 break;
             case T_STRING:
@@ -1384,7 +1435,8 @@ class File
                         $typeHintToken = $i;
                     }
 
-                    $typeHint .= $this->tokens[$i]['content'];
+                    $typeHint        .= $this->tokens[$i]['content'];
+                    $typeHintEndToken = $i;
                 }
                 break;
             case T_NS_SEPARATOR:
@@ -1394,13 +1446,15 @@ class File
                         $typeHintToken = $i;
                     }
 
-                    $typeHint .= $this->tokens[$i]['content'];
+                    $typeHint        .= $this->tokens[$i]['content'];
+                    $typeHintEndToken = $i;
                 }
                 break;
             case T_NULLABLE:
                 if ($defaultStart === null) {
-                    $nullableType = true;
-                    $typeHint    .= $this->tokens[$i]['content'];
+                    $nullableType     = true;
+                    $typeHint        .= $this->tokens[$i]['content'];
+                    $typeHintEndToken = $i;
                 }
                 break;
             case T_CLOSE_PARENTHESIS:
@@ -1417,20 +1471,34 @@ class File
                 $vars[$paramCount]['content'] = trim($this->getTokensAsString($paramStart, ($i - $paramStart)));
 
                 if ($defaultStart !== null) {
-                    $vars[$paramCount]['default'] = trim($this->getTokensAsString($defaultStart, ($i - $defaultStart)));
+                    $vars[$paramCount]['default']       = trim($this->getTokensAsString($defaultStart, ($i - $defaultStart)));
+                    $vars[$paramCount]['default_token'] = $defaultStart;
+                    $vars[$paramCount]['default_equal_token'] = $equalToken;
                 }
 
-                $vars[$paramCount]['pass_by_reference'] = $passByReference;
-                $vars[$paramCount]['variable_length']   = $variableLength;
-                $vars[$paramCount]['type_hint']         = $typeHint;
-                $vars[$paramCount]['type_hint_token']   = $typeHintToken;
-                $vars[$paramCount]['nullable_type']     = $nullableType;
+                $vars[$paramCount]['pass_by_reference']   = $passByReference;
+                $vars[$paramCount]['reference_token']     = $referenceToken;
+                $vars[$paramCount]['variable_length']     = $variableLength;
+                $vars[$paramCount]['variadic_token']      = $variadicToken;
+                $vars[$paramCount]['type_hint']           = $typeHint;
+                $vars[$paramCount]['type_hint_token']     = $typeHintToken;
+                $vars[$paramCount]['type_hint_end_token'] = $typeHintEndToken;
+                $vars[$paramCount]['nullable_type']       = $nullableType;
+
+                if ($this->tokens[$i]['code'] === T_COMMA) {
+                    $vars[$paramCount]['comma_token'] = $i;
+                } else {
+                    $vars[$paramCount]['comma_token'] = false;
+                }
 
                 // Reset the vars, as we are about to process the next parameter.
                 $defaultStart    = null;
+                $equalToken      = null;
                 $paramStart      = ($i + 1);
                 $passByReference = false;
+                $referenceToken  = false;
                 $variableLength  = false;
+                $variadicToken   = false;
                 $typeHint        = '';
                 $typeHintToken   = false;
                 $nullableType    = false;
@@ -1438,7 +1506,8 @@ class File
                 $paramCount++;
                 break;
             case T_EQUAL:
-                $defaultStart = ($i + 1);
+                $defaultStart = $this->findNext(Util\Tokens::$emptyTokens, ($i + 1), null, true);
+                $equalToken   = $i;
                 break;
             }//end switch
         }//end for
@@ -1451,19 +1520,19 @@ class File
     /**
      * Returns the visibility and implementation properties of a method.
      *
-     * The format of the array is:
+     * The format of the return value is:
      * <code>
      *   array(
-     *    'scope'                => 'public', // public protected or protected
-     *    'scope_specified'      => true,     // true is scope keyword was found.
-     *    'return_type'          => '',       // the return type of the method.
+     *    'scope'                => 'public', // Public, private, or protected
+     *    'scope_specified'      => true,     // TRUE if the scope keyword was found.
+     *    'return_type'          => '',       // The return type of the method.
      *    'return_type_token'    => integer,  // The stack pointer to the start of the return type
-     *                                        // or false if there is no return type.
-     *    'nullable_return_type' => false,    // true if the return type is nullable.
-     *    'is_abstract'          => false,    // true if the abstract keyword was found.
-     *    'is_final'             => false,    // true if the final keyword was found.
-     *    'is_static'            => false,    // true if the static keyword was found.
-     *    'has_body'             => false,    // true if the method has a body
+     *                                        // or FALSE if there is no return type.
+     *    'nullable_return_type' => false,    // TRUE if the return type is nullable.
+     *    'is_abstract'          => false,    // TRUE if the abstract keyword was found.
+     *    'is_final'             => false,    // TRUE if the final keyword was found.
+     *    'is_static'            => false,    // TRUE if the static keyword was found.
+     *    'has_body'             => false,    // TRUE if the method has a body
      *   );
      * </code>
      *
@@ -1471,15 +1540,15 @@ class File
      *                      acquire the properties for.
      *
      * @return array
-     * @throws \PHP_CodeSniffer\Exceptions\TokenizerException If the specified position is not a
-     *                                                        T_FUNCTION token.
+     * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If the specified position is not a
+     *                                                      T_FUNCTION token.
      */
     public function getMethodProperties($stackPtr)
     {
         if ($this->tokens[$stackPtr]['code'] !== T_FUNCTION
             && $this->tokens[$stackPtr]['code'] !== T_CLOSURE
         ) {
-            throw new TokenizerException('$stackPtr must be of type T_FUNCTION or T_CLOSURE');
+            throw new RuntimeException('$stackPtr must be of type T_FUNCTION or T_CLOSURE');
         }
 
         if ($this->tokens[$stackPtr]['code'] === T_FUNCTION) {
@@ -1603,16 +1672,21 @@ class File
 
 
     /**
-     * Returns the visibility and implementation properties of the class member
-     * variable found at the specified position in the stack.
+     * Returns the visibility and implementation properties of a class member var.
      *
-     * The format of the array is:
+     * The format of the return value is:
      *
      * <code>
      *   array(
-     *    'scope'           => 'public', // public protected or protected.
-     *    'scope_specified' => false,    // true if the scope was explicitly specified.
-     *    'is_static'       => false,    // true if the static keyword was found.
+     *    'scope'           => string,  // Public, private, or protected.
+     *    'scope_specified' => boolean, // TRUE if the scope was explicitly specified.
+     *    'is_static'       => boolean, // TRUE if the static keyword was found.
+     *    'type'            => string,  // The type of the var (empty if no type specifed).
+     *    'type_token'      => integer, // The stack pointer to the start of the type
+     *                                  // or FALSE if there is no type.
+     *    'type_end_token'  => integer, // The stack pointer to the end of the type
+     *                                  // or FALSE if there is no type.
+     *    'nullable_type'   => boolean, // TRUE if the type is nullable.
      *   );
      * </code>
      *
@@ -1620,14 +1694,14 @@ class File
      *                      acquire the properties for.
      *
      * @return array
-     * @throws \PHP_CodeSniffer\Exceptions\TokenizerException If the specified position is not a
-     *                                                        T_VARIABLE token, or if the position is not
-     *                                                        a class member variable.
+     * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If the specified position is not a
+     *                                                      T_VARIABLE token, or if the position is not
+     *                                                      a class member variable.
      */
     public function getMemberProperties($stackPtr)
     {
         if ($this->tokens[$stackPtr]['code'] !== T_VARIABLE) {
-            throw new TokenizerException('$stackPtr must be of type T_VARIABLE');
+            throw new RuntimeException('$stackPtr must be of type T_VARIABLE');
         }
 
         $conditions = array_keys($this->tokens[$stackPtr]['conditions']);
@@ -1652,7 +1726,7 @@ class File
                     return [];
                 }
             } else {
-                throw new TokenizerException('$stackPtr is not a class member var');
+                throw new RuntimeException('$stackPtr is not a class member var');
             }
         }
 
@@ -1664,7 +1738,7 @@ class File
                 && isset($this->tokens[$deepestOpen]['parenthesis_owner']) === true
                 && $this->tokens[$this->tokens[$deepestOpen]['parenthesis_owner']]['code'] === T_FUNCTION
             ) {
-                throw new TokenizerException('$stackPtr is not a class member var');
+                throw new RuntimeException('$stackPtr is not a class member var');
             }
         }
 
@@ -1715,10 +1789,54 @@ class File
             }
         }//end for
 
+        $type         = '';
+        $typeToken    = false;
+        $typeEndToken = false;
+        $nullableType = false;
+
+        if ($i < $stackPtr) {
+            // We've found a type.
+            $valid = [
+                T_STRING       => T_STRING,
+                T_CALLABLE     => T_CALLABLE,
+                T_SELF         => T_SELF,
+                T_PARENT       => T_PARENT,
+                T_NS_SEPARATOR => T_NS_SEPARATOR,
+            ];
+
+            for ($i; $i < $stackPtr; $i++) {
+                if ($this->tokens[$i]['code'] === T_VARIABLE) {
+                    // Hit another variable in a group definition.
+                    break;
+                }
+
+                if ($this->tokens[$i]['code'] === T_NULLABLE) {
+                    $nullableType = true;
+                }
+
+                if (isset($valid[$this->tokens[$i]['code']]) === true) {
+                    $typeEndToken = $i;
+                    if ($typeToken === false) {
+                        $typeToken = $i;
+                    }
+
+                    $type .= $this->tokens[$i]['content'];
+                }
+            }
+
+            if ($type !== '' && $nullableType === true) {
+                $type = '?'.$type;
+            }
+        }//end if
+
         return [
             'scope'           => $scope,
             'scope_specified' => $scopeSpecified,
             'is_static'       => $isStatic,
+            'type'            => $type,
+            'type_token'      => $typeToken,
+            'type_end_token'  => $typeEndToken,
+            'nullable_type'   => $nullableType,
         ];
 
     }//end getMemberProperties()
@@ -1727,7 +1845,7 @@ class File
     /**
      * Returns the visibility and implementation properties of a class.
      *
-     * The format of the array is:
+     * The format of the return value is:
      * <code>
      *   array(
      *    'is_abstract' => false, // true if the abstract keyword was found.
@@ -1739,13 +1857,13 @@ class File
      *                      acquire the properties for.
      *
      * @return array
-     * @throws \PHP_CodeSniffer\Exceptions\TokenizerException If the specified position is not a
-     *                                                        T_CLASS token.
+     * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If the specified position is not a
+     *                                                      T_CLASS token.
      */
     public function getClassProperties($stackPtr)
     {
         if ($this->tokens[$stackPtr]['code'] !== T_CLASS) {
-            throw new TokenizerException('$stackPtr must be of type T_CLASS');
+            throw new RuntimeException('$stackPtr must be of type T_CLASS');
         }
 
         $valid = [
@@ -1926,6 +2044,7 @@ class File
      *                          content should be used.
      *
      * @return string The token contents.
+     * @throws \PHP_CodeSniffer\Exceptions\RuntimeException If the specified position does not exist.
      */
     public function getTokensAsString($start, $length, $origContent=false)
     {
@@ -2235,6 +2354,11 @@ class File
                 && $i === $this->tokens[$i]['parenthesis_opener']
             ) {
                 $i = $this->tokens[$i]['parenthesis_closer'];
+            } else if ($this->tokens[$i]['code'] === T_OPEN_USE_GROUP) {
+                $end = $this->findNext(T_CLOSE_USE_GROUP, ($i + 1));
+                if ($end !== false) {
+                    $i = $end;
+                }
             }
 
             if (isset(Util\Tokens::$emptyTokens[$this->tokens[$i]['code']]) === false) {
@@ -2405,7 +2529,7 @@ class File
 
         $classOpenerIndex = $this->tokens[$stackPtr]['scope_opener'];
         $extendsIndex     = $this->findNext(T_EXTENDS, $stackPtr, $classOpenerIndex);
-        if (false === $extendsIndex) {
+        if ($extendsIndex === false) {
             return false;
         }
 

@@ -1,3 +1,6 @@
+# v1.3.0, 2019-10-12
+* Code updates
+
 # v1.2.0, 2018-11-25
 * Set $dictionary private static
 * New public static $locale added for setup default Locale - en

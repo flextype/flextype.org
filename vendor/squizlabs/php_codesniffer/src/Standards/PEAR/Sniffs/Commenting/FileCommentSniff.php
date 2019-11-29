@@ -370,10 +370,10 @@ class FileCommentSniff implements Sniff
             } else {
                 $nameBits = explode('_', $newContent);
                 $firstBit = array_shift($nameBits);
-                $newName  = strtoupper($firstBit{0}).substr($firstBit, 1).'_';
+                $newName  = strtoupper($firstBit[0]).substr($firstBit, 1).'_';
                 foreach ($nameBits as $bit) {
                     if ($bit !== '') {
-                        $newName .= strtoupper($bit{0}).substr($bit, 1).'_';
+                        $newName .= strtoupper($bit[0]).substr($bit, 1).'_';
                     }
                 }
 
@@ -415,10 +415,10 @@ class FileCommentSniff implements Sniff
             $newContent = str_replace(' ', '_', $content);
             $nameBits   = explode('_', $newContent);
             $firstBit   = array_shift($nameBits);
-            $newName    = strtoupper($firstBit{0}).substr($firstBit, 1).'_';
+            $newName    = strtoupper($firstBit[0]).substr($firstBit, 1).'_';
             foreach ($nameBits as $bit) {
                 if ($bit !== '') {
-                    $newName .= strtoupper($bit{0}).substr($bit, 1).'_';
+                    $newName .= strtoupper($bit[0]).substr($bit, 1).'_';
                 }
             }
 
@@ -455,7 +455,7 @@ class FileCommentSniff implements Sniff
             $local   = '\da-zA-Z-_+';
             // Dot character cannot be the first or last character in the local-part.
             $localMiddle = $local.'.\w';
-            if (preg_match('/^([^<]*)\s+<(['.$local.'](['.$localMiddle.']*['.$local.'])*@[\da-zA-Z][-.\w]*[\da-zA-Z]\.[a-zA-Z]{2,7})>$/', $content) === 0) {
+            if (preg_match('/^([^<]*)\s+<(['.$local.'](['.$localMiddle.']*['.$local.'])*@[\da-zA-Z][-.\w]*[\da-zA-Z]\.[a-zA-Z]{2,})>$/', $content) === 0) {
                 $error = 'Content of the @author tag must be in the form "Display Name <username@example.com>"';
                 $phpcsFile->addError($error, $tag, 'InvalidAuthors');
             }

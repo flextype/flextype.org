@@ -122,7 +122,7 @@ class ScopeIndentSniff implements Sniff
      * @param int                         $stackPtr  The position of the current token
      *                                               in the stack passed in $tokens.
      *
-     * @return void
+     * @return int
      */
     public function process(File $phpcsFile, $stackPtr)
     {
@@ -229,14 +229,16 @@ class ScopeIndentSniff implements Sniff
 
             $exact = $this->exact;
 
-            if ($tokens[$i]['code'] === T_OPEN_SHORT_ARRAY) {
-                $disableExactEnd = max($disableExactEnd, $tokens[$i]['bracket_closer']);
-            }
-
             if ($tokens[$i]['code'] === T_OPEN_PARENTHESIS
                 && isset($tokens[$i]['parenthesis_closer']) === true
             ) {
                 $disableExactEnd = max($disableExactEnd, $tokens[$i]['parenthesis_closer']);
+                if ($this->debug === true) {
+                    $line = $tokens[$i]['line'];
+                    $type = $tokens[$disableExactEnd]['type'];
+                    echo "Opening parenthesis found on line $line".PHP_EOL;
+                    echo "\t=> disabling exact indent checking until $disableExactEnd ($type)".PHP_EOL;
+                }
             }
 
             if ($exact === true && $i < $disableExactEnd) {
@@ -613,11 +615,7 @@ class ScopeIndentSniff implements Sniff
                 && $tokens[$checkToken]['scope_closer'] === $checkToken
                 && $tokens[$checkToken]['line'] !== $tokens[$tokens[$checkToken]['scope_opener']]['line']))
                 || ($checkToken === null
-                && isset($openScopes[$i]) === true
-                || (isset($tokens[$i]['scope_condition']) === true
-                && isset($tokens[$i]['scope_closer']) === true
-                && $tokens[$i]['scope_closer'] === $i
-                && $tokens[$i]['line'] !== $tokens[$tokens[$i]['scope_opener']]['line']))
+                && isset($openScopes[$i]) === true)
             ) {
                 if ($this->debug === true) {
                     if ($checkToken === null) {
@@ -846,7 +844,10 @@ class ScopeIndentSniff implements Sniff
                 && $tokens[($checkToken + 1)]['code'] !== T_DOUBLE_COLON
             ) {
                 $next = $phpcsFile->findNext(Tokens::$emptyTokens, ($checkToken + 1), null, true);
-                if ($next === false || $tokens[$next]['code'] !== T_CLOSURE) {
+                if ($next === false
+                    || ($tokens[$next]['code'] !== T_CLOSURE
+                    && $tokens[$next]['code'] !== T_VARIABLE)
+                ) {
                     if ($this->debug === true) {
                         $line = $tokens[$checkToken]['line'];
                         $type = $tokens[$checkToken]['type'];
@@ -908,6 +909,15 @@ class ScopeIndentSniff implements Sniff
             // to have the same indent or it will break code after the block.
             if ($checkToken !== null && $tokens[$checkToken]['code'] === T_ELSE) {
                 $exact = true;
+            }
+
+            // Don't perform strict checking on chained method calls since they
+            // are often covered by custom rules.
+            if ($checkToken !== null
+                && $tokens[$checkToken]['code'] === T_OBJECT_OPERATOR
+                && $exact === true
+            ) {
+                $exact = false;
             }
 
             if ($checkIndent === null) {
@@ -977,15 +987,46 @@ class ScopeIndentSniff implements Sniff
                 $i = $checkToken;
             }
 
+            // Don't check indents exactly between arrays as they tend to have custom rules.
+            if ($tokens[$i]['code'] === T_OPEN_SHORT_ARRAY) {
+                $disableExactEnd = max($disableExactEnd, $tokens[$i]['bracket_closer']);
+                if ($this->debug === true) {
+                    $line = $tokens[$i]['line'];
+                    $type = $tokens[$disableExactEnd]['type'];
+                    echo "Opening short array bracket found on line $line".PHP_EOL;
+                    if ($disableExactEnd === $tokens[$i]['bracket_closer']) {
+                        echo "\t=> disabling exact indent checking until $disableExactEnd ($type)".PHP_EOL;
+                    } else {
+                        echo "\t=> continuing to disable exact indent checking until $disableExactEnd ($type)".PHP_EOL;
+                    }
+                }
+            }
+
             // Completely skip here/now docs as the indent is a part of the
             // content itself.
             if ($tokens[$i]['code'] === T_START_HEREDOC
                 || $tokens[$i]['code'] === T_START_NOWDOC
             ) {
-                $i = $phpcsFile->findNext([T_END_HEREDOC, T_END_NOWDOC], ($i + 1));
-                $i = $phpcsFile->findNext(Tokens::$emptyTokens, ($i + 1), null, true);
+                if ($this->debug === true) {
+                    $line = $tokens[$i]['line'];
+                    $type = $tokens[$disableExactEnd]['type'];
+                    echo "Here/nowdoc found on line $line".PHP_EOL;
+                }
+
+                $i    = $phpcsFile->findNext([T_END_HEREDOC, T_END_NOWDOC], ($i + 1));
+                $next = $phpcsFile->findNext(Tokens::$emptyTokens, ($i + 1), null, true);
+                if ($tokens[$next]['code'] === T_COMMA) {
+                    $i = $next;
+                }
+
+                if ($this->debug === true) {
+                    $line = $tokens[$i]['line'];
+                    $type = $tokens[$i]['type'];
+                    echo "\t* skipping to token $i ($type) on line $line *".PHP_EOL;
+                }
+
                 continue;
-            }
+            }//end if
 
             // Completely skip multi-line strings as the indent is a part of the
             // content itself.
