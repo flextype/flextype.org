@@ -7,7 +7,7 @@
         <p class="p" stylxe="text-align: center; max-width: 650px; margin:0 auto;">{{ entry.description }}</p>
     </h1>
     <div>
-        {{ entry.content|markdown|raw }}
+        {{ entry.content|shortcode|markdown|raw }}
     </div>
 </div>
 {% endblock %}

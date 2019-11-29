@@ -2,13 +2,11 @@
 title: International<br>Translator Team
 ---
 
-
 <p>If you wish to participate in the translation of Flextype, please <b>Join Flextype International Translator Team</b> and start translating!</p>
 
 <p>
 Our crowdin projects: <a href="https://crowdin.com/project/flextype">Flextype CMS</a>, <a href="https://crowdin.com/project/flextype-website">Flextype Website</a>, <a href="https://crowdin.com/project/flextype-documentation">Flextype Documentation</a>
 </p>
-
 
 <table class="table">
     <tbody>
@@ -62,5 +60,3 @@ Our crowdin projects: <a href="https://crowdin.com/project/flextype">Flextype CM
         </tr>
     </tbody>
 </table>
-
-<br /><br />
