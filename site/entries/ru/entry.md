@@ -3,7 +3,7 @@ title: 'Создавайте быстрые, гибкие, простые в у�
 template: home
 visibility: visible
 published_at: '22-09-2019 19:12'
-description: 'Создавайте быстрые и легкие в управлении веб-сайты c Flextype.'
+description: 'Build fast, flexible, easier to manage websites with Flextype. Try Flextype!'
 menu_item_title: Главная
 menu_item_url: home
 menu_item_target: _self
