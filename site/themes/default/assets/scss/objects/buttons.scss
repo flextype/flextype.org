@@ -1,31 +1,28 @@
 .btn {
     text-decoration: none;
-    background-color: black;
-    border-color: white;
-    color: white;
-    border: 3px solid white;
-
+    background: white;
+    border: 3px solid black;
+    color: black;
     position: relative;
     transition: all .3s;
     border-radius: 0;
+    margin-bottom: 80px;
+    margin-top: 80px;
+    padding: 16px 80px;
 
     &:hover {
-        background-color: white;
-        color: black;
+        background: black;
+        color: white!important;
     }
 
-    &.btn-download {
-        background-color: transparent;
-        margin-bottom: 80px;
-        margin-top: 80px;
-        padding: 16px 80px;
-        border: 3px solid black;
-        color: black;
+    &.btn-invert {
+        background: black;
+        border: 3px solid white;
+        color: white;
 
         &:hover {
-            background-color: black;
-            color: white;
+            background: white;
+            color: black!important;
         }
-
     }
 }
