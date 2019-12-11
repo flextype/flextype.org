@@ -52,7 +52,6 @@
             {% endfor %}
 
             {% do emitter.emit('onThemeHeader') %}
-            {{ snippets.exec('yandex-verification')|raw }}
             {{ snippets.exec('yandex-metrika')|raw }}
         {% endblock %}
     </head>
