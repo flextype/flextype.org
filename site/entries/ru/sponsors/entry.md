@@ -1,10 +1,10 @@
 ---
-title: Sponsors & Backers
+title: Спонсоры
 ---
 
-Flextype is an MIT-licensed open source project and completely free to use..
+Flextype это лицензированный MIT-проект с открытым исходным кодом и полностью бесплатный для использования..
 
-However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. You can support it's ongoing development by being a backer or a sponsor:
+Вместе с тем объем усилий, необходимых для поддержания и развития новых функций по проекту, является неустойчивым без надлежащего финансового финансирования. Вы можете поддержать его текущее развитие, став спонсором:
 
-- [Become a backer or sponsor on Patreon](https://www.patreon.com/awilum).
-- [One-time donation via PayPal, QIWI, Sberbank, Yandex](http://flextype.org/en/one-time-donation)
+- [Станьте спонсором на Patreon](https://www.patreon.com/awilum).
+- [Единоразовое пожертвование через PayPal, QIWI, Сбербанк, Яндекс](http://flextype.org/en/one-time-donation)
