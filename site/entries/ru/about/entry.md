@@ -27,6 +27,6 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 
 [entries_fetch id="en/team" field="content"]
 
-<h3 class="h3">Supporting Flextype</h3>
+<h3 class="h3">Поддержка Flextype</h3>
 
 [entries_fetch id="en/sponsors" field="content"]
