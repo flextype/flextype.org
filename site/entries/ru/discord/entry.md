@@ -16,7 +16,7 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 ---
 
 <center>
-    Join the community of Flextype developers from around the globe in our Discord chat server.<br>
-    <a class="btn" href="https://discord.gg/CCKPKVG">Join Server</a>
+    Присоединяйтесь к сообществу разработчиков Flextype со всего мира на нашем сервере Discord.<br>
+    <a class="btn" href="https://discord.gg/CCKPKVG">Присоединиться к серверу</a>
 </center>
 
