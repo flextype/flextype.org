@@ -1,9 +1,9 @@
 ---
-title: 'Создавайте быстрые, легкие и простые в управлении веб-сайты!'
+title: 'Создавайте быстрые и легкие в управлении веб-сайты!'
 template: home
 visibility: visible
 published_at: '22-09-2019 19:12'
-description: 'Создавайте быстрые и легкие в управлении веб-сайты c Flextype. Try Flextype!'
+description: 'Создавайте быстрые и легкие в управлении веб-сайты c Flextype. Скачать Flextype!'
 menu_item_title: Главная
 menu_item_url: home
 menu_item_target: _self
@@ -19,15 +19,15 @@ intro_section_button: 'Скачать Flextype'
 features_heading: Преимущества
 features_description: 'Flextype предлагает быстрый и продуктивный способ<br> создания и управлениями веб-сайтами.'
 features_simple_heading: Простая
-features_simple_p: 'Просто установить, обновить и использовать.<br>Не требуется установки, просто скопируйте файлы на ваш сервер!'
+features_simple_p: 'Просто установить, обновить и использовать.<br>Не требуется специальной установки, просто скопируйте файлы на ваш сервер!'
 features_fast_heading: Быстрая
-features_fast_p: 'Быстрая и легкая система! Не требуется базы данных, только плоские файлы!'
+features_fast_p: 'Быстрая и легкая система! Не требуется базы данных, только файлы!'
 features_flexible_heading: Гибкая
-features_flexible_p: 'Flextype предоставляет удивительный API для плагинов, тем и разработчиков ядра!'
+features_flexible_p: 'Flextype предоставляет удивительный API для разработчиков плагинов, тем и ядра!'
 features_easy_editing_heading: 'Легкое редактирование'
-features_easy_editing_p: 'Используйте свой любимый редактор для написания своего контента или красивую панель администратора'
-features_dynamic_content_types_heading: 'Динамические виды содержимого'
-features_dynamic_content_types_p: 'Стиль файлов Flextype позволяет определить настраиваемые поля для любых ваших записей.'
+features_easy_editing_p: 'Используйте свой любимый редактор для написания контента или красивую панель администрирования.'
+features_dynamic_content_types_heading: 'Динамические  типы содержимого'
+features_dynamic_content_types_p: 'YAML который используется в Flextype, позволяет легко и просто создавать индивидуальные поля.'
 features_open_source_heading: 'Открытый исходный код'
 features_open_source_p: 'Flextype - свободное программное обеспечение, выпущенное под лицензией MIT!'
 features_technologies_heading: Технологии
@@ -68,6 +68,6 @@ link_downloads: Скачать
 link_community: Сообщество
 link_documentation: Документация
 link_changelog: Список изменений
-link_team: Team
+link_team: Команда
 ---
 
