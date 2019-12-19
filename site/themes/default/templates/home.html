@@ -3,207 +3,257 @@
 {% block content %}
 
     <!-- introducing section -->
-    <div class="introducing section-international pb-10">
-        <div class="container">
-            <h1 class="h1 wow fadeIn">{{ entry.intro_section_h1|raw }}</h1>
-            <a href="{{ base_url() }}/{{ locale }}/downloads" class="btn btn-invert wow fadeIn">{{ entry.intro_section_button|raw }}</a>
-            <div class="admin-preview-wrapper wow fadeIn">
-                <img src="https://github.com/flextype/flextype/raw/dev/site/plugins/admin/preview.png" width="960" alt="Build fast, flexible, easier to manage websites with Flextype.">
+    <div class="container mx-auto bg-black text-white">
+        <div class="text-center">
+            <h1 class="uppercase text-6xl p-24 font-noirpro-semibold wow fadeIn">{{ entry.intro_section_h1|raw }}</h1>
+            <div class="flex justify-center">
+                <a href="{{ base_url() }}/{{ locale }}/downloads" class="relative button-link-effect-1 text-lg relative no-underline pl-20 pr-20 pt-6 pb-6 block text-white bg-black border-white border-4 wow fadeIn">{{ entry.intro_section_button|raw }}</a>
+            </div>
+            <div class="flex justify-center">
+                <div class="mt-20 wow fadeIn">
+                    <img src="https://github.com/flextype/flextype/raw/dev/site/plugins/admin/preview.png" width="960" alt="Build fast, flexible, easier to manage websites with Flextype.">
+                </div>
             </div>
         </div>
     </div>
     <!-- /introducing section -->
 
     <!-- features section -->
-    <div class="section first wow fadeIn">
-        <div class="container">
-            <h3 class="section-heading">{{ entry.features_heading|raw }}</h3>
-            <p class="section-description">{{ entry.features_description|raw }}</p>
-            <div class="row">
-                <div class="section-item col-md-4">
-                    <i class="fa fa-magic" aria-hidden="true"></i>
-                    <h4 class="h4">{{ entry.features_simple_heading|raw }}</h4>
-                    <p class="p">
-                        {{ entry.features_simple_p|raw }}
-                    </p>
-                </div>
-                <div class="section-item col-md-4">
-                    <i class="fa fa-rocket" aria-hidden="true"></i>
-                    <h4 class="h4">{{ entry.features_fast_heading|raw }}</h4>
-                    <p class="p">
-                        {{ entry.features_fast_p|raw }}
-                    </p>
-                </div>
-                <div class="section-item col-md-4">
-                    <i class="fa fa-cogs" aria-hidden="true"></i>
-                    <h4 class="h4">{{ entry.features_flexible_heading|raw }}</h4>
-                    <p class="p">
-                        {{ entry.features_flexible_p|raw }}
-                    </p>
-                </div>
-                <div class="section-item col-md-4">
-                    <i class="fa fa-font" aria-hidden="true"></i>
-                    <h4 class="h4">{{ entry.features_easy_editing_heading|raw }}</h4>
-                    <p class="p">
-                        {{ entry.features_easy_editing_p|raw }}
-                    </p>
-                </div>
-                <div class="section-item col-md-4">
-                    <i class="fa fa-list-alt" aria-hidden="true"></i>
-                    <h4 class="h4">{{ entry.features_dynamic_content_types_heading|raw }}</h4>
-                    <p class="p">
-                        {{ entry.features_dynamic_content_types_p|raw }}
-                    </p>
-                </div>
-                <div class="section-item col-md-4">
-                    <i class="fab fa-github" aria-hidden="true"></i>
-                    <h4 class="h4">{{ entry.features_open_source_heading|raw }}</h4>
-                    <p class="p">
-                        {{ entry.features_open_source_p|raw }}
-                    </p>
-                </div>
-            </div>
+    <div class="container mx-auto text-center pt-24 pb-40 bg-black text-white">
+        <h3 class="uppercase text-6xl font-noirpro-semibold wow fadeIn">{{ entry.features_heading|raw }}</h3>
+        <p class="text-3xl">{{ entry.features_description|raw }}</p>
+
+        <div class="flex content-center flex-wrap mt-12">
+          <div class="w-1/3 p-8">
+              <i class="fa fa-magic text-6xl mb-5" aria-hidden="true"></i>
+              <h4 class="text-2xl">{{ entry.features_simple_heading|raw }}</h4>
+              <p>
+                  {{ entry.features_simple_p|raw }}
+              </p>
+          </div>
+          <div class="w-1/3 p-8">
+              <i class="fa fa-rocket text-6xl mb-5" aria-hidden="true"></i>
+              <h4 class="text-2xl">{{ entry.features_fast_heading|raw }}</h4>
+              <p>
+                  {{ entry.features_fast_p|raw }}
+              </p>
+          </div>
+          <div class="w-1/3 p-8">
+              <i class="fa fa-cogs text-6xl mb-5" aria-hidden="true"></i>
+              <h4 class="text-2xl">{{ entry.features_flexible_heading|raw }}</h4>
+              <p>
+                  {{ entry.features_flexible_p|raw }}
+              </p>
+          </div>
+          <div class="w-1/3 p-8">
+              <i class="fa fa-font text-6xl mb-5" aria-hidden="true"></i>
+              <h4 class="text-2xl">{{ entry.features_easy_editing_heading|raw }}</h4>
+              <p>
+                  {{ entry.features_easy_editing_p|raw }}
+              </p>
+          </div>
+          <div class="w-1/3 p-8">
+              <i class="fa fa-list-alt text-6xl mb-5" aria-hidden="true"></i>
+              <h4 class="text-2xl">{{ entry.features_dynamic_content_types_heading|raw }}</h4>
+              <p>
+                  {{ entry.features_dynamic_content_types_p|raw }}
+              </p>
+          </div>
+          <div class="w-1/3 p-8">
+              <i class="fab fa-github text-6xl mb-5" aria-hidden="true"></i>
+              <h4 class="text-2xl">{{ entry.features_open_source_heading|raw }}</h4>
+              <p>
+                  {{ entry.features_open_source_p|raw }}
+              </p>
+          </div>
         </div>
     </div>
     <!-- /features section -->
 
     <!-- technologies section -->
-    <div class="section section-international-gray wow fadeIn">
-        <div class="container">
-            <h3 class="section-heading">{{ entry.features_technologies_heading|raw }}</h3>
-            <p class="section-description">{{ entry.features_technologies_p|raw }}</p>
-            <div class="row">
-                <div class="section-item col-md-4">
-                    <i class="fab fa-php" aria-hidden="true"></i>
-                    <h4 class="h4">{{ entry.features_install_anywhere_heading|raw }}</h4>
-                    <p class="p">
-                        {{ entry.features_install_anywhere_p|raw }}
-                    </p>
-                </div>
-                <div class="section-item col-md-4">
-                    <i class="fas fa-bold"></i>
-                    <h4 class="h4">{{ entry.features_install_anywhere_heading|raw }}</h4>
-                    <p class="p">
-                        {{ entry.features_responsive_framework_p|raw }}
-                    </p>
-                </div>
-                <div class="section-item col-md-4">
-                    <i class="fab fa-sass" aria-hidden="true"></i>
-                    <h4 class="h4">{{ entry.features_css_with_superpowers_heading|raw }}</h4>
-                    <p class="p">
-                        {{ entry.features_css_with_superpowers_p|raw }}
-                    </p>
-                </div>
-                <div class="section-item col-md-4">
-                    <i class="fab fa-dev" aria-hidden="true"></i>
-                    <h4 class="h4">{{ entry.features_slimphp_heading|raw }}</h4>
-                    <p class="p">
-                        {{ entry.features_slimphp_p|raw }}
-                    </p>
-                </div>
-                <div class="section-item col-md-4">
-                    <i class="fab fa-redhat" aria-hidden="true"></i>
-                    <h4 class="h4">{{ entry.features_the_php_league_heading|raw }}</h4>
-                    <p class="p">
-                        {{ entry.features_the_php_league_p|raw }}
-                    </p>
-                </div>
-                <div class="section-item col-md-4">
-                    <i class="fas fa-arrow-circle-right" aria-hidden="true"></i>
-                    <h4 class="h4">{{ entry.features_doctrine_heading|raw }}</h4>
-                    <p class="p">
-                       {{ entry.features_doctrine_p|raw }}
-                    </p>
-                </div>
-            </div>
+    <div class="container mx-auto text-center bg-white text-black pt-40">
+        <h3 class="uppercase text-6xl font-noirpro-semibold wow fadeIn">{{ entry.features_technologies_heading|raw }}</h3>
+        <p class="text-3xl">{{ entry.features_technologies_p|raw }}</p>
+
+        <div class="flex content-center flex-wrap mt-12">
+          <div class="w-1/3 p-8">
+              <i class="fab fa-php text-6xl mb-5" aria-hidden="true"></i>
+              <h4 class="text-2xl">{{ entry.features_install_anywhere_heading|raw }}</h4>
+              <p>
+                  {{ entry.features_install_anywhere_p|raw }}
+              </p>
+          </div>
+          <div class="w-1/3 p-8">
+              <i class="fas fa-bold text-6xl mb-5" aria-hidden="true"></i>
+              <h4 class="text-2xl">{{ entry.features_responsive_framework_heading|raw }}</h4>
+              <p>
+                  {{ entry.features_responsive_framework_p|raw }}
+              </p>
+          </div>
+          <div class="w-1/3 p-8">
+              <i class="fab fa-sass text-6xl mb-5" aria-hidden="true"></i>
+              <h4 class="text-2xl">{{ entry.features_css_with_superpowers_heading|raw }}</h4>
+              <p>
+                 {{ entry.features_css_with_superpowers_p|raw }}
+              </p>
+          </div>
+          <div class="w-1/3 p-8">
+              <i class="fab fa-dev text-6xl mb-5" aria-hidden="true"></i>
+              <h4 class="text-2xl">{{ entry.features_slimphp_p|raw }}</h4>
+              <p>
+                  {{ entry.features_slimphp_p|raw }}
+              </p>
+          </div>
+          <div class="w-1/3 p-8">
+              <i class="fab fa-redhat text-6xl mb-5" aria-hidden="true"></i>
+              <h4 class="text-2xl">{{ entry.features_the_php_league_heading|raw }}</h4>
+              <p>
+                  {{ entry.features_the_php_league_p|raw }}
+              </p>
+          </div>
+          <div class="w-1/3 p-8">
+              <i class="fas fa-arrow-circle-right text-6xl mb-5" aria-hidden="true"></i>
+              <h4 class="text-2xl"> {{ entry.features_doctrine_heading|raw }}</h4>
+              <p>
+                  {{ entry.features_doctrine_p|raw }}
+              </p>
+          </div>
         </div>
     </div>
     <!-- /technologies section -->
 
+
     <!-- no limits section -->
-    <div class="container section wow fadeIn">
-        <h3 class="section-heading">{{ entry.features_no_limits_heading|raw }}</h3>
-        <p class="section-description">{{ entry.features_no_limits_p|raw }}</p>
-        <div class="row">
-            <div class="col-md-4">
-                <p class="section-item-badge">{{ entry.project_business_site|raw }}</p>
-                <p class="section-item-badge">{{ entry.project_landing_page|raw }}</p>
-                <p class="section-item-badge">{{ entry.project_personal_site|raw }}</p>
-            </div>
-            <div class="col-md-4">
-                <p class="section-item-badge">{{ entry.project_portfolio|raw }}</p>
-                <p class="section-item-badge">{{ entry.project_product_site|raw }}</p>
-                <p class="section-item-badge">{{ entry.project_e_commerce|raw }}</p>
-            </div>
-            <div class="col-md-4">
-                <p class="section-item-badge">{{ entry.project_documentation|raw }}</p>
-                <p class="section-item-badge">{{ entry.project_documentation|raw }}</p>
-                <p class="section-item-badge">{{ entry.project_blog|raw }}</p>
-            </div>
+    <div class="container mx-auto text-center bg-white text-black pt-40">
+        <h3 class="uppercase text-6xl font-noirpro-semibold wow fadeIn">{{ entry.features_no_limits_heading|raw }}</h3>
+        <p class="text-3xl">{{ entry.features_no_limits_p|raw }}</p>
+
+        <div class="flex content-center flex-wrap mt-12">
+          <div class="w-1/3 p-8">
+             <div class="p-8 bg-black text-white">
+                 {{ entry.project_business_site|raw }}
+             </div>
+          </div>
+          <div class="w-1/3 p-8">
+             <div class="p-8 bg-black text-white">
+                 {{ entry.project_landing_page|raw }}
+             </div>
+          </div>
+          <div class="w-1/3 p-8">
+             <div class="p-8 bg-black text-white">
+                {{ entry.project_personal_site|raw }}
+             </div>
+          </div>
+          <div class="w-1/3 p-8">
+             <div class="p-8 bg-black text-white">
+                 {{ entry.project_portfolio|raw }}
+             </div>
+          </div>
+          <div class="w-1/3 p-8">
+             <div class="p-8 bg-black text-white">
+                 {{ entry.project_product_site|raw }}
+             </div>
+          </div>
+          <div class="w-1/3 p-8">
+             <div class="p-8 bg-black text-white">
+                 {{ entry.project_e_commerce|raw }}
+             </div>
+          </div>
+          <div class="w-1/3 p-8">
+             <div class="p-8 bg-black text-white">
+                 {{ entry.project_portfolio|raw }}
+             </div>
+          </div>
+          <div class="w-1/3 p-8">
+             <div class="p-8 bg-black text-white">
+                 {{ entry.project_documentation|raw }}
+             </div>
+          </div>
+          <div class="w-1/3 p-8">
+             <div class="p-8 bg-black text-white">
+                 {{ entry.project_blog|raw }}
+             </div>
+          </div>
         </div>
     </div>
     <!-- /no limits section -->
 
+
     <!-- community section -->
-    <div class="section section-international-gray wow fadeIn">
-        <div class="container">
-            <h3 class="section-heading">{{ entry.community_heading|raw }}</h3>
-            <p class="section-description">
-                {{ entry.community_p|raw }}
-            </p>
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="section-item-social col-md-2">
-                    <a rel="nofollow" class="link-community" href="{{ base_url() }}/{{ locale }}/discord">
-                        <i class="fab fa-discord"></i>
-                    </a>
-                </div>
-                <div class="section-item-social col-md-2">
-                    <a rel="nofollow" class="link-community" target="_blank" href="https://github.com/flextype">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </div>
-                <div class="section-item-social col-md-2">
-                    <a rel="nofollow" class="link-community" target="_blank" href="https://vk.com/flextype">
-                        <i class="fab fa-vk"></i>
-                    </a>
-                </div>
-                <div class="section-item-social col-md-2">
-                    <a rel="nofollow" class="link-community" target="_blank" href="https://twitter.com/getflextype">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </div>
-                <div class="section-item-social col-md-2">
-                    <a rel="nofollow" class="link-community" href="https://www.youtube.com/channel/UCmIAB-UDGCjF92iMNDdJR6Q?view_as=subscriber">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-                <div class="col-md-1"></div>
+    <div class="container mx-auto text-center bg-white text-black pt-40">
+        <h3 class="uppercase text-6xl font-noirpro-semibold wow fadeIn">{{ entry.community_heading|raw }}</h3>
+        <p class="text-3xl">{{ entry.community_p|raw }}</p>
+
+        <div class="flex content-center flex-wrap mt-12">
+            <div class="w-1/12 p-8"></div>
+            <div class="w-2/12 p-8">
+                <a rel="nofollow" class="text-7xl" href="{{ base_url() }}/{{ locale }}/discord">
+                    <i class="fab fa-discord"></i>
+                </a>
             </div>
+            <div class="w-2/12 p-8">
+                <a rel="nofollow" class="text-7xl" target="_blank" href="https://github.com/flextype">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <div class="w-2/12 p-8">
+               <a rel="nofollow" class="text-7xl" target="_blank" href="https://vk.com/flextype">
+                   <i class="fab fa-vk"></i>
+               </a>
+            </div>
+            <div class="w-2/12 p-8">
+                <a rel="nofollow" class="text-7xl" target="_blank" href="https://twitter.com/getflextype">
+                    <i class="fab fa-twitter"></i>
+                </a>
+           </div>
+           <div class="w-2/12 p-8">
+               <a rel="nofollow" class="text-7xl" href="https://www.youtube.com/channel/UCmIAB-UDGCjF92iMNDdJR6Q?view_as=subscriber">
+                   <i class="fab fa-youtube"></i>
+               </a>
+          </div>
+          <div class="w-1/12 p-8"></div>
         </div>
     </div>
     <!-- /community section -->
 
     <!-- /contribution section -->
-    <div class="section wow fadeIn">
-        <div class="container">
-            <h3 class="section-heading">{{ entry.contribution_heading|raw }}</h3>
-            <p class="section-description">
-                {{ entry.contribution_p|raw }}
-            </p>
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="section-item-badge">Help on the <a href="{{ base_url() }}/{{ locale }}/community">Communities</a>.</p>
-                    <p class="section-item-badge">Develop a new plugin.</p>
-                    <p class="section-item-badge">Create a new theme.</p>
-                </div>
-                <div class="col-md-6">
-                    <p class="section-item-badge">Find and <a href="https://github.com/flextype/flextype/issues">report issues</a>.</p>
-                    <p class="section-item-badge">Link back to <a href="{{ base_url() }}/{{ locale }}">Flextype</a>.</p>
-                    <p class="section-item-badge"><a href="{{ base_url() }}/{{ locale }}/sponsors">Donate to keep Flextype free.</a></p>
-                </div>
+    <div class="container mx-auto text-center bg-white text-black pt-40 pb-40">
+        <h3 class="uppercase text-6xl font-noirpro-semibold wow fadeIn">{{ entry.contribution_heading|raw }}</h3>
+        <p class="text-3xl pl-20 pr-20">{{ entry.contribution_p|raw }}</p>
+
+        <div class="flex content-center flex-wrap mt-12">
+            <div class="w-1/3 p-8">
+               <div class="p-8 bg-black text-white">
+                  Help on the <a href="{{ base_url() }}/{{ locale }}/community">Communities</a>.
+               </div>
+            </div>
+            <div class="w-1/3 p-8">
+               <div class="p-8 bg-black text-white">
+                  Develop a new plugin.
+               </div>
+            </div>
+            <div class="w-1/3 p-8">
+               <div class="p-8 bg-black text-white">
+                  Create a new theme.
+               </div>
+            </div>
+            <div class="w-1/3 p-8">
+               <div class="p-8 bg-black text-white">
+                  Find and <a href="https://github.com/flextype/flextype/issues">report issues</a>.
+               </div>
+            </div>
+            <div class="w-1/3 p-8">
+               <div class="p-8 bg-black text-white">
+                  Link back to <a href="{{ base_url() }}/{{ locale }}">Flextype</a>.
+               </div>
+            </div>
+            <div class="w-1/3 p-8">
+               <div class="p-8 bg-black text-white">
+                  <a href="{{ base_url() }}/{{ locale }}/sponsors">Donate to keep Flextype free.</a>
+               </div>
             </div>
         </div>
     </div>
     <!-- /contribution section -->
+
 {% endblock %}
