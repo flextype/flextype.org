@@ -791,6 +791,11 @@ a.button-link-effect-1:hover::before {
   transform: translate3d(0, 0, 0);
 }
 
+a.underline {
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
 .container {
   width: 100%;
 }
