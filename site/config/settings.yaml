@@ -1,4 +1,6 @@
 entries:
   main: en
+  error404:
+    template: error404
 cache:
   enabled: true
