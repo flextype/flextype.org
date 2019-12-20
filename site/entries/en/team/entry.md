@@ -22,7 +22,7 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 </p>
 <p class="text-center">
     <strong>Sergey Romanenko</strong><br /> Founder & Lead Developer<br />
-    <a href="http://romanenko.digital">romanenko.digital</a>
+    <a href="https://digital.flextype.org">digital.flextype.org</a>
 </p>
 
 ### Translation Team{.text-4xl .text-center .uppercase .pt-24}
