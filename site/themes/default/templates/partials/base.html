@@ -60,24 +60,25 @@
             Please <a class="text-white" href="https://www.slant.co/topics/9652/viewpoints/5/~flat-file-cms~flextype">vote for Flextype on Slant</a> and write your recomendation!
         </div>
         -->
-        <nav class="container mx-auto flex items-center justify-between flex-wrap bg-black p-6">
-          <div class="flex items-center flex-shrink-0 text-white mr-6">
-            <a href="{{ base_url() }}/{{ locale }}" class="font-semibold no-underline text-3xl tracking-tight">flextype</span>
+        <nav class="container mx-auto bg-black p-6 clearfix -bg-gray-700">
+          <div class="w-full lg:w-2/12 float-left text-white -bg-gray-600 p-2 font-noirpro-medium tracking-wide">
+            <a href="{{ base_url() }}/{{ locale }}" class="w-full lg:w-3/12 text-center text-base no-underline -bg-gray-900">flextype</span></a>
           </div>
-          <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-            <div class="text-sm lg:flex-grow font-noirpro-semibold text-right text-base pb-3">
-                <a href="{{ base_url() }}/{{ locale }}/downloads" class="{% if entry.slug == locale ~ '/downloads' %}border-b-4{% endif %} uppercase relative link-effect-1 block mt-4 no-underline lg:inline-block lg:mt-0 text-white mr-4">
-                  {{ entry_locale.link_downloads }}
-                </a>
-              <a href="//docs.flextype.org" class="uppercase relative link-effect-1 block mt-4 no-underline lg:inline-block lg:mt-0 text-white mr-4">
-                {{ entry_locale.link_documentation }}
-              </a>
-              <a href="{{ base_url() }}/{{ locale }}/community" class="{% if entry.slug == locale ~ '/community' %}border-b-4{% endif %} uppercase relative link-effect-1 block mt-4 no-underline lg:inline-block lg:mt-0 text-white mr-4">
-                {{ entry_locale.link_community }}
-              </a>
-              <a href="{{ base_url() }}/{{ locale }}/about" class="{% if entry.slug == locale ~ '/about' %}border-b-4{% endif %} uppercase relative link-effect-1 block mt-4 no-underline lg:inline-block lg:mt-0 text-white mr-4">
-                {{ entry_locale.link_about }}
-              </a>
+          <div class="w-full float-right -bg-gray-600 lg:w-9/12 font-noirpro-semibold">
+            <div class="text-right p-2">
+                {% for item in entry_locale.navigation %}
+                    <a href="{% if item.external %}//{{ item.link }}{% else %}{{ base_url() }}/{{ locale }}/{{ item.link }}{% endif %}"
+                       class="{% if entry.slug == locale ~ item.link %}border-b-4{% endif %}
+                               uppercase
+                               relative
+                               block
+                               no-underline
+                               text-white
+                               mr-4
+                               lg:inline-block">
+                               {{ item.title }}
+                           </a>
+                {% endfor %}
             </div>
           </div>
         </nav>
