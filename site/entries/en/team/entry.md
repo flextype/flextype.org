@@ -1,6 +1,6 @@
 ---
 title: 'Team'
-template: about
+template: default
 visibility: visible
 published_at: '22-09-2019 19:15'
 description: 'We are on a mission to build high quality web platform to develop fast, flexible, easier to manage websites with Flextype!'
@@ -15,24 +15,21 @@ published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 ---
 
-<h3 class="h3">Behind The Project</h3>
+### Behind The Project{.text-4xl .text-center .uppercase .pt-24}
 
 <p class="text-center">
-<img alt="" src="https://avatars0.githubusercontent.com/u/477114?s=460&v=4" style="border-radius:50%; width: 164px;" /><br />
+    <img alt="" src="https://avatars0.githubusercontent.com/u/477114?s=460&v=4" class="rounded-full inline w-40 pb-5" />
 </p>
-
 <p class="text-center">
-<strong>Sergey Romanenko</strong><br /> Founder & Lead Developer<br />
-<a href="http://romanenko.digital">romanenko.digital</a>
+    <strong>Sergey Romanenko</strong><br /> Founder & Lead Developer<br />
+    <a href="http://romanenko.digital">romanenko.digital</a>
 </p>
 
-<h3 class="h3">Translation Team</h3>
+### Translation Team{.text-4xl .text-center .uppercase .pt-24}
 
-<p>If you wish to participate in the translation of Flextype, please <b>Join Flextype International Translator Team</b> and start translating!</p>
+If you wish to participate in the translation of Flextype, please <b>Join Flextype International Translator Team</b> and start translating!
 
-<p>
 Our crowdin projects: <a href="https://crowdin.com/project/flextype">Flextype CMS</a>, <a href="https://crowdin.com/project/flextype-website">Flextype Website</a>, <a href="https://crowdin.com/project/flextype-documentation">Flextype Documentation</a>
-</p>
 
 
 <table class="table">
