@@ -34,6 +34,10 @@
     font-style: normal;
 }
 
+.font-noirpro-light {
+    font-family: noirpro-light;
+}
+
 .font-noirpro-bold {
     font-family: noirpro-bold;
 }
@@ -44,4 +48,8 @@
 
 .font-noirpro-semibold {
     font-family: noirpro-semibold;
+}
+
+.font-noirpro-medium {
+    font-family: noirpro-medium;
 }
