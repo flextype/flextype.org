@@ -746,16 +746,16 @@ a.link-effect-1::after {
   transition: height 0.3s, opacity 0.3s, -webkit-transform 0.3s;
   transition: height 0.3s, opacity 0.3s, transform 0.3s;
   transition: height 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s;
-  -webkit-transform: translateY(-10px);
-  transform: translateY(-10px);
+  -webkit-transform: translateY(-30px);
+  transform: translateY(-30px);
 }
 
 a.link-effect-1:hover::after,
 a.link-effect-1:focus::after {
   height: 3px;
   opacity: 1;
-  -webkit-transform: translateY(5px);
-  transform: translateY(5px);
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px);
 }
 
 a.button-link-effect-1 {

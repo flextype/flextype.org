@@ -8,14 +8,14 @@ a.link-effect-1::after {
 	content: '';
 	opacity: 0;
 	transition: height 0.3s, opacity 0.3s, transform 0.3s;
-	transform: translateY(-10px);
+	transform: translateY(-30px);
 }
 
 a.link-effect-1:hover::after,
 a.link-effect-1:focus::after {
 	height: 3px;
 	opacity: 1;
-	transform: translateY(5px);
+	transform: translateY(0px);
 }
 
 
@@ -46,4 +46,10 @@ a.button-link-effect-1:hover {
 a.button-link-effect-1:hover::before {
 	opacity: 1;
 	transform: translate3d(0, 0, 0);
+}
+
+
+a.underline {
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
 }
