@@ -1,8 +1,6 @@
 ---
 title: Downloads
-content: ''
 template: downloads
-fieldset: default
 visibility: visible
 description: Build fast, flexible, easier to manage websites with Flextype.
 current_stable_version: Current stable Flextype version
