@@ -5,11 +5,9 @@
     <h1 class="uppercase text-center text-6xl m-0 pt-24 pl-24 pr-24 pb-24 font-noirpro-semibold wow fadeIn">
         {{ entry.title|raw }}
     </h1>
-
     <h2 class="text-center pl-40 m-0 pr-40 pb-24 text-xl font-normal">
         {{ entry.description|raw }}
     </h2>
-
     <div class="pl-24 pr-24">
         {{ entry.content|shortcode|markdown|raw }}
     </div>
