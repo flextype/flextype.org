@@ -1,6 +1,18 @@
 {% extends "themes/default/templates/partials/base.html" %}
 
 {% block content %}
+<div class="container mx-auto bg-white text-black pb-24">
+    <h1 class="uppercase text-center text-6xl p-24 m-0 font-noirpro-semibold wow fadeIn">
+        {{ entry.title|raw }}
+    </h1>
+    <h2 class="text-center m-0 pl-40 pr-40 pb-24 text-xl font-normal">
+        {{ entry.description }}
+    </h2>
+    <div class="pl-24 pr-24">
+        {{ entry.content|shortcode|markdown|raw }}
+    </div>
+</div>
+{#
 <div class="page-content container pb-5">
     <h2 class="h2">{{ entry.title }}</h2>
     <div class="inner">
@@ -26,4 +38,5 @@
         </div>
     </div>
 </div>
+#}
 {% endblock %}
