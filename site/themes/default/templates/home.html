@@ -3,15 +3,17 @@
 {% block content %}
 
     <!-- introducing section -->
-    <div class="container mx-auto bg-black text-white">
-        <div class="text-center">
-            <h1 class="uppercase text-6xl p-24 font-noirpro-semibold wow fadeIn">{{ entry.intro_section_h1|raw }}</h1>
-            <div class="flex justify-center wow fadeIn">
-                <a href="{{ base_url() }}/{{ locale }}/downloads" class="relative text-lg relative no-underline pl-20 pr-20 pt-6 pb-6 w-3/12 text-white bg-black border-white border-4 hover:bg-white hover:text-black hover:border-black wow fadeIn">{{ entry.intro_section_button|raw }}</a>
-            </div>
-            <div class="flex justify-center wow fadeIn">
-                <div class="mt-20">
-                    <img src="https://github.com/flextype/flextype/raw/dev/site/plugins/admin/preview.png" width="1100" alt="Build fast, flexible, easier to manage websites with Flextype.">
+    <div class="bg-black text-white">
+        <div class="container mx-auto">
+            <div class="text-center">
+                <h1 class="uppercase p-24 m-0 font-noirpro-semibold wow fadeIn text-3xl lg:text-6xl">{{ entry.intro_section_h1|raw }}</h1>
+                <div class="flex justify-center wow fadeIn">
+                    <a href="{{ base_url() }}/{{ locale }}/downloads" class="text-center relative text-lg relative no-underline pr-2 pl-2 pt-6 pb-6 w-3/12 text-white bg-black border-white border-4 hover:bg-white hover:text-black hover:border-black wow fadeIn">{{ entry.intro_section_button|raw }}</a>
+                </div>
+                <div class="flex justify-center wow fadeIn">
+                    <div class="mt-20">
+                        <img src="https://github.com/flextype/flextype/raw/dev/site/plugins/admin/preview.png" width="1100" alt="Build fast, flexible, easier to manage websites with Flextype.">
+                    </div>
                 </div>
             </div>
         </div>
@@ -19,7 +21,9 @@
     <!-- /introducing section -->
 
     <!-- features section -->
-    <div class="container mx-auto text-center pt-24 pb-40 bg-black text-white">
+    <div class="text-center pt-24 pb-40 bg-black text-white">
+        <div class="container mx-auto">
+
         <h3 class="uppercase text-6xl font-noirpro-semibold wow fadeIn">{{ entry.features_heading|raw }}</h3>
         <p class="text-3xl wow fadeIn">{{ entry.features_description|raw }}</p>
 
