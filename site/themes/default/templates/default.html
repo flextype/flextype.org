@@ -1,12 +1,14 @@
 {% extends "themes/default/templates/partials/base.html" %}
 
 {% block content %}
-<div class="page-content container pb-5">
-    <h1 class="h2">
+<div class="container mx-auto bg-white text-black pb-24">
+    <h1 class="uppercase text-center text-6xl p-24 font-noirpro-semibold wow fadeIn">
         {{ entry.title|raw }}
-        <p class="p" stylxe="text-align: center; max-width: 650px; margin:0 auto;">{{ entry.description }}</p>
     </h1>
-    <div>
+    <p class="text-center pl-40 pr-40 pb-24 text-xl">
+        {{ entry.description }}
+    </p>
+    <div class="pl-24 pr-24">
         {{ entry.content|shortcode|markdown|raw }}
     </div>
 </div>
