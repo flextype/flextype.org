@@ -1,5 +1,6 @@
 ---
 title: One time donation
+description: Donate to keep Flextype free!
 ---
 
 QIWI: +79805359141  
