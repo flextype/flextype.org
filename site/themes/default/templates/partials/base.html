@@ -41,10 +41,9 @@
             <script src="https://kit.fontawesome.com/588226d8c5.js"></script>
             <link href="https://daneden.github.io/animate.css/animate.min.css" rel="stylesheet">
 
-            {% set bootstrap = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/css/bootstrap.min.css' %}
-            {% set flextype = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/css/flextype.min.css' %}
-            {% do assets.add('css', bootstrap, 'site', 1) %}
-            {% do assets.add('css', flextype, 'site', 2) %}
+            {% set dev = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/css/dev.css' %}
+            {% set production = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/css/build.min.css' %}
+            {% do assets.add('css', dev, 'site', 1) %}
             {% for assets_site in assets.get('css', 'site') %}
                 {% for assets_by_priorities in assets_site %}
                     <link href="{{ assets_by_priorities.asset }}" rel="stylesheet">
@@ -55,16 +54,60 @@
             {{ snippets.exec('yandex-metrika')|raw }}
         {% endblock %}
     </head>
-    <body>
-        <div style="color: white; text-align: center; padding: 10px; background: #181818; border-bottom: 3px dashed black;">
-            Please <a style="color: white;" href="https://www.slant.co/topics/9652/viewpoints/5/~flat-file-cms~flextype">vote for Flextype on Slant</a> and write your recomendation!
+    <body class="bg-white text-black">
+        <!--
+        <div class="text-white text-center p-3 bg-gray-900">
+            Please <a class="text-white" href="https://www.slant.co/topics/9652/viewpoints/5/~flat-file-cms~flextype">vote for Flextype on Slant</a> and write your recomendation!
         </div>
-        <nav class="navbar navbar-expand-lg section-international">
+        -->
+        <nav class="container mx-auto flex items-center justify-between flex-wrap bg-black p-6">
+          <div class="flex items-center flex-shrink-0 text-white mr-6">
+            <a href="{{ base_url() }}/{{ locale }}" class="font-semibold no-underline text-3xl tracking-tight">flextype</span>
+          </div>
+          <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+            <div class="text-sm lg:flex-grow font-noirpro-semibold text-right text-base pb-3">
+                <a href="{{ base_url() }}/{{ locale }}/downloads" class="{% if entry.slug == locale ~ '/downloads' %}border-b-4{% endif %} uppercase relative link-effect-1 block mt-4 no-underline lg:inline-block lg:mt-0 text-white mr-4">
+                  {{ entry_locale.link_downloads }}
+                </a>
+              <a href="//docs.flextype.org" class="uppercase relative link-effect-1 block mt-4 no-underline lg:inline-block lg:mt-0 text-white mr-4">
+                {{ entry_locale.link_documentation }}
+              </a>
+              <a href="{{ base_url() }}/{{ locale }}/community" class="{% if entry.slug == locale ~ '/community' %}border-b-4{% endif %} uppercase relative link-effect-1 block mt-4 no-underline lg:inline-block lg:mt-0 text-white mr-4">
+                {{ entry_locale.link_community }}
+              </a>
+              <a href="{{ base_url() }}/{{ locale }}/about" class="{% if entry.slug == locale ~ '/about' %}border-b-4{% endif %} uppercase relative link-effect-1 block mt-4 no-underline lg:inline-block lg:mt-0 text-white mr-4">
+                {{ entry_locale.link_about }}
+              </a>
+            </div>
+          </div>
+        </nav>
+
+        {% block content %}{% endblock %}
+
+        <footer class="container mx-auto text-center bg-black text-white pt-40 pb-40">
+
+            <div class="flex content-center flex-wrap mt-12">
+                <div class="w-full p-8">
+                   <div class="p-2 bg-black text-white">
+                       <div class="text-white mr-6">
+                         <a href="{{ base_url() }}/{{ locale }}" class="font-semibold no-underline text-3xl tracking-tight">flextype</span>
+                       </div>
+                   </div>
+                   <div class="p-2 bg-black text-white">
+                       <p><a href="{{ base_url() }}/{{ locale }}">Flextype</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="http://romanenko.digital" class="highlight">Sergey Romanenko</a> and <a href="https://github.com/flextype/flextype/graphs/contributors" class="highlight">Flextype Community</a></p>
+                    </div>
+                    <div class="p-2 bg-black text-white">
+                       <p>Copyright © 2020 - <a href="https://github.com/flextype/flextype/blob/dev/LICENSE.txt">Sergey Romanenko</a></p>
+                   </div>
+                </div>
+            </div>
+        </footer>
+
+{#
+        <nav class="container bg-black text-white">
+
             <div class="container">
                 <a class="navbar-brand" href="{{ base_url() }}/{{ locale }}">flextype</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-                </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
@@ -92,6 +135,7 @@
         </nav>
 
         {% block content %}{% endblock %}
+
 
         <footer class="footer">
             <div class="container">
@@ -144,7 +188,7 @@
                 </div>
             </div>
         </footer>
-
+#}
         {% set default = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/js/flextype.min.js' %}
         {% do assets.add('js', default, 'site', 1) %}
         {% for assets_site in assets.get('js', 'site') %}
