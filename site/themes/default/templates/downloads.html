@@ -5,38 +5,51 @@
     <h1 class="uppercase text-center text-6xl m-0 pt-24 pl-24 pr-24 pb-24 font-noirpro-semibold wow fadeIn">
         {{ entry.title|raw }}
     </h1>
-    <h2 class="text-center m-0 pl-40 pr-40 pb-24 text-xl font-normal">
-        {{ entry.description }}
-    </h2>
     <div class="pl-24 pr-24">
-        {{ entry.content|shortcode|markdown|raw }}
-    </div>
-</div>
-{#
-<div class="page-content container pb-5">
-    <h2 class="h2">{{ entry.title }}</h2>
-    <div class="inner">
-        <nav>
-          <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-home-tab" href="{{ base_url() }}/{{ locale }}/downloads" role="tab" aria-controls="nav-home" aria-selected="true">Flextype</a>
-            <a class="nav-item nav-link" id="nav-profile-tab" href="https://github.com/flextype/plugins" role="tab" aria-controls="nav-profile" aria-selected="false">{{ entry.link_plugins }}</a>
-            <a class="nav-item nav-link" id="nav-contact-tab" href="https://github.com/flextype/themes" role="tab" aria-controls="nav-contact" aria-selected="false">{{ entry.link_themes }}</a>
-          </div>
-        </nav>
-        <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane text-center fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-              <p class="pt-5">
-                  The Flextype release package contains:<br> core functionality, default theme, admin panel and site plugins.
-              </p>
-              <a href="https://github.com/flextype/flextype/releases/download/v0.9.6/flextype-0.9.6.zip" class="btn btn-download">{{ entry.download_flextype }}</a>
-              <p>
-                  <a href="https://github.com/flextype/flextype/blob/master/CHANGELOG.md">{{ entry.view_changelog }}</a>
-              </p>
-          </div>
-          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"></div>
-          <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"></div>
+        <div class="flex content-center flex-wrap">
+            <div class="w-6/12 p-2 text-center wow fadeIn">
+                <div class="p-12 h-full bg-black text-white">
+                    <i class="fas fa-download text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">Flextype</h4>
+                    <p>
+                        The Flextype release package contains: core functionality, default theme, admin panel and site plugins. <br>
+                        <a class="underline inline-block mt-10" href="https://github.com/flextype/flextype/releases/download/v0.9.6/flextype-0.9.6.zip">DOWNLOAD</a>
+                    </p>
+                </div>
+            </div>
+            <div class="w-6/12 p-2 text-center wow fadeIn">
+                <div class="p-12 h-full bg-black text-white">
+                    <i class="fas fa-plug text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">Plugins</h4>
+                    <p>
+                        Extend and customize Flextype functionality with plugins. <br>
+                        <a class="underline inline-block mt-10" href="https://github.com/flextype/plugins">DOWNLOAD</a>
+                    </p>
+                </div>
+            </div>
+            <div class="w-6/12 p-2 text-center wow fadeIn">
+                <div class="p-12 h-full bg-black text-white">
+                    <i class="fas fa-palette text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">Themes</h4>
+                    <p>
+                        Customize your site with a themes for Flextype.
+                        <br>
+                        <a class="underline inline-block mt-10" href="https://github.com/flextype/themes">DOWNLOAD</a>
+                    </p>
+                </div>
+            </div>
+            <div class="w-6/12 p-2 text-center wow fadeIn">
+                <div class="p-12 h-full bg-black text-white">
+                    <i class="fab fa-github text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">Support</h4>
+                    <p>
+                        If you want to report a bug or contribute your ideas, you can use the <a class="underline" href="https://github.com/flextype/flextype/issues">Flextype GitHub Issues tracker</a>.
+                        <br><br>
+                        <a class="underline" href="https://github.com/flextype">Go to GitHub</a>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-#}
 {% endblock %}

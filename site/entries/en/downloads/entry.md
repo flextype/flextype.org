@@ -2,7 +2,7 @@
 title: Downloads
 template: downloads
 visibility: visible
-description: Build fast, flexible, easier to manage websites with Flextype.
+description: "The Flextype release package contains: core functionality, default theme, admin panel and site plugins."
 current_stable_version: Current stable Flextype version
 view_changelog: View release notes in the Changelog.
 download_flextype: Download Flextype
