@@ -3,7 +3,7 @@ title: 'Создавайте быстрые и легкие в управлен�
 template: home
 visibility: visible
 published_at: '22-09-2019 19:12'
-description: 'Создавайте быстрые и легкие в управлении веб-сайты c Flextype. Скачать Flextype!'
+description: 'Создавайте быстрые и легкие в управлении веб-сайты c Flextype. We are on a mission to build high quality web platform to develop fast, flexible, easier to manage websites with Flextype!'
 menu_item_title: Главная
 menu_item_url: home
 menu_item_target: _self
@@ -69,5 +69,19 @@ link_community: Сообщество
 link_documentation: Документация
 link_changelog: Список изменений
 link_team: Команда
+navigation:
+  - 
+    title: Downloads
+    link: downloads
+  - 
+    title: Documentation
+    link: docs.flextype.org
+    external: true
+  - 
+    title: Community
+    link: community
+  - 
+    title: About
+    link: about
 ---
 
