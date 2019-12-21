@@ -2,15 +2,15 @@
 
 {% block content %}
 <div class="container mx-auto bg-white text-black pb-24">
-    <h1 class="uppercase text-center text-6xl m-0 pt-24 pl-16 pr-16 pb-24 font-noirpro-semibold wow fadeIn">
+    <h1 class="uppercase text-center text-3xl lg:text-6xl m-0 pl-6 pr-6 lg:pl-16 lg:pr-16 pt-24 pb-24 font-noirpro-semibold wow fadeIn">
         {{ entry.title|raw }}
     </h1>
-    <h2 class="text-center m-0 pl-40 pr-40 pb-24 text-xl font-normal">
+    <h2 class="text-center m-0 pl-6 pr-6 lg:pl-40 lg:pr-40 pb-24 text-xl font-normal">
         {{ entry.description }}
     </h2>
-    <div class="pl-16 pr-16">
+    <div class="pl-6 pr-6 lg:pl-16 lg:pr-16">
         <div class="flex content-center flex-wrap mt-12">
-            <div class="w-6/12 p-2 text-center">
+            <div class="w-full lg:w-6/12 p-2 text-center">
                 <div class="p-12 h-full bg-black text-white">
                     <i class="fab fa-discord text-6xl mb-5" aria-hidden="true"></i>
                     <h4 class="text-2xl">Discord</h4>
@@ -22,7 +22,7 @@
                     </p>
                 </div>
             </div>
-            <div class="w-6/12 p-2 text-center">
+            <div class="w-full lg:w-6/12 p-2 text-center">
                 <div class="p-12 h-full bg-black text-white">
                     <i class="fab fa-github text-6xl mb-5" aria-hidden="true"></i>
                     <h4 class="text-2xl">Github</h4>
@@ -33,7 +33,7 @@
                     </p>
                 </div>
             </div>
-            <div class="w-6/12 p-2 text-center">
+            <div class="w-full lg:w-6/12 p-2 text-center">
                 <div class="p-12 h-full bg-black text-white">
                     <i class="fab fa-vk text-6xl mb-5" aria-hidden="true"></i>
                     <h4 class="text-2xl">Vkontakte</h4>
@@ -44,7 +44,7 @@
                     </p>
                 </div>
             </div>
-            <div class="w-6/12 p-2 text-center">
+            <div class="w-full lg:w-6/12 p-2 text-center">
                 <div class="p-12 h-full bg-black text-white align-middle">
                     <i class="fab fa-twitter text-6xl mb-5" aria-hidden="true"></i>
                     <h4 class="text-2xl">Twitter</h4>
