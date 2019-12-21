@@ -1,6 +1,5 @@
 module.exports = {
-  theme: {
-      theme: {
+    theme: {
         fontSize: {
             'xs': '.75rem',
             'sm': '.875rem',
@@ -15,13 +14,10 @@ module.exports = {
             '6xl': '4rem',
             '7xl': '5rem'
         },
-        extend: {
-            borderWidth: {
-                '3': '3px'
-            }
+        borderWidth: {
+            '3': '3px'
         }
-    }
-  },
-  variants: {},
-  plugins: []
+    },
+    variants: {},
+    plugins: []
 }
