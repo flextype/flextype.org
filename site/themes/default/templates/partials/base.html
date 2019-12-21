@@ -60,13 +60,13 @@
             Please <a class="text-white" href="https://www.slant.co/topics/9652/viewpoints/5/~flat-file-cms~flextype">vote for Flextype on Slant</a> and write your recomendation!
         </div>
         -->
-        <nav class="container mx-auto bg-black p-6 clearfix -bg-gray-700">
+        <nav class="container mx-auto bg-black pl-16 pr-16 pt-6 pb-6 clearfix">
           <div class="w-full lg:w-2/12
                       text-center lg:text-left
-                      float-left text-white -bg-gray-600 p-2 font-noirpro-medium tracking-wide">
-            <a href="{{ base_url() }}/{{ locale }}" class="w-full lg:w-2/12 text-center text-base no-underline -bg-gray-900">flextype</span></a>
+                      float-left text-white p-2 font-noirpro-medium tracking-wide">
+            <a href="{{ base_url() }}/{{ locale }}" class="w-full lg:w-2/12 text-center text-base no-underline">flextype</span></a>
           </div>
-          <div class="w-full float-right -bg-gray-600 lg:w-9/12 font-noirpro-semibold">
+          <div class="w-full float-right lg:w-9/12 font-noirpro-semibold">
             <div class="text-right p-2">
                 {% for item in entry_locale.navigation %}
 
@@ -93,9 +93,9 @@
 
         {% block content %}{% endblock %}
 
-        <footer class="container mx-auto text-left bg-black text-white pt-18 pb-20">
-            <div class="flex content-center flex-wrap mt-12">
-                <div class="w-full lg:w-2/12 p-8">
+        <footer class="container mx-auto text-left bg-black text-white">
+            <div class="flex content-center flex-wrap pl-16 pr-16 pt-24 pb-24">
+                <div class="w-full lg:w-2/12">
                     <h4>Flextype</h4>
                     <ul class="list-none m-0 p-0">
                         <li><a href="{{ base_url() }}/{{ locale }}/about" class="no-underline hover:underline">{{ entry_locale.link_about }}</a></li>
@@ -104,7 +104,7 @@
                         <li><a target="_blank" href="https://github.com/flextype/flextype/blob/master/CHANGELOG.md" class="no-underline hover:underline">{{ entry_locale.link_changelog }}</a></li>
                     </ul>
                 </div>
-                <div class="w-full lg:w-2/12 p-8">
+                <div class="w-full lg:w-2/12">
                     <h4>{{ entry_locale.link_downloads }}</h4>
                     <ul class="list-none m-0 p-0">
                         <li><a href="{{ base_url() }}/{{ locale }}/downloads"  class="no-underline hover:underline">Flextype</a></li>
@@ -112,7 +112,7 @@
                         <li><a href="https://github.com/flextype/themes"  class="no-underline hover:underline">{{ entry_locale.link_themes }}</a></li>
                     </ul>
                 </div>
-                <div class="w-full lg:w-2/12 p-8">
+                <div class="w-full lg:w-2/12">
                     <h4>{{ entry_locale.link_community }}</h4>
                     <ul class="list-none m-0 p-0">
                         <li><a href="{{ base_url() }}/{{ locale }}/discord" class="no-underline hover:underline">Discord</a></li>
@@ -122,71 +122,13 @@
                         <li><a href="https://www.youtube.com/channel/UCmIAB-UDGCjF92iMNDdJR6Q?view_as=subscriber" class="no-underline hover:underline">Youtube</a></li>
                     </ul>
                 </div>
-                <div class="w-full lg:w-5/12 p-8 pl-20">
+                <div class="w-full lg:w-5/12">
                     <p><a href="{{ base_url() }}/{{ locale }}">Flextype</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="//digital.flextype.org" class="highlight">Sergey Romanenko</a> and <a href="https://github.com/flextype/flextype/graphs/contributors" class="highlight">Flextype Community</a></p>
                     <p>Copyright © 2020 - <a href="//digital.flextype.org" class="highlight">Sergey Romanenko</a></p>
                 </div>
             </div>
         </footer>
 
-{#
-        {% block content %}{% endblock %}
-
-
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-2 footer-nav-items">
-                        <h4 class="h4">Flextype</h4>
-                        <ul class="ul">
-                            <li><a href="{{ base_url() }}/{{ locale }}/about">{{ entry_locale.link_about }}</a></li>
-                            <li><a href="{{ base_url() }}/{{ locale }}/team">{{ entry_locale.link_team }}</a></li>
-                            <li><a href="{{ base_url() }}/{{ locale }}/sponsors">{{ entry_locale.link_sponsors }}</a></li>
-                            <li><a target="_blank" href="https://github.com/flextype/flextype/blob/master/CHANGELOG.md">{{ entry_locale.link_changelog }}</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-2 footer-nav-items">
-                        <h4 class="h4">{{ entry_locale.link_downloads }}</h4>
-                        <ul class="ul">
-                            <li><a href="{{ base_url() }}/{{ locale }}/downloads">Flextype</a></li>
-                            <li><a href="https://github.com/flextype/plugins">{{ entry_locale.link_plugins }}</a></li>
-                            <li><a href="https://github.com/flextype/themes">{{ entry_locale.link_themes }}</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-2 footer-nav-items">
-                        <h4 class="h4">{{ entry_locale.link_community }}</h4>
-                        <ul class="ul">
-                            <li><a href="{{ base_url() }}/{{ locale }}/discord">Discord</a></li>
-                            <li><a href="https://github.com/flextype">Github</a></li>
-                            <li><a href="https://vk.com/flextype">Vkontakte</a></li>
-                            <li><a href="https://twitter.com/getflextype">Twitter</a></li>
-                            <li><a href="https://www.youtube.com/channel/UCmIAB-UDGCjF92iMNDdJR6Q?view_as=subscriber">Youtube</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        <p class="p"><a href="{{ base_url() }}/{{ locale }}">Flextype</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="http://romanenko.digital" class="highlight">Sergey Romanenko</a><br> and <a href="https://github.com/flextype/flextype/graphs/contributors" class="highlight">Flextype Community</a></p>
-                        <p class="p">Copyright © 2019 - <a href="https://github.com/flextype/flextype/blob/dev/LICENSE.txt">Flextype</a> - All rights reserved</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 footer-locales">
-                        <p class="p">
-                            <a href="{{ base_url() }}/en">English</a>
-                            <!--
-                            <a href="{{ base_url() }}/de">Deutsch</a>
-                            <a href="{{ base_url() }}/fr">Français</a>
-                            <a href="{{ base_url() }}/it">Italiano</a>
-                            -->
-                            <a href="{{ base_url() }}/ru">Русский</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-#}
-        {% set default = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/js/flextype.min.js' %}
-        {% do assets.add('js', default, 'site', 1) %}
         {% for assets_site in assets.get('js', 'site') %}
             {% for assets_by_priorities in assets_site %}
                 <script src="{{ assets_by_priorities.asset }}"></script>
