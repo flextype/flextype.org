@@ -69,4 +69,18 @@ link_community: Community
 link_documentation: Documentation
 link_changelog: Changelog
 link_team: Team
+navigation:
+  0:
+    title: Downloads
+    link: downloads
+  1:
+    title: Documentation
+    link: docs.flextype.org
+    external: true
+  2:
+    title: Community
+    link: community
+  3:
+    title: About
+    link: about
 ---
