@@ -36,7 +36,6 @@
 
             <title>{% if entry.title %}{{ entry.title|e('html') }} | {% endif %}{{ registry.settings.title|e('html') }}</title>
 
-            <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
             <script src="https://kit.fontawesome.com/588226d8c5.js"></script>
             <link href="https://daneden.github.io/animate.css/animate.min.css" rel="stylesheet">
 
@@ -45,7 +44,7 @@
             {% do assets.add('css', production, 'site', 1) %}
             {% for assets_site in assets.get('css', 'site') %}
                 {% for assets_by_priorities in assets_site %}
-                    <link href="{{ assets_by_priorities.asset }}" rel="stylesheet">
+                    <link href="{{ assets_by_priorities.asset }}?v=1" rel="stylesheet">
                 {% endfor %}
             {% endfor %}
 
