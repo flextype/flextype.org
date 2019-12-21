@@ -16,7 +16,7 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 ---
 
 <center>
-    <a class="relative button-link-effect-1 text-lg w-6/12 relative no-underline pl-20 pr-20 pt-6 pb-6 block text-white bg-black border-white border-4" href="https://discord.gg/CCKPKVG">
+    <a class="relative button-link-effect-1 text-lg w-6/12 relative no-underline pl-20 pr-20 pt-6 pb-6 block text-black bg-white border-black border-3 hover:bg-black hover:text-white" href="https://discord.gg/CCKPKVG">
         Join the community of Flextype developers from around the globe in our Discord chat server.
     </a>
 </center>

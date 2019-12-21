@@ -18,6 +18,8 @@ module.exports = {
             '3': '3px'
         }
     },
-    variants: {},
+    variants: {
+        borderColor: ['responsive', 'hover', 'focus'],
+    },
     plugins: []
 }
