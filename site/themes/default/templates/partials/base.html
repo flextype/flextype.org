@@ -42,7 +42,7 @@
 
             {% set dev = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/css/dev.css' %}
             {% set production = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/css/build.min.css' %}
-            {% do assets.add('css', dev, 'site', 1) %}
+            {% do assets.add('css', production, 'site', 1) %}
             {% for assets_site in assets.get('css', 'site') %}
                 {% for assets_by_priorities in assets_site %}
                     <link href="{{ assets_by_priorities.asset }}" rel="stylesheet">
