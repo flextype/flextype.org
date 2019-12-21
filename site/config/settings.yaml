@@ -4,3 +4,7 @@ entries:
     template: error404
 cache:
   enabled: true
+errors:
+  display: false
+twig:
+  auto_reload: false
