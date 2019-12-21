@@ -52,7 +52,7 @@ gulp.task("css-production", function() {
         extractors: [
           {
             extractor: TailwindExtractor,
-            extensions: ["html"]
+            extensions: ["html", "md"]
           }
         ]
       })
