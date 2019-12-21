@@ -93,56 +93,43 @@
 
         {% block content %}{% endblock %}
 
-        <footer class="container mx-auto text-center bg-black text-white pt-40 pb-40">
-
+        <footer class="container mx-auto text-left bg-black text-white pt-18 pb-20">
             <div class="flex content-center flex-wrap mt-12">
-                <div class="w-full p-8">
-                   <div class="p-2 bg-black text-white">
-                       <div class="text-white mr-6">
-                         <a href="{{ base_url() }}/{{ locale }}" class="font-semibold no-underline text-3xl tracking-tight">flextype</span>
-                       </div>
-                   </div>
-                   <div class="p-2 bg-black text-white">
-                       <p><a href="{{ base_url() }}/{{ locale }}">Flextype</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="http://romanenko.digital" class="highlight">Sergey Romanenko</a> and <a href="https://github.com/flextype/flextype/graphs/contributors" class="highlight">Flextype Community</a></p>
-                    </div>
-                    <div class="p-2 bg-black text-white">
-                       <p>Copyright © 2020 - <a href="https://github.com/flextype/flextype/blob/dev/LICENSE.txt">Sergey Romanenko</a></p>
-                   </div>
+                <div class="w-full lg:w-2/12 p-8">
+                    <h4>Flextype</h4>
+                    <ul class="list-none m-0 p-0">
+                        <li><a href="{{ base_url() }}/{{ locale }}/about" class="no-underline hover:underline">{{ entry_locale.link_about }}</a></li>
+                        <li><a href="{{ base_url() }}/{{ locale }}/team" class="no-underline hover:underline">{{ entry_locale.link_team }}</a></li>
+                        <li><a href="{{ base_url() }}/{{ locale }}/sponsors" class="no-underline hover:underline">{{ entry_locale.link_sponsors }}</a></li>
+                        <li><a target="_blank" href="https://github.com/flextype/flextype/blob/master/CHANGELOG.md" class="no-underline hover:underline">{{ entry_locale.link_changelog }}</a></li>
+                    </ul>
+                </div>
+                <div class="w-full lg:w-2/12 p-8">
+                    <h4>{{ entry_locale.link_downloads }}</h4>
+                    <ul class="list-none m-0 p-0">
+                        <li><a href="{{ base_url() }}/{{ locale }}/downloads"  class="no-underline hover:underline">Flextype</a></li>
+                        <li><a href="https://github.com/flextype/plugins" class="no-underline hover:underline">{{ entry_locale.link_plugins }}</a></li>
+                        <li><a href="https://github.com/flextype/themes"  class="no-underline hover:underline">{{ entry_locale.link_themes }}</a></li>
+                    </ul>
+                </div>
+                <div class="w-full lg:w-2/12 p-8">
+                    <h4>{{ entry_locale.link_community }}</h4>
+                    <ul class="list-none m-0 p-0">
+                        <li><a href="{{ base_url() }}/{{ locale }}/discord" class="no-underline hover:underline">Discord</a></li>
+                        <li><a href="https://github.com/flextype" class="no-underline hover:underline">Github</a></li>
+                        <li><a href="https://vk.com/flextype" class="no-underline hover:underline">Vkontakte</a></li>
+                        <li><a href="https://twitter.com/getflextype" class="no-underline hover:underline">Twitter</a></li>
+                        <li><a href="https://www.youtube.com/channel/UCmIAB-UDGCjF92iMNDdJR6Q?view_as=subscriber" class="no-underline hover:underline">Youtube</a></li>
+                    </ul>
+                </div>
+                <div class="w-full lg:w-5/12 p-8 pl-20">
+                    <p><a href="{{ base_url() }}/{{ locale }}">Flextype</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="//digital.flextype.org" class="highlight">Sergey Romanenko</a> and <a href="https://github.com/flextype/flextype/graphs/contributors" class="highlight">Flextype Community</a></p>
+                    <p>Copyright © 2020 - <a href="//digital.flextype.org" class="highlight">Sergey Romanenko</a></p>
                 </div>
             </div>
         </footer>
 
 {#
-        <nav class="container bg-black text-white">
-
-            <div class="container">
-                <a class="navbar-brand" href="{{ base_url() }}/{{ locale }}">flextype</a>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link {% if entry.slug == locale ~ '/downloads' %}active{% endif %}" href="{{ base_url() }}/{{ locale }}/downloads"><span>{{ entry_locale.link_downloads }}</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://docs.flextype.org/{{ locale }}"><span>{{ entry_locale.link_documentation }}</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if entry.slug == locale ~ '/community' %}active{% endif %}" href="{{ base_url() }}/{{ locale }}/community"><span>{{ entry_locale.link_community }}</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if entry.slug == locale ~ '/about' %}active{% endif %}" href="{{ base_url() }}/{{ locale }}/about"><span>{{ entry_locale.link_about }}</span></a>
-                    </li>
-                </ul>
-                <div class="my-2 my-lg-0 social-links">
-                    <a rel="nofollow" href="{{ base_url() }}/{{ locale }}/discord"><i class="fab fa-discord"></i></a>
-                    <a rel="nofollow" href="https://github.com/flextype"><i class="fab fa-github"></i></a>
-                    <a rel="nofollow" href="https://vk.com/flextype"><i class="fab fa-vk"></i></a>
-                    <a rel="nofollow" href="https://twitter.com/getflextype"><i class="fab fa-twitter"></i></a>
-                    <a rel="nofollow" href="https://www.youtube.com/channel/UCmIAB-UDGCjF92iMNDdJR6Q?view_as=subscriber"><i class="fab fa-youtube"></i></a>
-                </div>
-                </div>
-            </div>
-        </nav>
-
         {% block content %}{% endblock %}
 
 
