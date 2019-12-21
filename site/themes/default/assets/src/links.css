@@ -6,3 +6,28 @@ a.underline {
 a.hover\:border-white:hover {
 	@apply border-white;
 }
+
+
+.logo {
+    position: relative;
+}
+
+.logo:before {
+    color: black;
+    content: "[ ";
+}
+
+.logo:after {
+    color: black;
+    content: " ]";
+}
+
+.logo:hover:before {
+    color: white;
+    content: "[ ";
+}
+
+.logo:hover:after {
+    color: white;
+    content: " ]";
+}

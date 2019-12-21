@@ -751,6 +751,30 @@ a.hover\:border-white:hover {
   border-color: #fff;
 }
 
+.logo {
+  position: relative;
+}
+
+.logo:before {
+  color: black;
+  content: "[ ";
+}
+
+.logo:after {
+  color: black;
+  content: " ]";
+}
+
+.logo:hover:before {
+  color: white;
+  content: "[ ";
+}
+
+.logo:hover:after {
+  color: white;
+  content: " ]";
+}
+
 .container {
   width: 100%;
 }
