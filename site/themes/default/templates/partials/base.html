@@ -44,7 +44,7 @@
             {% do assets.add('css', production, 'site', 1) %}
             {% for assets_site in assets.get('css', 'site') %}
                 {% for assets_by_priorities in assets_site %}
-                    <link href="{{ assets_by_priorities.asset }}" rel="stylesheet">
+                    <link href="{{ assets_by_priorities.asset }}?v=1" rel="stylesheet">
                 {% endfor %}
             {% endfor %}
 
