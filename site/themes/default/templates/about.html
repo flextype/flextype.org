@@ -1,13 +1,15 @@
 {% extends "themes/default/templates/partials/base.html" %}
 
 {% block content %}
-
-<div class="page-content container pb-5">
-    <h1 class="h2">
-        {{ entry.title }}
-        <p class="p" style="text-align: center; max-width: 650px; margin:0 auto;">{{ entry.description }}</p>
+<div class="container mx-auto bg-white text-black pb-24">
+    <h1 class="uppercase text-center text-3xl lg:text-6xl m-0 pl-6 pr-6 lg:pl-16 lg:pr-16 pt-24 pb-24 font-noirpro-semibold">
+        {{ entry.title|raw }}
     </h1>
-    {{ entry.content|shortcode|markdown|raw}}
+    <h2 class="text-center m-0 pl-6 pr-6 lg:pl-40 lg:pr-40 pb-24 text-xl font-normal">
+        {{ entry.description|raw }}
+    </h2>
+    <div class="pl-6 pr-6 lg:pl-16 lg:pr-16">
+        {{ entry.content|shortcode|markdown|raw }}
+    </div>
 </div>
-
 {% endblock %}

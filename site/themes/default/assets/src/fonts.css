@@ -1,7 +1,3 @@
-//
-// Variables
-//
-
 @font-face {
     font-family: "noirpro-light";
     src: url("../../fonts/noirpro-light-webfont.woff2") format('woff2'), url("../../fonts/noirpro-light-webfont.woff") format('woff');
@@ -15,7 +11,6 @@
     src: url("../../fonts/noirpro-medium-webfont.woff2") format('woff2'), url("../../fonts/noirpro-medium-webfont.woff") format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
@@ -23,7 +18,6 @@
     src: url("../../fonts/noirpro-semibold-webfont.woff2") format('woff2'), url("../../fonts/noirpro-semibold-webfont.woff") format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
@@ -31,7 +25,6 @@
     src: url("../../fonts/noirpro-heavy-webfont.woff2") format('woff2'), url("../../fonts/noirpro-heavy-webfont.woff") format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
@@ -39,25 +32,24 @@
     src: url("../../fonts/noirpro-bold-webfont.woff2") format('woff2'), url("../../fonts/noirpro-bold-webfont.woff") format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
-//
-// Base
-//
-$base-font-family: 'noirpro-light', sans-serif;
-$base-font-color: #606060;
-$base-font-size: 20px;
-$base-line-height: 32px;
+.font-noirpro-light {
+    font-family: noirpro-light;
+}
 
-//
-// Scaffolding
-//
-$body-bg: #fff;
-$body-color: #424243;
+.font-noirpro-bold {
+    font-family: noirpro-bold;
+}
 
-//
-// Spacing
-//
-$base-spacing-unit: $base-font-size;
-$half-spacing-unit: $base-spacing-unit / 2;
+.font-noirpro-heavy {
+    font-family: noirpro-heavy;
+}
+
+.font-noirpro-semibold {
+    font-family: noirpro-semibold;
+}
+
+.font-noirpro-medium {
+    font-family: noirpro-medium;
+}

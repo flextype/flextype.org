@@ -1,0 +1,57 @@
+{% extends "themes/default/templates/partials/base.html" %}
+
+{% block content %}
+<div class="container mx-auto bg-white text-black pb-24">
+    <h1 class="uppercase text-center text-3xl lg:text-6xl m-0 pl-6 pr-6 lg:pl-16 lg:pr-16 pt-24 pb-24 font-noirpro-semibold">
+        {{ entry.title|raw }}
+    </h1>
+    <h2 class="text-center m-0 pl-6 pr-6 lg:pl-40 lg:pr-40 pb-24 text-xl font-normal">
+        {{ entry.description|raw }}
+    </h2>
+    <div class="pl-6 pr-6 lg:pl-16 lg:pr-16">
+        <div class="flex content-center flex-wrap mt-12">
+            <div class="w-full lg:w-6/12 p-2 text-center">
+                <div class="p-12 h-full bg-black text-white">
+                    <i class="fab fa-discord text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">Discord</h4>
+                    <div class="h-24 mb-10">
+                        Got a question about setting up or using Flextype? We'll do our best to help you out.
+                        Also here you may start discussions about core, plugin and themes development.
+                    </div>
+                    <a class="uppercase no-underline pl-6 pr-6 pt-2 pb-2 text-white bg-black border-white border-3 hover:bg-white hover:text-black" href="https://discord.gg/CCKPKVG">Go to Discord</a>
+                </div>
+            </div>
+            <div class="w-full lg:w-6/12 p-2 text-center">
+                <div class="p-12 h-full bg-black text-white">
+                    <i class="fab fa-github text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">Github</h4>
+                    <div class="h-24 mb-10">
+                        If you want to report a bug or contribute your ideas, you can use the <a class="underline" href="https://github.com/flextype/flextype/issues">Flextype GitHub Issues tracker</a>.
+                    </div>
+                    <a class="uppercase no-underline pl-6 pr-6 pt-2 pb-2 text-white bg-black border-white border-3 hover:bg-white hover:text-black" href="https://github.com/flextype">Go to GitHub</a>
+                </div>
+            </div>
+            <div class="w-full lg:w-6/12 p-2 text-center">
+                <div class="p-12 h-full bg-black text-white">
+                    <i class="fab fa-vk text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">Vkontakte</h4>
+                    <div class="h-24 mb-10">
+                        Russian Flextype Community!
+                    </div>
+                    <a class="uppercase no-underline pl-6 pr-6 pt-2 pb-2 text-white bg-black border-white border-3 hover:bg-white hover:text-black" href="https://vk.com/flextype">Go to Vkontakte</a>
+                </div>
+            </div>
+            <div class="w-full lg:w-6/12 p-2 text-center">
+                <div class="p-12 h-full bg-black text-white align-middle">
+                    <i class="fab fa-twitter text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">Twitter</h4>
+                    <div class="h-24 mb-10">
+                        Follow <a class="underline" href="https://twitter.com/getflextype">Flextype on Twitter</a> to get real-time news regarding the development and all events we are attending.
+                    </div>
+                    <a class="uppercase no-underline pl-6 pr-6 pt-2 pb-2 text-white bg-black border-white border-3 hover:bg-white hover:text-black" href="https://twitter.com/getflextype">Go to Twitter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
