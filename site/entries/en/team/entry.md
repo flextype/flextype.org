@@ -18,8 +18,9 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 ### Behind The Project{.text-4xl .text-center .uppercase .pt-24}
 
 <p class="text-center">
-    <img alt="" src="https://avatars0.githubusercontent.com/u/477114?s=460&v=4" class="rounded-full inline w-40 pb-5" />
+    <img alt="We are on a mission to build high quality web platform to develop fast, flexible, easier to manage websites with Flextype!" src="https://avatars0.githubusercontent.com/u/477114?s=460&v=4" class="rounded-full inline w-48 p-5" />
 </p>
+
 <p class="text-center">
     <strong>Sergey Romanenko</strong><br /> Founder & Lead Developer<br />
     <a href="https://digital.flextype.org">digital.flextype.org</a>

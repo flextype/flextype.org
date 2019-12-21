@@ -10,18 +10,17 @@
             <meta name="robots" content="{% if entry.robots %}{{ entry.robots }}{% else %}{{ registry.settings.robots }}{% endif %}">
             <meta name="generator" content="Powered by Flextype {{ FLEXTYPE_VERSION }}" />
 
-            <!-- Twitter -->
+            <meta name="image" content="https://github.com/flextype/flextype/raw/dev/site/plugins/admin/preview.png">
+
             <meta name="twitter:card" content="summary_large_image">
-            <meta name="twitter:site" content="@getflextype">
-            <meta name="twitter:creator" content="@getflextype">
-            <meta name="twitter:title" content="Content Management System &mdash; Flextype">
-            <meta name="twitter:description" content="Build fast, flexible, easier to manage websites with Flextype.">
+            <meta name="twitter:site" content="{{ base_url() }}/{{ entry.slug }}">
+            <meta name="twitter:title" content="{{ entry.title }}">
+            <meta name="twitter:description" content="{{ entry.description }}">
             <meta name="twitter:image" content="https://github.com/flextype/flextype/raw/dev/site/plugins/admin/preview.png">
 
-            <!-- Facebook -->
-            <meta property="og:url" content="http://flextype.org">
-            <meta property="og:title" content="Content Management System &mdash; Flextype">
-            <meta property="og:description" content="Build fast, flexible, easier to manage websites with Flextype.">
+            <meta property="og:url" content="{{ base_url() }}/{{ entry.slug }}">
+            <meta property="og:title" content="{{ entry.title }}">
+            <meta property="og:description" content="{{ entry.description }}">
             <meta property="og:type" content="website">
             <meta property="og:image" content="https://github.com/flextype/flextype/raw/dev/site/plugins/admin/preview.png">
             <meta property="og:image:type" content="image/png">
