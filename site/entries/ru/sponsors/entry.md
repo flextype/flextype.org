@@ -1,5 +1,6 @@
 ---
 title: Спонсоры
+description: 'We are on a mission to build high quality web platform to develop fast, flexible, easier to manage websites with Flextype!'
 ---
 
 Flextype это лицензированный MIT-проект с открытым исходным кодом и полностью бесплатный для использования..
