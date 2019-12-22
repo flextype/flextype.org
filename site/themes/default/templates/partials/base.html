@@ -36,8 +36,6 @@
 
             <title>{% if entry.title %}{{ entry.title|e('html') }} | {% endif %}{{ registry.settings.title|e('html') }}</title>
 
-            <link href="https://daneden.github.io/animate.css/animate.min.css" rel="stylesheet">
-
             {% set css_dev = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/css/dev.css' %}
             {% set css_production = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/css/build.min.css' %}
             {% do assets.add('css', css_production, 'site', 1) %}
