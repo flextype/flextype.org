@@ -67,3 +67,12 @@ gulp.task("css-production", function() {
     .pipe(concat('build.min.css'))
     .pipe(gulp.dest("assets/dist/css/"));
 });
+
+
+gulp.task('js', function(){
+  const concat = require('gulp-concat');
+  return gulp.src(['node_modules/@fortawesome/fontawesome-free/js/all.min.js',
+                   'node_modules/wowjs/dist/wow.min.js'])
+    .pipe(concat('build.min.js'))
+    .pipe(gulp.dest('assets/dist/js/'));
+});
