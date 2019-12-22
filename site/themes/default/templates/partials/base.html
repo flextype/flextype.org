@@ -10,19 +10,19 @@
             <meta name="robots" content="{% if entry.robots %}{{ entry.robots }}{% else %}{{ registry.settings.robots }}{% endif %}">
             <meta name="generator" content="Powered by Flextype {{ FLEXTYPE_VERSION }}" />
 
-            <meta name="image" content="https://github.com/flextype/flextype/raw/dev/site/plugins/admin/preview.png">
+            <meta name="image" content="{{ base_url() }}/image/{{ locale }}/preview.png?dpr=2&w=1100&q=70">
 
             <meta name="twitter:card" content="summary_large_image">
             <meta name="twitter:site" content="{{ base_url() }}/{{ entry.slug }}">
             <meta name="twitter:title" content="{{ entry.title }}">
             <meta name="twitter:description" content="{{ entry.description }}">
-            <meta name="twitter:image" content="https://github.com/flextype/flextype/raw/dev/site/plugins/admin/preview.png">
+            <meta name="twitter:image" content="{{ base_url() }}/image/{{ locale }}/preview.png?dpr=2&w=1100&q=70">
 
             <meta property="og:url" content="{{ base_url() }}/{{ entry.slug }}">
             <meta property="og:title" content="{{ entry.title }}">
             <meta property="og:description" content="{{ entry.description }}">
             <meta property="og:type" content="website">
-            <meta property="og:image" content="https://github.com/flextype/flextype/raw/dev/site/plugins/admin/preview.png">
+            <meta property="og:image" content="{{ base_url() }}/image/{{ locale }}/preview.png?dpr=2&w=1100&q=70">
             <meta property="og:image:type" content="image/png">
 
             <meta name="yandex-verification" content="920bbfc83bbe3fbe" />
