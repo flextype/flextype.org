@@ -120,7 +120,7 @@
             </div>
         </footer>
 
-        {% set js_production = base_url() ~ '/site/themes/default/assets/dist/js/build.min.js' %}
+        {% set js_production = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/js/build.min.js' %}
         {% do assets.add('js', js_production, 'site', 1) %}
         {% for assets_site in assets.get('js', 'site') %}
             {% for assets_by_priorities in assets_site %}
