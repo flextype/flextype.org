@@ -122,15 +122,14 @@
             </div>
         </footer>
 
-        {% set fonts = base_url() ~ '/site/themes/default/assets/dist/js/all.min.js' %}
-        {% do assets.add('js', fonts, 'site', 1) %}
+        {% set js_production = base_url() ~ '/site/themes/default/assets/dist/js/build.min.js' %}
+        {% do assets.add('js', js_production, 'site', 1) %}
         {% for assets_site in assets.get('js', 'site') %}
             {% for assets_by_priorities in assets_site %}
                 <script src="{{ assets_by_priorities.asset }}"></script>
             {% endfor %}
         {% endfor %}
 
-        <script src="https://wowjs.uk/dist/wow.min.js"></script>
         <script>
             new WOW().init();
         </script>
