@@ -21,7 +21,7 @@ features_description: 'Flextype provides faster, more productive way<br> for you
 features_simple_heading: Simple
 features_simple_p: 'Easy to install, upgrade and use.<br>No installation needed, just copy files to your server!'
 features_fast_heading: Fast
-features_fast_p: 'Flextype is realy fast and lightweight! No database required, flat files only!'
+features_fast_p: 'Flextype is really fast and lightweight! No database required, flat files only!'
 features_flexible_heading: Flexible
 features_flexible_p: 'Flextype provides amazing API for plugins, themes and core developers!'
 features_easy_editing_heading: 'Easy editing'
