@@ -11,7 +11,7 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 ---
 
 <a name="0.9.6"></a>
-## [0.9.6](https://github.com/flextype/flextype/compare/v0.9.5...v0.9.6) (2019-12-01)
+## [0.9.6](https://github.com/flextype/flextype/compare/v0.9.5...v0.9.6){.invert} (2019-12-01)
 
 ### Bug Fixes
 
@@ -186,7 +186,7 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 * **core:** Rename property `value` to `default` for all fieldsets where it is used.
 
 <a name="0.9.5"></a>
-## [0.9.5](https://github.com/flextype/flextype/compare/v0.9.4...v0.9.5) (2019-09-21)
+## [0.9.5](https://github.com/flextype/flextype/compare/v0.9.4...v0.9.5){.invert} (2019-09-21)
 ### Bug Fixes
 
 * **core:** issue with cache in the Entries API - fetchAll method #234 2779777
@@ -216,7 +216,7 @@ TO
 ```
 
 <a name="0.9.4"></a>
-## [0.9.4](https://github.com/flextype/flextype/compare/v0.9.3...v0.9.4) (2019-09-11)
+## [0.9.4](https://github.com/flextype/flextype/compare/v0.9.3...v0.9.4){.invert} (2019-09-11)
 ### Added
 * Flextype Core: Add ability to work with different types of content #212 #186
 * Flextype Core: Add new filter `tr` for I18nTwigExtension #186
@@ -297,7 +297,7 @@ TO
 * Flextype Admin Panel: Remove unused js code #186
 
 <a name="0.9.3"></a>
-## [0.9.3](https://github.com/flextype/flextype/compare/v0.9.2...v0.9.3) (2019-07-07)
+## [0.9.3](https://github.com/flextype/flextype/compare/v0.9.2...v0.9.3){.invert} (2019-07-07)
 ### Fixed
 * Flextype Core: Entries - issue with binding arguments inside method fetchAll() - fixed. #182
 * Flextype Core: Entries - issue with possible boolean false result from Filesystem::getTimestamp() inside method fetchAll() - fixed. #182
@@ -308,7 +308,7 @@ TO
 * Flextype Default Theme: fix thumbnail image for Default Theme #182
 
 <a name="0.9.2"></a>
-## [0.9.2](https://github.com/flextype/flextype/compare/v0.9.1...v0.9.2) (2019-07-06)
+## [0.9.2](https://github.com/flextype/flextype/compare/v0.9.1...v0.9.2){.invert} (2019-07-06)
 ### Added
 * Flextype Default Theme: pagination for blog entries added. #164 #165
 * Flextype Default Theme: New templates for entry Gallery - added. #165
@@ -349,7 +349,7 @@ TO
 * Flextype Admin Panel: Left Navigation - documentation link - removed #165
 
 <a name="0.9.1"></a>
-## [0.9.1](https://github.com/flextype/flextype/compare/v0.9.0...v0.9.1) (2019-06-18)
+## [0.9.1](https://github.com/flextype/flextype/compare/v0.9.0...v0.9.1){.invert} (2019-06-18)
 ### Added
 * Flextype Admin Panel: new setting `route` added to customize admin base route. #154
 * Flextype Core: GlobalVarsTwigExtension - new global constant `PATH_FIELDSETS` added. #154
@@ -386,7 +386,7 @@ TO
 * Flextype Core: GlobalVarsTwigExtension `flextype_version` removed. #154
 
 <a name="0.9.0"></a>
-## [0.9.0](https://github.com/flextype/flextype/compare/v0.8.3...v0.9.0) (2019-06-14)
+## [0.9.0](https://github.com/flextype/flextype/compare/v0.8.3...v0.9.0){.invert} (2019-06-14)
 ### Added
 * Flextype Core: Slim Framework Integration!
 * Flextype Core: Twig Template Engine Integration!
@@ -437,7 +437,7 @@ TO
 * Flextype Core: Flextype Event Component removed.
 
 <a name="0.8.3"></a>
-## [0.8.3](https://github.com/flextype/flextype/compare/v0.8.2...v0.8.3) (2019-01-16)
+## [0.8.3](https://github.com/flextype/flextype/compare/v0.8.2...v0.8.3){.invert} (2019-01-16)
 ### Added
 * Admin Panel: New Gorgeous Light Theme for Admin panel!
 * Admin Panel: Settings Manager - ability to change admin panel theme - added.
@@ -458,7 +458,7 @@ TO
 * Admin Panel: Typo fixes.
 
 <a name="0.8.2"></a>
-## [0.8.2](https://github.com/flextype/flextype/compare/v0.8.1...v0.8.2) (2019-01-09)
+## [0.8.2](https://github.com/flextype/flextype/compare/v0.8.1...v0.8.2){.invert} (2019-01-09)
 ### Added
 * Admin Panel: ClipboardJS added!
 * Admin Panel: Media Manager - Twitter Bootstrap File browser - added.
@@ -478,7 +478,7 @@ TO
 * Admin Panel: Translates fixes.
 
 <a name="0.8.1"></a>
-## [0.8.1](https://github.com/flextype/flextype/compare/v0.8.0...v0.8.1) (2019-01-07)
+## [0.8.1](https://github.com/flextype/flextype/compare/v0.8.0...v0.8.1){.invert} (2019-01-07)
 ### Added
 * Flextype Core: Glide/Intervention Image Implemented for Image manipulation!
 * Flextype Core: Cache - ability to delete glide cache folder added.
@@ -503,7 +503,7 @@ TO
 * Admin Panel: Plugins Manager - issue with broken homepage url in the Info Modal - fixed.
 
 <a name="0.8.0"></a>
-## [0.8.0](https://github.com/flextype/flextype/compare/v0.7.4...v0.8.0) (2018-12-28)
+## [0.8.0](https://github.com/flextype/flextype/compare/v0.7.4...v0.8.0){.invert} (2018-12-28)
 ### Added
 * Flextype Core: To improve engine flexibility was decided to use entity name Entries/Entry instead of entity name Pages/Page.
 * Flextype Core: New folder `/site/entries/` added.
@@ -559,7 +559,7 @@ TO
 * Flextype Simple Theme removed.
 
 <a name="0.7.4"></a>
-## [0.7.4](https://github.com/flextype/flextype/compare/v0.7.3...v0.7.4) (2018-12-14)
+## [0.7.4](https://github.com/flextype/flextype/compare/v0.7.3...v0.7.4){.invert} (2018-12-14)
 * Content: new frontMatterParser() - added
 * Config: set error reporting - false
 * Update theme simple according to the php template syntax guidelines
@@ -567,7 +567,7 @@ TO
 * Flextype Component - Errorhandler updated to 1.0.5
 
 <a name="0.7.3"></a>
-## [0.7.3](https://github.com/flextype/flextype/compare/v0.7.2...v0.7.3) (2018-12-13)
+## [0.7.3](https://github.com/flextype/flextype/compare/v0.7.2...v0.7.3){.invert} (2018-12-13)
 * Content: visibility hidden for pages - added
 * Settings merged into one settings.yaml file
 * Using Imagine library for image manipulation
@@ -576,17 +576,17 @@ TO
 * Symfony YAML - updated to 4.2.1
 
 <a name="0.7.2"></a>
-## [0.7.2](https://github.com/flextype/flextype/compare/v0.7.1...v0.7.2) (2018-11-24)
+## [0.7.2](https://github.com/flextype/flextype/compare/v0.7.1...v0.7.2){.invert} (2018-11-24)
 * Flextype Component - Cookie updated to 1.2.0
 * Flextype Component * Filesystem updated to 1.1.2
 
 <a name="0.7.1"></a>
-## [0.7.1](https://github.com/flextype/flextype/compare/v0.7.0...v0.7.1) (2018-11-17)
+## [0.7.1](https://github.com/flextype/flextype/compare/v0.7.0...v0.7.1){.invert} (2018-11-17)
 * Plugins: New method getLocales() added
 * Content: processPage() - ability to ignore content parsing - added.
 
 <a name="0.7.0"></a>
-## [0.7.0](https://github.com/flextype/flextype/compare/v0.6.1...v0.7.0) (2018-11-16)
+## [0.7.0](https://github.com/flextype/flextype/compare/v0.6.1...v0.7.0){.invert} (2018-11-16)
 * Update Symfony YAML to 4.1.1
 * Update Text Component to 1.1.0
 * Update Session Component to 1.1.1
@@ -602,21 +602,21 @@ TO
 * Themes: from now themes configurations stored in the theme-name/settings.yaml file
 
 <a name="0.6.1"></a>
-## [0.6.1](https://github.com/flextype/flextype/compare/v0.6.0...v0.6.1) (2018-06-17)
+## [0.6.1](https://github.com/flextype/flextype/compare/v0.6.0...v0.6.1){.invert} (2018-06-17)
 * Fixed issue with not found pages status code
 * Fixed Singleton classes and methods visibility changed from protected to private
 * Added require vendors versions in composer.json
 * Fixed Simple Theme styles
 
 <a name="0.6.0"></a>
-## [0.6.0](https://github.com/flextype/flextype/compare/v0.5.0...v0.6.0) (2018-06-09)
+## [0.6.0](https://github.com/flextype/flextype/compare/v0.5.0...v0.6.0){.invert} (2018-06-09)
 * Content: Markdown(Parsedown) parser removed! From now we are using plain HTML + Shortcodes
 * Theme Simple: Cross-site scripting Vulnerabilities fixes
 * Improving main .htaccess
 * Code cleanup and refactoring #5
 
 <a name="0.5.0"></a>
-## [0.5.0](https://github.com/flextype/flextype/compare/v0.4.0...v0.5.0) (2018-06-03)
+## [0.5.0](https://github.com/flextype/flextype/compare/v0.4.0...v0.5.0){.invert} (2018-06-03)
 * Delete folders: site/data and site/accounts
 * Delete folders: site/blocks and site/cache and site/logs
 * Constants: accounts, blocks, data - removed.
@@ -632,7 +632,7 @@ TO
 * Content: Method registerDefaultShortcodes() removed
 
 <a name="0.4.4"></a>
-## [0.4.4](https://github.com/flextype/flextype/compare/v0.4.3...v0.4.4) (2018-05-29)
+## [0.4.4](https://github.com/flextype/flextype/compare/v0.4.3...v0.4.4){.invert} (2018-05-29)
 * Content: added ability to work with CONTENT SECTIONS with help of shortcodes [section] and [section_create]
 * Content: getPage() method will only return data about requested page and will not insert them in global $page array.
 * Content: events: onPageContentAfter and onPageContentRawAfter was removed from getPage(), use event onCurrentPageBeforeDisplayed instead.
@@ -645,7 +645,7 @@ TO
 * Theme Simple: package.json: added gulp-concat and gulp-sourcemaps
 
 <a name="0.4.3"></a>
-## [0.4.3](https://github.com/flextype/flextype/compare/v0.4.2...v0.4.3) (2018-05-28)
+## [0.4.3](https://github.com/flextype/flextype/compare/v0.4.2...v0.4.3){.invert} (2018-05-28)
 * Content: set text/html request headers for displayCurrentPage() method
 * Content: processCurrentPage() method added
 * Content: event names changed: onPageBeforeRender to onCurrentPageBeforeProcessed
@@ -654,20 +654,20 @@ TO
 * Code cleanup and refactoring #5
 
 <a name="0.4.2"></a>
-## [0.4.2](https://github.com/flextype/flextype/compare/v0.4.1...v0.4.2) (2018-05-22)
+## [0.4.2](https://github.com/flextype/flextype/compare/v0.4.1...v0.4.2){.invert} (2018-05-22)
 * Settings: cache.enabled is true from now
 * Content: new methods added: initShortcodes() initMarkdown() markdown()
 * Events: new events added: onMarkdownInitialized and onShortcodesInitialized
 
 <a name="0.4.1"></a>
-## [0.4.1](https://github.com/flextype/flextype/compare/v0.4.0..v0.4.1) (2018-05-20)
+## [0.4.1](https://github.com/flextype/flextype/compare/v0.4.0..v0.4.1){.invert} (2018-05-20)
 * Fixing issues with cache for getPages() method.
 * Fixing issues with processPage() method.
 * Fixing issues with all public methods in Cache class, from now all methods are static.
 * Setting site.pages.flush_cache was removed from site.yaml file.
 
 <a name="0.4.0"></a>
-## [0.4.0](https://github.com/flextype/flextype/compare/v0.3.0...v0.4.0) (2018-05-16)
+## [0.4.0](https://github.com/flextype/flextype/compare/v0.3.0...v0.4.0){.invert} (2018-05-16)
 * Using SCSS for Simple theme
 * Using Flextype Form Component
 * Themes: class bug fixes
@@ -681,7 +681,7 @@ TO
 * Themes: changing from template() to view()
 
 <a name="0.3.0"></a>
-## [0.3.0](https://github.com/flextype/flextype/compare/v0.2.1...v0.3.0) (2018-05-05)
+## [0.3.0](https://github.com/flextype/flextype/compare/v0.2.1...v0.3.0){.invert} (2018-05-05)
 * Using Flextype Components instead of Symphony Components
 * Available Flextype Components for developers: Arr, Assets, Cookie, Date, Debug, ErrorHandler, Event, Filesystem, Html, Http, I18n, Notification, Number, Registry, Session, Text, Token, View.
 * Using `.yaml` files instead of `.yml`
@@ -699,7 +699,7 @@ TO
 * Code cleanup and refactoring #5
 
 <a name="0.2.1"></a>
-## [0.2.1](https://github.com/flextype/flextype/compare/v0.2.0...v0.2.1) (2018-03-26)
+## [0.2.1](https://github.com/flextype/flextype/compare/v0.2.0...v0.2.1){.invert} (2018-03-26)
 * date_format setting added to /site/config.site.yml
 * Pages: Fixed bug with pages sort and slice in getPages() method
 * Pages: Fixed bug with pages list for /pages folder
@@ -708,7 +708,7 @@ TO
 * Code cleanup and refactoring #5
 
 <a name="0.2.0"></a>
-## [0.2.0](https://github.com/flextype/flextype/compare/v0.1.0...v0.2.0) (2018-03-23)
+## [0.2.0](https://github.com/flextype/flextype/compare/v0.1.0...v0.2.0){.invert} (2018-03-23)
 * Thunderer Shortcode Framework - added
 * Cache Flextype::VERSION for cache key - added
 * flextype/boot/shortcodes.php	- removed
@@ -716,5 +716,5 @@ TO
 * Code cleanup and refactoring #5
 
 <a name="0.1.0"></a>
-## [0.1.0](https://github.com/flextype/flextype) (2018-03-21)
+## [0.1.0](https://github.com/flextype/flextype){.invert} (2018-03-21)
 * Initial Release

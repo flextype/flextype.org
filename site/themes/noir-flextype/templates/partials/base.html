@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="{{ locale }}">
     {% set entry_locale = entries.fetch(locale) %}
-    {% set static_version = 2 %}
+    {% set static_version = 3 %}
     <head>
         {% block head %}
             <meta charset="{{ registry.settings.charset|lower }}">
@@ -56,7 +56,7 @@
               <div class="w-full lg:w-2/12
                           text-center lg:text-left
                           float-left text-white p-2 font-noirpro-medium tracking-wide">
-                <a href="{{ base_url() }}/{{ locale }}" class="w-full lg:w-2/12 pl-2 pr-2 text-center text-base no-underline logo">flextype</a>
+                <a href="{{ base_url() }}/{{ locale }}" class="w-full lg:w-2/12 pl-2 pr-2 text-center text-base logo no-underline">flextype</a>
               </div>
               <div class="w-full float-right lg:w-9/12 font-noirpro-semibold">
                 <div class="text-right p-2">
@@ -66,13 +66,10 @@
                                    uppercase
                                    relative
                                    block
-                                   no-underline
                                    text-white
                                    text-center
                                    mr-0
-                                   border-black
-                                   border-b-3
-                                   hover:border-white
+                                   nav-item
                                    lg:mr-4
                                    lg:inline-block">
                                    {{ item.title }}
@@ -90,33 +87,33 @@
                 <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
                     <h4>Flextype</h4>
                     <ul class="list-none m-0 p-0">
-                        <li><a href="{{ base_url() }}/{{ locale }}/about" class="no-underline hover:underline">{{ entry_locale.link_about }}</a></li>
-                        <li><a href="{{ base_url() }}/{{ locale }}/team" class="no-underline hover:underline">{{ entry_locale.link_team }}</a></li>
-                        <li><a href="{{ base_url() }}/{{ locale }}/sponsors" class="no-underline hover:underline">{{ entry_locale.link_sponsors }}</a></li>
-                        <li><a href="{{ base_url() }}/{{ locale }}/changelog" class="no-underline hover:underline">{{ entry_locale.link_changelog }}</a></li>
+                        <li><a href="{{ base_url() }}/{{ locale }}/about">{{ entry_locale.link_about }}</a></li>
+                        <li><a href="{{ base_url() }}/{{ locale }}/team">{{ entry_locale.link_team }}</a></li>
+                        <li><a href="{{ base_url() }}/{{ locale }}/sponsors">{{ entry_locale.link_sponsors }}</a></li>
+                        <li><a href="{{ base_url() }}/{{ locale }}/changelog">{{ entry_locale.link_changelog }}</a></li>
                     </ul>
                 </div>
                 <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
                     <h4>{{ entry_locale.link_downloads }}</h4>
                     <ul class="list-none m-0 p-0">
-                        <li><a href="{{ base_url() }}/{{ locale }}/downloads"  class="no-underline hover:underline">Flextype</a></li>
-                        <li><a href="https://github.com/flextype/plugins" class="no-underline hover:underline">{{ entry_locale.link_plugins }}</a></li>
-                        <li><a href="https://github.com/flextype/themes"  class="no-underline hover:underline">{{ entry_locale.link_themes }}</a></li>
+                        <li><a href="{{ base_url() }}/{{ locale }}/downloads">Flextype</a></li>
+                        <li><a href="https://github.com/flextype/plugins">{{ entry_locale.link_plugins }}</a></li>
+                        <li><a href="https://github.com/flextype/themes">{{ entry_locale.link_themes }}</a></li>
                     </ul>
                 </div>
                 <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
                     <h4>{{ entry_locale.link_community }}</h4>
                     <ul class="list-none m-0 p-0">
-                        <li><a href="{{ base_url() }}/{{ locale }}/discord" class="no-underline hover:underline">Discord</a></li>
-                        <li><a href="https://github.com/flextype" class="no-underline hover:underline">Github</a></li>
-                        <li><a href="https://vk.com/flextype" class="no-underline hover:underline">Vkontakte</a></li>
-                        <li><a href="https://twitter.com/getflextype" class="no-underline hover:underline">Twitter</a></li>
-                        <li><a href="https://www.youtube.com/channel/UCmIAB-UDGCjF92iMNDdJR6Q?view_as=subscriber" class="no-underline hover:underline">Youtube</a></li>
+                        <li><a href="{{ base_url() }}/{{ locale }}/discord">Discord</a></li>
+                        <li><a href="https://github.com/flextype">Github</a></li>
+                        <li><a href="https://vk.com/flextype">Vkontakte</a></li>
+                        <li><a href="https://twitter.com/getflextype">Twitter</a></li>
+                        <li><a href="https://www.youtube.com/channel/UCmIAB-UDGCjF92iMNDdJR6Q?view_as=subscriber">Youtube</a></li>
                     </ul>
                 </div>
                 <div class="w-full lg:w-5/12 mt-8 lg:mt-0">
                     <p><a href="{{ base_url() }}/{{ locale }}">Flextype</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="//digital.flextype.org" class="highlight">Sergey Romanenko</a> and <a href="https://github.com/flextype/flextype/graphs/contributors" class="highlight">Flextype Community</a></p>
-                    <p>Copyright © 2020 - <a href="//digital.flextype.org" class="highlight">Sergey Romanenko</a></p>
+                    <p>Copyright © 2020 - <a href="//digital.flextype.org">Sergey Romanenko</a></p>
                 </div>
             </div>
         </footer>
