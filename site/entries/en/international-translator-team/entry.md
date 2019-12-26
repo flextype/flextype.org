@@ -6,18 +6,18 @@ description: 'We are on a mission to build high quality web platform to develop 
 <p>If you wish to participate in the translation of Flextype, please <b>Join Flextype International Translator Team</b> and start translating!</p>
 
 <p>
-Our crowdin projects: <a href="https://crowdin.com/project/flextype">Flextype CMS</a>, <a href="https://crowdin.com/project/flextype-website">Flextype Website</a>, <a href="https://crowdin.com/project/flextype-documentation">Flextype Documentation</a>
+Our crowdin projects: <a href="https://crowdin.com/project/flextype" class="invert">Flextype CMS</a>, <a href="https://crowdin.com/project/flextype-website" class="invert">Flextype Website</a>, <a href="https://crowdin.com/project/flextype-documentation" class="invert">Flextype Documentation</a>
 </p>
 
 <table class="table">
     <tbody>
         <tr>
-            <td><strong><a href="https://github.com/Awilum">Sergey Romanenko</a></strong> - English, Russia</td>
-            <td><strong><a href="https://github.com/seregajd999">Sergey Vishnyakov</a></strong> - Russia</td>
+            <td><strong><a href="https://github.com/Awilum" class="invert">Sergey Romanenko</a></strong> - English, Russia</td>
+            <td><strong><a href="https://github.com/seregajd999" class="invert">Sergey Vishnyakov</a></strong> - Russia</td>
         </tr>
         <tr>
-            <td><strong><a href="https://github.com/kreativmind">Jeremy Monroe</a></strong> - English, French, German</td>
-            <td><strong><a href="https://github.com/iamheru">Heru Hermawan</a></strong> - Bahasa Indonesia</td>
+            <td><strong><a href="https://github.com/kreativmind" class="invert">Jeremy Monroe</a></strong> - English, French, German</td>
+            <td><strong><a href="https://github.com/iamheru" class="invert">Heru Hermawan</a></strong> - Bahasa Indonesia</td>
         </tr>
         <tr>
             <td><strong>Splash</strong> - Hungarian</td>
