@@ -159,7 +159,7 @@ http_version: '1.1'
 #
 # - extensions   Flextype Twig Extension to load.
 twig:
-  auto_reload: true
+  auto_reload: false
   cache: true
   debug: false
   charset: "UTF-8"
