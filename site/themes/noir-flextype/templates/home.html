@@ -1,4 +1,4 @@
-{% extends "themes/" ~ registry.settings.theme ~ "/templates/partials/base.html" %}
+{% extends "themes/" ~ registry.flextype.theme ~ "/templates/partials/base.html" %}
 
 {% block content %}
 
@@ -14,7 +14,7 @@
                 </div>
                 <div class="flex justify-center wow fadeIn">
                     <div class="mt-20">
-                        <img src="{{ base_url() }}/image/{{ locale }}/preview.jpg?dpr=2&w=1100&q=70" width="1100" class="border-none" alt="{{ entry.description }}">
+                        <img src="{{ base_url() }}/api/delivery/images/{{ locale }}/preview.jpg?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703" width="1100" class="border-none" alt="{{ entry.description }}">
                     </div>
                 </div>
             </div>

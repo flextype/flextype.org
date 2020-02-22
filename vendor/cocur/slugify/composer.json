@@ -2,7 +2,10 @@
     "name": "cocur/slugify",
     "type": "library",
     "description": "Converts a string into a slug.",
-    "keywords": ["slug", "slugify"],
+    "keywords": [
+        "slug",
+        "slugify"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -16,32 +19,41 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=7.0",
         "ext-mbstring": "*"
+    },
+    "conflict": {
+        "symfony/config": "<3.4 || >=4,<4.3",
+        "symfony/dependency-injection": "<3.4 || >=4,<4.3",
+        "symfony/http-kernel": "<3.4 || >=4,<4.3",
+        "twig/twig": "<2.12.1"
     },
     "require-dev": {
         "laravel/framework": "~5.1",
         "latte/latte": "~2.2",
         "league/container": "^2.2.0",
-        "mikey179/vfsStream": "~1.6",
-        "mockery/mockery": "~0.9",
-        "nette/di": "~2.2",
-        "phpunit/phpunit": "~4.8.36|~5.2",
+        "mikey179/vfsstream": "~1.6.8",
+        "mockery/mockery": "^1.3",
+        "nette/di": "~2.4",
+        "phpunit/phpunit": "^5.7.27",
         "pimple/pimple": "~1.1",
         "plumphp/plum": "~0.1",
-        "silex/silex": "~1.3",
-        "symfony/config": "~2.4|~3.0|~4.0",
-        "symfony/dependency-injection": "~2.4|~3.0|~4.0",
-        "symfony/http-kernel": "~2.4|~3.0|~4.0",
-        "twig/twig": "~1.26|~2.0",
+        "symfony/config": "^3.4 || ^4.3 || ^5.0",
+        "symfony/dependency-injection": "^3.4 || ^4.3 || ^5.0",
+        "symfony/http-kernel": "^3.4 || ^4.3 || ^5.0",
+        "twig/twig": "^2.12.1 || ~3.0",
         "zendframework/zend-modulemanager": "~2.2",
         "zendframework/zend-servicemanager": "~2.2",
         "zendframework/zend-view": "~2.2"
     },
     "autoload": {
-        "psr-4": {"Cocur\\Slugify\\": "src"}
+        "psr-4": {
+            "Cocur\\Slugify\\": "src"
+        }
     },
     "autoload-dev": {
-        "psr-4": {"Cocur\\Slugify\\Tests\\": "tests"}
+        "psr-4": {
+            "Cocur\\Slugify\\Tests\\": "tests"
+        }
     }
 }
