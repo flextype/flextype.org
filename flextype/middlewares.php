@@ -9,8 +9,7 @@ declare(strict_types=1);
 
 namespace Flextype;
 
-use Middlewares\ResponseTime;
-use Middlewares\TrailingSlash;
+use Tuupola\Middleware\CorsMiddleware;
 
 /**
  * Add middleware CSRF (cross-site request forgery) protection for all routes
@@ -18,11 +17,6 @@ use Middlewares\TrailingSlash;
 $app->add($flextype->get('csrf'));
 
 /**
- * Add middleware TrailingSlash for all routes
+ * Add middleware CorsMiddleware for Cross-origin resource sharing.
  */
-$app->add((new TrailingSlash(false))->redirect(true));
-
-/**
- * Add middleware ResponseTime for all routes
- */
-$app->add((new ResponseTime()));
+$app->add(new CorsMiddleware);

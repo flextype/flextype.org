@@ -4,11 +4,11 @@
     {% set static_version = 3 %}
     <head>
         {% block head %}
-            <meta charset="{{ registry.settings.charset|lower }}">
+            <meta charset="{{ registry.flextype.charset|lower }}">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <meta name="description" content="{% if entry.description %}{{ entry.description }}{% else %}{{ registry.settings.description }}{% endif %}">
-            <meta name="keywords" content="{% if entry.keywords %}{{ entry.keywords }}{% else %}{{ registry.settings.keywords }}{% endif %}">
-            <meta name="robots" content="{% if entry.robots %}{{ entry.robots }}{% else %}{{ registry.settings.robots }}{% endif %}">
+            <meta name="description" content="{% if entry.description %}{{ entry.description }}{% else %}{{ registry.plugins.site.description }}{% endif %}">
+            <meta name="keywords" content="{% if entry.keywords %}{{ entry.keywords }}{% else %}{{ registry.plugins.site.keywords }}{% endif %}">
+            <meta name="robots" content="{% if entry.robots %}{{ entry.robots }}{% else %}{{ registry.plugins.site.robots }}{% endif %}">
             <meta name="generator" content="Powered by Flextype {{ FLEXTYPE_VERSION }}" />
 
             <meta name="image" content="{{ base_url() }}/image/{{ locale }}/preview.png?dpr=2&w=1100&q=70">
@@ -35,10 +35,10 @@
 
             {% do emitter.emit('onThemeMeta') %}
 
-            <title>{% if entry.title %}{{ entry.title|e('html') }} | {% endif %}{{ registry.settings.title|e('html') }}</title>
+            <title>{% if entry.title %}{{ entry.title|e('html') }} | {% endif %}{{ registry.plugins.site.title|e('html') }}</title>
 
-            {% set css_dev = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/css/dev.css' %}
-            {% set css_production = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/css/build.min.css' %}
+            {% set css_dev = base_url() ~ '/site/themes/' ~ registry.flextype.theme ~ '/assets/dist/css/dev.css' %}
+            {% set css_production = base_url() ~ '/site/themes/' ~ registry.flextype.theme ~ '/assets/dist/css/build.min.css' %}
             {% do assets.add('css', css_production, 'site', 1) %}
             {% for assets_site in assets.get('css', 'site') %}
                 {% for assets_by_priorities in assets_site %}
@@ -118,7 +118,7 @@
             </div>
         </footer>
 
-        {% set js_production = base_url() ~ '/site/themes/' ~ registry.settings.theme ~ '/assets/dist/js/build.min.js' %}
+        {% set js_production = base_url() ~ '/site/themes/' ~ registry.flextype.theme ~ '/assets/dist/js/build.min.js' %}
         {% do assets.add('js', js_production, 'site', 1) %}
         {% for assets_site in assets.get('js', 'site') %}
             {% for assets_by_priorities in assets_site %}

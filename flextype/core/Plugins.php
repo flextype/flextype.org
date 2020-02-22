@@ -60,6 +60,8 @@ class Plugins
     /**
      * Init Plugins
      *
+     * @return void
+     *
      * @access private
      */
     public function init($flextype, $app) : void
@@ -68,7 +70,7 @@ class Plugins
         $this->flextype['registry']->set('plugins', []);
 
         // Set locale
-        $locale = $this->flextype['registry']->get('settings.locale');
+        $locale = $this->flextype['registry']->get('flextype.locale');
 
         // Get plugins list
         $plugins_list = $this->getPluginsList();
@@ -117,18 +119,19 @@ class Plugins
                 $site_plugin_manifest_file = PATH['config']['site'] . '/plugins/' . $plugin['dirname'] . '/plugin.yaml';
 
                 // Create site plugin settings directory
-                ! Filesystem::has($site_plugin_settings_dir)  and Filesystem::createDir($site_plugin_settings_dir);
-
-                // Create site plugin settings and manifest files
-                ! Filesystem::has($site_plugin_settings_file) and Filesystem::write($site_plugin_settings_file, '');
-                ! Filesystem::has($site_plugin_manifest_file) and Filesystem::write($site_plugin_manifest_file, '');
+                ! Filesystem::has($site_plugin_settings_dir) and Filesystem::createDir($site_plugin_settings_dir);
 
                 // Check if default plugin settings file exists
-                if (! Filesystem::has($default_plugin_settings_file)) throw new RuntimeException('Load ' . $plugin['dirname'] . ' plugin settings - failed!');
+                if (! Filesystem::has($default_plugin_settings_file)) {
+                    throw new RuntimeException('Load ' . $plugin['dirname'] . ' plugin settings - failed!');
+                }
 
                 // Get default plugin settings content
                 $default_plugin_settings_file_content = Filesystem::read($default_plugin_settings_file);
                 $default_plugin_settings              = $this->flextype['parser']->decode($default_plugin_settings_file_content, 'yaml');
+
+                // Create site plugin settings file
+                ! Filesystem::has($site_plugin_settings_file) and Filesystem::write($site_plugin_settings_file, $default_plugin_settings_file_content);
 
                 // Get site plugin settings content
                 $site_plugin_settings_file_content = Filesystem::read($site_plugin_settings_file);
@@ -139,11 +142,16 @@ class Plugins
                 }
 
                 // Check if default plugin manifest file exists
-                if (! Filesystem::has($default_plugin_manifest_file)) RuntimeException('Load ' . $plugin['dirname'] . ' plugin manifest - failed!');
+                if (! Filesystem::has($default_plugin_manifest_file)) {
+                    RuntimeException('Load ' . $plugin['dirname'] . ' plugin manifest - failed!');
+                }
 
                 // Get default plugin manifest content
                 $default_plugin_manifest_file_content = Filesystem::read($default_plugin_manifest_file);
                 $default_plugin_manifest              = $this->flextype['parser']->decode($default_plugin_manifest_file_content, 'yaml');
+
+                // Create site plugin manifest file
+                ! Filesystem::has($site_plugin_manifest_file) and Filesystem::write($site_plugin_manifest_file, $default_plugin_manifest_file_content);
 
                 // Get site plugin manifest content
                 $site_plugin_manifest_file_content = Filesystem::read($site_plugin_manifest_file);
@@ -250,6 +258,8 @@ class Plugins
     /**
      * Get plugins list
      *
+     * @return array
+     *
      * @access public
      */
     public function getPluginsList() : array
@@ -270,6 +280,8 @@ class Plugins
 
     /**
      * Include enabled plugins
+     *
+     * @return void
      *
      * @access protected
      */

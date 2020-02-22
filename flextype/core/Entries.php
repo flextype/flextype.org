@@ -105,7 +105,7 @@ class Entries
     }
 
     /**
-     * Fetch entry(enries)
+     * Fetch entry(entries)
      *
      * @param string     $id   Entry ID
      * @param array|null $args Query arguments.
@@ -162,7 +162,7 @@ class Entries
                 // Return empty array
                 return [];
 
-            // else Try to get requested entry from the filesystem
+                // else Try to get requested entry from the filesystem
             }
 
             $entry_decoded = $this->flextype['parser']->decode(Filesystem::read($entry_file), 'frontmatter');
@@ -177,6 +177,12 @@ class Entries
 
             // Entry Slug
             $entry_decoded['slug'] = $entry_decoded['slug'] ?? ltrim(rtrim($id, '/'), '/');
+
+            // Entry routable
+            $entry_decoded['routable'] = $entry_decoded['routable'] ?? true;
+
+            // Entry visibility
+            $entry_decoded['visibility'] = $entry_decoded['visibility'] ?? 'visible';
 
             // Save decoded entry content into the cache
             $this->flextype['cache']->save($entry_cache_id, $entry_decoded);
@@ -443,9 +449,8 @@ class Entries
             $body  = Filesystem::read($entry_file);
             $entry = $this->flextype['parser']->decode($body, 'frontmatter');
 
-            return Filesystem::write($entry_file, $this->flextype['parser']->encode(array_replace_recursive($entry, $data), 'frontmatter'));
+            return Filesystem::write($entry_file, $this->flextype['parser']->encode(array_merge($entry, $data), 'frontmatter'));
         }
-
         return false;
     }
 
@@ -469,10 +474,22 @@ class Entries
                 // Check if new entry file exists
                 if (! Filesystem::has($entry_file = $entry_dir . '/entry.md')) {
                     $data['uuid']         = Uuid::uuid4()->toString();
-                    $data['published_at'] = date($this->flextype->registry->get('settings.date_format'), time());
-                    $data['created_at']   = date($this->flextype->registry->get('settings.date_format'), time());
+                    $data['published_at'] = date($this->flextype->registry->get('flextype.date_format'), time());
+                    $data['created_at']   = date($this->flextype->registry->get('flextype.date_format'), time());
                     $data['published_by'] = (Session::exists('uuid') ? Session::get('uuid') : '');
                     $data['created_by']   = (Session::exists('uuid') ? Session::get('uuid') : '');
+
+                    if (isset($data['routable']) && is_bool($data['routable'])) {
+                        $data['routable'] = $data['routable'];
+                    } else {
+                        $data['routable'] = true;
+                    }
+
+                    if (isset($data['visibility']) && in_array($data['visibility'], ['visible', 'draft', 'hidden'])) {
+                        $data['visibility'] = $data['visibility'];
+                    } else {
+                        $data['visibility'] = 'visible';
+                    }
 
                     return Filesystem::write($entry_file, $this->flextype['parser']->encode($data, 'frontmatter'));
                 }

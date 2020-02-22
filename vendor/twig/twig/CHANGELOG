@@ -1,3 +1,17 @@
+* 2.12.5 (2020-02-11)
+
+ * Add a check to ensure that iconv() is defined
+
+* 2.12.4 (2020-02-11)
+
+ * Avoid exceptions when an intl resource is not found
+ * Fix implementation of case-insensitivity for method names
+
+* 2.12.3 (2019-12-28)
+
+ * fixed Symfony 5.0 support for the HTML extra extension
+ * fixed number formatter in Intl extra extension when using a formatter prototype
+
 * 2.12.2 (2019-11-11)
 
  * added supported for exponential numbers
@@ -286,8 +300,17 @@
  * improved the performance of the filesystem loader
  * removed features that were deprecated in 1.x
 
-* 1.42.4 (2019-XX-XX)
+* 1.42.6 (2020-XX-XX)
 
+ * n/a
+
+* 1.42.5 (2020-02-11)
+
+ * Fix implementation of case-insensitivity for method names
+
+* 1.42.4 (2019-11-11)
+
+ * optimized "block('foo') ?? 'bar"
  * added supported for exponential numbers
 
 * 1.42.3 (2019-08-24)
