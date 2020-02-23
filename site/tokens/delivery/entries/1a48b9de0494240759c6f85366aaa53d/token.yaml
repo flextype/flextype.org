@@ -1,0 +1,10 @@
+title: Default
+icon: 'fas fa-database'
+limit_calls: 0
+calls: 0
+state: enabled
+uuid: 99e4dc90-8dce-4818-8515-3670628ee615
+created_by: 99e4dc90-8dce-4818-8515-3670628ee615
+created_at: '23-02-2020 07:23'
+updated_by: 99e4dc90-8dce-4818-8515-3670628ee615
+updated_at: '23-02-2020 07:23'
