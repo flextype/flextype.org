@@ -27,9 +27,15 @@ features_flexible_p: 'Flextype provides amazing API for plugins, themes and core
 features_easy_editing_heading: 'Easy editing'
 features_easy_editing_p: 'Use your favorite editor to write your content or our gorgeous Admin Panel.'
 features_dynamic_content_types_heading: 'Dynamic Content Types'
-features_dynamic_content_types_p: 'The flat-file nature of Flextype lets you define custom fields for any of your entries.'
+features_dynamic_content_types_p: 'The flat-file nature of Flextype lets you define unlimited custom fields for any of your entries.'
 features_open_source_heading: 'Open Source'
-features_open_source_p: 'Flextype is an open-source project licensed under the MIT LICENSE to set the world free!'
+features_open_source_p: 'Flextype is an open-source project founded by Sergey Romanenko and maintained by  Flextype Community.<br>Flextype licensed under the MIT LICENSE<br>to set the world free!'
+features_built_in_rest_api_heading: "Built-in REST API"
+features_built_in_rest_api_p: "Use Flextype as a Headless CMS with the full power of the Admin Panel.<br> Build a Websites and Apps with a technology you are familiar with."
+features_version_control_heading: "Version control"
+features_version_control_p: "As Flextype is a file-based CMS, you can version control all content with Git or any other Version Control System."
+features_Internationalization_heading: "Internationalization"
+features_Internationalization_p: "Multi-language support is baked right into the core. You may integrate your Flextype powered website with any cloud-based solution for localization management, like Crowdin or Transifex."
 features_technologies_heading: Technologies
 features_technologies_p: 'Flextype built on top of modern technologies.'
 features_install_anywhere_heading: 'Install Anywhere'
