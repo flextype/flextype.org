@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit223ec225e1b0e6c2b0639eaa7449149e
+class ComposerStaticInitb5e009fb326c2501312969c81f84b812
 {
     public static $classMap = array (
         'Flextype\\IconController' => __DIR__ . '/../..' . '/app/Controllers/IconController.php',
@@ -14,7 +14,7 @@ class ComposerStaticInit223ec225e1b0e6c2b0639eaa7449149e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit223ec225e1b0e6c2b0639eaa7449149e::$classMap;
+            $loader->classMap = ComposerStaticInitb5e009fb326c2501312969c81f84b812::$classMap;
 
         }, null, ClassLoader::class);
     }
