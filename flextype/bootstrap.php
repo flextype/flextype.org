@@ -29,7 +29,7 @@ use function mb_regex_encoding;
  *
  * @var string
  */
-define('FLEXTYPE_VERSION', '0.9.7 DEV');
+define('FLEXTYPE_VERSION', '0.9.7');
 
 /**
  * Start the session
@@ -132,7 +132,7 @@ include_once 'dependencies.php';
 include_once 'middlewares.php';
 
 /**
- * Include API's
+ * Include API ENDPOINTS
  */
 include_once 'api/delivery/images.php';
 include_once 'api/delivery/entries.php';
@@ -162,7 +162,7 @@ if ($flextype['registry']->get('flextype.errors.display')) {
  * Set default timezone
  */
 date_default_timezone_set($flextype['registry']->get('flextype.timezone'));
-
+ 
 /**
  * Init shortocodes
  *

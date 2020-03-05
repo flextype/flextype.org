@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit10457c0e66d8037de05763cb8fff9077
+class ComposerStaticInitc1c6d40d9fc433594fca15b012290917
 {
     public static $files = array (
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
@@ -23,8 +23,6 @@ class ComposerStaticInit10457c0e66d8037de05763cb8fff9077
         'T' => 
         array (
             'Twig\\' => 5,
-            'Tuupola\\Middleware\\' => 19,
-            'Tuupola\\Http\\Factory\\' => 21,
             'Thunder\\Shortcode\\' => 18,
         ),
         'S' => 
@@ -48,10 +46,6 @@ class ComposerStaticInit10457c0e66d8037de05763cb8fff9077
             'Psr\\Http\\Server\\' => 16,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
-        ),
-        'N' => 
-        array (
-            'Neomerx\\Cors\\' => 13,
         ),
         'M' => 
         array (
@@ -109,15 +103,6 @@ class ComposerStaticInit10457c0e66d8037de05763cb8fff9077
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
-        'Tuupola\\Middleware\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/tuupola/callable-handler/src',
-            1 => __DIR__ . '/..' . '/tuupola/cors-middleware/src',
-        ),
-        'Tuupola\\Http\\Factory\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/tuupola/http-factory/src',
-        ),
         'Thunder\\Shortcode\\' => 
         array (
             0 => __DIR__ . '/..' . '/thunderer/shortcode/src',
@@ -169,16 +154,11 @@ class ComposerStaticInit10457c0e66d8037de05763cb8fff9077
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
-        ),
-        'Neomerx\\Cors\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/neomerx/cors-psr7/src',
         ),
         'Monolog\\' => 
         array (
@@ -796,23 +776,6 @@ class ComposerStaticInit10457c0e66d8037de05763cb8fff9077
         'Monolog\\SignalHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/SignalHandler.php',
         'Monolog\\Test\\TestCase' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Test/TestCase.php',
         'Monolog\\Utils' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Utils.php',
-        'Neomerx\\Cors\\AnalysisResult' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/AnalysisResult.php',
-        'Neomerx\\Cors\\Analyzer' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Analyzer.php',
-        'Neomerx\\Cors\\Contracts\\AnalysisResultInterface' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/AnalysisResultInterface.php',
-        'Neomerx\\Cors\\Contracts\\AnalysisStrategyInterface' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/AnalysisStrategyInterface.php',
-        'Neomerx\\Cors\\Contracts\\AnalyzerInterface' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/AnalyzerInterface.php',
-        'Neomerx\\Cors\\Contracts\\Constants\\CorsRequestHeaders' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/Constants/CorsRequestHeaders.php',
-        'Neomerx\\Cors\\Contracts\\Constants\\CorsResponseHeaders' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/Constants/CorsResponseHeaders.php',
-        'Neomerx\\Cors\\Contracts\\Constants\\SimpleRequestHeaders' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/Constants/SimpleRequestHeaders.php',
-        'Neomerx\\Cors\\Contracts\\Constants\\SimpleRequestMethods' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/Constants/SimpleRequestMethods.php',
-        'Neomerx\\Cors\\Contracts\\Constants\\SimpleResponseHeaders' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/Constants/SimpleResponseHeaders.php',
-        'Neomerx\\Cors\\Contracts\\Factory\\FactoryInterface' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/Factory/FactoryInterface.php',
-        'Neomerx\\Cors\\Contracts\\Http\\ParsedUrlInterface' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/Http/ParsedUrlInterface.php',
-        'Neomerx\\Cors\\Contracts\\Strategies\\SettingsStrategyInterface' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Contracts/Strategies/SettingsStrategyInterface.php',
-        'Neomerx\\Cors\\Factory\\Factory' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Factory/Factory.php',
-        'Neomerx\\Cors\\Http\\ParsedUrl' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Http/ParsedUrl.php',
-        'Neomerx\\Cors\\Log\\LoggerAwareTrait' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Log/LoggerAwareTrait.php',
-        'Neomerx\\Cors\\Strategies\\Settings' => __DIR__ . '/..' . '/neomerx/cors-psr7/src/Strategies/Settings.php',
         'Parsedown' => __DIR__ . '/..' . '/erusev/parsedown/Parsedown.php',
         'ParsedownExtra' => __DIR__ . '/..' . '/erusev/parsedown-extra/ParsedownExtra.php',
         'ParsedownExtraTest' => __DIR__ . '/..' . '/erusev/parsedown-extra/test/ParsedownExtraTest.php',
@@ -838,17 +801,11 @@ class ComposerStaticInit10457c0e66d8037de05763cb8fff9077
         'Psr\\Container\\ContainerInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerInterface.php',
         'Psr\\Container\\NotFoundExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/NotFoundExceptionInterface.php',
         'Psr\\Http\\Message\\MessageInterface' => __DIR__ . '/..' . '/psr/http-message/src/MessageInterface.php',
-        'Psr\\Http\\Message\\RequestFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/RequestFactoryInterface.php',
         'Psr\\Http\\Message\\RequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/RequestInterface.php',
-        'Psr\\Http\\Message\\ResponseFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/ResponseFactoryInterface.php',
         'Psr\\Http\\Message\\ResponseInterface' => __DIR__ . '/..' . '/psr/http-message/src/ResponseInterface.php',
-        'Psr\\Http\\Message\\ServerRequestFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/ServerRequestFactoryInterface.php',
         'Psr\\Http\\Message\\ServerRequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/ServerRequestInterface.php',
-        'Psr\\Http\\Message\\StreamFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/StreamFactoryInterface.php',
         'Psr\\Http\\Message\\StreamInterface' => __DIR__ . '/..' . '/psr/http-message/src/StreamInterface.php',
-        'Psr\\Http\\Message\\UploadedFileFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/UploadedFileFactoryInterface.php',
         'Psr\\Http\\Message\\UploadedFileInterface' => __DIR__ . '/..' . '/psr/http-message/src/UploadedFileInterface.php',
-        'Psr\\Http\\Message\\UriFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/UriFactoryInterface.php',
         'Psr\\Http\\Message\\UriInterface' => __DIR__ . '/..' . '/psr/http-message/src/UriInterface.php',
         'Psr\\Http\\Server\\MiddlewareInterface' => __DIR__ . '/..' . '/psr/http-server-middleware/src/MiddlewareInterface.php',
         'Psr\\Http\\Server\\RequestHandlerInterface' => __DIR__ . '/..' . '/psr/http-server-handler/src/RequestHandlerInterface.php',
@@ -1816,15 +1773,6 @@ class ComposerStaticInit10457c0e66d8037de05763cb8fff9077
         'Thunder\\Shortcode\\Syntax\\SyntaxBuilder' => __DIR__ . '/..' . '/thunderer/shortcode/src/Syntax/SyntaxBuilder.php',
         'Thunder\\Shortcode\\Syntax\\SyntaxInterface' => __DIR__ . '/..' . '/thunderer/shortcode/src/Syntax/SyntaxInterface.php',
         'Thunder\\Shortcode\\Utility\\RegexBuilderUtility' => __DIR__ . '/..' . '/thunderer/shortcode/src/Utility/RegexBuilderUtility.php',
-        'Tuupola\\Http\\Factory\\RequestFactory' => __DIR__ . '/..' . '/tuupola/http-factory/src/RequestFactory.php',
-        'Tuupola\\Http\\Factory\\ResponseFactory' => __DIR__ . '/..' . '/tuupola/http-factory/src/ResponseFactory.php',
-        'Tuupola\\Http\\Factory\\ServerRequestFactory' => __DIR__ . '/..' . '/tuupola/http-factory/src/ServerRequestFactory.php',
-        'Tuupola\\Http\\Factory\\StreamFactory' => __DIR__ . '/..' . '/tuupola/http-factory/src/StreamFactory.php',
-        'Tuupola\\Http\\Factory\\UploadedFileFactory' => __DIR__ . '/..' . '/tuupola/http-factory/src/UploadedFileFactory.php',
-        'Tuupola\\Http\\Factory\\UriFactory' => __DIR__ . '/..' . '/tuupola/http-factory/src/UriFactory.php',
-        'Tuupola\\Middleware\\CallableHandler' => __DIR__ . '/..' . '/tuupola/callable-handler/src/CallableHandler.php',
-        'Tuupola\\Middleware\\CorsMiddleware' => __DIR__ . '/..' . '/tuupola/cors-middleware/src/CorsMiddleware.php',
-        'Tuupola\\Middleware\\DoublePassTrait' => __DIR__ . '/..' . '/tuupola/callable-handler/src/DoublePassTrait.php',
         'Twig\\Cache\\CacheInterface' => __DIR__ . '/..' . '/twig/twig/src/Cache/CacheInterface.php',
         'Twig\\Cache\\FilesystemCache' => __DIR__ . '/..' . '/twig/twig/src/Cache/FilesystemCache.php',
         'Twig\\Cache\\NullCache' => __DIR__ . '/..' . '/twig/twig/src/Cache/NullCache.php',
@@ -2206,10 +2154,10 @@ class ComposerStaticInit10457c0e66d8037de05763cb8fff9077
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit10457c0e66d8037de05763cb8fff9077::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit10457c0e66d8037de05763cb8fff9077::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit10457c0e66d8037de05763cb8fff9077::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit10457c0e66d8037de05763cb8fff9077::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc1c6d40d9fc433594fca15b012290917::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc1c6d40d9fc433594fca15b012290917::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitc1c6d40d9fc433594fca15b012290917::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitc1c6d40d9fc433594fca15b012290917::$classMap;
 
         }, null, ClassLoader::class);
     }
