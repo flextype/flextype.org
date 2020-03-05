@@ -74,6 +74,7 @@ link_downloads: Downloads
 link_community: Community
 link_documentation: Documentation
 link_changelog: Changelog
+link_press_kit: Press kit
 link_team: Team
 navigation:
   0:
