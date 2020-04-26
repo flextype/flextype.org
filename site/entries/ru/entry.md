@@ -14,18 +14,18 @@ uuid: d080816b-0973-4fac-8964-4f6ecf8f3561
 published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 date: 'August 04 2019 10:16:23'
-intro_section_h1: 'Создавайте быстрые и легкие в управлении веб-сайты c Flextype.'
+intro_section_h1: 'Self-hosted Data-First Headless CMS & API.'
 intro_section_button: 'Скачать Flextype'
 features_heading: Преимущества
-features_description: 'Flextype предлагает быстрый и продуктивный способ<br> создания и управлениями веб-сайтами.'
+features_description: 'Flextype provides faster, more productive way<br> for you to build and manage any kind of projects.'
 features_simple_heading: Простая
 features_simple_p: 'Просто установить, обновить и использовать.<br>Не требуется специальной установки, просто скопируйте файлы на ваш сервер!'
 features_fast_heading: Быстрая
 features_fast_p: 'Flextype is really fast and lightweight! Не требуется базы данных, только файлы!'
 features_flexible_heading: Гибкая
-features_flexible_p: 'Flextype предоставляет удивительный API для разработчиков плагинов, тем и ядра!'
+features_flexible_p: 'Flextype provides amazing APIs for developers!'
 features_easy_editing_heading: 'Легкое редактирование'
-features_easy_editing_p: 'Use your favorite editor to write your content or our gorgeous Admin Panel.'
+features_easy_editing_p: 'Use your favorite editor to write your content or our gorgeous Admin Panel Plugin.'
 features_dynamic_content_types_heading: 'Динамические  типы содержимого'
 features_dynamic_content_types_p: 'The flat-file nature of Flextype lets you define unlimited custom fields for any of your entries.'
 features_open_source_heading: 'Открытый исходный код'
