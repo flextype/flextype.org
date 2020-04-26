@@ -95,11 +95,14 @@ class SiteController extends Controller
             return $response->withRedirect('./en');
         }
 
+        $content_api_token['uuid']  = bin2hex(random_bytes(16));
+        $content_api_token['title'] = 'Title';
+
         if ($is_entry_not_found) {
             return $this->view->render($response->withStatus(404), $path, ['locale' => explode('/',$uri)[1], 'entry' => $this->entry, 'query' => $query, 'uri' => $uri]);
         }
 
-        return $this->view->render($response, $path, ['locale' => explode('/',$uri)[1], 'entry' => $this->entry, 'query' => $query, 'uri' => $uri]);
+        return $this->view->render($response, $path, ['locale' => explode('/',$uri)[1], 'entry' => $this->entry, 'query' => $query, 'uri' => $uri, 'content_api_token' => $content_api_token]);
     }
 
     /**
