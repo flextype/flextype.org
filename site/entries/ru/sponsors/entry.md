@@ -10,3 +10,6 @@ Flextype это лицензированный MIT-проект с открыт�
 - [Become a backer or sponsor on Patreon](https://www.patreon.com/awilum ""){.invert}.
 - [Единоразовое пожертвование через PayPal, QIWI, Сбербанк, Яндекс](//flextype.org/en/one-time-donation ""){.invert}
 - [Visit our Sponsors & Backers page](//flextype.org/en/sponsors ""){.invert}
+
+### Backers
+- Arseni Khramenkin
