@@ -30,7 +30,7 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 
 If you wish to participate in the translation of Flextype, please <b>Join Flextype International Translator Team</b> and start translating!
 
-Our crowdin projects: <a href="https://crowdin.com/project/flextype" class="invert">Flextype CMS</a>, <a href="https://crowdin.com/project/flextype-website" class="invert">Flextype Website</a>, <a href="https://crowdin.com/project/flextype-documentation" class="invert">Flextype Documentation</a>
+Our crowdin projects:<br> <a href="https://crowdin.com/project/flextype-plugin-admin" class="invert">Flextype Admin Panel Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-form-admin" class="invert">Flextype Form Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-themes-admin" class="invert">Flextype Themes Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-website" class="invert">Flextype Website</a>, <a href="https://crowdin.com/project/flextype-documentation" class="invert">Flextype Documentation</a>
 
 
 <table class="table">

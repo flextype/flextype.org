@@ -95,11 +95,17 @@ class SiteController extends Controller
             return $response->withRedirect('./en');
         }
 
+        $api_tokens['delivery']['entries']['uuid']  = bin2hex(random_bytes(16));
+        $api_tokens['delivery']['registry']['uuid'] = bin2hex(random_bytes(16));
+        $api_tokens['management']['entries']['uuid'] = bin2hex(random_bytes(16));
+        $api_tokens['images']['uuid'] = bin2hex(random_bytes(16));
+        $api_tokens['access']['uuid'] = bin2hex(random_bytes(16));
+
         if ($is_entry_not_found) {
             return $this->view->render($response->withStatus(404), $path, ['locale' => explode('/',$uri)[1], 'entry' => $this->entry, 'query' => $query, 'uri' => $uri]);
         }
 
-        return $this->view->render($response, $path, ['locale' => explode('/',$uri)[1], 'entry' => $this->entry, 'query' => $query, 'uri' => $uri]);
+        return $this->view->render($response, $path, ['locale' => explode('/',$uri)[1], 'entry' => $this->entry, 'query' => $query, 'uri' => $uri, 'api_tokens' => $api_tokens]);
     }
 
     /**

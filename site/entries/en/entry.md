@@ -14,18 +14,18 @@ uuid: d080816b-0973-4fac-8964-4f6ecf8f3561
 published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 date: 'August 04 2019 10:16:23'
-intro_section_h1: 'Build fast, flexible, easier to manage websites with Flextype.'
+intro_section_h1: 'Self-hosted Data-First Headless CMS & API.'
 intro_section_button: 'Get Flextype'
 features_heading: Features
-features_description: 'Flextype provides faster, more productive way<br> for you to build and manage websites.'
+features_description: 'Flextype provides faster, more productive way<br> for you to build and manage any kind of projects.'
 features_simple_heading: Simple
 features_simple_p: 'Easy to install, upgrade and use.<br>No installation needed, just copy files to your server!'
 features_fast_heading: Fast
 features_fast_p: 'Flextype is really fast and lightweight! No database required, flat files only!'
 features_flexible_heading: Flexible
-features_flexible_p: 'Flextype provides amazing API for plugins, themes and core developers!'
+features_flexible_p: 'Flextype provides amazing APIs for developers!'
 features_easy_editing_heading: 'Easy editing'
-features_easy_editing_p: 'Use your favorite editor to write your content or our gorgeous Admin Panel.'
+features_easy_editing_p: 'Use your favorite editor to write your content or our gorgeous Admin Panel Plugin.'
 features_dynamic_content_types_heading: 'Dynamic Content Types'
 features_dynamic_content_types_p: 'The flat-file nature of Flextype lets you define unlimited custom fields for any of your entries.'
 features_open_source_heading: 'Open Source'
