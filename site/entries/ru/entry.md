@@ -1,9 +1,9 @@
 ---
-title: 'Создавайте быстрые и легкие в управлении веб-сайты!'
+title: 'SELF-HOSTED DATA-FIRST HEADLESS CMS & API.'
 template: home
 visibility: visible
 published_at: '22-09-2019 19:12'
-description: 'Создавайте быстрые и легкие в управлении веб-сайты c Flextype. We are on a mission to build high quality web platform to develop fast, flexible, easier to manage websites with Flextype!'
+description: 'We are on a mission to build high quality platform to develop kickass Applications!'
 menu_item_title: Главная
 menu_item_url: home
 menu_item_target: _self
