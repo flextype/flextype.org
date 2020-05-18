@@ -1,9 +1,9 @@
 ---
-title: 'Build fast, flexible, easier to manage websites!'
+title: 'SELF-HOSTED DATA-FIRST HEADLESS CMS & API.'
 template: home
 visibility: visible
 published_at: '22-09-2019 19:12'
-description: 'Build fast, flexible, easier to manage websites with Flextype. We are on a mission to build high quality web platform to develop fast, flexible, easier to manage websites with Flextype!'
+description: 'We are on a mission to build high quality platform to develop kickass Applications!'
 menu_item_title: Home
 menu_item_url: home
 menu_item_target: _self
