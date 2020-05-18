@@ -3,7 +3,7 @@ title: 'О Flextype'
 template: about
 visibility: visible
 published_at: '22-09-2019 19:15'
-description: 'Наша миссия заключается в создании высококачественной веб-платформы для быстрого, гибкого и удобного управления веб-сайтами с помощью Flextype!'
+description: 'We are on a mission to build high quality platform to develop kickass Applications!'
 menu_item_title: ''
 menu_item_url: ''
 menu_item_target: _self
