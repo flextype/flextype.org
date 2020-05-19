@@ -11,9 +11,13 @@ Flextype это лицензированный MIT-проект с открыт�
 * [Единоразовое пожертвование через PayPal, QIWI, Сбербанк, Яндекс](//flextype.org/en/one-time-donation ""){.invert}
 * [Visit our Sponsors & Backers page](//flextype.org/en/sponsors ""){.invert}
 
-
 ### Generous Backer
 * Jeremy Monroe
 
 ### Backers
 * Arseni Khramenkin
+
+### One-time donations
+* Viktoriya Kozyr
+* Alexander Greca
+* Izabela Sokołowska
