@@ -14,7 +14,7 @@ uuid: d080816b-0973-4fac-8964-4f6ecf8f3561
 published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 date: 'August 04 2019 10:16:23'
-intro_section_h1: 'Self-hosted Data-First Headless CMS & API.'
+intro_section_h1: 'Self-hosted DATA-FIRST Headless CMS & API.'
 intro_section_button: 'Скачать Flextype'
 features_heading: Преимущества
 features_description: 'Flextype provides faster, more productive way<br> for you to build and manage any kind of projects.'
@@ -51,7 +51,7 @@ features_the_php_league_p: 'The League of Extraordinary PHP Packages well tested
 features_doctrine_heading: 'Doctrine Project'
 features_doctrine_p: 'A set of decoupled and reusable PHP libraries for powerful web applications.'
 features_no_limits_heading: 'NO LIMITS'
-features_no_limits_p: 'With Flextype you can create any project you want.'
+features_no_limits_p: 'On top of Flextype you may build any project you want.'
 project_business_site: 'Business site'
 project_landing_page: 'Landing page'
 project_personal_site: 'Personal site'
