@@ -1,9 +1,9 @@
 ---
-title: 'SELF-HOSTED DATA-FIRST HEADLESS CMS & API.'
+title: 'Hybrid Content Management System'
 template: home
 visibility: visible
 published_at: '22-09-2019 19:12'
-description: 'We are on a mission to build high quality platform to develop kickass Applications!'
+description: 'The freedom of a headless CMS with the full functionality of a traditional CMS.'
 menu_item_title: Home
 menu_item_url: home
 menu_item_target: _self
@@ -14,10 +14,10 @@ uuid: d080816b-0973-4fac-8964-4f6ecf8f3561
 published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 date: 'August 04 2019 10:16:23'
-intro_section_h1: 'Self-hosted DATA-FIRST Headless CMS & API.'
+intro_section_h1: 'The freedom of a headless CMS with the full functionality of a traditional CMS.'
 intro_section_button: 'Get Flextype'
 features_heading: Features
-features_description: 'Flextype provides faster, more productive way<br> for you to build and manage any kind of projects.'
+features_description: 'Flextype provides faster, more productive way<br> for you to build and manage content for any kind of projects.'
 features_simple_heading: Simple
 features_simple_p: 'Easy to install, upgrade and use.<br>No installation needed, just copy files to your server!'
 features_fast_heading: Fast
@@ -36,21 +36,7 @@ features_version_control_heading: "Version control"
 features_version_control_p: "As Flextype is a file-based CMS, you can version control all content with Git or any other Version Control System."
 features_Internationalization_heading: "Internationalization"
 features_Internationalization_p: "Multi-language support is baked right into the core. You may integrate your Flextype powered website with any cloud-based solution for localization management, like Crowdin or Transifex."
-features_technologies_heading: Technologies
-features_technologies_p: 'Flextype built on top of modern technologies.'
-features_install_anywhere_heading: 'Install Anywhere'
-features_install_anywhere_p: 'To install Flextype, all you need is a server running PHP 7.2+'
-features_responsive_framework_heading: 'Responsive Framework'
-features_responsive_framework_p: 'Develop responsive, mobile first projects with Twitter Bootstrap.'
-features_css_with_superpowers_heading: 'CSS with Superpowers'
-features_css_with_superpowers_p: 'The most mature, stable, and powerful CSS extension language'
-features_slimphp_heading: 'Slim PHP'
-features_slimphp_p: 'Lightweight but powerful PHP framework for amazing web applications and APIs.'
-features_the_php_league_heading: 'The PHP League'
-features_the_php_league_p: 'The League of Extraordinary PHP Packages well tested and using modern coding standards.'
-features_doctrine_heading: 'Doctrine Project'
-features_doctrine_p: 'A set of decoupled and reusable PHP libraries for powerful web applications.'
-features_no_limits_heading: 'NO LIMITS'
+features_no_limits_heading: 'Use Cases'
 features_no_limits_p: 'On top of Flextype you may build any project you want.'
 project_business_site: 'Business site'
 project_landing_page: 'Landing page'
