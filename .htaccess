@@ -21,7 +21,7 @@
 
 RewriteEngine On
 
-RewriteBase /
+RewriteBase /flextype.org/
 
 ## Begin - Exploits
 # If you experience problems on your site block out the operations listed below

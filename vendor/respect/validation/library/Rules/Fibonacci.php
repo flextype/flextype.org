@@ -5,21 +5,29 @@
  *
  * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  *
- * For the full copyright and license information, please view the "LICENSE.md"
- * file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
  */
+
+declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use function is_numeric;
+
 /**
- * @author Samuel Heinzmann <samuel.heinzman@swisscom.com>
+ * Validates whether the input follows the Fibonacci integer sequence.
+ *
+ * @author Danilo Correa <danilosilva87@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Samuel Heinzmann <samuel.heinzmann@swisscom.com>
  */
-class Fibonacci extends AbstractRule
+final class Fibonacci extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function validate($input)
+    public function validate($input): bool
     {
         if (!is_numeric($input)) {
             return false;

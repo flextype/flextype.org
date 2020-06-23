@@ -5,31 +5,38 @@
  *
  * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  *
- * For the full copyright and license information, please view the "LICENSE.md"
- * file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Respect\Validation\Rules;
+
+use function ctype_digit;
+use function mb_strlen;
 
 /**
  * Validates a Dutch citizen service number (BSN).
  *
- * @author Ronald Drenth <ronalddrenth@gmail.com>
- *
  * @see https://nl.wikipedia.org/wiki/Burgerservicenummer
+ *
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Ronald Drenth <ronalddrenth@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
  */
-class Bsn extends AbstractRule
+final class Bsn extends AbstractRule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function validate($input)
+    public function validate($input): bool
     {
         if (!ctype_digit($input)) {
             return false;
         }
 
-        if (strlen($input) !== 9) {
+        if (mb_strlen($input) !== 9) {
             return false;
         }
 
