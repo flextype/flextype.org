@@ -1,0 +1,14 @@
+name: Twig
+version: 1.0.4
+description: Twig plugin to present Twig template engine for Flextype.
+icon: fas fa-palette
+author:
+  name: Sergey Romanenko
+  email: support@flextype.org
+  url: https://flextype.org
+homepage: https://github.com/flextype-plugins/twig
+bugs: https://github.com/flextype-plugins/twig/issues
+license: MIT
+
+dependencies:
+  flextype: 0.9.8

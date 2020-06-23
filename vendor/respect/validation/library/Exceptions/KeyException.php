@@ -5,15 +5,30 @@
  *
  * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  *
- * For the full copyright and license information, please view the "LICENSE.md"
- * file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
  */
+
+declare(strict_types=1);
 
 namespace Respect\Validation\Exceptions;
 
-class KeyException extends AttributeException
+/**
+ * Exceptions to be thrown by the Attribute Rule.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ */
+final class KeyException extends NestedValidationException implements NonOmissibleException
 {
-    public static $defaultTemplates = [
+    public const NOT_PRESENT = 'not_present';
+    public const INVALID = 'invalid';
+
+    /**
+     * {@inheritDoc}
+     */
+    protected $defaultTemplates = [
         self::MODE_DEFAULT => [
             self::NOT_PRESENT => 'Key {{name}} must be present',
             self::INVALID => 'Key {{name}} must be valid',
@@ -23,4 +38,12 @@ class KeyException extends AttributeException
             self::INVALID => 'Key {{name}} must not be valid',
         ],
     ];
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function chooseTemplate(): string
+    {
+        return $this->getParam('hasReference') ? self::INVALID : self::NOT_PRESENT;
+    }
 }

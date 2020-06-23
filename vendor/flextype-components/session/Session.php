@@ -12,6 +12,8 @@
 
 namespace Flextype\Component\Session;
 
+use Flextype\Component\Arr\Arr;
+
 class Session
 {
     /**

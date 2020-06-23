@@ -5,37 +5,58 @@
  *
  * (c) Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
  *
- * For the full copyright and license information, please view the "LICENSE.md"
- * file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE file
+ * that was distributed with this source code.
  */
+
+declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use Respect\Validation\Exceptions\ComponentException;
+use function array_merge;
+use function call_user_func_array;
+use function count;
 
-class Callback extends AbstractRule
+/**
+ * Validates the input using the return of a given callable.
+ *
+ * @author Alexandre Gomes Gaigalas <alexandre@gaigalas.net>
+ * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author William Espindola <oi@williamespindola.com.br>
+ */
+final class Callback extends AbstractRule
 {
-    public $callback;
-    public $arguments;
+    /**
+     * @var callable
+     */
+    private $callback;
 
-    public function __construct($callback)
+    /**
+     * @var mixed[]
+     */
+    private $arguments;
+
+    /**
+     * Initializes the rule.
+     *
+     * @param mixed ...$arguments
+     */
+    public function __construct(callable $callback, ...$arguments)
     {
-        if (!is_callable($callback)) {
-            throw new ComponentException('Invalid callback');
-        }
-
-        $arguments = func_get_args();
-        array_shift($arguments);
-
         $this->callback = $callback;
         $this->arguments = $arguments;
     }
 
-    public function validate($input)
+    /**
+     * {@inheritDoc}
+     */
+    public function validate($input): bool
     {
-        $params = $this->arguments;
-        array_unshift($params, $input);
+        $arguments = [$input];
+        if (count($this->arguments) > 0) {
+            $arguments = array_merge($arguments, $this->arguments);
+        }
 
-        return (bool) call_user_func_array($this->callback, $params);
+        return (bool) call_user_func_array($this->callback, $arguments);
     }
 }
