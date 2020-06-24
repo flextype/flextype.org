@@ -2,7 +2,8 @@ html,
 body {
     font-family: 'noirpro-light';
     font-size: 18px;
-
+    background: #f8f9fb;
+    color: #090e24;
 }
 
 ol,
@@ -24,7 +25,7 @@ li {
 }
 
 table tr {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #090e24;;
 }
 
 table {

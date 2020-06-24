@@ -91,7 +91,7 @@ entries:
 #
 # - sqlite3.table    SQLite3 Table
 cache:
-  enabled: true
+  enabled: false
   prefix: flextype
   driver: auto
   lifetime: 604800

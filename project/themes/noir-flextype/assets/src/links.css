@@ -1,89 +1,51 @@
 /* Links global */
 a {
-  text-decoration: none;
-  border-bottom: 1px solid currentColor;
-  padding-left: 2px;
-  padding-right: 2px;
+  text-decoration: underline;
 }
 
 a:hover {
   text-decoration: none;
-  background: white;
-  color: black;
-  border-bottom: 1px solid currentColor;
-}
-
-a.no-underline {
-  border-bottom: 0;
-  text-decoration: none;
-}
-
-a.no-underline:hover {
-    background: inherit;
-    color: inherit;
-}
-
-a.invert {
-  text-decoration: none;
-  border-bottom: 1px solid currentColor;
-}
-
-a.invert:hover {
-  text-decoration: none;
-  background: black;
-  color: white;
-  border-bottom: 1px solid currentColor;
-}
-
-a.hover\:border-white:hover {
-	@apply border-white;
-}
-
-a.hover\:border-3:hover {
-	@apply border-3;
 }
 
 /* Links top nav */
 .nav-item {
-    background: black;
     color: white;
     text-decoration: none;
-    border-bottom: 3px solid black;
+    border: none;
+    border-bottom: 2px solid white;
 }
 
 .nav-item:hover {
-    background: black;
-    color: white;
-    border-bottom: 3px solid white;
+    border-bottom: 2px solid black;
+}
+
+.nav-item.active {
+    border-bottom: 2px solid black;
 }
 
 /* Links logo */
 .logo {
+    color: black;
     position: relative;
     border-bottom: 0;
 }
 
-.logo:hover {
-    background: black;
-    color: white
-}
-
 .logo:before {
-    color: black;
+    color: white;
     content: "[ ";
 }
 
 .logo:after {
-    color: black;
+    color: white;
     content: " ]";
 }
 
 .logo:hover:before {
-    color: white;
+    color: black;
     content: "[ ";
 }
 
 .logo:hover:after {
-    color: white;
+    color: black;
     content: " ]";
 }
