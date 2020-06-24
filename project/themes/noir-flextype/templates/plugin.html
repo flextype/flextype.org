@@ -1,0 +1,140 @@
+{% extends "themes/" ~ registry.get('plugins.site.settings.theme') ~ "/templates/partials/base.html" %}
+
+{% block content %}
+
+{% set name = uri|split('/')|last %}
+
+<div class="container mx-auto bg-white text-black pb-24">
+    <div class="pl-6 pr-6 lg:pl-16 lg:pr-16 uppercase text-center pt-24 pb-24 m-0 font-noirpro-semibold">
+        <div>
+            <h1 class="text-3xl lg:text-6xl mb-0"><a href="{{ url() }}/{{ locale }}/downloads/extend/plugins/{{ name }}">{{ entry.title }}</a></h1>
+        </div>
+        <div>
+            <span class="opacity-50"><a href="{{ url() }}/{{ locale }}/downloads">DOWNLOADS</a></span>
+            <span class="opacity-50">/</span>
+            <span class="opacity-50"><a href="{{ url() }}/{{ locale }}/downloads/extend">EXTEND</a></span>
+            <span class="opacity-50">/</span>
+            <span class="opacity-50"><a href="{{ url() }}/{{ locale }}/downloads/extend/plugins">PLUGINS</a></span>
+        </div>
+    </div>
+    <div class="pl-6 pr-6 lg:pl-16 lg:pr-16">
+        {{ entry.content|shortcode|markdown|raw }}
+
+        {% set repo_name = entry.github|split('/')  %}
+        {% set repo_name_length = repo_name|length %}
+
+        {% set plugin = serializer_decode(filesystem_read("https://raw.githubusercontent.com/" ~ repo_name[repo_name_length-2] ~ "/" ~ repo_name[repo_name_length-1] ~ "/master/plugin.yaml"), "yaml") %}
+
+        <div class="p-6 text-black mb-6">
+            <div class="flex align-middle items-center">
+                <i class="{{ plugin.icon }} text-6xl mr-5"></i>
+                <div class="text-left">
+                    <h4 class="text-2xl pb-0 mb-0 block">{{ plugin.name }}</h4>
+                    <p class="m-0">
+                        {{ plugin.description }}
+                    </p>
+                    <p class="m-0 text-sm">
+                        <a href="#">{{ plugin.author.name }}</a>
+                    </p>
+                </div>
+                <div class="flex-grow"></div>
+                <div>
+                    <a class="text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn"
+                    href="https://github.com/flextype-plugins/admin/releases/download/v{{ plugin.version }}/{{ name }}-{{ plugin.version }}.zip">DOWNLOAD</a>
+                </div>
+            </div>
+        </div>
+
+        <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
+
+        <div class="p-6 text-black mb-6">
+            <h4>Information</h4>
+            <div class="flex content-center flex-wrap">
+                <div class="w-full lg:w-3/12">
+                    <p class="m-0 text-gray-500">Version</p>
+                    <p>{{ plugin.version }}</p>
+                </div>
+                <div class="w-full lg:w-3/12">
+                    <p class="m-0 text-gray-500">Lincense</p>
+                    <p>{{ plugin.license }}</p>
+                </div>
+                <div class="w-full lg:w-3/12">
+                    <p class="m-0 text-gray-500">Dependencies</p>
+                    {% for key, val in plugin.dependencies %}
+                        <a href="{{ url() }}/{{ locale }}/downloads/extend/plugins/{{ key }}">{{ key }}</a>: {{ val }}<br>
+                    {% endfor %}
+                </div>
+                <div class="w-full lg:w-3/12">
+                    <p class="m-0 text-gray-500">Links</p>
+                    <p>
+                        <a href="{{ plugin.homepage }}">Homepage</a><br>
+                        <a href="{{ plugin.homepage }}">Documentation</a><br>
+                        <a href="{{ plugin.bugs }}">Changelog</a><br>
+                        <a href="{{ plugin.bugs }}">Issues</a>
+                    </p>
+                </div>
+            </div>
+            <div class="flex content-center flex-wrap">
+                <div class="w-full lg:w-3/12">
+                    <p class="m-0 text-gray-500">Tags</p>
+                    <p>
+                        {% for tag in entry.tags|split(',') %}
+                            <a href="{{ url() }}/plugins?tag={{ tag }}">{{ tag }}</a>
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
+
+        <div class="p-6 text-black mb-6">
+            <h4>Other plugins by {{ plugin.author.name }}</h4>
+            {% if entry.author_email is not empty %}
+                {% set related_plugins = entries.fetch('en/downloads/extend/plugins', {
+                                                                    'where': {
+                                                                        'key': 'author_email',
+                                                                        'expr': 'contains',
+                                                                        'value': entry.author_email
+                                                                    },
+                                                                    'and_where': [{
+                                                                        'key': 'visibility',
+                                                                        'expr': 'nin',
+                                                                        'value': ['draft', 'hidden']
+                                                                    }]
+                                                                }) %}
+
+
+
+                {% if related_plugins|length > 0 %}
+
+                    {% for related_plugin in related_plugins %}
+                    {% if related_plugin.slug != entry.slug %}
+                        <a href="{{ url() }}/{{ related_plugin.slug }}" class="p-6 text-black flex align-middle rounded border-none mb-6 hover:border-none" style="background: #f8f9fb;">
+                            <i class="{{ plugin.icon }} text-5xl mr-5"></i>
+                            <div class="text-left">
+                                <h4 class="text-xl pb-0 mb-0 block">{{ related_plugin.title }}</h4>
+                                <p class="m-0">
+                                    {{ related_plugin.description }}
+                                </p>
+                            </div>
+                        </a>
+                        {% endif %}
+                    {% endfor %}
+
+                {% endif %}
+            {% endif %}
+        </div>
+
+        {#% set readme = parser_parse(filesystem_read("https://raw.githubusercontent.com/" ~ repo_name[repo_name_length-2] ~ "/" ~ repo_name[repo_name_length-1] ~ "/master/README.md"), "markdown") %#}
+        {#
+        <div class="p-6 text-black flex align-middle items-center rounded border-none mb-6 hover:border-none" style="background: #f8f9fb;">
+        <div class="plugin-readme">
+            {{ readme|raw }}
+        </div>
+        </div>
+        #}
+
+    </div>
+</div>
+{% endblock %}
