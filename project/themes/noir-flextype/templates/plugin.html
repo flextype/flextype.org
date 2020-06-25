@@ -7,14 +7,14 @@
 <div class="container mx-auto bg-white text-black pb-24">
     <div class="pl-6 pr-6 lg:pl-16 lg:pr-16 uppercase text-center pt-24 pb-24 m-0 font-noirpro-semibold">
         <div>
-            <h1 class="text-3xl lg:text-6xl mb-0"><a href="{{ url() }}/{{ locale }}/downloads/extend/plugins/{{ name }}">{{ entry.title }}</a></h1>
+            <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/plugins/{{ name }}">{{ entry.title }}</a></h1>
         </div>
         <div>
-            <span class="opacity-50"><a href="{{ url() }}/{{ locale }}/downloads">DOWNLOADS</a></span>
+            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads">DOWNLOADS</a></span>
             <span class="opacity-50">/</span>
-            <span class="opacity-50"><a href="{{ url() }}/{{ locale }}/downloads/extend">EXTEND</a></span>
+            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend">EXTEND</a></span>
             <span class="opacity-50">/</span>
-            <span class="opacity-50"><a href="{{ url() }}/{{ locale }}/downloads/extend/plugins">PLUGINS</a></span>
+            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/plugins">PLUGINS</a></span>
         </div>
     </div>
     <div class="pl-6 pr-6 lg:pl-16 lg:pr-16">
@@ -34,12 +34,12 @@
                         {{ plugin.description }}
                     </p>
                     <p class="m-0 text-sm">
-                        <a href="#">{{ plugin.author.name }}</a>
+                        <a class="no-underline" href="#">{{ plugin.author.name }}</a>
                     </p>
                 </div>
                 <div class="flex-grow"></div>
                 <div>
-                    <a class="text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn"
+                    <a class="no-underline text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn"
                     href="https://github.com/flextype-plugins/admin/releases/download/v{{ plugin.version }}/{{ name }}-{{ plugin.version }}.zip">DOWNLOAD</a>
                 </div>
             </div>
@@ -110,7 +110,7 @@
 
                     {% for related_plugin in related_plugins %}
                     {% if related_plugin.slug != entry.slug %}
-                        <a href="{{ url() }}/{{ related_plugin.slug }}" class="p-6 text-black flex align-middle rounded border-none mb-6 hover:border-none" style="background: #f8f9fb;">
+                        <a href="{{ url() }}/{{ related_plugin.slug }}" class="no-underline p-6 text-black flex align-middle rounded border-none mb-6 hover:border-none" style="background: #f8f9fb;">
                             <i class="{{ plugin.icon }} text-5xl mr-5"></i>
                             <div class="text-left">
                                 <h4 class="text-xl pb-0 mb-0 block">{{ related_plugin.title }}</h4>

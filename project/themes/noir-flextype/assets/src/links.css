@@ -4,7 +4,7 @@ a {
 }
 
 a:hover {
-  text-decoration: none;
+  opacity: .8;
 }
 
 /* Links top nav */

@@ -7,19 +7,19 @@
 <div class="container mx-auto bg-white text-black pb-24">
     <div class="pl-6 pr-6 lg:pl-16 lg:pr-16 uppercase text-center pt-24 pb-24 m-0 font-noirpro-semibold">
         <div>
-            <h1 class="text-3xl lg:text-6xl mb-0"><a href="{{ url() }}/{{ locale }}/downloads/extend/{{ name }}">{{ entry.title }}</a></h1>
+            <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/{{ name }}">{{ entry.title }}</a></h1>
         </div>
         <div>
-            <span class="opacity-50"><a href="{{ url() }}/{{ locale }}/downloads">DOWNLOADS</a></span>
+            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads">DOWNLOADS</a></span>
             <span class="opacity-50">/</span>
-            <span class="opacity-50"><a href="{{ url() }}/{{ locale }}/downloads/extend">EXTEND</a></span>
+            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend">EXTEND</a></span>
         </div>
     </div>
     <div class="flex content-center flex-wrap pl-6 pr-6 lg:pl-16 lg:pr-16">
         <div class="w-full lg:w-9/12 pr-2 text-center">
             {% set plugins = entries.fetch('en/downloads/extend/plugins', {}) %}
             {% for plugin in plugins %}
-                <a href="{{ url() }}/{{ plugin.slug }}" class="p-6 text-black flex align-middle rounded-lg border-none mb-6 hover:border-none" style="background: #f8f9fb;">
+                <a href="{{ url() }}/{{ plugin.slug }}" class="no-underline p-6 text-black flex align-middle rounded-lg border-none mb-6 hover:border-none" style="background: #f8f9fb;">
                     <i class="{{ plugin.icon }} text-5xl mr-5"></i>
                     <div class="text-left">
                         <h4 class="text-xl pb-0 mb-0 block">{{ plugin.title }}</h4>
