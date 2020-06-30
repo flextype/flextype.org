@@ -79,7 +79,7 @@
                 {# @todo get count from cache! #}
                 {% set plugins_items_length = entries.fetch('en/downloads/extend/plugins', {
                                                                     'where': {
-                                                                        'key': 'author.name',
+                                                                        'key': 'author.email',
                                                                         'expr': 'eq',
                                                                         'value': author
                                                                     },
@@ -101,7 +101,7 @@
 
                 {% set plugins_items = entries.fetch('en/downloads/extend/plugins', {
                                                             'where': {
-                                                                'key': 'author.name',
+                                                                'key': 'author.email',
                                                                 'expr': 'eq',
                                                                 'value': author
                                                             },
@@ -222,7 +222,7 @@
                                                             'direction': 'desc'
                                                         }
                                                     }) %}
-                    {% set plugins = plugins|merge({name:plugin.author.name}) %}
+                    {% set plugins = plugins|merge({'email': plugin.author.name}) %}
                 {% endfor %}
 
                 {% if plugins|length > 0 %}
