@@ -41,4 +41,4 @@ entries:
     title: Error 404
     description: We're sorry but the page you are looking for doesn't appear to exist!
     content: "<center>We're sorry but the page you are looking for doesn't appear to exist!</center>"
-    template: default
+    template: error404

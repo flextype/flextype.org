@@ -78,7 +78,7 @@
                                                             'direction': 'desc'
                                                         }
                                                     }) %}
-                    {% set plugins = plugins|merge({name:plugin.author_name}) %}
+                    {% set plugins = plugins|merge({name:plugin.author.name}) %}
                 {% endfor %}
 
                 {% if plugins|length > 0 %}
