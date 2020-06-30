@@ -17,7 +17,7 @@ class DisallowLateStaticBindingForConstantsSniff implements Sniff
 	public const CODE_DISALLOWED_LATE_STATIC_BINDING_FOR_CONSTANT = 'DisallowedLateStaticBindingForConstant';
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -27,8 +27,8 @@ class DisallowLateStaticBindingForConstantsSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $staticPointer
 	 */
 	public function process(File $phpcsFile, $staticPointer): void

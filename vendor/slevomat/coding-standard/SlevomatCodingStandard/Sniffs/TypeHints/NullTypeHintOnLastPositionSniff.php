@@ -20,7 +20,7 @@ class NullTypeHintOnLastPositionSniff implements Sniff
 	public const CODE_NULL_TYPE_HINT_NOT_ON_LAST_POSITION = 'NullTypeHintNotOnLastPosition';
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -30,8 +30,8 @@ class NullTypeHintOnLastPositionSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $docCommentOpenPointer
 	 */
 	public function process(File $phpcsFile, $docCommentOpenPointer): void
@@ -98,7 +98,7 @@ class NullTypeHintOnLastPositionSniff implements Sniff
 						$fixedTypeNodes[] = $nullTypeNode;
 						$fixedUnionTypeNode = new UnionTypeNode($fixedTypeNodes);
 
-						$fixedAnnotationContent = AnnotationHelper::fixAnnotation($phpcsFile, $annotation, $unionTypeNode, $fixedUnionTypeNode);
+						$fixedAnnotationContent = AnnotationHelper::fixAnnotationType($phpcsFile, $annotation, $unionTypeNode, $fixedUnionTypeNode);
 
 						$phpcsFile->fixer->replaceToken($annotation->getStartPointer(), $fixedAnnotationContent);
 						for ($i = $annotation->getStartPointer() + 1; $i <= $annotation->getEndPointer(); $i++) {

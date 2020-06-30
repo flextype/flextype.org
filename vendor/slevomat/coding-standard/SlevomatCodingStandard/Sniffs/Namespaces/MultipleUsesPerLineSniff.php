@@ -16,7 +16,7 @@ class MultipleUsesPerLineSniff implements Sniff
 	public const CODE_MULTIPLE_USES_PER_LINE = 'MultipleUsesPerLine';
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -26,8 +26,8 @@ class MultipleUsesPerLineSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $usePointer
 	 */
 	public function process(File $phpcsFile, $usePointer): void

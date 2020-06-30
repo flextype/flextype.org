@@ -11,8 +11,6 @@ use function array_merge;
 use function sprintf;
 use function str_repeat;
 use const T_CLOSE_PARENTHESIS;
-use const T_CLOSURE;
-use const T_FUNCTION;
 use const T_NULLABLE;
 use const T_WHITESPACE;
 
@@ -37,19 +35,16 @@ class ReturnTypeHintSpacingSniff implements Sniff
 	public $spacesCountBeforeColon = 0;
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
-		return [
-			T_FUNCTION,
-			T_CLOSURE,
-		];
+		return TokenHelper::$functionTokenCodes;
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $functionPointer
 	 */
 	public function process(File $phpcsFile, $functionPointer): void

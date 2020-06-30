@@ -25,7 +25,7 @@ class ModernClassNameReferenceSniff implements Sniff
 	public const CODE_CLASS_NAME_REFERENCED_VIA_FUNCTION_CALL = 'ClassNameReferencedViaFunctionCall';
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -36,8 +36,8 @@ class ModernClassNameReferenceSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $pointer
 	 */
 	public function process(File $phpcsFile, $pointer): void
@@ -93,7 +93,7 @@ class ModernClassNameReferenceSniff implements Sniff
 
 		$parameterPointer = TokenHelper::findNextEffective($phpcsFile, $openParenthesisPointer + 1, $tokens[$openParenthesisPointer]['parenthesis_closer']);
 
-		$isThisParameter = function () use ($phpcsFile, $tokens, $openParenthesisPointer, $parameterPointer): bool {
+		$isThisParameter = static function () use ($phpcsFile, $tokens, $openParenthesisPointer, $parameterPointer): bool {
 			if ($tokens[$parameterPointer]['code'] !== T_VARIABLE) {
 				return false;
 			}

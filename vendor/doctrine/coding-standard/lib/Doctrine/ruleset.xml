@@ -12,6 +12,8 @@
         <exclude name="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse"/>
         <!-- checked by SlevomatCodingStandard.Namespaces.NamespaceSpacing -->
         <exclude name="PSR2.Namespaces.NamespaceDeclaration.BlankLineAfter"/>
+        <!-- checked by SlevomatCodingStandard.Operators.SpreadOperatorSpacing -->
+        <exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingAfterVariadic"/>
     </rule>
 
     <!-- Force array element indentation with 4 spaces -->
@@ -158,6 +160,7 @@
                 <element value="
                     @ORM\,
                     @ODM\,
+                    @PHPCR\,
                 "/>
                 <element value="@param"/>
                 <element value="@return"/>
@@ -202,11 +205,20 @@
     <rule ref="SlevomatCodingStandard.Commenting.RequireOneLinePropertyDocComment"/>
     <!-- Forbid assignments in conditions -->
     <rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition"/>
-    <!-- Require consistent spacing for control structures -->
-    <rule ref="SlevomatCodingStandard.ControlStructures.ControlStructureSpacing">
+    <!-- Require consistent spacing for block structures -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.BlockControlStructureSpacing">
+        <exclude name="SlevomatCodingStandard.ControlStructures.BlockControlStructureSpacing.IncorrectLinesCountBeforeControlStructure" />
+        <exclude name="SlevomatCodingStandard.ControlStructures.BlockControlStructureSpacing.IncorrectLinesCountBeforeFirstControlStructure" />
         <properties>
             <property name="tokensToCheck" type="array">
-                <element value="T_RETURN" />
+                <element value="T_IF" />
+                <element value="T_DO" />
+                <element value="T_WHILE" />
+                <element value="T_FOR" />
+                <element value="T_FOREACH" />
+                <element value="T_SWITCH" />
+                <element value="T_TRY" />
+                <element value="T_DEFAULT" />
             </property>
         </properties>
     </rule>
@@ -214,6 +226,17 @@
     <rule ref="SlevomatCodingStandard.ControlStructures.DisallowYodaComparison"/>
     <!-- Require usage of early exit -->
     <rule ref="SlevomatCodingStandard.ControlStructures.EarlyExit"/>
+    <!-- Require consistent spacing for jump statements -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.JumpStatementsSpacing">
+        <properties>
+            <property name="tokensToCheck" type="array">
+                <element value="T_RETURN" />
+                <element value="T_THROW" />
+                <element value="T_YIELD" />
+                <element value="T_YIELD_FROM" />
+            </property>
+        </properties>
+    </rule>
     <!-- Require language constructs without parentheses -->
     <rule ref="SlevomatCodingStandard.ControlStructures.LanguageConstructWithParentheses"/>
     <!-- Require new instances with parentheses -->
@@ -233,11 +256,7 @@
     <!-- Forbid unused variables passed to closures via `use` -->
     <rule ref="SlevomatCodingStandard.Functions.UnusedInheritedVariablePassedToClosure"/>
     <!-- Require use statements to be alphabetically sorted -->
-    <rule ref="SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses">
-        <properties>
-            <property name="psr12Compatible" value="false"/>
-        </properties>
-    </rule>
+    <rule ref="SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses"/>
     <!-- Forbid fancy group uses -->
     <rule ref="SlevomatCodingStandard.Namespaces.DisallowGroupUse"/>
     <!-- Forbid multiple use statements on same line -->
@@ -311,6 +330,8 @@
     <rule ref="SlevomatCodingStandard.PHP.UselessParentheses"/>
     <!-- Forbid useless semicolon `;` -->
     <rule ref="SlevomatCodingStandard.PHP.UselessSemicolon"/>
+    <!-- Require /* @var type $foo */ and similar simple inline annotations to be replaced by assert() -->
+    <rule ref="SlevomatCodingStandard.PHP.RequireExplicitAssertion"/>
     <!-- Require use of short versions of scalar types (i.e. int instead of integer) -->
     <rule ref="SlevomatCodingStandard.TypeHints.LongTypeHints"/>
     <!-- Require the `null` type hint to be in the last position of annotations -->
@@ -328,17 +349,51 @@
     <!-- Require types to be written as natively if possible;
          require iterable types to specify phpDoc with their content;
          forbid useless/duplicated information in phpDoc -->
-    <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
+    <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint">
         <properties>
-            <property name="allAnnotationsAreUseful" value="true"/>
-            <property name="enableEachParameterAndReturnInspection" value="true"/>
             <property name="traversableTypeHints" type="array">
+                <element value="Traversable"/>
+                <element value="Iterator"/>
+                <element value="IteratorAggregate"/>
+                <element value="Doctrine\Common\Collections\Collection"/>
+            </property>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.PropertyTypeHint">
+        <properties>
+            <property name="traversableTypeHints" type="array">
+                <element value="Traversable"/>
+                <element value="Iterator"/>
+                <element value="IteratorAggregate"/>
+                <element value="Doctrine\Common\Collections\Collection"/>
+            </property>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint">
+        <properties>
+            <property name="traversableTypeHints" type="array">
+                <element value="Traversable"/>
+                <element value="Iterator"/>
+                <element value="IteratorAggregate"/>
                 <element value="Doctrine\Common\Collections\Collection"/>
             </property>
         </properties>
     </rule>
     <!-- Forbid useless @var for constants -->
     <rule ref="SlevomatCodingStandard.TypeHints.UselessConstantTypeHint"/>
+    <!-- Forbid useless phpDocs for functions -->
+    <rule ref="SlevomatCodingStandard.Commenting.UselessFunctionDocComment">
+        <properties>
+            <property name="traversableTypeHints" type="array">
+                <element value="Traversable"/>
+                <element value="Iterator"/>
+                <element value="IteratorAggregate"/>
+                <element value="Doctrine\Common\Collections\Collection"/>
+            </property>
+        </properties>
+    </rule>
+    <!-- Forbid useless inherit doc comment -->
+    <rule ref="SlevomatCodingStandard.Commenting.UselessInheritDocComment"/>
     <!-- Forbid duplicated variables assignments -->
     <rule ref="SlevomatCodingStandard.Variables.DuplicateAssignmentToVariable"/>
     <!-- Forbid useless variables -->
@@ -408,6 +463,10 @@
     </rule>
     <!-- Forbid global functions -->
     <rule ref="Squiz.Functions.GlobalFunction"/>
+    <!-- Force camelCase variables -->
+    <rule ref="Squiz.NamingConventions.ValidVariableName">
+        <exclude name="Squiz.NamingConventions.ValidVariableName.PrivateNoUnderscore" />
+    </rule>
     <!-- Forbid `AND` and `OR`, require `&&` and `||` -->
     <rule ref="Squiz.Operators.ValidLogicalOperators"/>
     <!-- Forbid `global` -->

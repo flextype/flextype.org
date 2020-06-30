@@ -21,7 +21,7 @@ class UselessInheritDocCommentSniff implements Sniff
 	public const CODE_USELESS_INHERIT_DOC_COMMENT = 'UselessInheritDocComment';
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -31,8 +31,8 @@ class UselessInheritDocCommentSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $docCommentOpenPointer
 	 */
 	public function process(File $phpcsFile, $docCommentOpenPointer): void
@@ -52,8 +52,11 @@ class UselessInheritDocCommentSniff implements Sniff
 			return;
 		}
 
-		/** @var int $docCommentOwnerPointer */
 		$docCommentOwnerPointer = TokenHelper::findNext($phpcsFile, array_merge(TokenHelper::$functionTokenCodes, TokenHelper::$typeHintTokenCodes), $tokens[$docCommentOpenPointer]['comment_closer'] + 1);
+		if ($docCommentOwnerPointer === null) {
+			return;
+		}
+
 		if (in_array($tokens[$docCommentOwnerPointer]['code'], TokenHelper::$functionTokenCodes, true)) {
 			$returnTypeHint = FunctionHelper::findReturnTypeHint($phpcsFile, $docCommentOwnerPointer);
 			if ($returnTypeHint === null) {

@@ -27,7 +27,7 @@ class DisallowYodaComparisonSniff implements Sniff
 	public const CODE_DISALLOWED_YODA_COMPARISON = 'DisallowedYodaComparison';
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -40,8 +40,8 @@ class DisallowYodaComparisonSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $comparisonTokenPointer
 	 */
 	public function process(File $phpcsFile, $comparisonTokenPointer): void

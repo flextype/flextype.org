@@ -17,7 +17,7 @@ class SuperfluousInterfaceNamingSniff implements Sniff
 	public const CODE_SUPERFLUOUS_SUFFIX = 'SuperfluousSuffix';
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -27,8 +27,8 @@ class SuperfluousInterfaceNamingSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $interfacePointer
 	 */
 	public function process(File $phpcsFile, $interfacePointer): void

@@ -22,7 +22,7 @@ use const T_USE;
 class UseStatementHelper
 {
 
-	/** @var array<string, array<int, array<string, \SlevomatCodingStandard\Helpers\UseStatement>>> */
+	/** @var array<string, array<int, array<string, UseStatement>>> */
 	private static $fileUseStatements = [];
 
 	public static function isAnonymousFunctionUse(File $phpcsFile, int $usePointer): bool
@@ -74,18 +74,6 @@ class UseStatementHelper
 		return NamespaceHelper::getUnqualifiedNameFromFullyQualifiedName($name);
 	}
 
-	/**
-	 * @deprecated
-	 * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
-	 * @param int $openTagPointer
-	 * @return array<int, array<string, \SlevomatCodingStandard\Helpers\UseStatement>>
-	 */
-	public static function getUseStatements(File $phpcsFile, int $openTagPointer): array
-	{
-		return self::getFileUseStatements($phpcsFile);
-	}
-
 	public static function getFullyQualifiedTypeNameFromUse(File $phpcsFile, int $usePointer): string
 	{
 		$tokens = $phpcsFile->getTokens();
@@ -102,9 +90,9 @@ class UseStatementHelper
 	}
 
 	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @param File $phpcsFile
 	 * @param int $pointer
-	 * @return array<string, \SlevomatCodingStandard\Helpers\UseStatement>
+	 * @return array<string, UseStatement>
 	 */
 	public static function getUseStatementsForPointer(File $phpcsFile, int $pointer): array
 	{
@@ -124,8 +112,8 @@ class UseStatementHelper
 	}
 
 	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
-	 * @return array<int, array<string, \SlevomatCodingStandard\Helpers\UseStatement>>
+	 * @param File $phpcsFile
+	 * @return array<int, array<string, UseStatement>>
 	 */
 	public static function getFileUseStatements(File $phpcsFile): array
 	{
@@ -186,7 +174,7 @@ class UseStatementHelper
 	/**
 	 * Searches for all use statements in a file, skips bodies of classes and traits.
 	 *
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @param File $phpcsFile
 	 * @param int $openTagPointer
 	 * @return int[]
 	 */

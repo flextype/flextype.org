@@ -2,10 +2,9 @@
 
 [![Latest version](https://img.shields.io/packagist/v/slevomat/coding-standard.svg?style=flat-square&colorB=007EC6)](https://packagist.org/packages/slevomat/coding-standard)
 [![Downloads](https://img.shields.io/packagist/dt/slevomat/coding-standard.svg?style=flat-square&colorB=007EC6)](https://packagist.org/packages/slevomat/coding-standard)
-[![Travis build status](https://img.shields.io/travis/slevomat/coding-standard/master.svg?label=travis&style=flat-square)](https://travis-ci.org/slevomat/coding-standard)
-[![AppVeyor build status](https://img.shields.io/appveyor/ci/slevomat/coding-standard/master.svg?label=appveyor&style=flat-square)](https://ci.appveyor.com/project/slevomat/coding-standard)
+[![Build status](https://img.shields.io/travis/slevomat/coding-standard/master.svg?label=travis&style=flat-square)](https://travis-ci.org/slevomat/coding-standard)
 [![Code coverage](https://img.shields.io/coveralls/slevomat/coding-standard/master.svg?style=flat-square)](https://coveralls.io/github/slevomat/coding-standard?branch=master)
-![PHPStan](https://img.shields.io/badge/style-level%206-brightgreen.svg?style=flat-square&label=phpstan)
+![PHPStan](https://img.shields.io/badge/style-level%207-brightgreen.svg?style=flat-square&label=phpstan)
 
 Slevomat Coding Standard for [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) provides sniffs that fall into three categories:
 
@@ -35,23 +34,44 @@ Slevomat Coding Standard for [PHP_CodeSniffer](https://github.com/squizlabs/PHP_
 
 ### Functional - improving the safety and behaviour of code
 
-#### SlevomatCodingStandard.TypeHints.TypeHintDeclaration 🔧🚧
+#### SlevomatCodingStandard.TypeHints.ParameterTypeHint 🔧🚧
 
-* Checks for missing property types in phpDoc `@var`.
-* Checks for missing typehints in case they can be declared natively. If the phpDoc contains something that can be written as a native PHP 7.0, 7.1 or 7.2 typehint, this sniff reports that.
-* Checks for missing `@return` and/or native return typehint in case the method body contains `return` with a value.
-* Checks for useless doc comments. If the native method declaration contains everything and the phpDoc does not add anything useful, it's reported as useless and can optionally be automatically removed with `phpcbf`.
-* Some phpDocs might still be useful even if they do not add any typehint information. They can contain textual descriptions of code elements and also some meaningful annotations like `@expectException` or `@dataProvider`.
+* Checks for missing parameter typehints in case they can be declared natively. If the phpDoc contains something that can be written as a native PHP 7.0+ typehint, this sniff reports that.
+* Checks for useless `@param` annotations. If the native method declaration contains everything and the phpDoc does not add anything useful, it's reported as useless and can optionally be automatically removed with `phpcbf`.
 * Forces to specify what's in traversable types like `array`, `iterable` and `\Traversable`.
 
 Sniff provides the following settings:
 
-* **DEPRECATED** `enableObjectTypeHint`: enforces to transform `@param object` or `@return object` into native `object` typehint. It's on by default if you're on PHP 7.2+
+* `enableObjectTypeHint`: enforces to transform `@param object` into native `object` typehint. It's on by default if you're on PHP 7.2+
 * `traversableTypeHints`: enforces which typehints must have specified contained type. E. g. if you set this to `\Doctrine\Common\Collections\Collection`, then `\Doctrine\Common\Collections\Collection` must always be supplied with the contained type: `\Doctrine\Common\Collections\Collection|Foo[]`.
-* `allAnnotationsAreUseful`: phpDoc is useful if it contain any annotation.
-* `enableEachParameterAndReturnInspection`: enables inspection and fixing of `@param` and `@return` annotations separately. Useful when you only want to document parameters or return values that could not be expressed natively (i.e. member types of `array` or `Traversable`).
 
-This sniff can cause an error if you're overriding or implementing a parent method which does not have typehints. In such cases add `@phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint` annotation to the method to have this sniff skip it.
+This sniff can cause an error if you're overriding or implementing a parent method which does not have typehints. In such cases add `@phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint` annotation to the method to have this sniff skip it.
+
+#### SlevomatCodingStandard.TypeHints.PropertyTypeHint 🔧🚧
+
+* Checks for missing property typehints in case they can be declared natively. If the phpDoc contains something that can be written as a native PHP 7.4+ typehint, this sniff reports that.
+* Checks for useless `@var` annotations. If the native method declaration contains everything and the phpDoc does not add anything useful, it's reported as useless and can optionally be automatically removed with `phpcbf`.
+* Forces to specify what's in traversable types like `array`, `iterable` and `\Traversable`.
+
+Sniff provides the following settings:
+
+* `enableNativeTypeHint`: enforces to transform `@var int` into native `int` typehint. It's on by default if you're on PHP 7.4+
+* `traversableTypeHints`: enforces which typehints must have specified contained type. E. g. if you set this to `\Doctrine\Common\Collections\Collection`, then `\Doctrine\Common\Collections\Collection` must always be supplied with the contained type: `\Doctrine\Common\Collections\Collection|Foo[]`.
+
+This sniff can cause an error if you're overriding parent property which does not have typehints. In such cases add `@phpcsSuppress SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint` annotation to the property to have this sniff skip it.
+
+#### SlevomatCodingStandard.TypeHints.ReturnTypeHint 🔧🚧
+
+* Checks for missing return typehints in case they can be declared natively. If the phpDoc contains something that can be written as a native PHP 7.0+ typehint, this sniff reports that.
+* Checks for useless `@return` annotations. If the native method declaration contains everything and the phpDoc does not add anything useful, it's reported as useless and can optionally be automatically removed with `phpcbf`.
+* Forces to specify what's in traversable types like `array`, `iterable` and `\Traversable`.
+
+Sniff provides the following settings:
+
+* `enableObjectTypeHint`: enforces to transform `@param object` into native `object` typehint. It's on by default if you're on PHP 7.2+
+* `traversableTypeHints`: enforces which typehints must have specified contained type. E. g. if you set this to `\Doctrine\Common\Collections\Collection`, then `\Doctrine\Common\Collections\Collection` must always be supplied with the contained type: `\Doctrine\Common\Collections\Collection|Foo[]`.
+
+This sniff can cause an error if you're overriding or implementing a parent method which does not have typehints. In such cases add `@phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint` annotation to the method to have this sniff skip it.
 
 #### SlevomatCodingStandard.TypeHints.UselessConstantTypeHint 🔧
 
@@ -74,6 +94,33 @@ Sniff provides the following settings:
 #### SlevomatCodingStandard.Arrays.DisallowImplicitArrayCreation
 
 Disallows implicit array creation.
+
+#### SlevomatCodingStandard.Classes.ClassStructure 🔧
+
+Checks that class/trait/interface members are in the correct order.
+
+Sniff provides the following settings:
+
+* `groups`: order of groups. Use multiple groups in one `<element value="">` to not differentiate among them. Groups without defined order are sorted to the end.
+
+List of supported groups: uses, public constants, protected constants, private constants, public properties, public static properties, protected properties, protected static properties, private properties, private static properties, constructor, static constructors, destructor, public methods, public abstract methods, public static methods, public static abstract methods, protected methods, protected abstract methods, protected static methods, protected static abstract methods, private methods, private static methods, magic methods
+
+```xml
+<rule ref="SlevomatCodingStandard.Classes.ClassStructure">
+	<properties>
+		<property name="groups" type="array">
+			<element value="uses"/>
+			<element value="public constants"/>
+			<element value="protected constants"/>
+			<element value="private constants"/>
+			<element value="public properties, protected properties, private properties"/>
+			<element value="constructor"/>
+			<element value="public methods, protected methods, private methods"/>
+			<element value="magic methods"/>
+		</property>
+	</properties>
+</rule>
+```
 
 #### SlevomatCodingStandard.Classes.DisallowLateStaticBindingForConstants 🔧
 
@@ -108,6 +155,10 @@ Disallows use of `empty()`.
 #### SlevomatCodingStandard.ControlStructures.RequireNullCoalesceOperator 🔧
 
 Requires use of null coalesce operator when possible.
+
+#### SlevomatCodingStandard.ControlStructures.RequireNullCoalesceEqualOperator 🔧
+
+Requires use of null coalesce equal operator when possible.
 
 #### SlevomatCodingStandard.ControlStructures.EarlyExit 🔧
 
@@ -157,10 +208,11 @@ Sniff provides the following settings:
 
 * `alwaysUsedPropertiesAnnotations`: mark certain properties as always used, for example the ones with `@ORM\Column`
 * `alwaysUsedPropertiesSuffixes`: mark properties with name ending with a certain string to be always marked as used
+* `alwaysUsedMethodsAnnotations`: mark certain methods as always used, for example the ones with `@Serializer\PostDeserialize`
 
 #### SlevomatCodingStandard.Functions.UnusedInheritedVariablePassedToClosure 🔧
 
-Looks for unused inherited variables passed to closure via `use`.  
+Looks for unused inherited variables passed to closure via `use`.
 
 #### SlevomatCodingStandard.Functions.UnusedParameter 🚧
 
@@ -193,6 +245,18 @@ use Foo\Bar;
 #### SlevomatCodingStandard.Namespaces.UselessAlias 🔧
 
 Looks for `use` alias that is same as unqualified name.
+
+#### SlevomatCodingStandard.PHP.DisallowReference
+
+Disallows references.
+
+#### SlevomatCodingStandard.PHP.RequireExplicitAssertion 🔧
+
+Requires assertion via `assert` instead of inline documentation comments.
+
+#### SlevomatCodingStandard.PHP.RequireNowdoc 🔧
+
+Requires nowdoc syntax instead of heredoc when possible.
 
 #### SlevomatCodingStandard.PHP.UselessParentheses 🔧
 
@@ -250,16 +314,90 @@ try {
 
 ### Formatting - rules for consistent code looks
 
+#### SlevomatCodingStandard.Arrays.MultiLineArrayEndBracketPlacement 🔧
+
+Enforces reasonable end bracket placement for multiline arrays.
+
+#### SlevomatCodingStandard.Arrays.SingleLineArrayWhitespace 🔧
+
+Checks whitespace in single line array declarations (whitespace between brackets, around commas, ...).
+
+Sniff provides the following settings:
+
+* `spacesAroundBrackets`: number of spaces you require to have around array brackets
+* `enableEmptyArrayCheck` (defaults to `false`): enables check for empty arrays
+
 #### SlevomatCodingStandard.Arrays.TrailingArrayComma 🔧
 
 Commas after last element in an array make adding a new element easier and result in a cleaner versioning diff.
 
 This sniff enforces trailing commas in multi-line arrays and requires short array syntax `[]`.
 
+Sniff provides the following settings:
+
+* `enableAfterHeredoc`: enables/disables trailing commas after HEREDOC/NOWDOC, default based on PHP version.
+
+#### SlevomatCodingStandard.Classes.ConstantSpacing 🔧
+
+Checks that there is a certain number of blank lines between constants.
+
+Sniff provides the following settings:
+
+* `minLinesCountBeforeWithComment`: minimum number of lines before constant with a doc comment
+* `maxLinesCountBeforeWithComment`: maximum number of lines before constant with a doc comment
+* `minLinesCountBeforeWithoutComment`: minimum number of lines before constant without a doc comment
+* `maxLinesCountBeforeWithoutComment`: maximum number of lines before constant without a doc comment
+
 #### SlevomatCodingStandard.Classes.ModernClassNameReference 🔧
 
 Reports use of `__CLASS__`, `get_parent_class()`, `get_called_class()`, `get_class()` and `get_class($this)`.
-Class names should be referenced via `::class` constant when possible. 
+Class names should be referenced via `::class` constant when possible.
+
+#### SlevomatCodingStandard.Classes.ParentCallSpacing 🔧
+
+Enforces configurable number of lines around parent method call.
+
+Sniff provides the following settings:
+
+* `linesCountBeforeParentCall`: allows to configure the number of lines before parent call.
+* `linesCountBeforeFirstControlParentCalle`: allows to configure the number of lines before first parent call.
+* `linesCountAfterParentCall`: allows to configure the number of lines after parent call.
+* `linesCountAfterLastParentCall`: allows to configure the number of lines after last parent call.
+
+#### SlevomatCodingStandard.Classes.PropertySpacing 🔧
+
+Checks that there is a certain number of blank lines between properties.
+
+Sniff provides the following settings:
+
+* `minLinesCountBeforeWithComment`: minimum number of lines before property with a doc comment
+* `maxLinesCountBeforeWithComment`: maximum number of lines before property with a doc comment
+* `minLinesCountBeforeWithoutComment`: minimum number of lines before property without a doc comment
+* `maxLinesCountBeforeWithoutComment`: maximum number of lines before property without a doc comment
+
+#### SlevomatCodingStandard.Classes.RequireMultiLineMethodSignature 🔧
+
+Enforces method signature to be splitted to more lines so each parameter is on its own line.
+
+Sniff provides the following settings:
+
+* `minLineLength`: specifies min line length to enforce signature to be splitted. Use 0 value to enforce for all methods, regardless of length.
+
+* `includedMethodPatterns`: allows to configure which methods are included in sniff detection. This is an array of regular expressions (PCRE) with delimiters. You should not use this with `excludedMethodPatterns`, as it will not work properly.
+
+* `excludedMethodPatterns`: allows to configure which methods are excluded from sniff detection. This is an array of regular expressions (PCRE) with delimiters. You should not use this with `includedMethodPatterns`, as it will not work properly.
+
+#### SlevomatCodingStandard.Classes.RequireSingleLineMethodSignature 🔧
+
+Enforces method signature to be on a single line.
+
+Sniff provides the following settings:
+
+* `maxLineLength`: specifies max allowed line length. If signature would fit on it, it's enforced. Use 0 value to enforce for all methods, regardless of length.
+
+* `includedMethodPatterns`: allows to configure which methods are included in sniff detection. This is an array of regular expressions (PCRE) with delimiters. You should not use this with `excludedMethodPatterns`, as it will not work properly.
+
+* `excludedMethodPatterns`: allows to configure which methods are excluded from sniff detection. This is an array of regular expressions (PCRE) with delimiters. You should not use this with `includedMethodPatterns`, as it will not work properly.
 
 #### SlevomatCodingStandard.Classes.SuperfluousAbstractClassNaming
 
@@ -288,29 +426,57 @@ Enforces configurable number of lines before first `use`, after last `use` and b
 Sniff provides the following settings:
 
 * `linesCountBeforeFirstUse`: allows to configure the number of lines before first `use`.
+* `linesCountBeforeFirstUseWhenFirstInClass`: allows to configure the number of lines before first `use` when the `use` is the first statement in the class.
 * `linesCountBetweenUses`: allows to configure the number of lines between two `use` statements.
 * `linesCountAfterLastUse`: allows to configure the number of lines after last `use`.
 * `linesCountAfterLastUseWhenLastInClass`: allows to configure the number of lines after last `use` when the `use` is the last statement in the class.
 
-#### SlevomatCodingStandard.ControlStructures.ControlStructureSpacing 🔧
+#### SlevomatCodingStandard.ControlStructures.BlockControlStructureSpacing 🔧
 
-Enforces configurable number of lines around control structures.
+Enforces configurable number of lines around block control structures (if, foreach, ...).
 
 Sniff provides the following settings:
 
-* `linesCountAroundControlStructure`: allows to configure the number of lines around control structure.
+* `linesCountBeforeControlStructure`: allows to configure the number of lines before control structure.
 * `linesCountBeforeFirstControlStructure`: allows to configure the number of lines before first control structure.
+* `linesCountAfterControlStructure`: allows to configure the number of lines after control structure.
 * `linesCountAfterLastControlStructure`: allows to configure the number of lines after last control structure.
 * `tokensToCheck`: allows to narrow the list of checked tokens.
 
 For example, with the following setting, only `if` and `switch` tokens are checked.
 
 ```xml
-<rule ref="SlevomatCodingStandard.ControlStructures.ControlStructureSpacing">
+<rule ref="SlevomatCodingStandard.ControlStructures.BlockControlStructureSpacing">
 	<properties>
 		<property name="tokensToCheck" type="array">
 			<element value="T_IF"/>
 			<element value="T_SWITCH"/>
+		</property>
+	</properties>
+</rule>
+```
+
+#### SlevomatCodingStandard.ControlStructures.JumpStatementsSpacing 🔧
+
+Enforces configurable number of lines around jump statements (continue, return, ...).
+
+Sniff provides the following settings:
+
+* `allowSingleLineYieldStacking`: whether or not to allow multiple yield/yield from statements in a row without blank lines.
+* `linesCountBeforeControlStructure`: allows to configure the number of lines before jump statement.
+* `linesCountBeforeFirstControlStructure`: allows to configure the number of lines before first jump statement.
+* `linesCountAfterControlStructure`: allows to configure the number of lines after jump statement.
+* `linesCountAfterLastControlStructure`: allows to configure the number of lines after last jump statement.
+* `tokensToCheck`: allows to narrow the list of checked tokens.
+
+For example, with the following setting, only `continue` and `break` tokens are checked.
+
+```xml
+<rule ref="SlevomatCodingStandard.ControlStructures.JumpStatementsSpacing">
+	<properties>
+		<property name="tokensToCheck" type="array">
+			<element value="T_CONTINUE"/>
+			<element value="T_BREAK"/>
 		</property>
 	</properties>
 </rule>
@@ -363,6 +529,32 @@ Sniff provides the following settings:
 `DisallowYodaComparisonSniff` looks for and fixes such comparisons not only in `if` statements but in the whole code.
 
 However, if you prefer Yoda conditions, you can use `RequireYodaComparisonSniff`.
+
+#### SlevomatCodingStandard.Files.LineLength
+
+Enforces maximum length of a single line of code.
+
+Sniff provides the following settings:
+
+* `lineLengthLimit`: actual limit of the line length
+* `ignoreComments`: whether or not to ignore line length of comments
+* `ignoreImports`: whether or not to ignore line length of import (use) statements
+
+#### SlevomatCodingStandard.Functions.DisallowEmptyFunction
+
+Reports empty functions body and requires at least a comment inside.
+
+#### SlevomatCodingStandard.Functions.DisallowArrowFunction
+
+Disallows arrow functions.
+
+#### SlevomatCodingStandard.Functions.RequireArrowFunction 🔧
+
+Requires arrow functions.
+
+Sniff provides the following settings:
+
+* `allowNested` (defaults to `true`)
 
 #### SlevomatCodingStandard.Functions.TrailingCommaInCall 🔧
 
@@ -424,6 +616,30 @@ Sniff provides the following settings:
 * `linesCountBeforeFirstUse`: allows to configure the number of lines before first `use`.
 * `linesCountBetweenUseTypes`: allows to configure the number of lines between two different types of `use`.
 * `linesCountAfterLastUse`: allows to configure the number of lines after last `use`.
+
+#### SlevomatCodingStandard.Numbers.DisallowNumericLiteralSeparator 🔧
+
+Disallows numeric literal separators.
+
+#### SlevomatCodingStandard.Numbers.RequireNumericLiteralSeparator
+
+Requires use of numeric literal separators.
+
+#### SlevomatCodingStandard.PHP.ReferenceSpacing 🔧
+
+Enforces configurable number of spaces after reference.
+
+Sniff provides the following settings:
+
+* `spacesCountAfterReference`: the number of spaces after `&`.
+
+#### SlevomatCodingStandard.Operators.NegationOperatorSpacing 🔧
+
+Checks if there is the same number of spaces after negation operator as expected.
+
+Sniff provides the following settings:
+
+* `spacesCount`: the number of spaces expected after the negation operator
 
 #### SlevomatCodingStandard.Operators.SpreadOperatorSpacing 🔧
 
@@ -529,7 +745,7 @@ Sniff provides the following settings:
 
 * `spacesCountBeforeColon`: the number of spaces expected between closing brace and colon.
 
-#### SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue 🔧
+#### SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue 🔧🚧
 
 Checks whether the nullablity `?` symbol is present before each nullable and optional parameter (which are marked as `= null`):
 
@@ -546,6 +762,12 @@ function foo(
 
 * Checks that there's a single space between a typehint and a parameter name: `Foo $foo`
 * Checks that there's no whitespace between a nullability symbol and a typehint: `?Foo`
+
+#### SlevomatCodingStandard.TypeHints.PropertyTypeHintSpacing 🔧
+
+* Checks that there's a single space between a typehint and a property name: `Foo $foo`
+* Checks that there's no whitespace between a nullability symbol and a typehint: `?Foo`
+* Checks that there's a single space before nullability symbol or a typehint: `private ?Foo` or `private Foo`
 
 #### SlevomatCodingStandard.Namespaces.DisallowGroupUse
 
@@ -739,15 +961,30 @@ Reports empty comments.
 
 #### SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration 🔧
 
-Reports invalid format of inline phpDocs with `@var`.
+Reports invalid inline phpDocs with `@var`.
 
 #### SlevomatCodingStandard.Commenting.RequireOneLinePropertyDocComment 🔧
+
+Requires property comments with single-line content to be written as one-liners.
+
+#### SlevomatCodingStandard.Commenting.RequireOneLineDocComment 🔧
 
 Requires comments with single-line content to be written as one-liners.
 
 #### SlevomatCodingStandard.Commenting.DisallowOneLinePropertyDocComment 🔧
 
 Requires comments with single-line content to be written as multi-liners.
+
+#### SlevomatCodingStandard.Commenting.UselessFunctionDocComment 🔧🚧
+
+* Checks for useless doc comments. If the native method declaration contains everything and the phpDoc does not add anything useful, it's reported as useless and can optionally be automatically removed with `phpcbf`.
+* Some phpDocs might still be useful even if they do not add any typehint information. They can contain textual descriptions of code elements and also some meaningful annotations like `@expectException` or `@dataProvider`.
+
+Sniff provides the following settings:
+
+* `traversableTypeHints`: enforces which typehints must have specified contained type. E. g. if you set this to `\Doctrine\Common\Collections\Collection`, then `\Doctrine\Common\Collections\Collection` must always be supplied with the contained type: `\Doctrine\Common\Collections\Collection|Foo[]`.
+
+This sniff can cause an error if you're overriding or implementing a parent method which does not have typehints. In such cases add `@phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint` annotation to the method to have this sniff skip it.
 
 #### SlevomatCodingStandard.Commenting.UselessInheritDocComment 🔧
 
@@ -776,7 +1013,7 @@ The recommended way to install Slevomat Coding Standard is [through Composer](ht
 ```JSON
 {
 	"require-dev": {
-		"slevomat/coding-standard": "~4.0"
+		"slevomat/coding-standard": "~6.0"
 	}
 }
 ```
@@ -888,17 +1125,17 @@ The parameter `$max` could have a native `int` scalar typehint. But because the 
 FOUND 1 ERROR AFFECTING 1 LINE
 ----------------------------------------------------------------------
  67 | ERROR | [x] Method ErrorsConsoleStyle::createProgressBar()
-    |       |     does not have parameter type hint for its parameter $max
+    |       |     does not have native type hint for its parameter $max
     |       |     but it should be possible to add it based on @param
     |       |     annotation "int".
-    |       |     (SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint)
+    |       |     (SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint)
 ```
 
-If we want to suppress this error instead of fixing it, we can take the error code (`SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint`) and use it with a `@phpcsSuppress` annotation like this:
+If we want to suppress this error instead of fixing it, we can take the error code (`SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint`) and use it with a `@phpcsSuppress` annotation like this:
 
 ```php
 /**
- * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
+ * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
  * @param int $max
  */
 public function createProgressBar($max = 0): ProgressBar

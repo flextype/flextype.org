@@ -4,9 +4,9 @@ namespace SlevomatCodingStandard\Helpers;
 
 use Generator;
 use PHP_CodeSniffer\Files\File;
+use SlevomatCodingStandard\Helpers\Annotation\ParameterAnnotation;
 use SlevomatCodingStandard\Helpers\Annotation\ReturnAnnotation;
 use function array_filter;
-use function array_keys;
 use function array_map;
 use function array_merge;
 use function array_reverse;
@@ -35,6 +35,11 @@ use const T_YIELD_FROM;
 
 class FunctionHelper
 {
+
+	public static function getTypeLabel(File $phpcsFile, int $functionPointer): string
+	{
+		return self::isMethod($phpcsFile, $functionPointer) ? 'Method' : 'Function';
+	}
 
 	public static function getName(File $phpcsFile, int $functionPointer): string
 	{
@@ -103,7 +108,7 @@ class FunctionHelper
 	}
 
 	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @param File $phpcsFile
 	 * @param int $functionPointer
 	 * @return string[]
 	 */
@@ -124,21 +129,9 @@ class FunctionHelper
 	}
 
 	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @param File $phpcsFile
 	 * @param int $functionPointer
-	 * @return string[]
-	 */
-	public static function getParametersWithoutTypeHint(File $phpcsFile, int $functionPointer): array
-	{
-		return array_keys(array_filter(self::getParametersTypeHints($phpcsFile, $functionPointer), function (?ParameterTypeHint $parameterTypeHint = null): bool {
-			return $parameterTypeHint === null;
-		}));
-	}
-
-	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
-	 * @param int $functionPointer
-	 * @return (\SlevomatCodingStandard\Helpers\ParameterTypeHint|null)[]
+	 * @return (ParameterTypeHint|null)[]
 	 */
 	public static function getParametersTypeHints(File $phpcsFile, int $functionPointer): array
 	{
@@ -244,7 +237,7 @@ class FunctionHelper
 		do {
 			$nextToken = $isAbstract
 				? TokenHelper::findNextLocalExcluding($phpcsFile, $abstractExcludeTokens, $nextToken + 1)
-				: TokenHelper::findNextExcluding($phpcsFile, TokenHelper::$ineffectiveTokenCodes, $nextToken + 1, $tokens[$functionPointer]['scope_opener'] - 1);
+				: TokenHelper::findNextExcluding($phpcsFile, TokenHelper::$ineffectiveTokenCodes, $nextToken + 1, $tokens[$functionPointer]['scope_opener']);
 
 			$isTypeHint = $nextToken !== null;
 			if (!$isTypeHint) {
@@ -269,20 +262,43 @@ class FunctionHelper
 	}
 
 	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @param File $phpcsFile
 	 * @param int $functionPointer
-	 * @return \SlevomatCodingStandard\Helpers\Annotation\ParameterAnnotation[]
+	 * @return ParameterAnnotation[]
 	 */
 	public static function getParametersAnnotations(File $phpcsFile, int $functionPointer): array
 	{
-		/** @var \SlevomatCodingStandard\Helpers\Annotation\ParameterAnnotation[] $parametersAnnotations */
+		/** @var ParameterAnnotation[] $parametersAnnotations */
 		$parametersAnnotations = AnnotationHelper::getAnnotationsByName($phpcsFile, $functionPointer, '@param');
+		return $parametersAnnotations;
+	}
+
+	/**
+	 * @param File $phpcsFile
+	 * @param int $functionPointer
+	 * @return array<string, ParameterAnnotation>
+	 */
+	public static function getValidParametersAnnotations(File $phpcsFile, int $functionPointer): array
+	{
+		$parametersAnnotations = [];
+		foreach (self::getParametersAnnotations($phpcsFile, $functionPointer) as $parameterAnnotation) {
+			if ($parameterAnnotation->getContent() === null) {
+				continue;
+			}
+
+			if ($parameterAnnotation->isInvalid()) {
+				continue;
+			}
+
+			$parametersAnnotations[$parameterAnnotation->getParameterName()] = $parameterAnnotation;
+		}
+
 		return $parametersAnnotations;
 	}
 
 	public static function findReturnAnnotation(File $phpcsFile, int $functionPointer): ?ReturnAnnotation
 	{
-		/** @var \SlevomatCodingStandard\Helpers\Annotation\ReturnAnnotation[] $returnAnnotations */
+		/** @var ReturnAnnotation[] $returnAnnotations */
 		$returnAnnotations = AnnotationHelper::getAnnotationsByName($phpcsFile, $functionPointer, '@return');
 
 		if (count($returnAnnotations) === 0) {
@@ -293,7 +309,7 @@ class FunctionHelper
 	}
 
 	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @param File $phpcsFile
 	 * @return string[]
 	 */
 	public static function getAllFunctionNames(File $phpcsFile): array
@@ -301,18 +317,23 @@ class FunctionHelper
 		$previousFunctionPointer = 0;
 
 		return array_map(
-			function (int $functionPointer) use ($phpcsFile): string {
+			static function (int $functionPointer) use ($phpcsFile): string {
 				return self::getName($phpcsFile, $functionPointer);
 			},
 			array_filter(
 				iterator_to_array(self::getAllFunctionOrMethodPointers($phpcsFile, $previousFunctionPointer)),
-				function (int $functionOrMethodPointer) use ($phpcsFile): bool {
+				static function (int $functionOrMethodPointer) use ($phpcsFile): bool {
 					return !self::isMethod($phpcsFile, $functionOrMethodPointer);
 				}
 			)
 		);
 	}
 
+	/**
+	 * @param File $phpcsFile
+	 * @param int $previousFunctionPointer
+	 * @return Generator<int>
+	 */
 	private static function getAllFunctionOrMethodPointers(File $phpcsFile, int &$previousFunctionPointer): Generator
 	{
 		do {

@@ -18,7 +18,7 @@ class AssignmentInConditionSniff implements Sniff
 	public const CODE_ASSIGNMENT_IN_CONDITION = 'AssignmentInCondition';
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -30,8 +30,8 @@ class AssignmentInConditionSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $conditionStartPointer
 	 */
 	public function process(File $phpcsFile, $conditionStartPointer): void
@@ -52,12 +52,7 @@ class AssignmentInConditionSniff implements Sniff
 		$this->processCondition($phpcsFile, $parenthesisOpener, $parenthesisCloser, $type);
 	}
 
-	private function processCondition(
-		File $phpcsFile,
-		int $parenthesisOpener,
-		int $parenthesisCloser,
-		string $conditionType
-	): void
+	private function processCondition(File $phpcsFile, int $parenthesisOpener, int $parenthesisCloser, string $conditionType): void
 	{
 		$equalsTokenPointer = TokenHelper::findNext($phpcsFile, T_EQUAL, $parenthesisOpener + 1, $parenthesisCloser);
 		if ($equalsTokenPointer === null) {

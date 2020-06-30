@@ -29,7 +29,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	 * @param string $filePath
 	 * @param (string|int|bool|(string|int|bool)[])[] $sniffProperties
 	 * @param string[] $codesToCheck
-	 * @return \PHP_CodeSniffer\Files\File
+	 * @return File
 	 */
 	protected static function checkFile(string $filePath, array $sniffProperties = [], array $codesToCheck = []): File
 	{
@@ -126,6 +126,38 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 		self::assertStringEqualsFile(preg_replace('~(\\.php)$~', '.fixed\\1', $phpcsFile->getFilename()), $phpcsFile->fixer->getContents());
 	}
 
+	protected static function getSniffName(): string
+	{
+		return preg_replace(
+			[
+				'~\\\~',
+				'~\.Sniffs~',
+				'~Sniff$~',
+			],
+			[
+				'.',
+				'',
+				'',
+			],
+			static::getSniffClassName()
+		);
+	}
+
+	protected static function getSniffClassName(): string
+	{
+		return substr(static::class, 0, -strlen('Test'));
+	}
+
+	protected static function getSniffClassReflection(): ReflectionClass
+	{
+		static $reflections = [];
+
+		/** @phpstan-var class-string $className */
+		$className = static::getSniffClassName();
+
+		return $reflections[$className] ?? $reflections[$className] = new ReflectionClass($className);
+	}
+
 	/**
 	 * @param (string|int)[][][] $errorsOnLine
 	 * @param string $sniffCode
@@ -160,42 +192,11 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 	 */
 	private static function getFormattedErrors(array $errors): string
 	{
-		return implode(PHP_EOL, array_map(function (array $errors): string {
-			return implode(PHP_EOL, array_map(function (array $error): string {
+		return implode(PHP_EOL, array_map(static function (array $errors): string {
+			return implode(PHP_EOL, array_map(static function (array $error): string {
 				return sprintf("\t%s: %s", $error['source'], $error['message']);
 			}, $errors));
 		}, $errors));
-	}
-
-	protected static function getSniffName(): string
-	{
-		return preg_replace(
-			[
-				'~\\\~',
-				'~\.Sniffs~',
-				'~Sniff$~',
-			],
-			[
-				'.',
-				'',
-				'',
-			],
-			static::getSniffClassName()
-		);
-	}
-
-	protected static function getSniffClassName(): string
-	{
-		return substr(static::class, 0, -strlen('Test'));
-	}
-
-	protected static function getSniffClassReflection(): ReflectionClass
-	{
-		static $reflections = [];
-
-		$className = static::getSniffClassName();
-
-		return $reflections[$className] ?? $reflections[$className] = new ReflectionClass($className);
 	}
 
 }

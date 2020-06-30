@@ -9,32 +9,39 @@ use SlevomatCodingStandard\Helpers\IdentificatorHelper;
 use SlevomatCodingStandard\Helpers\TokenHelper;
 use function array_key_exists;
 use function array_map;
-use function array_unique;
+use function array_merge;
 use function count;
 use function in_array;
 use const T_ANON_CLASS;
 use const T_ARRAY_CAST;
+use const T_BITWISE_AND;
+use const T_BITWISE_OR;
+use const T_BITWISE_XOR;
 use const T_BOOL_CAST;
 use const T_BOOLEAN_NOT;
 use const T_CASE;
 use const T_CLONE;
 use const T_CLOSE_PARENTHESIS;
 use const T_CLOSURE;
+use const T_COALESCE;
 use const T_COLON;
 use const T_CONSTANT_ENCAPSED_STRING;
 use const T_DIVIDE;
+use const T_DNUMBER;
 use const T_DOLLAR;
 use const T_DOUBLE_CAST;
 use const T_EMPTY;
 use const T_EQUAL;
 use const T_EVAL;
 use const T_EXIT;
+use const T_FN;
 use const T_INCLUDE;
 use const T_INCLUDE_ONCE;
 use const T_INLINE_THEN;
 use const T_INT_CAST;
 use const T_ISSET;
 use const T_LIST;
+use const T_LNUMBER;
 use const T_MINUS;
 use const T_MODULUS;
 use const T_MULTIPLY;
@@ -48,6 +55,7 @@ use const T_POW;
 use const T_REQUIRE;
 use const T_REQUIRE_ONCE;
 use const T_SELF;
+use const T_SEMICOLON;
 use const T_STATIC;
 use const T_STRING;
 use const T_STRING_CAST;
@@ -57,6 +65,7 @@ use const T_UNSET_CAST;
 use const T_USE;
 use const T_VARIABLE;
 use const T_WHITESPACE;
+use const T_YIELD;
 use const T_YIELD_FROM;
 
 class UselessParenthesesSniff implements Sniff
@@ -64,11 +73,31 @@ class UselessParenthesesSniff implements Sniff
 
 	public const CODE_USELESS_PARENTHESES = 'UselessParentheses';
 
+	private const OPERATORS = [
+		T_POW,
+		T_MULTIPLY,
+		T_DIVIDE,
+		T_MODULUS,
+		T_PLUS,
+		T_MINUS,
+		T_STRING_CONCAT,
+	];
+
+	private const OPERATOR_GROUPS = [
+		T_POW => 1,
+		T_MULTIPLY => 2,
+		T_DIVIDE => 2,
+		T_MODULUS => 3,
+		T_PLUS => 4,
+		T_MINUS => 4,
+		T_STRING_CONCAT => 5,
+	];
+
 	/** @var bool */
 	public $ignoreComplexTernaryConditions = false;
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -78,8 +107,8 @@ class UselessParenthesesSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $parenthesisOpenerPointer
 	 */
 	public function process(File $phpcsFile, $parenthesisOpenerPointer): void
@@ -99,6 +128,7 @@ class UselessParenthesesSniff implements Sniff
 			T_UNSET,
 			T_EMPTY,
 			T_CLOSURE,
+			T_FN,
 			T_USE,
 			T_ANON_CLASS,
 			T_SELF,
@@ -124,15 +154,16 @@ class UselessParenthesesSniff implements Sniff
 
 		/** @var int $pointerAfterParenthesisOpener */
 		$pointerAfterParenthesisOpener = TokenHelper::findNextEffective($phpcsFile, $parenthesisOpenerPointer + 1);
-		if (in_array($tokens[$pointerAfterParenthesisOpener]['code'], [T_NEW, T_CLONE, T_YIELD_FROM], true)) {
+		if (in_array($tokens[$pointerAfterParenthesisOpener]['code'], [T_NEW, T_CLONE, T_YIELD, T_YIELD_FROM, T_REQUIRE, T_REQUIRE_ONCE, T_INCLUDE, T_INCLUDE_ONCE], true)) {
+			return;
+		}
+
+		$pointerAfterParenthesisCloser = TokenHelper::findNextEffective($phpcsFile, $tokens[$parenthesisOpenerPointer]['parenthesis_closer'] + 1);
+		if ($pointerAfterParenthesisCloser !== null && $tokens[$pointerAfterParenthesisCloser]['code'] === T_OPEN_PARENTHESIS) {
 			return;
 		}
 
 		if (IdentificatorHelper::findStartPointer($phpcsFile, $pointerBeforeParenthesisOpener) !== null) {
-			return;
-		}
-
-		if ($this->isPartOfArithmeticOperation($phpcsFile, $parenthesisOpenerPointer)) {
 			return;
 		}
 
@@ -141,68 +172,6 @@ class UselessParenthesesSniff implements Sniff
 		$this->checkParenthesesAroundVariableOrFunctionCall($phpcsFile, $parenthesisOpenerPointer);
 		$this->checkParenthesesAroundString($phpcsFile, $parenthesisOpenerPointer);
 		$this->checkParenthesesAroundOperators($phpcsFile, $parenthesisOpenerPointer);
-	}
-
-	private function isPartOfArithmeticOperation(File $phpcsFile, int $parenthesisOpenerPointer): bool
-	{
-		$tokens = $phpcsFile->getTokens();
-
-		$operators = [T_PLUS, T_MINUS, T_MULTIPLY, T_DIVIDE, T_STRING_CONCAT, T_MODULUS];
-
-		$operatorsPointers = TokenHelper::findNextAll($phpcsFile, $operators, $parenthesisOpenerPointer + 1, $tokens[$parenthesisOpenerPointer]['parenthesis_closer']);
-		if (count($operatorsPointers) === 0) {
-			return false;
-		}
-
-		$containsPlusOrMinus = false;
-		$containsMultiplyOrDivide = false;
-		$containsModulus = false;
-		$containsStringConcat = false;
-		foreach ($operatorsPointers as $operatorsPointer) {
-			if (in_array($tokens[$operatorsPointer]['code'], [T_PLUS, T_MINUS], true)) {
-				$containsPlusOrMinus = true;
-			} elseif (in_array($tokens[$operatorsPointer]['code'], [T_MULTIPLY, T_DIVIDE], true)) {
-				$containsMultiplyOrDivide = true;
-			} elseif ($tokens[$operatorsPointer]['code'] === T_MODULUS) {
-				$containsModulus = true;
-			} else {
-				$containsStringConcat = true;
-			}
-		}
-
-		$pointerAfterParenthesis = TokenHelper::findNextEffective($phpcsFile, $tokens[$parenthesisOpenerPointer]['parenthesis_closer'] + 1);
-		if (in_array($tokens[$pointerAfterParenthesis]['code'], $operators, true)) {
-			if ($containsPlusOrMinus && in_array($tokens[$pointerAfterParenthesis]['code'], [T_MULTIPLY, T_DIVIDE, T_MODULUS], true)) {
-				return true;
-			}
-			if ($containsMultiplyOrDivide && in_array($tokens[$pointerAfterParenthesis]['code'], [T_PLUS, T_MINUS, T_MODULUS], true)) {
-				return true;
-			}
-			if ($containsModulus && in_array($tokens[$pointerAfterParenthesis]['code'], [T_MULTIPLY, T_DIVIDE, T_PLUS, T_MINUS], true)) {
-				return true;
-			}
-			if ($containsStringConcat || $tokens[$pointerAfterParenthesis]['code'] === T_STRING_CONCAT) {
-				return true;
-			}
-		}
-
-		$pointerBeforeParenthesis = TokenHelper::findPreviousEffective($phpcsFile, $parenthesisOpenerPointer - 1);
-		if (in_array($tokens[$pointerBeforeParenthesis]['code'], $operators, true)) {
-			if ($containsPlusOrMinus && in_array($tokens[$pointerBeforeParenthesis]['code'], [T_MULTIPLY, T_DIVIDE, T_MODULUS], true)) {
-				return true;
-			}
-			if ($containsMultiplyOrDivide && in_array($tokens[$pointerBeforeParenthesis]['code'], [T_PLUS, T_MINUS, T_MODULUS], true)) {
-				return true;
-			}
-			if ($containsModulus && in_array($tokens[$pointerBeforeParenthesis]['code'], [T_MULTIPLY, T_DIVIDE, T_PLUS, T_MINUS], true)) {
-				return true;
-			}
-			if ($containsStringConcat || $tokens[$pointerBeforeParenthesis]['code'] === T_STRING_CONCAT) {
-				return true;
-			}
-		}
-
-		return false;
 	}
 
 	private function checkParenthesesAroundConditionInTernaryOperator(File $phpcsFile, int $parenthesisOpenerPointer): void
@@ -300,6 +269,11 @@ class UselessParenthesesSniff implements Sniff
 	private function checkParenthesesAroundVariableOrFunctionCall(File $phpcsFile, int $parenthesisOpenerPointer): void
 	{
 		$tokens = $phpcsFile->getTokens();
+
+		$operatorsPointers = TokenHelper::findNextAll($phpcsFile, self::OPERATORS, $parenthesisOpenerPointer + 1, $tokens[$parenthesisOpenerPointer]['parenthesis_closer']);
+		if (count($operatorsPointers) !== 0) {
+			return;
+		}
 
 		$casePointer = TokenHelper::findPreviousEffective($phpcsFile, $parenthesisOpenerPointer - 1);
 		if ($tokens[$casePointer]['code'] === T_CASE) {
@@ -415,21 +389,95 @@ class UselessParenthesesSniff implements Sniff
 	{
 		$tokens = $phpcsFile->getTokens();
 
-		$operatorsPointers = TokenHelper::findNextAll($phpcsFile, [T_MINUS, T_PLUS, T_MULTIPLY, T_DIVIDE, T_MODULUS, T_POW], $parenthesisOpenerPointer + 1, $tokens[$parenthesisOpenerPointer]['parenthesis_closer']);
+		$pointerBeforeParenthesisOpener = TokenHelper::findPreviousEffective($phpcsFile, $parenthesisOpenerPointer - 1);
+		$pointerAfterParenthesisCloser = TokenHelper::findNextEffective($phpcsFile, $tokens[$parenthesisOpenerPointer]['parenthesis_closer'] + 1);
+
+		if ($tokens[$pointerBeforeParenthesisOpener]['code'] === T_MINUS) {
+			$pointerBeforeMinus = TokenHelper::findPreviousEffective($phpcsFile, $pointerBeforeParenthesisOpener - 1);
+			if (!in_array($tokens[$pointerBeforeMinus]['code'], [T_DNUMBER, T_LNUMBER], true)) {
+				return;
+			}
+		}
+
+		if (
+			in_array($tokens[$pointerBeforeParenthesisOpener]['code'], Tokens::$booleanOperators, true)
+			|| in_array($tokens[$pointerAfterParenthesisCloser]['code'], Tokens::$booleanOperators, true)
+		) {
+			return;
+		}
+
+		$operatorsPointers = [];
+		$actualStartPointer = $parenthesisOpenerPointer + 1;
+		while (true) {
+			$pointer = TokenHelper::findNext(
+				$phpcsFile,
+				array_merge(self::OPERATORS, [T_OPEN_PARENTHESIS, T_INLINE_THEN, T_COALESCE, T_BITWISE_AND, T_BITWISE_OR, T_BITWISE_XOR], Tokens::$comparisonTokens),
+				$actualStartPointer,
+				$tokens[$parenthesisOpenerPointer]['parenthesis_closer']
+			);
+
+			if ($pointer === null) {
+				break;
+			}
+
+			if (in_array($tokens[$pointer]['code'], [T_INLINE_THEN, T_COALESCE, T_BITWISE_AND, T_BITWISE_OR, T_BITWISE_XOR], true)) {
+				return;
+			}
+
+			if (in_array($tokens[$pointer]['code'], Tokens::$comparisonTokens, true)) {
+				return;
+			}
+
+			if ($tokens[$pointer]['code'] === T_OPEN_PARENTHESIS) {
+				$actualStartPointer = $tokens[$pointer]['parenthesis_closer'] + 1;
+				continue;
+			}
+
+			$operatorsPointers[] = $pointer;
+			$actualStartPointer = $pointer + 1;
+		}
+
 		if (count($operatorsPointers) === 0) {
 			return;
 		}
 
-		$operatorsTokens = array_map(function (int $pointer) use ($tokens) {
-			return $tokens[$pointer]['code'];
-		}, $operatorsPointers);
+		if (
+			$tokens[$pointerBeforeParenthesisOpener]['code'] !== T_EQUAL
+			|| $tokens[$pointerAfterParenthesisCloser]['code'] !== T_SEMICOLON
+		) {
+			$operatorsGroups = array_map(static function (int $operatorPointer) use ($tokens): int {
+				return self::OPERATOR_GROUPS[$tokens[$operatorPointer]['code']];
+			}, $operatorsPointers);
 
-		if (count(array_unique($operatorsTokens)) > 1) {
-			return;
+			if (count($operatorsGroups) > 1) {
+				return;
+			}
 		}
 
-		$pointerBeforeParenthesisOpener = TokenHelper::findPreviousEffective($phpcsFile, $parenthesisOpenerPointer - 1);
-		if ($tokens[$pointerBeforeParenthesisOpener]['code'] !== T_EQUAL) {
+		$firstOperatorPointer = $operatorsPointers[0];
+		if (in_array($tokens[$pointerBeforeParenthesisOpener]['code'], self::OPERATORS, true)) {
+			if (self::OPERATOR_GROUPS[$tokens[$firstOperatorPointer]['code']] !== self::OPERATOR_GROUPS[$tokens[$pointerBeforeParenthesisOpener]['code']]) {
+				return;
+			}
+
+			if ($tokens[$pointerBeforeParenthesisOpener]['code'] === T_MINUS && in_array($tokens[$firstOperatorPointer]['code'], [T_PLUS, T_MINUS], true)) {
+				return;
+			}
+
+			if ($tokens[$pointerBeforeParenthesisOpener]['code'] === T_DIVIDE && in_array($tokens[$firstOperatorPointer]['code'], [T_DIVIDE, T_MULTIPLY], true)) {
+				return;
+			}
+
+			if ($tokens[$pointerBeforeParenthesisOpener]['code'] === T_MODULUS && $tokens[$firstOperatorPointer]['code'] === T_MODULUS) {
+				return;
+			}
+		}
+
+		$lastOperatorPointer = $operatorsPointers[count($operatorsPointers) - 1];
+		if (
+			in_array($tokens[$pointerAfterParenthesisCloser]['code'], self::OPERATORS, true)
+			&& self::OPERATOR_GROUPS[$tokens[$lastOperatorPointer]['code']] !== self::OPERATOR_GROUPS[$tokens[$pointerAfterParenthesisCloser]['code']]
+		) {
 			return;
 		}
 

@@ -30,7 +30,7 @@ class UselessTernaryOperatorSniff implements Sniff
 	public $assumeAllConditionExpressionsAreAlreadyBoolean = false;
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -40,8 +40,8 @@ class UselessTernaryOperatorSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $inlineThenPointer
 	 */
 	public function process(File $phpcsFile, $inlineThenPointer): void
@@ -105,10 +105,12 @@ class UselessTernaryOperatorSniff implements Sniff
 			return;
 		}
 
+		$negativeCondition = ConditionHelper::getNegativeCondition($phpcsFile, $conditionStartPointer, $conditionEndPointer);
+
 		$phpcsFile->fixer->beginChangeset();
 
 		if ($tokens[$pointerAfterInlineThen]['code'] === T_FALSE) {
-			$phpcsFile->fixer->replaceToken($conditionStartPointer, ConditionHelper::getNegativeCondition($phpcsFile, $conditionStartPointer, $conditionEndPointer));
+			$phpcsFile->fixer->replaceToken($conditionStartPointer, $negativeCondition);
 			for ($i = $conditionStartPointer + 1; $i <= $conditionEndPointer; $i++) {
 				$phpcsFile->fixer->replaceToken($i, '');
 			}

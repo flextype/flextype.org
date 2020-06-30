@@ -29,7 +29,7 @@ class LanguageConstructWithParenthesesSniff implements Sniff
 	public const CODE_USED_WITH_PARENTHESES = 'UsedWithParentheses';
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -51,8 +51,8 @@ class LanguageConstructWithParenthesesSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $languageConstructPointer
 	 */
 	public function process(File $phpcsFile, $languageConstructPointer): void
