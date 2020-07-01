@@ -17,9 +17,7 @@
             <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/plugins">PLUGINS</a></span>
         </div>
     </div>
-    <div class="">
-        {{ entry.content|shortcode|markdown|raw }}
-
+    <div>
         {% set repo_name = entry.github|split('/')  %}
         {% set repo_name_length = repo_name|length %}
 
@@ -46,6 +44,11 @@
         </div>
 
         <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
+
+        {% if entry.content %}
+            {{ entry.content|shortcode|markdown|raw }}
+        <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
+        {% endif %}
 
         {% if entry.preview %}
         <div class="text-center">
@@ -82,11 +85,11 @@
                 </div>
             </div>
             <div class="flex content-center flex-wrap">
-                <div class="w-full lg:w-3/12">
+                <div class="w-full">
                     <p class="m-0 text-gray-500">Tags</p>
                     <p>
                         {% for tag in entry.tags|split(',') %}
-                            <a class="no-underline" href="{{ url() }}/plugins?tag={{ tag }}">#{{ tag }}</a>
+                            <a class="no-underline" href="{{ url() }}/plugins?tag={{ tag }}">#{{ tag|trim }}</a>
                         {% endfor %}
                     </p>
                 </div>
