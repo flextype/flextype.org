@@ -9,18 +9,11 @@ a:hover {
 
 /* Links top nav */
 .nav-item {
-    color: white;
     text-decoration: none;
-    border: none;
-    border-bottom: 2px solid white;
 }
 
 .nav-item:hover {
-    border-bottom: 2px solid black;
-}
-
-.nav-item.active {
-    border-bottom: 2px solid black;
+    opacity: .8;
 }
 
 /* Links logo */
