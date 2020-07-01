@@ -222,7 +222,7 @@
                                                             'direction': 'desc'
                                                         }
                                                     }) %}
-                    {% set plugins = plugins|merge({'email': plugin.author.name}) %}
+                    {% set plugins = plugins|merge({'email': plugin.author.email}) %}
                 {% endfor %}
 
                 {% if plugins|length > 0 %}
