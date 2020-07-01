@@ -51,29 +51,6 @@
                 {% endfor %}
             {% endif %}
 
-            <style>
-
-                .custom-shape-divider-top-1593001310 {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    overflow: hidden;
-                    line-height: 0;
-                }
-
-                .custom-shape-divider-top-1593001310 svg {
-                    position: relative;
-                    display: block;
-                    width: calc(205% + 1.3px);
-                    height: 140px;
-                }
-
-                .custom-shape-divider-top-1593001310 .shape-fill {
-                    fill: white;
-                }
-            </style>
-
             <!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js", "ym"); ym(48198194, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/48198194" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 
             {% do emitter.emit('onThemeHeader') %}
@@ -81,7 +58,7 @@
     </head>
     <body>
         <nav class="bg-white">
-            <div class="container mx-auto pl-16 pr-16 pt-6 pb-6 clearfix">
+            <div class="container mx-auto px-16 pt-6 pb-6 clearfix">
               <div class="w-full lg:w-2/12
                           text-center lg:text-left
                           float-left text-black p-2 font-noirpro-medium tracking-wide">
@@ -108,17 +85,12 @@
           </div>
         </nav>
 
-        {% block content %}{% endblock %}
+        <div class="bg-white text-black">
+            {% block content %}{% endblock %}
+        </div>
 
         <footer class="container relative mx-auto textl-center lg:text-left text-black" style="background: #f8f9fb;">
-
-            <div class="custom-shape-divider-top-1593001310">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-                </svg>
-            </div>
-
-            <div class="flex content-center flex-wrap pl-16 pr-16 pt-32 pb-24">
+            <div class="flex content-center flex-wrap px-16 pt-32 pb-24">
                 <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
                     <h4>Flextype</h4>
                     <ul class="list-none m-0 p-0">

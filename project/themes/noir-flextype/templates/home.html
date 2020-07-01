@@ -2,19 +2,17 @@
 
 {% block content %}
     <!-- introducing section -->
-    <div class="bg-white text-black">
-        <div class="container mx-auto">
-            <div class="text-center">
-                <h1 class="uppercase p-8 mb-10 lg:p-24 m-0 font-noirpro-semibold wow fadeIn text-3xl lg:text-5xl">{{ entry.intro_section_h1|raw }}</h1>
-                <div class="flex justify-center wow fadeIn">
-                    <a
-                        href="{{ base_url() }}/{{ locale }}/downloads"
-                        class="no-underline uppercase text-center relative text-lg relative pr-2 pl-2 pt-6 pb-6 w-10/12 lg:w-3/12 rounded-lg border-black bg-white border-2 text-black hover:bg-black hover:text-white wow fadeIn">{{ entry.intro_section_button|raw }}</a>
-                </div>
-                <div class="flex justify-center wow fadeIn">
-                    <div class="mt-20">
-                        <img src="{{ base_url() }}/api/images/{{ locale }}/flextype-banner.jpg?dpr=2&w=1000&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703" width="1000" class="border-none" alt="{{ entry.description }}">
-                    </div>
+    <div class="container relative mx-auto">
+        <div class="text-center">
+            <h1 class="uppercase p-8 mb-10 lg:p-24 m-0 font-noirpro-semibold wow fadeIn text-3xl lg:text-5xl">{{ entry.intro_section_h1|raw }}</h1>
+            <div class="flex justify-center wow fadeIn">
+                <a
+                    href="{{ base_url() }}/{{ locale }}/downloads"
+                    class="no-underline uppercase text-center relative text-lg relative pr-2 pl-2 pt-6 pb-6 w-10/12 lg:w-3/12 rounded-lg border-black bg-white border-2 text-black hover:bg-black hover:text-white wow fadeIn">{{ entry.intro_section_button|raw }}</a>
+            </div>
+            <div class="flex justify-center wow fadeIn">
+                <div class="mt-20">
+                    <img src="{{ base_url() }}/api/images/{{ locale }}/flextype-banner.jpg?dpr=2&w=1000&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703" width="1000" class="border-none" alt="{{ entry.description }}">
                 </div>
             </div>
         </div>
@@ -22,64 +20,66 @@
     <!-- /introducing section -->
 
     <!-- features section -->
-    <div class="text-center bg-white text-black pt-20">
-        <h3 class="uppercase text-3xl lg:text-6xl font-noirpro-semibold wow fadeIn">{{ entry.features_heading|raw }}</h3>
-        <p class="text-xl lg:text-3xl wow fadeIn">{{ entry.features_description|raw }}</p>
+    <div class="text-center pt-20">
+        <div class="container relative mx-auto">
+            <h3 class="uppercase text-3xl lg:text-6xl font-noirpro-semibold wow fadeIn">{{ entry.features_heading|raw }}</h3>
+            <p class="text-xl lg:text-3xl wow fadeIn">{{ entry.features_description|raw }}</p>
 
-        <div class="flex content-center flex-wrap mt-12">
-            <div class="w-full lg:w-1/3 p-8 wow fadeIn">
-                <i class="fa fa-rocket text-6xl mb-5" aria-hidden="true"></i>
-                <h4 class="text-2xl">{{ entry.features_fast_heading|raw }}</h4>
-                <p>
-                    {{ entry.features_fast_p|raw }}
-                </p>
-            </div>
+            <div class="flex content-center flex-wrap mt-12">
+                <div class="w-full lg:w-1/3 p-8 wow fadeIn">
+                    <i class="fa fa-rocket text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">{{ entry.features_fast_heading|raw }}</h4>
+                    <p>
+                        {{ entry.features_fast_p|raw }}
+                    </p>
+                </div>
 
-            <div class="w-full lg:w-1/3 p-8 wow fadeIn">
-                <i class="fa fa-cogs text-6xl mb-5" aria-hidden="true"></i>
-                <h4 class="text-2xl">{{ entry.features_flexible_heading|raw }}</h4>
-                <p>
-                    {{ entry.features_flexible_p|raw }}
-                </p>
-            </div>
+                <div class="w-full lg:w-1/3 p-8 wow fadeIn">
+                    <i class="fa fa-cogs text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">{{ entry.features_flexible_heading|raw }}</h4>
+                    <p>
+                        {{ entry.features_flexible_p|raw }}
+                    </p>
+                </div>
 
-            <div class="w-full lg:w-1/3 p-8 wow fadeIn">
-                <i class="fa fa-font text-6xl mb-5" aria-hidden="true"></i>
-                <h4 class="text-2xl">{{ entry.features_easy_editing_heading|raw }}</h4>
-                <p>
-                    {{ entry.features_easy_editing_p|replace({"%url_start%": '<a href="https://twitter.com/getflextype">', "%url_end%": "</a>"})|raw }}
-                </p>
-            </div>
+                <div class="w-full lg:w-1/3 p-8 wow fadeIn">
+                    <i class="fa fa-font text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">{{ entry.features_easy_editing_heading|raw }}</h4>
+                    <p>
+                        {{ entry.features_easy_editing_p|replace({"%url_start%": '<a href="https://twitter.com/getflextype">', "%url_end%": "</a>"})|raw }}
+                    </p>
+                </div>
 
-            <div class="w-full lg:w-1/3 p-8 wow fadeIn">
-                <i class="fas fa-network-wired text-6xl mb-5" aria-hidden="true"></i>
-                <h4 class="text-2xl">{{ entry.features_built_in_rest_api_heading|raw }}</h4>
-                <p>
-                    {{ entry.features_built_in_rest_api_p|raw }}
-                </p>
-            </div>
+                <div class="w-full lg:w-1/3 p-8 wow fadeIn">
+                    <i class="fas fa-network-wired text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">{{ entry.features_built_in_rest_api_heading|raw }}</h4>
+                    <p>
+                        {{ entry.features_built_in_rest_api_p|raw }}
+                    </p>
+                </div>
 
-            <div class="w-full lg:w-1/3 p-8 wow fadeIn">
-                <i class="fa fa-list-alt text-6xl mb-5" aria-hidden="true"></i>
-                <h4 class="text-2xl">{{ entry.features_dynamic_content_types_heading|raw }}</h4>
-                <p>
-                    {{ entry.features_dynamic_content_types_p|raw }}
-                </p>
-            </div>
+                <div class="w-full lg:w-1/3 p-8 wow fadeIn">
+                    <i class="fa fa-list-alt text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">{{ entry.features_dynamic_content_types_heading|raw }}</h4>
+                    <p>
+                        {{ entry.features_dynamic_content_types_p|raw }}
+                    </p>
+                </div>
 
-            <div class="w-full lg:w-1/3 p-8 wow fadeIn">
-                <i class="fas fa-code-branch text-6xl mb-5" aria-hidden="true"></i>
-                <h4 class="text-2xl">{{ entry.features_version_control_heading|raw }}</h4>
-                <p>
-                    {{ entry.features_version_control_p|raw }}
-                </p>
+                <div class="w-full lg:w-1/3 p-8 wow fadeIn">
+                    <i class="fas fa-code-branch text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">{{ entry.features_version_control_heading|raw }}</h4>
+                    <p>
+                        {{ entry.features_version_control_p|raw }}
+                    </p>
+                </div>
             </div>
         </div>
     </div>
     <!-- /features section -->
 
     <!-- no limits section -->
-    <div class="text-center bg-white text-black">
+    <div class="text-center">
         <div class="container mx-auto pt-20 pb-20">
             <h3 class="uppercase text-3xl lg:text-6xl font-noirpro-semibold wow fadeIn">{{ entry.features_no_limits_heading|raw }}</h3>
             <p class="text-xl lg:text-3xl wow fadeIn">{{ entry.features_no_limits_p|raw }}</p>
@@ -156,7 +156,7 @@
     <!-- /no limits section -->
 
     <!-- community section -->
-    <div class="text-center bg-white text-black">
+    <div class="text-center">
         <div class="container mx-auto pt-20 pb-20">
             <h3 class="uppercase text-3xl lg:text-6xl font-noirpro-semibold wow fadeIn">{{ entry.community_heading|raw }}</h3>
             <p class="text-xl lg:text-3xl">{{ entry.community_p|raw }}</p>
@@ -195,7 +195,7 @@
     <!-- /community section -->
 
     <!-- /contribution section -->
-    <div class="text-center bg-white text-black">
+    <div class="text-center">
         <div class="container mx-auto pt-20 pb-40">
             <h3 class="uppercase text-3xl lg:text-6xl font-noirpro-semibold wow fadeIn">{{ entry.contribution_heading|raw }}</h3>
             <p class="text-xl lg:text-3xl pl-20 pr-20 wow fadeIn">{{ entry.contribution_p|raw }}</p>
