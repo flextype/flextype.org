@@ -47,7 +47,7 @@
                 <i class="fa fa-font text-6xl mb-5" aria-hidden="true"></i>
                 <h4 class="text-2xl">{{ entry.features_easy_editing_heading|raw }}</h4>
                 <p>
-                    {{ entry.features_easy_editing_p|raw }}
+                    {{ entry.features_easy_editing_p|replace({"%url_start%": '<a href="https://twitter.com/getflextype">', "%url_end%": "</a>"})|raw }}
                 </p>
             </div>
 
@@ -88,65 +88,66 @@
 
                 <div class="w-full lg:w-3/12 p-8 wow fadeIn">
                     <i class="fas fa-desktop text-6xl mb-5" aria-hidden="true"></i>
-                    <h4 class="text-2xl">Websites</h4>
+                    <h4 class="text-2xl">{{ entry.no_limits_websites_heading|raw }}</h4>
                     <p>
-                        Business sites, Landing pages, Personal site, Portfolios, Product sites, Blogs, Web Apps
+                        {{ entry.no_limits_websites_p|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-8 wow fadeIn">
                     <i class="fas fa-mobile-alt text-6xl mb-5" aria-hidden="true"></i>
-                    <h4 class="text-2xl">Native Apps</h4>
+                    <h4 class="text-2xl">{{ entry.native_apps_heading|raw }}</h4>
                     <p>
-                        iOS, Android, Windows, Kai, Lineage, Fire, Flyme, Sailfish, Tizen, Remix.
+                        {{ entry.native_apps_p|raw }}
+
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-8 wow fadeIn">
                     <i class="far fa-square text-6xl mb-5" aria-hidden="true"></i>
-                    <h4 class="text-2xl">Kiosks</h4>
+                    <h4 class="text-2xl">{{ entry.kiosks_heading|raw }}</h4>
                     <p>
-                        Kiosks, Billboards, Digital Signage
+                        {{ entry.kiosks_p|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-8 wow fadeIn">
                     <i class="fas fa-running text-6xl mb-5" aria-hidden="true"></i>
-                    <h4 class="text-2xl">Wearables</h4>
+                    <h4 class="text-2xl">{{ entry.wearables_heading|raw }}</h4>
                     <p>
-                        Smartwatch Apps, Activity Trackers
+                        {{ entry.wearables_p|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-8 wow fadeIn">
                     <i class="far fa-lightbulb text-6xl mb-5" aria-hidden="true"></i>
-                    <h4 class="text-2xl">IoT Devices</h4>
+                    <h4 class="text-2xl">{{ entry.iot_devices_heading|raw }}</h4>
                     <p>
-                        Lights, Appliances, Auto
+                        {{ entry.iot_devices_heading|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-8 wow fadeIn">
                     <i class="fas fa-gamepad text-6xl mb-5" aria-hidden="true"></i>
-                    <h4 class="text-2xl">Game Data</h4>
+                    <h4 class="text-2xl">{{ entry.game_data_heading|raw }}</h4>
                     <p>
-                        Mobile Games, VR, DLC
+                        {{ entry.game_data_p|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-8 wow fadeIn">
                     <i class="far fa-compass text-6xl mb-5" aria-hidden="true"></i>
-                    <h4 class="text-2xl">SaaS Platforms</h4>
+                    <h4 class="text-2xl">{{ entry.saas_platforms_heading|raw }}</h4>
                     <p>
-                        CRM, Productivity Tools, & Commerce
+                        {{ entry.saas_platforms_p|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-8 wow fadeIn">
                     <i class="fas fa-shopping-cart text-6xl mb-5" aria-hidden="true"></i>
-                    <h4 class="text-2xl">E-Commerce</h4>
+                    <h4 class="text-2xl">{{ entry.ecommerce_heading|raw }}</h4>
                     <p>
-                        E-Commerce, Inventory, & POS
+                        {{ entry.ecommerce_heading|raw }}
                     </p>
                 </div>
             </div>
@@ -163,30 +164,29 @@
             <div class="flex content-center flex-wrap mt-12">
                 <div class="w-full lg:w-4/12 p-8 wow fadeIn">
                     <i class="fab fa-discord text-7xl mb-5"></i>
-                    <h4 class="text-2xl">Discord</h4>
+                    <h4 class="text-2xl">{{ entry.discord_heading|raw }}</h4>
                     <div class="text-base h-32">
-                        Got a question about setting up or using Flextype? We'll do our best to help you out.
-                        Also here you may start discussions about core, plugin and themes development.
+                        {{ entry.discord_p|raw }}
                     </div>
-                    <a class="no-underline uppercase text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn" href="https://discord.gg/CCKPKVG">Join the Conversation</a>
+                    <a class="no-underline uppercase text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn" href="https://discord.gg/CCKPKVG">{{ entry.discord_button|raw }}</a>
                 </div>
 
                 <div class="w-full lg:w-4/12 p-8 wow fadeIn">
                     <i class="fab fa-github text-7xl mb-5"></i>
-                    <h4 class="text-2xl">Github</h4>
+                    <h4 class="text-2xl">{{ entry.github_heading|raw }}</h4>
                     <div class="text-base h-32">
-                        If you want to report a bug or contribute your ideas, you can use the <a href="https://github.com/flextype/flextype/issues">Flextype GitHub Issues tracker</a>.
+                        {{ entry.github_p|replace({"%url_start%": '<a href="https://github.com/flextype/flextype/issues">', "%url_end%": "</a>"})|raw }}
                     </div>
-                    <a class="no-underline uppercase text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn" href="https://github.com/flextype">Contribute</a>
+                    <a class="no-underline uppercase text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn" href="https://github.com/flextype">{{ entry.github_button|raw }}</a>
                 </div>
 
                 <div class="w-full lg:w-4/12 p-8 wow fadeIn">
                     <i class="fab fa-twitter text-7xl mb-5"></i>
-                    <h4 class="text-2xl">Twitter</h4>
+                    <h4 class="text-2xl">{{ entry.twitter_heading|raw }}</h4>
                     <div class="text-base h-32">
-                        Follow <a href="https://twitter.com/getflextype">Flextype on Twitter</a> to get real-time news regarding the development and all events we are attending.
+                        {{ entry.twitter_p|replace({"%url_start%": '<a href="https://twitter.com/getflextype">', "%url_end%": "</a>"})|raw }}
                     </div>
-                    <a class="no-underline uppercase text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn" href="https://twitter.com/getflextype">Follow Us</a>
+                    <a class="no-underline uppercase text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn" href="https://twitter.com/getflextype">{{ entry.twitter_button|raw }}</a>
                 </div>
             </div>
 

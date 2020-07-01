@@ -19,9 +19,9 @@ features_simple_p: 'Easy to install, upgrade and use.<br>No installation needed,
 features_fast_heading: Fast
 features_fast_p: 'Flextype is super fast content management system because of its elegance architecture and built-in <a href="https://docs.flextype.org/en/concepts/performance">smart cache</a>.'
 features_flexible_heading: Flexible
-features_flexible_p: 'Building this content management system, we focused on simplicity and flexibility. To achieve this, we implemented a simple but powerful Core API's.'
+features_flexible_p: "Building this content management system, we focused on simplicity and flexibility. To achieve this, we implemented a simple but powerful Core API's."
 features_easy_editing_heading: 'Easy editing'
-features_easy_editing_p: 'With Flextype you are free to use any of your favorite content editor to write content or our gorgeous <a href="https://github.com/flextype-plugins/admin" target="_blank">Admin Panel</a>.'
+features_easy_editing_p: 'With Flextype you are free to use any of your favorite content editor to write content or our gorgeous %url_start%Admin Panel%url_end%.'
 features_dynamic_content_types_heading: 'Dynamic Content Types'
 features_dynamic_content_types_p: 'The flat-file nature of Flextype lets you define unlimited custom fields for any of your entries.'
 features_open_source_heading: 'Open Source'
@@ -46,6 +46,31 @@ community_heading: Community
 community_p: 'Flextype is open source, community driven project,<br>and maintained by community!'
 contribution_heading: CONTRIBUTE
 contribution_p: 'Flextype is an open source project and community contributions are essential to its growing and success. Contributing to the Flextype is easy and you can give as little or as much time as you want.'
+no_limits_websites_heading: "Websites"
+no_limits_websites_p: "Business sites, Landing pages, Personal site, Portfolios, Product sites, Blogs, Web Apps"
+native_apps_heading: "Native Apps"
+native_apps_p: "iOS, Android, Windows, Kai, Lineage, Fire, Flyme, Sailfish, Tizen, Remix."
+kiosks_heading: "Kiosks"
+kiosks_p: "Kiosks, Billboards, Digital Signage"
+wearables_heading: "Wearables"
+wearables_p: "Smartwatch Apps, Activity Trackers"
+iot_devices_heading: "IoY Devices"
+iot_devices_p: "Lights, Appliances, Auto"
+game_data_heading: "Game Data"
+game_data_p: "Mobile Games, VR, DLC"
+saas_platforms_heading: "SaaS Platforms"
+saas_platforms_p: "CRM, Productivity Tools, & Commerce"
+ecommerce_heading: "E-Commerce"
+ecommerce_p: "E-Commerce, Inventory, & POS"
+discord_heading: "Discord"
+discord_p: "Got a question about setting up or using Flextype? We'll do our best to help you out. Also here you may start discussions about core, plugin and themes development."
+discord_button: "Join the Conversation"
+github_heading: "Github"
+github_p: "If you want to report a bug or contribute your ideas, you can use the %url_start%Flextype GitHub Issues tracker%url_end%."
+github_button: "Contribute"
+twitter_heading: "Twitter"
+twitter_p: "Follow %url_start%Follow on Twitter%url_end% to get real-time news regarding the development and all events we are attending."
+twitter_button: "Follow Us"
 link_about: About
 link_media: Media
 link_donate: Donate
