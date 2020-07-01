@@ -47,6 +47,13 @@
 
         <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
 
+        {% if entry.preview %}
+        <div class="text-center">
+            <img class="" src="{{ entry.preview }}" alt="">
+        </div>
+        <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
+        {% endif %}
+
         <div class="p-6 text-black mb-6">
             <h4>Information</h4>
             <div class="flex content-center flex-wrap">
@@ -79,7 +86,7 @@
                     <p class="m-0 text-gray-500">Tags</p>
                     <p>
                         {% for tag in entry.tags|split(',') %}
-                            <a href="{{ url() }}/plugins?tag={{ tag }}">{{ tag }}</a>
+                            <a class="no-underline" href="{{ url() }}/plugins?tag={{ tag }}">#{{ tag }}</a>
                         {% endfor %}
                     </p>
                 </div>

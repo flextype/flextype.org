@@ -203,13 +203,15 @@
 
             {% if tags_cloud|length > 0 %}
                 <h4 class="text-left mb-2">Tags</h4>
-                {% for tag in tags_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
-                    <a href="{{ url() }}/en/downloads/extend/plugins?tag={{ tag }}"><span class="badge badge-primary">{{ tag }}</span></a>
-                {% endfor %}
+                <ul class="list-none m-0">
+                    {% for tag in tags_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
+                        <li><a class="no-underline py-1 block" href="{{ url() }}/en/downloads/extend/plugins?tag={{ tag }}">#{{ tag|trim }}</a></li>
+                    {% endfor %}
+                </ul>
             {% endif %}
             {# /tags-cloud #}
             </div>
-            <div class="text-black text-center p-6 mt-6">
+            <div class="text-black text-center p-6">
                 <a class="no-underline uppercase text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black" href="https://docs.flextype.org/en/getting-started/installation">SUBMIT A PLUGIN</a>
             </div>
             <!--
