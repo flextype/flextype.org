@@ -17,19 +17,19 @@ features_description: 'Flextype provides faster, more productive way<br> for you
 features_simple_heading: Simple
 features_simple_p: 'Easy to install, upgrade and use.<br>No installation needed, just copy files to your server!'
 features_fast_heading: Fast
-features_fast_p: 'Flextype is really fast and lightweight! No database required, flat files only!'
+features_fast_p: 'Flextype is super fast content management system because of its elegance architecture and built-in <a href="https://docs.flextype.org/en/concepts/performance">smart cache</a>.'
 features_flexible_heading: Flexible
-features_flexible_p: 'Flextype provides amazing APIs for developers!'
+features_flexible_p: 'Building this content management system, we focused on simplicity and flexibility. To achieve this, we implemented a simple but powerful Core API's.'
 features_easy_editing_heading: 'Easy editing'
-features_easy_editing_p: 'Use your favorite editor to write your content or our gorgeous Admin Panel Plugin.'
+features_easy_editing_p: 'With Flextype you are free to use any of your favorite content editor to write content or our gorgeous <a href="https://github.com/flextype-plugins/admin" target="_blank">Admin Panel</a>.'
 features_dynamic_content_types_heading: 'Dynamic Content Types'
 features_dynamic_content_types_p: 'The flat-file nature of Flextype lets you define unlimited custom fields for any of your entries.'
 features_open_source_heading: 'Open Source'
 features_open_source_p: 'Flextype is an open-source project founded by Sergey Romanenko and maintained by  Flextype Community.<br>Flextype licensed under the MIT LICENSE<br>to set the world free!'
 features_built_in_rest_api_heading: "Built-in REST API"
-features_built_in_rest_api_p: "Use Flextype as a Headless CMS with the full power of the Admin Panel.<br> Build a Websites and Apps with a technology you are familiar with."
-features_version_control_heading: "Version control"
-features_version_control_p: "As Flextype is a file-based CMS, you can version control all content with Git or any other Version Control System."
+features_built_in_rest_api_p: "Flextype REST API with compact JSON payloads gives you full programmatic control over your content management system."
+features_version_control_heading: "Version Control"
+features_version_control_p: "Flextype is a file-based CMS, you can version control all content with GIT or any other Version Control System."
 features_Internationalization_heading: "Internationalization"
 features_Internationalization_p: "Multi-language support is baked right into the core. You may integrate your Flextype powered website with any cloud-based solution for localization management, like Crowdin or Transifex."
 features_no_limits_heading: 'Use Cases'

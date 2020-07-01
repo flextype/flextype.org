@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="{{ locale }}">
-    {% set entry_locale = entries.fetch('en') %}
+    {% set entry_locale = entries.fetch(locale) %}
     {% set static_version = 4 %}
     <head>
         {% block head %}
