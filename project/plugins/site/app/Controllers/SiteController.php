@@ -105,6 +105,8 @@ class SiteController extends Container
         $api_tokens['access']['uuid'] = bin2hex(random_bytes(16));
 
         $locale = explode('/',$uri)[1];
+        $locale = (empty($locale)) ? 'en' : $locale;
+
         // ========== end of custom code here ==========
 
         if (! Filesystem::has(PATH['project'] . '/' . $path)) {
