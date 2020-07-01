@@ -5,7 +5,7 @@
 {% set name = uri|split('/')|last %}
 
 <div class="container mx-auto bg-white text-black pb-24">
-    <div class="pl-6 pr-6 lg:pl-16 lg:pr-16 uppercase text-center pt-24 pb-24 m-0 font-noirpro-semibold">
+    <div class="uppercase text-center pt-24 pb-24 m-0 font-noirpro-semibold">
         <div>
             <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/plugins/{{ name }}">{{ entry.title }}</a></h1>
         </div>
@@ -17,7 +17,7 @@
             <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/plugins">PLUGINS</a></span>
         </div>
     </div>
-    <div class="pl-6 pr-6 lg:pl-16 lg:pr-16">
+    <div class="">
         {{ entry.content|shortcode|markdown|raw }}
 
         {% set repo_name = entry.github|split('/')  %}
@@ -95,7 +95,7 @@
 
         <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
 
-        <div class="p-6 text-black mb-6">
+        <div class="p-2 text-black mb-6">
             <h4>Other plugins by {{ plugin.author.name }}</h4>
             {% if entry.author.email is not empty %}
                 {% set related_plugins = entries.fetch('en/downloads/extend/plugins', {
@@ -115,7 +115,7 @@
 
                     {% for related_plugin in related_plugins %}
                     {% if related_plugin.slug != entry.slug %}
-                        <a href="{{ url() }}/{{ related_plugin.slug }}" class="no-underline p-6 text-black flex align-middle rounded border-none mb-6 hover:border-none" style="background: #f8f9fb;">
+                        <a href="{{ url() }}/{{ related_plugin.slug }}" class="no-underline p-6 text-black flex align-middle rounded-lg border-none mb-6 hover:border-none" style="background: #f8f9fb;">
                             <i class="{{ plugin.icon }} text-5xl mr-5"></i>
                             <div class="text-left">
                                 <h4 class="text-xl pb-0 mb-0 block">{{ related_plugin.title }}</h4>

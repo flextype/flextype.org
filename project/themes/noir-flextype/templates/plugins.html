@@ -5,7 +5,7 @@
 {% set name = uri|split('/')|last %}
 
 <div class="container mx-auto bg-white text-black pb-24">
-    <div class="pl-6 pr-6 lg:pl-16 lg:pr-16 uppercase text-center pt-24 pb-24 m-0 font-noirpro-semibold">
+    <div class="uppercase text-center pt-24 pb-24 m-0 font-noirpro-semibold">
         <div>
             <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/{{ name }}">{{ entry.title }}</a></h1>
         </div>
@@ -15,8 +15,8 @@
             <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend">EXTEND</a></span>
         </div>
     </div>
-    <div class="flex content-center flex-wrap pl-6 pr-6 lg:pl-16 lg:pr-16">
-        <div class="w-full lg:w-9/12 pr-2 text-center">
+    <div class="flex content-center flex-wrap">
+        <div class="w-full lg:w-9/12 p-2 text-center">
 
             {# pagination #}
 
@@ -183,7 +183,7 @@
            {# /pagination navigation #}
 
         </div>
-        <div class="w-full lg:w-3/12">
+        <div class="w-full lg:w-3/12 p-2">
             <div class="text-black text-left rounded-lg p-6" style="background: #f8f9fb;">
             {# tags-cloud #}
             {% set tags_cloud = [] %}
@@ -210,7 +210,7 @@
                 </ul>
             {% endif %}
             {# /tags-cloud #}
-            
+
             </div>
             <div class="text-black text-center p-6">
                 <a class="no-underline uppercase text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black" href="https://docs.flextype.org/en/getting-started/installation">SUBMIT A PLUGIN</a>
