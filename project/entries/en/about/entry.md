@@ -31,7 +31,7 @@ With Flextype, you are in complete control. Design your data structure the way y
         Contributing to the Flextype is easy and you can give as little or as much time as you want.
         <br><br>
         <div class="flex content-center flex-wrap">
-            <div class="w-full lg:w-6/12 p-8 wow fadeIn">
+            <div class="w-full lg:w-6/12 p-2 wow fadeIn">
                 <div class="text-left">
                     <h4 class="text-center">FINANCIAL SUPPORT</h4>
                     Flextype is an MIT-licensed open source project and completely free to use.
@@ -41,7 +41,7 @@ With Flextype, you are in complete control. Design your data structure the way y
                     <a class="invert" href="//flextype.org/en/sponsors">Visit our Sponsors & Backers page</a>
                 </div>
             </div>
-            <div class="w-full lg:w-6/12 p-8 wow fadeIn">
+            <div class="w-full lg:w-6/12 p-2 wow fadeIn">
                 <div class="text-left">
                     <h4 class="text-center">INTERNATIONAL TRANSLATOR TEAM</h4>
                     We are on a mission to build high quality platform to develop fast, flexible, easier to manage websites with Flextype!<br><br>
