@@ -116,19 +116,23 @@
 
                 {% if related_plugins|length > 0 %}
 
+                <div class="flex content-center flex-wrap mt-10">
                     {% for related_plugin in related_plugins %}
-                    {% if related_plugin.slug != entry.slug %}
-                        <a href="{{ url() }}/{{ related_plugin.slug }}" class="no-underline p-6 text-black flex align-middle rounded-lg border-none mb-6 hover:border-none" style="background: #f8f9fb;">
-                            <i class="{{ plugin.icon }} text-5xl mr-5"></i>
-                            <div class="text-left">
-                                <h4 class="text-xl pb-0 mb-0 block">{{ related_plugin.title }}</h4>
-                                <p class="m-0">
-                                    {{ related_plugin.description }}
-                                </p>
+                        {% if related_plugin.slug != entry.slug %}
+                        <a href="{{ url() }}/{{ related_plugin.slug }}" class="w-full p-2 lg:w-6/12 no-underline">
+                            <div class="flex p-6 text-black align-middle rounded-lg" style="background: #f8f9fb;">
+                                <i class="{{ plugin.icon }} text-5xl mr-5"></i>
+                                <div class="text-left">
+                                    <h4 class="text-xl pb-0 mb-0 block">{{ related_plugin.title }}</h4>
+                                    <p class="m-0">
+                                        {{ related_plugin.description }}
+                                    </p>
+                                </div>
                             </div>
                         </a>
                         {% endif %}
                     {% endfor %}
+                </div>
 
                 {% endif %}
             {% endif %}

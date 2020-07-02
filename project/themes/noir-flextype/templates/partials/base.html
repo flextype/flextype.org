@@ -43,7 +43,8 @@
                 {% endif %}{{ registry.get('plugins.site.settings.title')|e('html') }}</title>
 
             {% set theme = registry.get('plugins.site.settings.theme') %}
-            {% do registry.set('assets.site.css.' ~ [], 'project/themes/' ~ theme ~ '/assets/dist/css/build.min.css') %}
+
+            {% do registry.set('assets.site.css.noir_flextype', 'project/themes/' ~ theme ~ '/assets/dist/css/build.min.css') %}
 
             {% if registry.has('assets.site.css') %}
                 {% for css in registry.get('assets.site.css') %}
@@ -134,7 +135,7 @@
         <!-- /Footer -->
 
         {% set theme = registry.get('plugins.site.settings.theme') %}
-        {% do registry.set('assets.site.js.' ~ [], 'project/themes/' ~ theme ~ '/assets/dist/js/build.min.js') %}
+        {% do registry.set('assets.site.js.noir_flextype', 'project/themes/' ~ theme ~ '/assets/dist/js/build.min.js') %}
 
         {% if registry.has('assets.site.js') %}
             {% for js in registry.get('assets.site.js') %}
