@@ -85,8 +85,8 @@ link_press_kit: Press kit
 link_team: Team
 navigation:
   0:
-    title: Blogs
-    link: blogs
+    title: Blog
+    link: blog
   1:
     title: Downloads
     link: downloads
