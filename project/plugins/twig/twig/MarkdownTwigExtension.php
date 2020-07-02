@@ -44,7 +44,7 @@ class MarkdownTwigExtension extends Twig_Extension
      */
     public function markdown($input, bool $cache = true) : string
     {
-        if ($input !== '') {
+        if (!empty($input)) {
             return $this->flextype['parser']->parse($input, 'markdown', $cache);
         }
 
