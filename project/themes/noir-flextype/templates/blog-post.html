@@ -38,10 +38,14 @@
                                                                             'key': 'visibility',
                                                                             'expr': 'nin',
                                                                             'value': ['draft', 'hidden']
-                                                                        }]
+                                                                        }],
+                                                                        'order_by': {
+                                                                            'field': 'published_at',
+                                                                            'direction': 'desc'
+                                                                        },
+                                                                        'set_max_result': 6
                                                                     })) %}
                 {% endfor %}
-
 
                 {% if related_posts|length > 0 %}
                 <hr class="mt-6 mb-6 border-1" style="border-color: #f8f9fb;">
