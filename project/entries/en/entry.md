@@ -10,6 +10,35 @@ uuid: d080816b-0973-4fac-8964-4f6ecf8f3561
 published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 date: 'August 04 2019 10:16:23'
+link_about: About
+link_media: Media
+link_donate: Donate
+link_sponsors: Sponsors
+link_plugins: Plugins
+link_themes: Themes
+link_downloads: Downloads
+link_community: Community
+link_documentation: Documentation
+link_changelog: Changelog
+link_press_kit: Press kit
+link_team: Team
+navigation:
+  0:
+    title: Blog
+    link: blog
+  1:
+    title: Downloads
+    link: downloads
+  2:
+    title: Documentation
+    link: docs.flextype.org
+    external: true
+  3:
+    title: Community
+    link: community
+  4:
+    title: About
+    link: about
 parsers:
   shortcodes:
     enabled: true
