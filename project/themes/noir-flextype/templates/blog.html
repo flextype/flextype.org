@@ -108,6 +108,20 @@
                     </div>
                 </a>
                 {% endfor %}
+
+                {# pagination navigation #}
+                <div class="text-center">
+                    {% if (page - 1) > 0 %}
+                        <a href="?page={{ page - 1 }}{% if tag %}&tag={{ tag }}{% endif %}">&larr;</a>
+                    {% endif %}
+                    {% if blog_posts_pages is not null and blog_posts_pages > 1 %}
+                        {{ page }} / {{ blog_posts_pages }}
+                    {% endif %}
+                    {% if (page) < blog_posts_pages %}
+                        <a href="?page={{ page + 1 }}{% if tag %}&tag={{ tag }}{% endif %}">&rarr;</a>
+                    {% endif %}
+                </div>
+                {# /pagination navigation #}
             </div>
             <div class="w-full lg:w-3/12 p-2">
                 <div class="text-black text-left rounded-lg p-6" style="background: #f8f9fb;">
@@ -140,18 +154,4 @@
             </div>
         </div>
     </div>
-
-    {# pagination navigation #}
-    <div class="text-center">
-        {% if (page - 1) > 0 %}
-            <a href="?page={{ page - 1 }}{% if tag %}&tag={{ tag }}{% endif %}">&larr;</a>
-        {% endif %}
-        {% if blog_posts_pages is not null and blog_posts_pages > 1 %}
-            {{ page }} / {{ blog_posts_pages }}
-        {% endif %}
-        {% if (page) < blog_posts_pages %}
-            <a href="?page={{ page + 1 }}{% if tag %}&tag={{ tag }}{% endif %}">&rarr;</a>
-        {% endif %}
-    </div>
-    {# /pagination navigation #}
 {% endblock %}
