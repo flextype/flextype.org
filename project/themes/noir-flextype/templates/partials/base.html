@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="{{ locale }}">
-    {% set entry_locale = entries.fetch(locale) %}
+    {% set translates = serializer_decode(filesystem_read(PATH_PROJECT ~ '/translates/' ~ full_locale ~ '.yaml'), 'yaml') %}
     {% set static_version = 4 %}
     <head>
         {% block head %}
@@ -68,7 +68,7 @@
               </div>
               <div class="w-full float-right lg:w-9/12 font-noirpro-medium">
                 <div class="text-right">
-                    {% for item in entry_locale.navigation %}
+                    {% for item in translates.navigation %}
                         <a href="{% if item.external %}//{{ item.link }}{% else %}{{ url() }}/{{ locale }}/{{ item.link }}{% endif %}"
                            class="{% if entry.slug == locale ~ '/' ~ item.link %}active{% endif %}
                                    uppercase
@@ -101,23 +101,23 @@
                 <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
                     <h4>Flextype</h4>
                     <ul class="list-none m-0 p-0">
-                        <li><a href="{{ url() }}/{{ locale }}/about">{{ entry_locale.link_about }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/team">{{ entry_locale.link_team }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/sponsors">{{ entry_locale.link_sponsors }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/press-kit">{{ entry_locale.link_press_kit }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/changelog">{{ entry_locale.link_changelog }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/about">{{ translates.link_about }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/team">{{ translates.link_team }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/sponsors">{{ translates.link_sponsors }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/press-kit">{{ translates.link_press_kit }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/changelog">{{ translates.link_changelog }}</a></li>
                     </ul>
                 </div>
                 <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
-                    <h4>{{ entry_locale.link_downloads }}</h4>
+                    <h4>{{ translates.link_downloads }}</h4>
                     <ul class="list-none m-0 p-0">
                         <li><a href="{{ url() }}/{{ locale }}/downloads">Flextype</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/downloads/extend/plugins">{{ entry_locale.link_plugins }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/downloads/extends/themes">{{ entry_locale.link_themes }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/downloads/extend/plugins">{{ translates.link_plugins }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/downloads/extends/themes">{{ translates.link_themes }}</a></li>
                     </ul>
                 </div>
                 <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
-                    <h4>{{ entry_locale.link_community }}</h4>
+                    <h4>{{ translates.link_community }}</h4>
                     <ul class="list-none m-0 p-0">
                         <li><a href="{{ url() }}/{{ locale }}/discord">Discord</a></li>
                         <li><a href="https://github.com/flextype">Github</a></li>
