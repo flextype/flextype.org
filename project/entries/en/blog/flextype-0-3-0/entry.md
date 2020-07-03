@@ -1,8 +1,8 @@
 ---
-title: Flextype 0.2.1 release
+title: Flextype 0.3.0 release
 tags: release
 template: blog-post
-published_at: '26-03-2018 09:46'
+published_at: '05-05-2018 09:46'
 ---
 
 ### New
