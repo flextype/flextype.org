@@ -1,7 +1,7 @@
 ---
 title: Bootstrap Blog
 description: Bootstrap Blog theme for Flextype
-tags: bootstrap, blog, html, css
+keywords: bootstrap, blog, html, css
 github: https://github.com/flextype-themes/bootstrap-blog
 preview: https://github.com/flextype-themes/bootstrap-blog/raw/master/preview.png
 author:

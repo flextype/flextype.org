@@ -2,7 +2,7 @@
 title: Accounts
 description: Accounts plugins for Flextype.
 icon: fas fa-users
-tags: admin, accounts, php, css, dev
+keywords: accounts, users
 github: https://github.com/flextype-plugins/accounts
 author:
   name: Sergey Romanenko
