@@ -77,10 +77,10 @@
                 <div class="w-full lg:w-3/12">
                     <p class="m-0 text-gray-500">Links</p>
                     <p>
-                        <a href="{{ plugin.homepage }}">Homepage</a><br>
-                        <a href="{{ plugin.homepage }}">Documentation</a><br>
-                        <a href="{{ plugin.bugs }}">Changelog</a><br>
-                        <a href="{{ plugin.bugs }}">Issues</a>
+                        {% if plugin.homepage %}<a href="{{ plugin.homepage }}">Homepage</a><br>{% endif %}
+                        {% if plugin.documentation %}<a href="{{ plugin.documentation }}">Documentation</a><br>{% endif %}
+                        {% if plugin.changelog %}<a href="{{ plugin.changelog }}">Changelog</a><br>{% endif %}
+                        {% if plugin.bugs %}<a href="{{ plugin.bugs }}">Issues</a>{% endif %}
                     </p>
                 </div>
             </div>
@@ -101,7 +101,7 @@
         <div class="p-2 text-black mb-6">
             <h4>Other plugins by {{ plugin.author.name }}</h4>
             {% if entry.author.email is not empty %}
-                {% set related_plugins = entries.fetch('en/downloads/extend/plugins', {
+                {% set related_plugins = entries.fetch(locale ~ '/downloads/extend/plugins', {
                                                                     'where': {
                                                                         'key': 'author.email',
                                                                         'expr': 'eq',

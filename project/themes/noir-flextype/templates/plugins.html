@@ -33,7 +33,7 @@
               {% if tag %}
 
                   {# @todo get count from cache! #}
-                  {% set plugins_items_length = entries.fetch('en/downloads/extend/plugins', {
+                  {% set plugins_items_length = entries.fetch(locale ~ '/downloads/extend/plugins', {
                                                                       'where': {
                                                                           'key': 'tags',
                                                                           'expr': 'contains',
@@ -55,7 +55,7 @@
                   {% set plugins_items_offset = (page-1)*plugins_items_limit %}
                   {% if plugins_items_offset < 0 %}{% set plugins_items_offset = 0 %}{% endif %}
 
-                  {% set plugins_items = entries.fetch('en/downloads/extend/plugins', {
+                  {% set plugins_items = entries.fetch(locale ~ '/downloads/extend/plugins', {
                                                               'where': {
                                                                   'key': 'tags',
                                                                   'expr': 'contains',
@@ -77,7 +77,7 @@
               {% elseif author %}
 
                 {# @todo get count from cache! #}
-                {% set plugins_items_length = entries.fetch('en/downloads/extend/plugins', {
+                {% set plugins_items_length = entries.fetch(locale ~ '/downloads/extend/plugins', {
                                                                     'where': {
                                                                         'key': 'author.email',
                                                                         'expr': 'eq',
@@ -99,7 +99,7 @@
                 {% set plugins_items_offset = (page-1)*plugins_items_limit %}
                 {% if plugins_items_offset < 0 %}{% set plugins_items_offset = 0 %}{% endif %}
 
-                {% set plugins_items = entries.fetch('en/downloads/extend/plugins', {
+                {% set plugins_items = entries.fetch(locale ~ '/downloads/extend/plugins', {
                                                             'where': {
                                                                 'key': 'author.email',
                                                                 'expr': 'eq',
@@ -120,7 +120,7 @@
               {% else %}
 
                   {# @todo get count from cache! #}
-                  {% set plugins_items_length = entries.fetch('en/downloads/extend/plugins', {
+                  {% set plugins_items_length = entries.fetch(locale ~ '/downloads/extend/plugins', {
                                                                       'where': {
                                                                           'key': 'visibility',
                                                                           'expr': 'nin',
@@ -139,7 +139,7 @@
                   {% set plugins_items_offset = (page-1)*plugins_items_limit %}
                   {% if plugins_items_offset < 0 %}{% set plugins_items_offset = 0 %}{% endif %}
 
-                  {% set plugins_items = entries.fetch('en/downloads/extend/plugins', {
+                  {% set plugins_items = entries.fetch(locale ~ '/downloads/extend/plugins', {
                                                               'where': {
                                                                   'key': 'visibility',
                                                                   'expr': 'nin',
@@ -187,7 +187,7 @@
             <div class="text-black text-left rounded-lg p-6" style="background: #f8f9fb;">
             {# tags-cloud #}
             {% set tags_cloud = [] %}
-            {% for post in entries.fetch('en/downloads/extend/plugins', {
+            {% for post in entries.fetch(locale ~ '/downloads/extend/plugins', {
                                                     'where': {
                                                         'key': 'visibility',
                                                         'expr': 'nin',
@@ -205,7 +205,7 @@
                 <h4 class="text-left mb-2">Tags</h4>
                 <ul class="list-none m-0">
                     {% for tag in tags_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
-                        <li><a class="no-underline py-1 block" href="{{ url() }}/en/downloads/extend/plugins?tag={{ tag }}">#{{ tag|trim }}</a></li>
+                        <li><a class="no-underline py-1 block" href="{{ url() }}/{{ locale }}/downloads/extend/plugins?tag={{ tag }}">#{{ tag|trim }}</a></li>
                     {% endfor %}
                 </ul>
             {% endif %}
@@ -213,7 +213,7 @@
 
             </div>
             <div class="text-black text-center p-6">
-                <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black" href="https://docs.flextype.org/en/getting-started/installation">SUBMIT A PLUGIN</a>
+                <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black" href="https://docs.flextype.org/{{ locale }}/getting-started/installation">SUBMIT A PLUGIN</a>
             </div>
         </div>
     </div>
