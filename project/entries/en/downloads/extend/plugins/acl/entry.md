@@ -1,7 +1,7 @@
 ---
 title: ACL
 description: ACL Panel plugin for Flextype.
-icon: fas fa-users
+icon: fas fa-users-cog
 tags: admin
 author:
   name: Sergey Romanenko
