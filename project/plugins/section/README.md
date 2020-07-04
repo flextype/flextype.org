@@ -27,12 +27,12 @@ The following dependencies need to be downloaded and installed for Section Plugi
 
 Create section
 ```
-[section_create name=section-name]Section content here[/section_create]
+[section_create id=section-name]Section content here[/section_create]
 ```
 
 Get section
 ```
-[section name=section-name]
+[section_fetch id=section-name]
 ```
 
 ## Settings
