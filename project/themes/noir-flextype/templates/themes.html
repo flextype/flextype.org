@@ -33,7 +33,7 @@
                   {# @todo get count from cache! #}
                   {% set themes_items_length = entries.fetch(locale ~ '/downloads/extend/themes', {
                                                                       'where': {
-                                                                          'key': 'tags',
+                                                                          'key': 'keywords',
                                                                           'expr': 'contains',
                                                                           'value': tag
                                                                       },
@@ -55,7 +55,7 @@
 
                   {% set themes_items = entries.fetch(locale ~ '/downloads/extend/themes', {
                                                               'where': {
-                                                                  'key': 'tags',
+                                                                  'key': 'keywords',
                                                                   'expr': 'contains',
                                                                   'value': tag
                                                               },
@@ -183,8 +183,8 @@
         </div>
         <div class="w-full lg:w-3/12 p-2">
             <div class="text-black text-left rounded-lg p-6" style="background: #f8f9fb;">
-            {# tags-cloud #}
-            {% set tags_cloud = [] %}
+            {# keywords-cloud #}
+            {% set keywords_cloud = [] %}
             {% for post in entries.fetch(locale ~ '/downloads/extend/themes', {
                                                     'where': {
                                                         'key': 'visibility',
@@ -196,18 +196,18 @@
                                                         'direction': 'desc'
                                                     }
                                                 }) %}
-                {% set tags_cloud = tags_cloud|merge(post.tags|split(',')) %}
+                {% set keywords_cloud = keywords_cloud|merge(post.keywords|split(',')) %}
             {% endfor %}
 
-            {% if tags_cloud|length > 0 %}
+            {% if keywords_cloud|length > 0 %}
                 <h4 class="text-left mb-2">Tags</h4>
                 <ul class="list-none m-0">
-                    {% for tag in tags_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
-                        <li><a class="no-underline py-1 block" href="{{ url() }}/{{ locale }}/downloads/extend/themes?tag={{ tag }}">#{{ tag|trim }}</a></li>
+                    {% for tag in keywords_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
+                        <li><a class="no-underline py-1 block" href="{{ url() }}/{{ locale }}/downloads/extend/themes?tag={{ tag|trim }}">#{{ tag|trim }}</a></li>
                     {% endfor %}
                 </ul>
             {% endif %}
-            {# /tags-cloud #}
+            {# /keywords-cloud #}
 
             </div>
             <!--

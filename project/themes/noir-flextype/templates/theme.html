@@ -37,7 +37,7 @@
                 <div class="flex-grow"></div>
                 <div>
                     <a class="no-underline text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn"
-                    href="https://github.com/flextype-themes/admin/releases/download/v{{ theme.version }}/{{ name }}-{{ theme.version }}.zip">DOWNLOAD</a>
+                    href="{{ entry.github }}/releases/download/v{{ theme.version }}/{{ name }}-{{ theme.version }}.zip">DOWNLOAD</a>
                 </div>
             </div>
         </div>
@@ -87,8 +87,8 @@
                 <div class="w-full">
                     <p class="m-0 text-gray-500">Tags</p>
                     <p>
-                        {% for tag in entry.tags|split(',') %}
-                            <a class="no-underline" href="{{ url() }}/themes?tag={{ tag }}">#{{ tag|trim }}</a>
+                        {% for tag in entry.keywords|split(',') %}
+                            <a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/themes?tag={{ tag|trim }}">#{{ tag|trim }}</a>
                         {% endfor %}
                     </p>
                 </div>

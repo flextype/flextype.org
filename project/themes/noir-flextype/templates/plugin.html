@@ -38,7 +38,7 @@
                 <div class="flex-grow"></div>
                 <div>
                     <a class="no-underline text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn"
-                    href="https://github.com/flextype-plugins/admin/releases/download/v{{ plugin.version }}/{{ name }}-{{ plugin.version }}.zip">DOWNLOAD</a>
+                    href="{{ entry.github }}/releases/download/v{{ plugin.version }}/{{ name }}-{{ plugin.version }}.zip">DOWNLOAD</a>
                 </div>
             </div>
         </div>
@@ -88,8 +88,8 @@
                 <div class="w-full">
                     <p class="m-0 text-gray-500">Tags</p>
                     <p>
-                        {% for tag in entry.tags|split(',') %}
-                            <a class="no-underline" href="{{ url() }}/plugins?tag={{ tag }}">#{{ tag|trim }}</a>
+                        {% for tag in entry.keywords|split(',') %}
+                            <a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/plugins?tag={{ tag|trim }}">#{{ tag|trim }}</a>
                         {% endfor %}
                     </p>
                 </div>
@@ -121,7 +121,7 @@
                         {% if related_plugin.slug != entry.slug %}
                         <a href="{{ url() }}/{{ related_plugin.slug }}" class="w-full p-2 lg:w-6/12 no-underline">
                             <div class="flex p-6 text-black align-middle rounded-lg" style="background: #f8f9fb;">
-                                <i class="{{ plugin.icon }} text-5xl mr-5"></i>
+                                <i class="{{ related_plugin.icon }} text-5xl mr-5"></i>
                                 <div class="text-left">
                                     <h4 class="text-xl pb-0 mb-0 block">{{ related_plugin.title }}</h4>
                                     <p class="m-0">
