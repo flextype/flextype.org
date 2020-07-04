@@ -137,16 +137,6 @@
                 {% endif %}
             {% endif %}
         </div>
-
-        {#% set readme = parser_parse(filesystem_read("https://raw.githubusercontent.com/" ~ repo_name[repo_name_length-2] ~ "/" ~ repo_name[repo_name_length-1] ~ "/master/README.md"), "markdown") %#}
-        {#
-        <div class="p-6 text-black flex align-middle items-center rounded border-none mb-6 hover:border-none" style="background: #f8f9fb;">
-        <div class="plugin-readme">
-            {{ readme|raw }}
-        </div>
-        </div>
-        #}
-
     </div>
 </div>
 {% endblock %}

@@ -215,31 +215,6 @@
             <div class="text-black text-center p-6">
                 <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black" href="https://docs.flextype.org/en/getting-started/installation">SUBMIT A PLUGIN</a>
             </div>
-            <!--
-            <div class="text-black text-left rounded-lg p-6 mt-6" style="background: #f8f9fb;">
-                {% set plugins = [] %}
-                {% for plugin in entries.fetch('en/downloads/extend/plugins', {
-                                                        'where': {
-                                                            'key': 'visibility',
-                                                            'expr': 'nin',
-                                                            'value': ['draft', 'hidden']
-                                                        },
-                                                        'order_by': {
-                                                            'field': 'published_at',
-                                                            'direction': 'desc'
-                                                        }
-                                                    }) %}
-                    {% set plugins = plugins|merge({'email': plugin.author.email}) %}
-                {% endfor %}
-
-                {% if plugins|length > 0 %}
-                    <h4 class="text-left mb-2">Authors</h4>
-                    {% for plugin in plugins|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
-                        <a href="{{ url() }}/en/downloads/extend/plugins?author={{ plugin }}"><span class="badge badge-primary">{{ plugin }}</span></a>
-                    {% endfor %}
-                {% endif %}
-            </div>
-            -->
         </div>
     </div>
 </div>
