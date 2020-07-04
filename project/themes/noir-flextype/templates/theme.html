@@ -87,7 +87,8 @@
                 <div class="w-full">
                     <p class="m-0 text-gray-500">Tags</p>
                     <p>
-                        {% for tag in entry.keywords|split(',') %}
+                        {% set keywords = entry.keywords|replace({' ': ''}) %}
+                        {% for tag in keywords|split(',') %}
                             <a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/themes?tag={{ tag|trim }}">#{{ tag|trim }}</a>
                         {% endfor %}
                     </p>

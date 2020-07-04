@@ -196,7 +196,8 @@
                                                         'direction': 'desc'
                                                     }
                                                 }) %}
-                {% set keywords_cloud = keywords_cloud|merge(post.keywords|split(',')) %}
+                {% set keywords = post.keywords|replace({' ': ''}) %}
+                {% set keywords_cloud = keywords_cloud|merge(keywords|split(',')) %}
             {% endfor %}
 
             {% if keywords_cloud|length > 0 %}
