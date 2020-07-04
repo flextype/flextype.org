@@ -210,10 +210,24 @@
             {# /tags-cloud #}
 
             </div>
+            <!--
             <div class="text-black text-center p-6">
-                <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black" href="https://docs.flextype.org/{{ locale }}/getting-started/installation">SUBMIT A PLUGIN</a>
+                <a href="#first-modal" class="tinymodal-modal no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black">SUBMIT A PLUGIN</a>
+            </div>
+            -->
+        </div>
+    </div>
+
+    <div id="first-modal" class="tinymodal-window">
+    	<div class="tinymodal-inner">
+            <h3 class="text-center">SUBMIT A PLUGIN</h3>
+            <div class="mb-10">
+
+            </div>
+            <div class="text-center">
+        	    <button onclick="javascript:closeModal();" class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black">Close</button>
             </div>
         </div>
     </div>
-</div>
+
 {% endblock %}
