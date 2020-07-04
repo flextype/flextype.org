@@ -142,12 +142,10 @@
                     {% endfor %}
 
                     {% if tags_cloud|length > 0 %}
-                    <h4 class="text-left mb-2">Tags</h4>
-                    <ul class="list-none m-0">
+                        <h4 class="text-left mb-2">Tags</h4>
                         {% for tag in tags_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
-                            <li><a class="no-underline py-1 block" href="{{ url() }}/{{ locale }}/blog?tag={{ tag }}">#{{ tag|trim }}</a></li>
+                            <a class="no-underline" href="{{ url() }}/{{ locale }}/blog?tag={{ tag }}">#{{ tag|trim }}</a>
                         {% endfor %}
-                    </ul>
                     {% endif %}
                     {# /tags-cloud #}
                 </div>

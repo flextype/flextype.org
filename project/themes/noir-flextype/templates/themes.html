@@ -202,11 +202,9 @@
 
             {% if keywords_cloud|length > 0 %}
                 <h4 class="text-left mb-2">Tags</h4>
-                <ul class="list-none m-0">
-                    {% for tag in keywords_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
-                        <li><a class="no-underline py-1 block" href="{{ url() }}/{{ locale }}/downloads/extend/themes?tag={{ tag|trim }}">#{{ tag|trim }}</a></li>
-                    {% endfor %}
-                </ul>
+                {% for tag in keywords_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
+                    <a class="no-underline rounded-lg px-2 mb-2 inline-block bg-gray-200" href="{{ url() }}/{{ locale }}/downloads/extend/plugins?tag={{ tag|trim }}">{{ tag|trim }}</a>
+                {% endfor %}
             {% endif %}
             {# /keywords-cloud #}
 

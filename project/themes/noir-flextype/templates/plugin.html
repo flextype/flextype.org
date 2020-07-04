@@ -90,7 +90,7 @@
                     <p>
                         {% set keywords = entry.keywords|replace({' ': ''}) %}
                         {% for tag in keywords|split(',') %}
-                            <a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/plugins?tag={{ tag|trim }}">#{{ tag|trim }}</a>
+                            <a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/plugins?tag={{ tag|trim }}">{{ tag|trim }}</a>{% if not loop.last %}, {% endif %}
                         {% endfor %}
                     </p>
                 </div>
