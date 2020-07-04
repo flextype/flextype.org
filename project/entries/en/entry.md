@@ -38,12 +38,12 @@ navigation:
     link: community
   4:
     title: About
-    link: about
+    link: about    
 parsers:
   shortcodes:
     enabled: true
-    cache: true
-    fields: "*"
+    cache: false
+    fields: ['content']
 ---
 
 [section_create id=intro_section_h1]
