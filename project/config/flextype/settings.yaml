@@ -51,7 +51,7 @@ date_display_format: 'd-m-Y'
 #
 # - display: Display errors or not.
 errors:
-  display: true
+  display: false
 
 # Entries
 #
@@ -91,7 +91,7 @@ entries:
 #
 # - sqlite3.table    SQLite3 Table
 cache:
-  enabled: false
+  enabled: true
   prefix: flextype
   driver: auto
   lifetime: 604800
