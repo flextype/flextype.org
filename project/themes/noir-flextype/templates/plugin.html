@@ -47,14 +47,14 @@
 
         {% if entry.content %}
             {{ entry.content|shortcode|markdown|raw }}
-        <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
+            <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
         {% endif %}
 
         {% if entry.preview %}
-        <div class="text-center">
-            <img class="" src="{{ entry.preview }}" alt="">
-        </div>
-        <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
+            <div class="text-center">
+                <img class="" src="{{ entry.preview }}" alt="">
+            </div>
+            <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
         {% endif %}
 
         <div class="p-6 text-black mb-6">
