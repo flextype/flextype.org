@@ -20,6 +20,6 @@ With Flextype, you are in complete control. Design your data structure the way y
 
 <br>
 
-<a class="text-center relative text-lg relative px-6 py-3 text-black bg-white border-black border-3 hover:bg-black hover:text-white hover:bg-black hover:text-white hover:border-black hover:border-3" href="[url]/site/uploads/entries/en/press-kit/flextype-logo.png">
+<a class="no-underline uppercase text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black" href="[url]/site/uploads/entries/en/press-kit/flextype-logo.png">
     DOWNLOAD LOGO
 </a>

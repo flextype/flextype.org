@@ -16,7 +16,7 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 ---
 
 <center>
-    <a class="text-center relative text-lg relative pr-6 pl-6 pt-6 pb-6 text-black bg-white border-black border-3 hover:bg-black hover:text-white hover:bg-black hover:text-white hover:border-black hover:border-3" href="https://discord.gg/CCKPKVG">
+    <a class="no-underline uppercase text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black" href="https://discord.gg/CCKPKVG">
         Join the Conversation
     </a>
 </center>

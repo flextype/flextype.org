@@ -32,6 +32,7 @@ use const T_ELSEIF;
 use const T_EQUAL;
 use const T_FOR;
 use const T_FOREACH;
+use const T_GLOBAL;
 use const T_HEREDOC;
 use const T_IF;
 use const T_INC;
@@ -64,7 +65,7 @@ class UnusedVariableSniff implements Sniff
 	public $ignoreUnusedValuesWhenOnlyKeysAreUsedInForeach = false;
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -74,8 +75,8 @@ class UnusedVariableSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $variablePointer
 	 */
 	public function process(File $phpcsFile, $variablePointer): void
@@ -157,7 +158,7 @@ class UnusedVariableSniff implements Sniff
 		}
 
 		if (in_array($tokens[$scopeOwnerPointer]['code'], TokenHelper::$functionTokenCodes, true)) {
-			if ($this->isStaticVariable($phpcsFile, $scopeOwnerPointer, $variableName)) {
+			if ($this->isStaticOrGlobalVariable($phpcsFile, $scopeOwnerPointer, $variableName)) {
 				return;
 			}
 
@@ -362,7 +363,7 @@ class UnusedVariableSniff implements Sniff
 		for ($i = $tokens[$loopPointer]['scope_opener'] + 1; $i < $tokens[$loopPointer]['scope_closer']; $i++) {
 			if (
 				in_array($tokens[$i]['code'], [T_DOUBLE_QUOTED_STRING, T_HEREDOC], true)
-				&& VariableHelper::isUsedInScopeInString($phpcsFile, $variablePointer, $i)
+				&& VariableHelper::isUsedInScopeInString($phpcsFile, $variableName, $i)
 			) {
 				return true;
 			}
@@ -448,7 +449,7 @@ class UnusedVariableSniff implements Sniff
 		return $parenthesisOwnerPointer !== null && $tokens[$parenthesisOwnerPointer]['code'] === T_FOREACH;
 	}
 
-	private function isStaticVariable(File $phpcsFile, int $functionPointer, string $variableName): bool
+	private function isStaticOrGlobalVariable(File $phpcsFile, int $functionPointer, string $variableName): bool
 	{
 		$tokens = $phpcsFile->getTokens();
 
@@ -461,7 +462,7 @@ class UnusedVariableSniff implements Sniff
 			}
 
 			$pointerBeforeParameter = TokenHelper::findPreviousEffective($phpcsFile, $i - 1);
-			if ($tokens[$pointerBeforeParameter]['code'] === T_STATIC) {
+			if (in_array($tokens[$pointerBeforeParameter]['code'], [T_STATIC, T_GLOBAL], true)) {
 				return true;
 			}
 		}

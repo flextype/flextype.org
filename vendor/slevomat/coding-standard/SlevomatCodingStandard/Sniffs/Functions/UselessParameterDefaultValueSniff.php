@@ -9,9 +9,7 @@ use function array_key_exists;
 use function count;
 use function sprintf;
 use function strtolower;
-use const T_CLOSURE;
 use const T_COMMA;
-use const T_FUNCTION;
 
 class UselessParameterDefaultValueSniff implements Sniff
 {
@@ -19,19 +17,16 @@ class UselessParameterDefaultValueSniff implements Sniff
 	public const CODE_USELESS_PARAMETER_DEFAULT_VALUE = 'UselessParameterDefaultValue';
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
-		return [
-			T_FUNCTION,
-			T_CLOSURE,
-		];
+		return TokenHelper::$functionTokenCodes;
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $functionPointer
 	 */
 	public function process(File $phpcsFile, $functionPointer): void
@@ -60,6 +55,10 @@ class UselessParameterDefaultValueSniff implements Sniff
 
 				if (array_key_exists('default', $nextParameter)) {
 					continue;
+				}
+
+				if ($nextParameter['variable_length']) {
+					break;
 				}
 
 				$fix = $phpcsFile->addFixableError(

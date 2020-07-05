@@ -29,6 +29,9 @@ class TraitUseSpacingSniff implements Sniff
 	public $linesCountBeforeFirstUse = 1;
 
 	/** @var int */
+	public $linesCountBeforeFirstUseWhenFirstInClass = null;
+
+	/** @var int */
 	public $linesCountBetweenUses = 0;
 
 	/** @var int */
@@ -38,7 +41,7 @@ class TraitUseSpacingSniff implements Sniff
 	public $linesCountAfterLastUseWhenLastInClass = 1;
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -50,8 +53,8 @@ class TraitUseSpacingSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $classPointer
 	 */
 	public function process(File $phpcsFile, $classPointer): void
@@ -69,8 +72,11 @@ class TraitUseSpacingSniff implements Sniff
 
 	private function checkLinesBeforeFirstUse(File $phpcsFile, int $firstUsePointer): void
 	{
+		$tokens = $phpcsFile->getTokens();
+
 		/** @var int $pointerBeforeFirstUse */
 		$pointerBeforeFirstUse = TokenHelper::findPreviousExcluding($phpcsFile, T_WHITESPACE, $firstUsePointer - 1);
+		$isAtTheStartOfClass = $tokens[$pointerBeforeFirstUse]['code'] === T_OPEN_CURLY_BRACKET;
 
 		$whitespaceBeforeFirstUse = '';
 
@@ -79,6 +85,12 @@ class TraitUseSpacingSniff implements Sniff
 		}
 
 		$requiredLinesCountBeforeFirstUse = SniffSettingsHelper::normalizeInteger($this->linesCountBeforeFirstUse);
+		if (
+			$isAtTheStartOfClass
+			&& $this->linesCountBeforeFirstUseWhenFirstInClass !== null
+		) {
+			$requiredLinesCountBeforeFirstUse = SniffSettingsHelper::normalizeInteger($this->linesCountBeforeFirstUseWhenFirstInClass);
+		}
 		$actualLinesCountBeforeFirstUse = substr_count($whitespaceBeforeFirstUse, $phpcsFile->eolChar) - 1;
 
 		if ($actualLinesCountBeforeFirstUse === $requiredLinesCountBeforeFirstUse) {
@@ -99,9 +111,10 @@ class TraitUseSpacingSniff implements Sniff
 			return;
 		}
 
+		$pointerBeforeIndentation = TokenHelper::findPreviousContent($phpcsFile, T_WHITESPACE, $phpcsFile->eolChar, $firstUsePointer, $pointerBeforeFirstUse);
+
 		$phpcsFile->fixer->beginChangeset();
 
-		$pointerBeforeIndentation = TokenHelper::findPreviousContent($phpcsFile, T_WHITESPACE, $phpcsFile->eolChar, $firstUsePointer, $pointerBeforeFirstUse);
 		if ($pointerBeforeIndentation !== null) {
 			for ($i = $pointerBeforeFirstUse + 1; $i <= $pointerBeforeIndentation; $i++) {
 				$phpcsFile->fixer->replaceToken($i, '');
@@ -110,6 +123,7 @@ class TraitUseSpacingSniff implements Sniff
 		for ($i = 0; $i <= $requiredLinesCountBeforeFirstUse; $i++) {
 			$phpcsFile->fixer->addNewline($pointerBeforeFirstUse);
 		}
+
 		$phpcsFile->fixer->endChangeset();
 	}
 
@@ -165,7 +179,7 @@ class TraitUseSpacingSniff implements Sniff
 	}
 
 	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @param File $phpcsFile
 	 * @param int[] $usePointers
 	 */
 	private function checkLinesBetweenUses(File $phpcsFile, array $usePointers): void

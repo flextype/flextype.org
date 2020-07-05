@@ -2,7 +2,6 @@
 
 namespace SlevomatCodingStandard\Sniffs\ControlStructures;
 
-use Exception;
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
 use SlevomatCodingStandard\Helpers\ConditionHelper;
@@ -27,7 +26,7 @@ class UselessIfConditionWithReturnSniff implements Sniff
 	public $assumeAllConditionExpressionsAreAlreadyBoolean = false;
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -37,8 +36,8 @@ class UselessIfConditionWithReturnSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $ifPointer
 	 */
 	public function process(File $phpcsFile, $ifPointer): void
@@ -46,7 +45,8 @@ class UselessIfConditionWithReturnSniff implements Sniff
 		$tokens = $phpcsFile->getTokens();
 
 		if (!array_key_exists('scope_closer', $tokens[$ifPointer])) {
-			throw new Exception('"if" without curly braces is not supported.');
+			// If without curly braces is not supported.
+			return;
 		}
 
 		$ifBooleanPointer = $this->findBooleanAfterReturnInScope($phpcsFile, $tokens[$ifPointer]['scope_opener']);
@@ -54,7 +54,7 @@ class UselessIfConditionWithReturnSniff implements Sniff
 			return;
 		}
 
-		$newCondition = function () use ($phpcsFile, $tokens, $ifBooleanPointer, $ifPointer): string {
+		$newCondition = static function () use ($phpcsFile, $tokens, $ifBooleanPointer, $ifPointer): string {
 			return strtolower($tokens[$ifBooleanPointer]['content']) === 'true'
 				? TokenHelper::getContent($phpcsFile, $tokens[$ifPointer]['parenthesis_opener'] + 1, $tokens[$ifPointer]['parenthesis_closer'] - 1)
 				: ConditionHelper::getNegativeCondition($phpcsFile, $tokens[$ifPointer]['parenthesis_opener'] + 1, $tokens[$ifPointer]['parenthesis_closer'] - 1);
@@ -81,7 +81,8 @@ class UselessIfConditionWithReturnSniff implements Sniff
 			&& $tokens[$elsePointer]['code'] === T_ELSE
 		) {
 			if (!array_key_exists('scope_closer', $tokens[$elsePointer])) {
-				throw new Exception('"else" without curly braces is not supported.');
+				// Else without curly braces is not supported.
+				return;
 			}
 
 			$elseBooleanPointer = $this->findBooleanAfterReturnInScope($phpcsFile, $tokens[$elsePointer]['scope_opener']);

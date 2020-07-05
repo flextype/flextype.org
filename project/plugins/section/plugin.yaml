@@ -1,0 +1,14 @@
+name: Section
+version: 1.5.1
+icon: fas fa-layer-group
+description: Section plugin provides a basic way to work with content sections.
+author:
+  name: Sergey Romanenko
+  email: awilum@yandex.ru
+  url: https://flextype.org
+homepage: https://github.com/flextype-plugins/section
+bugs: https://github.com/flextype-plugins/section/issues
+license: MIT
+
+dependencies:
+  flextype: 0.9.8

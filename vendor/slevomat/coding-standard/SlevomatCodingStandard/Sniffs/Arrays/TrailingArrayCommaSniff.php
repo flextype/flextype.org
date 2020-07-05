@@ -5,7 +5,11 @@ namespace SlevomatCodingStandard\Sniffs\Arrays;
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
 use SlevomatCodingStandard\Helpers\TokenHelper;
+use function in_array;
+use const PHP_VERSION_ID;
 use const T_COMMA;
+use const T_END_HEREDOC;
+use const T_END_NOWDOC;
 use const T_OPEN_SHORT_ARRAY;
 
 class TrailingArrayCommaSniff implements Sniff
@@ -13,8 +17,11 @@ class TrailingArrayCommaSniff implements Sniff
 
 	public const CODE_MISSING_TRAILING_COMMA = 'MissingTrailingComma';
 
+	/** @var bool */
+	public $enableAfterHeredoc = PHP_VERSION_ID >= 70300;
+
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -24,8 +31,8 @@ class TrailingArrayCommaSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $stackPointer
 	 */
 	public function process(File $phpcsFile, $stackPointer): void
@@ -47,6 +54,10 @@ class TrailingArrayCommaSniff implements Sniff
 			|| $previousToCloseParenthesisToken['code'] === T_COMMA
 			|| $closeParenthesisToken['line'] === $previousToCloseParenthesisToken['line']
 		) {
+			return;
+		}
+
+		if (!$this->enableAfterHeredoc && in_array($previousToCloseParenthesisToken['code'], [T_END_HEREDOC, T_END_NOWDOC], true)) {
 			return;
 		}
 

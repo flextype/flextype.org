@@ -2,13 +2,13 @@
 
 namespace SlevomatCodingStandard\Sniffs\ControlStructures;
 
-use Exception;
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
 use SlevomatCodingStandard\Helpers\IdentificatorHelper;
 use SlevomatCodingStandard\Helpers\TokenHelper;
 use function array_key_exists;
 use function sprintf;
+use const T_BITWISE_AND;
 use const T_ELSE;
 use const T_EQUAL;
 use const T_IF;
@@ -26,7 +26,7 @@ class RequireTernaryOperatorSniff implements Sniff
 	public $ignoreMultiLine = false;
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -36,8 +36,8 @@ class RequireTernaryOperatorSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $ifPointer
 	 */
 	public function process(File $phpcsFile, $ifPointer): void
@@ -45,7 +45,8 @@ class RequireTernaryOperatorSniff implements Sniff
 		$tokens = $phpcsFile->getTokens();
 
 		if (!array_key_exists('scope_closer', $tokens[$ifPointer])) {
-			throw new Exception('"if" without curly braces is not supported.');
+			// If without curly braces is not supported.
+			return;
 		}
 
 		$elsePointer = TokenHelper::findNextEffective($phpcsFile, $tokens[$ifPointer]['scope_closer'] + 1);
@@ -54,7 +55,8 @@ class RequireTernaryOperatorSniff implements Sniff
 		}
 
 		if (!array_key_exists('scope_closer', $tokens[$elsePointer])) {
-			throw new Exception('"else" without curly braces is not supported.');
+			// Else without curly braces is not supported.
+			return;
 		}
 
 		if (
@@ -114,7 +116,13 @@ class RequireTernaryOperatorSniff implements Sniff
 		$phpcsFile->fixer->endChangeset();
 	}
 
-	private function checkIfWithAssignments(File $phpcsFile, int $ifPointer, int $elsePointer, int $firstPointerInIf, int $firstPointerInElse): void
+	private function checkIfWithAssignments(
+		File $phpcsFile,
+		int $ifPointer,
+		int $elsePointer,
+		int $firstPointerInIf,
+		int $firstPointerInElse
+	): void
 	{
 		$tokens = $phpcsFile->getTokens();
 
@@ -139,16 +147,24 @@ class RequireTernaryOperatorSniff implements Sniff
 			return;
 		}
 
+		$pointerAfterAssignmentInIf = TokenHelper::findNextEffective($phpcsFile, $assignmentPointerInIf + 1);
+		$pointerAfterAssignmentInElse = TokenHelper::findNextEffective($phpcsFile, $assignmentPointerInElse + 1);
+
+		if (
+			$tokens[$pointerAfterAssignmentInIf]['code'] === T_BITWISE_AND ||
+			$tokens[$pointerAfterAssignmentInElse]['code'] === T_BITWISE_AND
+		) {
+			return;
+		}
+
 		$fix = $phpcsFile->addFixableError('Use ternary operator.', $ifPointer, self::CODE_TERNARY_OPERATOR_NOT_USED);
 
 		if (!$fix) {
 			return;
 		}
 
-		$pointerAfterAssignmentInIf = TokenHelper::findNextEffective($phpcsFile, $assignmentPointerInIf + 1);
 		/** @var int $semicolonAfterAssignmentInIf */
 		$semicolonAfterAssignmentInIf = TokenHelper::findNext($phpcsFile, T_SEMICOLON, $pointerAfterAssignmentInIf + 1);
-		$pointerAfterAssignmentInElse = TokenHelper::findNextEffective($phpcsFile, $assignmentPointerInElse + 1);
 		$semicolonAfterAssignmentInElse = TokenHelper::findNext($phpcsFile, T_SEMICOLON, $pointerAfterAssignmentInElse + 1);
 
 		$phpcsFile->fixer->beginChangeset();

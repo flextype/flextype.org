@@ -1,3 +1,9 @@
+<a name="1.0.5"></a>
+# [1.0.5](https://github.com/flextype-plugins/twig/compare/v1.0.4...v1.0.5) (2020-07-01)
+
+### Bug fixes
+* **extension)** fix markdown and shortcodes extensions
+
 <a name="1.0.4"></a>
 # [1.0.4](https://github.com/flextype-plugins/twig/compare/v1.0.3...v1.0.4) (2020-06-13)
 

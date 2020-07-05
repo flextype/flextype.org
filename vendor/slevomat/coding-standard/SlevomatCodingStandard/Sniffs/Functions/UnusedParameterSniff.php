@@ -9,31 +9,26 @@ use SlevomatCodingStandard\Helpers\SuppressHelper;
 use SlevomatCodingStandard\Helpers\TokenHelper;
 use SlevomatCodingStandard\Helpers\VariableHelper;
 use function sprintf;
-use const T_CLOSURE;
-use const T_FUNCTION;
 use const T_VARIABLE;
 
 class UnusedParameterSniff implements Sniff
 {
 
-	private const NAME = 'SlevomatCodingStandard.Functions.UnusedParameter';
-
 	public const CODE_UNUSED_PARAMETER = 'UnusedParameter';
 
+	private const NAME = 'SlevomatCodingStandard.Functions.UnusedParameter';
+
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
-		return [
-			T_FUNCTION,
-			T_CLOSURE,
-		];
+		return TokenHelper::$functionTokenCodes;
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $functionPointer
 	 */
 	public function process(File $phpcsFile, $functionPointer): void

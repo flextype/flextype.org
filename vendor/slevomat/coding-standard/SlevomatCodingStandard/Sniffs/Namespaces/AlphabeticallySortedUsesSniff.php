@@ -34,7 +34,7 @@ class AlphabeticallySortedUsesSniff implements Sniff
 	public $caseSensitive = false;
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -45,8 +45,8 @@ class AlphabeticallySortedUsesSniff implements Sniff
 
 	/**
 	 * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $openTagPointer
 	 */
 	public function process(File $phpcsFile, $openTagPointer): void
@@ -79,17 +79,14 @@ class AlphabeticallySortedUsesSniff implements Sniff
 	}
 
 	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
-	 * @param \SlevomatCodingStandard\Helpers\UseStatement[] $useStatements
+	 * @param File $phpcsFile
+	 * @param UseStatement[] $useStatements
 	 */
-	private function fixAlphabeticalOrder(
-		File $phpcsFile,
-		array $useStatements
-	): void
+	private function fixAlphabeticalOrder(File $phpcsFile, array $useStatements): void
 	{
-		/** @var \SlevomatCodingStandard\Helpers\UseStatement $firstUseStatement */
+		/** @var UseStatement $firstUseStatement */
 		$firstUseStatement = reset($useStatements);
-		/** @var \SlevomatCodingStandard\Helpers\UseStatement $lastUseStatement */
+		/** @var UseStatement $lastUseStatement */
 		$lastUseStatement = end($useStatements);
 		$lastSemicolonPointer = TokenHelper::findNext($phpcsFile, T_SEMICOLON, $lastUseStatement->getPointer());
 		$phpcsFile->fixer->beginChangeset();
@@ -97,11 +94,11 @@ class AlphabeticallySortedUsesSniff implements Sniff
 			$phpcsFile->fixer->replaceToken($i, '');
 		}
 
-		uasort($useStatements, function (UseStatement $a, UseStatement $b) {
+		uasort($useStatements, function (UseStatement $a, UseStatement $b): int {
 			return $this->compareUseStatements($a, $b);
 		});
 
-		$phpcsFile->fixer->addContent($firstUseStatement->getPointer(), implode($phpcsFile->eolChar, array_map(function (UseStatement $useStatement): string {
+		$phpcsFile->fixer->addContent($firstUseStatement->getPointer(), implode($phpcsFile->eolChar, array_map(static function (UseStatement $useStatement): string {
 			$unqualifiedName = NamespaceHelper::getUnqualifiedNameFromFullyQualifiedName($useStatement->getFullyQualifiedTypeName());
 
 			$useTypeName = UseStatement::getTypeName($useStatement->getType());

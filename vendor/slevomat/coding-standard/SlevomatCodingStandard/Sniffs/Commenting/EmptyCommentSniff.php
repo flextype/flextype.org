@@ -21,7 +21,7 @@ class EmptyCommentSniff implements Sniff
 	public const CODE_EMPTY_COMMENT = 'EmptyComment';
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -32,8 +32,8 @@ class EmptyCommentSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $commentStartPointer
 	 */
 	public function process(File $phpcsFile, $commentStartPointer): void
@@ -70,14 +70,14 @@ class EmptyCommentSniff implements Sniff
 
 		$tokens = $phpcsFile->getTokens();
 
-		$phpcsFile->fixer->beginChangeset();
-
 		/** @var int $pointerBeforeWhitespaceBeforeComment */
 		$pointerBeforeWhitespaceBeforeComment = TokenHelper::findPreviousExcluding($phpcsFile, T_WHITESPACE, $commentStartPointer - 1);
 		$whitespaceBeforeComment = $pointerBeforeWhitespaceBeforeComment !== $commentStartPointer - 1
 			? TokenHelper::getContent($phpcsFile, $pointerBeforeWhitespaceBeforeComment + 1, $commentStartPointer - 1)
 			: '';
 		$fixedWhitespaceBeforeComment = preg_replace('~[ \\t]+$~', '', $whitespaceBeforeComment);
+
+		$phpcsFile->fixer->beginChangeset();
 
 		for ($i = $pointerBeforeWhitespaceBeforeComment + 1; $i < $commentStartPointer; $i++) {
 			$phpcsFile->fixer->replaceToken($i, '');

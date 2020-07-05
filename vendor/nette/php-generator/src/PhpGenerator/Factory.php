@@ -192,9 +192,8 @@ final class Factory
 		foreach ($nodeFinder->findInstanceOf($class, Node\Stmt\ClassMethod::class) as $method) {
 			/** @var Node\Stmt\ClassMethod $method */
 			if ($method->stmts) {
-				$start = $method->stmts[0]->getAttribute('startFilePos');
-				$body = substr($code, $start, end($method->stmts)->getAttribute('endFilePos') - $start + 1);
-				$bodies[$method->name->toString()] = Helpers::indentPhp($body, -2);
+				$body = $this->extractBody($nodeFinder, $code, $method->stmts);
+				$bodies[$method->name->toString()] = Helpers::unindent($body, 2);
 			}
 		}
 		return $bodies;
@@ -208,14 +207,89 @@ final class Factory
 		}
 
 		[$code, $stmts] = $this->parse($from);
+
+		$nodeFinder = new PhpParser\NodeFinder;
 		/** @var Node\Stmt\Function_ $function */
-		$function = (new PhpParser\NodeFinder)->findFirst($stmts, function (Node $node) use ($from) {
+		$function = $nodeFinder->findFirst($stmts, function (Node $node) use ($from) {
 			return $node instanceof Node\Stmt\Function_ && $node->namespacedName->toString() === $from->name;
 		});
 
-		$start = $function->stmts[0]->getAttribute('startFilePos');
-		$body = substr($code, $start, end($function->stmts)->getAttribute('endFilePos') - $start + 1);
-		return Helpers::indentPhp($body, -1);
+		$body = $this->extractBody($nodeFinder, $code, $function->stmts);
+		return Helpers::unindent($body, 1);
+	}
+
+
+	/**
+	 * @param  Node[]  $statements
+	 */
+	private function extractBody(PhpParser\NodeFinder $nodeFinder, string $originalCode, array $statements): string
+	{
+		$start = $statements[0]->getAttribute('startFilePos');
+		$body = substr($originalCode, $start, end($statements)->getAttribute('endFilePos') - $start + 1);
+
+		$replacements = [];
+		// name-nodes => resolved fully-qualified name
+		foreach ($nodeFinder->findInstanceOf($statements, Node\Name::class) as $node) {
+			if ($node->hasAttribute('resolvedName')
+				&& $node->getAttribute('resolvedName') instanceof Node\Name\FullyQualified
+			) {
+				$replacements[] = [
+					$node->getStartFilePos(),
+					$node->getEndFilePos(),
+					$node->getAttribute('resolvedName')->toCodeString(),
+				];
+			}
+		}
+
+		// multi-line strings => singleline
+		foreach (array_merge(
+			$nodeFinder->findInstanceOf($statements, Node\Scalar\String_::class),
+			$nodeFinder->findInstanceOf($statements, Node\Scalar\EncapsedStringPart::class)
+		) as $node) {
+			$token = substr($body, $node->getStartFilePos() - $start, $node->getEndFilePos() - $node->getStartFilePos() + 1);
+			if (strpos($token, "\n") !== false) {
+				$quote = $node instanceof Node\Scalar\String_ ? '"' : '';
+				$replacements[] = [
+					$node->getStartFilePos(),
+					$node->getEndFilePos(),
+					$quote . addcslashes($node->value, "\x00..\x1F") . $quote,
+				];
+			}
+		}
+
+		// HEREDOC => "string"
+		foreach ($nodeFinder->findInstanceOf($statements, Node\Scalar\Encapsed::class) as $node) {
+			if ($node->getAttribute('kind') === Node\Scalar\String_::KIND_HEREDOC) {
+				$replacements[] = [
+					$node->getStartFilePos(),
+					$node->parts[0]->getStartFilePos() - 1,
+					'"',
+				];
+				$replacements[] = [
+					end($node->parts)->getEndFilePos() + 1,
+					$node->getEndFilePos(),
+					'"',
+				];
+			}
+		}
+
+		//sort collected resolved names by position in file
+		usort($replacements, function ($a, $b) {
+			return $a[0] <=> $b[0];
+		});
+		$correctiveOffset = -$start;
+		//replace changes body length so we need correct offset
+		foreach ($replacements as [$startPos, $endPos, $replacement]) {
+			$replacingStringLength = $endPos - $startPos + 1;
+			$body = substr_replace(
+				$body,
+				$replacement,
+				$correctiveOffset + $startPos,
+				$replacingStringLength
+			);
+			$correctiveOffset += strlen($replacement) - $replacingStringLength;
+		}
+		return $body;
 	}
 
 
@@ -235,7 +309,7 @@ final class Factory
 		$stmts = $parser->parse($code);
 
 		$traverser = new PhpParser\NodeTraverser;
-		$traverser->addVisitor(new PhpParser\NodeVisitor\NameResolver);
+		$traverser->addVisitor(new PhpParser\NodeVisitor\NameResolver(null, ['replaceNodes' => false]));
 		$stmts = $traverser->traverse($stmts);
 
 		return [$code, $stmts];

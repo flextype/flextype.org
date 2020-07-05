@@ -4,8 +4,10 @@ namespace SlevomatCodingStandard\Sniffs\Namespaces;
 
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
+use PHPStan\PhpDocParser\Ast\ConstExpr\ConstFetchNode;
 use PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
 use SlevomatCodingStandard\Helpers\Annotation\GenericAnnotation;
+use SlevomatCodingStandard\Helpers\AnnotationConstantExpressionHelper;
 use SlevomatCodingStandard\Helpers\AnnotationHelper;
 use SlevomatCodingStandard\Helpers\AnnotationTypeHelper;
 use SlevomatCodingStandard\Helpers\ClassHelper;
@@ -56,14 +58,15 @@ class ReferenceUsedNamesOnlySniff implements Sniff
 
 	public const CODE_PARTIAL_USE = 'PartialUse';
 
+	private const SOURCE_CODE = 1;
+	private const SOURCE_ANNOTATION = 2;
+	private const SOURCE_ANNOTATION_CONSTANT_FETCH = 3;
+
 	/** @var bool */
 	public $searchAnnotations = false;
 
 	/** @var string[] */
 	public $fullyQualifiedKeywords = [];
-
-	/** @var string[]|null */
-	private $normalizedFullyQualifiedKeywords;
 
 	/** @var bool */
 	public $allowFullyQualifiedExceptions = false;
@@ -86,14 +89,8 @@ class ReferenceUsedNamesOnlySniff implements Sniff
 	/** @var string[] */
 	public $specialExceptionNames = [];
 
-	/** @var string[]|null */
-	private $normalizedSpecialExceptionNames;
-
 	/** @var string[] */
 	public $ignoredNames = [];
-
-	/** @var string[]|null */
-	private $normalizedIgnoredNames;
 
 	/** @var bool */
 	public $allowPartialUses = true;
@@ -105,9 +102,6 @@ class ReferenceUsedNamesOnlySniff implements Sniff
 	 */
 	public $namespacesRequiredToUse = [];
 
-	/** @var string[]|null */
-	private $normalizedNamespacesRequiredToUse;
-
 	/** @var bool */
 	public $allowFullyQualifiedNameForCollidingClasses = false;
 
@@ -117,8 +111,20 @@ class ReferenceUsedNamesOnlySniff implements Sniff
 	/** @var bool */
 	public $allowFullyQualifiedNameForCollidingConstants = false;
 
+	/** @var string[]|null */
+	private $normalizedFullyQualifiedKeywords;
+
+	/** @var string[]|null */
+	private $normalizedSpecialExceptionNames;
+
+	/** @var string[]|null */
+	private $normalizedIgnoredNames;
+
+	/** @var string[]|null */
+	private $normalizedNamespacesRequiredToUse;
+
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -128,61 +134,8 @@ class ReferenceUsedNamesOnlySniff implements Sniff
 	}
 
 	/**
-	 * @return string[]
-	 */
-	private function getSpecialExceptionNames(): array
-	{
-		if ($this->normalizedSpecialExceptionNames === null) {
-			$this->normalizedSpecialExceptionNames = SniffSettingsHelper::normalizeArray($this->specialExceptionNames);
-		}
-
-		return $this->normalizedSpecialExceptionNames;
-	}
-
-	/**
-	 * @return string[]
-	 */
-	private function getIgnoredNames(): array
-	{
-		if ($this->normalizedIgnoredNames === null) {
-			$this->normalizedIgnoredNames = SniffSettingsHelper::normalizeArray($this->ignoredNames);
-		}
-
-		return $this->normalizedIgnoredNames;
-	}
-
-	/**
-	 * @return string[]
-	 */
-	private function getNamespacesRequiredToUse(): array
-	{
-		if ($this->normalizedNamespacesRequiredToUse === null) {
-			$this->normalizedNamespacesRequiredToUse = SniffSettingsHelper::normalizeArray($this->namespacesRequiredToUse);
-		}
-
-		return $this->normalizedNamespacesRequiredToUse;
-	}
-
-	/**
-	 * @return string[]
-	 */
-	private function getFullyQualifiedKeywords(): array
-	{
-		if ($this->normalizedFullyQualifiedKeywords === null) {
-			$this->normalizedFullyQualifiedKeywords = array_map(function (string $keyword) {
-				if (!defined($keyword)) {
-					throw new UndefinedKeywordTokenException($keyword);
-				}
-				return constant($keyword);
-			}, SniffSettingsHelper::normalizeArray($this->fullyQualifiedKeywords));
-		}
-
-		return $this->normalizedFullyQualifiedKeywords;
-	}
-
-	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $openTagPointer
 	 */
 	public function process(File $phpcsFile, $openTagPointer): void
@@ -191,44 +144,23 @@ class ReferenceUsedNamesOnlySniff implements Sniff
 
 		$references = $this->getReferences($phpcsFile, $openTagPointer);
 
-		$definedClassesIndex = array_flip(array_map(function (string $className): string {
-			return strtolower($className);
-		}, ClassHelper::getAllNames($phpcsFile)));
-		$definedFunctionsIndex = array_flip(array_map(function (string $functionName): string {
+		$definedClassesIndex = [];
+		foreach (ClassHelper::getAllNames($phpcsFile) as $definedClassPointer => $definedClassName) {
+			$definedClassesIndex[strtolower($definedClassName)] = NamespaceHelper::resolveClassName($phpcsFile, $definedClassName, $definedClassPointer);
+		}
+		$definedFunctionsIndex = array_flip(array_map(static function (string $functionName): string {
 			return strtolower($functionName);
 		}, FunctionHelper::getAllFunctionNames($phpcsFile)));
 		$definedConstantsIndex = array_flip(ConstantHelper::getAllNames($phpcsFile));
 
+		$classReferencesIndex = [];
 		if ($this->allowFullyQualifiedNameForCollidingClasses) {
-			$classReferences = array_filter($references, function (stdClass $reference): bool {
-				return !$reference->fromDocComment && $reference->isClass;
+			$classReferences = array_filter($references, static function (stdClass $reference): bool {
+				return $reference->source === self::SOURCE_CODE && $reference->isClass;
 			});
 
-			$classReferencesIndex = [];
 			foreach ($classReferences as $classReference) {
 				$classReferencesIndex[strtolower($classReference->name)] = NamespaceHelper::resolveName($phpcsFile, $classReference->name, $classReference->type, $classReference->startPointer);
-			}
-		}
-
-		if ($this->allowFullyQualifiedNameForCollidingFunctions) {
-			$functionReferences = array_filter($references, function (stdClass $reference): bool {
-				return !$reference->fromDocComment && $reference->isFunction;
-			});
-
-			$functionReferencesIndex = [];
-			foreach ($functionReferences as $functionReference) {
-				$functionReferencesIndex[strtolower($functionReference->name)] = NamespaceHelper::resolveName($phpcsFile, $functionReference->name, $functionReference->type, $functionReference->startPointer);
-			}
-		}
-
-		if ($this->allowFullyQualifiedNameForCollidingConstants) {
-			$constantReferences = array_filter($references, function (stdClass $reference): bool {
-				return !$reference->fromDocComment && $reference->isConstant;
-			});
-
-			$constantReferencesIndex = [];
-			foreach ($constantReferences as $constantReference) {
-				$constantReferencesIndex[$constantReference->name] = NamespaceHelper::resolveName($phpcsFile, $constantReference->name, $constantReference->type, $constantReference->startPointer);
 			}
 		}
 
@@ -258,11 +190,24 @@ class ReferenceUsedNamesOnlySniff implements Sniff
 			if ($isFullyQualified) {
 				if ($reference->isClass && $this->allowFullyQualifiedNameForCollidingClasses) {
 					$lowerCasedUnqualifiedClassName = strtolower($unqualifiedName);
-					if (array_key_exists($lowerCasedUnqualifiedClassName, $definedClassesIndex)) {
+					if (
+						array_key_exists($lowerCasedUnqualifiedClassName, $definedClassesIndex)
+						&& $canonicalName !== NamespaceHelper::normalizeToCanonicalName($definedClassesIndex[$lowerCasedUnqualifiedClassName])
+					) {
 						continue;
 					}
 
-					if (isset($classReferencesIndex[$lowerCasedUnqualifiedClassName]) && $name !== $classReferencesIndex[$lowerCasedUnqualifiedClassName]) {
+					if (
+						array_key_exists($lowerCasedUnqualifiedClassName, $classReferencesIndex)
+						&& $name !== $classReferencesIndex[$lowerCasedUnqualifiedClassName]
+					) {
+						continue;
+					}
+
+					if (
+						array_key_exists($lowerCasedUnqualifiedClassName, $useStatements)
+						&& $canonicalName !== NamespaceHelper::normalizeToCanonicalName($useStatements[$lowerCasedUnqualifiedClassName]->getFullyQualifiedTypeName())
+					) {
 						continue;
 					}
 				} elseif ($reference->isFunction && $this->allowFullyQualifiedNameForCollidingFunctions) {
@@ -308,8 +253,8 @@ class ReferenceUsedNamesOnlySniff implements Sniff
 						if ($fix) {
 							$phpcsFile->fixer->beginChangeset();
 
-							if ($reference->fromDocComment) {
-								$fixedAnnotationContent = AnnotationHelper::fixAnnotation(
+							if ($reference->source === self::SOURCE_ANNOTATION) {
+								$fixedAnnotationContent = AnnotationHelper::fixAnnotationType(
 									$phpcsFile,
 									$reference->annotation,
 									$reference->nameNode,
@@ -320,6 +265,19 @@ class ReferenceUsedNamesOnlySniff implements Sniff
 								for ($i = $startPointer + 1; $i <= $reference->endPointer; $i++) {
 									$phpcsFile->fixer->replaceToken($i, '');
 								}
+							} elseif ($reference->source === self::SOURCE_ANNOTATION_CONSTANT_FETCH) {
+								$fixedAnnotationContent = AnnotationHelper::fixAnnotationConstantFetchNode(
+									$phpcsFile,
+									$reference->annotation,
+									$reference->constantFetchNode,
+									new ConstFetchNode(substr($reference->name, 1), $reference->constantFetchNode->name)
+								);
+
+								$phpcsFile->fixer->replaceToken($startPointer, $fixedAnnotationContent);
+								for ($i = $startPointer + 1; $i <= $reference->endPointer; $i++) {
+									$phpcsFile->fixer->replaceToken($i, '');
+								}
+
 							} else {
 								$phpcsFile->fixer->replaceToken($startPointer, substr($tokens[$startPointer]['content'], 1));
 							}
@@ -357,7 +315,11 @@ class ReferenceUsedNamesOnlySniff implements Sniff
 
 							if (!(
 								$useStatement->getCanonicalNameAsReferencedInFile() === $canonicalNameToReference
-								|| ($reference->isClass && array_key_exists($canonicalNameToReference, $definedClassesIndex))
+								|| (
+									$reference->isClass
+									&& array_key_exists($canonicalNameToReference, $definedClassesIndex)
+									&& $canonicalName !== NamespaceHelper::normalizeToCanonicalName($definedClassesIndex[$canonicalNameToReference])
+								)
 								|| ($reference->isFunction && array_key_exists($canonicalNameToReference, $definedFunctionsIndex))
 								|| ($reference->isConstant && array_key_exists($canonicalNameToReference, $definedConstantsIndex))
 							)) {
@@ -383,25 +345,38 @@ class ReferenceUsedNamesOnlySniff implements Sniff
 						}
 
 						if ($fix) {
-							$alreadyUsed = false;
+							$addUse = true;
+
+							if ($reference->isClass && array_key_exists($canonicalNameToReference, $definedClassesIndex)) {
+								$addUse = false;
+							}
+
 							foreach ($useStatements as $useStatement) {
 								if ($useStatement->getType() !== $reference->type || $useStatement->getFullyQualifiedTypeName() !== $canonicalName) {
 									continue;
 								}
 
 								$nameToReference = $useStatement->getNameAsReferencedInFile();
-								$alreadyUsed = true;
+								$addUse = false;
 								break;
 							}
 
 							$phpcsFile->fixer->beginChangeset();
 
-							if ($reference->fromDocComment) {
-								$fixedAnnotationContent = AnnotationHelper::fixAnnotation(
+							if ($reference->source === self::SOURCE_ANNOTATION) {
+								$fixedAnnotationContent = AnnotationHelper::fixAnnotationType(
 									$phpcsFile,
 									$reference->annotation,
 									$reference->nameNode,
 									new IdentifierTypeNode($nameToReference)
+								);
+								$phpcsFile->fixer->replaceToken($startPointer, $fixedAnnotationContent);
+							} elseif ($reference->source === self::SOURCE_ANNOTATION_CONSTANT_FETCH) {
+								$fixedAnnotationContent = AnnotationHelper::fixAnnotationConstantFetchNode(
+									$phpcsFile,
+									$reference->annotation,
+									$reference->constantFetchNode,
+									new ConstFetchNode($nameToReference, $reference->constantFetchNode->name)
 								);
 								$phpcsFile->fixer->replaceToken($startPointer, $fixedAnnotationContent);
 							} else {
@@ -412,7 +387,7 @@ class ReferenceUsedNamesOnlySniff implements Sniff
 								$phpcsFile->fixer->replaceToken($i, '');
 							}
 
-							if (!$alreadyUsed) {
+							if ($addUse) {
 								$useStatementPlacePointer = $this->getUseStatementPlacePointer($phpcsFile, $openTagPointer, $useStatements);
 
 								$useTypeName = UseStatement::getTypeName($reference->type);
@@ -438,9 +413,62 @@ class ReferenceUsedNamesOnlySniff implements Sniff
 	}
 
 	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @return string[]
+	 */
+	private function getSpecialExceptionNames(): array
+	{
+		if ($this->normalizedSpecialExceptionNames === null) {
+			$this->normalizedSpecialExceptionNames = SniffSettingsHelper::normalizeArray($this->specialExceptionNames);
+		}
+
+		return $this->normalizedSpecialExceptionNames;
+	}
+
+	/**
+	 * @return string[]
+	 */
+	private function getIgnoredNames(): array
+	{
+		if ($this->normalizedIgnoredNames === null) {
+			$this->normalizedIgnoredNames = SniffSettingsHelper::normalizeArray($this->ignoredNames);
+		}
+
+		return $this->normalizedIgnoredNames;
+	}
+
+	/**
+	 * @return string[]
+	 */
+	private function getNamespacesRequiredToUse(): array
+	{
+		if ($this->normalizedNamespacesRequiredToUse === null) {
+			$this->normalizedNamespacesRequiredToUse = SniffSettingsHelper::normalizeArray($this->namespacesRequiredToUse);
+		}
+
+		return $this->normalizedNamespacesRequiredToUse;
+	}
+
+	/**
+	 * @return string[]
+	 */
+	private function getFullyQualifiedKeywords(): array
+	{
+		if ($this->normalizedFullyQualifiedKeywords === null) {
+			$this->normalizedFullyQualifiedKeywords = array_map(static function (string $keyword) {
+				if (!defined($keyword)) {
+					throw new UndefinedKeywordTokenException($keyword);
+				}
+				return constant($keyword);
+			}, SniffSettingsHelper::normalizeArray($this->fullyQualifiedKeywords));
+		}
+
+		return $this->normalizedFullyQualifiedKeywords;
+	}
+
+	/**
+	 * @param File $phpcsFile
 	 * @param int $openTagPointer
-	 * @param \SlevomatCodingStandard\Helpers\UseStatement[] $useStatements
+	 * @param UseStatement[] $useStatements
 	 * @return int
 	 */
 	private function getUseStatementPlacePointer(File $phpcsFile, int $openTagPointer, array $useStatements): int
@@ -487,9 +515,9 @@ class ReferenceUsedNamesOnlySniff implements Sniff
 	}
 
 	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @param File $phpcsFile
 	 * @param int $openTagPointer
-	 * @return \stdClass[]
+	 * @return stdClass[]
 	 */
 	private function getReferences(File $phpcsFile, int $openTagPointer): array
 	{
@@ -498,7 +526,7 @@ class ReferenceUsedNamesOnlySniff implements Sniff
 		$references = [];
 		foreach (ReferencedNameHelper::getAllReferencedNames($phpcsFile, $openTagPointer) as $referencedName) {
 			$reference = new stdClass();
-			$reference->fromDocComment = false;
+			$reference->source = self::SOURCE_CODE;
 			$reference->name = $referencedName->getNameAsReferencedInFile();
 			$reference->type = $referencedName->getType();
 			$reference->startPointer = $referencedName->getStartPointer();
@@ -547,10 +575,29 @@ class ReferenceUsedNamesOnlySniff implements Sniff
 							}
 
 							$reference = new stdClass();
-							$reference->fromDocComment = true;
+							$reference->source = self::SOURCE_ANNOTATION;
 							$reference->annotation = $annotation;
 							$reference->nameNode = $typeHintNode;
 							$reference->name = $typeHint;
+							$reference->type = ReferencedName::TYPE_DEFAULT;
+							$reference->startPointer = $annotation->getStartPointer();
+							$reference->endPointer = $annotation->getEndPointer();
+							$reference->isClass = true;
+							$reference->isConstant = false;
+							$reference->isFunction = false;
+
+							$references[] = $reference;
+						}
+					}
+
+					foreach (AnnotationHelper::getAnnotationConstantExpressions($annotation) as $constantExpression) {
+						foreach (AnnotationConstantExpressionHelper::getConstantFetchNodes($constantExpression) as $constantFetchNode) {
+
+							$reference = new stdClass();
+							$reference->source = self::SOURCE_ANNOTATION_CONSTANT_FETCH;
+							$reference->annotation = $annotation;
+							$reference->constantFetchNode = $constantFetchNode;
+							$reference->name = $constantFetchNode->className;
 							$reference->type = ReferencedName::TYPE_DEFAULT;
 							$reference->startPointer = $annotation->getStartPointer();
 							$reference->endPointer = $annotation->getEndPointer();

@@ -14,6 +14,7 @@ use Doctrine\Common\Collections\Criteria;
 use Doctrine\Common\Collections\Expr\Comparison;
 use Flextype\Component\Filesystem\Filesystem;
 use Flextype\Component\Session\Session;
+use Flextype\Component\Arr\Arr;
 use Ramsey\Uuid\Uuid;
 use function array_merge;
 use function count;
@@ -244,21 +245,14 @@ class Entries
                                     foreach ($entry_decoded['parsers'][$parser_name]['fields'] as $field) {
                                         if (! in_array($field, $this->system_fields)) {
                                             if ($parser_name == 'markdown') {
-                                                $entry_decoded[$field] = $this->flextype['parser']->parse($entry_decoded[$field], 'markdown', $cache);
+                                                if (Arr::keyExists($entry_decoded, $field)) {
+                                                    Arr::set($entry_decoded, $field, $this->flextype['parser']->parse(Arr::get($entry_decoded, $field), 'markdown', $cache));
+                                                }
                                             }
                                             if ($parser_name == 'shortcodes') {
-                                                $entry_decoded[$field] = $this->flextype['parser']->parse($entry_decoded[$field], 'shortcodes', $cache);
-                                            }
-                                        }
-                                    }
-                                } elseif ($entry_decoded['parsers'][$parser_name]['fields'] == "*") {
-                                    foreach ($entry_decoded as $key => $value) {
-                                        if (! in_array($key, $this->system_fields)) {
-                                            if ($parser_name == 'markdown') {
-                                                $entry_decoded[$key] = $this->flextype['parser']->parse($entry_decoded[$key], 'markdown', $cache);
-                                            }
-                                            if ($parser_name == 'shortcodes') {
-                                                $entry_decoded[$key] = $this->flextype['parser']->parse($entry_decoded[$key], 'shortcodes', $cache);
+                                                if (Arr::keyExists($entry_decoded, $field)) {
+                                                    Arr::set($entry_decoded, $field, $this->flextype['parser']->parse(Arr::get($entry_decoded, $field), 'shortcodes', $cache));
+                                                }
                                             }
                                         }
                                     }
@@ -391,6 +385,9 @@ class Entries
                         // For each founded entry we should create $entries array.
                         $entry = $this->fetch($uid);
 
+                        // Flatten a multi-dimensional entries array with dots.
+                        $entry = Arr::dot($entry);
+
                         // Add entry into the entries
                         $entries[$uid] = $entry;
 
@@ -482,6 +479,11 @@ class Entries
 
                 // Gets a native PHP array representation of the collection.
                 $entries = $entries->toArray();
+
+                // Magic is here... dot and undot for entries array
+                // 1. Flatten a multi-dimensional entries array with dots.
+                // 2. Restore entries array with dots into correct multi-dimensional entries array
+                $entries = Arr::undot(Arr::dot($entries));
 
                 // Restore error_reporting
                 error_reporting($oldErrorReporting);

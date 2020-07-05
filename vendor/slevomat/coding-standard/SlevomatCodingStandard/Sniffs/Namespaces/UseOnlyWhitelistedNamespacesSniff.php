@@ -25,7 +25,7 @@ class UseOnlyWhitelistedNamespacesSniff implements Sniff
 	private $normalizedNamespacesRequiredToUse;
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -35,20 +35,8 @@ class UseOnlyWhitelistedNamespacesSniff implements Sniff
 	}
 
 	/**
-	 * @return string[]
-	 */
-	private function getNamespacesRequiredToUse(): array
-	{
-		if ($this->normalizedNamespacesRequiredToUse === null) {
-			$this->normalizedNamespacesRequiredToUse = SniffSettingsHelper::normalizeArray($this->namespacesRequiredToUse);
-		}
-
-		return $this->normalizedNamespacesRequiredToUse;
-	}
-
-	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $usePointer
 	 */
 	public function process(File $phpcsFile, $usePointer): void
@@ -77,6 +65,18 @@ class UseOnlyWhitelistedNamespacesSniff implements Sniff
 			'Type %s should not be used, but referenced via a fully qualified name.',
 			$className
 		), $usePointer, self::CODE_NON_FULLY_QUALIFIED);
+	}
+
+	/**
+	 * @return string[]
+	 */
+	private function getNamespacesRequiredToUse(): array
+	{
+		if ($this->normalizedNamespacesRequiredToUse === null) {
+			$this->normalizedNamespacesRequiredToUse = SniffSettingsHelper::normalizeArray($this->namespacesRequiredToUse);
+		}
+
+		return $this->normalizedNamespacesRequiredToUse;
 	}
 
 }
