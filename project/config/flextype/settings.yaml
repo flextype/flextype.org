@@ -35,7 +35,7 @@ url: ''
 # H:i d-m-Y - 09:41 02-02-2020
 # h:i a m/d/Y - 09:41 pm 02/02/2020
 date_format: 'd-m-Y H:i'
-date_display_format: 'd-m-Y H:i'
+date_display_format: 'd-m-Y'
 
 # Display errors
 #
@@ -51,7 +51,7 @@ date_display_format: 'd-m-Y H:i'
 #
 # - display: Display errors or not.
 errors:
-  display: false
+  display: true
 
 # Entries
 #
@@ -91,7 +91,7 @@ entries:
 #
 # - sqlite3.table    SQLite3 Table
 cache:
-  enabled: true
+  enabled: false
   prefix: flextype
   driver: auto
   lifetime: 604800
