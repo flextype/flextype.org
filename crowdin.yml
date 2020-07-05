@@ -1,3 +1,3 @@
 files:
-  - source: /site/entries/en/**/*.*
-    translation: /site/entries/%two_letters_code%/**/%original_file_name%
+  - source: /project/entries/en/**/*.*
+    translation: /project/entries/%two_letters_code%/**/%original_file_name%
