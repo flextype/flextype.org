@@ -1,0 +1,71 @@
+{% extends 'themes/' ~ registry.get('plugins.site.settings.theme') ~ '/templates/partials/base.html' %}
+
+{% block content %}
+<div class="container mx-auto bg-white text-black pb-24">
+    <div class="uppercase text-center pt-24 pb-24 m-0 font-noirpro-semibold">
+        <div>
+            <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/plugins/{{ name }}">{{ entry.title }}</a></h1>
+        </div>
+        <div>
+            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/blog">Blog</a></span>
+        </div>
+    </div>
+    <div>
+        <div>{{ entry.content|shortcode|markdown|raw}}</div>
+        <div class="mt-10">
+            <b>Date:</b>
+            {{ entry.published_at|date(registry.get('flextype.settings.date_display_format')) }}
+            <b>Tags:</b>
+            {% if entry.tags is not empty %}
+                {% for tag in entry.tags|split(',') %}
+                    <a class="no-underline" href="{{ url() }}{{ locale }}/blog?tag={{ tag }}">#{{ tag|trim }}</a>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {% if entry.tags is not empty %}
+                {% set tags = entry.tags|split(',') %}
+                {% set related_posts = [] %}
+
+                {% for tag in tags %}
+                    {% set related_posts = related_posts|merge(entries.fetch(locale ~ '/blog', {
+                                                                        'where': {
+                                                                            'key': 'tags',
+                                                                            'expr': 'contains',
+                                                                            'value': tag
+                                                                        },
+                                                                        'and_where': [{
+                                                                            'key': 'visibility',
+                                                                            'expr': 'nin',
+                                                                            'value': ['draft', 'hidden']
+                                                                        }],
+                                                                        'order_by': {
+                                                                            'field': 'published_at',
+                                                                            'direction': 'desc'
+                                                                        },
+                                                                        'set_max_result': 6
+                                                                    })) %}
+                {% endfor %}
+
+                {% if related_posts|length > 0 %}
+                <hr class="mt-6 mb-6 border-1" style="border-color: #f8f9fb;">
+                <div class="p-2 text-black mb-6">
+                    <h4>Related Posts</h4>
+                    {% for related_post in related_posts %}
+                        {% if related_post.slug != entry.slug %}
+                        <a href="{{ url() }}/{{ related_post.slug }}" class="w-full p-2 no-underline">
+                            <div class="flex p-6 text-black align-middle rounded-lg" style="background: #f8f9fb;">
+                                <div class="text-left">
+                                    <h4 class="text-xl pb-0 mb-0 block">{{ related_post.title }}</h4>
+                                </div>
+                            </div>
+                        </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

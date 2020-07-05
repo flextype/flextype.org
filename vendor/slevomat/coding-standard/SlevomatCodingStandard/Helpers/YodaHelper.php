@@ -6,16 +6,17 @@ use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Util\Tokens;
 use function array_fill_keys;
 use function array_filter;
+use function array_key_exists;
 use function array_keys;
 use function array_map;
 use function array_reverse;
 use function array_values;
 use function count;
-use function current;
 use function end;
 use function implode;
 use function in_array;
 use function key;
+use function reset;
 use const T_ARRAY;
 use const T_ARRAY_CAST;
 use const T_BOOL_CAST;
@@ -69,7 +70,7 @@ class YodaHelper
 	private const DYNAMISM_FUNCTION_CALL = self::DYNAMISM_VARIABLE;
 
 	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @param File $phpcsFile
 	 * @param array<int, array<string, array<int, int|string>|int|string>> $leftSideTokens
 	 * @param array<int, array<string, array<int, int|string>|int|string>> $rightSideTokens
 	 */
@@ -79,29 +80,6 @@ class YodaHelper
 		self::replace($phpcsFile, $leftSideTokens, $rightSideTokens);
 		self::replace($phpcsFile, $rightSideTokens, $leftSideTokens);
 		$phpcsFile->fixer->endChangeset();
-	}
-
-	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
-	 * @param array<int, array<string, array<int, int|string>|int|string>> $oldTokens
-	 * @param array<int, array<string, array<int, int|string>|int|string>> $newTokens
-	 */
-	private static function replace(File $phpcsFile, array $oldTokens, array $newTokens): void
-	{
-		current($oldTokens);
-		/** @var int $firstOldPointer */
-		$firstOldPointer = key($oldTokens);
-		end($oldTokens);
-		/** @var int $lastOldPointer */
-		$lastOldPointer = key($oldTokens);
-
-		for ($i = $firstOldPointer; $i <= $lastOldPointer; $i++) {
-			$phpcsFile->fixer->replaceToken($i, '');
-		}
-
-		$phpcsFile->fixer->addContent($firstOldPointer, implode('', array_map(function (array $token): string {
-			return $token['content'];
-		}, $newTokens)));
 	}
 
 	/**
@@ -205,7 +183,7 @@ class YodaHelper
 	 */
 	public static function getDynamismForTokens(array $tokens, array $sideTokens): ?int
 	{
-		$sideTokens = array_values(array_filter($sideTokens, function (array $token): bool {
+		$sideTokens = array_values(array_filter($sideTokens, static function (array $token): bool {
 			return !in_array($token['code'], [T_WHITESPACE, T_COMMENT, T_DOC_COMMENT, T_NS_SEPARATOR, T_PLUS, T_MINUS, T_INT_CAST, T_DOUBLE_CAST, T_STRING_CAST, T_ARRAY_CAST, T_OBJECT_CAST, T_BOOL_CAST, T_UNSET_CAST], true);
 		}));
 
@@ -220,9 +198,13 @@ class YodaHelper
 			}
 
 			if ($sideTokens[$sideTokensCount - 1]['code'] === T_CLOSE_PARENTHESIS) {
-				if (isset($sideTokens[$sideTokensCount - 1]['parenthesis_owner']) && $tokens[$sideTokens[$sideTokensCount - 1]['parenthesis_owner']]['code'] === T_ARRAY) {
-					// Array
-					return $dynamism[T_ARRAY];
+				if (array_key_exists('parenthesis_owner', $sideTokens[$sideTokensCount - 1])) {
+					/** @var int $parenthesisOwner */
+					$parenthesisOwner = $sideTokens[$sideTokensCount - 1]['parenthesis_owner'];
+					if ($tokens[$parenthesisOwner]['code'] === T_ARRAY) {
+						// Array
+						return $dynamism[T_ARRAY];
+					}
 				}
 
 				// Function or method call
@@ -247,8 +229,12 @@ class YodaHelper
 			}
 		}
 
-		if (isset($sideTokens[0]) && isset($dynamism[$sideTokens[0]['code']])) {
-			return $dynamism[$sideTokens[0]['code']];
+		if (array_key_exists(0, $sideTokens)) {
+			/** @var int $sideTokenCode */
+			$sideTokenCode = $sideTokens[0]['code'];
+			if (array_key_exists($sideTokenCode, $dynamism)) {
+				return $dynamism[$sideTokenCode];
+			}
 		}
 
 		return null;
@@ -277,6 +263,29 @@ class YodaHelper
 		}
 
 		return $tokens;
+	}
+
+	/**
+	 * @param File $phpcsFile
+	 * @param array<int, array<string, array<int, int|string>|int|string>> $oldTokens
+	 * @param array<int, array<string, array<int, int|string>|int|string>> $newTokens
+	 */
+	private static function replace(File $phpcsFile, array $oldTokens, array $newTokens): void
+	{
+		reset($oldTokens);
+		/** @var int $firstOldPointer */
+		$firstOldPointer = key($oldTokens);
+		end($oldTokens);
+		/** @var int $lastOldPointer */
+		$lastOldPointer = key($oldTokens);
+
+		for ($i = $firstOldPointer; $i <= $lastOldPointer; $i++) {
+			$phpcsFile->fixer->replaceToken($i, '');
+		}
+
+		$phpcsFile->fixer->addContent($firstOldPointer, implode('', array_map(static function (array $token): string {
+			return $token['content'];
+		}, $newTokens)));
 	}
 
 	/**

@@ -5,7 +5,10 @@ namespace SlevomatCodingStandard\Sniffs\Functions;
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
 use SlevomatCodingStandard\Helpers\TokenHelper;
+use SlevomatCodingStandard\Helpers\VariableHelper;
 use const T_CLOSURE;
+use const T_DOUBLE_QUOTED_STRING;
+use const T_FN;
 use const T_OPEN_PARENTHESIS;
 use const T_PARENT;
 use const T_STATIC;
@@ -18,18 +21,19 @@ class StaticClosureSniff implements Sniff
 	public const CODE_CLOSURE_NOT_STATIC = 'ClosureNotStatic';
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
 		return [
 			T_CLOSURE,
+			T_FN,
 		];
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $closurePointer
 	 */
 	public function process(File $phpcsFile, $closurePointer): void
@@ -54,6 +58,13 @@ class StaticClosureSniff implements Sniff
 		$thisPointer = TokenHelper::findNextContent($phpcsFile, T_VARIABLE, '$this', $tokens[$closurePointer]['scope_opener'] + 1, $tokens[$closurePointer]['scope_closer']);
 		if ($thisPointer !== null) {
 			return;
+		}
+
+		$stringPointers = TokenHelper::findNextAll($phpcsFile, T_DOUBLE_QUOTED_STRING, $tokens[$closurePointer]['scope_opener'] + 1, $tokens[$closurePointer]['scope_closer']);
+		foreach ($stringPointers as $stringPointer) {
+			if (VariableHelper::isUsedInScopeInString($phpcsFile, '$this', $stringPointer)) {
+				return;
+			}
 		}
 
 		$parentPointer = TokenHelper::findNext($phpcsFile, T_PARENT, $tokens[$closurePointer]['scope_opener'] + 1, $tokens[$closurePointer]['scope_closer']);

@@ -12,7 +12,7 @@ class DisallowEmptySniff implements Sniff
 	public const CODE_DISALLOWED_EMPTY = 'DisallowedEmpty';
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -22,8 +22,8 @@ class DisallowEmptySniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $emptyPointer
 	 */
 	public function process(File $phpcsFile, $emptyPointer): void

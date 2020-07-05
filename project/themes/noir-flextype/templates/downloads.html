@@ -2,13 +2,13 @@
 
 {% block content %}
     <div class="container mx-auto bg-white text-black pb-24">
-        <h1 class="uppercase text-center text-3xl lg:text-6xl m-0 pl-6 pr-6 lg:pl-24 lg:pr-24 pt-24 pb-24 font-noirpro-semibold">
+        <h1 class="uppercase text-center text-3xl lg:text-6xl m-0 pt-24 pb-24 font-noirpro-semibold">
             {{ entry.title|raw }}
         </h1>
-        <div class="pl-6 pr-6 lg:pl-16 lg:pr-16">
+        <div>
             <div class="flex content-center flex-wrap">
                 <div class="w-full lg:w-6/12 p-2 text-center">
-                    <div class="p-12 h-full bg-black text-white">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
                         <i class="fas fa-download text-6xl mb-5" aria-hidden="true"></i>
                         <h4 class="text-2xl">Flextype</h4>
                         <div class="h-24 mb-10">
@@ -16,37 +16,37 @@
                             Core Functionality + Rest API.
                             <br>
                         </div>
-                        <a class="uppercase pl-6 pr-6 pt-2 pb-2 text-white bg-black border-white border-3 hover:bg-white hover:text-black hover:border-white hover:border-3" href="https://github.com/flextype/flextype/releases/download/v0.9.8/flextype-0.9.8.zip">DOWNLOAD Flextype 0.9.8</a>
+                        <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black"  href="https://github.com/flextype/flextype/releases/download/v0.9.8/flextype-0.9.8.zip">DOWNLOAD Flextype 0.9.8</a>
                     </div>
                 </div>
                 <div class="w-full lg:w-6/12 p-2 text-center">
-                    <div class="p-12 h-full bg-black text-white">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
                         <i class="fas fa-star text-6xl mb-5" aria-hidden="true"></i>
                         <h4 class="text-2xl">Extend</h4>
                         <div class="h-24 mb-10">
                             Extend and Customize Flextype Core Functionality by adding plugins, themes, and other packages.
                             <br>
                         </div>
-                        <a class="uppercase pl-6 pr-6 pt-2 pb-2 text-white bg-black border-white border-3 hover:bg-white hover:text-black hover:border-white hover:border-3" href="{{ url() }}/{{ locale }}/downloads/extend">EXTEND FLEXTYPE</a>
+                        <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black"  href="{{ url() }}/{{ locale }}/downloads/extend">EXTEND FLEXTYPE</a>
                     </div>
                 </div>
                 <div class="w-full p-2 text-center">
-                    <div class="p-12 h-full bg-black text-white">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
                         <i class="fas fa-info-circle text-6xl mb-5" aria-hidden="true"></i>
                         <h4 class="text-2xl">QUICK INSTALLATION</h4>
                         <div class="mb-10 text-left">
                             1. <a href="https://flextype.org/en/downloads">Download the latest version of Flextype.</a><br>
                             2. Unzip the contents to a new folder on your local computer, and upload to your webhost using the (S)FTP client of your choice. After you’ve done this, create directory <code>/project</code> and be sure to chmod the following directory to <code>755</code> (or <code>777</code>), so it is readable and writable by Flextype.<br>
-                            3. Create CDA, CMA and Access tokens for your project using this <a href="https://flextype.org/en/api-token-generator">webpage</a>.
+                            3. Create CDA, CMA and Access tokens for your project using this <a href="{{ url() }}/{{ locale }}/api-token-generator">webpage</a>.
                             <br><br><br><br>
                             <div class="text-center">
-                                <a class="uppercase pl-6 pr-6 pt-2 pb-2 text-white bg-black border-white border-3 hover:bg-white hover:text-black hover:border-white hover:border-3" href="https://docs.flextype.org/en/getting-started/installation">READ THE DOCUMENTATION</a>
+                                <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black"  href="https://docs.flextype.org/en/getting-started/installation">READ THE DOCUMENTATION</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="w-full p-2 text-center">
-                    <div class="p-12 h-full bg-black text-white">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
                         <i class="fab fa-youtube text-6xl mb-5" aria-hidden="true"></i>
                         <h4 class="text-2xl">INSTALLATION VIDEO TUTORIALS</h4>
                         <div class="mb-10 text-center">
@@ -55,52 +55,6 @@
                         </div>
                     </div>
                 </div>
-                <!--
-                <div class="w-full p-2 text-center">
-                    <div class="p-12 h-full bg-black text-white">
-                        <i class="fas fa-info-circle text-6xl mb-5" aria-hidden="true"></i>
-                        <h4 class="text-2xl">SUPPORTING FLEXTYPE</h4>
-                        <div class="mb-10">
-                            Flextype is an open source project and community contributions are essential to its growing and success.<br>
-                            Contributing to the Flextype is easy and you can give as little or as much time as you want.
-                            <br><br>
-                            <div class="flex content-center flex-wrap">
-                                <div class="w-full lg:w-6/12 p-8 wow fadeIn">
-                                    <div class="bg-black text-white text-left">
-                                        <h4 class="text-center">FINANCIAL SUPPORT</h4>
-                                        Flextype is an MIT-licensed open source project and completely free to use.
-                                        However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. <br><br> You can support it's ongoing development by being a project backer or a sponsor:<br>
-                                        <a href="https://www.patreon.com/awilum">Become a backer or sponsor on Patreon</a>,
-                                        <a href="//flextype.org/en/one-time-donation">One-time donation via PayPal, QIWI, Sberbank, Yandex</a>,
-                                        <a href="//flextype.org/en/sponsors">Visit our Sponsors & Backers page</a>
-                                    </div>
-                                </div>
-                                <div class="w-full lg:w-6/12 p-8 wow fadeIn">
-                                    <div class="bg-black text-white text-left">
-                                        <h4 class="text-center">INTERNATIONAL TRANSLATOR TEAM</h4>
-                                        We are on a mission to build high quality platform to develop fast, flexible, easier to manage websites with Flextype!<br><br>
-                                        If you wish to participate in the translation of Flextype, please Join Flextype International Translator Team and start translating!<br><br>
-                                        Our crowdin projects:<br>
-                                        <a href="">Flextype Admin Panel Plugin</a>, <a href="">Flextype Form Admin Plugin</a>, <a href="">Flextype Themes Admin Plugin</a>, <a href="">Flextype Website</a>, <a href="">Flextype Documentation</a>
-                                    </div>
-                                </div>
-                                <div class="w-full lg:w-6/12 p-8 wow fadeIn">
-                                    <div class="bg-black text-white text-left">
-                                        <h4 class="text-center">FINANCIAL SUPPORT</h4>
-                                        Flextype is an MIT-licensed open source project and completely free to use.
-                                        However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. <br><br> You can support it's ongoing development by being a backer or a sponsor:<br>
-                                        <ul>
-                                            <li><a href="https://www.patreon.com/awilum">Become a backer or sponsor on Patreon</a></li>
-                                            <li><a href="//flextype.org/en/one-time-donation">One-time donation via PayPal, QIWI, Sberbank, Yandex</a></li>
-                                            <li><a href="//flextype.org/en/sponsors">Visit our Sponsors & Backers page</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                -->
             </div>
         </div>
     </div>

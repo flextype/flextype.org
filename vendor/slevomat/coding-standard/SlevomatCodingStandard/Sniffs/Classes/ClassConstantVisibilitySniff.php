@@ -27,7 +27,7 @@ class ClassConstantVisibilitySniff implements Sniff
 	public $fixable = false;
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -37,8 +37,8 @@ class ClassConstantVisibilitySniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $constantPointer
 	 */
 	public function process(File $phpcsFile, $constantPointer): void

@@ -32,7 +32,7 @@ class TypeCastSniff implements Sniff
 	];
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -47,8 +47,8 @@ class TypeCastSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $pointer
 	 */
 	public function process(File $phpcsFile, $pointer): void
@@ -78,11 +78,15 @@ class TypeCastSniff implements Sniff
 				return;
 			}
 
-			for ($i = $pointer, $end = TokenHelper::findNextEffective($phpcsFile, $pointer + 1); $i < $end; $i++) {
-				$phpcsFile->fixer->beginChangeset();
+			$end = TokenHelper::findNextEffective($phpcsFile, $pointer + 1);
+
+			$phpcsFile->fixer->beginChangeset();
+
+			for ($i = $pointer; $i < $end; $i++) {
 				$phpcsFile->fixer->replaceToken($i, '');
-				$phpcsFile->fixer->endChangeset();
 			}
+
+			$phpcsFile->fixer->endChangeset();
 
 			return;
 		}

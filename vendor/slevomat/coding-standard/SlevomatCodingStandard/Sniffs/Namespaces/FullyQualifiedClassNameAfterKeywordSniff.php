@@ -40,36 +40,24 @@ class FullyQualifiedClassNameAfterKeywordSniff implements Sniff
 	private $normalizedKeywordsToCheck;
 
 	/**
-	 * @return string[]
-	 */
-	private function getKeywordsToCheck(): array
-	{
-		if ($this->normalizedKeywordsToCheck === null) {
-			$this->normalizedKeywordsToCheck = SniffSettingsHelper::normalizeArray($this->keywordsToCheck);
-		}
-
-		return $this->normalizedKeywordsToCheck;
-	}
-
-	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
 		if (count($this->getKeywordsToCheck()) === 0) {
 			return [];
 		}
-		return array_map(function (string $keyword) {
+		return array_values(array_map(static function (string $keyword) {
 			if (!defined($keyword)) {
 				throw new UndefinedKeywordTokenException($keyword);
 			}
 			return constant($keyword);
-		}, $this->getKeywordsToCheck());
+		}, $this->getKeywordsToCheck()));
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $keywordPointer
 	 */
 	public function process(File $phpcsFile, $keywordPointer): void
@@ -112,11 +100,24 @@ class FullyQualifiedClassNameAfterKeywordSniff implements Sniff
 		}
 	}
 
-	private function checkReferencedName(
-		File $phpcsFile,
-		int $keywordPointer,
-		int $nameStartPointer
-	): int
+	public static function getErrorCode(string $keyword): string
+	{
+		return sprintf(self::CODE_NON_FULLY_QUALIFIED, ucfirst($keyword));
+	}
+
+	/**
+	 * @return string[]
+	 */
+	private function getKeywordsToCheck(): array
+	{
+		if ($this->normalizedKeywordsToCheck === null) {
+			$this->normalizedKeywordsToCheck = SniffSettingsHelper::normalizeArray($this->keywordsToCheck);
+		}
+
+		return $this->normalizedKeywordsToCheck;
+	}
+
+	private function checkReferencedName(File $phpcsFile, int $keywordPointer, int $nameStartPointer): int
 	{
 		$tokens = $phpcsFile->getTokens();
 
@@ -145,13 +146,14 @@ class FullyQualifiedClassNameAfterKeywordSniff implements Sniff
 				$keyword
 			), $keywordPointer, self::getErrorCode($keyword));
 			if ($fix) {
-				$phpcsFile->fixer->beginChangeset();
 
 				$fullyQualifiedName = NamespaceHelper::resolveClassName(
 					$phpcsFile,
 					$name,
 					$nameStartPointer
 				);
+
+				$phpcsFile->fixer->beginChangeset();
 
 				for ($i = $nameStartPointer; $i <= $endPointer; $i++) {
 					$phpcsFile->fixer->replaceToken($i, '');
@@ -163,11 +165,6 @@ class FullyQualifiedClassNameAfterKeywordSniff implements Sniff
 		}
 
 		return $endPointer;
-	}
-
-	public static function getErrorCode(string $keyword): string
-	{
-		return sprintf(self::CODE_NON_FULLY_QUALIFIED, ucfirst($keyword));
 	}
 
 }

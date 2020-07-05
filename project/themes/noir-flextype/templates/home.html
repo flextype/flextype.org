@@ -1,21 +1,18 @@
 {% extends "themes/" ~ registry.get('plugins.site.settings.theme') ~ "/templates/partials/base.html" %}
 
 {% block content %}
-
     <!-- introducing section -->
-    <div class="bg-black text-white">
-        <div class="container mx-auto">
-            <div class="text-center">
-                <h1 class="uppercase p-8 mb-10 lg:p-24 m-0 font-noirpro-semibold wow fadeIn text-3xl lg:text-5xl">{{ entry.intro_section_h1|raw }}</h1>
-                <div class="flex justify-center wow fadeIn">
-                    <a
-                        href="{{ base_url() }}/{{ locale }}/downloads"
-                        class="text-center relative text-lg relative pr-2 pl-2 pt-6 pb-6 w-10/12 lg:w-3/12 text-white bg-black border-white border-3 hover:bg-white hover:text-black hover:border-white hover:border-3 wow fadeIn">{{ entry.intro_section_button|raw }}</a>
-                </div>
-                <div class="flex justify-center wow fadeIn">
-                    <div class="mt-20">
-                        <img src="{{ base_url() }}/api/images/{{ locale }}/flextype-banner.jpg?dpr=2&w=1000&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703" width="1000" class="border-none" alt="{{ entry.description }}">
-                    </div>
+    <div class="container relative mx-auto">
+        <div class="text-center">
+            <h1 class="uppercase m-0 p-24 font-noirpro-semibold wow fadeIn text-3xl lg:text-5xl">{{ registry.get('sections.intro_section_h1')|raw }}</h1>
+            <div class="flex justify-center wow fadeIn">
+                <a
+                    href="{{ base_url() }}/{{ locale }}/downloads"
+                    class="no-underline uppercase text-center relative text-lg relative pr-2 pl-2 pt-6 pb-6 w-10/12 lg:w-3/12 rounded-lg border-black bg-white border-2 text-black hover:bg-black hover:text-white wow fadeIn">{{ registry.get('sections.intro_section_button')|raw }}</a>
+            </div>
+            <div class="flex justify-center wow fadeIn">
+                <div class="mt-20">
+                    <img src="{{ base_url() }}/api/images/{{ locale }}/flextype-banner.jpg?dpr=2&w=1000&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703" width="1000" class="border-none" alt="{{ entry.description }}">
                 </div>
             </div>
         </div>
@@ -23,213 +20,199 @@
     <!-- /introducing section -->
 
     <!-- features section -->
-    <div class="text-center bg-black text-white">
-        <div class="container mx-auto pt-24 pb-20">
-            <h3 class="uppercase text-3xl lg:text-6xl font-noirpro-semibold wow fadeIn">{{ entry.features_heading|raw }}</h3>
-            <p class="text-xl lg:text-3xl wow fadeIn">{{ entry.features_description|raw }}</p>
+    <div class="text-center pt-20">
+        <div class="container relative mx-auto">
+            <h3 class="uppercase text-3xl lg:text-6xl font-noirpro-semibold wow fadeIn">{{ registry.get('sections.features_heading')|raw }}</h3>
+            <p class="text-xl lg:text-3xl wow fadeIn">{{ registry.get('sections.features_description')|raw }}</p>
 
             <div class="flex content-center flex-wrap mt-12">
                 <div class="w-full lg:w-1/3 p-8 wow fadeIn">
                     <i class="fa fa-rocket text-6xl mb-5" aria-hidden="true"></i>
-                    <h4 class="text-2xl">Fast</h4>
+                    <h4 class="text-2xl">{{ registry.get('sections.features_fast_heading')|raw }}</h4>
                     <p>
-                        Flextype is super fast content management system because of its elegance architecture and built-in <a href="https://docs.flextype.org/en/concepts/performance">smart cache</a>.
+                        {{ registry.get('sections.features_fast_description')|raw }}
                     </p>
                 </div>
 
-                <div class="w-full lg:w-1/3 p-8 wow fadeIn">
+                <div class="w-full lg:w-1/3 p-6 wow fadeIn">
                     <i class="fa fa-cogs text-6xl mb-5" aria-hidden="true"></i>
-                    <h4 class="text-2xl">Flexible</h4>
+                    <h4 class="text-2xl">{{ registry.get('sections.features_fast_heading')|raw }}</h4>
                     <p>
-                        Building this content management system, we focused on simplicity and flexibility. To achieve this, we implemented a simple but powerful Core API's.
+                        {{ registry.get('sections.features_fast_description')|raw }}
                     </p>
                 </div>
 
-                <div class="w-full lg:w-1/3 p-8 wow fadeIn">
+                <div class="w-full lg:w-1/3 p-6 wow fadeIn">
                     <i class="fa fa-font text-6xl mb-5" aria-hidden="true"></i>
-                    <h4 class="text-2xl">Easy Editing</h4>
+                    <h4 class="text-2xl">{{ registry.get('sections.features_easy_editing_heading')|raw }}</h4>
                     <p>
-                        With Flextype you are free to use any of your favorite content editor to write content or our gorgeous <a href="https://github.com/flextype-plugins/admin" target="_blank">Admin Panel</a>.
+                        {{ registry.get('sections.features_easy_editing_description')|raw }}
                     </p>
                 </div>
 
-                <div class="w-full lg:w-1/3 p-8 wow fadeIn">
+                <div class="w-full lg:w-1/3 p-6 wow fadeIn">
                     <i class="fas fa-network-wired text-6xl mb-5" aria-hidden="true"></i>
-                    <h4 class="text-2xl">Built-in REST API</h4>
+                    <h4 class="text-2xl">{{ registry.get('sections.features_built_in_rest_api_heading')|raw }}</h4>
                     <p>
-                        Flextype REST API with compact JSON payloads gives you full programmatic control over your content management system.
+                        {{ registry.get('sections.features_built_in_rest_api_description')|raw }}
                     </p>
                 </div>
 
-                <div class="w-full lg:w-1/3 p-8 wow fadeIn">
+                <div class="w-full lg:w-1/3 p-6 wow fadeIn">
                     <i class="fa fa-list-alt text-6xl mb-5" aria-hidden="true"></i>
-                    <h4 class="text-2xl">Dynamic Content Types</h4>
+                    <h4 class="text-2xl">{{ registry.get('sections.features_dynamic_content_types_heading')|raw }}</h4>
                     <p>
-                        The flat-file nature of Flextype lets you define unlimited custom fields for any of your entries.
+                        {{ registry.get('sections.features_dynamic_content_types_description')|raw }}
                     </p>
                 </div>
 
-                <div class="w-full lg:w-1/3 p-8 wow fadeIn">
+                <div class="w-full lg:w-1/3 p-6 wow fadeIn">
                     <i class="fas fa-code-branch text-6xl mb-5" aria-hidden="true"></i>
-                    <h4 class="text-2xl">Version Control</h4>
+                    <h4 class="text-2xl">{{ registry.get('sections.features_dynamic_content_types_heading')|raw }}</h4>
                     <p>
-                        Flextype is a file-based CMS, you can version control all content with GIT or any other Version Control System.
+                        {{ registry.get('sections.features_dynamic_content_types_description')|raw }}
                     </p>
                 </div>
             </div>
         </div>
-        <!-- /features section -->
+    </div>
+    <!-- /features section -->
 
-        <!-- no limits section -->
-        <div class="text-center bg-white text-black">
-            <div class="container mx-auto pt-20 pb-20">
-                <h3 class="uppercase text-3xl lg:text-6xl font-noirpro-semibold wow fadeIn">{{ entry.features_no_limits_heading|raw }}</h3>
-                <p class="text-xl lg:text-3xl wow fadeIn">{{ entry.features_no_limits_p|raw }}</p>
+    <!-- no limits section -->
+    <div class="text-center">
+        <div class="container mx-auto pt-20 pb-20">
+            <h3 class="uppercase text-3xl lg:text-6xl font-noirpro-semibold wow fadeIn">{{ registry.get('sections.features_no_limits_heading')|raw }}</h3>
+            <p class="text-xl lg:text-3xl wow fadeIn">{{ registry.get('sections.features_no_limits_description')|raw }}</p>
 
-                <div class="flex content-center flex-wrap mt-12">
+            <div class="flex content-center flex-wrap mt-12">
 
-                    <div class="w-full lg:w-3/12 p-8 wow fadeIn">
-                        <i class="fas fa-desktop text-6xl mb-5" aria-hidden="true"></i>
-                        <h4 class="text-2xl">Websites</h4>
-                        <p>
-                            Business sites, Landing pages, Personal site, Portfolios, Product sites, Blogs, Web Apps
-                        </p>
-                    </div>
+                <div class="w-full lg:w-3/12 p-6 wow fadeIn">
+                    <i class="fas fa-desktop text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">{{ registry.get('sections.no_limits_websites_heading')|raw }}</h4>
+                    <p>
+                        {{ registry.get('sections.no_limits_websites_description')|raw }}
+                    </p>
+                </div>
 
-                    <div class="w-full lg:w-3/12 p-8 wow fadeIn">
-                        <i class="fas fa-mobile-alt text-6xl mb-5" aria-hidden="true"></i>
-                        <h4 class="text-2xl">Native Apps</h4>
-                        <p>
-                            iOS, Android, Windows, Kai, Lineage, Fire, Flyme, Sailfish, Tizen, Remix.
-                        </p>
-                    </div>
+                <div class="w-full lg:w-3/12 p-6 wow fadeIn">
+                    <i class="fas fa-mobile-alt text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">{{ registry.get('sections.native_apps_heading')|raw }}</h4>
+                    <p>
+                        {{ registry.get('sections.native_apps_description')|raw }}
+                    </p>
+                </div>
 
-                    <div class="w-full lg:w-3/12 p-8 wow fadeIn">
-                        <i class="far fa-square text-6xl mb-5" aria-hidden="true"></i>
-                        <h4 class="text-2xl">Kiosks</h4>
-                        <p>
-                            Kiosks, Billboards, Digital Signage
-                        </p>
-                    </div>
+                <div class="w-full lg:w-3/12 p-6 wow fadeIn">
+                    <i class="far fa-square text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">{{ registry.get('sections.kiosks_heading')|raw }}</h4>
+                    <p>
+                        {{ registry.get('sections.kiosks_description')|raw }}
+                    </p>
+                </div>
 
-                    <div class="w-full lg:w-3/12 p-8 wow fadeIn">
-                        <i class="fas fa-running text-6xl mb-5" aria-hidden="true"></i>
-                        <h4 class="text-2xl">Wearables</h4>
-                        <p>
-                            Smartwatch Apps, Activity Trackers
-                        </p>
-                    </div>
+                <div class="w-full lg:w-3/12 p-6 wow fadeIn">
+                    <i class="fas fa-running text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">{{ registry.get('sections.wearables_heading')|raw }}</h4>
+                    <p>
+                        {{ registry.get('sections.wearables_description')|raw }}
+                    </p>
+                </div>
 
-                    <div class="w-full lg:w-3/12 p-8 wow fadeIn">
-                        <i class="far fa-lightbulb text-6xl mb-5" aria-hidden="true"></i>
-                        <h4 class="text-2xl">IoT Devices</h4>
-                        <p>
-                            Lights, Appliances, Auto
-                        </p>
-                    </div>
+                <div class="w-full lg:w-3/12 p-6 wow fadeIn">
+                    <i class="far fa-lightbulb text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">{{ registry.get('sections.iot_devices_heading')|raw }}</h4>
+                    <p>
+                        {{ registry.get('sections.iot_devices_description')|raw }}
+                    </p>
+                </div>
 
-                    <div class="w-full lg:w-3/12 p-8 wow fadeIn">
-                        <i class="fas fa-gamepad text-6xl mb-5" aria-hidden="true"></i>
-                        <h4 class="text-2xl">Game Data</h4>
-                        <p>
-                            Mobile Games, VR, DLC
-                        </p>
-                    </div>
+                <div class="w-full lg:w-3/12 p-6 wow fadeIn">
+                    <i class="fas fa-gamepad text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">{{ registry.get('sections.game_data_heading')|raw }}</h4>
+                    <p>
+                        {{ registry.get('sections.game_data_description')|raw }}
+                    </p>
+                </div>
 
-                    <div class="w-full lg:w-3/12 p-8 wow fadeIn">
-                        <i class="far fa-compass text-6xl mb-5" aria-hidden="true"></i>
-                        <h4 class="text-2xl">SaaS Platforms</h4>
-                        <p>
-                            CRM, Productivity Tools, & Commerce
-                        </p>
-                    </div>
+                <div class="w-full lg:w-3/12 p-6 wow fadeIn">
+                    <i class="far fa-compass text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">{{ registry.get('sections.saas_platforms_heading')|raw }}</h4>
+                    <p>
+                        {{ registry.get('sections.saas_platforms_description')|raw }}
+                    </p>
+                </div>
 
-                    <div class="w-full lg:w-3/12 p-8 wow fadeIn">
-                        <i class="fas fa-shopping-cart text-6xl mb-5" aria-hidden="true"></i>
-                        <h4 class="text-2xl">E-Commerce</h4>
-                        <p>
-                            E-Commerce, Inventory, & POS
-                        </p>
-                    </div>
+                <div class="w-full lg:w-3/12 p-6 wow fadeIn">
+                    <i class="fas fa-shopping-cart text-6xl mb-5" aria-hidden="true"></i>
+                    <h4 class="text-2xl">{{ registry.get('sections.ecommerce_heading')|raw }}</h4>
+                    <p>
+                        {{ registry.get('sections.ecommerce_description')|raw }}
+                    </p>
                 </div>
             </div>
         </div>
-        <!-- /no limits section -->
+    </div>
+    <!-- /no limits section -->
 
-        <!-- community section -->
-        <div class="text-center bg-white text-black">
-            <div class="container mx-auto pt-20 pb-20">
-                <h3 class="uppercase text-3xl lg:text-6xl font-noirpro-semibold wow fadeIn">{{ entry.community_heading|raw }}</h3>
-                <p class="text-xl lg:text-3xl">{{ entry.community_p|raw }}</p>
-
-                <div class="flex content-center flex-wrap mt-12">
-                    <div class="w-full lg:w-4/12 p-8 wow fadeIn">
-                        <i class="fab fa-discord text-7xl mb-5"></i>
-                        <h4 class="text-2xl">Discord</h4>
-                        <div class="text-base h-32">
-                            Got a question about setting up or using Flextype? We'll do our best to help you out.
-                            Also here you may start discussions about core, plugin and themes development.
-                        </div>
-                        <a class="text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-3 hover:bg-black hover:text-white hover:border-black hover:border-3 wow fadeIn" href="https://discord.gg/CCKPKVG">Join the Conversation</a>
+    <!-- community section -->
+    <div class="text-center">
+        <div class="container mx-auto pt-20 pb-20">
+            <h3 class="uppercase text-3xl lg:text-6xl font-noirpro-semibold wow fadeIn">{{ registry.get('sections.community_heading')|raw }}</h3>
+            <div class="flex content-center flex-wrap mt-12">
+                <div class="w-full lg:w-4/12 p-6 wow fadeIn">
+                    <i class="fab fa-discord text-7xl mb-5"></i>
+                    <h4 class="text-2xl">{{ registry.get('sections.discord_heading')|raw }}</h4>
+                    <div class="text-base h-32">
+                        {{ registry.get('sections.discord_description')|raw }}
                     </div>
-
-                    <div class="w-full lg:w-4/12 p-8 wow fadeIn">
-                        <i class="fab fa-github text-7xl mb-5"></i>
-                        <h4 class="text-2xl">Github</h4>
-                        <div class="text-base h-32">
-                            If you want to report a bug or contribute your ideas, you can use the <a href="https://github.com/flextype/flextype/issues">Flextype GitHub Issues tracker</a>.
-                        </div>
-                        <a class="text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-3 hover:bg-black hover:text-white hover:border-black hover:border-3 wow fadeIn" href="https://github.com/flextype">Contribute</a>
-                    </div>
-
-                    <div class="w-full lg:w-4/12 p-8 wow fadeIn">
-                        <i class="fab fa-twitter text-7xl mb-5"></i>
-                        <h4 class="text-2xl">Twitter</h4>
-                        <div class="text-base h-32">
-                            Follow <a href="https://twitter.com/getflextype">Flextype on Twitter</a> to get real-time news regarding the development and all events we are attending.
-                        </div>
-                        <a class="text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-3 hover:bg-black hover:text-white hover:border-black hover:border-3 wow fadeIn" href="https://github.com/flextype">Follow Us</a>
-                    </div>
+                    <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn" href="https://discord.gg/CCKPKVG">{{ registry.get('sections.discord_button')|raw }}</a>
                 </div>
 
+                <div class="w-full lg:w-4/12 p-6 wow fadeIn">
+                    <i class="fab fa-github text-7xl mb-5"></i>
+                    <h4 class="text-2xl">{{ registry.get('sections.github_heading')|raw }}</h4>
+                    <div class="text-base h-32">
+                        {{ registry.get('sections.github_description')|raw }}
+                    </div>
+                    <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn" href="https://github.com/flextype">{{ registry.get('sections.github_button')|raw }}</a>
+                </div>
+
+                <div class="w-full lg:w-4/12 p-6 wow fadeIn">
+                    <i class="fab fa-twitter text-7xl mb-5"></i>
+                    <h4 class="text-2xl">{{ registry.get('sections.twitter_heading')|raw }}</h4>
+                    <div class="text-base h-32">
+                        {{ registry.get('sections.twitter_description')|raw }}
+                    </div>
+                    <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn" href="https://twitter.com/getflextype">{{ registry.get('sections.twitter_button')|raw }}</a>
+                </div>
             </div>
+
         </div>
-        <!-- /community section -->
+    </div>
+    <!-- /community section -->
 
-        <!-- /contribution section -->
-        <div class="text-center bg-white text-black">
-            <div class="container mx-auto pt-20 pb-40">
-                <h3 class="uppercase text-3xl lg:text-6xl font-noirpro-semibold wow fadeIn">{{ entry.contribution_heading|raw }}</h3>
-                <p class="text-xl lg:text-3xl pl-20 pr-20 wow fadeIn">{{ entry.contribution_p|raw }}</p>
-
-                <div class="w-full text-center">
-                    <div class="mb-10">
-                        <div class="flex content-center flex-wrap">
-                            <div class="w-full lg:w-6/12 p-8 wow fadeIn">
-                                <div class="text-left">
-                                    <h4 class="text-center">FINANCIAL SUPPORT</h4>
-                                    Flextype is an MIT-licensed open source project and completely free to use.
-                                    However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. <br><br> You can support it's ongoing development by being a project backer or a sponsor:<br>
-                                    <a class="invert" href="https://www.patreon.com/awilum">Become a backer or sponsor on Patreon</a>,
-                                    <a class="invert" href="//flextype.org/en/one-time-donation">One-time donation via PayPal, QIWI, Sberbank, Yandex</a>,
-                                    <a class="invert" href="//flextype.org/en/sponsors">Visit our Sponsors & Backers page</a>
-                                </div>
+    <!-- /contribution section -->
+    <div class="text-center">
+        <div class="container mx-auto pt-20 pb-40">
+            <h3 class="uppercase text-3xl lg:text-6xl font-noirpro-semibold wow fadeIn">{{ registry.get('sections.contribution_heading')|raw }}</h3>
+            <p class="text-xl lg:text-3xl px-8 mb-8 wow fadeIn">{{ registry.get('sections.contribution_description')|raw }}</p>
+            <div class="w-full text-center">
+                <div class="mb-10">
+                    <div class="flex content-center flex-wrap">
+                        <div class="w-full lg:w-6/12 p-2 wow fadeIn">
+                            <div class="text-left">
+                                {{ registry.get('sections.contribution_description_financial_support')|raw }}
                             </div>
-                            <div class="w-full lg:w-6/12 p-8 wow fadeIn">
-                                <div class="text-left">
-                                    <h4 class="text-center">INTERNATIONAL TRANSLATOR TEAM</h4>
-                                    We are on a mission to build high quality platform to develop fast, flexible, easier to manage websites with Flextype!<br><br>
-                                    If you wish to participate in the translation of Flextype, please Join Flextype International Translator Team and start translating!<br><br>
-                                    Our crowdin projects:<br>
-                                    <a class="invert" href="">Flextype Admin Panel Plugin</a>, <a class="invert" href="">Flextype Form Admin Plugin</a>, <a class="invert" href="">Flextype Themes Admin Plugin</a>, <a class="invert" href="">Flextype Website</a>, <a class="invert" href="">Flextype Documentation</a>
-                                </div>
+                        </div>
+                        <div class="w-full lg:w-6/12 p-2 wow fadeIn">
+                            <div class="text-left">
+                                {{ registry.get('sections.contribution_description_international_translator_team')|raw }}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /contribution section -->
-
-
-    {% endblock %}
+    </div>
+    <!-- /contribution section -->
+{% endblock %}

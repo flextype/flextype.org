@@ -3,9 +3,17 @@
 namespace SlevomatCodingStandard\Helpers;
 
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Util\Tokens;
+use PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode;
+use PHPStan\PhpDocParser\Ast\ConstExpr\ConstFetchNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\InvalidTagValueNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode;
+use PHPStan\PhpDocParser\Ast\Type\CallableTypeNode;
+use PHPStan\PhpDocParser\Ast\Type\GenericTypeNode;
+use PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
+use PHPStan\PhpDocParser\Ast\Type\ThisTypeNode;
 use PHPStan\PhpDocParser\Ast\Type\TypeNode;
+use PHPStan\PhpDocParser\Ast\Type\UnionTypeNode;
 use PHPStan\PhpDocParser\Lexer\Lexer;
 use PHPStan\PhpDocParser\Parser\ConstExprParser;
 use PHPStan\PhpDocParser\Parser\PhpDocParser;
@@ -20,6 +28,7 @@ use SlevomatCodingStandard\Helpers\Annotation\ReturnAnnotation;
 use SlevomatCodingStandard\Helpers\Annotation\ThrowsAnnotation;
 use SlevomatCodingStandard\Helpers\Annotation\VariableAnnotation;
 use function array_key_exists;
+use function array_merge;
 use function get_class;
 use function in_array;
 use function preg_match;
@@ -37,8 +46,8 @@ class AnnotationHelper
 
 	/**
 	 * @internal
-	 * @param \SlevomatCodingStandard\Helpers\Annotation\VariableAnnotation|\SlevomatCodingStandard\Helpers\Annotation\ParameterAnnotation|\SlevomatCodingStandard\Helpers\Annotation\ReturnAnnotation|\SlevomatCodingStandard\Helpers\Annotation\ThrowsAnnotation|\SlevomatCodingStandard\Helpers\Annotation\PropertyAnnotation|\SlevomatCodingStandard\Helpers\Annotation\MethodAnnotation $annotation
-	 * @return \PHPStan\PhpDocParser\Ast\Type\TypeNode[]
+	 * @param VariableAnnotation|ParameterAnnotation|ReturnAnnotation|ThrowsAnnotation|PropertyAnnotation|MethodAnnotation $annotation
+	 * @return TypeNode[]
 	 */
 	public static function getAnnotationTypes(Annotation $annotation): array
 	{
@@ -64,13 +73,37 @@ class AnnotationHelper
 
 	/**
 	 * @internal
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
-	 * @param \SlevomatCodingStandard\Helpers\Annotation\VariableAnnotation|\SlevomatCodingStandard\Helpers\Annotation\ParameterAnnotation|\SlevomatCodingStandard\Helpers\Annotation\ReturnAnnotation|\SlevomatCodingStandard\Helpers\Annotation\ThrowsAnnotation|\SlevomatCodingStandard\Helpers\Annotation\PropertyAnnotation|\SlevomatCodingStandard\Helpers\Annotation\MethodAnnotation $annotation
-	 * @param \PHPStan\PhpDocParser\Ast\Type\TypeNode $typeNode
-	 * @param \PHPStan\PhpDocParser\Ast\Type\TypeNode $fixedTypeNode
+	 * @param VariableAnnotation|ParameterAnnotation|ReturnAnnotation|ThrowsAnnotation|PropertyAnnotation|MethodAnnotation $annotation
+	 * @return ConstExprNode[]
+	 */
+	public static function getAnnotationConstantExpressions(Annotation $annotation): array
+	{
+		if (!$annotation instanceof MethodAnnotation) {
+			return [];
+		}
+
+		$constantExpressions = [];
+
+		foreach ($annotation->getMethodParameters() as $methodParameterAnnotation) {
+			if ($methodParameterAnnotation->defaultValue === null) {
+				continue;
+			}
+
+			$constantExpressions[] = $methodParameterAnnotation->defaultValue;
+		}
+
+		return $constantExpressions;
+	}
+
+	/**
+	 * @internal
+	 * @param File $phpcsFile
+	 * @param VariableAnnotation|ParameterAnnotation|ReturnAnnotation|ThrowsAnnotation|PropertyAnnotation|MethodAnnotation $annotation
+	 * @param TypeNode $typeNode
+	 * @param TypeNode $fixedTypeNode
 	 * @return string
 	 */
-	public static function fixAnnotation(File $phpcsFile, Annotation $annotation, TypeNode $typeNode, TypeNode $fixedTypeNode): string
+	public static function fixAnnotationType(File $phpcsFile, Annotation $annotation, TypeNode $typeNode, TypeNode $fixedTypeNode): string
 	{
 		if ($annotation instanceof MethodAnnotation) {
 			$fixedContentNode = clone $annotation->getContentNode();
@@ -108,37 +141,63 @@ class AnnotationHelper
 			);
 		}
 
-		$spaceAfterContent = '';
-		if (preg_match('~(\\s+)$~', TokenHelper::getContent($phpcsFile, $annotation->getStartPointer(), $annotation->getEndPointer()), $matches) > 0) {
-			$spaceAfterContent = $matches[1];
-		}
-
-		$fixedAnnotationContent = $fixedAnnotation->export() . $spaceAfterContent;
-
-		return preg_replace('~(\r\n|\n|\r)~', '\1 * ', $fixedAnnotationContent);
+		return self::fix($phpcsFile, $annotation, $fixedAnnotation);
 	}
 
 	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @internal
+	 * @param File $phpcsFile
+	 * @param MethodAnnotation $annotation
+	 * @param ConstFetchNode $node
+	 * @param ConstFetchNode $fixedNode
+	 * @return string
+	 */
+	public static function fixAnnotationConstantFetchNode(
+		File $phpcsFile,
+		MethodAnnotation $annotation,
+		ConstFetchNode $node,
+		ConstFetchNode $fixedNode
+	): string
+	{
+		$fixedContentNode = clone $annotation->getContentNode();
+
+		foreach ($fixedContentNode->parameters as $parameterNo => $parameterNode) {
+			if ($parameterNode->defaultValue === null) {
+				continue;
+			}
+
+			$fixedContentNode->parameters[$parameterNo] = clone $parameterNode;
+			$fixedContentNode->parameters[$parameterNo]->defaultValue = AnnotationConstantExpressionHelper::change($parameterNode->defaultValue, $node, $fixedNode);
+		}
+
+		$fixedAnnotation = new MethodAnnotation(
+			$annotation->getName(),
+			$annotation->getStartPointer(),
+			$annotation->getEndPointer(),
+			$annotation->getContent(),
+			$fixedContentNode
+		);
+
+		return self::fix($phpcsFile, $annotation, $fixedAnnotation);
+	}
+
+	/**
+	 * @param File $phpcsFile
 	 * @param int $pointer
 	 * @param string $annotationName
-	 * @return (\SlevomatCodingStandard\Helpers\Annotation\VariableAnnotation|\SlevomatCodingStandard\Helpers\Annotation\ParameterAnnotation|\SlevomatCodingStandard\Helpers\Annotation\ReturnAnnotation|\SlevomatCodingStandard\Helpers\Annotation\ThrowsAnnotation|\SlevomatCodingStandard\Helpers\Annotation\PropertyAnnotation|\SlevomatCodingStandard\Helpers\Annotation\MethodAnnotation|\SlevomatCodingStandard\Helpers\Annotation\GenericAnnotation)[]
+	 * @return (VariableAnnotation|ParameterAnnotation|ReturnAnnotation|ThrowsAnnotation|PropertyAnnotation|MethodAnnotation|GenericAnnotation)[]
 	 */
 	public static function getAnnotationsByName(File $phpcsFile, int $pointer, string $annotationName): array
 	{
 		$annotations = self::getAnnotations($phpcsFile, $pointer);
 
-		if (!array_key_exists($annotationName, $annotations)) {
-			return [];
-		}
-
-		return $annotations[$annotationName];
+		return $annotations[$annotationName] ?? [];
 	}
 
 	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @param File $phpcsFile
 	 * @param int $pointer
-	 * @return (\SlevomatCodingStandard\Helpers\Annotation\VariableAnnotation|\SlevomatCodingStandard\Helpers\Annotation\ParameterAnnotation|\SlevomatCodingStandard\Helpers\Annotation\ReturnAnnotation|\SlevomatCodingStandard\Helpers\Annotation\ThrowsAnnotation|\SlevomatCodingStandard\Helpers\Annotation\PropertyAnnotation|\SlevomatCodingStandard\Helpers\Annotation\MethodAnnotation|\SlevomatCodingStandard\Helpers\Annotation\GenericAnnotation)[][]
+	 * @return (VariableAnnotation|ParameterAnnotation|ReturnAnnotation|ThrowsAnnotation|PropertyAnnotation|MethodAnnotation|GenericAnnotation)[][]
 	 */
 	public static function getAnnotations(File $phpcsFile, int $pointer): array
 	{
@@ -149,10 +208,12 @@ class AnnotationHelper
 			return $annotations;
 		}
 
+		$annotationNameCodes = array_merge([T_DOC_COMMENT_TAG], Tokens::$phpcsCommentTokens);
+
 		$tokens = $phpcsFile->getTokens();
 		$i = $docCommentOpenToken + 1;
 		while ($i < $tokens[$docCommentOpenToken]['comment_closer']) {
-			if ($tokens[$i]['code'] !== T_DOC_COMMENT_TAG) {
+			if (!in_array($tokens[$i]['code'], $annotationNameCodes, true)) {
 				$i++;
 				continue;
 			}
@@ -170,7 +231,7 @@ class AnnotationHelper
 					break;
 				}
 
-				if ($tokens[$j]['code'] === T_DOC_COMMENT_TAG && $parenthesesLevel === 0) {
+				if (in_array($tokens[$j]['code'], $annotationNameCodes, true) && $parenthesesLevel === 0) {
 					$i = $j;
 					break;
 				}
@@ -179,7 +240,7 @@ class AnnotationHelper
 					continue;
 				}
 
-				if (in_array($tokens[$j]['code'], [T_DOC_COMMENT_TAG, T_DOC_COMMENT_STRING], true)) {
+				if (in_array($tokens[$j]['code'], array_merge([T_DOC_COMMENT_STRING], $annotationNameCodes), true)) {
 					$annotationEndPointer = $j;
 				} elseif ($tokens[$j]['code'] === T_DOC_COMMENT_WHITESPACE) {
 					if (array_key_exists($j - 1, $tokens) && $tokens[$j - 1]['code'] === T_DOC_COMMENT_STAR) {
@@ -197,7 +258,7 @@ class AnnotationHelper
 			$annotationName = $tokens[$annotationStartPointer]['content'];
 			$annotationParameters = null;
 			$annotationContent = null;
-			if (preg_match('~^(@[-a-zA-Z\\\\]+)(?:\((.*)\))?(?:\\s+(.+))?($)~s', trim($annotationCode), $matches) !== 0) {
+			if (preg_match('~^(@[-a-zA-Z\\\\:]+)(?:\((.*)\))?(?:\\s+(.+))?($)~s', trim($annotationCode), $matches) !== 0) {
 				$annotationName = $matches[1];
 				$annotationParameters = trim($matches[2]);
 				if ($annotationParameters === '') {
@@ -241,6 +302,78 @@ class AnnotationHelper
 
 		return $annotations;
 	}
+
+	/**
+	 * @param File $phpcsFile
+	 * @param int $functionPointer
+	 * @param ReturnTypeHint|ParameterTypeHint|PropertyTypeHint|null $typeHint
+	 * @param ReturnAnnotation|ParameterAnnotation|VariableAnnotation $annotation
+	 * @param array<int, string> $traversableTypeHints
+	 * @return bool
+	 */
+	public static function isAnnotationUseless(
+		File $phpcsFile,
+		int $functionPointer,
+		$typeHint,
+		Annotation $annotation,
+		array $traversableTypeHints
+	): bool
+	{
+		if ($typeHint === null || $annotation->getContent() === null) {
+			return false;
+		}
+
+		if ($annotation->hasDescription()) {
+			return false;
+		}
+
+		if (TypeHintHelper::isTraversableType(TypeHintHelper::getFullyQualifiedTypeHint($phpcsFile, $functionPointer, $typeHint->getTypeHint()), $traversableTypeHints)) {
+			return false;
+		}
+
+		if (AnnotationTypeHelper::containsStaticOrThisType($annotation->getType())) {
+			return false;
+		}
+
+		if (AnnotationTypeHelper::isCompoundOfNull($annotation->getType())) {
+			/** @var UnionTypeNode $annotationTypeNode */
+			$annotationTypeNode = $annotation->getType();
+
+			$annotationTypeHintNode = AnnotationTypeHelper::getTypeFromNullableType($annotationTypeNode);
+			$annotationTypeHint = $annotationTypeHintNode instanceof IdentifierTypeNode ? $annotationTypeHintNode->name : (string) $annotationTypeHintNode;
+			return TypeHintHelper::typeHintEqualsAnnotation($phpcsFile, $functionPointer, $typeHint->getTypeHint(), $annotationTypeHint);
+		}
+
+		if (!AnnotationTypeHelper::containsOneType($annotation->getType())) {
+			return false;
+		}
+
+		if ($annotation->getType() instanceof GenericTypeNode) {
+			return false;
+		}
+
+		if ($annotation->getType() instanceof CallableTypeNode) {
+			return false;
+		}
+
+		/** @var GenericTypeNode|CallableTypeNode|IdentifierTypeNode|ThisTypeNode $annotationTypeNode */
+		$annotationTypeNode = $annotation->getType();
+		$annotationTypeHint = AnnotationTypeHelper::getTypeHintFromOneType($annotationTypeNode);
+		return TypeHintHelper::typeHintEqualsAnnotation($phpcsFile, $functionPointer, $typeHint->getTypeHint(), $annotationTypeHint);
+	}
+
+	private static function fix(File $phpcsFile, Annotation $annotation, Annotation $fixedAnnotation): string
+	{
+		$spaceAfterContent = '';
+		if (preg_match('~(\\s+)$~', TokenHelper::getContent($phpcsFile, $annotation->getStartPointer(), $annotation->getEndPointer()), $matches) > 0) {
+			$spaceAfterContent = $matches[1];
+		}
+
+		$fixedAnnotationContent = $fixedAnnotation->export() . $spaceAfterContent;
+
+		return preg_replace('~(\r\n|\n|\r)~', '\1 * ', $fixedAnnotationContent);
+	}
+
 
 	private static function parseAnnotationContent(string $annotationName, string $annotationContent): PhpDocTagValueNode
 	{

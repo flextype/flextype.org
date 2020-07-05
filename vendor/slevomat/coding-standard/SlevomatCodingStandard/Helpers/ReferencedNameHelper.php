@@ -57,13 +57,13 @@ use const T_VARIABLE;
 class ReferencedNameHelper
 {
 
-	/** @var \SlevomatCodingStandard\Helpers\ReferencedName[][] Cached data for method getAllReferencedNames, cacheKey(string) => pointer(integer) => name(string) */
+	/** @var ReferencedName[][] Cached data for method getAllReferencedNames, cacheKey(string) => pointer(integer) => name(string) */
 	private static $allReferencedTypesCache = [];
 
 	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @param File $phpcsFile
 	 * @param int $openTagPointer
-	 * @return \SlevomatCodingStandard\Helpers\ReferencedName[] referenced names
+	 * @return ReferencedName[] referenced names
 	 */
 	public static function getAllReferencedNames(File $phpcsFile, int $openTagPointer): array
 	{
@@ -84,10 +84,49 @@ class ReferencedNameHelper
 		return self::$allReferencedTypesCache[$cacheKey];
 	}
 
+	public static function getReferenceName(File $phpcsFile, int $nameStartPointer, int $nameEndPointer): string
+	{
+		$tokens = $phpcsFile->getTokens();
+
+		$referencedName = '';
+		for ($i = $nameStartPointer; $i <= $nameEndPointer; $i++) {
+			if (in_array($tokens[$i]['code'], Tokens::$emptyTokens, true)) {
+				continue;
+			}
+
+			$referencedName .= $tokens[$i]['content'];
+		}
+
+		return $referencedName;
+	}
+
+	public static function getReferencedNameEndPointer(File $phpcsFile, int $startPointer): int
+	{
+		$tokens = $phpcsFile->getTokens();
+
+		$nameTokenCodes = array_merge([T_RETURN_TYPE], TokenHelper::$nameTokenCodes);
+		$nameTokenCodesWithWhitespace = array_merge($nameTokenCodes, Tokens::$emptyTokens);
+
+		$lastNamePointer = $startPointer;
+		for ($i = $startPointer + 1; $i < count($tokens); $i++) {
+			if (!in_array($tokens[$i]['code'], $nameTokenCodesWithWhitespace, true)) {
+				break;
+			}
+
+			if (!in_array($tokens[$i]['code'], $nameTokenCodes, true)) {
+				continue;
+			}
+
+			$lastNamePointer = $i;
+		}
+
+		return $lastNamePointer;
+	}
+
 	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @param File $phpcsFile
 	 * @param int $openTagPointer
-	 * @return \SlevomatCodingStandard\Helpers\ReferencedName[] referenced names
+	 * @return ReferencedName[] referenced names
 	 */
 	private static function createAllReferencedNames(File $phpcsFile, int $openTagPointer): array
 	{
@@ -189,45 +228,6 @@ class ReferencedNameHelper
 		return $types;
 	}
 
-	public static function getReferenceName(File $phpcsFile, int $nameStartPointer, int $nameEndPointer): string
-	{
-		$tokens = $phpcsFile->getTokens();
-
-		$referencedName = '';
-		for ($i = $nameStartPointer; $i <= $nameEndPointer; $i++) {
-			if (in_array($tokens[$i]['code'], Tokens::$emptyTokens, true)) {
-				continue;
-			}
-
-			$referencedName .= $tokens[$i]['content'];
-		}
-
-		return $referencedName;
-	}
-
-	public static function getReferencedNameEndPointer(File $phpcsFile, int $startPointer): int
-	{
-		$tokens = $phpcsFile->getTokens();
-
-		$nameTokenCodes = array_merge([T_RETURN_TYPE], TokenHelper::$nameTokenCodes);
-		$nameTokenCodesWithWhitespace = array_merge($nameTokenCodes, Tokens::$emptyTokens);
-
-		$lastNamePointer = $startPointer;
-		for ($i = $startPointer + 1; $i < count($tokens); $i++) {
-			if (!in_array($tokens[$i]['code'], $nameTokenCodesWithWhitespace, true)) {
-				break;
-			}
-
-			if (!in_array($tokens[$i]['code'], $nameTokenCodes, true)) {
-				continue;
-			}
-
-			$lastNamePointer = $i;
-		}
-
-		return $lastNamePointer;
-	}
-
 	private static function isReferencedName(File $phpcsFile, int $startPointer): bool
 	{
 		$tokens = $phpcsFile->getTokens();
@@ -297,7 +297,11 @@ class ReferencedNameHelper
 		$endPointer = self::getReferencedNameEndPointer($phpcsFile, $startPointer);
 		$referencedName = self::getReferenceName($phpcsFile, $startPointer, $endPointer);
 
-		return !TypeHintHelper::isSimpleTypeHint($referencedName) && $referencedName !== 'object';
+		if (TypeHintHelper::isSimpleTypeHint($referencedName)) {
+			return $tokens[$nextPointer]['code'] === T_OPEN_PARENTHESIS;
+		}
+
+		return $referencedName !== 'object';
 	}
 
 }

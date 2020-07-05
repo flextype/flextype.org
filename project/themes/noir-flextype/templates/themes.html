@@ -1,0 +1,222 @@
+{% extends "themes/" ~ registry.get('plugins.site.settings.theme') ~ "/templates/partials/base.html" %}
+
+{% block content %}
+
+{% set name = uri|split('/')|last %}
+
+<div class="container mx-auto bg-white text-black pb-24">
+    <div class="uppercase text-center pt-24 pb-24 m-0 font-noirpro-semibold">
+        <div>
+            <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/{{ name }}">{{ entry.title }}</a></h1>
+        </div>
+        <div>
+            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads">DOWNLOADS</a></span>
+            <span class="opacity-50">/</span>
+            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend">EXTEND</a></span>
+        </div>
+    </div>
+    <div class="flex content-center flex-wrap">
+        <div class="w-full lg:w-9/12 p-2 text-center">
+
+            {# pagination #}
+
+              {% set page = query.page %}
+              {% set tag = query.tag %}
+              {% set author = query.author %}
+
+              {% set plugins_items_limit = 10 %}
+
+              {% if themes_items_limit == 0 %}
+                  {% set themes_items_limit = 5 %}
+              {% endif %}
+
+              {% if tag %}
+
+                  {# @todo get count from cache! #}
+                  {% set themes_items_length = entries.fetch(locale ~ '/downloads/extend/themes', {
+                                                                      'where': {
+                                                                          'key': 'keywords',
+                                                                          'expr': 'contains',
+                                                                          'value': tag
+                                                                      },
+                                                                      'and_where': [{
+                                                                          'key': 'visibility',
+                                                                          'expr': 'nin',
+                                                                          'value': ['draft', 'hidden']
+                                                                      }]
+                                                                  })|length %}
+
+                  {% set themes_items_pages = (themes_items_length/themes_items_limit)|round(0, 'ceil') %}
+                  {% if page < 1 %}
+                      {% set page = 1 %}
+                  {% elseif page > themes_items_pages %}
+                      {% set page = themes_items_pages %}
+                  {% endif %}
+                  {% set themes_items_offset = (page-1)*themes_items_limit %}
+                  {% if themes_items_offset < 0 %}{% set themes_items_offset = 0 %}{% endif %}
+
+                  {% set themes_items = entries.fetch(locale ~ '/downloads/extend/themes', {
+                                                              'where': {
+                                                                  'key': 'keywords',
+                                                                  'expr': 'contains',
+                                                                  'value': tag
+                                                              },
+                                                              'and_where': [{
+                                                                  'key': 'visibility',
+                                                                  'expr': 'nin',
+                                                                  'value': ['draft', 'hidden']
+                                                              }],
+                                                              'order_by': {
+                                                                  'field': 'published_at',
+                                                                  'direction': 'desc'
+                                                              },
+                                                              'set_max_result': themes_items_limit,
+                                                              'set_first_result': themes_items_offset
+                                                          }) %}
+
+              {% elseif author %}
+
+                {# @todo get count from cache! #}
+                {% set themes_items_length = entries.fetch(locale ~ '/downloads/extend/themes', {
+                                                                    'where': {
+                                                                        'key': 'author.email',
+                                                                        'expr': 'eq',
+                                                                        'value': author
+                                                                    },
+                                                                    'and_where': [{
+                                                                        'key': 'visibility',
+                                                                        'expr': 'nin',
+                                                                        'value': ['draft', 'hidden']
+                                                                    }]
+                                                                })|length %}
+
+                {% set themes_items_pages = (themes_items_length/themes_items_limit)|round(0, 'ceil') %}
+                {% if page < 1 %}
+                    {% set page = 1 %}
+                {% elseif page > themes_items_pages %}
+                    {% set page = themes_items_pages %}
+                {% endif %}
+                {% set themes_items_offset = (page-1)*themes_items_limit %}
+                {% if themes_items_offset < 0 %}{% set themes_items_offset = 0 %}{% endif %}
+
+                {% set themes_items = entries.fetch(locale ~ '/downloads/extend/themes', {
+                                                            'where': {
+                                                                'key': 'author.email',
+                                                                'expr': 'eq',
+                                                                'value': author
+                                                            },
+                                                            'and_where': [{
+                                                                'key': 'visibility',
+                                                                'expr': 'nin',
+                                                                'value': ['draft', 'hidden']
+                                                            }],
+                                                            'order_by': {
+                                                                'field': 'published_at',
+                                                                'direction': 'desc'
+                                                            },
+                                                            'set_max_result': themes_items_limit,
+                                                            'set_first_result': themes_items_offset
+                                                        }) %}
+              {% else %}
+
+                  {# @todo get count from cache! #}
+                  {% set themes_items_length = entries.fetch(locale ~ '/downloads/extend/themes', {
+                                                                      'where': {
+                                                                          'key': 'visibility',
+                                                                          'expr': 'nin',
+                                                                          'value': ['draft', 'hidden']
+                                                                      }
+                                                                  })|length %}
+
+                  {% set themes_items_pages = (themes_items_length/themes_items_limit)|round(0, 'ceil') %}
+
+                  {% if page < 1 %}
+                      {% set page = 1 %}
+                  {% elseif page > themes_items_pages %}
+                      {% set page = themes_items_pages %}
+                  {% endif %}
+
+                  {% set themes_items_offset = (page-1)*themes_items_limit %}
+                  {% if themes_items_offset < 0 %}{% set themes_items_offset = 0 %}{% endif %}
+
+                  {% set themes_items = entries.fetch(locale ~ '/downloads/extend/themes', {
+                                                              'where': {
+                                                                  'key': 'visibility',
+                                                                  'expr': 'nin',
+                                                                  'value': ['draft', 'hidden']
+                                                              },
+                                                              'order_by': {
+                                                                  'field': 'published_at',
+                                                                  'direction': 'desc'
+                                                              },
+                                                              'set_max_result': themes_items_limit,
+                                                              'set_first_result': themes_items_offset}) %}
+
+              {% endif %}
+
+              {# /pagination #}
+
+             {% for item in themes_items %}
+             <a href="{{ url() }}/{{ item.slug }}" class="no-underline p-6 text-black flex align-middle rounded-lg border-none mb-6 hover:border-none" style="background: #f8f9fb;">
+                 <img src="{{ item.preview }}" alt="{{ item.title }}" style="height: 120px; margin-right: 20px;">
+                 <div class="text-left">
+                     <h4 class="text-xl pb-0 mb-0 block">{{ item.title }}</h4>
+                     <p class="m-0">
+                         {{ item.description }}
+                     </p>
+                 </div>
+             </a>
+           {% endfor %}
+
+           {# pagination navigation #}
+           <div class="text-center">
+               {% if (page - 1) > 0 %}
+                   <a href="?page={{ page - 1 }}{% if author %}&author={{ author }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}">&larr;</a>
+               {% endif %}
+               {% if themes_items_pages is not null and themes_items_pages > 1 %}
+                   {{ page }} / {{ themes_items_pages }}
+               {% endif %}
+               {% if (page) < themes_items_pages %}
+                   <a href="?page={{ page + 1 }}{% if author %}&author={{ author }}{% endif %}{% if tag %}&tag={{ tag }}{% endif %}">&rarr;</a>
+               {% endif %}
+           </div>
+           {# /pagination navigation #}
+
+        </div>
+        <div class="w-full lg:w-3/12 p-2">
+            <div class="text-black text-left rounded-lg p-6" style="background: #f8f9fb;">
+            {# keywords-cloud #}
+            {% set keywords_cloud = [] %}
+            {% for post in entries.fetch(locale ~ '/downloads/extend/themes', {
+                                                    'where': {
+                                                        'key': 'visibility',
+                                                        'expr': 'nin',
+                                                        'value': ['draft', 'hidden']
+                                                    },
+                                                    'order_by': {
+                                                        'field': 'published_at',
+                                                        'direction': 'desc'
+                                                    }
+                                                }) %}
+                {% set keywords = post.keywords|replace({' ': ''}) %}
+                {% set keywords_cloud = keywords_cloud|merge(keywords|split(',')) %}
+            {% endfor %}
+
+            {% if keywords_cloud|length > 0 %}
+                <h4 class="text-left mb-2">Tags</h4>
+                {% for tag in keywords_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
+                    <a class="no-underline rounded-lg px-2 mb-2 inline-block bg-gray-200" href="{{ url() }}/{{ locale }}/downloads/extend/plugins?tag={{ tag|trim }}">{{ tag|trim }}</a>
+                {% endfor %}
+            {% endif %}
+            {# /keywords-cloud #}
+
+            </div>
+            <!--
+            <div class="text-black text-center p-6">
+                <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black" href="https://docs.flextype.org/{{ locale }}/getting-started/installation">SUBMIT A PLUGIN</a>
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+{% endblock %}

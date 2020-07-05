@@ -2,20 +2,18 @@
 
 {% block content %}
     <div class="container mx-auto bg-white text-black pb-24">
-        <h1 class="uppercase text-center text-3xl lg:text-6xl m-0 pl-6 pr-6 lg:pl-24 lg:pr-24 pt-24 pb-24 font-noirpro-semibold">
+        <h1 class="uppercase text-center text-3xl lg:text-6xl m-0 pt-24 pb-24 font-noirpro-semibold">
             {{ entry.title|raw }}
         </h1>
-        <div class="pl-16 pr-16">
-            <div class="w-full p-2 text-center">
-                <div class="p-12 h-full bg-black text-white">
-                    <h3 class="m-0">Refresh this page to generate a new unique set of API Tokens.</h3>
-                </div>
+        <div class="w-full p-2 text-center">
+            <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
+                <h3 class="m-0">Refresh this page to generate a new unique set of API Tokens.</h3>
             </div>
         </div>
-        <div class="pl-6 pr-6 lg:pl-16 lg:pr-16">
+        <div>
             <div class="flex content-center flex-wrap">
                 <div class="w-full lg:w-6/12 p-2 text-center">
-                    <div class="p-12 h-full bg-black text-white">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
                         <i class="fas fa-truck text-6xl mb-5" aria-hidden="true"></i>
                         <h4 class="text-xl">Content Delivery API for Entries</h4>
                         <div class="mb-10">
@@ -27,7 +25,7 @@
 
                                 2. And add <code>token.yaml</code> file with content:<br><br>
 
-                                <div class="bg-white text-black p-2">
+                                <div class="bg-white text-black rounded-lg p-4">
                                     title: Default<br>
                                     icon: 'fas fa-database'<br>
                                     limit_calls: 0<br>
@@ -39,7 +37,7 @@
                     </div>
                 </div>
                 <div class="w-full lg:w-6/12 p-2 text-center">
-                    <div class="p-12 h-full bg-black text-white">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
                         <i class="fas fa-truck text-6xl mb-5" aria-hidden="true"></i>
                         <h4 class="text-xl">Content Delivery API for Registry</h4>
                         <div class="mb-10">
@@ -51,7 +49,7 @@
 
                                 2. And add <code>token.yaml</code> file with content:<br><br>
 
-                                <div class="bg-white text-black p-2">
+                                <div class="bg-white text-black rounded-lg p-4">
                                     title: Default<br>
                                     icon: 'fas fa-database'<br>
                                     limit_calls: 0<br>
@@ -63,7 +61,7 @@
                     </div>
                 </div>
                 <div class="w-full lg:w-6/12 p-2 text-center">
-                    <div class="p-12 h-full bg-black text-white">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
                         <i class="far fa-images text-6xl mb-5" aria-hidden="true"></i>
                         <h4 class="text-2xl">Images API</h4>
                         <div class="mb-10">
@@ -75,7 +73,7 @@
 
                                 2. And add <code>token.yaml</code> file with content:<br><br>
 
-                                <div class="bg-white text-black p-2">
+                                <div class="bg-white text-black rounded-lg p-4">
                                     title: Default<br>
                                     icon: 'far fa-images'<br>
                                     limit_calls: 0<br>
@@ -87,7 +85,7 @@
                     </div>
                 </div>
                 <div class="w-full lg:w-6/12 p-2 text-center">
-                    <div class="p-12 h-full bg-black text-white">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
                         <i class="fas fa-user-cog text-6xl mb-5" aria-hidden="true"></i>
                         <h4 class="text-xl">Content Management API for Entries</h4>
                         <div class="mb-10">
@@ -99,7 +97,7 @@
 
                                 2. And add <code>token.yaml</code> file with content:<br><br>
 
-                                <div class="bg-white text-black p-2">
+                                <div class="bg-white text-black rounded-lg p-4">
                                     title: Default<br>
                                     icon: 'fas fa-database'<br>
                                     limit_calls: 0<br>
@@ -111,7 +109,7 @@
                     </div>
                 </div>
                 <div class="w-full lg:w-6/12 p-2 text-center">
-                    <div class="p-12 h-full bg-black text-white">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
                         <i class="fas fa-user-shield text-6xl mb-5" aria-hidden="true"></i>
                         <h4 class="text-xl">Access</h4>
                         <div class="mb-10">
@@ -123,7 +121,7 @@
 
                                 2. And add <code>token.yaml</code> file with content:<br><br>
 
-                                <div class="bg-white text-black p-2">
+                                <div class="bg-white text-black rounded-lg p-4">
                                     title: Default<br>
                                     icon: 'fas fa-user-shield'<br>
                                     limit_calls: 0<br>
@@ -132,7 +130,7 @@
                                 </div>
 
                                 <br>
-                                <div class="bg-red-700 p-2 text-white"><b>Note:</b> This your secret access token and it is should not be shared!</div>
+                                <div class="bg-red-700 rounded-lg p-4 text-white"><b>Note:</b> This your secret access token and it is should not be shared!</div>
                             </div>
                         </div>
                     </div>

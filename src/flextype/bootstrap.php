@@ -43,12 +43,12 @@ $registry = new Registry();
  * 3. Merge settings.
  * 4. Store settings in the flextype registry.
  */
-$flextype_manifest_file_path         = PATH['config'] . '/flextype.yaml';
-$default_flextype_settings_file_path = PATH['config'] . '/settings.yaml';
-$custom_flextype_settings_file_path  = PATH['project'] . '/config/settings.yaml';
+$flextype_manifest_file_path         = ROOT_DIR . '/src/flextype/flextype.yaml';
+$default_flextype_settings_file_path = ROOT_DIR . '/src/flextype/settings.yaml';
+$custom_flextype_settings_file_path  = PATH['project'] . '/config/flextype/settings.yaml';
 
 // Create config dir
-! Filesystem::has(PATH['project'] . '/config/') and Filesystem::createDir(PATH['project'] . '/config/');
+! Filesystem::has(PATH['project'] . '/config/flextype/') and Filesystem::createDir(PATH['project'] . '/config/flextype/');
 
 // Set settings if Flextype Default settings config files exist
 if (! Filesystem::has($default_flextype_settings_file_path)) {
@@ -128,12 +128,13 @@ include_once 'dependencies.php';
 /**
  * Include API ENDPOINTS
  */
-include_once 'endpoints/delivery/entries.php';
-include_once 'endpoints/delivery/registry.php';
-include_once 'endpoints/delivery/media/files.php';
-include_once 'endpoints/delivery/media/folders.php';
-include_once 'endpoints/management/entries.php';
-include_once 'endpoints/images/images.php';
+include_once 'endpoints/access.php';
+include_once 'endpoints/entries.php';
+include_once 'endpoints/registry.php';
+include_once 'endpoints/config.php';
+include_once 'endpoints/files.php';
+include_once 'endpoints/folders.php';
+include_once 'endpoints/images.php';
 
 /**
  * Set internal encoding
@@ -187,8 +188,6 @@ $flextype['plugins']->init($flextype, $app);
  * couldn't access our APIs because they're hosted on another.com which is a different domain.
  */
 $flextype['cors']->init();
-
-
 
 /**
  * Run application

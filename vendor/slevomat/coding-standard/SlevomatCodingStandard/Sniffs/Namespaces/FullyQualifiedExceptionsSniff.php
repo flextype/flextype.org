@@ -23,17 +23,17 @@ class FullyQualifiedExceptionsSniff implements Sniff
 	/** @var string[] */
 	public $specialExceptionNames = [];
 
-	/** @var string[]|null */
-	private $normalizedSpecialExceptionNames;
-
 	/** @var string[] */
 	public $ignoredNames = [];
+
+	/** @var string[]|null */
+	private $normalizedSpecialExceptionNames;
 
 	/** @var string[]|null */
 	private $normalizedIgnoredNames;
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -43,32 +43,8 @@ class FullyQualifiedExceptionsSniff implements Sniff
 	}
 
 	/**
-	 * @return string[]
-	 */
-	private function getSpecialExceptionNames(): array
-	{
-		if ($this->normalizedSpecialExceptionNames === null) {
-			$this->normalizedSpecialExceptionNames = SniffSettingsHelper::normalizeArray($this->specialExceptionNames);
-		}
-
-		return $this->normalizedSpecialExceptionNames;
-	}
-
-	/**
-	 * @return string[]
-	 */
-	private function getIgnoredNames(): array
-	{
-		if ($this->normalizedIgnoredNames === null) {
-			$this->normalizedIgnoredNames = SniffSettingsHelper::normalizeArray($this->ignoredNames);
-		}
-
-		return $this->normalizedIgnoredNames;
-	}
-
-	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $openTagPointer
 	 */
 	public function process(File $phpcsFile, $openTagPointer): void
@@ -124,13 +100,13 @@ class FullyQualifiedExceptionsSniff implements Sniff
 				continue;
 			}
 
-			$phpcsFile->fixer->beginChangeset();
-
 			$fullyQualifiedName = NamespaceHelper::resolveClassName(
 				$phpcsFile,
 				$name,
 				$pointer
 			);
+
+			$phpcsFile->fixer->beginChangeset();
 
 			for ($i = $referencedName->getStartPointer(); $i <= $referencedName->getEndPointer(); $i++) {
 				$phpcsFile->fixer->replaceToken($i, '');
@@ -139,6 +115,30 @@ class FullyQualifiedExceptionsSniff implements Sniff
 
 			$phpcsFile->fixer->endChangeset();
 		}
+	}
+
+	/**
+	 * @return string[]
+	 */
+	private function getSpecialExceptionNames(): array
+	{
+		if ($this->normalizedSpecialExceptionNames === null) {
+			$this->normalizedSpecialExceptionNames = SniffSettingsHelper::normalizeArray($this->specialExceptionNames);
+		}
+
+		return $this->normalizedSpecialExceptionNames;
+	}
+
+	/**
+	 * @return string[]
+	 */
+	private function getIgnoredNames(): array
+	{
+		if ($this->normalizedIgnoredNames === null) {
+			$this->normalizedIgnoredNames = SniffSettingsHelper::normalizeArray($this->ignoredNames);
+		}
+
+		return $this->normalizedIgnoredNames;
 	}
 
 }

@@ -44,7 +44,7 @@ class Plugins
     public function __construct($flextype, $app)
     {
         $this->flextype = $flextype;
-        $this->locales  = $this->flextype['serializer']->decode(Filesystem::read(ROOT_DIR . '/src/flextype/config/locales.yaml'), 'yaml');
+        $this->locales  = $this->flextype['serializer']->decode(Filesystem::read(ROOT_DIR . '/src/flextype/locales.yaml'), 'yaml');
     }
 
     /**
@@ -62,7 +62,7 @@ class Plugins
     /**
      * Init Plugins
      *
-     * @access private
+     * @access public
      */
     public function init($flextype, $app) : void
     {
@@ -196,7 +196,7 @@ class Plugins
      *
      * @param  array $plugins_list Plugins list
      *
-     * @access protected
+     * @access private
      */
     private function getPluginsDictionary(array $plugins_list, string $locale) : array
     {
@@ -224,7 +224,7 @@ class Plugins
      *
      * @param  array $plugins_list Plugins list
      *
-     * @access protected
+     * @access private
      */
     private function getPluginsCacheID(array $plugins_list) : string
     {
@@ -236,7 +236,7 @@ class Plugins
             foreach ($plugins_list as $plugin) {
                 $default_plugin_settings_file = PATH['project'] . '/plugins/' . $plugin['dirname'] . '/settings.yaml';
                 $default_plugin_manifest_file = PATH['project'] . '/plugins/' . $plugin['dirname'] . '/plugin.yaml';
-                $project_plugin_settings_file    = PATH['config'] . '/project/plugins/' . $plugin['dirname'] . '/settings.yaml';
+                $project_plugin_settings_file = PATH['project'] . '/config/plugins/' . $plugin['dirname'] . '/settings.yaml';
 
                 $f1 = Filesystem::has($default_plugin_settings_file) ? filemtime($default_plugin_settings_file) : '';
                 $f2 = Filesystem::has($default_plugin_manifest_file) ? filemtime($default_plugin_manifest_file) : '';
@@ -258,7 +258,7 @@ class Plugins
      *
      * @param  array $plugins Plugins list
      *
-     * @access protected
+     * @access public
      */
     public function getValidPluginsDependencies($plugins) : array
     {
@@ -375,7 +375,7 @@ class Plugins
     /**
      * Include enabled plugins
      *
-     * @access protected
+     * @access private
      */
     private function includeEnabledPlugins($flextype, $app) : void
     {

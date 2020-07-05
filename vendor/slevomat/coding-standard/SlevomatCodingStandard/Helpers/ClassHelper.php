@@ -4,7 +4,6 @@ namespace SlevomatCodingStandard\Helpers;
 
 use Generator;
 use PHP_CodeSniffer\Files\File;
-use function array_map;
 use function iterator_to_array;
 use function sprintf;
 use const T_ANON_CLASS;
@@ -46,37 +45,24 @@ class ClassHelper
 	}
 
 	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
-	 * @return string[]
+	 * @param File $phpcsFile
+	 * @return array<int, string>
 	 */
 	public static function getAllNames(File $phpcsFile): array
 	{
 		$previousClassPointer = 0;
 
-		return array_map(
-			function (int $classPointer) use ($phpcsFile): string {
-				return self::getName($phpcsFile, $classPointer);
-			},
-			iterator_to_array(self::getAllClassPointers($phpcsFile, $previousClassPointer))
-		);
-	}
+		$names = [];
+		/** @var int $classPointer */
+		foreach (iterator_to_array(self::getAllClassPointers($phpcsFile, $previousClassPointer)) as $classPointer) {
+			$names[$classPointer] = self::getName($phpcsFile, $classPointer);
+		}
 
-	private static function getAllClassPointers(File $phpcsFile, int &$previousClassPointer): Generator
-	{
-		do {
-			$nextClassPointer = TokenHelper::findNext($phpcsFile, TokenHelper::$typeKeywordTokenCodes, $previousClassPointer + 1);
-			if ($nextClassPointer === null) {
-				break;
-			}
-
-			$previousClassPointer = $nextClassPointer;
-
-			yield $nextClassPointer;
-		} while (true);
+		return $names;
 	}
 
 	/**
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @param File $phpcsFile
 	 * @param int $classPointer
 	 * @return int[]
 	 */
@@ -100,6 +86,25 @@ class ClassHelper
 		}
 
 		return $useStatements;
+	}
+
+	/**
+	 * @param File $phpcsFile
+	 * @param int $previousClassPointer
+	 * @return Generator<int>
+	 */
+	private static function getAllClassPointers(File $phpcsFile, int &$previousClassPointer): Generator
+	{
+		do {
+			$nextClassPointer = TokenHelper::findNext($phpcsFile, TokenHelper::$typeKeywordTokenCodes, $previousClassPointer + 1);
+			if ($nextClassPointer === null) {
+				break;
+			}
+
+			$previousClassPointer = $nextClassPointer;
+
+			yield $nextClassPointer;
+		} while (true);
 	}
 
 }

@@ -8,10 +8,8 @@ use SlevomatCodingStandard\Helpers\TokenHelper;
 use function array_keys;
 use function sprintf;
 use const T_BITWISE_AND;
-use const T_CLOSURE;
 use const T_COMMA;
 use const T_ELLIPSIS;
-use const T_FUNCTION;
 use const T_NULLABLE;
 use const T_VARIABLE;
 use const T_WHITESPACE;
@@ -26,19 +24,16 @@ class ParameterTypeHintSpacingSniff implements Sniff
 	public const CODE_WHITESPACE_AFTER_NULLABILITY_SYMBOL = 'WhitespaceAfterNullabilitySymbol';
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
-		return [
-			T_FUNCTION,
-			T_CLOSURE,
-		];
+		return TokenHelper::$functionTokenCodes;
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $functionPointer
 	 */
 	public function process(File $phpcsFile, $functionPointer): void

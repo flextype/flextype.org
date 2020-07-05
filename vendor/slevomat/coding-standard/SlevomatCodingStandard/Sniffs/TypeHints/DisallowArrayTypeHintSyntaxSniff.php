@@ -41,7 +41,7 @@ class DisallowArrayTypeHintSyntaxSniff implements Sniff
 	private $normalizedTraversableTypeHints;
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -51,8 +51,8 @@ class DisallowArrayTypeHintSyntaxSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $docCommentOpenPointer
 	 */
 	public function process(File $phpcsFile, $docCommentOpenPointer): void
@@ -88,16 +88,16 @@ class DisallowArrayTypeHintSyntaxSniff implements Sniff
 							$genericIdentifier = $this->findGenericIdentifier($phpcsFile, $unionTypeNode, $annotation);
 							if ($genericIdentifier !== null) {
 								$genericTypeNode = new GenericTypeNode(new IdentifierTypeNode($genericIdentifier), [$this->fixArrayNode($arrayTypeNode->type)]);
-								$fixedAnnotationContent = AnnotationHelper::fixAnnotation($phpcsFile, $annotation, $unionTypeNode, $genericTypeNode);
+								$fixedAnnotationContent = AnnotationHelper::fixAnnotationType($phpcsFile, $annotation, $unionTypeNode, $genericTypeNode);
 							} else {
 								$genericTypeNode = new GenericTypeNode(new IdentifierTypeNode('array'), [$this->fixArrayNode($arrayTypeNode->type)]);
-								$fixedAnnotationContent = AnnotationHelper::fixAnnotation($phpcsFile, $annotation, $arrayTypeNode, $genericTypeNode);
+								$fixedAnnotationContent = AnnotationHelper::fixAnnotationType($phpcsFile, $annotation, $arrayTypeNode, $genericTypeNode);
 							}
 						} else {
 							$genericIdentifier = $this->findGenericIdentifier($phpcsFile, $arrayTypeNode, $annotation) ?? 'array';
 
 							$genericTypeNode = new GenericTypeNode(new IdentifierTypeNode($genericIdentifier), [$this->fixArrayNode($arrayTypeNode->type)]);
-							$fixedAnnotationContent = AnnotationHelper::fixAnnotation($phpcsFile, $annotation, $arrayTypeNode, $genericTypeNode);
+							$fixedAnnotationContent = AnnotationHelper::fixAnnotationType($phpcsFile, $annotation, $arrayTypeNode, $genericTypeNode);
 						}
 
 						$phpcsFile->fixer->beginChangeset();
@@ -112,6 +112,34 @@ class DisallowArrayTypeHintSyntaxSniff implements Sniff
 		}
 	}
 
+	/**
+	 * @param TypeNode $typeNode
+	 * @return ArrayTypeNode[]
+	 */
+	public function getArrayTypeNodes(TypeNode $typeNode): array
+	{
+		$arrayTypeNodes = AnnotationTypeHelper::getArrayTypeNodes($typeNode);
+
+		$arrayTypeNodesToIgnore = [];
+		foreach ($arrayTypeNodes as $arrayTypeNode) {
+			if (!($arrayTypeNode->type instanceof ArrayTypeNode)) {
+				continue;
+			}
+
+			$arrayTypeNodesToIgnore[] = $arrayTypeNode->type;
+		}
+
+		foreach ($arrayTypeNodes as $no => $arrayTypeNode) {
+			if (!in_array($arrayTypeNode, $arrayTypeNodesToIgnore, true)) {
+				continue;
+			}
+
+			unset($arrayTypeNodes[$no]);
+		}
+
+		return $arrayTypeNodes;
+	}
+
 	private function fixArrayNode(TypeNode $node): TypeNode
 	{
 		if (!$node instanceof ArrayTypeNode) {
@@ -122,9 +150,9 @@ class DisallowArrayTypeHintSyntaxSniff implements Sniff
 	}
 
 	/**
-	 * @param \PHPStan\PhpDocParser\Ast\Type\ArrayTypeNode $arrayTypeNode
-	 * @param \PHPStan\PhpDocParser\Ast\Type\UnionTypeNode[] $unionTypeNodes
-	 * @return \PHPStan\PhpDocParser\Ast\Type\UnionTypeNode|null
+	 * @param ArrayTypeNode $arrayTypeNode
+	 * @param UnionTypeNode[] $unionTypeNodes
+	 * @return UnionTypeNode|null
 	 */
 	private function findUnionTypeThatContainsArrayType(ArrayTypeNode $arrayTypeNode, array $unionTypeNodes): ?UnionTypeNode
 	{
@@ -180,34 +208,6 @@ class DisallowArrayTypeHintSyntaxSniff implements Sniff
 		return null;
 	}
 
-	/**
-	 * @param \PHPStan\PhpDocParser\Ast\Type\TypeNode $typeNode
-	 * @return \PHPStan\PhpDocParser\Ast\Type\ArrayTypeNode[]
-	 */
-	public function getArrayTypeNodes(TypeNode $typeNode): array
-	{
-		$arrayTypeNodes = AnnotationTypeHelper::getArrayTypeNodes($typeNode);
-
-		$arrayTypeNodesToIgnore = [];
-		foreach ($arrayTypeNodes as $arrayTypeNode) {
-			if (!($arrayTypeNode->type instanceof ArrayTypeNode)) {
-				continue;
-			}
-
-			$arrayTypeNodesToIgnore[] = $arrayTypeNode->type;
-		}
-
-		foreach ($arrayTypeNodes as $no => $arrayTypeNode) {
-			if (!in_array($arrayTypeNode, $arrayTypeNodesToIgnore, true)) {
-				continue;
-			}
-
-			unset($arrayTypeNodes[$no]);
-		}
-
-		return $arrayTypeNodes;
-	}
-
 	private function isTraversableType(string $type): bool
 	{
 		return TypeHintHelper::isSimpleIterableTypeHint($type) || array_key_exists($type, $this->getNormalizedTraversableTypeHints());
@@ -219,7 +219,7 @@ class DisallowArrayTypeHintSyntaxSniff implements Sniff
 	private function getNormalizedTraversableTypeHints(): array
 	{
 		if ($this->normalizedTraversableTypeHints === null) {
-			$this->normalizedTraversableTypeHints = array_flip(array_map(function (string $typeHint): string {
+			$this->normalizedTraversableTypeHints = array_flip(array_map(static function (string $typeHint): string {
 				return NamespaceHelper::isFullyQualifiedName($typeHint) ? $typeHint : sprintf('%s%s', NamespaceHelper::NAMESPACE_SEPARATOR, $typeHint);
 			}, SniffSettingsHelper::normalizeArray($this->traversableTypeHints)));
 		}

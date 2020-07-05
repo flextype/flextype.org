@@ -14,6 +14,7 @@ use const T_BOOLEAN_NOT;
 use const T_CLOSE_PARENTHESIS;
 use const T_CLOSE_SHORT_ARRAY;
 use const T_CLOSE_SQUARE_BRACKET;
+use const T_CLOSE_TAG;
 use const T_COALESCE;
 use const T_COMMA;
 use const T_DOUBLE_ARROW;
@@ -27,7 +28,7 @@ class RequireShortTernaryOperatorSniff implements Sniff
 	public const CODE_REQUIRED_SHORT_TERNARY_OPERATOR = 'RequiredShortTernaryOperator';
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -37,8 +38,8 @@ class RequireShortTernaryOperatorSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $inlineThenPointer
 	 */
 	public function process(File $phpcsFile, $inlineThenPointer): void
@@ -55,7 +56,7 @@ class RequireShortTernaryOperatorSniff implements Sniff
 
 		$inlineElseEndPointer = $inlineElsePointer + 1;
 		while (true) {
-			if (in_array($tokens[$inlineElseEndPointer]['code'], [T_SEMICOLON, T_COMMA, T_DOUBLE_ARROW, T_CLOSE_SHORT_ARRAY, T_COALESCE], true)) {
+			if (in_array($tokens[$inlineElseEndPointer]['code'], [T_SEMICOLON, T_COMMA, T_DOUBLE_ARROW, T_CLOSE_SHORT_ARRAY, T_COALESCE, T_CLOSE_TAG], true)) {
 				break;
 			}
 
@@ -76,7 +77,7 @@ class RequireShortTernaryOperatorSniff implements Sniff
 			$inlineElseEndPointer++;
 		}
 
-		$findConditionStartPointer = function (int $conditionEndPointer, string $contentToFind) use ($tokens): int {
+		$findConditionStartPointer = static function (int $conditionEndPointer, string $contentToFind) use ($tokens): int {
 			$content = $tokens[$conditionEndPointer]['content'];
 
 			$conditionStartPointer = $conditionEndPointer;
@@ -133,14 +134,14 @@ class RequireShortTernaryOperatorSniff implements Sniff
 			return;
 		}
 
+		$pointerBeforeInlineElseEnd = TokenHelper::findPreviousEffective($phpcsFile, $inlineElseEndPointer - 1);
+
 		$phpcsFile->fixer->beginChangeset();
 
 		if ($tokens[$pointerBeforeCondition]['code'] === T_BOOLEAN_NOT) {
 			for ($i = $pointerBeforeCondition; $i < $conditionStartPointer; $i++) {
 				$phpcsFile->fixer->replaceToken($i, '');
 			}
-
-			$pointerBeforeInlineElseEnd = TokenHelper::findPreviousEffective($phpcsFile, $inlineElseEndPointer - 1);
 
 			for ($i = $inlineThenPointer + 1; $i <= $pointerBeforeInlineElseEnd; $i++) {
 				$phpcsFile->fixer->replaceToken($i, '');

@@ -1,3 +1,13 @@
+# v1.2.8, 2020-06-25
+* Fix method sort()
+
+# v1.2.7, 2020-06-25
+* New method dot()
+* New method undot()
+
+# v1.2.6, 2019-08-11
+* Doctrine Coding Standard fixes
+
 # v1.2.5, 2019-01-20
 * method sort() improved
 

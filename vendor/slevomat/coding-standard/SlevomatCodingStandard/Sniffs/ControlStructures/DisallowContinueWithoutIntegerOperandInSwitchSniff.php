@@ -17,7 +17,7 @@ class DisallowContinueWithoutIntegerOperandInSwitchSniff implements Sniff
 	public const CODE_DISALLOWED_CONTINUE_WITHOUT_INTEGER_OPERAND_IN_SWITCH = 'DisallowedContinueWithoutIntegerOperandInSwitch';
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -27,8 +27,8 @@ class DisallowContinueWithoutIntegerOperandInSwitchSniff implements Sniff
 	}
 
 	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $continuePointer
 	 */
 	public function process(File $phpcsFile, $continuePointer): void

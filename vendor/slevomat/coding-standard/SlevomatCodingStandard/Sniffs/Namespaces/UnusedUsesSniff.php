@@ -4,8 +4,16 @@ namespace SlevomatCodingStandard\Sniffs\Namespaces;
 
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
+use PHPStan\PhpDocParser\Ast\ConstExpr\ConstFetchNode;
 use PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
 use SlevomatCodingStandard\Helpers\Annotation\GenericAnnotation;
+use SlevomatCodingStandard\Helpers\Annotation\MethodAnnotation;
+use SlevomatCodingStandard\Helpers\Annotation\ParameterAnnotation;
+use SlevomatCodingStandard\Helpers\Annotation\PropertyAnnotation;
+use SlevomatCodingStandard\Helpers\Annotation\ReturnAnnotation;
+use SlevomatCodingStandard\Helpers\Annotation\ThrowsAnnotation;
+use SlevomatCodingStandard\Helpers\Annotation\VariableAnnotation;
+use SlevomatCodingStandard\Helpers\AnnotationConstantExpressionHelper;
 use SlevomatCodingStandard\Helpers\AnnotationHelper;
 use SlevomatCodingStandard\Helpers\AnnotationTypeHelper;
 use SlevomatCodingStandard\Helpers\NamespaceHelper;
@@ -19,6 +27,7 @@ use SlevomatCodingStandard\Helpers\UseStatement;
 use SlevomatCodingStandard\Helpers\UseStatementHelper;
 use function array_diff_key;
 use function array_key_exists;
+use function array_map;
 use function array_merge;
 use function count;
 use function in_array;
@@ -53,7 +62,7 @@ class UnusedUsesSniff implements Sniff
 	private $normalizedIgnoredAnnotations;
 
 	/**
-	 * @return (int|string)[]
+	 * @return array<int, (int|string)>
 	 */
 	public function register(): array
 	{
@@ -63,46 +72,19 @@ class UnusedUsesSniff implements Sniff
 	}
 
 	/**
-	 * @return string[]
-	 */
-	private function getIgnoredAnnotationNames(): array
-	{
-		if ($this->normalizedIgnoredAnnotationNames === null) {
-			$this->normalizedIgnoredAnnotationNames = array_merge(
-				SniffSettingsHelper::normalizeArray($this->ignoredAnnotationNames),
-				[
-					'@param',
-					'@throws',
-					'@property',
-					'@method',
-				]
-			);
-		}
-
-		return $this->normalizedIgnoredAnnotationNames;
-	}
-
-	/**
-	 * @return string[]
-	 */
-	private function getIgnoredAnnotations(): array
-	{
-		if ($this->normalizedIgnoredAnnotations === null) {
-			$this->normalizedIgnoredAnnotations = SniffSettingsHelper::normalizeArray($this->ignoredAnnotations);
-		}
-
-		return $this->normalizedIgnoredAnnotations;
-	}
-
-	/**
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+	 * @param File $phpcsFile
 	 * @param int $openTagPointer
 	 */
 	public function process(File $phpcsFile, $openTagPointer): void
 	{
+		$startPointer = TokenHelper::findPrevious($phpcsFile, T_NAMESPACE, $openTagPointer - 1);
+		if ($startPointer === null) {
+			$startPointer = TokenHelper::findNext($phpcsFile, T_OPEN_TAG, 0);
+		}
+
 		$fileUnusedNames = UseStatementHelper::getFileUseStatements($phpcsFile);
-		$referencedNames = ReferencedNameHelper::getAllReferencedNames($phpcsFile, $openTagPointer);
+		$referencedNames = ReferencedNameHelper::getAllReferencedNames($phpcsFile, $startPointer);
 
 		$allUsedNames = [];
 		foreach ($referencedNames as $referencedName) {
@@ -112,8 +94,10 @@ class UnusedUsesSniff implements Sniff
 			$nameAsReferencedInFile = $nameParts[0];
 			$nameReferencedWithoutSubNamespace = count($nameParts) === 1;
 
-			/** @var int $pointerBeforeUseStatements */
-			$pointerBeforeUseStatements = TokenHelper::findPrevious($phpcsFile, [T_OPEN_TAG, T_NAMESPACE], $pointer - 1);
+			$pointerBeforeUseStatements = TokenHelper::findPrevious($phpcsFile, T_NAMESPACE, $pointer - 1);
+			if ($pointerBeforeUseStatements === null) {
+				$pointerBeforeUseStatements = $startPointer;
+			}
 
 			$uniqueId = $nameReferencedWithoutSubNamespace
 				? UseStatement::getUniqueId($referencedName->getType(), $nameAsReferencedInFile)
@@ -139,7 +123,7 @@ class UnusedUsesSniff implements Sniff
 
 		if ($this->searchAnnotations) {
 			$tokens = $phpcsFile->getTokens();
-			$searchAnnotationsPointer = $openTagPointer + 1;
+			$searchAnnotationsPointer = $startPointer + 1;
 			while (true) {
 				$docCommentOpenPointer = TokenHelper::findNext($phpcsFile, T_DOC_COMMENT_OPEN_TAG, $searchAnnotationsPointer);
 				if ($docCommentOpenPointer === null) {
@@ -153,8 +137,10 @@ class UnusedUsesSniff implements Sniff
 					continue;
 				}
 
-				/** @var int $pointerBeforeUseStatements */
-				$pointerBeforeUseStatements = TokenHelper::findPrevious($phpcsFile, [T_OPEN_TAG, T_NAMESPACE], $docCommentOpenPointer - 1);
+				$pointerBeforeUseStatements = TokenHelper::findPrevious($phpcsFile, T_NAMESPACE, $docCommentOpenPointer - 1);
+				if ($pointerBeforeUseStatements === null) {
+					$pointerBeforeUseStatements = $startPointer;
+				}
 
 				if (!array_key_exists($pointerBeforeUseStatements, $fileUnusedNames)) {
 					$searchAnnotationsPointer = $tokens[$docCommentOpenPointer]['comment_closer'] + 1;
@@ -217,7 +203,7 @@ class UnusedUsesSniff implements Sniff
 							), $annotation->getStartPointer(), self::CODE_MISMATCHING_CASE);
 						}
 
-						/** @var \SlevomatCodingStandard\Helpers\Annotation\VariableAnnotation|\SlevomatCodingStandard\Helpers\Annotation\ParameterAnnotation|\SlevomatCodingStandard\Helpers\Annotation\ReturnAnnotation|\SlevomatCodingStandard\Helpers\Annotation\ThrowsAnnotation|\SlevomatCodingStandard\Helpers\Annotation\PropertyAnnotation|\SlevomatCodingStandard\Helpers\Annotation\MethodAnnotation|\SlevomatCodingStandard\Helpers\Annotation\GenericAnnotation $annotation */
+						/** @var VariableAnnotation|ParameterAnnotation|ReturnAnnotation|ThrowsAnnotation|PropertyAnnotation|MethodAnnotation|GenericAnnotation $annotation */
 						foreach ($annotationsByName as $annotation) {
 							if ($annotation->getContent() === null) {
 								continue;
@@ -248,8 +234,16 @@ class UnusedUsesSniff implements Sniff
 										$contentsToCheck[] = $typeNode->name;
 									}
 								}
+								foreach (AnnotationHelper::getAnnotationConstantExpressions($annotation) as $annotationConstantExpression) {
+									$contentsToCheck = array_merge($contentsToCheck, array_map(static function (ConstFetchNode $constFetchNode): string {
+										return $constFetchNode->className;
+									}, AnnotationConstantExpressionHelper::getConstantFetchNodes($annotationConstantExpression)));
+								}
 							} elseif ($annotationName === '@see') {
-								$contentsToCheck[] = preg_split('~(\\s+|::)~', $content)[0];
+								$parts = preg_split('~(\\s+|::)~', $content);
+								if ($parts !== false) {
+									$contentsToCheck[] = $parts[0];
+								}
 							} else {
 								$contentsToCheck[] = $content;
 							}
@@ -294,14 +288,47 @@ class UnusedUsesSniff implements Sniff
 					continue;
 				}
 
-				$phpcsFile->fixer->beginChangeset();
 				$endPointer = TokenHelper::findNext($phpcsFile, T_SEMICOLON, $unusedUse->getPointer()) + 1;
+
+				$phpcsFile->fixer->beginChangeset();
 				for ($i = $unusedUse->getPointer(); $i <= $endPointer; $i++) {
 					$phpcsFile->fixer->replaceToken($i, '');
 				}
 				$phpcsFile->fixer->endChangeset();
 			}
 		}
+	}
+
+	/**
+	 * @return string[]
+	 */
+	private function getIgnoredAnnotationNames(): array
+	{
+		if ($this->normalizedIgnoredAnnotationNames === null) {
+			$this->normalizedIgnoredAnnotationNames = array_merge(
+				SniffSettingsHelper::normalizeArray($this->ignoredAnnotationNames),
+				[
+					'@param',
+					'@throws',
+					'@property',
+					'@method',
+				]
+			);
+		}
+
+		return $this->normalizedIgnoredAnnotationNames;
+	}
+
+	/**
+	 * @return string[]
+	 */
+	private function getIgnoredAnnotations(): array
+	{
+		if ($this->normalizedIgnoredAnnotations === null) {
+			$this->normalizedIgnoredAnnotations = SniffSettingsHelper::normalizeArray($this->ignoredAnnotations);
+		}
+
+		return $this->normalizedIgnoredAnnotations;
 	}
 
 }

@@ -44,7 +44,7 @@ class ShortcodesTwigExtension extends Twig_Extension
      */
     public function shortcode($value) : string
     {
-        if ($value !== null) {
+        if (!empty($value)) {
             return $this->flextype->shortcodes->process($value);
         }
 
