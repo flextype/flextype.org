@@ -6,6 +6,6 @@ keywords: jquery, js
 author:
   name: Sergey Romanenko
   email: support@flextype.org
-github: https://github.com/flextype-plugins/sitemap
+github: https://github.com/flextype-plugins/jquery
 template: plugin
 ---
