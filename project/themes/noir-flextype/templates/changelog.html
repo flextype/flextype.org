@@ -1,0 +1,12 @@
+{% extends "themes/" ~ registry.get('plugins.site.settings.theme') ~ "/templates/partials/base.html" %}
+
+{% block content %}
+<div class="container mx-auto bg-white text-black pb-24">
+    <h1 class="uppercase text-center text-3xl lg:text-6xl pt-24 pb-24 m-0 font-noirpro-semibold">
+        {{ entry.title|raw }}
+    </h1>
+    <div>
+        {{ entry.content|markdown|raw }}
+    </div>
+</div>
+{% endblock %}

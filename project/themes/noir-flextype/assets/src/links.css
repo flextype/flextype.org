@@ -1,0 +1,26 @@
+/* Links global */
+a {
+  text-decoration: underline;
+}
+
+a:hover {
+  opacity: .8;
+}
+
+/* Links top nav */
+.nav-item {
+    text-decoration: none;
+}
+
+.nav-item:hover {
+    opacity: .8;
+}
+
+/* Links logo */
+.logo {
+    text-decoration: none;
+}
+
+.logo:hover {
+    opacity: .8;
+}

@@ -1,0 +1,39 @@
+{% extends "themes/" ~ registry.get('plugins.site.settings.theme') ~ "/templates/partials/base.html" %}
+
+{% block content %}
+    <div class="container mx-auto bg-white text-black pb-24">
+        <div class="uppercase text-center pt-24 pb-24 m-0 font-noirpro-semibold">
+            <div>
+                <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/plugins/{{ name }}">{{ entry.title }}</a></h1>
+            </div>
+            <div>
+                <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads">DOWNLOADS</a></span>
+            </div>
+        </div>
+        <div>
+            <div class="flex content-center flex-wrap">
+                <div class="w-full lg:w-6/12 p-2 text-center">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
+                        <i class="fas fa-plug text-6xl mb-5" aria-hidden="true"></i>
+                        <h4 class="text-2xl">Plugins</h4>
+                        <div class="h-24 mb-10">
+                            Extend and customize Flextype functionality with plugins.
+                            <br>
+                        </div>
+                        <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black"  href="{{ url() }}/{{ entry.slug }}/plugins">BROWSE PLUGINS</a>
+                    </div>
+                </div>
+                <div class="w-full lg:w-6/12 p-2 text-center">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
+                        <i class="fas fa-palette text-6xl mb-5" aria-hidden="true"></i>
+                        <h4 class="text-2xl">Themes</h4>
+                        <div class="h-24 mb-10">
+                            Customize your site with a themes for Flextype.
+                        </div>
+                        <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black"  href="{{ url() }}/{{ entry.slug }}/themes">BROWSE THEMES</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "themes/" ~ registry.get('plugins.site.settings.theme') ~ "/templates/partials/base.html" %}
+
+{% block content %}
+    <div class="container mx-auto bg-white text-black pb-24">
+        <h1 class="uppercase text-center text-3xl lg:text-6xl m-0 pt-24 pb-24 font-noirpro-semibold">
+            {{ entry.title|raw }}
+        </h1>
+        <div>
+            <div class="flex content-center flex-wrap">
+                <div class="w-full lg:w-6/12 p-2 text-center">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
+                        <i class="fas fa-download text-6xl mb-5" aria-hidden="true"></i>
+                        <h4 class="text-2xl">Flextype Core</h4>
+                        <div class="h-40 mb-10">
+                            Release package contains:<br><br>
+                            <div class="no-underline rounded-lg px-2 mb-2 inline-block bg-gray-200"><b>Flextype Core</b></div>
+                        </div>
+                        <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black"  href="https://github.com/flextype/flextype/releases/download/v0.9.8/flextype-0.9.8.zip">DOWNLOAD</a>
+                    </div>
+                </div>
+                <div class="w-full lg:w-6/12 p-2 text-center">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
+                        <i class="fas fa-download text-6xl mb-5" aria-hidden="true"></i>
+                        <h4 class="text-2xl">Flextype CMS</h4>
+                        <div class="h-40 mb-10">
+                            Release package contains:<br><br>
+                            <div class="no-underline rounded-lg px-2 mb-2 inline-block bg-gray-200"><b>Flextype Core</b></div>
+                            <div class="no-underline rounded-lg px-2 mb-2 inline-block bg-gray-200">
+                                <b>Plugins:</b> admin, accounts, accounts-admin, acl, site, twig, form, form-admin, themes-admin, jquery, icon, phpmailer
+                            </div>
+                            <div class="no-underline rounded-lg px-2 mb-2 inline-block bg-gray-200"><b>Themes:</b> noir</div>
+                        </div>
+                        <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black"  href="https://github.com/flextype/flextype/releases/download/v0.9.8/flextype-cms-0.9.8.zip">DOWNLOAD</a>
+                    </div>
+                </div>
+                <div class="w-full lg:w-6/12 p-2 text-center">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
+                        <i class="fas fa-star text-6xl mb-5" aria-hidden="true"></i>
+                        <h4 class="text-2xl">Extend</h4>
+                        <div class="h-40 mb-10">
+                            Extend and Customize Flextype Core Functionality by adding plugins, themes, and other packages.
+                            <br>
+                        </div>
+                        <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black"  href="{{ url() }}/{{ locale }}/downloads/extend">EXTEND FLEXTYPE</a>
+                    </div>
+                </div>
+                <div class="w-full lg:w-6/12 p-2 text-center">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
+                        <i class="fas fa-user-astronaut text-6xl mb-5"></i>
+                        <h4 class="text-2xl">FINANCIAL SUPPORT</h4>
+                        <div class="h-40 mb-10 text-left">
+                            Flextype is an MIT-licensed open source project and completely free to use.
+                            However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. <br><br> You can support it's ongoing development by being a project backer or a sponsor:<br>
+                            <a class="invert" href="https://www.patreon.com/awilum">Become a backer or sponsor on Patreon</a>,
+                            <a class="invert" href="//flextype.org/en/one-time-donation">One-time donation via PayPal, QIWI, Sberbank, Yandex</a>,
+                            <a class="invert" href="//flextype.org/en/sponsors">Visit our Sponsors & Backers page</a>
+                        </div>
+                    </div>
+                </div>
+                <!--
+                <div class="w-full p-2 text-center">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
+                        <i class="fas fa-info-circle text-6xl mb-5" aria-hidden="true"></i>
+                        <h4 class="text-2xl">QUICK INSTALLATION</h4>
+                        <div class="mb-10 text-left">
+                            1. <a href="https://flextype.org/en/downloads">Download the latest version of Flextype.</a><br>
+                            2. Unzip the contents to a new folder on your local computer, and upload to your webhost using the (S)FTP client of your choice. After you’ve done this, create directory <code>/project</code> and be sure to chmod the following directory to <code>755</code> (or <code>777</code>), so it is readable and writable by Flextype.<br>
+                            3. Create CDA, CMA and Access tokens for your project using this <a href="{{ url() }}/{{ locale }}/api-token-generator">webpage</a>.
+                            <br><br><br><br>
+                            <div class="text-center">
+                                <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black"  href="https://docs.flextype.org/en/getting-started/installation">READ THE DOCUMENTATION</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                -->
+                <div class="w-full p-2 text-center">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
+                        <i class="fab fa-youtube text-6xl mb-5" aria-hidden="true"></i>
+                        <h4 class="text-2xl">INSTALLATION VIDEO TUTORIALS</h4>
+                        <div class="mb-10 text-center">
+                            <a href="https://www.youtube.com/watch?v=R_NPR9bWxUA">Flextype Core Installation</a> /
+                            <a href="https://www.youtube.com/watch?v=s5HEOmawFOA">Flextype Website Installation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+html,
+body {
+    font-family: 'noirpro-light';
+    font-size: 18px;
+    background: #f8f9fb;
+    color: #090e24;
+}
+
+ol,
+ul {
+  list-style: circle;
+  margin: 0 0 20px 40px;
+}
+
+a {
+    text-decoration: underline;
+}
+
+p, pre {
+    margin: 0 0 20px;
+}
+
+li {
+    margin: 0 0 2px;
+}
+
+table tr {
+    border-bottom: 1px solid #090e24;;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding-bottom: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 16px;
+    vertical-align: middle;
+}
+
+hr {
+    border-top: 3px solid black;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}    

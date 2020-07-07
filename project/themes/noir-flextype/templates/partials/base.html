@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="{{ locale }}">
+    {% set home = entries.fetch(locale) %}
+    {% set static_version = 5 %}
+    <head>
+        {% block head %}
+            <meta charset="{{ registry.get('flextype.settings.charset')|lower }}">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta name="description" content="{% if entry.description %}{{ entry.description }}{% else %}{{ registry.get('plugins.site.settings.description') }}{% endif %}">
+            <meta name="keywords" content="{% if entry.keywords %}{{ entry.keywords }}{% else %}{{ registry.get('plugins.site.settings.keywords') }}{% endif %}">
+            <meta name="robots" content="{% if entry.robots %}{{ entry.robots }}{% else %}{{ registry.get('plugins.site.settings.robots') }}{% endif %}">
+            <meta name="generator" content="Powered by Flextype"/>
+
+            <meta name="image" content="{{ url() }}/image/{{ locale }}/preview.png?dpr=2&w=1100&q=70">
+
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:site" content="{{ url() }}/{{ entry.slug }}">
+            <meta name="twitter:title" content="{{ entry.title }}">
+            <meta name="twitter:description" content="{{ entry.description }}">
+            <meta name="twitter:image" content="{{ url() }}/image/{{ locale }}/preview.png?dpr=2&w=1100&q=70">
+
+            <meta property="og:url" content="{{ url() }}/{{ entry.slug }}">
+            <meta property="og:title" content="{{ entry.title }}">
+            <meta property="og:description" content="{{ entry.description }}">
+            <meta property="og:type" content="website">
+            <meta property="og:image" content="{{ url() }}/image/{{ locale }}/preview.png?dpr=2&w=1100&q=70">
+            <meta property="og:image:type" content="image/png">
+
+            <meta name="yandex-verification" content="920bbfc83bbe3fbe" />
+
+            <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+            <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+            <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+            <link rel="manifest" href="/site.webmanifest">
+
+            {% do emitter.emit('onThemeMeta') %}
+
+            <title>
+                {% if entry.title %}{{ entry.title|e('html')|shortcode }}
+                    |
+                {% endif %}{{ registry.get('plugins.site.settings.title')|e('html') }}</title>
+
+            {% set theme = registry.get('plugins.site.settings.theme') %}
+
+            {% do registry.set('assets.site.css.noir_flextype', 'project/themes/' ~ theme ~ '/assets/dist/css/build.min.css') %}
+
+            {% if registry.has('assets.site.css') %}
+                {% for css in registry.get('assets.site.css') %}
+                    <link href="{{ url() }}/{{ css }}" rel="stylesheet">
+                {% endfor %}
+            {% endif %}
+
+            <!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js", "ym"); ym(48198194, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/48198194" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+
+            {% do emitter.emit('onThemeHeader') %}
+        {% endblock %}
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="bg-white text-black">
+            <div class="container mx-auto px-8 pt-6 pb-6 clearfix">
+              <div class="w-full lg:w-2/12
+                          text-center lg:text-left
+                          float-left text-black font-noirpro-medium tracking-wide">
+                <a href="{{ url() }}/{{ locale }}" class="no-underline w-full lg:w-2/12 text-base logo no-underline">flextype</a>
+              </div>
+              <div class="w-full float-right lg:w-9/12 font-noirpro-medium">
+                <div class="text-right">
+                    {% for item in home.navigation %}
+                        <a href="{% if item.external %}//{{ item.link }}{% else %}{{ url() }}/{{ locale }}/{{ item.link }}{% endif %}"
+                           class="{% if entry.slug == locale ~ '/' ~ item.link %}active{% endif %}
+                                   uppercase
+                                   relative
+                                   block
+                                   text-black
+                                   nav-item
+                                   {% if loop.last %}lg:mr-0{% else %}lg:mr-4{% endif %}
+                                   lg:inline-block">
+                                   {{ item.title }}
+                               </a>
+                    {% endfor %}
+                </div>
+              </div>
+          </div>
+        </nav>
+        <!-- /Navigation -->
+
+        <!-- Content -->
+        <div class="bg-white text-black">
+            <div class="px-8">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+        <!-- /Content -->
+
+        <!-- Footer -->
+        <footer class="container px-8 relative mx-auto textl-center lg:text-left text-black" style="background: #f8f9fb;">
+            <div class="flex content-center flex-wrap pt-24 pb-24">
+                <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
+                    <h4>Flextype</h4>
+                    <ul class="list-none m-0 p-0">
+                        <li><a href="{{ url() }}/{{ locale }}/about">{{ home.link_about }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/team">{{ home.link_team }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/sponsors">{{ home.link_sponsors }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/press-kit">{{ home.link_press_kit }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/changelog">{{ home.link_changelog }}</a></li>
+                    </ul>
+                </div>
+                <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
+                    <h4>{{ home.link_downloads }}</h4>
+                    <ul class="list-none m-0 p-0">
+                        <li><a href="{{ url() }}/{{ locale }}/downloads">Flextype</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/downloads/extend/plugins">{{ home.link_plugins }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/downloads/extend/themes">{{ home.link_themes }}</a></li>
+                    </ul>
+                </div>
+                <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
+                    <h4>{{ home.link_community }}</h4>
+                    <ul class="list-none m-0 p-0">
+                        <li><a href="{{ url() }}/{{ locale }}/discord">Discord</a></li>
+                        <li><a href="https://github.com/flextype">Github</a></li>
+                        <li><a href="https://vk.com/flextype">Vkontakte</a></li>
+                        <li><a href="https://twitter.com/getflextype">Twitter</a></li>
+                        <li><a href="https://www.youtube.com/channel/UCmIAB-UDGCjF92iMNDdJR6Q?view_as=subscriber">Youtube</a></li>
+                    </ul>
+                </div>
+                <div class="w-full lg:w-6/12 mt-8 lg:mt-0">
+                    <p><a href="{{ url() }}/{{ locale }}">Flextype</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="//digital.flextype.org" class="highlight">Sergey Romanenko</a> and <a href="https://github.com/flextype/flextype/graphs/contributors" class="highlight">Flextype Community</a></p>
+                    <p>Copyright © 2020 - <a href="//digital.flextype.org">Sergey Romanenko</a></p>
+                </div>
+            </div>
+        </footer>
+        <!-- /Footer -->
+
+        {% set theme = registry.get('plugins.site.settings.theme') %}
+        {% do registry.set('assets.site.js.noir_flextype', 'project/themes/' ~ theme ~ '/assets/dist/js/build.min.js') %}
+
+        {% if registry.has('assets.site.js') %}
+            {% for js in registry.get('assets.site.js') %}
+                {% if js %}
+                    <script type="text/javascript" src="{{ url() }}/{{ js }}"></script>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        <script>
+            new WOW().init();
+        </script>
+
+        {% do emitter.emit('onThemeTail') %}
+    </body>
+</html>
