@@ -1,23 +1,23 @@
 ---
-title: 'Hybrid Content Management System'
+title: 'Гибридная система управления контентом'
 template: home
 visibility: visible
 published_at: '22-09-2019 19:12'
-description: 'The freedom of a headless CMS with the full functionality of a traditional CMS.'
+description: 'Свобода Headless CMS с полной функциональностью Традиционных CMS.'
 fieldset: default
 created_at: '22-09-2019 19:12'
 uuid: d080816b-0973-4fac-8964-4f6ecf8f3561
 published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 date: 'August 04 2019 10:16:23'
-txt_intro_section_h1: 'The freedom of a headless CMS with the full functionality of a traditional CMS.'
-txt_intro_section_button: 'Get Flextype'
-txt_features_heading: Features
-txt_features_description: 'Flextype provides faster, more productive way<br> for you to build and manage content for any kind of projects.'
-txt_features_simple_heading: Simple
-txt_features_simple_p: 'Easy to install, upgrade and use.<br>No installation needed, just copy files to your server!'
-txt_features_fast_heading: Fast
-txt_features_fast_p: 'Flextype is super fast content management system because of its elegance architecture and built-in <a href="https://docs.flextype.org/en/concepts/performance">smart cache</a>.'
+txt_intro_section_h1: 'Свобода Headless CMS с полной функциональностью Традиционных CMS.'
+txt_intro_section_button: 'Скачать Flextype'
+txt_features_heading: Преимущества
+txt_features_description: 'Flextype предлагает быстрый и продуктивный способ<br> создания и управлениями веб-сайтами.'
+txt_features_simple_heading: Простая
+txt_features_simple_p: 'Просто установить, обновить и использовать.<br>Не требуется специальной установки, просто скопируйте файлы на ваш сервер!'
+txt_features_fast_heading: Быстрая
+txt_features_fast_p: 'Flextype - очень быстрая система управления контентом из-за элегантной архитектуры и встроенного <a href="https://docs.flextype.org/en/concepts/performance">смарт-кэша</a>.'
 txt_features_flexible_heading: Flexible
 txt_features_flexible_p: "Building this content management system, we focused on simplicity and flexibility. To achieve this, we implemented a simple but powerful Core API's."
 txt_features_easy_editing_heading: 'Easy editing'
