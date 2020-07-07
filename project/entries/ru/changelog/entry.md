@@ -82,7 +82,7 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 
 * **core:** new way for data merging of manifest and settings for plugins and themes #404
 
-    for e.g. this is a wrong code to access site title:
+    and this is a correct code to access site title:
     ```
     {{ registry.plugins.site.title|e('html') }}
     ```
@@ -93,7 +93,7 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
     ```
 * **core:** We should add app `url` into the core instead of `base_url` and `site_url` #405
 
-    for e.g. this is a wrong code to access site url:
+    and this is a correct code to access site title:
     ```
     {{ registry.plugins.site.url }}
     ```
@@ -204,9 +204,10 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
     /site/config/plugins/admin/settings.yaml
     ```
     ...
-    entries:
-      slugify: true # set `false` to disable slugify for entries
+    Flextype Core: Snippets - <code>SnippetsTwigExtension</code>: snippet removed.
     ```
+: snippet removed.
+  </code>
 
 * **admin-plugin:** add ability to deactivate/activate all type of plugins. #211
 * **admin-plugin:** add Confirmation Required modal for system plugins deactivation.
@@ -219,8 +220,7 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
     /site/config/plugins/admin/settings.yaml
     ```
     ...
-    entries:
-      items_view_default: list # set `table` for table entries view
+    Flextype Core: New fieldsets for entry Gallery - added.
     ```
 
 * **admin-plugin:** increase upload limit for `_uploadFile` from 3mb to 5mb
@@ -363,11 +363,11 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 
     usage in templates:
     ```
-    // Result: {"title": "Hello World!"}
-    {{ {'title': 'Hello World!'}|json_encode }}
+    // Result: title: 'Hello World!'
+    {{ {'title': 'Hello World!'}|yaml_encode }}
 
     // Result: Hello World!
-    {{ '{"title": "Hello World!"}'|json_decode.title }}
+    {{ 'title: Hello World!'|yaml_decode.title }}
     ```
 
 * **core:** add parser twig extension #262
