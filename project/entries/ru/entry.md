@@ -82,7 +82,7 @@ link_community: Community
 link_documentation: Documentation
 link_changelog: Changelog
 link_press_kit: Press kit
-link_team: Team
+link_team: Команда
 navigation:
   - 
     title: Blog
