@@ -31,7 +31,7 @@ With Flextype, you are in complete control. Design your data structure the way y
         Contributing to the Flextype is easy and you can give as little or as much time as you want.
         <br><br>
         <div class="flex content-center flex-wrap">
-            <div class="w-full lg:w-6/12 p-8 wow fadeIn">
+            <div class="w-full lg:w-6/12 p-2 wow fadeIn">
                 <div class="text-left">
                     <h4 class="text-center">FINANCIAL SUPPORT</h4>
                     Flextype is an MIT-licensed open source project and completely free to use.
@@ -41,13 +41,13 @@ With Flextype, you are in complete control. Design your data structure the way y
                     <a class="invert" href="//flextype.org/en/sponsors">Visit our Sponsors & Backers page</a>
                 </div>
             </div>
-            <div class="w-full lg:w-6/12 p-8 wow fadeIn">
+            <div class="w-full lg:w-6/12 p-2 wow fadeIn">
                 <div class="text-left">
                     <h4 class="text-center">INTERNATIONAL TRANSLATOR TEAM</h4>
                     We are on a mission to build high quality platform to develop fast, flexible, easier to manage websites with Flextype!<br><br>
                     If you wish to participate in the translation of Flextype, please Join Flextype International Translator Team and start translating!<br><br>
                     Our crowdin projects:<br>
-                    <a class="invert" href="">Flextype Admin Panel Plugin</a>, <a class="invert" href="">Flextype Form Admin Plugin</a>, <a class="invert" href="">Flextype Themes Admin Plugin</a>, <a class="invert" href="">Flextype Website</a>, <a class="invert" href="">Flextype Documentation</a>
+                    <a href="https://crowdin.com/project/flextype-plugin-admin" class="invert">Flextype Admin Panel Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-form-admin" class="invert">Flextype Form Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-themes-admin" class="invert">Flextype Themes Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Flextype Accounts Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Flextype Accounts Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-website" class="invert">Flextype Website</a>, <a href="https://crowdin.com/project/flextype-documentation" class="invert">Flextype Documentation</a>
                 </div>
             </div>
         </div>
