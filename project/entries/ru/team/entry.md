@@ -1,9 +1,9 @@
 ---
-title: 'Team'
+title: 'Команда'
 template: default
 visibility: visible
 published_at: '22-09-2019 19:15'
-description: 'We are on a mission to build high quality web platform to develop fast, flexible, easier to manage websites with Flextype!'
+description: 'Наша миссия заключается в создании высококачественной веб-платформы для быстрого, гибкого и удобного управления веб-сайтами с помощью Flextype!'
 menu_item_title: ''
 menu_item_url: ''
 menu_item_target: _self
@@ -15,15 +15,15 @@ published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 ---
 
-### Behind The Project{.text-4xl .text-center .uppercase .pt-24}
+### Основатель проекта{.text-4xl .text-center .uppercase .pt-24}
 
 <p class="text-center">
     <img alt="We are on a mission to build high quality web platform to develop fast, flexible, easier to manage websites with Flextype!" src="https://avatars0.githubusercontent.com/u/477114?s=460&v=4" class="rounded-full inline w-48 p-5" />
 </p>
 
 <p class="text-center">
-    <strong>Sergey Romanenko</strong><br /> Founder & Lead Developer<br />
-    <a href="https://digital.flextype.org" class="invert">digital.flextype.org</a>
+    <strong>Сергей Романенко</strong><br /> Основатель и ведущий разработчик<br />
+<a href="https://digital.flextype.org" class="invert">romanenko.digital</a>
 </p>
 
 ### Translation Team{.text-4xl .text-center .uppercase .pt-24}

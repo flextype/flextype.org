@@ -85,20 +85,20 @@ txt_link_press_kit: Press kit
 txt_link_team: Команда
 navigation:
   - 
-    title: Blog
+    title: Блог
     link: blog
   - 
-    title: Downloads
+    title: Скачать
     link: downloads
   - 
-    title: Documentation
+    title: Документация
     link: docs.flextype.org
     external: true
   - 
-    title: Community
+    title: Сообщество
     link: community
   - 
-    title: About
+    title: О Проекте
     link: about
 ---
 
