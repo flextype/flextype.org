@@ -16,8 +16,10 @@ However, the amount of effort needed to maintain and develop new features for th
 
 ### Backers
 * Arseni Khramenkin
+* Roman
+* Viktoriya Kozyr
+
 
 ### One-time donations
-* Viktoriya Kozyr
 * Alexander Greca
 * Izabela Sokołowska
