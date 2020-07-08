@@ -13,7 +13,7 @@ date: 'August 04 2019 10:16:23'
 txt_intro_section_h1: 'Свобода Headless CMS с полной функциональностью Традиционных CMS.'
 txt_intro_section_button: 'Скачать Flextype'
 txt_features_heading: Преимущества
-txt_features_description: 'Flextype предлагает быстрый и продуктивный способ<br> создания и управлениями веб-сайтами.'
+txt_features_description: 'Flextype обеспечивает более быстрый и продуктивный способ<br> для вас создавать и управлять контентом для любого рода проектов.'
 txt_features_simple_heading: Простая
 txt_features_simple_p: 'Просто установить, обновить и использовать.<br>Не требуется специальной установки, просто скопируйте файлы на ваш сервер!'
 txt_features_fast_heading: Быстрая
