@@ -17,13 +17,13 @@ txt_features_description: 'Flextype обеспечивает более быст
 txt_features_simple_heading: Простота
 txt_features_simple_p: 'Просто установить, обновить и использовать.<br>Не требуется специальной установки, просто скопируйте файлы на ваш сервер!'
 txt_features_fast_heading: Скорость
-txt_features_fast_p: 'Flextype - очень быстрая система управления контентом из-за элегантной архитектуры и встроенного <a href="https://docs.flextype.org/en/concepts/performance">умного кэша</a>.'
+txt_features_fast_p: 'Flextype - очень быстрая система управления контентом из-за ее элегантной архитектуры и встроенного <a href="https://docs.flextype.org/en/concepts/performance">умного кэша</a>.'
 txt_features_flexible_heading: Гибкость
-txt_features_flexible_p: "Создание этой системы управления контентом, мы сосредоточились на простоте и гибкости. Для этого мы внедрили простой, но мощный API."
+txt_features_flexible_p: "Создание этой системы управления контентом, мы сосредоточились на простоте и гибкости. Для этого мы создали простой, но мощный API."
 txt_features_easy_editing_heading: 'Простота'
-txt_features_easy_editing_p: 'С Flextype вы можете использовать любой из ваших любимых редакторов контента для написания контента или наши великолепные %url_start%Admin Panel%url_end%.'
+txt_features_easy_editing_p: 'С Flextype вы можете использовать любой из ваших любимых редакторов контента для создания контента или может использовать нашу великолепную %url_start%Админку%url_end%.'
 txt_features_dynamic_content_types_heading: 'Индивидуальные поля'
-txt_features_dynamic_content_types_p: 'The flat-file nature of Flextype lets you define unlimited custom fields for any of your entries.'
+txt_features_dynamic_content_types_p: 'Flextype позволяет создать неограниченное количество индивидуальных полей для любых из ваших записей.'
 txt_features_open_source_heading: 'Открытый исходный код'
 txt_features_open_source_p: 'Flextype - проект с открытым исходным кодом, основанный Сергеем Романенко и поддерживаемый Сообществом Flextype .<br>и опубликован под лицензией MIT<br>,'
 txt_features_built_in_rest_api_heading: "Встроенный REST API"
