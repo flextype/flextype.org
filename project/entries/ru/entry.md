@@ -13,7 +13,7 @@ date: 'August 04 2019 10:16:23'
 txt_intro_section_h1: 'Свобода Headless CMS с полной функциональностью Традиционных CMS.'
 txt_intro_section_button: 'Скачать Flextype'
 txt_features_heading: Преимущества
-txt_features_description: 'Flextype обеспечивает более быстрый и продуктивный способ<br> для вас создавать и управлять контентом для любого рода проектов.'
+txt_features_description: 'Flextype обеспечивает более быстрый и продуктивный способ<br> создания и управления контентом для любого типа проекта.'
 txt_features_simple_heading: Простая
 txt_features_simple_p: 'Просто установить, обновить и использовать.<br>Не требуется специальной установки, просто скопируйте файлы на ваш сервер!'
 txt_features_fast_heading: Быстрая
@@ -22,7 +22,7 @@ txt_features_flexible_heading: Гибкая
 txt_features_flexible_p: "Создание этой системы управления контентом, мы сосредоточились на простоте и гибкости. Для этого мы внедрили простой, но мощный API."
 txt_features_easy_editing_heading: 'Простое редактирование'
 txt_features_easy_editing_p: 'С Flextype вы можете использовать любой из ваших любимых редакторов контента для написания контента или наши великолепные %url_start%Admin Panel%url_end%.'
-txt_features_dynamic_content_types_heading: 'Настраиваемые поля'
+txt_features_dynamic_content_types_heading: 'Динамические поля'
 txt_features_dynamic_content_types_p: 'The flat-file nature of Flextype lets you define unlimited custom fields for any of your entries.'
 txt_features_open_source_heading: 'Открытый исходный код'
 txt_features_open_source_p: 'Flextype - проект с открытым исходным кодом, основанный Сергеем Романенко и поддерживаемый Сообществом Flextype .<br>и опубликован под лицензией MIT<br>,'
