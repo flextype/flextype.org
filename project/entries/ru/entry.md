@@ -81,8 +81,14 @@ txt_link_downloads: Загрузки
 txt_link_community: Сообщество
 txt_link_documentation: Документация
 txt_link_changelog: Список изменений
-txt_link_press_kit: Материалы для прессы
+txt_link_press_kit: Пресса
 txt_link_team: Команда
+txt_contribution_financial_support_heading: ФИНАНСОВЫЙ ПОДДЕРЖКА
+txt_contribution_financial_support_p: |
+  Flextype это лицензированный MIT-проект с открытым исходным кодом и полностью бесплатный для использования. Однако объем усилий, необходимых для поддержания и развития новых возможностей для проекта, не будет стабильным без надлежащей финансовой поддержки. Вы можете поддержать развитие проекта, будучи cпонсором:<br> <br><br>Стать спонсором на Patreon.<a class="invert" href="https://www.patreon.com/awilum"></a><a class="invert" href="//flextype.org/en/one-time-donation">Одноразовое пожертвование через PayPal, QIWI, Sberbank, Яндекс</a>
+txt_contribution_itt_heading: КОМАНДА ПЕРЕВОДЧИКОВ
+txt_contribution_itt_p: |
+  Мы работаем над созданием высоко качественной платформы управления контентом!<br><br>Если вы хотите принять участие в переводе Flextype, пожалуйста, присоединитесь к международной команде переводчиков Flextype и начните переводить!<br><br>Наши проекты crowdin:<br> <a href="https://crowdin.com/project/flextype-plugin-admin" class="invert">Админка</a>, <a href="https://crowdin.com/project/flextype-plugin-form-admin" class="invert">Админка Форм</a>, <a href="https://crowdin.com/project/flextype-plugin-themes-admin" class="invert">Админка Тем</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Админка Аккаунтов</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Аккаунты</a>, <a href="https://crowdin.com/project/flextype-website" class="invert">Веб-сайт Flextype</a>, <a href="https://crowdin.com/project/flextype-documentation" class="invert">Документация по Flextype</a>
 navigation:
   - 
     title: Блог
