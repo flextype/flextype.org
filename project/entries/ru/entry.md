@@ -18,7 +18,7 @@ txt_features_simple_heading: Простая
 txt_features_simple_p: 'Просто установить, обновить и использовать.<br>Не требуется специальной установки, просто скопируйте файлы на ваш сервер!'
 txt_features_fast_heading: Быстрая
 txt_features_fast_p: 'Flextype - очень быстрая система управления контентом из-за элегантной архитектуры и встроенного <a href="https://docs.flextype.org/en/concepts/performance">смарт-кэша</a>.'
-txt_features_flexible_heading: Flexible
+txt_features_flexible_heading: Гибкая
 txt_features_flexible_p: "Building this content management system, we focused on simplicity and flexibility. To achieve this, we implemented a simple but powerful Core API's."
 txt_features_easy_editing_heading: 'Easy editing'
 txt_features_easy_editing_p: 'With Flextype you are free to use any of your favorite content editor to write content or our gorgeous %url_start%Admin Panel%url_end%.'
