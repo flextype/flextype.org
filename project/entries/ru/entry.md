@@ -81,7 +81,7 @@ txt_link_downloads: Загрузки
 txt_link_community: Сообщество
 txt_link_documentation: Документация
 txt_link_changelog: Список изменений
-txt_link_press_kit: Материалы для прессы
+txt_link_press_kit: Пресса
 txt_link_team: Команда
 navigation:
   - 
