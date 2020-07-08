@@ -29,7 +29,7 @@ txt_features_open_source_p: 'Flextype is an open-source project founded by Serge
 txt_features_built_in_rest_api_heading: "Built-in REST API"
 txt_features_built_in_rest_api_p: "Flextype REST API with compact JSON payloads gives you full programmatic control over your content management system."
 txt_features_version_control_heading: "Version Control"
-features_version_control_p: "Flextype is a file-based CMS, you can version control all content with GIT or any other Version Control System."
+txt_features_version_control_p: "Flextype is a file-based CMS, you can version control all content with GIT or any other Version Control System."
 txt_features_Internationalization_heading: "Internationalization"
 txt_features_Internationalization_p: "Multi-language support is baked right into the core. You may integrate your Flextype powered website with any cloud-based solution for localization management, like Crowdin or Transifex."
 txt_features_no_limits_heading: 'Use Cases'
