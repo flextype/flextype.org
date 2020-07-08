@@ -69,26 +69,26 @@ txt_github_heading: "Github"
 txt_github_p: "Если вы хотите сообщить об ошибке или поделиться своими идеями, вы можете использовать Flextype GitHub Issues tracker."
 txt_github_button: "Внести свой вклад"
 txt_twitter_heading: "Twitter"
-txt_twitter_p: "Follow %url_start%Follow on Twitter%url_end% to get real-time news regarding the development and all events we are attending."
-txt_twitter_button: "Follow Us"
-txt_link_about: About
-txt_link_media: Media
-txt_link_donate: Donate
-txt_link_sponsors: Sponsors
-txt_link_plugins: Plugins
-txt_link_themes: Themes
-txt_link_downloads: Downloads
-txt_link_community: Community
-txt_link_documentation: Documentation
-txt_link_changelog: Changelog
-txt_link_press_kit: Press kit
+txt_twitter_p: "Подписывайтесь на наш официальный Twitter чтобы получать в режиме реального времени новости о разработке и всех мероприятиях."
+txt_twitter_button: "Следите за нами"
+txt_link_about: О Проекте
+txt_link_media: Медиа
+txt_link_donate: Донат
+txt_link_sponsors: Спонсоры
+txt_link_plugins: Плагины
+txt_link_themes: Темы
+txt_link_downloads: Загрузки
+txt_link_community: Сообщество
+txt_link_documentation: Документация
+txt_link_changelog: Список изменений
+txt_link_press_kit: Материалы для прессы
 txt_link_team: Команда
 navigation:
   - 
     title: Блог
     link: blog
   - 
-    title: Скачать
+    title: Загрузки
     link: downloads
   - 
     title: Документация
