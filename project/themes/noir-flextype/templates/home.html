@@ -4,7 +4,7 @@
     <!-- introducing section -->
     <div class="container relative mx-auto">
         <div class="text-center">
-            <h1 class="uppercase m-0 p-24  wow fadeIn text-xl lg:text-5xl">{{ entry.txt_intro_section_h1|raw }}</h1>
+            <h1 class="uppercase m-0 p-24 wow fadeIn text-xl lg:text-5xl">{{ entry.txt_intro_section_h1|raw }}</h1>
             <div class="flex justify-center wow fadeIn">
                 <a
                     href="{{ base_url() }}/{{ locale }}/downloads"
@@ -22,8 +22,8 @@
     <!-- features section -->
     <div class="text-center pt-20">
         <div class="container relative mx-auto">
-            <h3 class="uppercase text-3xl lg:text-6xl wow fadeIn">{{ entry.txt_features_heading|raw }}</h3>
-            <p class="text-xl lg:text-3xl wow fadeIn">{{ entry.txt_features_description|raw }}</p>
+            <h3 class="uppercase text-xl lg:text-5xl wow fadeIn">{{ entry.txt_features_heading|raw }}</h3>
+            <p class="text-xl lg:text-2xl wow fadeIn">{{ entry.txt_features_description|raw }}</p>
 
             <div class="flex content-center flex-wrap mt-12">
                 <div class="w-full lg:w-1/3 p-8 wow fadeIn">
@@ -81,8 +81,8 @@
     <!-- no limits section -->
     <div class="text-center">
         <div class="container mx-auto pt-20 pb-20">
-            <h3 class="uppercase text-3xl lg:text-6xl  wow fadeIn">{{ entry.txt_features_no_limits_heading|raw }}</h3>
-            <p class="text-xl lg:text-3xl wow fadeIn">{{ entry.txt_features_no_limits_p|raw }}</p>
+            <h3 class="uppercase text-xl lg:text-5xl wow fadeIn">{{ entry.txt_features_no_limits_heading|raw }}</h3>
+            <p class="text-xl lg:text-2xl px-20 wow fadeIn">{{ entry.txt_features_no_limits_p|raw }}</p>
 
             <div class="flex content-center flex-wrap mt-12">
 
@@ -158,14 +158,14 @@
     <!-- community section -->
     <div class="text-center">
         <div class="container mx-auto pt-20 pb-20">
-            <h3 class="uppercase text-3xl lg:text-6xl wow fadeIn">{{ entry.txt_community_heading|raw }}</h3>
-            <p class="text-xl lg:text-3xl">{{ entry.txt_community_p|raw }}</p>
+            <h3 class="uppercase text-xl lg:text-5xl wow fadeIn">{{ entry.txt_community_heading|raw }}</h3>
+            <p class="text-xl lg:text-2xl px-20 wow fadeIn">{{ entry.txt_community_p|raw }}</p>
 
             <div class="flex content-center flex-wrap mt-12">
                 <div class="w-full lg:w-4/12 p-6 wow fadeIn">
                     <i class="fab fa-discord text-7xl mb-5"></i>
                     <h4 class="text-2xl">{{ entry.txt_discord_heading|raw }}</h4>
-                    <div class="text-base h-32">
+                    <div class="text-base h-40">
                         {{ entry.txt_discord_p|raw }}
                     </div>
                     <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn" href="https://discord.gg/CCKPKVG">{{ entry.txt_discord_button|raw }}</a>
@@ -174,7 +174,7 @@
                 <div class="w-full lg:w-4/12 p-6 wow fadeIn">
                     <i class="fab fa-github text-7xl mb-5"></i>
                     <h4 class="text-2xl">{{ entry.txt_github_heading|raw }}</h4>
-                    <div class="text-base h-32">
+                    <div class="text-base h-40">
                         {{ entry.txt_github_p|replace({"%url_start%": '<a href="https://github.com/flextype/flextype/issues">', "%url_end%": "</a>"})|raw }}
                     </div>
                     <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn" href="https://github.com/flextype">{{ entry.txt_github_button|raw }}</a>
@@ -183,7 +183,7 @@
                 <div class="w-full lg:w-4/12 p-6 wow fadeIn">
                     <i class="fab fa-twitter text-7xl mb-5"></i>
                     <h4 class="text-2xl">{{ entry.txt_twitter_heading|raw }}</h4>
-                    <div class="text-base h-32">
+                    <div class="text-base h-40">
                         {{ entry.txt_twitter_p|replace({"%url_start%": '<a href="https://twitter.com/getflextype">', "%url_end%": "</a>"})|raw }}
                     </div>
                     <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn" href="https://twitter.com/getflextype">{{ entry.txt_twitter_button|raw }}</a>
@@ -197,8 +197,8 @@
     <!-- /contribution section -->
     <div class="text-center">
         <div class="container mx-auto pt-20 pb-40">
-            <h3 class="uppercase text-3xl lg:text-6xl  wow fadeIn">{{ entry.txt_contribution_heading|raw }}</h3>
-            <p class="text-xl lg:text-3xl px-8 mb-8 wow fadeIn">{{ entry.txt_contribution_p|raw }}</p>
+            <h3 class="uppercase text-xl lg:text-5xl wow fadeIn">{{ entry.txt_contribution_heading|raw }}</h3>
+            <p class="text-xl lg:text-2xl px-20 mb-8 wow fadeIn">{{ entry.txt_contribution_p|raw }}</p>
             <div class="w-full text-center">
                 <div class="mb-10">
                     <div class="flex content-center flex-wrap">
