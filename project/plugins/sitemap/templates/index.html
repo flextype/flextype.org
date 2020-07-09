@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{% for page in sitemap %}
-<url>
-    <loc>{{ base_url() }}/{{ page.slug }}</loc>
-    <lastmod>{{ page.modified_at|date(registry.get('flextype.settings.date_display_format')) }}</lastmod>
-    <changefreq>{% if page.changefreq %}{{ page.changefreq }}{% else %}always{% endif %}</changefreq>
-    <priority>1.0</priority>
-</url>
+<?xml-stylesheet type="text/xsl" href="{{ url() }}/project/plugins/sitemap/templates/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{% for entry in sitemap %}
+  <url>
+    <loc>{{ url() }}/{{ entry.loc|e }}</loc>
+{% if entry.lastmod %}
+    <lastmod>{{ entry.lastmod|date(registry.get('flextype.settings.date_display_format')) }}</lastmod>
+{% endif %}
+{% if entry.changefreq %}
+    <changefreq>{{ entry.changefreq }}</changefreq>
+{% endif %}
+{% if entry.priority %}
+    <priority>{{ entry.priority|number_format(1) }}</priority>
+{% endif %}
+  </url>
 {% endfor %}
 </urlset>

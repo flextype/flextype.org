@@ -1,3 +1,42 @@
+# v2.0.0, 2020-07-03
+
+### Features
+
+* **routes:** add ability to set custom routes
+  ```yaml
+  route: sitemap.xml
+  ```
+* **core:** add ability to set ignore list
+
+  ```yaml
+  ignore:
+    - blog/blog-post-to-ignore
+    - ignore-this-entry
+  ```
+
+* **core:** add ability to set additions list
+
+  ```yaml
+  additions:
+    -
+      loc: something-special
+      lastmod: '2020-04-16'
+      changefreq: hourly
+      priority: 0.3
+  ```
+
+* **core:** add ability to set default values for entries
+
+  ```yaml
+  default:
+    changefreq: daily
+    priority: !!float 1
+  ```
+
+* **core:** add new event `onSitemapAfterInitialized`
+* **core:** add sitemap.xsl template
+* **core:** improved and refactored sitemap.html template
+
 # v1.8.0, 2020-05-15
 * Updates for Flextype 0.9.8
 
