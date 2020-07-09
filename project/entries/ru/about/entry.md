@@ -3,7 +3,7 @@ title: 'О проекте Flextype'
 template: about
 visibility: visible
 published_at: '22-09-2019 19:15'
-description: 'We are on a mission to build high quality platform to develop kickass Applications!'
+description: 'Мы работаем над созданием качественной платформы для разработки удивительных приложений!'
 menu_item_title: ''
 menu_item_url: ''
 menu_item_target: _self
