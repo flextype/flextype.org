@@ -1,15 +1,15 @@
 ---
-title: Sponsors & Backers
-description: 'We are on a mission to build high quality web platform to develop fast, flexible, easier to manage websites with Flextype!'
+title: Спонсоры
+description: 'Мы работаем над созданием высоко качественной платформы управления контентом!'
 ---
 
-Flextype is an MIT-licensed open source project and completely free to use..
+Flextype - это проект с открытым исходным кодом, лицензированный MIT, и он абсолютно бесплатный для использования..
 
-However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. You can support it's ongoing development by being a backer or a sponsor:
+Однако объем усилий, необходимых для поддержания и развития новых возможностей проекта, не является устойчивым без надлежащей финансовой поддержки. Вы можете поддержать его текущее развитие, став спонсором:
 
-* [Become a backer or sponsor on Patreon](https://www.patreon.com/awilum ""){.invert}.
-* [One-time donation via PayPal, QIWI, Sberbank, Yandex](//flextype.org/en/one-time-donation ""){.invert}
-* [Visit our Sponsors & Backers page](//flextype.org/en/sponsors ""){.invert}
+* [Станьте спонсором на Patreon](https://www.patreon.com/awilum ""){.invert}.
+* [Единоразовое пожертвование через PayPal, QIWI, Сбербанк, Яндекс](//flextype.org/en/one-time-donation ""){.invert}
+* [Посетите нашу страницу спонсоров & Backers](//flextype.org/en/sponsors ""){.invert}
 
 ### Generous Backer
 * Jeremy Monroe
