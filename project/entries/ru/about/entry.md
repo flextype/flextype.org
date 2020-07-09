@@ -18,7 +18,7 @@ Flextype является открытым исходным кодом <strong>D
 
 [entries_fetch id="ru/team" field="content"]
 
-### Команда переводчиков{.text-4xl .text-center .uppercase .pt-24}
+### ВНЕСТИ СВОЙ ВКЛАД{.text-4xl .text-center .uppercase .pt-24}
 
 <div class="w-full text-center">
     <div class="mb-10">
