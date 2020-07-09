@@ -16,7 +16,7 @@ Flextype был **основан в марте 2018** как легкая аль
 
 ### ЛОГО
 
-<img src="[url]/api/images/en/press-kit/flextype-logo.png?dpr=2&w=120&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703" alt="flextype logo" />
+<img src="[url]/api/images/ru/press-kit/flextype-logo.png?dpr=2&w=120&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703" alt="flextype logo" />
 
 <br>
 
