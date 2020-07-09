@@ -6,20 +6,81 @@
 
 Sitemap plugin provide automatically generated XML sitemap for Flextype.
 
-## DEPENDENCIES
+## Dependencies
 
-The following dependencies need to be installed for Sitemap Plugin.
+The following dependencies need to be downloaded and installed for Sitemap Plugin.
 
 | Item | Version | Download |
 |---|---|---|
 | [flextype](https://github.com/flextype/flextype) | 0.9.8 | [download](https://github.com/flextype/flextype/releases) |
 | [twig](https://github.com/flextype-plugins/twig) | >=1.0.0 | [download](https://github.com/flextype-plugins/twig/releases) |
 
-## INSTALLATION
+## Installation
 
 1. Download & Install all required dependencies.
 2. Create new folder `/project/plugins/sitemap`
-3. Download Themes Admin Plugin and unzip plugin content to the folder `/project/plugins/sitemap`
+3. Download Sitemap Plugin and unzip plugin content to the folder `/project/plugins/sitemap`
+
+## Documentation
+
+### Settings
+
+| Key | Value | Description |
+|---|---|---|
+| enabled | true | true or false to disable the plugin |
+| priority | 95 | sitemap plugin priority |
+| route | sitemap.xml | sitemap route |
+| ignore | [] | List of entries to ignore |
+| additions | [] | List of additions to add |
+| default.changefreq | daily | How frequently the page is likely to change. This value provides general information to search engines and may not correlate exactly to how often they crawl the page. Valid values are: always, hourly, daily, weekly, monthly, yearly, never. More info in |
+| default.priority | 1 | The priority of this URL relative to other URLs on your site. Valid values range from 0.0 to 1.0. This value does not affect how your pages are compared to pages on other sites—it only lets the search engines know which pages you deem most important for the crawlers. The default priority of a page is 1. |
+
+### Ignore entry(entries)
+
+You can ignore your specific entries by providing a list of slug's to ignore.
+
+```yaml
+ignore:
+  - blog/blog-post-to-ignore
+  - ignore-this-entry
+```
+
+You can also use a entry Frontmatter to signal that the sitemap should ignore it:
+```yaml
+sitemap:
+  ignore: true
+```
+
+### Set default values for entry(entries)
+
+```yaml
+sitemap:
+  changefreq: weekly
+  priority: 0.8
+```
+
+### Manually add entry(entries) to the sitemap
+
+```yaml
+additions:
+  -
+    location: something-special
+    lastmod: '2020-04-16'
+    changefreq: hourly
+    priority: 0.3
+```
+
+### Dynamically adding entry(entries) to the sitemap
+
+```php
+$flextype->emitter->addListener('onSitemapAfterInitialized', function() use ($flextype) {
+    $flextype->SitemapController->sitemap[] = ['loc' => 'something-special-to-add',
+                                               'lastmod' => '03-07-2020 09:46',
+                                               'changefreq' => 'daily',
+                                               'priority' => 1.0];
+});
+
+```
 
 ## LICENSE
 [The MIT License (MIT)](https://github.com/flextype-plugins/sitemap/blob/master/LICENSE.txt)

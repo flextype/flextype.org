@@ -1,1 +1,24 @@
+# enabled: true or false to disable the plugin
 enabled: true
+
+# Sitemap plugin priority
+priority: 95
+
+# Route
+route: sitemap.xml
+
+# Ignore list
+ignore:
+
+# Addition list
+additions:
+  -
+    loc: something-special
+    lastmod: '2020-04-16'
+    changefreq: hourly
+    priority: 0.3
+
+# Default values for entries
+default:
+  changefreq: daily
+  priority: !!float 1
