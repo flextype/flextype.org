@@ -94,7 +94,7 @@ navigation:
     title: Блог
     link: blog
   - 
-    title: Скачать
+    title: Загрузки
     link: downloads
   - 
     title: Документация
