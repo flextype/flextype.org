@@ -2,6 +2,6 @@
 title: Extend
 template: extend
 visibility: visible
-description: "Download Flextype core package, plugins, themes add if you want to report a bug or contribute your ideas, you can use the Flextype GitHub Issues tracker"
+description: "Скачайте Flextype ядро, плагины, темы, если вы хотите сообщить об ошибке или внести свой вклад в идеи, вы можете использовать Flextype GitHub Issues"
 ---
 
