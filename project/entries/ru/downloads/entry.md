@@ -2,14 +2,14 @@
 title: Скачать
 template: downloads
 visibility: visible
-description: "Download Flextype core package, plugins, themes add if you want to report a bug or contribute your ideas, you can use the Flextype GitHub Issues tracker"
-download_flextype: Download Flextype
-txt_release_package_contains: Release package contains
-txt_download: Download
-txt_extend: Extend
-txt_extend_p: Extend and Customize Flextype Core Functionality by adding plugins, themes, and other packages.
-txt_plugins: Plugins
-txt_themes: Themes
+description: "Скачайте Flextype ядро, плагины, темы, если вы хотите сообщить об ошибке или внести свой вклад в идеи, вы можете использовать Flextype GitHub Issues"
+download_flextype: Скачать Flextype
+txt_release_package_contains: Релиз содержит
+txt_download: Скачать
+txt_extend: Расширения
+txt_extend_p: Расширьте функциональность ядра Flextype добавлением плагинов, тем и других пакетов.
+txt_plugins: Плагины
+txt_themes: Темы
 txt_extend_flextype: EXTEND FLEXTYPE
 txt_installation_video_tutorials: INSTALLATION VIDEO TUTORIALS
 txt_installation_video_tutorials_links: |
