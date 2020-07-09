@@ -1,14 +1,9 @@
 ---
-title: 'About Flextype'
+title: 'О проекте Flextype'
 template: about
 visibility: visible
 published_at: '22-09-2019 19:15'
-description: 'We are on a mission to build high quality platform to develop kickass Applications!'
-menu_item_title: ''
-menu_item_url: ''
-menu_item_target: _self
-menu_item_order: ''
-fieldset: about
+description: 'Мы работаем над созданием качественной платформы для разработки удивительных приложений!'
 created_at: '22-09-2019 19:15'
 uuid: 94f5eff7-28fb-4fce-a4d0-7dffcda31f4a
 published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
