@@ -50,8 +50,6 @@
                 {% endfor %}
             {% endif %}
 
-            <!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js", "ym"); ym(48198194, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/48198194" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
-
             {% do emitter.emit('onThemeHeader') %}
         {% endblock %}
     </head>
@@ -61,10 +59,10 @@
             <div class="container mx-auto px-8 pt-6 pb-6 clearfix">
               <div class="w-full lg:w-2/12
                           text-center lg:text-left
-                          float-left text-black font-noirpro-medium tracking-wide">
+                          float-left text-black tracking-wide">
                 <a href="{{ url() }}/{{ locale }}" class="no-underline w-full lg:w-2/12 text-base logo no-underline">flextype</a>
               </div>
-              <div class="w-full float-right lg:w-9/12 font-noirpro-medium">
+              <div class="w-full float-right lg:w-9/12">
                 <div class="text-right">
                     {% for item in home.navigation %}
                         <a href="{% if item.external %}//{{ item.link }}{% else %}{{ url() }}/{{ locale }}/{{ item.link }}{% endif %}"
@@ -152,6 +150,8 @@
         <script>
             new WOW().init();
         </script>
+
+        <!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js", "ym"); ym(48198194, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/48198194" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 
         {% do emitter.emit('onThemeTail') %}
     </body>
