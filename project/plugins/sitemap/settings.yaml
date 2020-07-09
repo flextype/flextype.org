@@ -12,11 +12,6 @@ ignore:
 
 # Addition list
 additions:
-  -
-    loc: something-special
-    lastmod: '2020-04-16'
-    changefreq: hourly
-    priority: 0.3
 
 # Default values for entries
 default:
