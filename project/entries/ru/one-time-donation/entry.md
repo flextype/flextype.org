@@ -1,6 +1,6 @@
 ---
-title: One time donation
-description: "Flextype is an MIT-licensed open source project and completely free to use. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing."
+title: Единовременное пожертвование
+description: "Flextype - это проект с открытым исходным кодом, лицензированный MIT, и он абсолютно бесплатный для использования. Однако объем усилий, необходимых для поддержания и развития новых возможностей проекта, не будет стабильным без надлежащей финансовой поддержки."
 ---
 
 QIWI: https://qiwi.com/p/79805359141 PayPal: https://paypal.me/awilum  
