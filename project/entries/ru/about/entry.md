@@ -30,18 +30,18 @@ Flextype является открытым исходным кодом <strong>D
                     <h4 class="text-center">ФИНАНСОВАЯ ПОДДЕРЖКА</h4>
                     Flextype - это проект с открытым исходным кодом, лицензированный MIT, и он абсолютно бесплатный для использования.
                     Однако объем усилий, необходимых для поддержания и развития новых возможностей проекта, будет не стабильным без надлежащей финансовой поддержки. Вы можете поддержать его текущее развитие, став спонсором:<br>
-                    <a class="invert" href="https://www.patreon.com/awilum">Become a backer or sponsor on Patreon</a>,
-                    <a class="invert" href="//flextype.org/en/one-time-donation">One-time donation via PayPal, QIWI, Sberbank, Yandex</a>,
-                    <a class="invert" href="//flextype.org/en/sponsors">Visit our Sponsors & Backers page</a>
+                    <a class="invert" href="https://www.patreon.com/awilum">Станьте спонсором на Patreon</a>,
+                    <a class="invert" href="//flextype.org/en/one-time-donation">Единоразовое пожертвование через PayPal, QIWI, Сбербанк, Яндекс</a>,
+                    <a class="invert" href="//flextype.org/en/sponsors">Посетите нашу страницу спонсоров и Backers</a>
                 </div>
             </div>
             <div class="w-full lg:w-6/12 p-2 wow fadeIn">
                 <div class="text-left">
-                    <h4 class="text-center">INTERNATIONAL TRANSLATOR TEAM</h4>
-                    We are on a mission to build high quality platform to develop fast, flexible, easier to manage websites with Flextype!<br><br>
-                    If you wish to participate in the translation of Flextype, please Join Flextype International Translator Team and start translating!<br><br>
-                    Our crowdin projects:<br>
-                    <a href="https://crowdin.com/project/flextype-plugin-admin" class="invert">Flextype Admin Panel Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-form-admin" class="invert">Flextype Form Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-themes-admin" class="invert">Flextype Themes Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Flextype Accounts Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Flextype Accounts Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-website" class="invert">Flextype Website</a>, <a href="https://crowdin.com/project/flextype-documentation" class="invert">Flextype Documentation</a>
+                    <h4 class="text-center">КОМАНДА ПЕРЕВОДЧИКОВ</h4>
+                    Мы работаем над созданием качественной платформы для быстрого и гибкого и удобного управления контентом с помощью Flextype!<br><br>
+                    Если вы хотите участвовать в переводе Flextype, Присоединяйтесь к международной команде переводчиков Flextype и начните переводить!<br><br>
+                    Наши проекты crowdin:<br>
+                    <a href="https://crowdin.com/project/flextype-plugin-admin" class="invert">Flextype Admin Panel плагин</a>, <a href="https://crowdin.com/project/flextype-plugin-form-admin" class="invert">Flextype Form Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-themes-admin" class="invert">Flextype Themes плагин администратора</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Плагин клиентов Flextype</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Плагин администратора Flextype</a>, <a href="https://crowdin.com/project/flextype-website" class="invert">Веб-сайт Flextype</a>, <a href="https://crowdin.com/project/flextype-documentation" class="invert">Документация по лексическому типу</a>
                 </div>
             </div>
         </div>
