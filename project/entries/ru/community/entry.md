@@ -14,11 +14,11 @@ txt_discord_button: "Присоединиться к беседе"
 txt_github_heading: GitHub
 txt_github_p: "Если вы хотите сообщить об ошибке или поделиться своими идеями, вы можете использовать <a href=https://github.com/flextype/flextype/issues>Flextype GitHub Issues tracker</a>."
 txt_github_button: Внести свой вклад
-txt_vkontakte_heading: Vkontakte
-txt_vkontakte_p: Russian Flextype Community!
-txt_vkontakte_button: Subscribe
+txt_vkontakte_heading: Вконтакте
+txt_vkontakte_p: Русское Flextype сообщество!
+txt_vkontakte_button: Подписаться
 txt_twitter_heading: Twitter
-txt_twitter_p: "Follow <a href=https://twitter.com/getflextype>Flextype on Twitter</a> to get real-time news regarding the development and all events we are attending."
-txt_twitter_button: Follow Us
+txt_twitter_p: "Подписывайтесь на наш <a href=https://twitter.com/getflextype>официальный Twitter</a> чтобы получать в режиме реального времени новости о разработке и всех мероприятиях."
+txt_twitter_button: Подписаться
 ---
 
