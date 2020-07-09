@@ -1,5 +1,5 @@
 ---
-title: 'About Flextype'
+title: 'О проекте Flextype'
 template: about
 visibility: visible
 published_at: '22-09-2019 19:15'
