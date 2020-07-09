@@ -4,107 +4,106 @@ template: home
 visibility: visible
 published_at: '22-09-2019 19:12'
 description: 'Свобода Headless CMS с полной функциональностью Традиционных CMS.'
-fieldset: default
 created_at: '22-09-2019 19:12'
 uuid: d080816b-0973-4fac-8964-4f6ecf8f3561
 published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 date: 'August 04 2019 10:16:23'
-txt_intro_section_h1: 'Свобода Headless CMS с полной функциональностью Традиционных CMS.'
-txt_intro_section_button: 'Скачать Flextype'
-txt_features_heading: Преимущества
-txt_features_description: 'Flextype обеспечивает более быстрый и продуктивный способ<br> создания и управления контентом для любого типа проекта.'
-txt_features_simple_heading: Простота
-txt_features_simple_p: 'Просто установить, обновить и использовать.<br>Не требуется специальной установки, просто скопируйте файлы на ваш сервер!'
-txt_features_fast_heading: Скорость
-txt_features_fast_p: 'Flextype - очень быстрая система управления контентом из-за ее элегантной архитектуры и встроенного <a href="https://docs.flextype.org/en/concepts/performance">умного кэша</a>.'
-txt_features_flexible_heading: Гибкость
-txt_features_flexible_p: "Создание этой системы управления контентом, мы сосредоточились на простоте и гибкости. Для этого мы создали простой, но мощный API."
-txt_features_easy_editing_heading: 'Простота'
-txt_features_easy_editing_p: 'С Flextype вы можете использовать любой из ваших любимых редакторов контента для создания контента или может использовать нашу великолепную %url_start%Админку%url_end%.'
-txt_features_dynamic_content_types_heading: 'Индивидуальные поля'
-txt_features_dynamic_content_types_p: 'Flextype позволяет создать неограниченное количество индивидуальных полей для любых из ваших записей.'
-txt_features_open_source_heading: 'Открытый исходный код'
-txt_features_open_source_p: 'Flextype - проект с открытым исходным кодом, основанный Сергеем Романенко и поддерживаемый Сообществом Flextype .<br>и опубликован под лицензией MIT<br>,'
-txt_features_built_in_rest_api_heading: "Встроенный REST API"
-txt_features_built_in_rest_api_p: "Flextype REST API дает вам полный программный контроль над системой управления контентом."
-txt_features_version_control_heading: "Управление версиями"
-txt_features_version_control_p: "Flextype - Файловая CMS, вы можете управлять версиями всего контента с помощью GIT или любой другой системы контроля версий."
-txt_features_Internationalization_heading: "Локализация"
-txt_features_Internationalization_p: "Поддержка нескольких языков прямо в из коробки. Вы можете интегрировать ваш сайт разработанный на Flextype с любым облачным решением для управления локализацией, таким как Crowdin или Transifex."
-txt_features_no_limits_heading: 'Примеры использования'
-txt_features_no_limits_p: 'Вы можете использовать Flextype в любом проекте!'
-txt_project_business_site: 'Бизнес сайт'
-txt_project_landing_page: 'Посадочная страница'
-txt_project_personal_site: 'Персональный сайт'
-txt_project_portfolio: Портфолио
-txt_project_product_site: 'Сайт бренда'
-txt_project_e_commerce: Электронная коммерция
-txt_project_documentation: 'Личное резюме'
-txt_project_blog: Блог
-txt_community_heading: Сообщество
-txt_community_p: "Flextype - это проект с открытым исходным кодом,\nуправляемый сообществом и поддерживаемый сообществом!"
-txt_contribution_heading: ВНЕСТИ СВОЙ ВКЛАД
-txt_contribution_p: 'Flextype - это проект с открытым исходным кодом, и вклад сообщества важен для его роста и успеха.  Внести свой вклад в Flextype легко, и вы можете выделить столько времени, сколько захотите.'
-txt_no_limits_websites_heading: "Сайты"
-txt_no_limits_websites_p: "Бизнес-сайты, Посадочные страницы, Персональный сайт, Портфолио, Товары сайтов, Блоги и Веб-приложения"
-txt_native_apps_heading: "Нативные приложения"
+txt_intro_section_h1: 'The freedom of a headless CMS with the full functionality of a traditional CMS.'
+txt_intro_section_button: 'Get Flextype'
+txt_features_heading: Features
+txt_features_description: 'Flextype provides faster, more productive way<br> for you to build and manage content for any kind of projects.'
+txt_features_simple_heading: Simple
+txt_features_simple_p: 'Easy to install, upgrade and use.<br>No installation needed, just copy files to your server!'
+txt_features_fast_heading: Fast
+txt_features_fast_p: 'Flextype is super fast content management system because of its elegance architecture and built-in <a href="https://docs.flextype.org/en/concepts/performance">smart cache</a>.'
+txt_features_flexible_heading: Flexible
+txt_features_flexible_p: "Building this content management system, we focused on simplicity and flexibility. To achieve this, we implemented a simple but powerful Core API's."
+txt_features_easy_editing_heading: 'Easy editing'
+txt_features_easy_editing_p: 'With Flextype you are free to use any of your favorite content editor to write content or our gorgeous %url_start%Admin Panel%url_end%.'
+txt_features_dynamic_content_types_heading: 'Dynamic Content Types'
+txt_features_dynamic_content_types_p: 'The flat-file nature of Flextype lets you define unlimited custom fields for any of your entries.'
+txt_features_open_source_heading: 'Open Source'
+txt_features_open_source_p: 'Flextype is an open-source project founded by Sergey Romanenko and maintained by  Flextype Community.<br>Flextype licensed under the MIT LICENSE<br>to set the world free!'
+txt_features_built_in_rest_api_heading: "Built-in REST API"
+txt_features_built_in_rest_api_p: "Flextype REST API with compact JSON payloads gives you full programmatic control over your content management system."
+txt_features_version_control_heading: "Version Control"
+txt_features_version_control_p: "Flextype is a file-based CMS, you can version control all content with GIT or any other Version Control System."
+txt_features_Internationalization_heading: "Internationalization"
+txt_features_Internationalization_p: "Multi-language support is baked right into the core. You may integrate your Flextype powered website with any cloud-based solution for localization management, like Crowdin or Transifex."
+txt_features_no_limits_heading: 'Use Cases'
+txt_features_no_limits_p: 'On top of Flextype you may build any project you want.'
+txt_project_business_site: 'Business site'
+txt_project_landing_page: 'Landing page'
+txt_project_personal_site: 'Personal site'
+txt_project_portfolio: Portfolio
+txt_project_product_site: 'Product site'
+txt_project_e_commerce: E-Commerce
+txt_project_documentation: 'Personal resume'
+txt_project_blog: Blog
+txt_community_heading: Community
+txt_community_p: 'Flextype is open source, community driven project,<br>and maintained by community!'
+txt_contribution_heading: CONTRIBUTE
+txt_contribution_p: 'Flextype is an open source project and community contributions are essential to its growing and success. Contributing to the Flextype is easy and you can give as little or as much time as you want.'
+txt_no_limits_websites_heading: "Websites"
+txt_no_limits_websites_p: "Business sites, Landing pages, Personal site, Portfolios, Product sites, Blogs, Web Apps"
+txt_native_apps_heading: "Native Apps"
 txt_native_apps_p: "iOS, Android, Windows, Kai, Lineage, Fire, Flyme, Sailfish, Tizen, Remix."
-txt_kiosks_heading: "Киоски"
-txt_kiosks_p: "Киоски, биллборды"
-txt_wearables_heading: "Носимые устройства"
-txt_wearables_p: "Приложения Smartwatch, Трекеры активности"
-txt_iot_devices_heading: "IoY устройства"
-txt_iot_devices_p: "Умный холодильник, кофемашина, дроны, системы мониторинга жизнедеятельности города."
-txt_game_data_heading: "Игровые данные"
-txt_game_data_p: "Мобильные игры, VR, DLC"
-txt_saas_platforms_heading: "Платформы SaaS"
-txt_saas_platforms_p: "CRM, Инструменты производительности, & коммерция"
-txt_ecommerce_heading: "Электронная коммерция"
+txt_kiosks_heading: "Kiosks"
+txt_kiosks_p: "Kiosks, Billboards, Digital Signage"
+txt_wearables_heading: "Wearables"
+txt_wearables_p: "Smartwatch Apps, Activity Trackers"
+txt_iot_devices_heading: "IoY Devices"
+txt_iot_devices_p: "Lights, Appliances, Auto"
+txt_game_data_heading: "Game Data"
+txt_game_data_p: "Mobile Games, VR, DLC"
+txt_saas_platforms_heading: "SaaS Platforms"
+txt_saas_platforms_p: "CRM, Productivity Tools, & Commerce"
+txt_ecommerce_heading: "E-Commerce"
 txt_ecommerce_p: "E-Commerce, Inventory, & POS"
 txt_discord_heading: "Discord"
-txt_discord_p: "У вас есть вопрос о настройке или использовании Flextype? Мы сделаем все возможное, чтобы помочь вам. Также здесь вы можете обсудить разработку расширений для Flextype."
-txt_discord_button: "Присоединиться к беседе"
+txt_discord_p: "Got a question about setting up or using Flextype? We'll do our best to help you out. Also here you may start discussions about core, plugin and themes development."
+txt_discord_button: "Join the Conversation"
 txt_github_heading: "Github"
-txt_github_p: "Если вы хотите сообщить об ошибке или поделиться своими идеями, вы можете использовать Flextype GitHub Issues tracker."
-txt_github_button: "Внести свой вклад"
+txt_github_p: "If you want to report a bug or contribute your ideas, you can use the %url_start%Flextype GitHub Issues tracker%url_end%."
+txt_github_button: "Contribute"
 txt_twitter_heading: "Twitter"
-txt_twitter_p: "Подписывайтесь на наш официальный Twitter чтобы получать в режиме реального времени новости о разработке и всех мероприятиях."
-txt_twitter_button: "Подписаться"
-txt_link_about: О Проекте
-txt_link_media: Медиа
-txt_link_donate: Донат
-txt_link_sponsors: Спонсоры
-txt_link_plugins: Плагины
-txt_link_themes: Темы
-txt_link_downloads: Загрузки
-txt_link_community: Сообщество
-txt_link_documentation: Документация
-txt_link_changelog: Список изменений
-txt_link_press_kit: Пресса
-txt_link_team: Команда
-txt_contribution_financial_support_heading: ФИНАНСОВАЯ ПОДДЕРЖКА
+txt_twitter_p: "Follow %url_start%Follow on Twitter%url_end% to get real-time news regarding the development and all events we are attending."
+txt_twitter_button: "Follow Us"
+txt_link_about: About
+txt_link_media: Media
+txt_link_donate: Donate
+txt_link_sponsors: Sponsors
+txt_link_plugins: Plugins
+txt_link_themes: Themes
+txt_link_downloads: Downloads
+txt_link_community: Community
+txt_link_documentation: Documentation
+txt_link_changelog: Changelog
+txt_link_press_kit: Press kit
+txt_link_team: Team
+txt_contribution_financial_support_heading: FINANCIAL SUPPORT
 txt_contribution_financial_support_p: |
-  Flextype это лицензированный MIT-проект с открытым исходным кодом и полностью бесплатный для использования. Однако объем усилий, необходимых для поддержания и развития новых возможностей проекта, не будет стабильным без надлежащей финансовой поддержки. Вы можете поддержать развитие проекта, будучи cпонсором:<br> <br><br>Стать спонсором на Patreon.<a class="invert" href="https://www.patreon.com/awilum"></a><a class="invert" href="//flextype.org/en/one-time-donation">Одноразовое пожертвование через PayPal, QIWI, Sberbank, Яндекс</a>
-txt_contribution_itt_heading: КОМАНДА ПЕРЕВОДЧИКОВ
+  Flextype is an MIT-licensed open source project and completely free to use. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. <br><br> You can support it's ongoing development by being a project backer or a sponsor:<br><a class="invert" href="https://www.patreon.com/awilum">Become a backer or sponsor on Patreon</a>, <a class="invert" href="//flextype.org/en/one-time-donation">One-time donation via PayPal, QIWI, Sberbank, Yandex</a>, <a class="invert" href="//flextype.org/en/sponsors">Visit our Sponsors & Backers page</a>
+txt_contribution_itt_heading: INTERNATIONAL TRANSLATOR TEAM
 txt_contribution_itt_p: |
-  Мы работаем над созданием высоко качественной платформы управления контентом!<br><br>Если вы хотите принять участие в переводе Flextype, пожалуйста, присоединитесь к международной команде переводчиков Flextype и начните переводить!<br><br>Наши проекты crowdin:<br> <a href="https://crowdin.com/project/flextype-plugin-admin" class="invert">Админка</a>, <a href="https://crowdin.com/project/flextype-plugin-form-admin" class="invert">Админка Форм</a>, <a href="https://crowdin.com/project/flextype-plugin-themes-admin" class="invert">Админка Тем</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Админка Аккаунтов</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Аккаунты</a>, <a href="https://crowdin.com/project/flextype-website" class="invert">Веб-сайт Flextype</a>, <a href="https://crowdin.com/project/flextype-documentation" class="invert">Документация по Flextype</a>
+  We are on a mission to build high quality platform to develop fast, flexible, easier to manage websites with Flextype!<br><br>If you wish to participate in the translation of Flextype, please Join Flextype International Translator Team and start translating!<br><br>Our crowdin projects:<br> <a href="https://crowdin.com/project/flextype-plugin-admin" class="invert">Flextype Admin Panel Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-form-admin" class="invert">Flextype Form Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-themes-admin" class="invert">Flextype Themes Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Flextype Accounts Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Flextype Accounts Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-website" class="invert">Flextype Website</a>, <a href="https://crowdin.com/project/flextype-documentation" class="invert">Flextype Documentation</a>
 navigation:
   - 
-    title: Блог
+    title: Blog
     link: blog
   - 
-    title: Загрузки
+    title: Downloads
     link: downloads
   - 
-    title: Документация
+    title: Documentation
     link: docs.flextype.org
     external: true
   - 
-    title: Сообщество
+    title: Community
     link: community
   - 
-    title: О Проекте
+    title: About
     link: about
 ---
 
