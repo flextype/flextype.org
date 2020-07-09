@@ -9,7 +9,7 @@ uuid: d080816b-0973-4fac-8964-4f6ecf8f3561
 published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 date: 'August 04 2019 10:16:23'
-txt_intro_section_h1: 'Свобода бесконечного CMS с полной функциональностью традиционного CMS.'
+txt_intro_section_h1: 'Свобода Headless CMS с полной функциональностью Традиционных CMS.'
 txt_intro_section_button: 'Скачать Flextype'
 txt_features_heading: Возможности
 txt_features_description: 'Flextype обеспечивает более быстрый и продуктивный способ<br> создания и управления контентом для любого типа проекта.'
