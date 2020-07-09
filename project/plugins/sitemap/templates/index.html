@@ -3,7 +3,7 @@
 {% for page in sitemap %}
 <url>
     <loc>{{ base_url() }}/{{ page.slug }}</loc>
-    <lastmod>{{ page.modified_at|date(registry.get('flextype.settings.date_display_format') }}</lastmod>
+    <lastmod>{{ page.modified_at|date(registry.get('flextype.settings.date_display_format')) }}</lastmod>
     <changefreq>{% if page.changefreq %}{{ page.changefreq }}{% else %}always{% endif %}</changefreq>
     <priority>1.0</priority>
 </url>
