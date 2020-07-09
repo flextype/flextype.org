@@ -3,10 +3,10 @@ title: Международная команда переводчиков
 description: 'Мы работаем над созданием высоко качественной платформы управления контентом! Если вы хотите принять участие в переводе Flextype, пожалуйста, присоединитесь к международной команде переводчиков Flextype и начните переводить!'
 ---
 
-<p>If you wish to participate in the translation of Flextype, please <b>Join Flextype International Translator Team</b> and start translating!</p>
+<p>Если вы хотите принять участие в переводе Flextype, пожалуйста, <b>Присоединяйтесь к международной команде переводчиков Flextype</b> и начните перевод!</p>
 
 <p>
-Our crowdin projects: <a href="https://crowdin.com/project/flextype-plugin-admin" class="invert">Flextype Admin Panel Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-form-admin" class="invert">Flextype Form Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-themes-admin" class="invert">Flextype Themes Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Flextype Accounts Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Flextype Accounts Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-website" class="invert">Flextype Website</a>, <a href="https://crowdin.com/project/flextype-documentation" class="invert">Flextype Documentation</a>
+Мы работаем над созданием высоко качественной платформы управления контентом!&lt;br&gt;&lt;br&gt;Если вы хотите принять участие в переводе Flextype, пожалуйста, присоединитесь к международной команде переводчиков Flextype и начните переводить!&lt;br&gt;&lt;br&gt;Наши проекты crowdin:&lt;br&gt; &lt;a href="https://crowdin.com/project/flextype-plugin-admin" class="invert"&gt;Админка&lt;/a&gt;, &lt;a href="https://crowdin.com/project/flextype-plugin-form-admin" class="invert"&gt;Админка Форм&lt;/a&gt;, &lt;a href="https://crowdin.com/project/flextype-plugin-themes-admin" class="invert"&gt;Админка Тем&lt;/a&gt;, &lt;a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert"&gt;Админка Аккаунтов&lt;/a&gt;, &lt;a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert"&gt;Аккаунты&lt;/a&gt;, &lt;a href="https://crowdin.com/project/flextype-website" class="invert"&gt;Веб-сайт Flextype&lt;/a&gt;, &lt;a href="https://crowdin.com/project/flextype-documentation" class="invert"&gt;Документация по Flextype&lt;/a&gt;
 </p>
 
 <table class="table">
