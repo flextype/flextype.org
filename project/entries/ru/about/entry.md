@@ -10,9 +10,9 @@ published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 ---
 
-### Introducing{.text-4xl .text-center .uppercase}
+### Представляем{.text-4xl .text-center .uppercase}
 
-Flextype is an open-source self-hosted <strong>Data-First Headless CMS & API</strong>. It is was <strong>founded in March 2018</strong> as lightweight alternative to other heavy and outdated CMS. Many people use complex solutions for simple pages, unnecessarily. Building this content management system, we focused on simplicity - even novice webmaster adapt his template and writes his own plugin. To achieve this, we implemented a simple but powerful API's.
+Flextype является открытым исходным кодом <strong>Data-First Headless CMS & API</strong>. Flextype был <strong>основан в марте 2018</strong> как легкая альтернатива другим тяжелым и устаревшим CMS. Многие люди используют комплексные решения для простых проектов, необоснованно. Создавая эту систему управления контентом, мы сосредоточили внимание на простоте - даже разработчик новичок может адаптировать любой шаблон и написать свой собственный плагин. Для этого мы внедрили простой, но мощный API.
 
 With Flextype, you are in complete control. Design your data structure the way you want. Update and share your data with others and teams using version control. Flextype does not require MySQL database, because all the data are collected in a simple files. Perfect portability when changing your hosting provider. Just copy all the files from one account to another.
 
