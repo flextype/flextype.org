@@ -6,9 +6,9 @@ description: "Скачайте Flextype ядро, плагины, темы, ес
 txt_downloads: Загрузки
 txt_plugins: Плагины
 txt_plugins_p: Расширьте функциональность Flextype с плагинами.
-txt_plugins_browse: Просмотреть Плагины
+txt_plugins_browse: Репозиторий плагинов
 txt_themes: Темы
 txt_themes_p: Улучшите ваш сайт с темами для Flextype.
-txt_themes_browse: Просмотреть Темы
+txt_themes_browse: Репозиторий тем
 ---
 
