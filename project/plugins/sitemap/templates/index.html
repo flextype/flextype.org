@@ -3,8 +3,8 @@
 {% for page in sitemap %}
 <url>
     <loc>{{ base_url() }}/{{ page.slug }}</loc>
-    <lastmod>{{ page.date }}</lastmod>
-    <changefreq>{% if page.changefreq %}{{ page.changefreq }}{% else %}1.0{% endif %}</changefreq>
+    <lastmod>{{ page.modified_at }}</lastmod>
+    <changefreq>{% if page.changefreq %}{{ page.changefreq }}{% else %}always{% endif %}</changefreq>
     <priority>1.0</priority>
 </url>
 {% endfor %}
