@@ -28,8 +28,6 @@
 
             <meta name="yandex-verification" content="920bbfc83bbe3fbe" />
 
-            <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-
             <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
             <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -101,23 +99,23 @@
                 <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
                     <h4>Flextype</h4>
                     <ul class="list-none m-0 p-0">
-                        <li><a href="{{ url() }}/{{ locale }}/about">{{ home.link_about }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/team">{{ home.link_team }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/sponsors">{{ home.link_sponsors }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/press-kit">{{ home.link_press_kit }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/changelog">{{ home.link_changelog }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/about">{{ home.txt_link_about }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/team">{{ home.txt_link_team }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/sponsors">{{ home.txt_link_sponsors }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/press-kit">{{ home.txt_link_press_kit }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/changelog">{{ home.txt_link_changelog }}</a></li>
                     </ul>
                 </div>
                 <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
-                    <h4>{{ home.link_downloads }}</h4>
+                    <h4>{{ home.txt_link_downloads }}</h4>
                     <ul class="list-none m-0 p-0">
                         <li><a href="{{ url() }}/{{ locale }}/downloads">Flextype</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/downloads/extend/plugins">{{ home.link_plugins }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/downloads/extend/themes">{{ home.link_themes }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/downloads/extend/plugins">{{ home.txt_link_plugins }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/downloads/extend/themes">{{ home.txt_link_themes }}</a></li>
                     </ul>
                 </div>
                 <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
-                    <h4>{{ home.link_community }}</h4>
+                    <h4>{{ home.txt_link_community }}</h4>
                     <ul class="list-none m-0 p-0">
                         <li><a href="{{ url() }}/{{ locale }}/discord">Discord</a></li>
                         <li><a href="https://github.com/flextype">Github</a></li>
@@ -129,6 +127,12 @@
                 <div class="w-full lg:w-6/12 mt-8 lg:mt-0">
                     <p><a href="{{ url() }}/{{ locale }}">Flextype</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="//digital.flextype.org" class="highlight">Sergey Romanenko</a> and <a href="https://github.com/flextype/flextype/graphs/contributors" class="highlight">Flextype Community</a></p>
                     <p>Copyright © 2020 - <a href="//digital.flextype.org">Sergey Romanenko</a></p>
+                </div>
+            </div>
+            <div class="flex content-center flex-wrap mb-6">
+                <div class="w-full mt-8 lg:mt-0">
+                    <a href="{{ url() }}/en">English</a> /
+                    <a href="{{ url() }}/ru">Русский</a>
                 </div>
             </div>
         </footer>

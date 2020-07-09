@@ -1,0 +1,5 @@
+---
+title: Плагины
+template: plugins
+---
+

@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container mx-auto bg-white text-black pb-24">
-    <h1 class="uppercase text-center text-3xl lg:text-6xl m-0 pt-24 pb-24 font-noirpro-semibold">
+    <h1 class="uppercase text-center text-3xl lg:text-6xl m-0 pt-24 pb-24">
         {{ entry.title|raw }}
     </h1>
     <h2 class="text-center m-0 pl-6 pr-6 lg:pl-40 lg:pr-40 pb-24 text-xl font-normal">
@@ -13,22 +13,21 @@
             <div class="w-full lg:w-6/12 p-2 text-center">
                 <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
                     <i class="fab fa-discord text-6xl mb-5" aria-hidden="true"></i>
-                    <h4 class="text-2xl">Discord</h4>
+                    <h4 class="text-2xl">{{ entry.txt_discord_heading|raw }}</h4>
                     <div class="h-24 mb-10">
-                        Got a question about setting up or using Flextype? We'll do our best to help you out.
-                        Also here you may start discussions about core, plugin and themes development.
+                        {{ entry.txt_discord_p|raw }}
                     </div>
-                    <a class="no-underline uppercase text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black" href="https://discord.gg/CCKPKVG">Join the Conversation</a>
+                    <a class="no-underline uppercase text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black" href="https://discord.gg/CCKPKVG">{{ entry.txt_discord_button|raw }}</a>
                 </div>
             </div>
             <div class="w-full lg:w-6/12 p-2 text-center">
                 <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
                     <i class="fab fa-github text-6xl mb-5" aria-hidden="true"></i>
-                    <h4 class="text-2xl">Github</h4>
+                    <h4 class="text-2xl">{{ entry.txt_github_heading|raw }}</h4>
                     <div class="h-24 mb-10">
-                        If you want to report a bug or contribute your ideas, you can use the <a href="https://github.com/flextype/flextype/issues">Flextype GitHub Issues tracker</a>.
+                        {{ entry.txt_github_heading|raw }}
                     </div>
-                    <a class="no-underline uppercase text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black" href="https://github.com/flextype">Contribute</a>
+                    <a class="no-underline uppercase text-center relative text-lg relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black" href="https://github.com/flextype">{{ entry.txt_github_button|raw }}</a>
                 </div>
             </div>
             <div class="w-full lg:w-6/12 p-2 text-center">
