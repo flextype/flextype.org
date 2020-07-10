@@ -1,7 +1,7 @@
 ---
 title: Sitemap
 description: Provide automatically generated XML sitemap.
-icon: fas fa-globe
+icon: fas fa-map-marked-alt
 keywords: site, sitemap, xml
 author:
   name: Sergey Romanenko
