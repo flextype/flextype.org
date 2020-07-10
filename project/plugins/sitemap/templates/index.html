@@ -5,7 +5,7 @@
   <url>
     <loc>{{ url() }}/{{ entry.loc|e }}</loc>
 {% if entry.lastmod %}
-    <lastmod>{{ entry.lastmod|date(registry.get('flextype.settings.date_display_format')) }}</lastmod>
+    <lastmod>{{ entry.lastmod|date('Y-m-dTH:i:sP') }}</lastmod>
 {% endif %}
 {% if entry.changefreq %}
     <changefreq>{{ entry.changefreq }}</changefreq>
