@@ -1,3 +1,9 @@
+# v2.1.0, 2020-07-10
+
+### Features
+
+* **core:** add new setting `date_format`
+
 # v2.0.0, 2020-07-03
 
 ### Features
