@@ -17,3 +17,6 @@ additions:
 default:
   changefreq: daily
   priority: !!float 1
+
+# Date format
+date_format: Y-m-d

@@ -5,7 +5,7 @@
   <url>
     <loc>{{ url() }}/{{ entry.loc|e }}</loc>
 {% if entry.lastmod %}
-    <lastmod>{{ entry.lastmod|date('Y-m-dTH:i:sP') }}</lastmod>
+    <lastmod>{{ entry.lastmod|date(registry.get('plugins.sitemap.settings.date_format')) }}</lastmod>
 {% endif %}
 {% if entry.changefreq %}
     <changefreq>{{ entry.changefreq }}</changefreq>
