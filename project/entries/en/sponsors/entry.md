@@ -11,14 +11,22 @@ However, the amount of effort needed to maintain and develop new features for th
 * [One-time donation via PayPal, QIWI, Sberbank, Yandex](//flextype.org/en/one-time-donation){.invert}
 * [Visit our Sponsors & Backers page](//flextype.org/en/sponsors){.invert}
 
-### Generous Backer
+### Gold Sponsor
+
+### Silver Sponsor
+
+### Bronze Sponsor
 * Jeremy Monroe
 
+### Generous Backer
+* Theodore Zhvania
+
 ### Backers
+
+### Coffee Supporter
 * Arseni Khramenkin
 * Roman
 * Viktoriya Kozyr
-
 
 ### One-time donations
 * Alexander Greca
