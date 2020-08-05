@@ -34,6 +34,7 @@ The following dependencies need to be downloaded and installed for Sitemap Plugi
 | additions | [] | List of additions to add |
 | default.changefreq | daily | How frequently the page is likely to change. This value provides general information to search engines and may not correlate exactly to how often they crawl the page. Valid values are: always, hourly, daily, weekly, monthly, yearly, never. More info in |
 | default.priority | 1 | The priority of this URL relative to other URLs on your site. Valid values range from 0.0 to 1.0. This value does not affect how your pages are compared to pages on other sites—it only lets the search engines know which pages you deem most important for the crawlers. The default priority of a page is 1. |
+| date_format | Y-m-d | Date format |
 
 ### Ignore entry(entries)
 
@@ -64,7 +65,7 @@ sitemap:
 ```yaml
 additions:
   -
-    location: something-special
+    loc: something-special
     lastmod: '2020-04-16'
     changefreq: hourly
     priority: 0.3
