@@ -15,7 +15,7 @@
                 <div class="w-full lg:w-6/12 p-2 text-center">
                     <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
                         <i class="fas fa-truck text-6xl mb-5" aria-hidden="true"></i>
-                        <h4 class="text-xl">Content Delivery API for Entries</h4>
+                        <h4 class="text-xl">Entries Rest API</h4>
                         <div class="mb-10">
                             Token: {{ api_tokens.delivery.entries.uuid }} <br><br>
                             <div class="text-left">
@@ -39,7 +39,7 @@
                 <div class="w-full lg:w-6/12 p-2 text-center">
                     <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
                         <i class="fas fa-truck text-6xl mb-5" aria-hidden="true"></i>
-                        <h4 class="text-xl">Content Delivery API for Registry</h4>
+                        <h4 class="text-xl">Registry Rest API</h4>
                         <div class="mb-10">
                             Token: {{ api_tokens.delivery.registry.uuid }} <br><br>
                             <div class="text-left">
@@ -63,7 +63,7 @@
                 <div class="w-full lg:w-6/12 p-2 text-center">
                     <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
                         <i class="far fa-images text-6xl mb-5" aria-hidden="true"></i>
-                        <h4 class="text-2xl">Images API</h4>
+                        <h4 class="text-2xl">Images Rest API</h4>
                         <div class="mb-10">
                             Token: {{ api_tokens.images.uuid }} <br><br>
                             <div class="text-left">
@@ -76,30 +76,6 @@
                                 <div class="bg-white text-black rounded-lg p-4">
                                     title: Default<br>
                                     icon: 'far fa-images'<br>
-                                    limit_calls: 0<br>
-                                    calls: 0<br>
-                                    state: enabled
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full lg:w-6/12 p-2 text-center">
-                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
-                        <i class="fas fa-user-cog text-6xl mb-5" aria-hidden="true"></i>
-                        <h4 class="text-xl">Content Management API for Entries</h4>
-                        <div class="mb-10">
-                            Token: {{ api_tokens.management.entries.uuid }} <br><br>
-                            <div class="text-left">
-                                1. Create Content Management API Token folder: <code>{{ api_tokens.management.entries.uuid }}</code> in <code>/project/tokens/management/entries/</code>
-
-                                <br><br>
-
-                                2. And add <code>token.yaml</code> file with content:<br><br>
-
-                                <div class="bg-white text-black rounded-lg p-4">
-                                    title: Default<br>
-                                    icon: 'fas fa-database'<br>
                                     limit_calls: 0<br>
                                     calls: 0<br>
                                     state: enabled
