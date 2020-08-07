@@ -10,22 +10,11 @@
                 <div class="w-full lg:w-6/12 p-2 text-center">
                     <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
                         <i class="fas fa-download text-6xl mb-5" aria-hidden="true"></i>
-                        <h4 class="text-2xl">Flextype Core</h4>
-                        <div class="h-40 mb-10">
-                            {{ entry.txt_release_package_contains|raw }}:<br><br>
-                            <div class="no-underline rounded-lg px-2 mb-2 inline-block bg-gray-200"><b>Flextype Core</b></div>
-                        </div>
-                        <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black"  href="https://github.com/flextype/flextype/releases/download/v0.9.9/flextype-0.9.9.zip">{{ entry.txt_download|raw }}</a>
-                    </div>
-                </div>
-                <div class="w-full lg:w-6/12 p-2 text-center">
-                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
-                        <i class="fas fa-download text-6xl mb-5" aria-hidden="true"></i>
                         <h4 class="text-2xl">Flextype CMS</h4>
-                        <div class="h-40 mb-10">
+                        <div class="h-48 mb-10">
                             {{ entry.txt_release_package_contains|raw }}:<br><br>
-                            <div class="no-underline rounded-lg px-2 mb-2 inline-block bg-gray-200"><b>Flextype Core</b></div>
-                            <div class="no-underline rounded-lg px-2 mb-2 inline-block bg-gray-200">
+                            <div class="no-underline rounded-lg px-2 py-1 mb-2 inline-block bg-gray-200"><b>Flextype Core</b></div>
+                            <div class="no-underline rounded-lg px-2 py-1 mb-2 inline-block bg-gray-200">
                                 <b>{{ entry.txt_plugins|raw }}:</b> admin, accounts, accounts-admin, acl, site, twig, form, form-admin, themes-admin, jquery, icon, phpmailer
                             </div>
                             <div class="no-underline rounded-lg px-2 mb-2 inline-block bg-gray-200"><b>{{ entry.txt_themes|raw }}:</b> noir</div>
@@ -35,9 +24,20 @@
                 </div>
                 <div class="w-full lg:w-6/12 p-2 text-center">
                     <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
+                        <i class="fas fa-download text-6xl mb-5" aria-hidden="true"></i>
+                        <h4 class="text-2xl">Flextype Core</h4>
+                        <div class="h-48 mb-10">
+                            {{ entry.txt_release_package_contains|raw }}:<br><br>
+                            <div class="no-underline rounded-lg px-2 py-1 mb-2 inline-block bg-gray-200"><b>Flextype Core</b></div>
+                        </div>
+                        <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black"  href="https://github.com/flextype/flextype/releases/download/v0.9.9/flextype-0.9.9.zip">{{ entry.txt_download|raw }}</a>
+                    </div>
+                </div>
+                <div class="w-full lg:w-6/12 p-2 text-center">
+                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
                         <i class="fas fa-star text-6xl mb-5" aria-hidden="true"></i>
                         <h4 class="text-2xl">{{ entry.txt_extend|raw }}</h4>
-                        <div class="h-40 mb-10">
+                        <div class="h-48 mb-10">
                             {{ entry.txt_extend_p|raw }}
                             <br>
                         </div>
@@ -48,7 +48,7 @@
                     <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
                         <i class="fas fa-user-astronaut text-6xl mb-5"></i>
                         <h4 class="text-2xl">{{ entry.txt_contribution_financial_support_heading|raw }}</h4>
-                        <div class="h-40 mb-10 text-left">
+                        <div class="h-48 mb-10 text-left">
                             {{ entry.txt_contribution_financial_support_p|raw }}
                         </div>
                     </div>
