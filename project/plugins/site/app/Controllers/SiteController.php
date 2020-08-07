@@ -98,9 +98,10 @@ class SiteController extends Container
             return $response->withRedirect('./en');
         }
 
-        $api_tokens['delivery']['entries']['uuid']  = bin2hex(random_bytes(16));
-        $api_tokens['delivery']['registry']['uuid'] = bin2hex(random_bytes(16));
-        $api_tokens['management']['entries']['uuid'] = bin2hex(random_bytes(16));
+        $api_tokens['entries']['uuid']  = bin2hex(random_bytes(16));
+        $api_tokens['registry']['uuid'] = bin2hex(random_bytes(16));
+        $api_tokens['files']['uuid'] = bin2hex(random_bytes(16));
+        $api_tokens['folders']['uuid'] = bin2hex(random_bytes(16));
         $api_tokens['images']['uuid'] = bin2hex(random_bytes(16));
         $api_tokens['access']['uuid'] = bin2hex(random_bytes(16));
 
