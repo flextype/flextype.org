@@ -23,9 +23,9 @@ Flextype - это проект с открытым исходным кодом, 
 * Theodore Zhvania
 
 ### Backers
+* Arseni Khramenkin
 
 ### Coffee Supporter
-* Arseni Khramenkin
 * Roman
 * Viktoriya Kozyr
 
