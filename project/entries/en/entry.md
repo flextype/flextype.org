@@ -70,6 +70,7 @@ txt_github_button: "Contribute"
 txt_twitter_heading: "Twitter"
 txt_twitter_p: "Follow %url_start%Follow on Twitter%url_end% to get real-time news regarding the development and all events we are attending."
 txt_twitter_button: "Follow Us"
+txt_sponsors_heading:  Sponsors
 txt_link_about: About
 txt_link_media: Media
 txt_link_donate: Donate
