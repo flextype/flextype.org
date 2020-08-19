@@ -24,3 +24,42 @@ a:hover {
 .logo:hover {
     opacity: .8;
 }
+
+.button {
+    box-shadow: 3px 3px 0 #090e24;
+    border: 2px solid #090e24;
+    @apply inline-block no-underline uppercase text-center text-lg relative pr-2 pl-2 pt-6 pb-6 border-black bg-white border-2 text-black;
+}
+
+.button:hover {
+    box-shadow: 1px 1px 0 #090e24;
+    transform: translate(2px, 2px);
+}
+
+.plate {
+    box-shadow: 3px 3px 0 #090e24;
+    border: 2px solid #090e24;
+    @apply relative border-black bg-white text-black;
+}
+
+.extend {
+    box-shadow: 3px 3px 0 #090e24;
+    border: 2px solid #090e24;
+    @apply inline-block no-underline relative pr-2 pl-2 pt-6 pb-6 border-black bg-white border-2 text-black;
+}
+
+.extend:hover {
+    box-shadow: 1px 1px 0 #090e24;
+    transform: translate(2px, 2px);
+}
+
+.post {
+    box-shadow: 3px 3px 0 #090e24;
+    border: 2px solid #090e24;
+    @apply inline-block no-underline relative pr-2 pl-2 pt-6 pb-6 border-black bg-white border-2 text-black;
+}
+
+.post:hover {
+    box-shadow: 1px 1px 0 #090e24;
+    transform: translate(2px, 2px);
+}

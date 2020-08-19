@@ -1,0 +1,5 @@
+1598473417
+a:5:{s:5:"title";s:22:"Flextype 0.6.1 release";s:4:"tags";s:7:"release";s:8:"template";s:9:"blog-post";s:12:"published_at";s:16:"17-06-2018 09:46";s:7:"content";s:207:"* Fixed issue with not found pages status code
+* Fixed Singleton classes and methods visibility changed from protected to private
+* Added require vendors versions in composer.json
+* Fixed Simple Theme styles";}

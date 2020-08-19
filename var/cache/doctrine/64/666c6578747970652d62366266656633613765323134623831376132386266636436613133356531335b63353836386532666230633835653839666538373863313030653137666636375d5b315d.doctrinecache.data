@@ -1,0 +1,8 @@
+1598473417
+a:5:{s:5:"title";s:22:"Flextype 0.2.0 release";s:4:"tags";s:7:"release";s:8:"template";s:9:"blog-post";s:12:"published_at";s:16:"23-03-2018 09:46";s:7:"content";s:208:"### New
+
+* Thunderer Shortcode Framework - added
+* Cache Flextype::VERSION for cache key - added
+* flextype/boot/shortcodes.php	- removed
+* flextype/boot/events.php - removed
+* Code cleanup and refactoring #5";}

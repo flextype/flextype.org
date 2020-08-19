@@ -1,0 +1,3 @@
+1598473417
+a:5:{s:5:"title";s:22:"Flextype 0.7.1 release";s:4:"tags";s:7:"release";s:8:"template";s:9:"blog-post";s:12:"published_at";s:16:"17-11-2018 09:46";s:7:"content";s:110:"* Plugins: New method getLocales() added
+* Content: processPage() - ability to ignore content parsing - added.";}

@@ -1,0 +1,9 @@
+1598473417
+a:5:{s:5:"title";s:22:"Flextype 0.3.0 release";s:4:"tags";s:7:"release";s:8:"template";s:9:"blog-post";s:12:"published_at";s:16:"05-05-2018 09:46";s:7:"content";s:356:"### New
+
+* date_format setting added to /site/config.site.yml
+* Pages: Fixed bug with pages sort and slice in getPages() method
+* Pages: Fixed bug with pages list for /pages folder
+* Pages: Fixes for generating page url field
+* Pages: Added ability to create date field automatically for pages if date field is not exists.
+* Code cleanup and refactoring #5";}

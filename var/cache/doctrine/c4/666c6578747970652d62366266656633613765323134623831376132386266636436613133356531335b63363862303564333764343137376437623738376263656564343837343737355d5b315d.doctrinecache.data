@@ -1,0 +1,11 @@
+1598473417
+a:10:{s:5:"title";s:22:"Flextype 0.4.4 release";s:4:"tags";s:7:"release";s:8:"template";s:9:"blog-post";s:12:"published_at";i:1527587160;s:7:"content";s:788:"* Content: added ability to work with CONTENT SECTIONS with help of shortcodes [section] and [section_create]
+* Content: getPage() method will only return data about requested page and will not insert them in global $page array.
+* Content: events: onPageContentAfter and onPageContentRawAfter was removed from getPage(), use event onCurrentPageBeforeDisplayed instead.
+* Site Config: new items added: robots and description
+* Theme Simple: Using Assets Component for css and js
+* Theme Simple: New head meta added: description, keywords, robots, generator
+* Theme Simple: Meta charset getting from registry site.charset
+* Theme Simple: Fixed issue with broken paths for JS
+* Theme Simple: gulpfile: build process updated
+* Theme Simple: package.json: added gulp-concat and gulp-sourcemaps";s:10:"created_at";i:1594145409;s:11:"modified_at";i:1594145409;s:4:"slug";s:22:"en/blog/flextype-0-4-4";s:8:"routable";b:1;s:10:"visibility";s:7:"visible";}

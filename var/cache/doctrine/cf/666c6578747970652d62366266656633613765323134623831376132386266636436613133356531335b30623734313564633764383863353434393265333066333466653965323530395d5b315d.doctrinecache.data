@@ -1,0 +1,2 @@
+1598478920
+a:9:{s:4:"name";s:3:"ACL";s:7:"version";s:5:"1.3.0";s:11:"description";s:24:"ACL plugin for Flextype.";s:4:"icon";s:16:"fas fa-users-cog";s:6:"author";a:3:{s:4:"name";s:16:"Sergey Romanenko";s:5:"email";s:20:"support@flextype.org";s:3:"url";s:20:"https://flextype.org";}s:8:"homepage";s:39:"https://github.com/flextype-plugins/acl";s:4:"bugs";s:46:"https://github.com/flextype-plugins/acl/issues";s:7:"license";s:3:"MIT";s:12:"dependencies";a:2:{s:8:"flextype";s:6:"0.9.10";s:4:"twig";s:7:">=1.0.0";}}

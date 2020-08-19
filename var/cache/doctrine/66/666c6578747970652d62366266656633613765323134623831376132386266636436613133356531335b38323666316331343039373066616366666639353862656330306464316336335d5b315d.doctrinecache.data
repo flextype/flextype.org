@@ -1,0 +1,209 @@
+1598476800
+a:5:{s:22:"en/blog/flextype-0-9-4";a:10:{s:5:"title";s:22:"Flextype 0.9.4 release";s:4:"tags";s:7:"release";s:8:"template";s:9:"blog-post";s:12:"published_at";i:1568195160;s:7:"content";s:5128:"### Added
+* Flextype Core: Add ability to work with different types of content #212 #186
+* Flextype Core: Add new filter `tr` for I18nTwigExtension #186
+* Flextype Core: Add MARKDOWN, YAML and JSON parsers. #212 #186
+* Flextype Core: Add YamlTwigExtension #186
+* Flextype Core: Add ResponseTime Middleware #186
+* Flextype Core: Add UUID (universally unique identifier) for all entries #197 #186
+* Flextype Core: Add message for Glide if image not found #189 #186
+* Flextype Core: Add victorjonsson/markdowndocs for generating markdown-formatted class documentation #186
+* Flextype Core: Add custom callable resolver, which resolves PSR-15 middlewares. #213 #186
+* Flextype Core: Add git commit message convention. #186
+* Flextype Core: Add AuthMiddleware globally #201 #186
+* Flextype Core: Add new twig options `debug` `charset` `cache` #186
+* Flextype Core: Add new field `tags` #186
+* Flextype Core: Add new field `datetimepicker` #186
+* Flextype Core: Add block for all direct access to .md files in .htaccess #186
+* Flextype Core: Add block access to specific file types for these user folders in .htaccess #186
+* Flextype Core: Add new option date_display_format #186
+* Flextype Admin Panel: Add Trumbowyg view html code #193 #186
+* Flextype Admin Panel: Add tail section for base.html template #186
+* Flextype Admin Panel: Add new event onAdminThemeFooter in base.html template #186
+* Flextype Admin Panel: Add ability to set `published_at`, `created_at` for site entries #186
+* Flextype Admin Panel: Add ability to set `created_by`, `published_by` for site entries #186
+* Flextype Site Plugin: Add ability to get query params inside twig templates #186
+* Flextype Site Plugin: Add ability to get entries in JSON Format #186
+* Flextype Default Theme: Add ability to work with tags for default theme #186
+
+### Fixed
+* Flextype Core: Fix ShortcodesTwigExtension issue with null variables #186
+* Flextype Core: Fix issue with bind_where expression for Entries fetchAll method #186
+* Flextype Core: Fix issue with and_where expression for Entries fetchAll method #186
+* Flextype Core: Fix issue with or_where expression for Entries fetchAll method #186
+* Flextype Admin Panel: Fix dark theme for admin panel #186 #168
+
+### Changed
+* Flextype Core: Moving to PHP 7.2 #198 #186
+* Flextype Core: JsonParserTwigExtension renamed to JsonTwigExtension #186
+* Flextype Core: Twig json_parser_decode renamed to json_decode #186
+* Flextype Core: Twig json_parser_encode renamed to json_encode #186
+* Flextype Core: Default theme - update assets building process and GULP to 4.X.X #206 #186
+* Flextype Core: Default theme - theme.json converted to theme.yaml #201 #186
+* Flextype Core: Default theme - settings.json converted to settings.yaml #201 #186
+* Flextype Core: Site entries move from JSON to FRONTMATTER (MD) #212 #186
+* Flextype Core: Entries - use getDirTimestamp for fetchAll method #212 #186
+* Flextype Core: Entries - change private `_file_location()` to public `getFileLocation()` #186
+* Flextype Core: Entries - change private `_dir_location()` to public `getDirLocation()` #186
+* Flextype Core: Snippets - change private `_file_location()` to public `getFileLocation()` #186
+* Flextype Core: Snippets - change private `_dir_location()` to public `getDirLocation()` #186
+* Flextype Core: Fieldsets - change private `_file_location()` to public `getFileLocation()` #186
+* Flextype Core: Fieldsets - change private `_dir_location()` to public `getDirLocation()` #186
+* Flextype Core: Update .gitignore
+* Flextype Core: Update copyrights information
+* Flextype Core: Update vendor flextype-components/filesystem to 2.0.6
+* Flextype Core: Update vendor flextype-components/date to 1.1.0
+* Flextype Core: Update vendor zeuxisoo/slim-whoops to 0.6.5
+* Flextype Core: Update vendor doctrine/collections to 1.6.2
+* Flextype Core: Update vendor slim/slim to 3.12.2
+* Flextype Core: Update vendor respect/validation to 1.1.31
+* Flextype Core: Update vendor monolog/monolog to 2.0.0
+* Flextype Core: Update vendor symfony/yaml to 4.3.4
+* Flextype Site Plugin: settings.json converted to settings.yaml #201 #186
+* Flextype Site Plugin: plugin.json converted to plugin.yaml #201 #186
+* Flextype Site Plugin: en_US.json and ru_RU.json converted to en_US.yaml and ru_RU.yaml #201 #186
+* Flextype Admin Panel: Settings page improvements #186
+* Flextype Admin Panel: Installation page improvements #194 #186
+* Flextype Admin Panel: Entries editor page improvements #186
+* Flextype Admin Panel: settings.json converted to settings.yaml #201 #186
+* Flextype Admin Panel: plugin.json converted to plugin.yaml #201 #186
+* Flextype Admin Panel: en_US.json and ru_RU.json converted to en_US.yaml and ru_RU.yaml #201 #186
+* Flextype Admin Panel: JS decoupled in partials from base.html #186
+* Flextype Admin Panel: field `editor` changed to `html` #186
+* Flextype Admin Panel: improve admin settings page #186
+
+### Removed
+* Flextype Core: Remove `date` field #196 #186
+* Flextype Admin Panel: Remove save button on the media page #225 #186
+* Flextype Admin Panel: Remove unused css code #186
+* Flextype Admin Panel: Remove unused js code #186";s:10:"created_at";i:1594145409;s:11:"modified_at";i:1594145409;s:4:"slug";s:22:"en/blog/flextype-0-9-4";s:8:"routable";b:1;s:10:"visibility";s:7:"visible";}s:22:"en/blog/flextype-0-9-3";a:10:{s:5:"title";s:22:"Flextype 0.9.3 release";s:4:"tags";s:7:"release";s:8:"template";s:9:"blog-post";s:12:"published_at";i:1562492760;s:7:"content";s:743:"### Fixed
+- Flextype Core: Entries - issue with binding arguments inside method fetchAll() - fixed. #182
+- Flextype Core: Entries - issue with possible boolean false result from Filesystem::getTimestamp() inside method fetchAll() - fixed. #182
+- Flextype Core: Entries - issue with possible boolean false result from Filesystem::getTimestamp() inside method fetch() - fixed. #182
+- **Flextype Admin Panel: critical issue with possibility to register two admins! - fixed. #183 #182**
+- Flextype Admin Panel: Left Navigation - active state for Templates area - fixed. #182
+- Flextype Default Theme: issue with `TypeError: undefined is not an object` for lightbox - fixed. #182
+- Flextype Default Theme: fix thumbnail image for Default Theme #182";s:10:"created_at";i:1594145409;s:11:"modified_at";i:1594145409;s:4:"slug";s:22:"en/blog/flextype-0-9-3";s:8:"routable";b:1;s:10:"visibility";s:7:"visible";}s:22:"en/blog/flextype-0-9-2";a:10:{s:5:"title";s:22:"Flextype 0.9.2 release";s:4:"tags";s:7:"release";s:8:"template";s:9:"blog-post";s:12:"published_at";i:1562406360;s:7:"content";s:2633:"### Added
+- Flextype Default Theme: pagination for blog entries added. #164 #165
+- Flextype Default Theme: New templates for entry Gallery - added. #165
+- Flextype Core: New Shortcode [registry_get] - added. #165
+- Flextype Core: New entry Gallery - added. #165
+- Flextype Core: New fieldsets for entry Gallery - added. #165
+- Flextype Core: Doctrine Collections - added. #175 #165
+- Flextype Core: GlobalVarsTwigExtension - new variable - `PHP_VERSION` - added. #165
+- Flextype Core: FilesystemTwigExtension - new function `filesystem_get_files_list` added. #165
+- Flextype Core: Snippets - new snippet `google-analytics` added. #165
+- Flextype Core: Fieldsets Content - menu_item_target fixed. #165
+- Flextype Admin Panel: Show nice message if there is no items for current area. #158 #165
+- Flextype Admin Panel: Tools - added. #170 #165
+- Flextype Admin Panel: Tools - Cache area added. #170 #165
+- Flextype Admin Panel: Tools - Registry area added. #170 #165
+- Flextype Admin Panel: Themes manager added. #171 #165
+- Flextype Admin Panel: New Translates added. #165
+
+### Changed
+- Flextype Core: All Twig Extensions - refactored and updated. #165
+- Flextype Core: Entries - new params `$id` and `$args` for `fetchAll()` method. #165
+- Flextype Core: Entries - fetching methods updated and ready to work with Collections. #175 #165
+- Flextype Core: Snippets Shortcode - renamed `snippets_fetch` to `snippets_exec`. #165
+- Flextype Admin Panel: Entires - improved styles for fieldsets tabs. #165
+- Flextype Admin Panel: Entires - styles for Fieldsets tabs improved #165
+- Flextype Admin Panel & Flextype Core: Settings improvements #153 #165
+- Flextype Admin Panel: Entries - show entry slug if entry default field is empty. #165
+- Flextype Admin Panel: Stay on current page after saving. #155 #165
+
+### Fixed
+- Flextype Core & Admin and Default theme: wrong `emmiter_emmit` renamed to correct `emitter_emit` #165
+- Flextype Admin Panel: Entries - issues with hardcoded admin url - fixed. #165
+- Flextype Admin Panel: Entries - `PATH_FIELDSETS` used instead of hardcoded path. #165
+- Flextype Admin Panel: fix all tabs state for Fieldsets, Snippets, Templates areas. #165
+- Flextype Admin Panel: Entries - move functionality issues #179 #165
+
+### Removed
+- Flextype Admin Panel: Left Navigation - documentation link - removed #165
+
+### Update from Flextype 0.9.1 to Flextype 0.9.2
+1. Backup your Site First!
+2. Download flextype-0.9.2.zip
+3. Unzip the contents to a new folder on your local computer.
+4. Upload /flextype/, /vendor/, /site/plugins/admin/, /site/plugins/site/, /site/themes/default/ with an FTP client to your host.";s:10:"created_at";i:1594145409;s:11:"modified_at";i:1594145409;s:4:"slug";s:22:"en/blog/flextype-0-9-2";s:8:"routable";b:1;s:10:"visibility";s:7:"visible";}s:22:"en/blog/flextype-0-9-1";a:10:{s:5:"title";s:22:"Flextype 0.9.1 release";s:4:"tags";s:7:"release";s:8:"template";s:9:"blog-post";s:12:"published_at";i:1560851160;s:7:"content";s:1990:"### Added
+- Flextype Admin Panel: new setting `route` added to customize admin base route. #154
+- Flextype Core: GlobalVarsTwigExtension - new global constant `PATH_FIELDSETS` added. #154
+- Flextype Core: Entries API - public property `$entry` added. #154
+- Flextype Core: Entries API - public property `$entries` added. #154
+- Flextype Core: Entries API - new event `onEntryAfterInitialized` added. #154
+- Flextype Core: Entries API - new event `onEntriesAfterInitialized` added. #154
+- Flextype Core: Shortcodes - `EntriesShortcode` added. #154
+- Flextype Core: Shortcodes - `BaseUrlShortcode` added. #154
+- Flextype Core: Snippets - SnippetsTwigExtension: `snippets_exec()` added. #154
+- Flextype Core: Snippets - `[snppets_fetch]` shortcode added. #154
+- Flextype Core: Snippets - `_exec_snippet()` method added. #154
+- Flextype Core: Snippets - `exec()` method added. #154
+- Flextype Core: Snippets - added ability to access $flextype and $app inside snippets. #154
+- Flextype Core: GlobalVarsTwigExtension `FLEXTYPE_VERSION` added. #154
+- Flextype Site Plugin: public property `$entry` added. #154
+- Flextype Site Plugin: new event `onSiteEntryAfterInitialized` added. #154
+
+### Fixed
+- Flextype Core: Entries API - `fetchALL()` issue with fetching entries recursively fixed. #154 #161
+
+### Changed
+- Flextype Site: code refactoring. #154
+- Flextype Admin Panel: code refactoring. #154
+- Flextype Core: Snippets - from now we will set prefix `bind_` for all variables. #154
+
+### Removed
+- Flextype Core: Entries API - remove unused Shortcodes code from method `fetch()` #162
+- Flextype Core: Shortcodes - `SiteUrlShortcode` removed. #154
+- Flextype Core: Snippets - `SnippetsTwigExtension`: snippet removed. #154
+- Flextype Core: Snippets - `[snippets]` shortcode removed. #154
+- Flextype Core: Snippets - `_display_snippet()` method removed. #154
+- Flextype Core: Snippets - `- display()` method removed. #154
+- Flextype Core: GlobalVarsTwigExtension `flextype_version` removed. #154";s:10:"created_at";i:1594145409;s:11:"modified_at";i:1594145409;s:4:"slug";s:22:"en/blog/flextype-0-9-1";s:8:"routable";b:1;s:10:"visibility";s:7:"visible";}s:22:"en/blog/flextype-0-9-0";a:10:{s:5:"title";s:22:"Flextype 0.9.0 release";s:4:"tags";s:7:"release";s:8:"template";s:9:"blog-post";s:12:"published_at";i:1560505560;s:7:"content";s:2485:"### Added
+- Flextype Core: Slim Framework Integration!
+- Flextype Core: Twig Template Engine Integration!
+- Flextype Core: Whoops Error Handler Integration!
+- Flextype Core: Monolog library Integration!
+- Flextype Core: Slugify library Integration!
+- Flextype Core: Complete Glide/Intervention Image Implemented for Image manipulation on fly!
+- Flextype Core: New Event handler from The League of Extraordinary Packages for better event handling.
+- Flextype Core: New Entries API
+- Flextype Core: New Fieldsets API
+- Flextype Core: New Snippets API
+- Flextype Core: New Plugins API
+- Flextype Core: New JSON Parser instead of old YAML Parser.
+- Flextype Core: Using new languages files format and JSON extension instead of YAML.
+- Flextype Core: Using JSON extension instead of YAML for all kind of data to store.
+- Flextype Core: New CSRF service for better cross-site request forgery protection.
+- Flextype Core: composer.json ext-json and ext-mbstring added into require section.
+- Flextype Core: composer.json suggest section added.
+- Flextype Core: composer.json: apcu-autoloader added for APCu cache as a fallback for the class map.
+- Flextype Site: New plugin Site added.
+- Flextype Core: Respect Validation - The most awesome validation engine ever created for PHP - added.
+- Flextype Admin Panel: New admin panel plugin based on Slim Framework.
+- Flextype Admin Panel: Fieldset Sections(groups) added.
+- Flextype Admin Panel: New Field types - select, editor (instead of html)
+
+### Changed
+- Flextype Core: Thunderer Shortcodes don't parse fields by default, need to use filter.
+- Flextype Core: Thunderer Shortcodes updated to 0.7.2.
+- Flextype Core: Flextype Components Arr updated to 1.2.5
+- Flextype Core: Flextype Components Number updated to 1.1.0
+- Admin Panel: Bootstrap updated to 4.3.1
+- Admin Panel: Codemirror updated to 5.43.0
+- Admin Panel: Trumbowyg updated to 2.18.0
+- Admin Panel: Settings Manager - locales list - improvements!
+
+### Fixed
+- Admin Panel: Translates fixes.
+- Admin Panel: Issue with js error for codemirror - fixed.
+- Flextype Core: Plugins API - issue with plugins list fixed.
+
+### Removed
+- Flextype Admin Panel: Menus Manager removed.
+- Flextype Core: YAML Parser removed.
+- Flextype Core: Symfony YAML Component removed.
+- Flextype Core: Flextype Token Component removed.
+- Flextype Core: Flextype Notification Component removed.
+- Flextype Core: Flextype Error Handler Component removed.
+- Flextype Core: Flextype Event Component removed.";s:10:"created_at";i:1594145409;s:11:"modified_at";i:1594145409;s:4:"slug";s:22:"en/blog/flextype-0-9-0";s:8:"routable";b:1;s:10:"visibility";s:7:"visible";}}

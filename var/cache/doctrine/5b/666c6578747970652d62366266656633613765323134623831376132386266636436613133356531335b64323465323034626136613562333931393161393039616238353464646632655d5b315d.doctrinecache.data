@@ -1,0 +1,309 @@
+1598476789
+s:10241:"<h3>Features</h3>
+<ul>
+<li>
+<p><strong>core</strong> Moving to PHP 7.2.5 #444</p>
+</li>
+<li>
+<p><strong>core</strong> Add PhpArrayFileAdapter and set PhpArrayFile Cache as a default fallback cache driver instead of Filesystem Cache driver. This new feature give us performance boost up to 25%</p>
+</li>
+<li>
+<p><strong>core</strong> Add preflight to Flextype basic checks and performance boost.</p>
+</li>
+<li>
+<p><strong>core</strong> Update all namespaces and core infrastructure. #437</p>
+</li>
+<li>
+<p><strong>core</strong> Add Symfony Finder Component and <code>find_filter()</code> helper.</p>
+</li>
+<li>
+<p><strong>cache</strong> Cache API improvements</p>
+<ul>
+<li>Cache ID generation enhancements</li>
+<li>add new public function <code>fetchMultiple(array $keys)</code></li>
+<li>add new public function <code>saveMultiple(array $keysAndValues, $lifetime = 0)</code></li>
+<li>add new public function <code>deleteMultiple(array $keys)</code></li>
+<li>add new public function <code>deleteAll()</code></li>
+<li>add new public function <code>flushAll()</code></li>
+<li>add new public function <code>purge(string $directory)</code></li>
+<li>add new public function <code>purgeAll()</code></li>
+<li>add new public function <code>getStats()</code></li>
+<li>add new events <code>onCacheBeforePurgeAll</code>, <code>onCacheAfterPurgeAll</code>, <code>onCacheBeforePurge</code>, <code>onCacheAfterPurge</code></li>
+</ul>
+</li>
+<li>
+<p><strong>core</strong> New Media API for work with media uploads.</p>
+<p>New objects:</p>
+<pre><code>$flextype['media_files_meta']
+$flextype['media_folders_meta']
+$flextype['media_files']
+$flextype['media_folders']</code></pre>
+<p>See: <a href="http://docs.flextype.org/en/core/media">http://docs.flextype.org/en/core/media</a></p>
+</li>
+<li>
+<p><strong>core</strong> New simplified parsers and serializers functionality #438</p>
+<p>New objects:</p>
+<pre><code>$flextype['markdown']
+$flextype['shortcode']
+$flextype['json']
+$flextype['yaml']
+$flextype['frontmatter']</code></pre>
+<p>New methods:</p>
+<pre><code>$flextype-&gt;markdown-&gt;parse(string $input)
+
+$flextype-&gt;shortcode-&gt;add(string $name, $handler)
+$flextype-&gt;shortcode-&gt;parse(string $input, bool $cache = true)
+
+$flextype-&gt;json-&gt;decode(string $input, bool $cache = true, bool $assoc = true, int $depth = 512, int $flags = 0)
+$flextype-&gt;json-&gt;encode($input, int $options = 0, int $depth = 512) : string
+
+$flextype-&gt;yaml-&gt;decode(string $input, bool $cache = true, int $flags = 0) : array
+$flextype-&gt;yaml-&gt;encode($input, int $inline = 2, int $indent = 4, int $flags = 0) : string
+
+$flextype-&gt;frontmatter-&gt;decode(string $input, bool $cache = true)
+$flextype-&gt;frontmatter-&gt;encode($input) : string</code></pre>
+</li>
+<li>
+<p><strong>entries</strong> New simplified logic for entries methods: <code>fetch()</code> <code>fetchSingle()</code> and <code>fetchCollection()</code></p>
+<p>We are stop doing unneeded things like extra scanning folders and files updates and etc... for fetching entries collections that's slowdowns the fetching process.</p>
+<p>We have improved filtering abilities for entries collections.</p>
+<p>From now there is a possible to path a much more rules for collections filtering inside the <code>fetchCollection()</code> and with using a standalone helper functions like <code>collect_filter()</code> and <code>find_filter()</code></p>
+<ul>
+<li><code>public function fetch(string $path, bool $collection = false, $filter = []) : array</code>
+Fetch single entry or collections of entries.</li>
+<li><code>public function fetchSingle(string $path) : array</code>
+Fetch single entry.</li>
+<li><code>public function fetchCollection(string $path, $filter = []) : array</code>
+Fetch entries collection.</li>
+</ul>
+<p>See: <a href="http://docs.flextype.org/en/core/entries#methods">http://docs.flextype.org/en/core/entries#methods</a></p>
+</li>
+<li>
+<p><strong>entries</strong> New events added for Entries API.</p>
+<pre><code>onEntryCreate
+onEntryCopy
+onEntryRename
+onEntryDelete
+onEntryUpdate
+onEntryAfterCacheInitialized
+onEntryAfterInitialized
+onEntriesAfterInitialized</code></pre>
+</li>
+<li>
+<p><strong>entries</strong> New decoupled and configurable fields added for entries instead of hardcoded.</p>
+<p>Entry fields decoupled into: <code>/flextype/Foundation/Entries/Fields/</code></p>
+<p>Entry fields added into <code>flextype.settings.entries.fields</code></p>
+<pre><code>fields:
+  slug:
+    enabled: true
+  published_at:
+    enabled: true
+  published_by:
+    enabled: true
+  modified_at:
+    enabled: true
+  created_at:
+    enabled: true
+  created_by:
+    enabled: true
+  routable:
+    enabled: true
+  parsers:
+    enabled: true
+  visibility:
+    enabled: true
+  uuid:
+    enabled: true</code></pre>
+</li>
+<li>
+<p><strong>entries</strong> Add ability to set individual cache control for specific entries.</p>
+<pre><code>cache:
+  enabled: true
+
+or
+
+cache:
+  enabled: false</code></pre>
+</li>
+<li>
+<p><strong>entries</strong> Add new Entries API class properties.</p>
+<pre><code>/**
+ * Current entry path
+ *
+ * @var string
+ * @access public
+ */
+public $entry_path = null;
+
+/**
+ * Current entry create data array
+ *
+ * @var array
+ * @access public
+ */
+public $entry_create_data = [];
+
+/**
+ * Current entry create data array
+ *
+ * @var array
+ * @access public
+ */
+public $entry_update_data = [];</code></pre>
+</li>
+<li>
+<p><strong>collections</strong> New Collection functionality on top of Doctrine Collections.</p>
+<p>We are able to use collections for any type of items, not just for entries.
+New Collection are simple and powerful!</p>
+<p>See: <a href="http://docs.flextype.org/en/core/collections">http://docs.flextype.org/en/core/collections</a></p>
+</li>
+<li>
+<p><strong>settings</strong> Set max_file_size 8mb for uploads.</p>
+</li>
+<li>
+<p><strong>yaml</strong> YAML set default inline = 5 and indent = 2</p>
+</li>
+<li>
+<p><strong>vendors</strong> New Arrays library for Accessing PHP Arrays via DOT notation.</p>
+</li>
+<li>
+<p><strong>rest-api</strong> New Files Rest API.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>/api/files</td>
+<td>Fetch file(files)</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/api/files</td>
+<td>Upload file</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>/api/files</td>
+<td>Rename file</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>/api/files/copy</td>
+<td>Copy file</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>/api/files</td>
+<td>Delete file</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>/api/files/meta</td>
+<td>Updates file meta information</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/api/files/meta</td>
+<td>Updates file meta information</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>/api/files/meta</td>
+<td>Delete file meta information</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>rest-api</strong> New Folders Rest API.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>/api/folders</td>
+<td>Fetch folder(folders)</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/api/folders</td>
+<td>Create folder</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>/api/folders</td>
+<td>Rename folder</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>/api/folders/copy</td>
+<td>Copy folder</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>/api/folders</td>
+<td>Delete folder</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h3>Bug Fixes</h3>
+<ul>
+<li><strong>frontmatter</strong> remove UTF-8 BOM if it exists.</li>
+<li><strong>frontmatter</strong> fix line endings to Unix style.</li>
+<li><strong>entries</strong> fix method <code>rename()</code> in Entries API #433</li>
+<li><strong>entries</strong> fix issue with parsing content on entry fetch #441</li>
+<li><strong>rest-api</strong> fix Rest API JSON Response #445</li>
+<li><strong>core</strong> fix all namespaces #437</li>
+<li><strong>core</strong> fix flextype config loading.</li>
+<li><strong>serializers</strong> fix YAML native parser.</li>
+<li><strong>plugins</strong> fix method <code>getPluginsCacheID()</code> for Plugins API</li>
+</ul>
+<h3>Refactoring</h3>
+<ul>
+<li><strong>pimple</strong> remove unused $flextype variable and cleanup dependencies.</li>
+<li><strong>yaml</strong> save and mute error_reporting for native YAML parser.</li>
+<li><strong>cors</strong> remove unused parameter $args</li>
+<li><strong>plugins</strong>  remove dead variables.</li>
+<li><strong>shortcode</strong> update return type for shortcode add() method.</li>
+<li><strong>cache</strong> update $driver type for DoctrineCache.</li>
+</ul>
+<h3>Vendor Updates</h3>
+<ul>
+<li><strong>core:</strong> Update vendor league/glide to 1.6.0</li>
+<li><strong>core:</strong> Update vendor doctrine/cache to 1.10.2</li>
+<li><strong>core:</strong> Update vendor doctrine/collections to 1.6.6</li>
+<li><strong>core:</strong> Update vendor respect/validation to 2.0.16</li>
+<li><strong>core:</strong> Update vendor monolog/monolog to 2.1.1</li>
+<li><strong>core:</strong> Update vendor thunderer/shortcode to 0.7.4</li>
+<li><strong>core:</strong> Update vendor flextype-components/filesystem to 2.0.7</li>
+<li><strong>core:</strong> Update vendor flextype-components/registry to 3.0.0</li>
+<li><strong>core:</strong> Update vendor flextype-components/number to 1.1.1</li>
+<li><strong>core:</strong> Update vendor composer/semver to 3.0.0</li>
+<li><strong>core:</strong> Update vendor symfony/yaml to 5.1.3</li>
+<li><strong>core:</strong> Update vendor ramsey/uuid to 4.1.0</li>
+</ul>
+<h3>BREAKING CHANGES</h3>
+<ul>
+<li><strong>entries</strong> Wildcard * removed from parsers field.</li>
+<li><strong>entries</strong> Cache setup removed from parsers field.</li>
+<li><strong>settings</strong> <code>/project/config/settings.yaml</code> move to <code>/project/config/flextype/settings.yaml</code></li>
+<li><strong>constants</strong> remove constant <code>PATH['config']</code>, use - <code>PATH['project'] . '/config/'</code></li>
+<li><strong>core:</strong> remove Date Component from the system.</li>
+<li><strong>core:</strong> remove Text Component from the system.</li>
+<li><strong>cache:</strong> removed methods clear() and clearAll(), use purge() and purgeAll() instead.</li>
+<li><strong>cache:</strong> change return type for methods <code>save()</code>, <code>delete()</code> from void too bool.</li>
+</ul>";

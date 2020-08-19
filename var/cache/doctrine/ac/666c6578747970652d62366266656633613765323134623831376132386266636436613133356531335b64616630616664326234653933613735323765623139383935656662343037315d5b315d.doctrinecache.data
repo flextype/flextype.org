@@ -1,0 +1,12 @@
+1598473417
+a:10:{s:5:"title";s:22:"Flextype 0.4.1 release";s:4:"tags";s:7:"release";s:8:"template";s:9:"blog-post";s:12:"published_at";i:1526550360;s:7:"content";s:467:"* Using SCSS for Simple theme
+* Using Flextype Form Component
+* Themes: class bug fixes
+* Plugins: access for $locales changed to private
+* Plugins: cache bug fixes
+* New powerful Content class added for working with content instead of Pages, Shortcode, Markdown
+* Content: new page field: published added
+* Content: method for page blocks added
+* Content: cache added for pages and blocks
+* define CONSTANTS in PHP7 style
+* Themes: changing from template() to view()";s:10:"created_at";i:1594145409;s:11:"modified_at";i:1594145409;s:4:"slug";s:22:"en/blog/flextype-0-4-0";s:8:"routable";b:1;s:10:"visibility";s:7:"visible";}

@@ -1,0 +1,18 @@
+1598474923
+s:863:"<h2>Features</h2>
+<ul>
+<li>The world's most popular code for sending email from PHP!</li>
+<li>Integrated SMTP support - send without a local mail server</li>
+<li>Send emails with multiple To, CC, BCC and Reply-to addresses</li>
+<li>Multipart/alternative emails for mail clients that do not read HTML email</li>
+<li>Add attachments, including inline</li>
+<li>Support for UTF-8 content and 8bit, base64, binary, and quoted-printable encodings</li>
+<li>SMTP authentication with LOGIN, PLAIN, CRAM-MD5, and XOAUTH2 mechanisms over SSL and SMTP+STARTTLS transports</li>
+<li>Validates email addresses automatically</li>
+<li>Protect against header injection attacks</li>
+<li>Error messages in over 50 languages!</li>
+<li>DKIM and S/MIME signing support</li>
+<li>Compatible with PHP 5.5 and later</li>
+<li>Namespaced to prevent name clashes</li>
+<li>Much more!</li>
+</ul>";

@@ -1,0 +1,7 @@
+1598473417
+a:5:{s:5:"title";s:22:"Flextype 0.4.3 release";s:4:"tags";s:7:"release";s:8:"template";s:9:"blog-post";s:12:"published_at";s:16:"28-05-2018 09:46";s:7:"content";s:370:"* Content: set text/html request headers for displayCurrentPage() method
+* Content: processCurrentPage() method added
+* Content: event names changed: onPageBeforeRender to onCurrentPageBeforeProcessed
+* Content: event names changed: onPageAfterRender to onCurrentPageAfterProcessed
+robots.txt file was removed, use Robots plugin instead
+* Code cleanup and refactoring #5";}

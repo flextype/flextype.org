@@ -1,0 +1,4 @@
+1598474142
+a:8:{s:5:"title";s:3:"ACL";s:11:"description";s:30:"ACL Panel plugin for Flextype.";s:4:"icon";s:16:"fas fa-users-cog";s:8:"keywords";s:20:"accounts, acl, users";s:6:"author";a:2:{s:4:"name";s:16:"Sergey Romanenko";s:5:"email";s:20:"support@flextype.org";}s:6:"github";s:39:"https://github.com/flextype-plugins/acl";s:8:"template";s:6:"plugin";s:7:"content";s:228:"### Features
+* Simple and Flexible ACL(Access Control List) functionality for any entries or any specific data.
+* Built in Shortcodes and Twig functions to restrict access for specific users in the entries content and templates.";}

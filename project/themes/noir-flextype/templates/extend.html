@@ -12,25 +12,25 @@
         </div>
         <div>
             <div class="flex content-center flex-wrap">
-                <div class="w-full lg:w-6/12 p-2 text-center">
-                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
+                <div class="w-full lg:w-6/12 p-6 text-center">
+                    <div class="p-12 h-full text-black plate">
                         <i class="fas fa-plug text-6xl mb-5" aria-hidden="true"></i>
                         <h4 class="text-2xl">{{ entry.txt_plugins|raw }}</h4>
                         <div class="h-24 mb-10">
                             {{ entry.txt_plugins_p|raw }}
                             <br>
                         </div>
-                        <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black"  href="{{ url() }}/{{ entry.slug }}/plugins">{{ entry.txt_plugins_browse|raw }}</a>
+                        <a class="pl-6 pr-6 pt-2 pb-2 button text-base"  href="{{ url() }}/{{ entry.slug }}/plugins">{{ entry.txt_plugins_browse|raw }}</a>
                     </div>
                 </div>
-                <div class="w-full lg:w-6/12 p-2 text-center">
-                    <div class="p-12 h-full text-black rounded-lg" style="background-color: #f8f9fb;">
+                <div class="w-full lg:w-6/12 p-6 text-center">
+                    <div class="p-12 h-full text-black plate">
                         <i class="fas fa-palette text-6xl mb-5" aria-hidden="true"></i>
                         <h4 class="text-2xl">{{ entry.txt_themes|raw }}</h4>
                         <div class="h-24 mb-10">
                             {{ entry.txt_themes_p|raw }}
                         </div>
-                        <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black"  href="{{ url() }}/{{ entry.slug }}/themes">{{ entry.txt_themes_browse|raw }}</a>
+                        <a class="pl-6 pr-6 pt-2 pb-2 button text-base"  href="{{ url() }}/{{ entry.slug }}/themes">{{ entry.txt_themes_browse|raw }}</a>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,4 @@
+1598473417
+a:10:{s:5:"title";s:22:"Flextype 0.4.2 release";s:4:"tags";s:7:"release";s:8:"template";s:9:"blog-post";s:12:"published_at";i:1526982360;s:7:"content";s:193:"* Settings: cache.enabled is true from now
+* Content: new methods added: initShortcodes() initMarkdown() markdown()
+* Events: new events added: onMarkdownInitialized and onShortcodesInitialized";s:10:"created_at";i:1594145409;s:11:"modified_at";i:1594145409;s:4:"slug";s:22:"en/blog/flextype-0-4-2";s:8:"routable";b:1;s:10:"visibility";s:7:"visible";}

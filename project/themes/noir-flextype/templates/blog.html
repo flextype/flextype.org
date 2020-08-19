@@ -101,8 +101,8 @@
         <div class="flex content-center flex-wrap">
             <div class="w-full lg:w-9/12 p-2 text-left">
                 {% for post in blog_posts %}
-                <a href="{{ url() }}/{{ post.slug }}" class="no-underline p-6 text-black flex align-middle rounded-lg border-none mb-6 hover:border-none" style="background: #f8f9fb;">
-                    <h4 class="w-8/12 text-xl pb-0 mb-0 ">{{ post.title }}</h4>
+                <a href="{{ url() }}/{{ post.slug }}" class="flex align-middle  mb-6 px-6 post wow fadeIn">
+                    <h4 class="w-8/12 text-xl pb-0 mb-0">{{ post.title }}</h4>
                     <div class="w-4/12 text-xl text-right opacity-50">
                         {{ post.published_at|date(registry.get('flextype.settings.date_display_format')) }}
                     </div>
@@ -123,8 +123,8 @@
                 </div>
                 {# /pagination navigation #}
             </div>
-            <div class="w-full lg:w-3/12 p-2">
-                <div class="text-black text-left rounded-lg p-6" style="background: #f8f9fb;">
+            <div class="w-full lg:w-3/12 p-2 wow fadeIn">
+                <div class="text-black text-left  p-6 plate">
                     {# tags-cloud #}
                     {% set tags_cloud = [] %}
                     {% for post in entries.fetch(locale ~ '/blog', {
@@ -145,7 +145,7 @@
                     {% if tags_cloud|length > 0 %}
                         <h4 class="text-left mb-2">Tags</h4>
                         {% for tag in tags_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
-                            <a class="no-underline rounded-lg px-2 mb-2 inline-block bg-gray-200" href="{{ url() }}/{{ locale }}/blog?tag={{ tag|trim }}">{{ tag|trim }}</a>
+                            <a class="no-underline  px-2 mb-2 block" href="{{ url() }}/{{ locale }}/blog?tag={{ tag|trim }}">#{{ tag|trim }}</a>
                         {% endfor %}
                     {% endif %}
                     {# /tags-cloud #}

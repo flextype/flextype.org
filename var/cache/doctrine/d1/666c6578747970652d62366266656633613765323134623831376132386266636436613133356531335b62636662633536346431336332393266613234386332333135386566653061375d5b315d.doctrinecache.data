@@ -1,0 +1,19 @@
+1598473417
+a:10:{s:5:"title";s:22:"Flextype 0.8.3 release";s:4:"tags";s:7:"release";s:8:"template";s:9:"blog-post";s:12:"published_at";i:1547631960;s:7:"content";s:755:"### Added
+- Admin Panel: New Gorgeous Light Theme for Admin panel!
+- Admin Panel: Settings Manager - ability to change admin panel theme - added.
+- Admin Panel: Settings Manager - Select dropdown for cache driver - added.
+- Flextype Core: Cache - new cache driver Array - added.
+- Flextype Core: Cache - new cache driver SQLite3 - added.
+- Flextype Core: Cache - new cache driver Zend - added.
+
+### Changed
+- Flextype Core: Symfony Yaml updated to 4.2.2.
+- Admin Panel: Settings Manager - cache settings editing - improvements.
+- Flextype Core: default settings - refactoring.
+
+### Fixed
+- Flextype Core: Cache - issue with selecting current driver_name - fixed.
+- Admin Panel: Dark Theme fixes.
+- Admin Panel: Translates fixes.
+- Admin Panel: Typo fixes.";s:10:"created_at";i:1594145409;s:11:"modified_at";i:1594145409;s:4:"slug";s:22:"en/blog/flextype-0-8-3";s:8:"routable";b:1;s:10:"visibility";s:7:"visible";}
