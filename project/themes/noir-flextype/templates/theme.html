@@ -120,7 +120,7 @@
                     {% for related_theme in related_themes %}
                         {% if related_theme.slug != entry.slug %}
                         <a href="{{ url() }}/{{ related_theme.slug }}" class="w-full p-2 lg:w-6/12 no-underline">
-                            <div class="flex p-6 text-black align-middle rounded-lg extend wow fadeIn">
+                            <div class="flex p-6 text-black align-middle extend wow fadeIn">
                                 <img src="{{ related_theme.preview }}" alt="{{ related_theme.title }}" style="height: 120px; margin-right: 20px;">
                                 <div class="text-left">
                                     <h4 class="text-xl pb-0 mb-0 block">{{ related_theme.title }}</h4>
