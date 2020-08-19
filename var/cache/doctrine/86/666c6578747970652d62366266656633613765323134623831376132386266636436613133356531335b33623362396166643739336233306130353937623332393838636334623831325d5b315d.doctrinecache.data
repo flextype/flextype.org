@@ -1,2 +1,0 @@
-1598473342
-a:7:{s:7:"enabled";b:1;s:11:"auto_reload";b:1;s:5:"cache";b:1;s:5:"debug";b:0;s:7:"charset";s:5:"UTF-8";s:10:"extensions";a:17:{i:0;s:5:"Cache";i:1;s:7:"Entries";i:2;s:7:"Emitter";i:3;s:4:"I18n";i:4;s:4:"Json";i:5;s:4:"Yaml";i:6;s:6:"Parser";i:7;s:10:"Serializer";i:8;s:8:"Markdown";i:9;s:10:"Filesystem";i:10;s:4:"Csrf";i:11;s:10:"GlobalVars";i:12;s:3:"Url";i:13;s:8:"Registry";i:14;s:10:"Shortcodes";i:15;s:3:"Arr";i:16;s:5:"Flash";}s:8:"priority";i:100;}

@@ -1,7 +1,0 @@
-1598473417
-a:10:{s:5:"title";s:22:"Flextype 0.7.3 release";s:4:"tags";s:7:"release";s:8:"template";s:9:"blog-post";s:12:"published_at";i:1544694360;s:7:"content";s:269:"* Content: visibility hidden for pages - added
-* Settings merged into one settings.yaml file
-* Using Imagine library for image manipulation
-* Flextype Component - I18n updated to 1.2.0
-* Flextype Component - Filesystem updated to 1.1.3
-* Symfony YAML - updated to 4.2.1";s:10:"created_at";i:1594145409;s:11:"modified_at";i:1594145409;s:4:"slug";s:22:"en/blog/flextype-0-7-3";s:8:"routable";b:1;s:10:"visibility";s:7:"visible";}

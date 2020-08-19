@@ -1,9 +1,0 @@
-1598473417
-a:5:{s:5:"title";s:22:"Flextype 0.9.3 release";s:4:"tags";s:7:"release";s:8:"template";s:9:"blog-post";s:12:"published_at";s:16:"07-07-2019 09:46";s:7:"content";s:743:"### Fixed
-- Flextype Core: Entries - issue with binding arguments inside method fetchAll() - fixed. #182
-- Flextype Core: Entries - issue with possible boolean false result from Filesystem::getTimestamp() inside method fetchAll() - fixed. #182
-- Flextype Core: Entries - issue with possible boolean false result from Filesystem::getTimestamp() inside method fetch() - fixed. #182
-- **Flextype Admin Panel: critical issue with possibility to register two admins! - fixed. #183 #182**
-- Flextype Admin Panel: Left Navigation - active state for Templates area - fixed. #182
-- Flextype Default Theme: issue with `TypeError: undefined is not an object` for lightbox - fixed. #182
-- Flextype Default Theme: fix thumbnail image for Default Theme #182";}

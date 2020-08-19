@@ -1,5 +1,0 @@
-1598473417
-a:5:{s:5:"title";s:22:"Flextype 0.6.0 release";s:4:"tags";s:7:"release";s:8:"template";s:9:"blog-post";s:12:"published_at";s:16:"09-06-2018 09:46";s:7:"content";s:212:"* Content: Markdown(Parsedown) parser removed! From now we are using plain HTML + Shortcodes
-* Theme Simple: Cross-site scripting Vulnerabilities fixes
-* Improving main .htaccess
-* Code cleanup and refactoring #5";}

@@ -1,2 +1,0 @@
-1598476331
-a:8:{s:4:"name";s:3:"NES";s:7:"version";s:5:"1.5.0";s:11:"description";s:23:"NES theme for Flextype.";s:6:"author";a:3:{s:4:"name";s:16:"Sergey Romanenko";s:5:"email";s:20:"support@flextype.org";s:3:"url";s:20:"https://flextype.org";}s:8:"homepage";s:38:"https://github.com/flextype-themes/nes";s:4:"bugs";s:45:"https://github.com/flextype-themes/nes/issues";s:7:"license";s:3:"MIT";s:12:"dependencies";a:3:{s:8:"flextype";s:6:"0.9.10";s:4:"site";s:7:">=1.0.0";s:4:"twig";s:7:">=1.0.0";}}
