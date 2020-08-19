@@ -8,7 +8,7 @@
             <div class="flex justify-center wow fadeIn">
                 <a
                     href="{{ base_url() }}/{{ locale }}/downloads"
-                    class="no-underline uppercase text-center relative text-lg relative pr-2 pl-2 pt-6 pb-6 w-10/12 lg:w-3/12 rounded-lg border-black bg-white border-2 text-black hover:bg-black hover:text-white wow fadeIn">{{ entry.txt_intro_section_button|raw }}</a>
+                    class="w-10/12 lg:w-3/12 wow fadeIn button">{{ entry.txt_intro_section_button|raw }}</a>
             </div>
             <div class="flex justify-center wow fadeIn">
                 <div class="mt-20">
@@ -168,7 +168,7 @@
                     <div class="text-base h-40">
                         {{ entry.txt_discord_p|raw }}
                     </div>
-                    <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn" href="https://discord.gg/CCKPKVG">{{ entry.txt_discord_button|raw }}</a>
+                    <a class="pl-6 pr-6 pt-2 pb-2 wow fadeIn button text-base" href="https://discord.gg/CCKPKVG">{{ entry.txt_discord_button|raw }}</a>
                 </div>
 
                 <div class="w-full lg:w-4/12 p-6 wow fadeIn">
@@ -177,7 +177,7 @@
                     <div class="text-base h-40">
                         {{ entry.txt_github_p|replace({"%url_start%": '<a href="https://github.com/flextype/flextype/issues">', "%url_end%": "</a>"})|raw }}
                     </div>
-                    <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn" href="https://github.com/flextype">{{ entry.txt_github_button|raw }}</a>
+                    <a class="pl-6 pr-6 pt-2 pb-2 wow fadeIn button text-base" href="https://github.com/flextype">{{ entry.txt_github_button|raw }}</a>
                 </div>
 
                 <div class="w-full lg:w-4/12 p-6 wow fadeIn">
@@ -186,7 +186,7 @@
                     <div class="text-base h-40">
                         {{ entry.txt_twitter_p|replace({"%url_start%": '<a href="https://twitter.com/getflextype">', "%url_end%": "</a>"})|raw }}
                     </div>
-                    <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn" href="https://twitter.com/getflextype">{{ entry.txt_twitter_button|raw }}</a>
+                    <a class="pl-6 pr-6 pt-2 pb-2 wow fadeIn button text-base" href="https://twitter.com/getflextype">{{ entry.txt_twitter_button|raw }}</a>
                 </div>
             </div>
 

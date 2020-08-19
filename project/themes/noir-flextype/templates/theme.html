@@ -36,7 +36,7 @@
                 </div>
                 <div class="flex-grow"></div>
                 <div>
-                    <a class="no-underline text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 rounded-lg hover:bg-black hover:text-white hover:border-black wow fadeIn"
+                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base wow fadeIn"
                     href="{{ entry.github }}/releases/download/v{{ theme.version }}/{{ name }}-{{ theme.version }}.zip">DOWNLOAD</a>
                 </div>
             </div>
@@ -60,21 +60,21 @@
             <h4>Information</h4>
             <div class="flex content-center flex-wrap">
                 <div class="w-full lg:w-3/12">
-                    <p class="m-0 text-gray-500">Version</p>
+                    <p class="m-0 opacity-50">Version</p>
                     <p>{{ theme.version }}</p>
                 </div>
                 <div class="w-full lg:w-3/12">
-                    <p class="m-0 text-gray-500">Lincense</p>
+                    <p class="m-0 opacity-50">Lincense</p>
                     <p>{{ theme.license }}</p>
                 </div>
                 <div class="w-full lg:w-3/12">
-                    <p class="m-0 text-gray-500">Dependencies</p>
+                    <p class="m-0 opacity-50">Dependencies</p>
                     {% for key, val in theme.dependencies %}
                         <a href="{{ url() }}/{{ locale }}/downloads/extend/themes/{{ key }}">{{ key }}</a>: {{ val }}<br>
                     {% endfor %}
                 </div>
                 <div class="w-full lg:w-3/12">
-                    <p class="m-0 text-gray-500">Links</p>
+                    <p class="m-0 opacity-50">Links</p>
                     <p>
                         {% if theme.homepage %}<a href="{{ theme.homepage }}">Homepage</a><br>{% endif %}
                         {% if theme.documentation %}<a href="{{ theme.documentation }}">Documentation</a><br>{% endif %}
@@ -85,7 +85,7 @@
             </div>
             <div class="flex content-center flex-wrap">
                 <div class="w-full">
-                    <p class="m-0 text-gray-500">Tags</p>
+                    <p class="m-0 opacity-50">Tags</p>
                     <p>
                         {% set keywords = entry.keywords|replace({' ': ''}) %}
                         {% for tag in keywords|split(',') %}
@@ -120,7 +120,7 @@
                     {% for related_theme in related_themes %}
                         {% if related_theme.slug != entry.slug %}
                         <a href="{{ url() }}/{{ related_theme.slug }}" class="w-full p-2 lg:w-6/12 no-underline">
-                            <div class="flex p-6 text-black align-middle rounded-lg" style="background: #f8f9fb;">
+                            <div class="flex p-6 text-black align-middle rounded-lg extend wow fadeIn">
                                 <img src="{{ related_theme.preview }}" alt="{{ related_theme.title }}" style="height: 120px; margin-right: 20px;">
                                 <div class="text-left">
                                     <h4 class="text-xl pb-0 mb-0 block">{{ related_theme.title }}</h4>
