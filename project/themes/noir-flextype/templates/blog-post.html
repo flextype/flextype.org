@@ -54,7 +54,7 @@
                     {% for related_post in related_posts %}
                         {% if related_post.slug != entry.slug %}
                         <a href="{{ url() }}/{{ related_post.slug }}" class="w-full p-2 no-underline">
-                            <div class="flex align-middle rounded-lg mb-6 post wow fadeIn">
+                            <div class="flex align-middle mb-6 post wow fadeIn">
                                 <div class="text-left">
                                     <h4 class="text-xl pb-0 mb-0 block">{{ related_post.title }}</h4>
                                 </div>
