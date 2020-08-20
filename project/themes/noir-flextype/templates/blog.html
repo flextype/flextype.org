@@ -101,7 +101,7 @@
         <div class="flex content-center flex-wrap">
             <div class="w-full lg:w-9/12 p-2 text-left">
                 {% for post in blog_posts %}
-                <a href="{{ url() }}/{{ post.slug }}" class="flex align-middle  mb-6 px-6 post wow fadeIn">
+                <a href="{{ url() }}/{{ post.slug }}" class="flex align-middle mb-6 px-6 post wow fadeIn">
                     <h4 class="w-8/12 text-xl pb-0 mb-0">{{ post.title }}</h4>
                     <div class="w-4/12 text-xl text-right opacity-50">
                         {{ post.published_at|date(registry.get('flextype.settings.date_display_format')) }}
@@ -145,7 +145,7 @@
                     {% if tags_cloud|length > 0 %}
                         <h4 class="text-left mb-2">Tags</h4>
                         {% for tag in tags_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
-                            <a class="no-underline  px-2 mb-2 block" href="{{ url() }}/{{ locale }}/blog?tag={{ tag|trim }}">#{{ tag|trim }}</a>
+                            <a class="no-underline px-2 mb-2 block" href="{{ url() }}/{{ locale }}/blog?tag={{ tag|trim }}">#{{ tag|trim }}</a>
                         {% endfor %}
                     {% endif %}
                     {# /tags-cloud #}

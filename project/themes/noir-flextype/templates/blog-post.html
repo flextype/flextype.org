@@ -48,16 +48,15 @@
                 {% endfor %}
 
                 {% if related_posts|length > 0 %}
-                <hr class="mt-6 mb-6 border-1" style="border-color: #f8f9fb;">
+                <hr class="mt-6 mb-6 border-2">
                 <div class="p-2 text-black mb-6">
                     <h4>Related Posts</h4>
                     {% for related_post in related_posts %}
                         {% if related_post.slug != entry.slug %}
-                        <a href="{{ url() }}/{{ related_post.slug }}" class="w-full p-2 no-underline">
-                            <div class="flex align-middle mb-6 post wow fadeIn">
-                                <div class="text-left">
-                                    <h4 class="text-xl pb-0 mb-0 block">{{ related_post.title }}</h4>
-                                </div>
+                        <a href="{{ url() }}/{{ related_post.slug }}" class="flex align-middle mb-6 px-6 post wow fadeIn">
+                            <h4 class="w-8/12 text-xl pb-0 mb-0">{{ related_post.title }}</h4>
+                            <div class="w-4/12 text-xl text-right opacity-50">
+                                {{ related_post.published_at|date(registry.get('flextype.settings.date_display_format')) }}
                             </div>
                         </a>
                         {% endif %}
