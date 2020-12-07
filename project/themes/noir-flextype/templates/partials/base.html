@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="{{ locale }}">
-    {% set home = entries.fetch(locale) %}
-    {% set static_version = 9 %}
+    {% set home = entries.fetchSingle(locale) %}
+    {% set static_version = 10 %}
     <head>
         {% block head %}
             <meta charset="{{ registry.get('flextype.settings.charset')|lower }}">
