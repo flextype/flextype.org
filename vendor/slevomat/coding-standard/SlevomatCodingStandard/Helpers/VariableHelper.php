@@ -26,10 +26,7 @@ class VariableHelper
 
 	public static function isUsedInScope(File $phpcsFile, int $scopeOwnerPointer, int $variablePointer): bool
 	{
-		$tokens = $phpcsFile->getTokens();
-
-		$firstPointerInScope = $tokens[$scopeOwnerPointer]['code'] === T_OPEN_TAG ? $scopeOwnerPointer + 1 : $tokens[$scopeOwnerPointer]['scope_opener'] + 1;
-		return self::isUsedInScopeInternal($phpcsFile, $scopeOwnerPointer, $variablePointer, $firstPointerInScope);
+		return self::isUsedInScopeInternal($phpcsFile, $scopeOwnerPointer, $variablePointer, null);
 	}
 
 	public static function isUsedInScopeAfterPointer(
@@ -99,14 +96,14 @@ class VariableHelper
 		}
 
 		$variableNameWithoutDollar = substr($variableName, 1);
-		return preg_match('~\$\{' . preg_quote($variableNameWithoutDollar, '~') . '\}~', $stringContent) !== 0;
+		return preg_match('~\$\{' . preg_quote($variableNameWithoutDollar, '~') . '(<=\}|\b)~', $stringContent) !== 0;
 	}
 
 	private static function isUsedInScopeInternal(
 		File $phpcsFile,
 		int $scopeOwnerPointer,
 		int $variablePointer,
-		int $startCheckPointer
+		?int $startCheckPointer
 	): bool
 	{
 		$tokens = $phpcsFile->getTokens();
@@ -117,6 +114,10 @@ class VariableHelper
 		$firstPointerInScope = $tokens[$scopeOwnerPointer]['code'] === T_OPEN_TAG
 			? $scopeOwnerPointer + 1
 			: $tokens[$scopeOwnerPointer]['scope_opener'] + 1;
+
+		if ($startCheckPointer === null) {
+			$startCheckPointer = $firstPointerInScope;
+		}
 
 		for ($i = $startCheckPointer; $i <= $scopeCloserPointer; $i++) {
 			if (!ScopeHelper::isInSameScope($phpcsFile, $i, $firstPointerInScope)) {
@@ -130,11 +131,14 @@ class VariableHelper
 				return true;
 			}
 
-			if (
-				$tokens[$i]['code'] === T_STRING
-				&& self::isUsedInCompactFunction($phpcsFile, $variablePointer, $i)
-			) {
-				return true;
+			if ($tokens[$i]['code'] === T_STRING) {
+				if (self::isGetDefinedVarsCall($phpcsFile, $i)) {
+					return true;
+				}
+
+				if (self::isUsedInCompactFunction($phpcsFile, $variablePointer, $i)) {
+					return true;
+				}
 			}
 
 			if (
@@ -146,6 +150,19 @@ class VariableHelper
 		}
 
 		return false;
+	}
+
+	private static function isGetDefinedVarsCall(File $phpcsFile, int $stringPointer): bool
+	{
+		$tokens = $phpcsFile->getTokens();
+
+		$stringContent = $tokens[$stringPointer]['content'];
+		if (strtolower($stringContent) !== 'get_defined_vars') {
+			return false;
+		}
+
+		$parenthesisOpenerPointer = TokenHelper::findNextEffective($phpcsFile, $stringPointer + 1);
+		return $tokens[$parenthesisOpenerPointer]['code'] === T_OPEN_PARENTHESIS;
 	}
 
 }

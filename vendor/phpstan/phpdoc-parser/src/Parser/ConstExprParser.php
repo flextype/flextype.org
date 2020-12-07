@@ -8,7 +8,7 @@ use PHPStan\PhpDocParser\Lexer\Lexer;
 class ConstExprParser
 {
 
-	public function parse(TokenIterator $tokens): Ast\ConstExpr\ConstExprNode
+	public function parse(TokenIterator $tokens, bool $trimStrings = false): Ast\ConstExpr\ConstExprNode
 	{
 		if ($tokens->isCurrentTokenType(Lexer::TOKEN_FLOAT)) {
 			$value = $tokens->currentTokenValue();
@@ -22,11 +22,17 @@ class ConstExprParser
 
 		} elseif ($tokens->isCurrentTokenType(Lexer::TOKEN_SINGLE_QUOTED_STRING)) {
 			$value = $tokens->currentTokenValue();
+			if ($trimStrings) {
+				$value = trim($tokens->currentTokenValue(), "'");
+			}
 			$tokens->next();
 			return new Ast\ConstExpr\ConstExprStringNode($value);
 
 		} elseif ($tokens->isCurrentTokenType(Lexer::TOKEN_DOUBLE_QUOTED_STRING)) {
 			$value = $tokens->currentTokenValue();
+			if ($trimStrings) {
+				$value = trim($tokens->currentTokenValue(), '"');
+			}
 			$tokens->next();
 			return new Ast\ConstExpr\ConstExprStringNode($value);
 
@@ -47,8 +53,18 @@ class ConstExprParser
 			}
 
 			if ($tokens->tryConsumeTokenType(Lexer::TOKEN_DOUBLE_COLON)) {
-				$classConstantName = $tokens->currentTokenValue();
-				$tokens->consumeTokenType(Lexer::TOKEN_IDENTIFIER);
+				$classConstantName = '';
+				if ($tokens->currentTokenType() === Lexer::TOKEN_IDENTIFIER) {
+					$classConstantName .= $tokens->currentTokenValue();
+					$tokens->consumeTokenType(Lexer::TOKEN_IDENTIFIER);
+					if ($tokens->tryConsumeTokenType(Lexer::TOKEN_WILDCARD)) {
+						$classConstantName .= '*';
+					}
+				} else {
+					$tokens->consumeTokenType(Lexer::TOKEN_WILDCARD);
+					$classConstantName .= '*';
+				}
+
 				return new Ast\ConstExpr\ConstFetchNode($identifier, $classConstantName);
 
 			}

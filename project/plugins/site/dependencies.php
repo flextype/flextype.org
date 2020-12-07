@@ -9,11 +9,26 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Flextype;
+namespace Flextype\Plugin\Site;
+
+use Flextype\Plugin\Site\Controllers\SiteController;
+use Flextype\Plugin\Site\Models\Themes;
+
+/**
+ * Add themes service to Flextype container
+ */
+flextype()->container()['themes'] = static function () {
+    return new Themes();
+};
+
+/**
+ * Init themes
+ */
+flextype()->container()['themes']->init();
 
 /**
  * Add site controller to Flextype container
  */
-$flextype['SiteController'] = static function ($container) {
-    return new SiteController($container);
+flextype()->container()['SiteController'] = static function () {
+    return new SiteController();
 };

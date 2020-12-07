@@ -78,11 +78,18 @@ class NewWithParenthesesSniff implements Sniff
 			$shouldBeOpenParenthesisPointer++;
 		} while (true);
 
-		if ($shouldBeOpenParenthesisPointer !== null && $tokens[$shouldBeOpenParenthesisPointer]['code'] === T_OPEN_PARENTHESIS) {
+		if (
+			$shouldBeOpenParenthesisPointer !== null
+			&& $tokens[$shouldBeOpenParenthesisPointer]['code'] === T_OPEN_PARENTHESIS
+		) {
 			return;
 		}
 
-		$fix = $phpcsFile->addFixableError('Usage of "new" without parentheses is disallowed.', $newPointer, self::CODE_MISSING_PARENTHESES);
+		$fix = $phpcsFile->addFixableError(
+			'Usage of "new" without parentheses is disallowed.',
+			$newPointer,
+			self::CODE_MISSING_PARENTHESES
+		);
 		if (!$fix) {
 			return;
 		}

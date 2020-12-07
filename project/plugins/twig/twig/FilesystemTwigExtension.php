@@ -7,16 +7,15 @@ declare(strict_types=1);
  * Founded by Sergey Romanenko and maintained by Flextype Community.
  */
 
-namespace Flextype;
+namespace Flextype\Plugin\Twig\Twig;
 
 use Flextype\Component\Filesystem\Filesystem;
-use Twig_Extension;
-use Twig_SimpleFunction;
+use Twig\Extension\AbstractExtension;
 use function basename;
 use function strrchr;
 use function substr;
 
-class FilesystemTwigExtension extends Twig_Extension
+class FilesystemTwigExtension extends AbstractExtension
 {
     /**
      * Callback for twig.
@@ -26,11 +25,11 @@ class FilesystemTwigExtension extends Twig_Extension
     public function getFunctions() : array
     {
         return [
-            new Twig_SimpleFunction('filesystem_list_contents', [$this, 'list_contents']),
-            new Twig_SimpleFunction('filesystem_has', [$this, 'has']),
-            new Twig_SimpleFunction('filesystem_read', [$this, 'read']),
-            new Twig_SimpleFunction('filesystem_ext', [$this, 'ext']),
-            new Twig_SimpleFunction('filesystem_basename', [$this, 'basename']),
+            new \Twig\TwigFunction('filesystem_list_contents', [$this, 'list_contents']),
+            new \Twig\TwigFunction('filesystem_has', [$this, 'has']),
+            new \Twig\TwigFunction('filesystem_read', [$this, 'read']),
+            new \Twig\TwigFunction('filesystem_ext', [$this, 'ext']),
+            new \Twig\TwigFunction('filesystem_basename', [$this, 'basename']),
         ];
     }
 

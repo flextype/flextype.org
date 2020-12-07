@@ -7,12 +7,12 @@ declare(strict_types=1);
  * Founded by Sergey Romanenko and maintained by Flextype Community.
  */
 
-namespace Flextype;
+namespace Flextype\Plugin\Icon\Twig;
 
-use Twig_Extension;
-use Twig_SimpleFunction;
+use Twig\Extension\AbstractExtension;
+use Flextype\Plugin\Icon\Models\Icon;
 
-class IconTwigExtension extends Twig_Extension
+class IconTwigExtension extends AbstractExtension
 {
     /**
      * Callback for twig.
@@ -22,7 +22,7 @@ class IconTwigExtension extends Twig_Extension
     public function getFunctions() : array
     {
         return [
-            new Twig_SimpleFunction('icon', [$this, 'icon'], ['is_safe' => ['html']])
+            new \Twig\TwigFunction('icon', [$this, 'icon'], ['is_safe' => ['html']])
         ];
     }
 

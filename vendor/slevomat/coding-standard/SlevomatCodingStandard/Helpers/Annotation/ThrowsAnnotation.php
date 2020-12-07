@@ -3,12 +3,12 @@
 namespace SlevomatCodingStandard\Helpers\Annotation;
 
 use InvalidArgumentException;
-use LogicException;
 use PHPStan\PhpDocParser\Ast\PhpDoc\ThrowsTagValueNode;
 use PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
 use PHPStan\PhpDocParser\Ast\Type\TypeNode;
 use PHPStan\PhpDocParser\Ast\Type\UnionTypeNode;
 use SlevomatCodingStandard\Helpers\AnnotationTypeHelper;
+use function in_array;
 use function sprintf;
 
 /**
@@ -22,7 +22,7 @@ class ThrowsAnnotation extends Annotation
 
 	public function __construct(string $name, int $startPointer, int $endPointer, ?string $content, ?ThrowsTagValueNode $contentNode)
 	{
-		if ($name !== '@throws') {
+		if (!in_array($name, ['@throws', '@phpstan-throws'], true)) {
 			throw new InvalidArgumentException(sprintf('Unsupported annotation %s.', $name));
 		}
 
@@ -38,9 +38,7 @@ class ThrowsAnnotation extends Annotation
 
 	public function getContentNode(): ThrowsTagValueNode
 	{
-		if ($this->isInvalid()) {
-			throw new LogicException(sprintf('Invalid %s annotation.', $this->name));
-		}
+		$this->errorWhenInvalid();
 
 		return $this->contentNode;
 	}
@@ -52,9 +50,7 @@ class ThrowsAnnotation extends Annotation
 
 	public function getDescription(): ?string
 	{
-		if ($this->isInvalid()) {
-			throw new LogicException(sprintf('Invalid %s annotation.', $this->name));
-		}
+		$this->errorWhenInvalid();
 
 		return $this->contentNode->description !== '' ? $this->contentNode->description : null;
 	}
@@ -64,9 +60,7 @@ class ThrowsAnnotation extends Annotation
 	 */
 	public function getType(): TypeNode
 	{
-		if ($this->isInvalid()) {
-			throw new LogicException(sprintf('Invalid %s annotation.', $this->name));
-		}
+		$this->errorWhenInvalid();
 
 		/** @var UnionTypeNode|IdentifierTypeNode $type */
 		$type = $this->contentNode->type;

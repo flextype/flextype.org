@@ -8,6 +8,7 @@ use SlevomatCodingStandard\Helpers\NamespaceHelper;
 use SlevomatCodingStandard\Helpers\ReferencedName;
 use SlevomatCodingStandard\Helpers\ReferencedNameHelper;
 use SlevomatCodingStandard\Helpers\SniffSettingsHelper;
+use SlevomatCodingStandard\Helpers\TokenHelper;
 use SlevomatCodingStandard\Helpers\UseStatement;
 use SlevomatCodingStandard\Helpers\UseStatementHelper;
 use function array_flip;
@@ -28,8 +29,14 @@ abstract class AbstractFullyQualifiedGlobalReference implements Sniff
 	/** @var string[] */
 	public $exclude = [];
 
+	/** @var string[] */
+	public $include = [];
+
 	/** @var string[]|null */
 	private $normalizedExclude;
+
+	/** @var string[]|null */
+	private $normalizedInclude;
 
 	abstract protected function getNotFullyQualifiedMessage(): string;
 
@@ -54,9 +61,15 @@ abstract class AbstractFullyQualifiedGlobalReference implements Sniff
 	 */
 	public function process(File $phpcsFile, $openTagPointer): void
 	{
+		if (TokenHelper::findPrevious($phpcsFile, T_OPEN_TAG, $openTagPointer - 1) !== null) {
+			return;
+		}
+
 		$tokens = $phpcsFile->getTokens();
 
+		$namespacePointers = NamespaceHelper::getAllNamespacesPointers($phpcsFile);
 		$referencedNames = ReferencedNameHelper::getAllReferencedNames($phpcsFile, $openTagPointer);
+		$include = array_flip($this->getNormalizedInclude());
 		$exclude = array_flip($this->getNormalizedExclude());
 
 		foreach ($referencedNames as $referencedName) {
@@ -75,7 +88,7 @@ abstract class AbstractFullyQualifiedGlobalReference implements Sniff
 				continue;
 			}
 
-			if (NamespaceHelper::findCurrentNamespaceName($phpcsFile, $namePointer) === null) {
+			if ($namespacePointers === []) {
 				continue;
 			}
 
@@ -90,11 +103,19 @@ abstract class AbstractFullyQualifiedGlobalReference implements Sniff
 				}
 			}
 
+			if ($include !== [] && !array_key_exists($canonicalName, $include)) {
+				continue;
+			}
+
 			if (array_key_exists($canonicalName, $exclude)) {
 				continue;
 			}
 
-			$fix = $phpcsFile->addFixableError(sprintf($this->getNotFullyQualifiedMessage(), $tokens[$namePointer]['content']), $namePointer, self::CODE_NON_FULLY_QUALIFIED);
+			$fix = $phpcsFile->addFixableError(
+				sprintf($this->getNotFullyQualifiedMessage(), $tokens[$namePointer]['content']),
+				$namePointer,
+				self::CODE_NON_FULLY_QUALIFIED
+			);
 			if (!$fix) {
 				continue;
 			}
@@ -108,20 +129,40 @@ abstract class AbstractFullyQualifiedGlobalReference implements Sniff
 	/**
 	 * @return string[]
 	 */
+	protected function getNormalizedInclude(): array
+	{
+		if ($this->normalizedInclude === null) {
+			$this->normalizedInclude = $this->normalizeNames($this->include);
+		}
+		return $this->normalizedInclude;
+	}
+
+	/**
+	 * @return string[]
+	 */
 	private function getNormalizedExclude(): array
 	{
 		if ($this->normalizedExclude === null) {
-			$exclude = SniffSettingsHelper::normalizeArray($this->exclude);
-
-			if (!$this->isCaseSensitive()) {
-				$exclude = array_map(static function (string $name): string {
-					return strtolower($name);
-				}, $exclude);
-			}
-
-			$this->normalizedExclude = $exclude;
+			$this->normalizedExclude = $this->normalizeNames($this->exclude);
 		}
 		return $this->normalizedExclude;
+	}
+
+	/**
+	 * @param string[] $names
+	 * @return string[]
+	 */
+	private function normalizeNames(array $names): array
+	{
+		$names = SniffSettingsHelper::normalizeArray($names);
+
+		if (!$this->isCaseSensitive()) {
+			$names = array_map(static function (string $name): string {
+				return strtolower($name);
+			}, $names);
+		}
+
+		return $names;
 	}
 
 }

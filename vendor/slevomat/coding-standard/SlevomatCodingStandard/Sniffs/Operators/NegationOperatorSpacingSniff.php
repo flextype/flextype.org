@@ -4,7 +4,10 @@ namespace SlevomatCodingStandard\Sniffs\Operators;
 
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
+use SlevomatCodingStandard\Helpers\IdentificatorHelper;
+use SlevomatCodingStandard\Helpers\SniffSettingsHelper;
 use SlevomatCodingStandard\Helpers\TokenHelper;
+use function array_merge;
 use function in_array;
 use function sprintf;
 use function strlen;
@@ -17,7 +20,6 @@ use const T_ENCAPSED_AND_WHITESPACE;
 use const T_LNUMBER;
 use const T_MINUS;
 use const T_NUM_STRING;
-use const T_STRING;
 use const T_VARIABLE;
 use const T_WHITESPACE;
 
@@ -48,32 +50,45 @@ class NegationOperatorSpacingSniff implements Sniff
 
 		$previousEffective = TokenHelper::findPreviousEffective($phpcsFile, $pointer - 1);
 
-		$possibleOperandTypes = [
-			T_CONSTANT_ENCAPSED_STRING,
-			T_CLOSE_PARENTHESIS,
-			T_CLOSE_SHORT_ARRAY,
-			T_CLOSE_SQUARE_BRACKET,
-			T_DNUMBER,
-			T_ENCAPSED_AND_WHITESPACE,
-			T_LNUMBER,
-			T_NUM_STRING,
-			T_STRING,
-			T_VARIABLE,
-		];
+		$possibleOperandTypes = array_merge(
+			TokenHelper::getOnlyNameTokenCodes(),
+			[
+				T_CONSTANT_ENCAPSED_STRING,
+				T_CLOSE_PARENTHESIS,
+				T_CLOSE_SHORT_ARRAY,
+				T_CLOSE_SQUARE_BRACKET,
+				T_DNUMBER,
+				T_ENCAPSED_AND_WHITESPACE,
+				T_LNUMBER,
+				T_NUM_STRING,
+				T_VARIABLE,
+			]
+		);
 
 		if (in_array($tokens[$previousEffective]['code'], $possibleOperandTypes, true)) {
+			return;
+		}
+
+		$possibleVariableStartPointer = IdentificatorHelper::findStartPointer($phpcsFile, $previousEffective);
+		if ($possibleVariableStartPointer !== null) {
 			return;
 		}
 
 		$whitespacePointer = $pointer + 1;
 
 		$numberOfSpaces = $tokens[$whitespacePointer]['code'] !== T_WHITESPACE ? 0 : strlen($tokens[$whitespacePointer]['content']);
-		if ($numberOfSpaces === $this->spacesCount) {
+		$requiredNumberOfSpaces = SniffSettingsHelper::normalizeInteger($this->spacesCount);
+		if ($numberOfSpaces === $requiredNumberOfSpaces) {
 			return;
 		}
 
 		$fix = $phpcsFile->addFixableError(
-			sprintf('Expected exactly %d space after "%s", %d found.', $this->spacesCount, $tokens[$pointer]['content'], $numberOfSpaces),
+			sprintf(
+				'Expected exactly %d space after "%s", %d found.',
+				$requiredNumberOfSpaces,
+				$tokens[$pointer]['content'],
+				$numberOfSpaces
+			),
 			$pointer,
 			self::CODE_INVALID_SPACE_AFTER_MINUS
 		);
@@ -82,7 +97,7 @@ class NegationOperatorSpacingSniff implements Sniff
 			return;
 		}
 
-		if ($this->spacesCount > $numberOfSpaces) {
+		if ($requiredNumberOfSpaces > $numberOfSpaces) {
 			$phpcsFile->fixer->addContent($pointer, ' ');
 
 			return;

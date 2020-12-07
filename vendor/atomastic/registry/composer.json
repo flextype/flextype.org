@@ -1,0 +1,36 @@
+{
+    "name": "atomastic/registry",
+    "description": "Registry Component provides a fluent, object-oriented interface for storing data globally in a well managed fashion, helping to prevent global meltdown.",
+    "license": "MIT",
+    "keywords": [
+        "Registry", "registry", "php-registry", "php", "atomastic"
+    ],
+    "support": {
+      "source": "https://github.com/atomastic/registry",
+      "issues": "https://github.com/atomastic/registry/issues"
+    },
+    "authors": [
+        {
+            "name": "Sergey Romanenko",
+            "email": "sergey.romanenko@flextype.org",
+            "homepage": "https://github.com/Awilum"
+        }
+    ],
+    "require": {
+        "php": "^7.3 || ^8.0",
+        "atomastic/arrays": "^2.0"
+    },
+    "autoload":{
+        "psr-4": {
+            "Atomastic\\Registry\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "require-dev": {
+        "doctrine/coding-standard": "8.1.0",
+        "pestphp/pest": "^0.3.3",
+        "phpstan/phpstan": "^0.12.42"
+    }
+}

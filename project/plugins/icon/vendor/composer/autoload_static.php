@@ -4,17 +4,40 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitee9ba071db68b8fbb2bb8d9347061509
+class ComposerStaticInit2f351648820c5698d42d499d98ab43b7
 {
+    public static $prefixLengthsPsr4 = array (
+        'F' => 
+        array (
+            'Flextype\\Component\\Filesystem\\' => 30,
+            'Flextype\\Component\\Arrays\\' => 26,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Flextype\\Component\\Filesystem\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/flextype-components/filesystem',
+        ),
+        'Flextype\\Component\\Arrays\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/flextype-components/arrays/src',
+        ),
+    );
+
     public static $classMap = array (
-        'Flextype\\Icon' => __DIR__ . '/../..' . '/app/Models/Icon.php',
-        'Flextype\\IconTwigExtension' => __DIR__ . '/../..' . '/twig/IconTwigExtension.php',
+        'Flextype\\Component\\Arrays\\Arrays' => __DIR__ . '/..' . '/flextype-components/arrays/src/Arrays.php',
+        'Flextype\\Component\\Filesystem\\Filesystem' => __DIR__ . '/..' . '/flextype-components/filesystem/Filesystem.php',
+        'Flextype\\Plugin\\Icon\\Models\\Icon' => __DIR__ . '/../..' . '/app/Models/Icon.php',
+        'Flextype\\Plugin\\Icon\\Twig\\IconTwigExtension' => __DIR__ . '/../..' . '/twig/IconTwigExtension.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInitee9ba071db68b8fbb2bb8d9347061509::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2f351648820c5698d42d499d98ab43b7::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2f351648820c5698d42d499d98ab43b7::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit2f351648820c5698d42d499d98ab43b7::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -5,7 +5,9 @@ namespace SlevomatCodingStandard\Helpers;
 use PHP_CodeSniffer\Files\File;
 use function in_array;
 use function ltrim;
+use function preg_replace_callback;
 use function rtrim;
+use function str_repeat;
 use function strlen;
 use function substr;
 use const T_END_HEREDOC;
@@ -19,8 +21,10 @@ use const T_START_NOWDOC;
 class IndentationHelper
 {
 
-	private const TAB_INDENT = "\t";
-	private const SPACES_INDENT = '    ';
+	public const DEFAULT_INDENTATION_WIDTH = 4;
+
+	public const TAB_INDENT = "\t";
+	public const SPACES_INDENT = '    ';
 
 	public static function getIndentation(File $phpcsFile, int $pointer): string
 	{
@@ -29,13 +33,18 @@ class IndentationHelper
 		return TokenHelper::getContent($phpcsFile, $firstPointerOnLine, $pointer - 1);
 	}
 
-	public static function addIndentation(string $identation): string
+	public static function addIndentation(string $identation, int $level = 1): string
 	{
-		if ($identation === '') {
-			return self::TAB_INDENT;
-		}
+		$whitespace = self::getOneIndentationLevel($identation);
 
-		return $identation . ($identation[0] === self::TAB_INDENT ? self::TAB_INDENT : self::SPACES_INDENT);
+		return $identation . str_repeat($whitespace, $level);
+	}
+
+	public static function getOneIndentationLevel(string $identation): string
+	{
+		return $identation === ''
+			? self::TAB_INDENT
+			: ($identation[0] === self::TAB_INDENT ? self::TAB_INDENT : self::SPACES_INDENT);
 	}
 
 	/**
@@ -58,14 +67,17 @@ class IndentationHelper
 
 			if (
 				!$inHeredoc
-				&& ($no === 0 || substr($tokens[$codePointer - 1]['content'], -$eolLength) === $phpcsFile->eolChar)
+				&& (
+					$no === 0
+					|| substr($tokens[$codePointer - 1]['content'], -$eolLength) === $phpcsFile->eolChar
+				)
 			) {
 				if ($content === $phpcsFile->eolChar) {
 					// Nothing
 				} elseif ($content[0] === self::TAB_INDENT) {
 					$content = substr($content, 1);
-				} elseif (substr($content, 0, 4) === self::SPACES_INDENT) {
-					$content = substr($content, 4);
+				} elseif (substr($content, 0, self::DEFAULT_INDENTATION_WIDTH) === self::SPACES_INDENT) {
+					$content = substr($content, self::DEFAULT_INDENTATION_WIDTH);
 				} else {
 					$content = $defaultIndentation . ltrim($content);
 				}
@@ -81,6 +93,17 @@ class IndentationHelper
 		}
 
 		return rtrim($code);
+	}
+
+	public static function convertTabsToSpaces(File $phpcsFile, string $code): string
+	{
+		return preg_replace_callback('~^(\t+)~', static function (array $matches) use ($phpcsFile): string {
+			$indentation = str_repeat(
+				' ',
+				$phpcsFile->config->tabWidth !== 0 ? $phpcsFile->config->tabWidth : self::DEFAULT_INDENTATION_WIDTH
+			);
+			return str_repeat($indentation, strlen($matches[1]));
+		}, $code);
 	}
 
 }

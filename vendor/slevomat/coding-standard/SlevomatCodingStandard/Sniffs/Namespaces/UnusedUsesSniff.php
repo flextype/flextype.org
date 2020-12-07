@@ -29,6 +29,7 @@ use function array_diff_key;
 use function array_key_exists;
 use function array_map;
 use function array_merge;
+use function array_reverse;
 use function count;
 use function in_array;
 use function preg_match;
@@ -78,27 +79,28 @@ class UnusedUsesSniff implements Sniff
 	 */
 	public function process(File $phpcsFile, $openTagPointer): void
 	{
-		$startPointer = TokenHelper::findPrevious($phpcsFile, T_NAMESPACE, $openTagPointer - 1);
-		if ($startPointer === null) {
-			$startPointer = TokenHelper::findNext($phpcsFile, T_OPEN_TAG, 0);
+		if (TokenHelper::findPrevious($phpcsFile, T_OPEN_TAG, $openTagPointer - 1) !== null) {
+			return;
 		}
+
+		$startPointer = TokenHelper::findPrevious($phpcsFile, T_NAMESPACE, $openTagPointer - 1) ?? $openTagPointer;
 
 		$fileUnusedNames = UseStatementHelper::getFileUseStatements($phpcsFile);
 		$referencedNames = ReferencedNameHelper::getAllReferencedNames($phpcsFile, $startPointer);
 
+		$pointersBeforeUseStatements = array_reverse(NamespaceHelper::getAllNamespacesPointers($phpcsFile));
+
 		$allUsedNames = [];
+
 		foreach ($referencedNames as $referencedName) {
-			$name = $referencedName->getNameAsReferencedInFile();
 			$pointer = $referencedName->getStartPointer();
+
+			$pointerBeforeUseStatements = $this->firstPointerBefore($pointer, $pointersBeforeUseStatements, $startPointer);
+
+			$name = $referencedName->getNameAsReferencedInFile();
 			$nameParts = NamespaceHelper::getNameParts($name);
 			$nameAsReferencedInFile = $nameParts[0];
 			$nameReferencedWithoutSubNamespace = count($nameParts) === 1;
-
-			$pointerBeforeUseStatements = TokenHelper::findPrevious($phpcsFile, T_NAMESPACE, $pointer - 1);
-			if ($pointerBeforeUseStatements === null) {
-				$pointerBeforeUseStatements = $startPointer;
-			}
-
 			$uniqueId = $nameReferencedWithoutSubNamespace
 				? UseStatement::getUniqueId($referencedName->getType(), $nameAsReferencedInFile)
 				: UseStatement::getUniqueId(ReferencedName::TYPE_DEFAULT, $nameAsReferencedInFile);
@@ -111,11 +113,15 @@ class UnusedUsesSniff implements Sniff
 			}
 
 			if ($fileUnusedNames[$pointerBeforeUseStatements][$uniqueId]->getNameAsReferencedInFile() !== $nameAsReferencedInFile) {
-				$phpcsFile->addError(sprintf(
-					'Case of reference name "%s" and use statement "%s" does not match.',
-					$nameAsReferencedInFile,
-					$fileUnusedNames[$pointerBeforeUseStatements][$uniqueId]->getNameAsReferencedInFile()
-				), $pointer, self::CODE_MISMATCHING_CASE);
+				$phpcsFile->addError(
+					sprintf(
+						'Case of reference name "%s" and use statement "%s" does not match.',
+						$nameAsReferencedInFile,
+						$fileUnusedNames[$pointerBeforeUseStatements][$uniqueId]->getNameAsReferencedInFile()
+					),
+					$pointer,
+					self::CODE_MISMATCHING_CASE
+				);
 			}
 
 			$allUsedNames[$pointerBeforeUseStatements][$uniqueId] = true;
@@ -137,10 +143,11 @@ class UnusedUsesSniff implements Sniff
 					continue;
 				}
 
-				$pointerBeforeUseStatements = TokenHelper::findPrevious($phpcsFile, T_NAMESPACE, $docCommentOpenPointer - 1);
-				if ($pointerBeforeUseStatements === null) {
-					$pointerBeforeUseStatements = $startPointer;
-				}
+				$pointerBeforeUseStatements = $this->firstPointerBefore(
+					$docCommentOpenPointer - 1,
+					$pointersBeforeUseStatements,
+					$startPointer
+				);
 
 				if (!array_key_exists($pointerBeforeUseStatements, $fileUnusedNames)) {
 					$searchAnnotationsPointer = $tokens[$docCommentOpenPointer]['comment_closer'] + 1;
@@ -159,7 +166,11 @@ class UnusedUsesSniff implements Sniff
 
 						if (
 							!in_array($annotationName, $this->getIgnoredAnnotationNames(), true)
-							&& preg_match('~^@(' . preg_quote($nameAsReferencedInFile, '~') . ')(?=[^-a-z\\d]|$)~i', $annotationName, $matches) !== 0
+							&& preg_match(
+								'~^@(' . preg_quote($nameAsReferencedInFile, '~') . ')(?=[^-a-z\\d]|$)~i',
+								$annotationName,
+								$matches
+							) !== 0
 						) {
 							$allUsedNames[$pointerBeforeUseStatements][$uniqueId] = true;
 
@@ -184,8 +195,16 @@ class UnusedUsesSniff implements Sniff
 							}
 
 							if (
-								preg_match('~(?<=^|[^a-z\\\\])(' . preg_quote($nameAsReferencedInFile, '~') . ')(?=::)~i', $annotation->getParameters(), $matches) === 0
-								&& preg_match('~(?<=@)(' . preg_quote($nameAsReferencedInFile, '~') . ')(?=[^\\w])~i', $annotation->getParameters(), $matches) === 0
+								preg_match(
+									'~(?<=^|[^a-z\\\\])(' . preg_quote($nameAsReferencedInFile, '~') . ')(?=::)~i',
+									$annotation->getParameters(),
+									$matches
+								) === 0
+								&& preg_match(
+									'~(?<=@)(' . preg_quote($nameAsReferencedInFile, '~') . ')(?=[^\\w])~i',
+									$annotation->getParameters(),
+									$matches
+								) === 0
 							) {
 								continue;
 							}
@@ -235,9 +254,12 @@ class UnusedUsesSniff implements Sniff
 									}
 								}
 								foreach (AnnotationHelper::getAnnotationConstantExpressions($annotation) as $annotationConstantExpression) {
-									$contentsToCheck = array_merge($contentsToCheck, array_map(static function (ConstFetchNode $constFetchNode): string {
-										return $constFetchNode->className;
-									}, AnnotationConstantExpressionHelper::getConstantFetchNodes($annotationConstantExpression)));
+									$contentsToCheck = array_merge(
+										$contentsToCheck,
+										array_map(static function (ConstFetchNode $constFetchNode): string {
+											return $constFetchNode->className;
+										}, AnnotationConstantExpressionHelper::getConstantFetchNodes($annotationConstantExpression))
+									);
 								}
 							} elseif ($annotationName === '@see') {
 								$parts = preg_split('~(\\s+|::)~', $content);
@@ -249,7 +271,11 @@ class UnusedUsesSniff implements Sniff
 							}
 
 							foreach ($contentsToCheck as $contentToCheck) {
-								if (preg_match('~(?<=^|\|)(' . preg_quote($nameAsReferencedInFile, '~') . ')(?=\\s|\\\\|\||\[|$)~i', $contentToCheck, $matches) === 0) {
+								if (preg_match(
+									'~(?<=^|\|)(' . preg_quote($nameAsReferencedInFile, '~') . ')(?=\\s|\\\\|\||\[|$)~i',
+									$contentToCheck,
+									$matches
+								) === 0) {
 									continue;
 								}
 
@@ -277,7 +303,10 @@ class UnusedUsesSniff implements Sniff
 			$usedNames = $allUsedNames[$pointerBeforeUnusedNames] ?? [];
 			foreach (array_diff_key($unusedNames, $usedNames) as $unusedUse) {
 				$fullName = $unusedUse->getFullyQualifiedTypeName();
-				if ($unusedUse->getNameAsReferencedInFile() !== $fullName && $unusedUse->getNameAsReferencedInFile() !== NamespaceHelper::getUnqualifiedNameFromFullyQualifiedName($fullName)) {
+				if (
+					$unusedUse->getNameAsReferencedInFile() !== $fullName
+					&& $unusedUse->getNameAsReferencedInFile() !== NamespaceHelper::getUnqualifiedNameFromFullyQualifiedName($fullName)
+				) {
 					$fullName .= sprintf(' (as %s)', $unusedUse->getNameAsReferencedInFile());
 				}
 				$fix = $phpcsFile->addFixableError(sprintf(
@@ -329,6 +358,23 @@ class UnusedUsesSniff implements Sniff
 		}
 
 		return $this->normalizedIgnoredAnnotations;
+	}
+
+	/**
+	 * @param int $pointer
+	 * @param int[] $pointersBeforeUseStatements
+	 * @param int $startPointer
+	 * @return int
+	 */
+	private function firstPointerBefore(int $pointer, array $pointersBeforeUseStatements, int $startPointer): int
+	{
+		foreach ($pointersBeforeUseStatements as $pointerBeforeUseStatements) {
+			if ($pointerBeforeUseStatements < $pointer) {
+				return $pointerBeforeUseStatements;
+			}
+		}
+
+		return $startPointer;
 	}
 
 }

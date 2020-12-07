@@ -5,8 +5,11 @@ namespace SlevomatCodingStandard\Sniffs\ControlStructures;
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
 use SlevomatCodingStandard\Helpers\TokenHelper;
+use function in_array;
 use function sprintf;
 use const T_BREAK;
+use const T_CLOSE_PARENTHESIS;
+use const T_CLOSE_SHORT_ARRAY;
 use const T_CONTINUE;
 use const T_ECHO;
 use const T_EXIT;
@@ -66,16 +69,24 @@ class LanguageConstructWithParenthesesSniff implements Sniff
 
 		$closeParenthesisPointer = $tokens[$openParenthesisPointer]['parenthesis_closer'];
 		$afterCloseParenthesisPointer = TokenHelper::findNextEffective($phpcsFile, $closeParenthesisPointer + 1);
-		if ($tokens[$afterCloseParenthesisPointer]['code'] !== T_SEMICOLON) {
+		if (!in_array($tokens[$afterCloseParenthesisPointer]['code'], [T_SEMICOLON, T_CLOSE_PARENTHESIS, T_CLOSE_SHORT_ARRAY], true)) {
 			return;
 		}
 
-		$containsContentBetweenParentheses = TokenHelper::findNextEffective($phpcsFile, $openParenthesisPointer + 1, $closeParenthesisPointer) !== null;
+		$containsContentBetweenParentheses = TokenHelper::findNextEffective(
+			$phpcsFile,
+			$openParenthesisPointer + 1,
+			$closeParenthesisPointer
+		) !== null;
 		if ($tokens[$languageConstructPointer]['code'] === T_EXIT && $containsContentBetweenParentheses) {
 			return;
 		}
 
-		$fix = $phpcsFile->addFixableError(sprintf('Usage of language construct "%s" with parentheses is disallowed.', $tokens[$languageConstructPointer]['content']), $languageConstructPointer, self::CODE_USED_WITH_PARENTHESES);
+		$fix = $phpcsFile->addFixableError(
+			sprintf('Usage of language construct "%s" with parentheses is disallowed.', $tokens[$languageConstructPointer]['content']),
+			$languageConstructPointer,
+			self::CODE_USED_WITH_PARENTHESES
+		);
 		if (!$fix) {
 			return;
 		}

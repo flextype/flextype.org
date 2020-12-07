@@ -43,6 +43,8 @@ class ParameterTypeHintSpacingSniff implements Sniff
 		$parametersStartPointer = $tokens[$functionPointer]['parenthesis_opener'] + 1;
 		$parametersEndPointer = $tokens[$functionPointer]['parenthesis_closer'] - 1;
 
+		$typeHintTokenCodes = TokenHelper::getNameTokenCodes();
+
 		for ($i = $parametersStartPointer; $i <= $parametersEndPointer; $i++) {
 			if ($tokens[$i]['code'] !== T_VARIABLE) {
 				continue;
@@ -61,7 +63,7 @@ class ParameterTypeHintSpacingSniff implements Sniff
 				$parameterEndPointer = $parametersEndPointer;
 			}
 
-			$typeHintEndPointer = TokenHelper::findPrevious($phpcsFile, TokenHelper::$typeHintTokenCodes, $parameterPointer - 1, $parameterStartPointer);
+			$typeHintEndPointer = TokenHelper::findPrevious($phpcsFile, $typeHintTokenCodes, $parameterPointer - 1, $parameterStartPointer);
 			if ($typeHintEndPointer === null) {
 				continue;
 			}
@@ -71,17 +73,36 @@ class ParameterTypeHintSpacingSniff implements Sniff
 				T_BITWISE_AND => sprintf('reference sign of parameter %s', $parameterName),
 				T_ELLIPSIS => sprintf('varadic parameter %s', $parameterName),
 			];
-			$nextTokenPointer = TokenHelper::findNext($phpcsFile, array_keys($nextTokenNames), $typeHintEndPointer + 1, $parameterEndPointer + 1);
+			$nextTokenPointer = TokenHelper::findNext(
+				$phpcsFile,
+				array_keys($nextTokenNames),
+				$typeHintEndPointer + 1,
+				$parameterEndPointer + 1
+			);
 
 			if ($tokens[$typeHintEndPointer + 1]['code'] !== T_WHITESPACE) {
-				$fix = $phpcsFile->addFixableError(sprintf('There must be exactly one space between parameter type hint and %s.', $nextTokenNames[$tokens[$nextTokenPointer]['code']]), $typeHintEndPointer, self::CODE_NO_SPACE_BETWEEN_TYPE_HINT_AND_PARAMETER);
+				$fix = $phpcsFile->addFixableError(
+					sprintf(
+						'There must be exactly one space between parameter type hint and %s.',
+						$nextTokenNames[$tokens[$nextTokenPointer]['code']]
+					),
+					$typeHintEndPointer,
+					self::CODE_NO_SPACE_BETWEEN_TYPE_HINT_AND_PARAMETER
+				);
 				if ($fix) {
 					$phpcsFile->fixer->beginChangeset();
 					$phpcsFile->fixer->addContent($typeHintEndPointer, ' ');
 					$phpcsFile->fixer->endChangeset();
 				}
 			} elseif ($tokens[$typeHintEndPointer + 1]['content'] !== ' ') {
-				$fix = $phpcsFile->addFixableError(sprintf('There must be exactly one space between parameter type hint and %s.', $nextTokenNames[$tokens[$nextTokenPointer]['code']]), $typeHintEndPointer, self::CODE_MULTIPLE_SPACES_BETWEEN_TYPE_HINT_AND_PARAMETER);
+				$fix = $phpcsFile->addFixableError(
+					sprintf(
+						'There must be exactly one space between parameter type hint and %s.',
+						$nextTokenNames[$tokens[$nextTokenPointer]['code']]
+					),
+					$typeHintEndPointer,
+					self::CODE_MULTIPLE_SPACES_BETWEEN_TYPE_HINT_AND_PARAMETER
+				);
 				if ($fix) {
 					$phpcsFile->fixer->beginChangeset();
 					$phpcsFile->fixer->replaceToken($typeHintEndPointer + 1, ' ');
@@ -89,10 +110,17 @@ class ParameterTypeHintSpacingSniff implements Sniff
 				}
 			}
 
-			$typeHintStartPointer = TokenHelper::findPreviousExcluding($phpcsFile, TokenHelper::$typeHintTokenCodes, $typeHintEndPointer, $parameterStartPointer) + 1;
+			$typeHintStartPointer = TokenHelper::findPreviousExcluding(
+				$phpcsFile,
+				$typeHintTokenCodes,
+				$typeHintEndPointer,
+				$parameterStartPointer
+			) + 1;
 
 			$previousPointer = TokenHelper::findPreviousEffective($phpcsFile, $typeHintStartPointer - 1, $parameterStartPointer);
-			$nullabilitySymbolPointer = $previousPointer !== null && $tokens[$previousPointer]['code'] === T_NULLABLE ? $previousPointer : null;
+			$nullabilitySymbolPointer = $previousPointer !== null && $tokens[$previousPointer]['code'] === T_NULLABLE
+				? $previousPointer
+				: null;
 
 			if ($nullabilitySymbolPointer === null) {
 				continue;
@@ -102,7 +130,14 @@ class ParameterTypeHintSpacingSniff implements Sniff
 				continue;
 			}
 
-			$fix = $phpcsFile->addFixableError(sprintf('There must be no whitespace between parameter type hint nullability symbol and parameter type hint of parameter %s.', $parameterName), $typeHintStartPointer, self::CODE_WHITESPACE_AFTER_NULLABILITY_SYMBOL);
+			$fix = $phpcsFile->addFixableError(
+				sprintf(
+					'There must be no whitespace between parameter type hint nullability symbol and parameter type hint of parameter %s.',
+					$parameterName
+				),
+				$typeHintStartPointer,
+				self::CODE_WHITESPACE_AFTER_NULLABILITY_SYMBOL
+			);
 			if (!$fix) {
 				continue;
 			}

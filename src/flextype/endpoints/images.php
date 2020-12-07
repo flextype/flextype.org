@@ -9,18 +9,19 @@ declare(strict_types=1);
 
 namespace Flextype;
 
-use Flextype\Component\Filesystem\Filesystem;
-use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Http\Response;
+
 use function array_replace_recursive;
-use function header;
+use function filesystem;
+use function flextype;
 
 /**
  * Validate images token
  */
-function validate_images_token($token) : bool
+function validate_images_token($token): bool
 {
-    return Filesystem::has(PATH['project'] . '/tokens/images/' . $token . '/token.yaml');
+    return filesystem()->file(PATH['project'] . '/tokens/images/' . $token . '/token.yaml')->exists();
 }
 
 /**
@@ -37,49 +38,62 @@ function validate_images_token($token) : bool
  * Returns:
  * Image file
  */
-$app->get('/api/images/{path:.+}', function (Request $request, Response $response, $args) use ($flextype, $api_sys_messages) {
-
+flextype()->get('/api/images/{path:.+}', function (Request $request, Response $response, $args) use ($api_errors) {
     // Get Query Params
     $query = $request->getQueryParams();
+
+    if (! isset($query['token'])) {
+        return $response->withStatus($api_errors['0400']['http_status_code'])
+            ->withHeader('Content-Type', 'application/json;charset=' . flextype('registry')->get('flextype.settings.charset'))
+            ->write(flextype('json')->encode($api_errors['0400']));
+    }
 
     // Set variables
     $token = $query['token'];
 
-    if ($flextype['registry']->get('flextype.settings.api.images.enabled')) {
-
+    if (flextype('registry')->get('flextype.settings.api.images.enabled')) {
         // Validate delivery image token
         if (validate_images_token($token)) {
             $delivery_images_token_file_path = PATH['project'] . '/tokens/images/' . $token . '/token.yaml';
 
             // Set delivery token file
-            if ($delivery_images_token_file_data = $flextype['serializer']->decode(Filesystem::read($delivery_images_token_file_path), 'yaml')) {
-
-                if ($delivery_images_token_file_data['state'] === 'disabled' ||
-                    ($delivery_images_token_file_data['limit_calls'] !== 0 && $delivery_images_token_file_data['calls'] >= $delivery_images_token_file_data['limit_calls'])) {
-                    return $response->withJson($api_sys_messages['AccessTokenInvalid'], 401);
+            if ($delivery_images_token_file_data = flextype('yaml')->decode(filesystem()->file($delivery_images_token_file_path)->get())) {
+                if (
+                    $delivery_images_token_file_data['state'] === 'disabled' ||
+                    ($delivery_images_token_file_data['limit_calls'] !== 0 && $delivery_images_token_file_data['calls'] >= $delivery_images_token_file_data['limit_calls'])
+                ) {
+                    return $response->withStatus($api_errors['0003']['http_status_code'])
+                    ->withHeader('Content-Type', 'application/json;charset=' . flextype('registry')->get('flextype.settings.charset'))
+                    ->write(flextype('json')->encode($api_errors['0003']));
                 }
 
                 // Update calls counter
-                Filesystem::write($delivery_images_token_file_path, $flextype['serializer']->encode(array_replace_recursive($delivery_images_token_file_data, ['calls' => $delivery_images_token_file_data['calls'] + 1]), 'yaml'));
+                filesystem()->file($delivery_images_token_file_path)->put(flextype('yaml')->encode(array_replace_recursive($delivery_images_token_file_data, ['calls' => $delivery_images_token_file_data['calls'] + 1])));
 
-                if (Filesystem::has(PATH['project'] . '/uploads/entries/' . $args['path'])) {
-                    header('Access-Control-Allow-Origin: *');
-
-                    return $flextype['images']->getImageResponse($args['path'], $_GET);
+                if (filesystem()->file(PATH['project'] . '/uploads/entries/' . $args['path'])->exists()) {
+                    return flextype('images')->getImageResponse($args['path'], $_GET);
                 }
 
                 return $response
-                    ->withJson($api_sys_messages['NotFound'], 404);
+                    ->withStatus($api_errors['0402']['http_status_code'])
+                ->withHeader('Content-Type', 'application/json;charset=' . flextype('registry')->get('flextype.settings.charset'))
+                ->write(flextype('json')->encode($api_errors['0402']));
             }
 
             return $response
-                   ->withJson($api_sys_messages['AccessTokenInvalid'], 401);
+                   ->withStatus($api_errors['0003']['http_status_code'])
+            ->withHeader('Content-Type', 'application/json;charset=' . flextype('registry')->get('flextype.settings.charset'))
+            ->write(flextype('json')->encode($api_errors['0003']));
         }
 
         return $response
-               ->withJson($api_sys_messages['AccessTokenInvalid'], 401);
+               ->withStatus($api_errors['0003']['http_status_code'])
+            ->withHeader('Content-Type', 'application/json;charset=' . flextype('registry')->get('flextype.settings.charset'))
+            ->write(flextype('json')->encode($api_errors['0003']));
     }
 
     return $response
-           ->withJson($api_sys_messages['AccessTokenInvalid'], 401);
+           ->withStatus($api_errors['0003']['http_status_code'])
+            ->withHeader('Content-Type', 'application/json;charset=' . flextype('registry')->get('flextype.settings.charset'))
+            ->write(flextype('json')->encode($api_errors['0003']));
 });

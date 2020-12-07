@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit44a400bd79e77742ff7ba7a85770c9a0
+class ComposerStaticInit130c240ad7ce1271fe37743489608d25
 {
     public static $prefixLengthsPsr4 = array (
         'P' => 
@@ -17,6 +17,11 @@ class ComposerStaticInit44a400bd79e77742ff7ba7a85770c9a0
         array (
             'Middlewares\\Utils\\' => 18,
             'Middlewares\\' => 12,
+        ),
+        'F' => 
+        array (
+            'Flextype\\Component\\Filesystem\\' => 30,
+            'Flextype\\Component\\Arrays\\' => 26,
         ),
     );
 
@@ -43,10 +48,21 @@ class ComposerStaticInit44a400bd79e77742ff7ba7a85770c9a0
         array (
             0 => __DIR__ . '/..' . '/middlewares/trailing-slash/src',
         ),
+        'Flextype\\Component\\Filesystem\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/flextype-components/filesystem',
+        ),
+        'Flextype\\Component\\Arrays\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/flextype-components/arrays/src',
+        ),
     );
 
     public static $classMap = array (
-        'Flextype\\SiteController' => __DIR__ . '/../..' . '/app/Controllers/SiteController.php',
+        'Flextype\\Component\\Arrays\\Arrays' => __DIR__ . '/..' . '/flextype-components/arrays/src/Arrays.php',
+        'Flextype\\Component\\Filesystem\\Filesystem' => __DIR__ . '/..' . '/flextype-components/filesystem/Filesystem.php',
+        'Flextype\\Plugin\\Site\\Controllers\\SiteController' => __DIR__ . '/../..' . '/app/Controllers/SiteController.php',
+        'Flextype\\Plugin\\Site\\Models\\Themes' => __DIR__ . '/../..' . '/app/Models/Themes.php',
         'Middlewares\\TrailingSlash' => __DIR__ . '/..' . '/middlewares/trailing-slash/src/TrailingSlash.php',
         'Middlewares\\Utils\\CallableHandler' => __DIR__ . '/..' . '/middlewares/utils/src/CallableHandler.php',
         'Middlewares\\Utils\\Dispatcher' => __DIR__ . '/..' . '/middlewares/utils/src/Dispatcher.php',
@@ -82,9 +98,9 @@ class ComposerStaticInit44a400bd79e77742ff7ba7a85770c9a0
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit44a400bd79e77742ff7ba7a85770c9a0::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit44a400bd79e77742ff7ba7a85770c9a0::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit44a400bd79e77742ff7ba7a85770c9a0::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit130c240ad7ce1271fe37743489608d25::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit130c240ad7ce1271fe37743489608d25::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit130c240ad7ce1271fe37743489608d25::$classMap;
 
         }, null, ClassLoader::class);
     }

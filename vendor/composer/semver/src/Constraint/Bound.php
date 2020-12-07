@@ -51,12 +51,12 @@ class Bound
 
     public function isZero()
     {
-        return $this->getVersion() === '0' && $this->isInclusive();
+        return $this->getVersion() === '0.0.0.0-dev' && $this->isInclusive();
     }
 
     public function isPositiveInfinity()
     {
-        return $this->getVersion() === (string) PHP_INT_MAX && !$this->isInclusive();
+        return $this->getVersion() === PHP_INT_MAX.'.0.0.0' && !$this->isInclusive();
     }
 
     /**
@@ -69,7 +69,7 @@ class Bound
      */
     public function compareTo(Bound $other, $operator)
     {
-        if (!in_array($operator, array('<', '>'))) {
+        if (!\in_array($operator, array('<', '>'), true)) {
             throw new \InvalidArgumentException('Does not support any other operator other than > or <.');
         }
 
@@ -103,7 +103,7 @@ class Bound
      */
     public static function zero()
     {
-        return new Bound('0', true);
+        return new Bound('0.0.0.0-dev', true);
     }
 
     /**
@@ -111,6 +111,6 @@ class Bound
      */
     public static function positiveInfinity()
     {
-        return new Bound((string) PHP_INT_MAX, false);
+        return new Bound(PHP_INT_MAX.'.0.0.0', false);
     }
 }

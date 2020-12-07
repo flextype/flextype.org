@@ -16,14 +16,17 @@ namespace Respect\Validation\Exceptions;
 use IteratorAggregate;
 use RecursiveIteratorIterator;
 use SplObjectStorage;
+
 use function array_shift;
 use function count;
 use function current;
 use function implode;
 use function is_array;
+use function is_string;
 use function spl_object_hash;
 use function sprintf;
 use function str_repeat;
+
 use const PHP_EOL;
 
 /**
@@ -37,6 +40,8 @@ use const PHP_EOL;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jonathan Stewmon <jstewmon@rmn.com>
  * @author Wojciech Frącz <fraczwojciech@gmail.com>
+ *
+ * @implements IteratorAggregate<ValidationException>
  */
 class NestedValidationException extends ValidationException implements IteratorAggregate
 {
@@ -213,11 +218,11 @@ class NestedValidationException extends ValidationException implements IteratorA
     }
 
     /**
-     * @param string[] $templates
+     * @param string[]|string[][] $templates
      */
     private function renderMessage(ValidationException $exception, array $templates): string
     {
-        if (isset($templates[$exception->getId()])) {
+        if (isset($templates[$exception->getId()]) && is_string($templates[$exception->getId()])) {
             $exception->updateTemplate($templates[$exception->getId()]);
         }
 
@@ -225,10 +230,10 @@ class NestedValidationException extends ValidationException implements IteratorA
     }
 
     /**
-     * @param string[] $templates
+     * @param string[]|string[][] $templates
      * @param mixed ...$ids
      *
-     * @return string[]
+     * @return string[]|string[][]
      */
     private function findTemplates(array $templates, ...$ids): array
     {

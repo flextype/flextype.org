@@ -68,7 +68,11 @@ class RequireMultiLineTernaryOperatorSniff implements Sniff
 
 		$pointerAfterInlineElseEnd = $inlineElsePointer + 1;
 		while (true) {
-			if (in_array($tokens[$pointerAfterInlineElseEnd]['code'], [T_CLOSE_TAG, T_SEMICOLON, T_COMMA, T_DOUBLE_ARROW, T_CLOSE_SHORT_ARRAY, T_COALESCE], true)) {
+			if (in_array(
+				$tokens[$pointerAfterInlineElseEnd]['code'],
+				[T_CLOSE_TAG, T_SEMICOLON, T_COMMA, T_DOUBLE_ARROW, T_CLOSE_SHORT_ARRAY, T_COALESCE],
+				true
+			)) {
 				break;
 			}
 
@@ -102,7 +106,11 @@ class RequireMultiLineTernaryOperatorSniff implements Sniff
 			return;
 		}
 
-		$fix = $phpcsFile->addFixableError('Ternary operator should be reformatted to more lines.', $inlineThenPointer, self::CODE_MULTI_LINE_TERNARY_OPERATOR_NOT_USED);
+		$fix = $phpcsFile->addFixableError(
+			'Ternary operator should be reformatted to more lines.',
+			$inlineThenPointer,
+			self::CODE_MULTI_LINE_TERNARY_OPERATOR_NOT_USED
+		);
 
 		if (!$fix) {
 			return;
@@ -140,12 +148,18 @@ class RequireMultiLineTernaryOperatorSniff implements Sniff
 				array_merge([T_WHITESPACE, T_OPEN_TAG, T_OPEN_TAG_WITH_ECHO], TokenHelper::$inlineCommentTokenCodes),
 				$startPointer
 			);
-			if ($tokens[$possibleEndOfLinePointer]['code'] === T_WHITESPACE && $tokens[$possibleEndOfLinePointer]['content'] === $phpcsFile->eolChar) {
+			if (
+				$tokens[$possibleEndOfLinePointer]['code'] === T_WHITESPACE
+				&& $tokens[$possibleEndOfLinePointer]['content'] === $phpcsFile->eolChar
+			) {
 				$endOfLineBefore = $possibleEndOfLinePointer;
 				break;
 			}
 
-			if ($tokens[$possibleEndOfLinePointer]['code'] === T_OPEN_TAG || $tokens[$possibleEndOfLinePointer]['code'] === T_OPEN_TAG_WITH_ECHO) {
+			if (
+				$tokens[$possibleEndOfLinePointer]['code'] === T_OPEN_TAG
+				|| $tokens[$possibleEndOfLinePointer]['code'] === T_OPEN_TAG_WITH_ECHO
+			) {
 				$endOfLineBefore = $possibleEndOfLinePointer;
 				break;
 			}

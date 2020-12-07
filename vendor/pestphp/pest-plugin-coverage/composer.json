@@ -1,0 +1,59 @@
+{
+    "name": "pestphp/pest-plugin-coverage",
+    "description": "The Pest Coverage Plugin",
+    "keywords": [
+        "php",
+        "framework",
+        "pest",
+        "unit",
+        "test",
+        "testing",
+        "plugin",
+        "coverage"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.3 || ^8.0",
+        "pestphp/pest-plugin": "^0.3",
+        "sebastian/environment": "^5.1.2"
+    },
+    "conflict": {
+        "pestphp/pest": "<0.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pest\\PluginCoverage\\": "src/"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^0.3",
+        "pestphp/pest-dev-tools": "dev-master"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.3.x-dev"
+        },
+        "pest": {
+            "plugins": [
+                "Pest\\PluginCoverage\\Plugin"
+            ]
+        }
+    },
+    "scripts": {
+        "lint": "rector process src && php-cs-fixer fix -v",
+        "test:lint": "php-cs-fixer fix -v --dry-run && rector process src --dry-run",
+        "test:types": "phpstan analyse --ansi",
+        "test:unit": "pest --colors=always",
+        "test": [
+            "@test:lint",
+            "@test:types",
+            "@test:unit"
+        ]
+    }
+}

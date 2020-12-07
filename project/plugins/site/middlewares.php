@@ -7,11 +7,11 @@ declare(strict_types=1);
  * Founded by Sergey Romanenko and maintained by Flextype Community.
  */
 
-namespace Flextype;
+namespace Flextype\Plugin\Site;
 
 use Middlewares\TrailingSlash;
 
 /**
  * Add middleware TrailingSlash for all routes
  */
-$app->add((new TrailingSlash(false))->redirect(true));
+flextype()->add((new TrailingSlash(false))->redirect(true));

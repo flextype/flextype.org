@@ -8,6 +8,14 @@ use PHPStan\PhpDocParser\Lexer\Lexer;
 class TypeParser
 {
 
+	/** @var ConstExprParser|null */
+	private $constExprParser;
+
+	public function __construct(?ConstExprParser $constExprParser = null)
+	{
+		$this->constExprParser = $constExprParser;
+	}
+
 	public function parse(TokenIterator $tokens): Ast\Type\TypeNode
 	{
 		if ($tokens->isCurrentTokenType(Lexer::TOKEN_NULLABLE)) {
@@ -35,31 +43,84 @@ class TypeParser
 			$tokens->consumeTokenType(Lexer::TOKEN_CLOSE_PARENTHESES);
 
 			if ($tokens->isCurrentTokenType(Lexer::TOKEN_OPEN_SQUARE_BRACKET)) {
-				$type = $this->tryParseArray($tokens, $type);
+				return $this->tryParseArray($tokens, $type);
 			}
 
+			return $type;
 		} elseif ($tokens->tryConsumeTokenType(Lexer::TOKEN_THIS_VARIABLE)) {
-			return new Ast\Type\ThisTypeNode();
+			$type = new Ast\Type\ThisTypeNode();
 
-		} else {
-			$type = new Ast\Type\IdentifierTypeNode($tokens->currentTokenValue());
-			$tokens->consumeTokenType(Lexer::TOKEN_IDENTIFIER);
-
-			if ($tokens->isCurrentTokenType(Lexer::TOKEN_OPEN_ANGLE_BRACKET)) {
-				$type = $this->parseGeneric($tokens, $type);
-
-			} elseif ($tokens->isCurrentTokenType(Lexer::TOKEN_OPEN_PARENTHESES)) {
-				$type = $this->tryParseCallable($tokens, $type);
-
-			} elseif ($tokens->isCurrentTokenType(Lexer::TOKEN_OPEN_SQUARE_BRACKET)) {
-				$type = $this->tryParseArray($tokens, $type);
-
-			} elseif ($type->name === 'array' && $tokens->isCurrentTokenType(Lexer::TOKEN_OPEN_CURLY_BRACKET) && !$tokens->isPrecededByHorizontalWhitespace()) {
-				$type = $this->parseArrayShape($tokens, $type);
+			if ($tokens->isCurrentTokenType(Lexer::TOKEN_OPEN_SQUARE_BRACKET)) {
+				return $this->tryParseArray($tokens, $type);
 			}
+
+			return $type;
 		}
 
-		return $type;
+		$currentTokenValue = $tokens->currentTokenValue();
+		$tokens->pushSavePoint(); // because of ConstFetchNode
+		if ($tokens->tryConsumeTokenType(Lexer::TOKEN_IDENTIFIER)) {
+			$type = new Ast\Type\IdentifierTypeNode($currentTokenValue);
+
+			if (!$tokens->isCurrentTokenType(Lexer::TOKEN_DOUBLE_COLON)) {
+				$tokens->dropSavePoint(); // because of ConstFetchNode
+				if ($tokens->isCurrentTokenType(Lexer::TOKEN_OPEN_ANGLE_BRACKET)) {
+					$tokens->pushSavePoint();
+
+					$isHtml = $this->isHtml($tokens);
+					$tokens->rollback();
+					if ($isHtml) {
+						return $type;
+					}
+
+					$type = $this->parseGeneric($tokens, $type);
+
+					if ($tokens->isCurrentTokenType(Lexer::TOKEN_OPEN_SQUARE_BRACKET)) {
+						$type = $this->tryParseArray($tokens, $type);
+					}
+				} elseif ($tokens->isCurrentTokenType(Lexer::TOKEN_OPEN_PARENTHESES)) {
+					$type = $this->tryParseCallable($tokens, $type);
+
+				} elseif ($tokens->isCurrentTokenType(Lexer::TOKEN_OPEN_SQUARE_BRACKET)) {
+					$type = $this->tryParseArray($tokens, $type);
+
+				} elseif ($type->name === 'array' && $tokens->isCurrentTokenType(Lexer::TOKEN_OPEN_CURLY_BRACKET) && !$tokens->isPrecededByHorizontalWhitespace()) {
+					$type = $this->parseArrayShape($tokens, $type);
+
+					if ($tokens->isCurrentTokenType(Lexer::TOKEN_OPEN_SQUARE_BRACKET)) {
+						$type = $this->tryParseArray($tokens, $type);
+					}
+				}
+
+				return $type;
+			} else {
+				$tokens->rollback(); // because of ConstFetchNode
+			}
+		} else {
+			$tokens->dropSavePoint(); // because of ConstFetchNode
+		}
+
+		$exception = new \PHPStan\PhpDocParser\Parser\ParserException(
+			$tokens->currentTokenValue(),
+			$tokens->currentTokenType(),
+			$tokens->currentTokenOffset(),
+			Lexer::TOKEN_IDENTIFIER
+		);
+
+		if ($this->constExprParser === null) {
+			throw $exception;
+		}
+
+		try {
+			$constExpr = $this->constExprParser->parse($tokens, true);
+			if ($constExpr instanceof Ast\ConstExpr\ConstExprArrayNode) {
+				throw $exception;
+			}
+
+			return new Ast\Type\ConstTypeNode($constExpr);
+		} catch (\LogicException $e) {
+			throw $exception;
+		}
 	}
 
 
@@ -101,20 +162,64 @@ class TypeParser
 			$type = $this->parseArrayShape($tokens, $type);
 		}
 
+		if ($tokens->isCurrentTokenType(Lexer::TOKEN_OPEN_SQUARE_BRACKET)) {
+			$type = $this->tryParseArray($tokens, $type);
+		}
+
 		return new Ast\Type\NullableTypeNode($type);
 	}
 
-
-	private function parseGeneric(TokenIterator $tokens, Ast\Type\IdentifierTypeNode $baseType): Ast\Type\TypeNode
+	public function isHtml(TokenIterator $tokens): bool
 	{
 		$tokens->consumeTokenType(Lexer::TOKEN_OPEN_ANGLE_BRACKET);
-		$genericTypes[] = $this->parse($tokens);
 
-		while ($tokens->tryConsumeTokenType(Lexer::TOKEN_COMMA)) {
-			$genericTypes[] = $this->parse($tokens);
+		if (!$tokens->isCurrentTokenType(Lexer::TOKEN_IDENTIFIER)) {
+			return false;
 		}
 
+		$htmlTagName = $tokens->currentTokenValue();
+
+		$tokens->next();
+
+		if (!$tokens->tryConsumeTokenType(Lexer::TOKEN_CLOSE_ANGLE_BRACKET)) {
+			return false;
+		}
+
+		while (!$tokens->isCurrentTokenType(Lexer::TOKEN_END)) {
+			if (
+				$tokens->tryConsumeTokenType(Lexer::TOKEN_OPEN_ANGLE_BRACKET)
+				&& strpos($tokens->currentTokenValue(), '/' . $htmlTagName . '>') !== false
+			) {
+				return true;
+			}
+
+			$tokens->next();
+		}
+
+		return false;
+	}
+
+	public function parseGeneric(TokenIterator $tokens, Ast\Type\IdentifierTypeNode $baseType): Ast\Type\GenericTypeNode
+	{
+		$tokens->consumeTokenType(Lexer::TOKEN_OPEN_ANGLE_BRACKET);
+		$tokens->tryConsumeTokenType(Lexer::TOKEN_PHPDOC_EOL);
+		$genericTypes = [$this->parse($tokens)];
+
+		$tokens->tryConsumeTokenType(Lexer::TOKEN_PHPDOC_EOL);
+
+		while ($tokens->tryConsumeTokenType(Lexer::TOKEN_COMMA)) {
+			$tokens->tryConsumeTokenType(Lexer::TOKEN_PHPDOC_EOL);
+			if ($tokens->tryConsumeTokenType(Lexer::TOKEN_CLOSE_ANGLE_BRACKET)) {
+				// trailing comma case
+				return new Ast\Type\GenericTypeNode($baseType, $genericTypes);
+			}
+			$genericTypes[] = $this->parse($tokens);
+			$tokens->tryConsumeTokenType(Lexer::TOKEN_PHPDOC_EOL);
+		}
+
+		$tokens->tryConsumeTokenType(Lexer::TOKEN_PHPDOC_EOL);
 		$tokens->consumeTokenType(Lexer::TOKEN_CLOSE_ANGLE_BRACKET);
+
 		return new Ast\Type\GenericTypeNode($baseType, $genericTypes);
 	}
 
@@ -179,6 +284,10 @@ class TypeParser
 			}
 		}
 
+		if ($tokens->isCurrentTokenType(Lexer::TOKEN_OPEN_SQUARE_BRACKET)) {
+			$type = $this->tryParseArray($tokens, $type);
+		}
+
 		return $type;
 	}
 
@@ -218,15 +327,25 @@ class TypeParser
 	}
 
 
-	private function parseArrayShape(TokenIterator $tokens, Ast\Type\TypeNode $type): Ast\Type\TypeNode
+	private function parseArrayShape(TokenIterator $tokens, Ast\Type\TypeNode $type): Ast\Type\ArrayShapeNode
 	{
 		$tokens->consumeTokenType(Lexer::TOKEN_OPEN_CURLY_BRACKET);
+		$tokens->tryConsumeTokenType(Lexer::TOKEN_PHPDOC_EOL);
 		$items = [$this->parseArrayShapeItem($tokens)];
 
+		$tokens->tryConsumeTokenType(Lexer::TOKEN_PHPDOC_EOL);
 		while ($tokens->tryConsumeTokenType(Lexer::TOKEN_COMMA)) {
+			$tokens->tryConsumeTokenType(Lexer::TOKEN_PHPDOC_EOL);
+			if ($tokens->tryConsumeTokenType(Lexer::TOKEN_CLOSE_CURLY_BRACKET)) {
+				// trailing comma case
+				return new Ast\Type\ArrayShapeNode($items);
+			}
+
 			$items[] = $this->parseArrayShapeItem($tokens);
+			$tokens->tryConsumeTokenType(Lexer::TOKEN_PHPDOC_EOL);
 		}
 
+		$tokens->tryConsumeTokenType(Lexer::TOKEN_PHPDOC_EOL);
 		$tokens->consumeTokenType(Lexer::TOKEN_CLOSE_CURLY_BRACKET);
 
 		return new Ast\Type\ArrayShapeNode($items);
@@ -253,12 +372,20 @@ class TypeParser
 	}
 
 	/**
-	 * @return Ast\ConstExpr\ConstExprIntegerNode|Ast\Type\IdentifierTypeNode
+	 * @return Ast\ConstExpr\ConstExprIntegerNode|Ast\ConstExpr\ConstExprStringNode|Ast\Type\IdentifierTypeNode
 	 */
 	private function parseArrayShapeKey(TokenIterator $tokens)
 	{
 		if ($tokens->isCurrentTokenType(Lexer::TOKEN_INTEGER)) {
 			$key = new Ast\ConstExpr\ConstExprIntegerNode($tokens->currentTokenValue());
+			$tokens->next();
+
+		} elseif ($tokens->isCurrentTokenType(Lexer::TOKEN_SINGLE_QUOTED_STRING)) {
+			$key = new Ast\ConstExpr\ConstExprStringNode(trim($tokens->currentTokenValue(), "'"));
+			$tokens->next();
+
+		} elseif ($tokens->isCurrentTokenType(Lexer::TOKEN_DOUBLE_QUOTED_STRING)) {
+			$key = new Ast\ConstExpr\ConstExprStringNode(trim($tokens->currentTokenValue(), '"'));
 			$tokens->next();
 
 		} else {

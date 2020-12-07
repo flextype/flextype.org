@@ -6,6 +6,7 @@ use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
 use SlevomatCodingStandard\Helpers\TokenHelper;
 use function array_key_exists;
+use function count;
 use function in_array;
 use const T_ANON_CLASS;
 use const T_CLOSE_CURLY_BRACKET;
@@ -64,11 +65,7 @@ class UselessSemicolonSniff implements Sniff
 			return;
 		}
 
-		$fix = $phpcsFile->addFixableError(
-			'Useless semicolon.',
-			$semicolonPointer,
-			self::CODE_USELESS_SEMICOLON
-		);
+		$fix = $phpcsFile->addFixableError('Useless semicolon.', $semicolonPointer, self::CODE_USELESS_SEMICOLON);
 
 		if (!$fix) {
 			return;
@@ -86,11 +83,7 @@ class UselessSemicolonSniff implements Sniff
 			return;
 		}
 
-		$fix = $phpcsFile->addFixableError(
-			'Useless semicolon.',
-			$semicolonPointer,
-			self::CODE_USELESS_SEMICOLON
-		);
+		$fix = $phpcsFile->addFixableError('Useless semicolon.', $semicolonPointer, self::CODE_USELESS_SEMICOLON);
 
 		if (!$fix) {
 			return;
@@ -117,11 +110,7 @@ class UselessSemicolonSniff implements Sniff
 			return;
 		}
 
-		$fix = $phpcsFile->addFixableError(
-			'Useless semicolon.',
-			$semicolonPointer,
-			self::CODE_USELESS_SEMICOLON
-		);
+		$fix = $phpcsFile->addFixableError('Useless semicolon.', $semicolonPointer, self::CODE_USELESS_SEMICOLON);
 
 		if (!$fix) {
 			return;
@@ -148,7 +137,7 @@ class UselessSemicolonSniff implements Sniff
 		} while (true);
 
 		$fixEndPointer = $semicolonPointer;
-		do {
+		while ($fixEndPointer < count($tokens) - 1) {
 			if ($tokens[$fixEndPointer + 1]['code'] !== T_WHITESPACE) {
 				break;
 			}
@@ -158,7 +147,7 @@ class UselessSemicolonSniff implements Sniff
 			}
 
 			$fixEndPointer++;
-		} while (true);
+		}
 
 		$phpcsFile->fixer->beginChangeset();
 		for ($i = $fixStartPointer; $i <= $fixEndPointer; $i++) {

@@ -103,13 +103,18 @@ class RequireNullCoalesceOperatorSniff implements Sniff
 			return;
 		}
 
-		$phpcsFile->fixer->beginChangeset();
-
-		for ($i = $issetPointer; $i <= $inlineElsePointer; $i++) {
-			$phpcsFile->fixer->replaceToken($i, '');
+		$startPointer = $issetPointer;
+		if (in_array($tokens[$previousPointer]['code'], Tokens::$castTokens, true)) {
+			$startPointer = $previousPointer;
 		}
 
-		$phpcsFile->fixer->addContent($issetPointer, sprintf('%s ??', $variableContent));
+		$phpcsFile->fixer->beginChangeset();
+
+		$phpcsFile->fixer->replaceToken($startPointer, sprintf('%s ??', $variableContent));
+
+		for ($i = $startPointer + 1; $i <= $inlineElsePointer; $i++) {
+			$phpcsFile->fixer->replaceToken($i, '');
+		}
 
 		$phpcsFile->fixer->endChangeset();
 	}
@@ -123,7 +128,10 @@ class RequireNullCoalesceOperatorSniff implements Sniff
 		/** @var int $pointerAfterIdenticalOperator */
 		$pointerAfterIdenticalOperator = TokenHelper::findNextEffective($phpcsFile, $identicalOperator + 1);
 
-		if ($tokens[$pointerBeforeIdenticalOperator]['code'] !== T_NULL && $tokens[$pointerAfterIdenticalOperator]['code'] !== T_NULL) {
+		if (
+			$tokens[$pointerBeforeIdenticalOperator]['code'] !== T_NULL
+			&& $tokens[$pointerAfterIdenticalOperator]['code'] !== T_NULL
+		) {
 			return;
 		}
 
@@ -141,14 +149,20 @@ class RequireNullCoalesceOperatorSniff implements Sniff
 			return;
 		}
 
-		$pointerBeforeCondition = TokenHelper::findPreviousEffective($phpcsFile, ($isYodaCondition ? $pointerBeforeIdenticalOperator : $variableStartPointer) - 1);
+		$pointerBeforeCondition = TokenHelper::findPreviousEffective(
+			$phpcsFile,
+			($isYodaCondition ? $pointerBeforeIdenticalOperator : $variableStartPointer) - 1
+		);
 
 		if (in_array($tokens[$pointerBeforeCondition]['code'], Tokens::$booleanOperators, true)) {
 			return;
 		}
 
 		/** @var int $inlineThenPointer */
-		$inlineThenPointer = TokenHelper::findNextEffective($phpcsFile, ($isYodaCondition ? $variableEndPointer : $pointerAfterIdenticalOperator) + 1);
+		$inlineThenPointer = TokenHelper::findNextEffective(
+			$phpcsFile,
+			($isYodaCondition ? $variableEndPointer : $pointerAfterIdenticalOperator) + 1
+		);
 		if ($tokens[$inlineThenPointer]['code'] !== T_INLINE_THEN) {
 			return;
 		}
@@ -156,7 +170,11 @@ class RequireNullCoalesceOperatorSniff implements Sniff
 		$inlineElsePointer = TokenHelper::findNext($phpcsFile, T_INLINE_ELSE, $inlineThenPointer + 1);
 		$inlineElseEndPointer = $inlineElsePointer + 1;
 		while (true) {
-			if (in_array($tokens[$inlineElseEndPointer]['code'], [T_SEMICOLON, T_COMMA, T_DOUBLE_ARROW, T_CLOSE_SHORT_ARRAY, T_COALESCE], true)) {
+			if (in_array(
+				$tokens[$inlineElseEndPointer]['code'],
+				[T_SEMICOLON, T_COMMA, T_DOUBLE_ARROW, T_CLOSE_SHORT_ARRAY, T_COALESCE],
+				true
+			)) {
 				break;
 			}
 
@@ -180,9 +198,15 @@ class RequireNullCoalesceOperatorSniff implements Sniff
 		$variableContent = IdentificatorHelper::getContent($phpcsFile, $variableStartPointer, $variableEndPointer);
 
 		/** @var int $compareToStartPointer */
-		$compareToStartPointer = TokenHelper::findNextEffective($phpcsFile, ($tokens[$identicalOperator]['code'] === T_IS_IDENTICAL ? $inlineElsePointer : $inlineThenPointer) + 1);
+		$compareToStartPointer = TokenHelper::findNextEffective(
+			$phpcsFile,
+			($tokens[$identicalOperator]['code'] === T_IS_IDENTICAL ? $inlineElsePointer : $inlineThenPointer) + 1
+		);
 		/** @var int $compareToEndPointer */
-		$compareToEndPointer = TokenHelper::findPreviousEffective($phpcsFile, ($tokens[$identicalOperator]['code'] === T_IS_IDENTICAL ? $inlineElseEndPointer : $inlineElsePointer) - 1);
+		$compareToEndPointer = TokenHelper::findPreviousEffective(
+			$phpcsFile,
+			($tokens[$identicalOperator]['code'] === T_IS_IDENTICAL ? $inlineElseEndPointer : $inlineElsePointer) - 1
+		);
 
 		$compareToContent = IdentificatorHelper::getContent($phpcsFile, $compareToStartPointer, $compareToEndPointer);
 

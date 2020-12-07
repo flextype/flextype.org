@@ -11,4 +11,6 @@ return array(
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'Middlewares\\Utils\\' => array($vendorDir . '/middlewares/utils/src'),
     'Middlewares\\' => array($vendorDir . '/middlewares/trailing-slash/src'),
+    'Flextype\\Component\\Filesystem\\' => array($vendorDir . '/flextype-components/filesystem'),
+    'Flextype\\Component\\Arrays\\' => array($vendorDir . '/flextype-components/arrays/src'),
 );

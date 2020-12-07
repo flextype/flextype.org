@@ -3,7 +3,6 @@
 namespace SlevomatCodingStandard\Helpers\Annotation;
 
 use InvalidArgumentException;
-use LogicException;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PropertyTagValueNode;
 use PHPStan\PhpDocParser\Ast\Type\ArrayTypeNode;
 use PHPStan\PhpDocParser\Ast\Type\CallableTypeNode;
@@ -29,7 +28,11 @@ class PropertyAnnotation extends Annotation
 
 	public function __construct(string $name, int $startPointer, int $endPointer, ?string $content, ?PropertyTagValueNode $contentNode)
 	{
-		if (!in_array($name, ['@property', '@property-read', '@property-write'], true)) {
+		if (!in_array(
+			$name,
+			['@property', '@property-read', '@property-write', '@psalm-property', '@psalm-property-read', '@psalm-property-write', '@phpstan-property', '@phpstan-property-read', '@phpstan-property-write'],
+			true
+		)) {
 			throw new InvalidArgumentException(sprintf('Unsupported annotation %s.', $name));
 		}
 
@@ -45,9 +48,7 @@ class PropertyAnnotation extends Annotation
 
 	public function getContentNode(): PropertyTagValueNode
 	{
-		if ($this->isInvalid()) {
-			throw new LogicException(sprintf('Invalid %s annotation.', $this->name));
-		}
+		$this->errorWhenInvalid();
 
 		return $this->contentNode;
 	}
@@ -59,18 +60,14 @@ class PropertyAnnotation extends Annotation
 
 	public function getDescription(): ?string
 	{
-		if ($this->isInvalid()) {
-			throw new LogicException(sprintf('Invalid %s annotation.', $this->name));
-		}
+		$this->errorWhenInvalid();
 
 		return $this->contentNode->description !== '' ? $this->contentNode->description : null;
 	}
 
 	public function getPropertyName(): string
 	{
-		if ($this->isInvalid()) {
-			throw new LogicException(sprintf('Invalid %s annotation.', $this->name));
-		}
+		$this->errorWhenInvalid();
 
 		return $this->contentNode->propertyName;
 	}
@@ -80,9 +77,7 @@ class PropertyAnnotation extends Annotation
 	 */
 	public function getType(): TypeNode
 	{
-		if ($this->isInvalid()) {
-			throw new LogicException(sprintf('Invalid %s annotation.', $this->name));
-		}
+		$this->errorWhenInvalid();
 
 		/** @var GenericTypeNode|CallableTypeNode|IntersectionTypeNode|UnionTypeNode|ArrayTypeNode|IdentifierTypeNode|ThisTypeNode|NullableTypeNode $type */
 		$type = $this->contentNode->type;

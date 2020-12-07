@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Psr\Http\Message\StreamInterface;
 use SplFileInfo;
+
 use function is_string;
 use function is_writable;
 
@@ -31,6 +33,10 @@ final class Writable extends AbstractRule
     public function validate($input): bool
     {
         if ($input instanceof SplFileInfo) {
+            return $input->isWritable();
+        }
+
+        if ($input instanceof StreamInterface) {
             return $input->isWritable();
         }
 

@@ -9,99 +9,43 @@ declare(strict_types=1);
 
 namespace Flextype;
 
-use Flextype\Component\Filesystem\Filesystem;
-use Flextype\Component\Registry\Registry;
-use Flextype\Component\Session\Session;
-use RuntimeException;
-use Slim\App;
-use Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware;
-use function array_replace_recursive;
+use Atomastic\Registry\Registry;
+use Flextype\Foundation\Flextype;
+use Slim\Http\Environment;
+use Slim\Http\Uri;
+use Whoops\Handler\JsonResponseHandler;
+use Whoops\Handler\PrettyPageHandler;
+use Whoops\Run;
+use Whoops\Util\Misc;
+
 use function date_default_timezone_set;
-use function define;
 use function error_reporting;
+use function file_exists;
+use function flextype;
 use function function_exists;
+use function get_class;
 use function mb_internal_encoding;
 use function mb_language;
 use function mb_regex_encoding;
-use function trim;
-
-/**
- * Start the session
- */
-Session::start();
+use function str_replace;
+use function ucwords;
 
 /**
  * Init Registry
  */
-$registry = new Registry();
+$registry = Registry::getInstance();
 
 /**
- * Load flextype settings
- *
- * 1. Set settings files paths.
- * 2. Load flextype default and flextype custom project settings files.
- * 3. Merge settings.
- * 4. Store settings in the flextype registry.
+ * Preflight the Flextype
  */
-$flextype_manifest_file_path         = ROOT_DIR . '/src/flextype/flextype.yaml';
-$default_flextype_settings_file_path = ROOT_DIR . '/src/flextype/settings.yaml';
-$custom_flextype_settings_file_path  = PATH['project'] . '/config/flextype/settings.yaml';
-
-// Create config dir
-! Filesystem::has(PATH['project'] . '/config/flextype/') and Filesystem::createDir(PATH['project'] . '/config/flextype/');
-
-// Set settings if Flextype Default settings config files exist
-if (! Filesystem::has($default_flextype_settings_file_path)) {
-    throw new RuntimeException('Flextype Default settings config file does not exist.');
-}
-
-if (($default_flextype_settings_content = Filesystem::read($default_flextype_settings_file_path)) === false) {
-    throw new RuntimeException('Load file: ' . $default_flextype_settings_file_path . ' - failed!');
-} else {
-    if (trim($default_flextype_settings_content) === '') {
-        $default_flextype_settings['settings'] = [];
-    } else {
-        $default_flextype_settings['settings'] = Yaml::decode($default_flextype_settings_content);
-    }
-}
-
-// Create flextype custom settings file
-! Filesystem::has($custom_flextype_settings_file_path) and Filesystem::write($custom_flextype_settings_file_path, $default_flextype_settings_content);
-
-if (($custom_flextype_settings_content = Filesystem::read($custom_flextype_settings_file_path)) === false) {
-    throw new RuntimeException('Load file: ' . $custom_flextype_settings_file_path . ' - failed!');
-} else {
-    if (trim($custom_flextype_settings_content) === '') {
-        $custom_flextype_settings['settings'] = [];
-    } else {
-        $custom_flextype_settings['settings'] = Yaml::decode($custom_flextype_settings_content);
-    }
-}
-
-if (($flextype_manifest_content = Filesystem::read($flextype_manifest_file_path)) === false) {
-    throw new RuntimeException('Load file: ' . $flextype_manifest_file_path . ' - failed!');
-} else {
-    if (trim($flextype_manifest_content) === '') {
-        $flextype_manifest['manifest'] = [];
-    } else {
-        $flextype_manifest['manifest'] = Yaml::decode($flextype_manifest_content);
-    }
-}
-
-// Merge flextype default settings with custom project settings.
-$flextype_settings = array_replace_recursive($default_flextype_settings, $custom_flextype_settings, $flextype_manifest);
-
-// Store flextype merged settings in the flextype registry.
-$registry->set('flextype', $flextype_settings);
+include_once ROOT_DIR . '/src/flextype/preflight.php';
 
 /**
- * Create new application
+ * Create new Flextype Application
  */
-$app = new App([
+$flextype = Flextype::getInstance([
     'settings' => [
         'debug' => $registry->get('flextype.settings.errors.display'),
-        'whoops.editor' => $registry->get('flextype.settings.whoops.editor'),
-        'whoops.page_title' => $registry->get('flextype.settings.whoops.page_title'),
         'displayErrorDetails' => $registry->get('flextype.settings.display_error_details'),
         'addContentLengthHeader' => $registry->get('flextype.settings.add_content_length_header'),
         'routerCacheFile' => $registry->get('flextype.settings.router_cache_file'),
@@ -109,16 +53,52 @@ $app = new App([
         'outputBuffering' => $registry->get('flextype.settings.output_buffering'),
         'responseChunkSize' => $registry->get('flextype.settings.response_chunk_size'),
         'httpVersion' => $registry->get('flextype.settings.http_version'),
-        'images' => [
-            'driver' => $registry->get('flextype.settings.image.driver'),
-        ],
     ],
 ]);
 
+
 /**
- * Set Flextype Dependency Injection Container
+ * Display Errors
  */
-$flextype = $app->getContainer();
+if ($registry->get('flextype.settings.errors.display')) {
+    $environment = new Environment($_SERVER);
+    $uri         = Uri::createFromEnvironment($environment);
+
+    $prettyPageHandler = new PrettyPageHandler();
+
+    $prettyPageHandler->setEditor((string) $registry->get('flextype.settings.whoops.editor'));
+    $prettyPageHandler->setPageTitle((string) $registry->get('flextype.settings.whoops.page_title'));
+
+    $prettyPageHandler->addDataTable('Flextype Application', [
+        'Application Class' => get_class(flextype()),
+        'Script Name'       => $environment->get('SCRIPT_NAME'),
+        'Request URI'       => $environment->get('PATH_INFO') ?: '<none>',
+    ]);
+
+    $prettyPageHandler->addDataTable('Flextype Application (Request)', [
+        'Path'            => $uri->getPath(),
+        'URL'             => (string) $uri,
+        'Query String'    => $uri->getQuery() ?: '<none>',
+        'Scheme'          => $uri->getScheme() ?: '<none>',
+        'Port'            => $uri->getPort() ?: '<none>',
+        'Host'            => $uri->getHost() ?: '<none>',
+    ]);
+
+    // Set Whoops to default exception handler
+    $whoops = new Run();
+    $whoops->pushHandler($prettyPageHandler);
+
+    // Enable JsonResponseHandler when request is AJAX
+    if (Misc::isAjaxRequest()) {
+        $whoops->pushHandler(new JsonResponseHandler());
+    }
+
+    $whoops->register();
+
+    flextype()->container()['whoops'] = $whoops;
+} else {
+    error_reporting(0);
+}
 
 /**
  * Include Dependencies
@@ -126,59 +106,76 @@ $flextype = $app->getContainer();
 include_once 'dependencies.php';
 
 /**
+ * Set session options before you start the session
+ * Standard PHP session configuration options
+ * https://secure.php.net/manual/en/session.configuration.php
+ */
+flextype('session')->setOptions(flextype('registry')->get('flextype.settings.session'));
+
+/**
+ * Start the session
+ */
+flextype('session')->start();
+
+/**
  * Include API ENDPOINTS
  */
-include_once 'endpoints/access.php';
-include_once 'endpoints/entries.php';
-include_once 'endpoints/registry.php';
-include_once 'endpoints/config.php';
-include_once 'endpoints/files.php';
-include_once 'endpoints/folders.php';
-include_once 'endpoints/images.php';
+include_once ROOT_DIR . '/src/flextype/Endpoints/Utils/errors.php';
+include_once ROOT_DIR . '/src/flextype/Endpoints/Utils/access.php';
+include_once ROOT_DIR . '/src/flextype/Endpoints/entries.php';
+include_once ROOT_DIR . '/src/flextype/Endpoints/registry.php';
+include_once ROOT_DIR . '/src/flextype/Endpoints/files.php';
+include_once ROOT_DIR . '/src/flextype/Endpoints/folders.php';
+include_once ROOT_DIR . '/src/flextype/Endpoints/images.php';
 
 /**
  * Set internal encoding
  */
 function_exists('mb_language') and mb_language('uni');
-function_exists('mb_regex_encoding') and mb_regex_encoding($flextype['registry']->get('flextype.settings.charset'));
-function_exists('mb_internal_encoding') and mb_internal_encoding($flextype['registry']->get('flextype.settings.charset'));
-
-/**
- * Display Errors
- */
-if ($flextype['registry']->get('flextype.settings.errors.display')) {
-
-    /**
-     * Add WhoopsMiddleware
-     */
-    $app->add(new WhoopsMiddleware($app));
-} else {
-    error_reporting(0);
-}
+function_exists('mb_regex_encoding') and mb_regex_encoding(flextype('registry')->get('flextype.settings.charset'));
+function_exists('mb_internal_encoding') and mb_internal_encoding(flextype('registry')->get('flextype.settings.charset'));
 
 /**
  * Set default timezone
  */
-date_default_timezone_set($flextype['registry']->get('flextype.settings.timezone'));
+date_default_timezone_set(flextype('registry')->get('flextype.settings.timezone'));
 
 /**
  * Init shortocodes
  *
- * Load Flextype Shortcodes extensions from directory /flextype/shortcodes/ based on settings.shortcodes.extensions array
+ * Load Flextype Shortcodes from directory /flextype/Support/Parsers/Shortcodes/ based on flextype.settings.shortcode.shortcodes array
  */
-$shortcodes_extensions = $flextype['registry']->get('flextype.settings.shortcodes.extensions');
+$shortcodes = flextype('registry')->get('flextype.settings.shortcode.shortcodes');
 
-foreach ($shortcodes_extensions as $shortcodes_extension) {
-    $shortcodes_extension_file_path = ROOT_DIR . '/src/flextype/core/Parsers/shortcodes/' . $shortcodes_extension . 'ShortcodeExtension.php';
-    if (file_exists($shortcodes_extension_file_path)) {
-        include_once $shortcodes_extension_file_path;
+foreach ($shortcodes as $shortcodeName => $shortcode) {
+    $shortcodeFilePath = ROOT_DIR . '/src/flextype/Support/Parsers/Shortcodes/' . str_replace('_', '', ucwords($shortcodeName, '_')) . 'Shortcode.php';
+    if (! file_exists($shortcodeFilePath)) {
+        continue;
     }
+
+    include_once $shortcodeFilePath;
+}
+
+/**
+ * Init entries fields
+ *
+ * Load Flextype Entries fields from directory /flextype/Foundation/Entries/Fields/ based on flextype.settings.entries.fields array
+ */
+$entryFields = flextype('registry')->get('flextype.settings.entries.fields');
+
+foreach ($entryFields as $fieldName => $field) {
+    $entryFieldFilePath = ROOT_DIR . '/src/flextype/Foundation/Entries/Fields/' . str_replace('_', '', ucwords($fieldName, '_')) . 'Field.php';
+    if (! file_exists($entryFieldFilePath)) {
+        continue;
+    }
+
+    include_once $entryFieldFilePath;
 }
 
 /**
  * Init plugins
  */
-$flextype['plugins']->init($flextype, $app);
+flextype('plugins')->init();
 
 /**
  * Enable lazy CORS
@@ -187,9 +184,9 @@ $flextype['plugins']->init($flextype, $app);
  * This is important for third party web apps using Flextype, as without CORS, a JavaScript app hosted on example.com
  * couldn't access our APIs because they're hosted on another.com which is a different domain.
  */
-$flextype['cors']->init();
+flextype('cors')->init();
 
 /**
  * Run application
  */
-$app->run();
+flextype()->run();

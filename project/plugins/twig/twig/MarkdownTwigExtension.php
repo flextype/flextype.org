@@ -7,24 +7,18 @@ declare(strict_types=1);
  * Founded by Sergey Romanenko and maintained by Flextype Community.
  */
 
-namespace Flextype;
+namespace Flextype\Plugin\Twig\Twig;
 
-use Twig_Extension;
-use Twig_SimpleFilter;
+use Twig\Extension\AbstractExtension;
 
-class MarkdownTwigExtension extends Twig_Extension
+class MarkdownTwigExtension extends AbstractExtension
 {
-    /**
-     * Flextype Dependency Container
-     */
-    private $flextype;
-
     /**
      * Constructor
      */
-    public function __construct($flextype)
+    public function __construct()
     {
-        $this->flextype = $flextype;
+
     }
 
     /**
@@ -35,7 +29,7 @@ class MarkdownTwigExtension extends Twig_Extension
     public function getFilters() : array
     {
         return [
-            new Twig_SimpleFilter('markdown', [$this, 'markdown']),
+            new \Twig\TwigFilter('markdown', [$this, 'markdown']),
         ];
     }
 
@@ -45,7 +39,7 @@ class MarkdownTwigExtension extends Twig_Extension
     public function markdown($input, bool $cache = true) : string
     {
         if (!empty($input)) {
-            return $this->flextype['parser']->parse($input, 'markdown', $cache);
+            return flextype('markdown')->parse($input, $cache);
         }
 
         return '';

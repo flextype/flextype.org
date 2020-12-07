@@ -19,7 +19,9 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Exceptions\ZendException;
 use Throwable;
 use Zend\Validator\ValidatorInterface;
+
 use function array_map;
+use function class_exists;
 use function current;
 use function is_string;
 use function sprintf;
@@ -121,9 +123,13 @@ final class Zend extends AbstractRule
             throw new ComponentException('The given argument is not a valid Zend Validator');
         }
 
-        $className = stripos($validator, 'Zend') === false ? 'Zend\\Validator\\'.$validator : '\\'.$validator;
+        $className = stripos($validator, 'Zend') === false ? 'Zend\\Validator\\' . $validator : '\\' . $validator;
 
         try {
+            if (!class_exists($className)) {
+                throw new ComponentException(sprintf('"%s" is not a valid class name', $className));
+            }
+
             $reflection = new ReflectionClass($className);
             if (!$reflection->isInstantiable()) {
                 throw new ComponentException(sprintf('"%s" is not instantiable', $className));

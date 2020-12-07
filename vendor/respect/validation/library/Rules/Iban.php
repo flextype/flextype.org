@@ -125,7 +125,7 @@ final class Iban extends AbstractRule
 
         $checkDigits = substr($iban, 2, 2);
         $bban = substr($iban, 4);
-        $rearranged = $bban.$countryCode.$checkDigits;
+        $rearranged = $bban . $countryCode . $checkDigits;
 
         return bcmod($this->convertToInteger($rearranged), '97') === '1';
     }
@@ -141,7 +141,7 @@ final class Iban extends AbstractRule
 
     private function convertToInteger(string $reArrangedIban): string
     {
-        return preg_replace_callback(
+        return (string) preg_replace_callback(
             '/[A-Z]/',
             static function (array $match): int {
                 return ord($match[0]) - 55;

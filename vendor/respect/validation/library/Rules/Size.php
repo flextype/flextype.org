@@ -13,8 +13,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\UploadedFileInterface;
 use Respect\Validation\Exceptions\ComponentException;
 use SplFileInfo;
+
 use function filesize;
 use function is_numeric;
 use function is_string;
@@ -26,11 +29,12 @@ use function sprintf;
  *
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @author Felipe Stival <v0idpwn@gmail.com>
  */
 final class Size extends AbstractRule
 {
     /**
-     * @var string|null
+     * @var string|int|null
      */
     private $minSize;
 
@@ -40,7 +44,7 @@ final class Size extends AbstractRule
     private $minValue;
 
     /**
-     * @var string|null
+     * @var string|int|null
      */
     private $maxSize;
 
@@ -70,6 +74,14 @@ final class Size extends AbstractRule
             return $this->isValidSize($input->getSize());
         }
 
+        if ($input instanceof UploadedFileInterface) {
+            return $this->isValidSize($input->getSize());
+        }
+
+        if ($input instanceof StreamInterface) {
+            return $this->isValidSize($input->getSize());
+        }
+
         if (is_string($input)) {
             return $this->isValidSize((int) filesize($input));
         }
@@ -87,7 +99,7 @@ final class Size extends AbstractRule
         $value = $size;
         $units = ['b', 'kb', 'mb', 'gb', 'tb', 'pb', 'eb', 'zb', 'yb'];
         foreach ($units as $exponent => $unit) {
-            if (!preg_match('/^(\d+(.\d+)?)'.$unit.'$/i', (string) $size, $matches)) {
+            if (!preg_match('/^(\d+(.\d+)?)' . $unit . '$/i', (string) $size, $matches)) {
                 continue;
             }
             $value = $matches[1] * 1024 ** $exponent;

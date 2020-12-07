@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Flextype;
+namespace Flextype\Plugin\Site\Controllers;
 
 use Slim\Http\Environment;
 use Slim\Http\Uri;
@@ -18,7 +18,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use function ltrim;
 use Flextype\Component\Filesystem\Filesystem;
 
-class SiteController extends Container
+class SiteController
 {
     /**
      * Current entry data array
@@ -48,19 +48,19 @@ class SiteController extends Container
 
         // If uri is empty then it is main entry else use entry uri
         if ($uri === '/') {
-            $entry_uri = $this->registry->get('plugins.site.settings.entries.main');
+            $entry_uri = flextype('registry')->get('plugins.site.settings.entries.main');
         } else {
             $entry_uri = ltrim($uri, '/');
         }
 
         // Get entry body
-        $entry_body = $this->entries->fetch($entry_uri);
+        $entry_body = flextype('entries')->fetchSingle($entry_uri)->toArray();
 
         // is entry not found
         $is_entry_not_found = false;
 
         // If entry body is not false
-        if ($entry_body) {
+        if (is_array($entry_body) and count($entry_body) > 0) {
             // Get 404 page if entry visibility is draft or hidden and if routable is false
             if ((isset($entry_body['visibility']) && ($entry_body['visibility'] === 'draft' || $entry_body['visibility'] === 'hidden')) ||
                 (isset($entry_body['routable']) && ($entry_body['routable'] === false))) {
@@ -78,7 +78,7 @@ class SiteController extends Container
         $this->entry = $entry;
 
         // Run event onSiteEntryAfterInitialized
-        $this->emitter->emit('onSiteEntryAfterInitialized');
+        flextype('emitter')->emit('onSiteEntryAfterInitialized');
 
         // Return in JSON Format
         if ($is_json) {
@@ -88,10 +88,6 @@ class SiteController extends Container
 
             return $response->withJson($this->entry);
         }
-
-        // Set template path for current entry
-        $path = 'themes/' . $this->registry->get('plugins.site.settings.theme') . '/' . (empty($this->entry['template']) ? 'templates/default' : 'templates/' . $this->entry['template']) . '.html';
-
 
         // ========== custom code here ==========
         if ($uri === '/') {
@@ -107,21 +103,32 @@ class SiteController extends Container
 
         $locale = explode('/',$uri)[1];
         $locale = (empty($locale)) ? 'en' : $locale;
-
         // ========== end of custom code here ==========
 
-        if (! Filesystem::has(PATH['project'] . '/' . $path)) {
-            return $response->write("Template not found");
-        }
 
-        // ========== custom code bellow ==========
-        // ['locale' => explode('/',$uri)[1], 'entry' => $this->entry, 'query' => $query, 'uri' => $uri, 'api_tokens' => $api_tokens]
+        // Set template path for current entry
+        $path = 'themes/' . flextype('registry')->get('plugins.site.settings.theme') . '/' . (empty($this->entry['template']) ? 'templates/default' : 'templates/' . $this->entry['template']) . '.html';
+
+        self::includeCurrentThemeBootstrap();
+
+        if (! Filesystem::has(PATH['project'] . '/' . $path)) {
+            return $response->write("Template {$this->entry['template']} not found");
+        }
 
         if ($is_entry_not_found) {
-            return $this->twig->render($response->withStatus(404), $path, ['locale' => $locale, 'entry' => $this->entry, 'query' => $query, 'uri' => $uri, 'api_tokens' => $api_tokens]);
+            return flextype('twig')->render($response->withStatus(404), $path, ['entry' => $this->entry, 'query' => $query, 'uri' => $uri, 'locale' => $locale, 'api_tokens' => $api_tokens]);
         }
 
-        return $this->twig->render($response, $path, ['locale' => $locale, 'entry' => $this->entry, 'query' => $query, 'uri' => $uri, 'api_tokens' => $api_tokens]);
+        return flextype('twig')->render($response, $path, ['entry' => $this->entry, 'query' => $query, 'uri' => $uri, 'locale' => $locale, 'api_tokens' => $api_tokens]);
+    }
+
+    private static function includeCurrentThemeBootstrap()
+    {
+        $bootstrap_path = 'themes/' . flextype('registry')->get('plugins.site.settings.theme') . '/bootstrap.php';
+
+        if (Filesystem::has(PATH['project'] . '/' . $bootstrap_path)) {
+            include_once PATH['project'] . '/' . $bootstrap_path;
+        }
     }
 
     /**
@@ -134,10 +141,10 @@ class SiteController extends Container
     public function error404() : array
     {
         return [
-            'title'       => $this->registry->get('plugins.site.settings.entries.error404.title'),
-            'description' => $this->registry->get('plugins.site.settings.entries.error404.description'),
-            'content'     => $this->registry->get('plugins.site.settings.entries.error404.content'),
-            'template'    => $this->registry->get('plugins.site.settings.entries.error404.template'),
+            'title'       => flextype('registry')->get('plugins.site.settings.entries.error404.title'),
+            'description' => flextype('registry')->get('plugins.site.settings.entries.error404.description'),
+            'content'     => flextype('registry')->get('plugins.site.settings.entries.error404.content'),
+            'template'    => flextype('registry')->get('plugins.site.settings.entries.error404.template'),
         ];
     }
 }

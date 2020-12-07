@@ -16,13 +16,15 @@
       "issues": "https://github.com/flextype-plugins/icon/issues"
     },
     "require": {
-        "php": ">=7.2.0"
+        "php": ">=7.3.0",
+        "flextype-components/arrays" : "3.0.1",
+        "flextype-components/filesystem": "2.0.8"
     },
     "config": {
         "apcu-autoloader": true,
         "optimize-autoloader": true,
         "platform": {
-            "php": "7.2.0"
+            "php": "7.3.0"
         }
     },
     "autoload": {

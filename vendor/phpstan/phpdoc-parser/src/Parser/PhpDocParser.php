@@ -12,7 +12,6 @@ class PhpDocParser
 	private const DISALLOWED_DESCRIPTION_START_TOKENS = [
 		Lexer::TOKEN_UNION,
 		Lexer::TOKEN_INTERSECTION,
-		Lexer::TOKEN_OPEN_ANGLE_BRACKET,
 	];
 
 	/** @var TypeParser */
@@ -65,7 +64,8 @@ class PhpDocParser
 		while (true) {
 			// If we received a Lexer::TOKEN_PHPDOC_EOL, exit early to prevent
 			// them from being processed.
-			if ($tokens->currentTokenType() === Lexer::TOKEN_PHPDOC_EOL) {
+			$currentTokenType = $tokens->currentTokenType();
+			if ($currentTokenType === Lexer::TOKEN_PHPDOC_EOL) {
 				break;
 			}
 			$text .= $tokens->joinUntil(Lexer::TOKEN_PHPDOC_EOL, Lexer::TOKEN_CLOSE_PHPDOC, Lexer::TOKEN_END);
@@ -73,7 +73,8 @@ class PhpDocParser
 
 			// If we joined until TOKEN_PHPDOC_EOL, peak at the next tokens to see
 			// if we have a multiline string to join.
-			if ($tokens->currentTokenType() !== Lexer::TOKEN_PHPDOC_EOL) {
+			$currentTokenType = $tokens->currentTokenType();
+			if ($currentTokenType !== Lexer::TOKEN_PHPDOC_EOL) {
 				break;
 			}
 
@@ -81,7 +82,8 @@ class PhpDocParser
 			// to be combined.
 			$tokens->pushSavePoint();
 			$tokens->next();
-			if ($tokens->currentTokenType() !== Lexer::TOKEN_IDENTIFIER) {
+			$currentTokenType = $tokens->currentTokenType();
+			if ($currentTokenType !== Lexer::TOKEN_IDENTIFIER) {
 				$tokens->rollback();
 				break;
 			}
@@ -112,19 +114,30 @@ class PhpDocParser
 
 			switch ($tag) {
 				case '@param':
+				case '@phpstan-param':
+				case '@psalm-param':
 					$tagValue = $this->parseParamTagValue($tokens);
 					break;
 
 				case '@var':
+				case '@phpstan-var':
+				case '@psalm-var':
 					$tagValue = $this->parseVarTagValue($tokens);
 					break;
 
 				case '@return':
+				case '@phpstan-return':
+				case '@psalm-return':
 					$tagValue = $this->parseReturnTagValue($tokens);
 					break;
 
 				case '@throws':
+				case '@phpstan-throws':
 					$tagValue = $this->parseThrowsTagValue($tokens);
+					break;
+
+				case '@mixin':
+					$tagValue = $this->parseMixinTagValue($tokens);
 					break;
 
 				case '@deprecated':
@@ -134,15 +147,46 @@ class PhpDocParser
 				case '@property':
 				case '@property-read':
 				case '@property-write':
+				case '@phpstan-property':
+				case '@phpstan-property-read':
+				case '@phpstan-property-write':
+				case '@psalm-property':
+				case '@psalm-property-read':
+				case '@psalm-property-write':
 					$tagValue = $this->parsePropertyTagValue($tokens);
 					break;
 
 				case '@method':
+				case '@phpstan-method':
+				case '@psalm-method':
 					$tagValue = $this->parseMethodTagValue($tokens);
 					break;
 
 				case '@template':
+				case '@phpstan-template':
+				case '@psalm-template':
+				case '@template-covariant':
+				case '@phpstan-template-covariant':
+				case '@psalm-template-covariant':
 					$tagValue = $this->parseTemplateTagValue($tokens);
+					break;
+
+				case '@extends':
+				case '@phpstan-extends':
+				case '@template-extends':
+					$tagValue = $this->parseExtendsTagValue('@extends', $tokens);
+					break;
+
+				case '@implements':
+				case '@phpstan-implements':
+				case '@template-implements':
+					$tagValue = $this->parseExtendsTagValue('@implements', $tokens);
+					break;
+
+				case '@use':
+				case '@phpstan-use':
+				case '@template-use':
+					$tagValue = $this->parseExtendsTagValue('@use', $tokens);
 					break;
 
 				default:
@@ -193,6 +237,13 @@ class PhpDocParser
 		$type = $this->typeParser->parse($tokens);
 		$description = $this->parseOptionalDescription($tokens, true);
 		return new Ast\PhpDoc\ThrowsTagValueNode($type, $description);
+	}
+
+	private function parseMixinTagValue(TokenIterator $tokens): Ast\PhpDoc\MixinTagValueNode
+	{
+		$type = $this->typeParser->parse($tokens);
+		$description = $this->parseOptionalDescription($tokens, true);
+		return new Ast\PhpDoc\MixinTagValueNode($type, $description);
 	}
 
 	private function parseDeprecatedTagValue(TokenIterator $tokens): Ast\PhpDoc\DeprecatedTagValueNode
@@ -280,11 +331,11 @@ class PhpDocParser
 		$name = $tokens->currentTokenValue();
 		$tokens->consumeTokenType(Lexer::TOKEN_IDENTIFIER);
 
-		if ($tokens->tryConsumeTokenValue('of')) {
+		if ($tokens->tryConsumeTokenValue('of') || $tokens->tryConsumeTokenValue('as')) {
 			$bound = $this->typeParser->parse($tokens);
 
 		} else {
-			$bound = new IdentifierTypeNode('mixed');
+			$bound = null;
 		}
 
 		$description = $this->parseOptionalDescription($tokens);
@@ -292,10 +343,34 @@ class PhpDocParser
 		return new Ast\PhpDoc\TemplateTagValueNode($name, $bound, $description);
 	}
 
+	private function parseExtendsTagValue(string $tagName, TokenIterator $tokens): Ast\PhpDoc\PhpDocTagValueNode
+	{
+		$baseType = new IdentifierTypeNode($tokens->currentTokenValue());
+		$tokens->consumeTokenType(Lexer::TOKEN_IDENTIFIER);
+
+		$type = $this->typeParser->parseGeneric($tokens, $baseType);
+
+		$description = $this->parseOptionalDescription($tokens);
+
+		switch ($tagName) {
+			case '@extends':
+				return new Ast\PhpDoc\ExtendsTagValueNode($type, $description);
+			case '@implements':
+				return new Ast\PhpDoc\ImplementsTagValueNode($type, $description);
+			case '@use':
+				return new Ast\PhpDoc\UsesTagValueNode($type, $description);
+		}
+
+		throw new \PHPStan\ShouldNotHappenException();
+	}
+
 	private function parseOptionalVariableName(TokenIterator $tokens): string
 	{
 		if ($tokens->isCurrentTokenType(Lexer::TOKEN_VARIABLE)) {
 			$parameterName = $tokens->currentTokenValue();
+			$tokens->next();
+		} elseif ($tokens->isCurrentTokenType(Lexer::TOKEN_THIS_VARIABLE)) {
+			$parameterName = '$this';
 			$tokens->next();
 
 		} else {

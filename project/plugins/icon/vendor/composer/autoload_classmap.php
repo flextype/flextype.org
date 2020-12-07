@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Flextype\\Icon' => $baseDir . '/app/Models/Icon.php',
-    'Flextype\\IconTwigExtension' => $baseDir . '/twig/IconTwigExtension.php',
+    'Flextype\\Component\\Arrays\\Arrays' => $vendorDir . '/flextype-components/arrays/src/Arrays.php',
+    'Flextype\\Component\\Filesystem\\Filesystem' => $vendorDir . '/flextype-components/filesystem/Filesystem.php',
+    'Flextype\\Plugin\\Icon\\Models\\Icon' => $baseDir . '/app/Models/Icon.php',
+    'Flextype\\Plugin\\Icon\\Twig\\IconTwigExtension' => $baseDir . '/twig/IconTwigExtension.php',
 );

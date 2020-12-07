@@ -33,7 +33,6 @@ use const T_NULLABLE;
 use const T_OBJECT_OPERATOR;
 use const T_OPEN_PARENTHESIS;
 use const T_OPEN_SHORT_ARRAY;
-use const T_RETURN_TYPE;
 use const T_TRAIT;
 use const T_USE;
 use const T_VARIABLE;
@@ -57,9 +56,6 @@ use const T_VARIABLE;
 class ReferencedNameHelper
 {
 
-	/** @var ReferencedName[][] Cached data for method getAllReferencedNames, cacheKey(string) => pointer(integer) => name(string) */
-	private static $allReferencedTypesCache = [];
-
 	/**
 	 * @param File $phpcsFile
 	 * @param int $openTagPointer
@@ -67,21 +63,11 @@ class ReferencedNameHelper
 	 */
 	public static function getAllReferencedNames(File $phpcsFile, int $openTagPointer): array
 	{
-		$cacheKey = $phpcsFile->getFilename() . '-' . $openTagPointer;
+		$lazyValue = static function () use ($phpcsFile, $openTagPointer): array {
+			return self::createAllReferencedNames($phpcsFile, $openTagPointer);
+		};
 
-		$fixerLoops = $phpcsFile->fixer !== null ? $phpcsFile->fixer->loops : null;
-		if ($fixerLoops !== null) {
-			$cacheKey .= '-loop' . $fixerLoops;
-			if ($fixerLoops > 0) {
-				unset(self::$allReferencedTypesCache[$cacheKey . '-loop' . ($fixerLoops - 1)]);
-			}
-		}
-
-		if (!isset(self::$allReferencedTypesCache[$cacheKey])) {
-			self::$allReferencedTypesCache[$cacheKey] = self::createAllReferencedNames($phpcsFile, $openTagPointer);
-		}
-
-		return self::$allReferencedTypesCache[$cacheKey];
+		return SniffLocalCache::getAndSetIfNotCached($phpcsFile, 'references', $lazyValue);
 	}
 
 	public static function getReferenceName(File $phpcsFile, int $nameStartPointer, int $nameEndPointer): string
@@ -104,7 +90,8 @@ class ReferencedNameHelper
 	{
 		$tokens = $phpcsFile->getTokens();
 
-		$nameTokenCodes = array_merge([T_RETURN_TYPE], TokenHelper::$nameTokenCodes);
+		$nameTokenCodes = TokenHelper::getNameTokenCodes();
+
 		$nameTokenCodesWithWhitespace = array_merge($nameTokenCodes, Tokens::$emptyTokens);
 
 		$lastNamePointer = $startPointer;
@@ -133,11 +120,12 @@ class ReferencedNameHelper
 		$tokens = $phpcsFile->getTokens();
 
 		$beginSearchAtPointer = $openTagPointer + 1;
-		$searchTypes = array_merge([T_RETURN_TYPE], TokenHelper::$nameTokenCodes);
 		$types = [];
 
+		$nameTokenCodes = TokenHelper::getNameTokenCodes();
+
 		while (true) {
-			$nameStartPointer = TokenHelper::findNext($phpcsFile, $searchTypes, $beginSearchAtPointer);
+			$nameStartPointer = TokenHelper::findNext($phpcsFile, $nameTokenCodes, $beginSearchAtPointer);
 			if ($nameStartPointer === null) {
 				break;
 			}
@@ -145,7 +133,7 @@ class ReferencedNameHelper
 			if (!self::isReferencedName($phpcsFile, $nameStartPointer)) {
 				$beginSearchAtPointer = TokenHelper::findNextExcluding(
 					$phpcsFile,
-					array_merge(TokenHelper::$ineffectiveTokenCodes, [T_RETURN_TYPE], TokenHelper::$nameTokenCodes),
+					array_merge(TokenHelper::$ineffectiveTokenCodes, $nameTokenCodes),
 					$nameStartPointer + 1
 				);
 				continue;
@@ -161,11 +149,16 @@ class ReferencedNameHelper
 					if ($tokens[$previousTokenBeforeStartPointer]['code'] !== T_NEW) {
 						$type = ReferencedName::TYPE_FUNCTION;
 					}
+				} elseif ($tokens[$nextTokenAfterEndPointer]['code'] === T_BITWISE_AND) {
+					$tokenAfterNextToken = TokenHelper::findNextEffective($phpcsFile, $nextTokenAfterEndPointer + 1);
+					if (!in_array($tokens[$tokenAfterNextToken]['code'], [T_VARIABLE, T_ELLIPSIS], true)) {
+						$type = ReferencedName::TYPE_CONSTANT;
+					}
 				} elseif (
 					!in_array($tokens[$nextTokenAfterEndPointer]['code'], [
 						T_VARIABLE,
-						T_ELLIPSIS, // Variadic parameter
-						T_BITWISE_AND, // Parameter by reference
+						// Variadic parameter
+						T_ELLIPSIS,
 					], true)
 				) {
 					if (
@@ -173,17 +166,20 @@ class ReferencedNameHelper
 							T_EXTENDS,
 							T_IMPLEMENTS,
 							T_INSTANCEOF,
-							T_USE, // Trait
+							// Trait
+							T_USE,
 							T_NEW,
-							T_COLON, // Return type hint
-							T_NULLABLE, // Nullable type hint
+							// Return type hint
+							T_COLON,
+							// Nullable type hint
+							T_NULLABLE,
 						], true)
 						&& $tokens[$nextTokenAfterEndPointer]['code'] !== T_DOUBLE_COLON
 					) {
 						if ($tokens[$previousTokenBeforeStartPointer]['code'] === T_COMMA) {
 							$precedingTokenPointer = TokenHelper::findPreviousExcluding(
 								$phpcsFile,
-								array_merge([T_COMMA], TokenHelper::$nameTokenCodes, TokenHelper::$ineffectiveTokenCodes),
+								array_merge([T_COMMA], $nameTokenCodes, TokenHelper::$ineffectiveTokenCodes),
 								$previousTokenBeforeStartPointer - 1
 							);
 							if (
@@ -201,13 +197,13 @@ class ReferencedNameHelper
 							$exclude = [T_BITWISE_OR, T_OPEN_PARENTHESIS];
 							$catchPointer = TokenHelper::findPreviousExcluding(
 								$phpcsFile,
-								array_merge($exclude, TokenHelper::$nameTokenCodes, TokenHelper::$ineffectiveTokenCodes),
+								array_merge($exclude, $nameTokenCodes, TokenHelper::$ineffectiveTokenCodes),
 								$previousTokenBeforeStartPointer - 1
 							);
 							$exclude = [T_BITWISE_OR];
 							$openParenthesisPointer = TokenHelper::findPreviousExcluding(
 								$phpcsFile,
-								array_merge($exclude, TokenHelper::$nameTokenCodes, TokenHelper::$ineffectiveTokenCodes),
+								array_merge($exclude, $nameTokenCodes, TokenHelper::$ineffectiveTokenCodes),
 								$previousTokenBeforeStartPointer
 							);
 							if (
@@ -222,7 +218,12 @@ class ReferencedNameHelper
 					}
 				}
 			}
-			$types[] = new ReferencedName(self::getReferenceName($phpcsFile, $nameStartPointer, $nameEndPointer), $nameStartPointer, $nameEndPointer, $type);
+			$types[] = new ReferencedName(
+				self::getReferenceName($phpcsFile, $nameStartPointer, $nameEndPointer),
+				$nameStartPointer,
+				$nameEndPointer,
+				$type
+			);
 			$beginSearchAtPointer = $nameEndPointer + 1;
 		}
 		return $types;
@@ -239,7 +240,10 @@ class ReferencedNameHelper
 			return $tokens[$previousPointer]['code'] !== T_OBJECT_OPERATOR;
 		}
 
-		if (count($tokens[$startPointer]['conditions']) > 0 && array_values(array_reverse($tokens[$startPointer]['conditions']))[0] === T_USE) {
+		if (
+			count($tokens[$startPointer]['conditions']) > 0
+			&& array_values(array_reverse($tokens[$startPointer]['conditions']))[0] === T_USE
+		) {
 			// Method imported from trait
 			return false;
 		}
@@ -265,21 +269,36 @@ class ReferencedNameHelper
 			return false;
 		}
 
-		if ($previousToken['code'] === T_OPEN_PARENTHESIS && isset($previousToken['parenthesis_owner']) && $tokens[$previousToken['parenthesis_owner']]['code'] === T_DECLARE) {
+		if (
+			$previousToken['code'] === T_OPEN_PARENTHESIS
+			&& isset($previousToken['parenthesis_owner'])
+			&& $tokens[$previousToken['parenthesis_owner']]['code'] === T_DECLARE
+		) {
 			return false;
 		}
 
-		if ($previousToken['code'] === T_COMMA && TokenHelper::findPreviousLocal($phpcsFile, T_DECLARE, $previousPointer - 1) !== null) {
+		if (
+			$previousToken['code'] === T_COMMA
+			&& TokenHelper::findPreviousLocal($phpcsFile, T_DECLARE, $previousPointer - 1) !== null
+		) {
 			return false;
 		}
 
 		if ($previousToken['code'] === T_COMMA) {
 			$constPointer = TokenHelper::findPreviousLocal($phpcsFile, T_CONST, $previousPointer - 1);
-			if ($constPointer !== null && TokenHelper::findNext($phpcsFile, [T_OPEN_SHORT_ARRAY, T_ARRAY], $constPointer + 1, $startPointer) === null) {
+			if (
+				$constPointer !== null
+				&& TokenHelper::findNext($phpcsFile, [T_OPEN_SHORT_ARRAY, T_ARRAY], $constPointer + 1, $startPointer) === null
+			) {
 				return false;
 			}
-		} elseif ($previousToken['code'] === T_BITWISE_AND && TokenHelper::findPreviousLocal($phpcsFile, [T_FUNCTION], $previousPointer - 1) !== null) {
-			return false;
+		} elseif ($previousToken['code'] === T_BITWISE_AND) {
+			$pointerBefore = TokenHelper::findPreviousEffective($phpcsFile, $previousPointer - 1);
+			$isFunctionPointerBefore = TokenHelper::findPreviousLocal($phpcsFile, T_FUNCTION, $previousPointer - 1) !== null;
+
+			if ($tokens[$pointerBefore]['code'] !== T_VARIABLE && $isFunctionPointerBefore) {
+				return false;
+			}
 		} elseif ($previousToken['code'] === T_GOTO) {
 			return false;
 		}

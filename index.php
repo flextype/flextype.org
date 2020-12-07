@@ -21,7 +21,7 @@ use const PHP_VERSION;
 /**
  * Define the application minimum supported PHP version.
  */
-define('FLEXTYPE_MINIMUM_PHP', '7.2.0');
+define('FLEXTYPE_MINIMUM_PHP', '7.3.0');
 
 /**
  * Define the PATH to the root directory (without trailing slash).
@@ -33,9 +33,7 @@ define('ROOT_DIR', str_replace(DIRECTORY_SEPARATOR, '/', getcwd()));
  */
 define('PATH', [
     'project'   => ROOT_DIR . '/project',
-    'config'    => ROOT_DIR . '/src/flextype/config',
-    'cache'     => ROOT_DIR . '/var/cache',
-    'logs'      => ROOT_DIR . '/var/logs',
+    'tmp'   => ROOT_DIR . '/var/tmp',
 ]);
 
 /**
@@ -46,7 +44,7 @@ version_compare($ver = PHP_VERSION, $req = FLEXTYPE_MINIMUM_PHP, '<') and exit(s
 /**
  * Ensure vendor libraries exist
  */
-! is_file($flextype_autoload = __DIR__ . '/vendor/autoload.php') and exit('Please run: <i>composer install</i> for flextype');
+! is_file($flextypeAutoload = __DIR__ . '/vendor/autoload.php') and exit('Please run: <i>composer install</i> for flextype');
 
 /**
  * Register The Auto Loader
@@ -57,7 +55,7 @@ version_compare($ver = PHP_VERSION, $req = FLEXTYPE_MINIMUM_PHP, '<') and exit(s
  * loading any of our classes later on. It feels nice to relax.
  * Register The Auto Loader
  */
-$flextype_loader = require_once $flextype_autoload;
+$flextypeLoader = require_once $flextypeAutoload;
 
 /**
  * Bootstraps the Flextype
@@ -66,4 +64,4 @@ $flextype_loader = require_once $flextype_autoload;
  * will load up this application so that we can run it and send
  * the responses back to the browser and delight our users.
  */
-include 'src/flextype/bootstrap.php';
+include __DIR__ . '/src/flextype/bootstrap.php';

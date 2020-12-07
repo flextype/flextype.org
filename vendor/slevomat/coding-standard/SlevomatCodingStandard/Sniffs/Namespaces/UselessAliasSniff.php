@@ -12,7 +12,6 @@ use function sprintf;
 use const T_AS;
 use const T_OPEN_TAG;
 use const T_SEMICOLON;
-use const T_STRING;
 
 class UselessAliasSniff implements Sniff
 {
@@ -37,6 +36,10 @@ class UselessAliasSniff implements Sniff
 	 */
 	public function process(File $phpcsFile, $openTagPointer): void
 	{
+		if (TokenHelper::findPrevious($phpcsFile, T_OPEN_TAG, $openTagPointer - 1) !== null) {
+			return;
+		}
+
 		$fileUseStatements = UseStatementHelper::getFileUseStatements($phpcsFile);
 
 		if (count($fileUseStatements) === 0) {
@@ -65,7 +68,7 @@ class UselessAliasSniff implements Sniff
 				}
 
 				$asPointer = TokenHelper::findNext($phpcsFile, T_AS, $useStatement->getPointer() + 1);
-				$nameEndPointer = TokenHelper::findPrevious($phpcsFile, T_STRING, $asPointer - 1);
+				$nameEndPointer = TokenHelper::findPrevious($phpcsFile, TokenHelper::getOnlyNameTokenCodes(), $asPointer - 1);
 				$useSemicolonPointer = TokenHelper::findNext($phpcsFile, T_SEMICOLON, $asPointer + 1);
 
 				$phpcsFile->fixer->beginChangeset();

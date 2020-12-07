@@ -20,7 +20,6 @@ use function ucfirst;
 use const T_COMMA;
 use const T_IMPLEMENTS;
 use const T_NAMESPACE;
-use const T_NS_SEPARATOR;
 use const T_USE;
 use const T_WHITESPACE;
 
@@ -64,34 +63,32 @@ class FullyQualifiedClassNameAfterKeywordSniff implements Sniff
 	{
 		$tokens = $phpcsFile->getTokens();
 
+		$nameTokenCodes = TokenHelper::getNameTokenCodes();
+
 		/** @var int $nameStartPointer */
 		$nameStartPointer = TokenHelper::findNextEffective($phpcsFile, $keywordPointer + 1);
-		if (!in_array($tokens[$nameStartPointer]['code'], TokenHelper::$nameTokenCodes, true)) {
+		if (!in_array($tokens[$nameStartPointer]['code'], $nameTokenCodes, true)) {
 			return;
 		}
 
-		$possibleCommaPointer = $this->checkReferencedName(
-			$phpcsFile,
-			$keywordPointer,
-			$nameStartPointer
-		);
+		$possibleCommaPointer = $this->checkReferencedName($phpcsFile, $keywordPointer, $nameStartPointer);
 
 		if (!in_array($tokens[$keywordPointer]['code'], [T_IMPLEMENTS, T_USE], true)) {
 			return;
 		}
 
 		while (true) {
-			$possibleCommaPointer = TokenHelper::findNextExcluding($phpcsFile, array_merge(TokenHelper::$nameTokenCodes, [T_WHITESPACE]), $possibleCommaPointer);
+			$possibleCommaPointer = TokenHelper::findNextExcluding(
+				$phpcsFile,
+				array_merge($nameTokenCodes, [T_WHITESPACE]),
+				$possibleCommaPointer
+			);
 			if ($possibleCommaPointer !== null) {
 				$possibleCommaToken = $tokens[$possibleCommaPointer];
 				if ($possibleCommaToken['code'] === T_COMMA) {
 					/** @var int $nameStartPointer */
 					$nameStartPointer = TokenHelper::findNextEffective($phpcsFile, $possibleCommaPointer + 1);
-					$possibleCommaPointer = $this->checkReferencedName(
-						$phpcsFile,
-						$keywordPointer,
-						$nameStartPointer
-					);
+					$possibleCommaPointer = $this->checkReferencedName($phpcsFile, $keywordPointer, $nameStartPointer);
 					continue;
 				}
 			}
@@ -134,9 +131,8 @@ class FullyQualifiedClassNameAfterKeywordSniff implements Sniff
 			}
 		}
 
-		$nameStartToken = $tokens[$nameStartPointer];
 		$endPointer = ReferencedNameHelper::getReferencedNameEndPointer($phpcsFile, $nameStartPointer);
-		if ($nameStartToken['code'] !== T_NS_SEPARATOR) {
+		if (!NamespaceHelper::isFullyQualifiedPointer($phpcsFile, $nameStartPointer)) {
 			$name = ReferencedNameHelper::getReferenceName($phpcsFile, $nameStartPointer, $endPointer);
 			$keyword = $tokens[$keywordPointer]['content'];
 
@@ -147,11 +143,7 @@ class FullyQualifiedClassNameAfterKeywordSniff implements Sniff
 			), $keywordPointer, self::getErrorCode($keyword));
 			if ($fix) {
 
-				$fullyQualifiedName = NamespaceHelper::resolveClassName(
-					$phpcsFile,
-					$name,
-					$nameStartPointer
-				);
+				$fullyQualifiedName = NamespaceHelper::resolveClassName($phpcsFile, $name, $nameStartPointer);
 
 				$phpcsFile->fixer->beginChangeset();
 

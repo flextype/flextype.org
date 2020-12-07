@@ -9,6 +9,4 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Flextype;
-
-$app->get('{uri:.+}', 'SiteController:index')->setName('site.index')->add('csrf');
+flextype()->get('{uri:.+}', 'SiteController:index')->setName('site.index')->add('csrf');

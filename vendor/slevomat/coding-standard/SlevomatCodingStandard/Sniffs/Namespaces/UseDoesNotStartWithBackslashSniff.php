@@ -4,10 +4,11 @@ namespace SlevomatCodingStandard\Sniffs\Namespaces;
 
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
+use SlevomatCodingStandard\Helpers\NamespaceHelper;
 use SlevomatCodingStandard\Helpers\TokenHelper;
 use SlevomatCodingStandard\Helpers\UseStatementHelper;
-use const T_NS_SEPARATOR;
-use const T_STRING;
+use function in_array;
+use function ltrim;
 use const T_USE;
 
 class UseDoesNotStartWithBackslashSniff implements Sniff
@@ -44,14 +45,18 @@ class UseDoesNotStartWithBackslashSniff implements Sniff
 		/** @var int $nextTokenPointer */
 		$nextTokenPointer = TokenHelper::findNextEffective($phpcsFile, $usePointer + 1);
 
-		if ($tokens[$nextTokenPointer]['code'] === T_STRING
-			&& ($tokens[$nextTokenPointer]['content'] === 'function' || $tokens[$nextTokenPointer]['content'] === 'const')
+		if (
+			in_array($tokens[$nextTokenPointer]['code'], TokenHelper::getOnlyNameTokenCodes(), true)
+			&& (
+				$tokens[$nextTokenPointer]['content'] === 'function'
+				|| $tokens[$nextTokenPointer]['content'] === 'const'
+			)
 		) {
 			/** @var int $nextTokenPointer */
 			$nextTokenPointer = TokenHelper::findNextEffective($phpcsFile, $nextTokenPointer + 1);
 		}
 
-		if ($tokens[$nextTokenPointer]['code'] !== T_NS_SEPARATOR) {
+		if (!NamespaceHelper::isFullyQualifiedPointer($phpcsFile, $nextTokenPointer)) {
 			return;
 		}
 
@@ -66,7 +71,7 @@ class UseDoesNotStartWithBackslashSniff implements Sniff
 		}
 
 		$phpcsFile->fixer->beginChangeset();
-		$phpcsFile->fixer->replaceToken($nextTokenPointer, '');
+		$phpcsFile->fixer->replaceToken($nextTokenPointer, ltrim($tokens[$nextTokenPointer]['content'], '\\'));
 		$phpcsFile->fixer->endChangeset();
 	}
 
