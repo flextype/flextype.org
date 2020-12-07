@@ -28,23 +28,12 @@
                 {% set related_posts = [] %}
 
                 {% for tag in tags %}
-                    {% set related_posts = related_posts|merge(entries.fetch(locale ~ '/blog', {
-                                                                        'where': {
-                                                                            'key': 'tags',
-                                                                            'expr': 'contains',
-                                                                            'value': tag
-                                                                        },
-                                                                        'and_where': [{
-                                                                            'key': 'visibility',
-                                                                            'expr': 'nin',
-                                                                            'value': ['draft', 'hidden']
-                                                                        }],
-                                                                        'order_by': {
-                                                                            'field': 'published_at',
-                                                                            'direction': 'desc'
-                                                                        },
-                                                                        'set_max_result': 6
-                                                                    })) %}
+                    {% set related_posts = related_posts|merge(entries.fetchCollection(locale ~ '/blog')
+                                                                      .where('tags', 'contains', tag)
+                                                                      .where('visibility', 'nin', ['draft', 'hidden'])
+                                                                      .sortBy('published_at', 'DESC')
+                                                                      .limit(6)
+                                                                    ) %}
                 {% endfor %}
 
                 {% if related_posts|length > 0 %}
