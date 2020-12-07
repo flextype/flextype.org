@@ -7,33 +7,20 @@ declare(strict_types=1);
  * Founded by Sergey Romanenko and maintained by Flextype Community.
  */
 
-namespace Flextype;
+namespace Flextype\Plugin\Twig\Twig;
 
-use Twig_Extension;
-use Twig_Extension_GlobalsInterface;
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\GlobalsInterface;
 
-class EntriesTwigExtension extends Twig_Extension implements Twig_Extension_GlobalsInterface
+class EntriesTwigExtension extends AbstractExtension implements GlobalsInterface
 {
-    /**
-     * Flextype Dependency Container
-     */
-    private $flextype;
-
-    /**
-     * Constructor
-     */
-    public function __construct($flextype)
-    {
-        $this->flextype = $flextype;
-    }
-
     /**
      * Register Global variables in an extension
      */
-    public function getGlobals()
+    public function getGlobals(): array
     {
         return [
-            'entries' => new EntriesTwig($this->flextype),
+            'entries' => new EntriesTwig(),
         ];
     }
 }
@@ -41,39 +28,30 @@ class EntriesTwigExtension extends Twig_Extension implements Twig_Extension_Glob
 class EntriesTwig
 {
     /**
-     * Flextype Dependency Container
+     * Flextype Application
      */
-    private $flextype;
 
     /**
      * Constructor
      */
-    public function __construct($flextype)
+    public function __construct()
     {
-        $this->flextype = $flextype;
-    }
 
-    /**
-     * Fetch entry(entries)
-     */
-    public function fetch(string $id, $args = null) : array
-    {
-        return $this->flextype['entries']->fetch($id, $args);
     }
 
     /**
      * Fetch single entry
      */
-    public function fetchSingle(string $id) : array
+    public function fetchSingle(string $id, array $options = [])
     {
-        return $this->flextype['entries']->fetch($id);
+        return flextype('entries')->fetchSingle($id, $options);
     }
 
     /**
      * Fetch entries collection
      */
-    public function fetchCollection(string $id, array $args = []) : array
+    public function fetchCollection(string $id, array $options = [])
     {
-        return $this->flextype['entries']->fetch($id, $args);
+        return flextype('entries')->fetchCollection($id, $options);
     }
 }

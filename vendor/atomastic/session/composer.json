@@ -1,0 +1,32 @@
+{
+    "name": "atomastic/session",
+    "description": "Session Component provides basic methods to work with session.",
+    "license": "MIT",
+    "keywords": [
+        "Session", "session", "php-session", "php", "atomastic"
+    ],
+    "support": {
+      "source": "https://github.com/atomastic/session",
+      "issues": "https://github.com/atomastic/session/issues"
+    },
+    "authors": [
+        {
+            "name": "Sergey Romanenko",
+            "email": "sergey.romanenko@flextype.org",
+            "homepage": "https://github.com/Awilum"
+        }
+    ],
+    "require": {
+        "php": "^7.3 || ^8.0"
+    },
+    "autoload":{
+        "psr-4": {
+            "Atomastic\\Session\\": "src/"
+        }
+    },
+    "require-dev": {
+        "doctrine/coding-standard": "8.1.0",
+        "pestphp/pest": "^0.3.3",
+        "phpstan/phpstan": "^0.12.42"
+    }
+}

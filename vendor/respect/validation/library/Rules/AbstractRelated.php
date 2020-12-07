@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
+
 use function is_scalar;
 
 /**
@@ -58,16 +59,15 @@ abstract class AbstractRelated extends AbstractRule
      */
     public function __construct($reference, ?Validatable $rule = null, bool $mandatory = true)
     {
-        if (is_scalar($reference)) {
-            $this->setName((string) $reference);
-            if ($rule && !$rule->getName()) {
-                $rule->setName((string) $reference);
-            }
-        }
-
         $this->reference = $reference;
         $this->rule = $rule;
         $this->mandatory = $mandatory;
+
+        if ($rule && $rule->getName() !== null) {
+            $this->setName($rule->getName());
+        } elseif (is_scalar($reference)) {
+            $this->setName((string) $reference);
+        }
     }
 
     /**

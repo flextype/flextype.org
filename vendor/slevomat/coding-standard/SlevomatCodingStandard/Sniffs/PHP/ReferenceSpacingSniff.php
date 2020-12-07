@@ -64,13 +64,13 @@ class ReferenceSpacingSniff implements Sniff
 
 		$errorMessage = $requiredSpacesCount === 0
 			? 'There must be no whitespace after reference.'
-			: sprintf('There must be exactly %d whitespace%s after reference.', $requiredSpacesCount, $requiredSpacesCount !== 1 ? 's' : '');
+			: sprintf(
+				'There must be exactly %d whitespace%s after reference.',
+				$requiredSpacesCount,
+				$requiredSpacesCount !== 1 ? 's' : ''
+			);
 
-		$fix = $phpcsFile->addFixableError(
-			$errorMessage,
-			$referencePointer,
-			self::CODE_INCORRECT_SPACES_AFTER_REFERENCE
-		);
+		$fix = $phpcsFile->addFixableError($errorMessage, $referencePointer, self::CODE_INCORRECT_SPACES_AFTER_REFERENCE);
 
 		if (!$fix) {
 			return;
@@ -108,7 +108,10 @@ class ReferenceSpacingSniff implements Sniff
 			}
 
 			$pointerBeforeParenthesisOpener = TokenHelper::findPreviousEffective($phpcsFile, $previousParenthesisOpenerPointer - 1);
-			if ($pointerBeforeParenthesisOpener !== null && $tokens[$pointerBeforeParenthesisOpener]['code'] === T_USE) {
+			if (
+				$pointerBeforeParenthesisOpener !== null
+				&& $tokens[$pointerBeforeParenthesisOpener]['code'] === T_USE
+			) {
 				return true;
 			}
 		}

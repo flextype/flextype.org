@@ -29,6 +29,7 @@ use function strtolower;
 use const T_ABSTRACT;
 use const T_CLOSE_CURLY_BRACKET;
 use const T_CONST;
+use const T_FINAL;
 use const T_FUNCTION;
 use const T_OPEN_CURLY_BRACKET;
 use const T_PROTECTED;
@@ -60,14 +61,101 @@ class ClassStructureSniff implements Sniff
 	private const GROUP_MAGIC_METHODS = 'magic methods';
 	private const GROUP_PUBLIC_METHODS = 'public methods';
 	private const GROUP_PUBLIC_ABSTRACT_METHODS = 'public abstract methods';
+	private const GROUP_PUBLIC_FINAL_METHODS = 'public final methods';
 	private const GROUP_PUBLIC_STATIC_METHODS = 'public static methods';
 	private const GROUP_PUBLIC_STATIC_ABSTRACT_METHODS = 'public static abstract methods';
+	private const GROUP_PUBLIC_STATIC_FINAL_METHODS = 'public static final methods';
 	private const GROUP_PROTECTED_METHODS = 'protected methods';
 	private const GROUP_PROTECTED_ABSTRACT_METHODS = 'protected abstract methods';
+	private const GROUP_PROTECTED_FINAL_METHODS = 'protected final methods';
 	private const GROUP_PROTECTED_STATIC_METHODS = 'protected static methods';
 	private const GROUP_PROTECTED_STATIC_ABSTRACT_METHODS = 'protected static abstract methods';
+	private const GROUP_PROTECTED_STATIC_FINAL_METHODS = 'protected static final methods';
 	private const GROUP_PRIVATE_METHODS = 'private methods';
 	private const GROUP_PRIVATE_STATIC_METHODS = 'private static methods';
+
+	private const GROUP_SHORTCUT_CONSTANTS = 'constants';
+	private const GROUP_SHORTCUT_PROPERTIES = 'properties';
+	private const GROUP_SHORTCUT_STATIC_PROPERTIES = 'static properties';
+	private const GROUP_SHORTCUT_METHODS = 'methods';
+	private const GROUP_SHORTCUT_PUBLIC_METHODS = 'all public methods';
+	private const GROUP_SHORTCUT_PROTECTED_METHODS = 'all protected methods';
+	private const GROUP_SHORTCUT_PRIVATE_METHODS = 'all private methods';
+	private const GROUP_SHORTCUT_STATIC_METHODS = 'static methods';
+	private const GROUP_SHORTCUT_ABSTRACT_METHODS = 'abstract methods';
+	private const GROUP_SHORTCUT_FINAL_METHODS = 'final methods';
+
+	private const SHORTCUTS = [
+		self::GROUP_SHORTCUT_CONSTANTS => [
+			self::GROUP_PUBLIC_CONSTANTS,
+			self::GROUP_PROTECTED_CONSTANTS,
+			self::GROUP_PRIVATE_CONSTANTS,
+		],
+		self::GROUP_SHORTCUT_STATIC_PROPERTIES => [
+			self::GROUP_PUBLIC_STATIC_PROPERTIES,
+			self::GROUP_PROTECTED_STATIC_PROPERTIES,
+			self::GROUP_PRIVATE_STATIC_PROPERTIES,
+		],
+		self::GROUP_SHORTCUT_PROPERTIES => [
+			self::GROUP_SHORTCUT_STATIC_PROPERTIES,
+			self::GROUP_PUBLIC_PROPERTIES,
+			self::GROUP_PROTECTED_PROPERTIES,
+			self::GROUP_PRIVATE_PROPERTIES,
+		],
+		self::GROUP_SHORTCUT_PUBLIC_METHODS => [
+			self::GROUP_PUBLIC_FINAL_METHODS,
+			self::GROUP_PUBLIC_STATIC_FINAL_METHODS,
+			self::GROUP_PUBLIC_ABSTRACT_METHODS,
+			self::GROUP_PUBLIC_STATIC_ABSTRACT_METHODS,
+			self::GROUP_PUBLIC_STATIC_METHODS,
+			self::GROUP_PUBLIC_METHODS,
+		],
+		self::GROUP_SHORTCUT_PROTECTED_METHODS => [
+			self::GROUP_PROTECTED_FINAL_METHODS,
+			self::GROUP_PROTECTED_STATIC_FINAL_METHODS,
+			self::GROUP_PROTECTED_ABSTRACT_METHODS,
+			self::GROUP_PROTECTED_STATIC_ABSTRACT_METHODS,
+			self::GROUP_PROTECTED_STATIC_METHODS,
+			self::GROUP_PROTECTED_METHODS,
+		],
+		self::GROUP_SHORTCUT_PRIVATE_METHODS => [
+			self::GROUP_PRIVATE_STATIC_METHODS,
+			self::GROUP_PRIVATE_METHODS,
+		],
+		self::GROUP_SHORTCUT_FINAL_METHODS => [
+			self::GROUP_PUBLIC_FINAL_METHODS,
+			self::GROUP_PROTECTED_FINAL_METHODS,
+			self::GROUP_PUBLIC_STATIC_FINAL_METHODS,
+			self::GROUP_PROTECTED_STATIC_FINAL_METHODS,
+		],
+		self::GROUP_SHORTCUT_ABSTRACT_METHODS => [
+			self::GROUP_PUBLIC_ABSTRACT_METHODS,
+			self::GROUP_PROTECTED_ABSTRACT_METHODS,
+			self::GROUP_PUBLIC_STATIC_ABSTRACT_METHODS,
+			self::GROUP_PROTECTED_STATIC_ABSTRACT_METHODS,
+		],
+		self::GROUP_SHORTCUT_STATIC_METHODS => [
+			self::GROUP_STATIC_CONSTRUCTORS,
+			self::GROUP_PUBLIC_STATIC_FINAL_METHODS,
+			self::GROUP_PROTECTED_STATIC_FINAL_METHODS,
+			self::GROUP_PUBLIC_STATIC_ABSTRACT_METHODS,
+			self::GROUP_PROTECTED_STATIC_ABSTRACT_METHODS,
+			self::GROUP_PUBLIC_STATIC_METHODS,
+			self::GROUP_PROTECTED_STATIC_METHODS,
+			self::GROUP_PRIVATE_STATIC_METHODS,
+		],
+		self::GROUP_SHORTCUT_METHODS => [
+			self::GROUP_SHORTCUT_FINAL_METHODS,
+			self::GROUP_SHORTCUT_ABSTRACT_METHODS,
+			self::GROUP_SHORTCUT_STATIC_METHODS,
+			self::GROUP_CONSTRUCTOR,
+			self::GROUP_DESTRUCTOR,
+			self::GROUP_PUBLIC_METHODS,
+			self::GROUP_PROTECTED_METHODS,
+			self::GROUP_PRIVATE_METHODS,
+			self::GROUP_MAGIC_METHODS,
+		],
+	];
 
 	private const SPECIAL_METHODS = [
 		'__construct' => self::GROUP_CONSTRUCTOR,
@@ -89,6 +177,9 @@ class ClassStructureSniff implements Sniff
 
 	/** @var string[] */
 	public $groups = [];
+
+	/** @var bool */
+	public $enableFinalMethods = false;
 
 	/** @var array<string, int>|null */
 	private $normalizedGroups;
@@ -158,14 +249,10 @@ class ClassStructureSniff implements Sniff
 					continue;
 				}
 
-				$this->fixIncorrectGroupOrder(
-					$phpcsFile,
-					$groupFirstMemberPointer,
-					$groupLastMemberPointer,
-					$firstMemberPointer
-				);
+				$this->fixIncorrectGroupOrder($phpcsFile, $groupFirstMemberPointer, $groupLastMemberPointer, $firstMemberPointer);
 
-				return $pointer - 1; // run the sniff again to fix the rest of the groups
+				// run the sniff again to fix the rest of the groups
+				return $pointer - 1;
 			}
 		}
 
@@ -253,8 +340,9 @@ class ClassStructureSniff implements Sniff
 
 				$visibility = $this->getVisibilityForToken($phpcsFile, $pointer);
 				$isStatic = $this->isMemberStatic($phpcsFile, $pointer);
+				$isFinal = $this->isMethodFinal($phpcsFile, $pointer);
 
-				if ($this->isFunctionAbstract($phpcsFile, $pointer)) {
+				if ($this->isMethodAbstract($phpcsFile, $pointer)) {
 					if ($visibility === T_PUBLIC) {
 						return $isStatic ? self::GROUP_PUBLIC_STATIC_ABSTRACT_METHODS : self::GROUP_PUBLIC_ABSTRACT_METHODS;
 					}
@@ -268,8 +356,16 @@ class ClassStructureSniff implements Sniff
 
 				switch ($visibility) {
 					case T_PUBLIC:
+						if ($this->enableFinalMethods && $isFinal) {
+							return $isStatic ? self::GROUP_PUBLIC_STATIC_FINAL_METHODS : self::GROUP_PUBLIC_FINAL_METHODS;
+						}
+
 						return $isStatic ? self::GROUP_PUBLIC_STATIC_METHODS : self::GROUP_PUBLIC_METHODS;
 					case T_PROTECTED:
+						if ($this->enableFinalMethods && $isFinal) {
+							return $isStatic ? self::GROUP_PROTECTED_STATIC_FINAL_METHODS : self::GROUP_PROTECTED_FINAL_METHODS;
+						}
+
 						return $isStatic ? self::GROUP_PROTECTED_STATIC_METHODS : self::GROUP_PROTECTED_METHODS;
 				}
 
@@ -302,19 +398,39 @@ class ClassStructureSniff implements Sniff
 		);
 
 		/** @var int $visibilityPointer */
-		$visibilityPointer = in_array($tokens[$previousPointer]['code'], Tokens::$scopeModifiers, true) ? $tokens[$previousPointer]['code'] : T_PUBLIC;
+		$visibilityPointer = in_array($tokens[$previousPointer]['code'], Tokens::$scopeModifiers, true)
+			? $tokens[$previousPointer]['code']
+			: T_PUBLIC;
 		return $visibilityPointer;
 	}
 
 	private function isMemberStatic(File $phpcsFile, int $pointer): bool
 	{
-		$previousPointer = TokenHelper::findPrevious($phpcsFile, [T_OPEN_CURLY_BRACKET, T_CLOSE_CURLY_BRACKET, T_SEMICOLON, T_STATIC], $pointer - 1);
+		$previousPointer = TokenHelper::findPrevious(
+			$phpcsFile,
+			[T_OPEN_CURLY_BRACKET, T_CLOSE_CURLY_BRACKET, T_SEMICOLON, T_STATIC],
+			$pointer - 1
+		);
 		return $phpcsFile->getTokens()[$previousPointer]['code'] === T_STATIC;
 	}
 
-	private function isFunctionAbstract(File $phpcsFile, int $pointer): bool
+	private function isMethodFinal(File $phpcsFile, int $pointer): bool
 	{
-		$previousPointer = TokenHelper::findPrevious($phpcsFile, [T_OPEN_CURLY_BRACKET, T_CLOSE_CURLY_BRACKET, T_SEMICOLON, T_ABSTRACT], $pointer - 1);
+		$previousPointer = TokenHelper::findPrevious(
+			$phpcsFile,
+			[T_OPEN_CURLY_BRACKET, T_CLOSE_CURLY_BRACKET, T_SEMICOLON, T_FINAL],
+			$pointer - 1
+		);
+		return $phpcsFile->getTokens()[$previousPointer]['code'] === T_FINAL;
+	}
+
+	private function isMethodAbstract(File $phpcsFile, int $pointer): bool
+	{
+		$previousPointer = TokenHelper::findPrevious(
+			$phpcsFile,
+			[T_OPEN_CURLY_BRACKET, T_CLOSE_CURLY_BRACKET, T_SEMICOLON, T_ABSTRACT],
+			$pointer - 1
+		);
 		return $phpcsFile->getTokens()[$previousPointer]['code'] === T_ABSTRACT;
 	}
 
@@ -451,9 +567,13 @@ class ClassStructureSniff implements Sniff
 				self::GROUP_PROTECTED_STATIC_PROPERTIES,
 				self::GROUP_PRIVATE_PROPERTIES,
 				self::GROUP_PRIVATE_STATIC_PROPERTIES,
+				self::GROUP_PUBLIC_STATIC_FINAL_METHODS,
 				self::GROUP_PUBLIC_STATIC_ABSTRACT_METHODS,
+				self::GROUP_PROTECTED_STATIC_FINAL_METHODS,
 				self::GROUP_PROTECTED_STATIC_ABSTRACT_METHODS,
+				self::GROUP_PUBLIC_FINAL_METHODS,
 				self::GROUP_PUBLIC_ABSTRACT_METHODS,
+				self::GROUP_PROTECTED_FINAL_METHODS,
 				self::GROUP_PROTECTED_ABSTRACT_METHODS,
 				self::GROUP_CONSTRUCTOR,
 				self::GROUP_STATIC_CONSTRUCTORS,
@@ -467,22 +587,53 @@ class ClassStructureSniff implements Sniff
 				self::GROUP_MAGIC_METHODS,
 			];
 
-			$normalizedGroups = [];
+			if (!$this->enableFinalMethods) {
+				foreach ($supportedGroups as $supportedGroupNo => $supportedGroupName) {
+					if (!in_array($supportedGroupName, self::SHORTCUTS[self::GROUP_SHORTCUT_FINAL_METHODS], true)) {
+						continue;
+					}
+
+					unset($supportedGroups[$supportedGroupNo]);
+				}
+			}
+
+			$normalizedGroupsWithShortcuts = [];
 			$order = 1;
 			foreach (SniffSettingsHelper::normalizeArray($this->groups) as $groupsString) {
 				/** @var string[] $groups */
-				$groups = preg_split('~\\s*,\\s*~', $groupsString);
-				foreach ($groups as $group) {
-					$group = preg_replace('~\\s+~', ' ', $group);
+				$groups = preg_split('~\\s*,\\s*~', strtolower($groupsString));
+				foreach ($groups as $groupOrShortcut) {
+					$groupOrShortcut = preg_replace('~\\s+~', ' ', $groupOrShortcut);
 
-					if (!in_array($group, $supportedGroups, true)) {
-						throw new UnsupportedClassGroupException($group);
+					if (
+						!in_array($groupOrShortcut, $supportedGroups, true)
+						&& !array_key_exists($groupOrShortcut, self::SHORTCUTS)
+					) {
+						throw new UnsupportedClassGroupException($groupOrShortcut);
 					}
 
-					$normalizedGroups[$group] = $order;
+					$normalizedGroupsWithShortcuts[$groupOrShortcut] = $order;
 				}
 
 				$order++;
+			}
+
+			$normalizedGroups = [];
+			foreach ($normalizedGroupsWithShortcuts as $groupOrShortcut => $groupOrder) {
+				if (in_array($groupOrShortcut, $supportedGroups, true)) {
+					$normalizedGroups[$groupOrShortcut] = $groupOrder;
+				} else {
+					foreach ($this->unpackShortcut($groupOrShortcut, $supportedGroups) as $group) {
+						if (
+							array_key_exists($group, $normalizedGroupsWithShortcuts)
+							|| array_key_exists($group, $normalizedGroups)
+						) {
+							continue;
+						}
+
+						$normalizedGroups[$group] = $groupOrder;
+					}
+				}
 			}
 
 			if ($normalizedGroups === []) {
@@ -498,6 +649,31 @@ class ClassStructureSniff implements Sniff
 		}
 
 		return $this->normalizedGroups;
+	}
+
+	/**
+	 * @param string $shortcut
+	 * @param array<int, string> $supportedGroups
+	 * @return array<int, string>
+	 */
+	private function unpackShortcut(string $shortcut, array $supportedGroups): array
+	{
+		$groups = [];
+
+		foreach (self::SHORTCUTS[$shortcut] as $groupOrShortcut) {
+			if (in_array($groupOrShortcut, $supportedGroups, true)) {
+				$groups[] = $groupOrShortcut;
+			} elseif (
+				!array_key_exists($groupOrShortcut, self::SHORTCUTS)
+				&& in_array($groupOrShortcut, self::SHORTCUTS[self::GROUP_SHORTCUT_FINAL_METHODS], true)
+			) {
+				// Nothing
+			} else {
+				$groups = array_merge($groups, $this->unpackShortcut($groupOrShortcut, $supportedGroups));
+			}
+		}
+
+		return $groups;
 	}
 
 }

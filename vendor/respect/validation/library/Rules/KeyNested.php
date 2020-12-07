@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use ArrayAccess;
 use Respect\Validation\Exceptions\ComponentException;
+
 use function array_key_exists;
 use function array_shift;
 use function explode;
@@ -109,11 +110,10 @@ final class KeyNested extends AbstractRelated
     /**
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
      *
-     * @param object $object
      *
      * @return mixed
      */
-    private function getValueFromObject($object, string $property)
+    private function getValueFromObject(object $object, string $property)
     {
         if (empty($property) || !property_exists($object, $property)) {
             $message = sprintf('Cannot select the property %s from the given object', $this->getReference());

@@ -7,9 +7,11 @@ use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
 use SlevomatCodingStandard\Helpers\ConditionHelper;
 use SlevomatCodingStandard\Helpers\IndentationHelper;
+use SlevomatCodingStandard\Helpers\ScopeHelper;
 use SlevomatCodingStandard\Helpers\TokenHelper;
 use Throwable;
 use function array_key_exists;
+use function count;
 use function in_array;
 use function range;
 use function sort;
@@ -28,7 +30,6 @@ use const T_OPEN_CURLY_BRACKET;
 use const T_SEMICOLON;
 use const T_WHILE;
 use const T_WHITESPACE;
-use const T_YIELD;
 
 class EarlyExitSniff implements Sniff
 {
@@ -39,6 +40,12 @@ class EarlyExitSniff implements Sniff
 
 	/** @var bool */
 	public $ignoreStandaloneIfInScope = false;
+
+	/** @var bool */
+	public $ignoreOneLineTrailingIf = false;
+
+	/** @var bool */
+	public $ignoreTrailingIfWithOneInstruction = false;
 
 	/**
 	 * @return array<int, (int|string)>
@@ -93,11 +100,19 @@ class EarlyExitSniff implements Sniff
 		$previousConditionEarlyExitPointer = null;
 
 		foreach ($allConditionsPointers as $conditionPointer) {
-			$conditionEarlyExitPointer = $this->findEarlyExitInScope($phpcsFile, $tokens[$conditionPointer]['scope_opener'], $tokens[$conditionPointer]['scope_closer']);
+			$conditionEarlyExitPointer = $this->findEarlyExitInScope(
+				$phpcsFile,
+				$tokens[$conditionPointer]['scope_opener'],
+				$tokens[$conditionPointer]['scope_closer']
+			);
 
 			if ($conditionPointer === $elsePointer) {
 				$elseEarlyExitPointer = $conditionEarlyExitPointer;
 				continue;
+			}
+
+			if (count($allConditionsPointers) > 2 && $conditionEarlyExitPointer === null) {
+				return;
 			}
 
 			$previousConditionPointer = $conditionPointer;
@@ -107,10 +122,6 @@ class EarlyExitSniff implements Sniff
 				$ifEarlyExitPointer = $conditionEarlyExitPointer;
 				continue;
 			}
-
-			if ($conditionEarlyExitPointer === null) {
-				return;
-			}
 		}
 
 		if ($ifEarlyExitPointer === null && $elseEarlyExitPointer === null) {
@@ -118,11 +129,7 @@ class EarlyExitSniff implements Sniff
 		}
 
 		if ($elseEarlyExitPointer !== null && $previousConditionEarlyExitPointer === null) {
-			$fix = $phpcsFile->addFixableError(
-				'Use early exit instead of else.',
-				$elsePointer,
-				self::CODE_EARLY_EXIT_NOT_USED
-			);
+			$fix = $phpcsFile->addFixableError('Use early exit instead of "else".', $elsePointer, self::CODE_EARLY_EXIT_NOT_USED);
 
 			if (!$fix) {
 				return;
@@ -130,8 +137,16 @@ class EarlyExitSniff implements Sniff
 
 			$ifCodePointers = $this->getScopeCodePointers($phpcsFile, $ifPointer);
 			$elseCode = $this->getScopeCode($phpcsFile, $elsePointer);
-			$negativeIfCondition = ConditionHelper::getNegativeCondition($phpcsFile, $tokens[$ifPointer]['parenthesis_opener'], $tokens[$ifPointer]['parenthesis_closer']);
-			$afterIfCode = IndentationHelper::fixIndentation($phpcsFile, $ifCodePointers, IndentationHelper::getIndentation($phpcsFile, $ifPointer));
+			$negativeIfCondition = ConditionHelper::getNegativeCondition(
+				$phpcsFile,
+				$tokens[$ifPointer]['parenthesis_opener'],
+				$tokens[$ifPointer]['parenthesis_closer']
+			);
+			$afterIfCode = IndentationHelper::fixIndentation(
+				$phpcsFile,
+				$ifCodePointers,
+				IndentationHelper::getIndentation($phpcsFile, $ifPointer)
+			);
 
 			$phpcsFile->fixer->beginChangeset();
 
@@ -155,31 +170,26 @@ class EarlyExitSniff implements Sniff
 			return;
 		}
 
+		$pointerAfterElseCondition = TokenHelper::findNextEffective($phpcsFile, $tokens[$elsePointer]['scope_closer'] + 1);
 		if (
-			$previousConditionEarlyExitPointer !== null
-			&& $tokens[$previousConditionEarlyExitPointer]['code'] === T_YIELD
-			&& $tokens[$elseEarlyExitPointer]['code'] === T_YIELD
+			$pointerAfterElseCondition !== null
+			&& $tokens[$pointerAfterElseCondition]['code'] !== T_CLOSE_CURLY_BRACKET
 		) {
 			return;
 		}
 
-		$pointerAfterElseCondition = TokenHelper::findNextEffective($phpcsFile, $tokens[$elsePointer]['scope_closer'] + 1);
-		if ($pointerAfterElseCondition === null || $tokens[$pointerAfterElseCondition]['code'] !== T_CLOSE_CURLY_BRACKET) {
-			return;
-		}
-
-		$fix = $phpcsFile->addFixableError(
-			'Remove useless else to reduce code nesting.',
-			$elsePointer,
-			self::CODE_USELESS_ELSE
-		);
+		$fix = $phpcsFile->addFixableError('Remove useless "else" to reduce code nesting.', $elsePointer, self::CODE_USELESS_ELSE);
 
 		if (!$fix) {
 			return;
 		}
 
 		$elseCodePointers = $this->getScopeCodePointers($phpcsFile, $elsePointer);
-		$afterIfCode = IndentationHelper::fixIndentation($phpcsFile, $elseCodePointers, IndentationHelper::getIndentation($phpcsFile, $ifPointer));
+		$afterIfCode = IndentationHelper::fixIndentation(
+			$phpcsFile,
+			$elseCodePointers,
+			IndentationHelper::getIndentation($phpcsFile, $ifPointer)
+		);
 
 		$phpcsFile->fixer->beginChangeset();
 
@@ -210,38 +220,23 @@ class EarlyExitSniff implements Sniff
 			return;
 		}
 
-		$elseIfEarlyExitPointer = null;
-		$previousConditionEarlyExitPointer = null;
-
 		foreach ($allConditionsPointers as $conditionPointer) {
-			$conditionEarlyExitPointer = $this->findEarlyExitInScope($phpcsFile, $tokens[$conditionPointer]['scope_opener'], $tokens[$conditionPointer]['scope_closer']);
+			$conditionEarlyExitPointer = $this->findEarlyExitInScope(
+				$phpcsFile,
+				$tokens[$conditionPointer]['scope_opener'],
+				$tokens[$conditionPointer]['scope_closer']
+			);
 
 			if ($conditionPointer === $elseIfPointer) {
-				$elseIfEarlyExitPointer = $conditionEarlyExitPointer;
 				break;
 			}
-
-			$previousConditionEarlyExitPointer = $conditionEarlyExitPointer;
 
 			if ($conditionEarlyExitPointer === null) {
 				return;
 			}
 		}
 
-		if (
-			$previousConditionEarlyExitPointer !== null
-			&& $tokens[$previousConditionEarlyExitPointer]['code'] === T_YIELD
-			&& $elseIfEarlyExitPointer !== null
-			&& $tokens[$elseIfEarlyExitPointer]['code'] === T_YIELD
-		) {
-			return;
-		}
-
-		$fix = $phpcsFile->addFixableError(
-			'Use if instead of elseif.',
-			$elseIfPointer,
-			self::CODE_USELESS_ELSEIF
-		);
+		$fix = $phpcsFile->addFixableError('Use "if" instead of "elseif".', $elseIfPointer, self::CODE_USELESS_ELSEIF);
 
 		if (!$fix) {
 			return;
@@ -259,7 +254,10 @@ class EarlyExitSniff implements Sniff
 		$phpcsFile->fixer->addNewline($pointerBeforeElseIfPointer);
 		$phpcsFile->fixer->addNewline($pointerBeforeElseIfPointer);
 
-		$phpcsFile->fixer->replaceToken($elseIfPointer, sprintf('%sif', IndentationHelper::getIndentation($phpcsFile, $allConditionsPointers[0])));
+		$phpcsFile->fixer->replaceToken(
+			$elseIfPointer,
+			sprintf('%sif', IndentationHelper::getIndentation($phpcsFile, $allConditionsPointers[0]))
+		);
 
 		$phpcsFile->fixer->endChangeset();
 	}
@@ -279,8 +277,40 @@ class EarlyExitSniff implements Sniff
 		}
 
 		$previousPointer = TokenHelper::findPreviousEffective($phpcsFile, $ifPointer - 1);
-		if ($this->ignoreStandaloneIfInScope && in_array($tokens[$previousPointer]['code'], [T_OPEN_CURLY_BRACKET, T_COLON], true)) {
+		if (
+			$this->ignoreStandaloneIfInScope
+			&& in_array($tokens[$previousPointer]['code'], [T_OPEN_CURLY_BRACKET, T_COLON], true)
+		) {
 			return;
+		}
+
+		if (
+			$this->ignoreOneLineTrailingIf
+			&& $tokens[$tokens[$ifPointer]['scope_opener']]['line'] + 2 === $tokens[$tokens[$ifPointer]['scope_closer']]['line']
+		) {
+			return;
+		}
+
+		if ($this->ignoreTrailingIfWithOneInstruction) {
+			$pointerBeforeScopeCloser = TokenHelper::findPreviousEffective($phpcsFile, $tokens[$ifPointer]['scope_closer'] - 1);
+			if ($tokens[$pointerBeforeScopeCloser]['code'] === T_SEMICOLON) {
+				$ignore = true;
+				foreach (TokenHelper::findNextAll(
+					$phpcsFile,
+					T_SEMICOLON,
+					$tokens[$ifPointer]['scope_opener'] + 1,
+					$pointerBeforeScopeCloser
+				) as $anotherSemicolonPointer) {
+					if (ScopeHelper::isInSameScope($phpcsFile, $anotherSemicolonPointer, $pointerBeforeScopeCloser)) {
+						$ignore = false;
+						break;
+					}
+				}
+
+				if ($ignore) {
+					return;
+				}
+			}
 		}
 
 		$scopePointer = $tokens[$nextPointer]['scope_condition'];
@@ -293,11 +323,7 @@ class EarlyExitSniff implements Sniff
 			return;
 		}
 
-		$fix = $phpcsFile->addFixableError(
-			'Use early exit to reduce code nesting.',
-			$ifPointer,
-			self::CODE_EARLY_EXIT_NOT_USED
-		);
+		$fix = $phpcsFile->addFixableError('Use early exit to reduce code nesting.', $ifPointer, self::CODE_EARLY_EXIT_NOT_USED);
 		if (!$fix) {
 			return;
 		}
@@ -307,7 +333,11 @@ class EarlyExitSniff implements Sniff
 		$earlyExitCode = $this->getEarlyExitCode($tokens[$scopePointer]['code']);
 		$earlyExitCodeIndentation = IndentationHelper::addIndentation($ifIndentation);
 
-		$negativeIfCondition = ConditionHelper::getNegativeCondition($phpcsFile, $tokens[$ifPointer]['parenthesis_opener'], $tokens[$ifPointer]['parenthesis_closer']);
+		$negativeIfCondition = ConditionHelper::getNegativeCondition(
+			$phpcsFile,
+			$tokens[$ifPointer]['parenthesis_opener'],
+			$tokens[$ifPointer]['parenthesis_closer']
+		);
 		$afterIfCode = IndentationHelper::fixIndentation($phpcsFile, $ifCodePointers, $ifIndentation);
 
 		$phpcsFile->fixer->beginChangeset();
@@ -366,8 +396,30 @@ class EarlyExitSniff implements Sniff
 
 	private function findEarlyExitInScope(File $phpcsFile, int $startPointer, int $endPointer): ?int
 	{
-		$lastSemicolonInScopePointer = TokenHelper::findPreviousEffective($phpcsFile, $endPointer - 1);
-		return $phpcsFile->getTokens()[$lastSemicolonInScopePointer]['code'] === T_SEMICOLON
+		$tokens = $phpcsFile->getTokens();
+
+		$ifPointers = TokenHelper::findNextAll($phpcsFile, T_IF, $startPointer + 1, $endPointer);
+		if ($ifPointers !== []) {
+			foreach ($ifPointers as $ifPointer) {
+				if ($tokens[$ifPointer]['level'] - 1 !== $tokens[$startPointer]['level']) {
+					continue;
+				}
+
+				$conditionPointers = $this->getAllConditionsPointers($phpcsFile, $ifPointer);
+				foreach ($conditionPointers as $conditionPointer) {
+					if ($this->findEarlyExitInScope(
+						$phpcsFile,
+						$tokens[$conditionPointer]['scope_opener'],
+						$tokens[$conditionPointer]['scope_closer']
+					) === null) {
+						return null;
+					}
+				}
+			}
+		}
+
+		$lastSemicolonInScopePointer = TokenHelper::findPreviousEffective($phpcsFile, $endPointer - 1, $startPointer);
+		return $tokens[$lastSemicolonInScopePointer]['code'] === T_SEMICOLON
 			? TokenHelper::findPreviousLocal($phpcsFile, TokenHelper::$earlyExitTokenCodes, $lastSemicolonInScopePointer - 1, $startPointer)
 			: null;
 	}
@@ -388,7 +440,10 @@ class EarlyExitSniff implements Sniff
 
 		$conditionsPointers = [$conditionPointer];
 
-		if (isset($tokens[$conditionPointer]['scope_opener']) && $tokens[$tokens[$conditionPointer]['scope_opener']]['code'] === T_COLON) {
+		if (
+			isset($tokens[$conditionPointer]['scope_opener'])
+			&& $tokens[$tokens[$conditionPointer]['scope_opener']]['code'] === T_COLON
+		) {
 			// Alternative control structure syntax.
 			throw new Exception(sprintf('"%s" without curly braces is not supported.', $tokens[$conditionPointer]['content']));
 		}
@@ -414,10 +469,15 @@ class EarlyExitSniff implements Sniff
 					$conditionsPointers[] = $currentConditionPointer;
 
 					if (!array_key_exists('scope_closer', $tokens[$currentConditionPointer])) {
-						throw new Exception(sprintf('"%s" without curly braces is not supported.', $tokens[$currentConditionPointer]['content']));
+						throw new Exception(
+							sprintf('"%s" without curly braces is not supported.', $tokens[$currentConditionPointer]['content'])
+						);
 					}
 
-					$currentConditionPointer = TokenHelper::findNextEffective($phpcsFile, $tokens[$currentConditionPointer]['scope_closer'] + 1);
+					$currentConditionPointer = TokenHelper::findNextEffective(
+						$phpcsFile,
+						$tokens[$currentConditionPointer]['scope_closer'] + 1
+					);
 				}
 			}
 		}

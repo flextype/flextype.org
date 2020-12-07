@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Flextype;
+namespace Flextype\Plugin\Twig;
 
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
@@ -22,28 +22,28 @@ use Twig\Extension\DebugExtension;
 /**
  * Add CSRF (cross-site request forgery) protection service to Flextype container
  */
-$flextype['csrf'] = static function ($container) {
+flextype()->container()['csrf'] = static function (){
     return new Guard();
 };
 
 /**
  * Add Twig service to Flextype container
  */
-$flextype['twig'] = static function ($container) {
+flextype()->container()['twig'] = static function () {
 
     // Get twig settings
     $twigSettings = [
-                     'auto_reload' => $container['registry']->get('plugins.twig.settings.auto_reload'),
-                     'cache' => $container['registry']->get('plugins.twig.settings.cache') ? PATH['cache'] . '/twig' : false,
-                     'debug' => $container['registry']->get('plugins.twig.settings.debug'),
-                     'charset' => $container['registry']->get('plugins.twig.settings.charset')
+                     'auto_reload' => flextype('registry')->get('plugins.twig.settings.auto_reload'),
+                     'cache' => flextype('registry')->get('plugins.twig.settings.cache') ? PATH['tmp'] . '/twig' : false,
+                     'debug' => flextype('registry')->get('plugins.twig.settings.debug'),
+                     'charset' => flextype('registry')->get('plugins.twig.settings.charset')
                     ];
 
     // Create Twig View
     $twig = new Twig(PATH['project'], $twigSettings);
 
     // Instantiate
-    $router = $container->get('router');
+    $router = flextype('router');
     $uri    = Uri::createFromEnvironment(new Environment($_SERVER));
 
     // Add Twig Extension
@@ -53,21 +53,21 @@ $flextype['twig'] = static function ($container) {
     $twig->addExtension(new DebugExtension());
 
     // Load Flextype Twig extensions from directory /flextype/twig/ based on settings.twig.extensions array
-    $twig_extensions = $container['registry']->get('plugins.twig.settings.extensions');
+    $twig_extensions = flextype('registry')->get('plugins.twig.settings.extensions');
 
     foreach ($twig_extensions as $twig_extension) {
         $twig_extension_class_name = $twig_extension . 'TwigExtension';
-        $twig_extension_class_name_with_namespace = 'Flextype\\' . $twig_extension . 'TwigExtension';
+        $twig_extension_class_name_with_namespace = 'Flextype\\Plugin\\Twig\\Twig\\' . $twig_extension . 'TwigExtension';
 
         if (file_exists(ROOT_DIR . '/project/plugins/twig/twig/' . $twig_extension_class_name . '.php')) {
 
             if ($twig_extension == 'Flash') {
-                $container['flash'] = static function () {
+                flextype()->container()['flash'] = static function () {
                     return new Messages();
                 };
             }
 
-            $twig->addExtension(new $twig_extension_class_name_with_namespace($container));
+            $twig->addExtension(new $twig_extension_class_name_with_namespace());
         }
     }
 

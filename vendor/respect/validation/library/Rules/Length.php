@@ -15,6 +15,7 @@ namespace Respect\Validation\Rules;
 
 use Countable as CountableInterface;
 use Respect\Validation\Exceptions\ComponentException;
+
 use function count;
 use function get_object_vars;
 use function is_array;
@@ -88,7 +89,7 @@ final class Length extends AbstractRule
     private function extractLength($input): ?int
     {
         if (is_string($input)) {
-            return (int) mb_strlen($input, mb_detect_encoding($input));
+            return (int) mb_strlen($input, (string) mb_detect_encoding($input));
         }
 
         if (is_array($input) || $input instanceof CountableInterface) {

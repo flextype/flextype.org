@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\CanValidateUndefined;
+
 use function in_array;
 
 /**
@@ -24,6 +25,11 @@ use function in_array;
 abstract class AbstractSearcher extends AbstractRule
 {
     use CanValidateUndefined;
+
+    /**
+     * @return mixed[]
+     */
+    abstract protected function getDataSource(): array;
 
     /**
      * {@inheritDoc}
@@ -37,9 +43,4 @@ abstract class AbstractSearcher extends AbstractRule
 
         return in_array($input, $dataSource, true);
     }
-
-    /**
-     * @return mixed[]
-     */
-    abstract protected function getDataSource(): array;
 }

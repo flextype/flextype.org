@@ -1,17 +1,13 @@
 <?php
 
-namespace Flextype;
+namespace Flextype\Plugin\Sitemap\Controllers;
 
-use Flextype\Component\Arr\Arr;
+use Flextype\Component\Arrays\Arrays;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-/**
- * @property Twig $twig
- * @property Entries $entries
- */
-class SitemapController extends Container {
-
+class SitemapController
+{
     /**
      * Current $sitemap data array
      *
@@ -19,6 +15,16 @@ class SitemapController extends Container {
      * @access public
      */
     public $sitemap = [];
+
+    /**
+     * Constructor
+     *
+     * @access public
+     */
+    public function __construct()
+    {
+
+    }
 
     /**
      * Index page
@@ -30,9 +36,8 @@ class SitemapController extends Container {
     public function index(Request $request, Response $response) : Response
     {
         $sitemap  = [];
-        $entries = $this->entries->fetch('', ['recursive' => true,
-                                              'order_by' => ['field' => 'modified_at',
-                                                             'direction' => 'desc']]);
+
+        $entries = arrays(flextype('entries')->fetchCollection('', ['depth' => '>0']))->sortBy('modified_at', 'ASC')->all();
 
         foreach ($entries as $entry) {
 
@@ -55,23 +60,23 @@ class SitemapController extends Container {
             if (isset($entry['sitemap']['changefreq'])) {
                 $entry['changefreq'] = $entry['sitemap']['changefreq'];
             } else {
-                $entry['changefreq'] = $this->registry->get('plugins.sitemap.settings.default.changefreq');
+                $entry['changefreq'] = flextype('registry')->get('plugins.sitemap.settings.default.changefreq');
             }
 
             // Check entry priority field
             if (isset($entry['sitemap']['priority'])) {
                 $entry['priority'] = $entry['sitemap']['priority'];
             } else {
-                $entry['priority'] = $this->registry->get('plugins.sitemap.settings.default.priority');
+                $entry['priority'] = flextype('registry')->get('plugins.sitemap.settings.default.priority');
             }
 
             // Check ignore list
-            if (in_array($entry['slug'], (array) $this->registry->get('plugins.sitemap.settings.ignore'))) {
+            if (in_array($entry['id'], (array) flextype('registry')->get('plugins.sitemap.settings.ignore'))) {
                 continue;
             }
 
             // Prepare data
-            $entry_to_add['loc']        = $entry['slug'];
+            $entry_to_add['loc']        = $entry['id'];
             $entry_to_add['lastmod']    = $entry['modified_at'];
             $entry_to_add['changefreq'] = $entry['changefreq'];
             $entry_to_add['priority']   = $entry['priority'];
@@ -81,7 +86,7 @@ class SitemapController extends Container {
         }
 
         // Additions
-        $additions = (array) $this->registry->get('plugins.sitemap.settings.additions');
+        $additions = (array) flextype('registry')->get('plugins.sitemap.settings.additions');
         foreach ($additions as $addition) {
             $sitemap[] = $addition;
         }
@@ -90,12 +95,12 @@ class SitemapController extends Container {
         $this->sitemap = $sitemap;
 
         // Run event onSitemapAfterInitialized
-        $this->emitter->emit('onSitemapAfterInitialized');
+        flextype('emitter')->emit('onSitemapAfterInitialized');
 
         // Set response header
         $response = $response->withHeader('Content-Type', 'application/xml');
 
-        return $this->twig->render(
+        return flextype('twig')->render(
             $response,
             'plugins/sitemap/templates/index.html',
             [

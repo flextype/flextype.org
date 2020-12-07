@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+
 use function sprintf;
 
 /**
@@ -79,7 +80,7 @@ final class PostalCode extends AbstractEnvelope
         'GG' => '/^((?:(?:[A-PR-UWYZ][A-HK-Y]\d[ABEHMNPRV-Y0-9]|[A-PR-UWYZ]\d[A-HJKPS-UW0-9])\s\d[ABD-HJLNP-UW-Z]{2})|GIR\s?0AA)$/',
         'GL' => '/^(\d{4})$/',
         'GP' => '/^((97|98)\d{3})$/',
-        'GR' => '/^(\d{5})$/',
+        'GR' => '/^(\d{3}\s?\d{2})$/',
         'GT' => '/^(\d{5})$/',
         'GU' => '/^(969\d{2})$/',
         'GW' => '/^(\d{4})$/',
@@ -156,7 +157,7 @@ final class PostalCode extends AbstractEnvelope
         'PY' => '/^(\d{4})$/',
         'RE' => '/^((97|98)(4|7|8)\d{2})$/',
         'RO' => '/^(\d{6})$/',
-        'RS' => '/^(\d{6})$/',
+        'RS' => '/^(\d{5})$/',
         'RU' => '/^(\d{6})$/',
         'SA' => '/^(\d{5})$/',
         'SD' => '/^(\d{5})$/',

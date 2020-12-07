@@ -36,8 +36,8 @@ final class Pis extends AbstractRule
             return false;
         }
 
-        $digits = preg_replace('/\D/', '', $input);
-        if (mb_strlen($digits) != 11 || preg_match('/^'.$digits[0].'{11}$/', $digits)) {
+        $digits = (string) preg_replace('/\D/', '', (string) $input);
+        if (mb_strlen($digits) != 11 || preg_match('/^' . $digits[0] . '{11}$/', $digits)) {
             return false;
         }
 

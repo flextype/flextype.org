@@ -16,6 +16,7 @@ namespace Respect\Validation\Rules;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
+
 use function array_filter;
 use function array_map;
 
@@ -66,7 +67,7 @@ abstract class AbstractComposite extends AbstractRule
      */
     public function addRule(Validatable $rule): self
     {
-        if ($this->shouldHaveNameOverwritten($rule)) {
+        if ($this->shouldHaveNameOverwritten($rule) && $this->getName() !== null) {
             $rule->setName($this->getName());
         }
 

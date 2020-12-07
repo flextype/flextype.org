@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Helpers\CanValidateDateTime;
+
 use function date;
 use function date_parse_from_format;
 use function is_scalar;
@@ -45,6 +46,13 @@ abstract class AbstractAge extends AbstractRule
     private $baseDate;
 
     /**
+     * Should compare the current base date with the given one.
+     *
+     * The dates are represented as integers in the format "Ymd".
+     */
+    abstract protected function compare(int $baseDate, int $givenDate): bool;
+
+    /**
      * Initializes the rule.
      */
     public function __construct(int $age, ?string $format = null)
@@ -69,13 +77,6 @@ abstract class AbstractAge extends AbstractRule
 
         return $this->isValidWithFormat($this->format, (string) $input);
     }
-
-    /**
-     * Should compare the current base date with the given one.
-     *
-     * The dates are represented as integers in the format "Ymd".
-     */
-    abstract protected function compare(int $baseDate, int $givenDate): bool;
 
     private function isValidWithoutFormat(string $dateTime): bool
     {

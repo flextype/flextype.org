@@ -15,9 +15,11 @@ namespace Respect\Validation\Rules;
 
 use finfo;
 use SplFileInfo;
+
 use function is_file;
 use function is_string;
 use function mb_strpos;
+
 use const FILEINFO_MIME_TYPE;
 
 /**
@@ -59,6 +61,6 @@ final class Image extends AbstractRule
             return false;
         }
 
-        return mb_strpos($this->fileInfo->file($input), 'image/') === 0;
+        return mb_strpos((string) $this->fileInfo->file($input), 'image/') === 0;
     }
 }

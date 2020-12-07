@@ -8,9 +8,11 @@ use SlevomatCodingStandard\Helpers\NamespaceHelper;
 use SlevomatCodingStandard\Helpers\ReferencedNameHelper;
 use SlevomatCodingStandard\Helpers\SniffSettingsHelper;
 use SlevomatCodingStandard\Helpers\StringHelper;
+use SlevomatCodingStandard\Helpers\TokenHelper;
 use SlevomatCodingStandard\Helpers\UseStatement;
 use SlevomatCodingStandard\Helpers\UseStatementHelper;
 use Throwable;
+use function array_reverse;
 use function in_array;
 use function sprintf;
 use const T_OPEN_TAG;
@@ -49,6 +51,12 @@ class FullyQualifiedExceptionsSniff implements Sniff
 	 */
 	public function process(File $phpcsFile, $openTagPointer): void
 	{
+		if (TokenHelper::findPrevious($phpcsFile, T_OPEN_TAG, $openTagPointer - 1) !== null) {
+			return;
+		}
+
+		$namespacePointers = array_reverse(NamespaceHelper::getAllNamespacesPointers($phpcsFile));
+
 		$referencedNames = ReferencedNameHelper::getAllReferencedNames($phpcsFile, $openTagPointer);
 		foreach ($referencedNames as $referencedName) {
 			$pointer = $referencedName->getStartPointer();
@@ -56,21 +64,38 @@ class FullyQualifiedExceptionsSniff implements Sniff
 			$uniqueId = UseStatement::getUniqueId($referencedName->getType(), $name);
 			$useStatements = UseStatementHelper::getUseStatementsForPointer($phpcsFile, $pointer);
 
-			if (isset($useStatements[$uniqueId]) && $referencedName->hasSameUseStatementType($useStatements[$uniqueId])) {
+			if (
+				isset($useStatements[$uniqueId])
+				&& $referencedName->hasSameUseStatementType($useStatements[$uniqueId])
+			) {
 				$useStatement = $useStatements[$uniqueId];
 				if (
 					in_array($useStatement->getFullyQualifiedTypeName(), $this->getIgnoredNames(), true)
 					|| (
 						!StringHelper::endsWith($useStatement->getFullyQualifiedTypeName(), 'Exception')
 						&& $useStatement->getFullyQualifiedTypeName() !== Throwable::class
-						&& (!StringHelper::endsWith($useStatement->getFullyQualifiedTypeName(), 'Error') || NamespaceHelper::hasNamespace($useStatement->getFullyQualifiedTypeName()))
+						&& (!StringHelper::endsWith($useStatement->getFullyQualifiedTypeName(), 'Error') || NamespaceHelper::hasNamespace(
+							$useStatement->getFullyQualifiedTypeName()
+						))
 						&& !in_array($useStatement->getFullyQualifiedTypeName(), $this->getSpecialExceptionNames(), true)
 					)
 				) {
 					continue;
 				}
 			} else {
-				$fileNamespace = NamespaceHelper::findCurrentNamespaceName($phpcsFile, $pointer);
+				$fileNamespacePointer = null;
+				if ($namespacePointers !== []) {
+					foreach ($namespacePointers as $namespacePointer) {
+						if ($namespacePointer < $pointer) {
+							$fileNamespacePointer = $namespacePointer;
+							break;
+						}
+					}
+				}
+
+				$fileNamespace = $fileNamespacePointer !== null
+					? NamespaceHelper::getName($phpcsFile, $fileNamespacePointer)
+					: null;
 				$canonicalName = $name;
 				if (!NamespaceHelper::isFullyQualifiedName($name) && $fileNamespace !== null) {
 					$canonicalName = sprintf('%s%s%s', $fileNamespace, NamespaceHelper::NAMESPACE_SEPARATOR, $name);
@@ -100,11 +125,7 @@ class FullyQualifiedExceptionsSniff implements Sniff
 				continue;
 			}
 
-			$fullyQualifiedName = NamespaceHelper::resolveClassName(
-				$phpcsFile,
-				$name,
-				$pointer
-			);
+			$fullyQualifiedName = NamespaceHelper::resolveClassName($phpcsFile, $name, $pointer);
 
 			$phpcsFile->fixer->beginChangeset();
 

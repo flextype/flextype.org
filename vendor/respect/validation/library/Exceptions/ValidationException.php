@@ -15,6 +15,7 @@ namespace Respect\Validation\Exceptions;
 
 use InvalidArgumentException;
 use Respect\Validation\Message\Formatter;
+
 use function key;
 
 /**
@@ -135,11 +136,6 @@ class ValidationException extends InvalidArgumentException implements Exception
         return isset($this->defaultTemplates[$this->mode][$this->template]) === false;
     }
 
-    public function __toString(): string
-    {
-        return $this->getMessage();
-    }
-
     protected function chooseTemplate(): string
     {
         return (string) key($this->defaultTemplates[$this->mode]);
@@ -152,5 +148,10 @@ class ValidationException extends InvalidArgumentException implements Exception
             $this->input,
             $this->params
         );
+    }
+
+    public function __toString(): string
+    {
+        return $this->getMessage();
     }
 }

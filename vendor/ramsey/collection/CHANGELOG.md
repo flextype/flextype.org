@@ -13,6 +13,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 ### Security
 
+## [1.1.1] - 2020-09-10
+
+### Fixed
+
+* Fixed broken `AbstractCollection::map()` implementation.
+
+## [1.1.0] - 2020-08-10
+
+### Fixed
+
+* Fixed `AbstractCollection::diff()`, `AbstractCollection::intersect()` and
+  `AbstractCollection::merge()` when used with Generic collections.
+* Fixed `AbstractCollection::diff()` and `AbstractCollection::intersect()`
+  returning inconsistent results when used on collections containing objects.
+* Removed warning about deprecated dependency when running `composer install`
+
 ## [1.0.1] - 2020-01-04
 
 ### Fixed
@@ -94,7 +110,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 * Support generic arrays and maps.
 
-[Unreleased]: https://github.com/ramsey/collection/compare/1.0.1...HEAD
+[Unreleased]: https://github.com/ramsey/collection/compare/1.1.0...HEAD
+[1.1.0]: https://github.com/ramsey/collection/compare/1.0.1...1.1.0
 [1.0.1]: https://github.com/ramsey/collection/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/ramsey/collection/compare/0.3.0...1.0.0
 [0.3.0]: https://github.com/ramsey/collection/compare/0.2.1...0.3.0

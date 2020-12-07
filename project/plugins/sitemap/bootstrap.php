@@ -1,6 +1,6 @@
 <?php
 
-namespace Flextype;
+namespace Flextype\Plugin\Sitemap;
 
 /**
  *

@@ -7,7 +7,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 use PHPStan\PhpDocParser\Ast\ConstExpr\ConstFetchNode;
 use PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
 use SlevomatCodingStandard\Helpers\Annotation\GenericAnnotation;
-use SlevomatCodingStandard\Helpers\Annotation\MethodAnnotation;
 use SlevomatCodingStandard\Helpers\AnnotationConstantExpressionHelper;
 use SlevomatCodingStandard\Helpers\AnnotationHelper;
 use SlevomatCodingStandard\Helpers\AnnotationTypeHelper;
@@ -60,11 +59,16 @@ class FullyQualifiedClassNameInAnnotationSniff implements Sniff
 							TypeHintHelper::isSimpleTypeHint($lowercasedTypeHint)
 							|| TypeHintHelper::isSimpleUnofficialTypeHints($lowercasedTypeHint)
 							|| !TypeHelper::isTypeName($typeHint)
+							|| TypeHintHelper::isTemplate($phpcsFile, $docCommentOpenPointer, $typeHint)
 						) {
 							continue;
 						}
 
-						$fullyQualifiedTypeHint = TypeHintHelper::getFullyQualifiedTypeHint($phpcsFile, $annotation->getStartPointer(), $typeHint);
+						$fullyQualifiedTypeHint = TypeHintHelper::getFullyQualifiedTypeHint(
+							$phpcsFile,
+							$annotation->getStartPointer(),
+							$typeHint
+						);
 						if ($fullyQualifiedTypeHint === $typeHint) {
 							continue;
 						}
@@ -78,7 +82,12 @@ class FullyQualifiedClassNameInAnnotationSniff implements Sniff
 							continue;
 						}
 
-						$fixedAnnotationContent = AnnotationHelper::fixAnnotationType($phpcsFile, $annotation, $typeHintNode, new IdentifierTypeNode($fullyQualifiedTypeHint));
+						$fixedAnnotationContent = AnnotationHelper::fixAnnotationType(
+							$phpcsFile,
+							$annotation,
+							$typeHintNode,
+							new IdentifierTypeNode($fullyQualifiedTypeHint)
+						);
 
 						$phpcsFile->fixer->beginChangeset();
 
@@ -95,7 +104,11 @@ class FullyQualifiedClassNameInAnnotationSniff implements Sniff
 					foreach (AnnotationConstantExpressionHelper::getConstantFetchNodes($constantExpression) as $constantFetchNode) {
 						$typeHint = $constantFetchNode->className;
 
-						$fullyQualifiedTypeHint = TypeHintHelper::getFullyQualifiedTypeHint($phpcsFile, $annotation->getStartPointer(), $typeHint);
+						$fullyQualifiedTypeHint = TypeHintHelper::getFullyQualifiedTypeHint(
+							$phpcsFile,
+							$annotation->getStartPointer(),
+							$typeHint
+						);
 						if ($fullyQualifiedTypeHint === $typeHint) {
 							continue;
 						}
@@ -110,9 +123,12 @@ class FullyQualifiedClassNameInAnnotationSniff implements Sniff
 							continue;
 						}
 
-						/** @var MethodAnnotation $annotation */
-						$annotation = $annotation;
-						$fixedAnnotationContent = AnnotationHelper::fixAnnotationConstantFetchNode($phpcsFile, $annotation, $constantFetchNode, new ConstFetchNode($fullyQualifiedTypeHint, $constantFetchNode->name));
+						$fixedAnnotationContent = AnnotationHelper::fixAnnotationConstantFetchNode(
+							$phpcsFile,
+							$annotation,
+							$constantFetchNode,
+							new ConstFetchNode($fullyQualifiedTypeHint, $constantFetchNode->name)
+						);
 
 						$phpcsFile->fixer->beginChangeset();
 

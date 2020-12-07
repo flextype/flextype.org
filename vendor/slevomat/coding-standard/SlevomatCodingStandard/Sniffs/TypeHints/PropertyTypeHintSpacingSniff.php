@@ -4,8 +4,10 @@ namespace SlevomatCodingStandard\Sniffs\TypeHints;
 
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
-use SlevomatCodingStandard\Helpers\PropertyHelper;
 use SlevomatCodingStandard\Helpers\TokenHelper;
+use const T_AS;
+use const T_CONST;
+use const T_FUNCTION;
 use const T_NULLABLE;
 use const T_PRIVATE;
 use const T_PROTECTED;
@@ -37,31 +39,48 @@ class PropertyTypeHintSpacingSniff implements Sniff
 	public function register(): array
 	{
 		return [
-			T_VARIABLE,
+			T_VAR,
+			T_PUBLIC,
+			T_PROTECTED,
+			T_PRIVATE,
 		];
 	}
 
 	/**
 	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
 	 * @param File $phpcsFile
-	 * @param int $propertyPointer
+	 * @param int $visibilityPointer
 	 */
-	public function process(File $phpcsFile, $propertyPointer): void
+	public function process(File $phpcsFile, $visibilityPointer): void
 	{
-		if (!PropertyHelper::isProperty($phpcsFile, $propertyPointer)) {
+		$tokens = $phpcsFile->getTokens();
+
+		$asPointer = TokenHelper::findPreviousEffective($phpcsFile, $visibilityPointer - 1);
+		if ($tokens[$asPointer]['code'] === T_AS) {
 			return;
 		}
 
-		$tokens = $phpcsFile->getTokens();
+		$propertyPointer = TokenHelper::findNext($phpcsFile, [T_FUNCTION, T_CONST, T_VARIABLE], $visibilityPointer + 1);
 
-		$propertyStartPointer = TokenHelper::findPrevious($phpcsFile, [T_PRIVATE, T_PROTECTED, T_PUBLIC, T_VAR], $propertyPointer - 1);
+		if ($tokens[$propertyPointer]['code'] !== T_VARIABLE) {
+			return;
+		}
 
-		$typeHintEndPointer = TokenHelper::findPrevious($phpcsFile, TokenHelper::$typeHintTokenCodes, $propertyPointer - 1, $propertyStartPointer);
+		$typeHintTokenCodes = TokenHelper::getTypeHintTokenCodes();
+
+		$propertyStartPointer = $visibilityPointer;
+
+		$typeHintEndPointer = TokenHelper::findPrevious($phpcsFile, $typeHintTokenCodes, $propertyPointer - 1, $propertyStartPointer);
 		if ($typeHintEndPointer === null) {
 			return;
 		}
 
-		$typeHintStartPointer = TokenHelper::findPreviousExcluding($phpcsFile, TokenHelper::$typeHintTokenCodes, $typeHintEndPointer, $propertyStartPointer) + 1;
+		$typeHintStartPointer = TokenHelper::findPreviousExcluding(
+			$phpcsFile,
+			$typeHintTokenCodes,
+			$typeHintEndPointer,
+			$propertyStartPointer
+		) + 1;
 
 		$previousPointer = TokenHelper::findPreviousEffective($phpcsFile, $typeHintStartPointer - 1, $propertyStartPointer);
 		$nullabilitySymbolPointer = $previousPointer !== null && $tokens[$previousPointer]['code'] === T_NULLABLE ? $previousPointer : null;
@@ -75,11 +94,7 @@ class PropertyTypeHintSpacingSniff implements Sniff
 				$errorCode = self::CODE_NO_SPACE_BEFORE_TYPE_HINT;
 			}
 
-			$fix = $phpcsFile->addFixableError(
-				$errorMessage,
-				$typeHintEndPointer,
-				$errorCode
-			);
+			$fix = $phpcsFile->addFixableError($errorMessage, $typeHintEndPointer, $errorCode);
 			if ($fix) {
 				$phpcsFile->fixer->beginChangeset();
 				$phpcsFile->fixer->addContent($propertyStartPointer, ' ');
@@ -94,11 +109,7 @@ class PropertyTypeHintSpacingSniff implements Sniff
 				$errorCode = self::CODE_MULTIPLE_SPACES_BEFORE_TYPE_HINT;
 			}
 
-			$fix = $phpcsFile->addFixableError(
-				$errorMessage,
-				$propertyStartPointer,
-				$errorCode
-			);
+			$fix = $phpcsFile->addFixableError($errorMessage, $propertyStartPointer, $errorCode);
 			if ($fix) {
 				$phpcsFile->fixer->beginChangeset();
 				$phpcsFile->fixer->replaceToken($propertyStartPointer + 1, ' ');

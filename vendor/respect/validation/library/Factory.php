@@ -22,8 +22,11 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\ParameterStringifier;
 use Respect\Validation\Message\Stringifier\KeepOriginalStringName;
+
+use function array_merge;
 use function lcfirst;
 use function sprintf;
+use function str_replace;
 use function trim;
 use function ucfirst;
 
@@ -35,13 +38,6 @@ use function ucfirst;
  */
 final class Factory
 {
-    /**
-     * Default instance of the Factory.
-     *
-     * @var Factory
-     */
-    private static $defaultInstance;
-
     /**
      * @var string[]
      */
@@ -62,9 +58,28 @@ final class Factory
      */
     private $parameterStringifier;
 
+    /**
+     * Default instance of the Factory.
+     *
+     * @var Factory
+     */
+    private static $defaultInstance;
+
     public function __construct()
     {
         $this->parameterStringifier = new KeepOriginalStringName();
+    }
+
+    /**
+     * Returns the default instance of the Factory.
+     */
+    public static function getDefaultInstance(): self
+    {
+        if (self::$defaultInstance === null) {
+            self::$defaultInstance = new self();
+        }
+
+        return self::$defaultInstance;
     }
 
     public function withRuleNamespace(string $rulesNamespace): self
@@ -100,26 +115,6 @@ final class Factory
     }
 
     /**
-     * Define the default instance of the Factory.
-     */
-    public static function setDefaultInstance(self $defaultInstance): void
-    {
-        self::$defaultInstance = $defaultInstance;
-    }
-
-    /**
-     * Returns the default instance of the Factory.
-     */
-    public static function getDefaultInstance(): self
-    {
-        if (self::$defaultInstance === null) {
-            self::$defaultInstance = new self();
-        }
-
-        return self::$defaultInstance;
-    }
-
-    /**
      * Creates a rule.
      *
      * @param mixed[] $arguments
@@ -130,9 +125,11 @@ final class Factory
     {
         foreach ($this->rulesNamespaces as $namespace) {
             try {
+                /** @var class-string<Validatable> $name */
+                $name = $namespace . '\\' . ucfirst($ruleName);
                 /** @var Validatable $rule */
                 $rule = $this
-                    ->createReflectionClass($namespace.'\\'.ucfirst($ruleName), Validatable::class)
+                    ->createReflectionClass($name, Validatable::class)
                     ->newInstanceArgs($arguments);
 
                 return $rule;
@@ -159,13 +156,17 @@ final class Factory
         $ruleName = $reflection->getShortName();
         $params = ['input' => $input] + $extraParams + $this->extractPropertiesValues($validatable, $reflection);
         $id = lcfirst($ruleName);
-        if ($validatable->getName()) {
+        if ($validatable->getName() !== null) {
             $id = $params['name'] = $validatable->getName();
         }
-        foreach ($this->exceptionsNamespaces as $namespace) {
+        $exceptionNamespace = str_replace('\\Rules', '\\Exceptions', $reflection->getNamespaceName());
+        foreach (array_merge([$exceptionNamespace], $this->exceptionsNamespaces) as $namespace) {
             try {
+                /** @var class-string<ValidationException> $exceptionName */
+                $exceptionName = $namespace . '\\' . $ruleName . 'Exception';
+
                 return $this->createValidationException(
-                    $namespace.'\\'.$ruleName.'Exception',
+                    $exceptionName,
                     $id,
                     $input,
                     $params,
@@ -180,7 +181,18 @@ final class Factory
     }
 
     /**
+     * Define the default instance of the Factory.
+     */
+    public static function setDefaultInstance(self $defaultInstance): void
+    {
+        self::$defaultInstance = $defaultInstance;
+    }
+
+    /**
      * Creates a reflection based on class name.
+     *
+     * @param class-string $name
+     * @param class-string $parentName
      *
      * @throws InvalidClassException
      * @throws ReflectionException
@@ -201,6 +213,8 @@ final class Factory
 
     /**
      * Creates a Validation exception.
+     *
+     * @param class-string<ValidationException> $exceptionName
      *
      * @param mixed $input
      * @param mixed[] $params

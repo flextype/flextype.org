@@ -7,33 +7,28 @@ declare(strict_types=1);
  * Founded by Sergey Romanenko and maintained by Flextype Community.
  */
 
-namespace Flextype;
+namespace Flextype\Plugin\Twig\Twig;
 
-use Twig_Extension;
-use Twig_Extension_GlobalsInterface;
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\GlobalsInterface;
 
-class EmitterTwigExtension extends Twig_Extension implements Twig_Extension_GlobalsInterface
+class EmitterTwigExtension extends AbstractExtension implements GlobalsInterface
 {
-    /**
-     * Flextype Dependency Container
-     */
-    private $flextype;
-
     /**
      * Constructor
      */
-    public function __construct($flextype)
+    public function __construct()
     {
-        $this->flextype = $flextype;
+
     }
 
     /**
      * Register Global variables in an extension
      */
-    public function getGlobals()
+    public function getGlobals() : array
     {
         return [
-            'emitter' => new EmitterTwig($this->flextype),
+            'emitter' => new EmitterTwig(),
         ];
     }
 }
@@ -41,16 +36,16 @@ class EmitterTwigExtension extends Twig_Extension implements Twig_Extension_Glob
 class EmitterTwig
 {
     /**
-     * Flextype Dependency Container
+     * Flextype Application
      */
-    private $flextype;
+
 
     /**
      * Constructor
      */
-    public function __construct($flextype)
+    public function __construct()
     {
-        $this->flextype = $flextype;
+
     }
 
     /**
@@ -58,7 +53,7 @@ class EmitterTwig
      */
     public function emit($event)
     {
-        return $this->flextype['emitter']->emit($event);
+        return flextype('emitter')->emit($event);
     }
 
     /**
@@ -66,6 +61,6 @@ class EmitterTwig
      */
     public function emitBatch(array $events)
     {
-        return $this->flextype['emitter']->emitBatch($events);
+        return flextype('emitter')->emitBatch($events);
     }
 }

@@ -1,10 +1,10 @@
 # Slevomat Coding Standard
 
-[![Latest version](https://img.shields.io/packagist/v/slevomat/coding-standard.svg?style=flat-square&colorB=007EC6)](https://packagist.org/packages/slevomat/coding-standard)
-[![Downloads](https://img.shields.io/packagist/dt/slevomat/coding-standard.svg?style=flat-square&colorB=007EC6)](https://packagist.org/packages/slevomat/coding-standard)
-[![Build status](https://img.shields.io/travis/slevomat/coding-standard/master.svg?label=travis&style=flat-square)](https://travis-ci.org/slevomat/coding-standard)
-[![Code coverage](https://img.shields.io/coveralls/slevomat/coding-standard/master.svg?style=flat-square)](https://coveralls.io/github/slevomat/coding-standard?branch=master)
-![PHPStan](https://img.shields.io/badge/style-level%207-brightgreen.svg?style=flat-square&label=phpstan)
+[![Latest version](https://img.shields.io/packagist/v/slevomat/coding-standard.svg?colorB=007EC6)](https://packagist.org/packages/slevomat/coding-standard)
+[![Downloads](https://img.shields.io/packagist/dt/slevomat/coding-standard.svg?colorB=007EC6)](https://packagist.org/packages/slevomat/coding-standard)
+[![Build status](https://github.com/slevomat/coding-standard/workflows/Build/badge.svg?branch=master)](https://github.com/slevomat/coding-standard/actions?query=workflow%3ABuild+branch%3Amaster)
+[![Code coverage](https://codecov.io/gh/slevomat/coding-standard/branch/master/graph/badge.svg)](https://codecov.io/gh/slevomat/coding-standard)
+![PHPStan](https://img.shields.io/badge/style-level%207-brightgreen.svg?&label=phpstan)
 
 Slevomat Coding Standard for [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) provides sniffs that fall into three categories:
 
@@ -77,7 +77,7 @@ This sniff can cause an error if you're overriding or implementing a parent meth
 
 Reports useless `@var` annotation (or whole documentation comment) for constants because the type of constant is always clear.
 
-#### SlevomatCodingStandard.Exceptions.ReferenceThrowableOnly 🔧
+#### SlevomatCodingStandard.Exceptions.ReferenceThrowableOnly 🔧🚧
 
 In PHP 7.0, a [`Throwable` interface was added](https://wiki.php.net/rfc/throwable-interface) that allows catching and handling errors in more cases than `Exception` previously allowed. So, if the catch statement contained `Exception` on PHP 5.x, it means it should probably be rewritten to reference `Throwable` on PHP 7.x. This sniff enforces that.
 
@@ -101,21 +101,40 @@ Checks that class/trait/interface members are in the correct order.
 
 Sniff provides the following settings:
 
-* `groups`: order of groups. Use multiple groups in one `<element value="">` to not differentiate among them. Groups without defined order are sorted to the end.
+* `groups`: order of groups. Use multiple groups in one `<element value="">` to not differentiate among them. You can use specific groups or shortcuts.
+* `enableFinalMethods`: enables groups for `final` methods
 
-List of supported groups: uses, public constants, protected constants, private constants, public properties, public static properties, protected properties, protected static properties, private properties, private static properties, constructor, static constructors, destructor, public methods, public abstract methods, public static methods, public static abstract methods, protected methods, protected abstract methods, protected static methods, protected static abstract methods, private methods, private static methods, magic methods
+**List of supported groups**:
+uses,
+public constants, protected constants, private constants,
+public properties, public static properties, protected properties, protected static properties, private properties, private static properties,
+constructor, static constructors, destructor, magic methods,
+public methods, protected methods, private methods,
+public final methods, public static final methods, protected final methods, protected static final methods,
+public abstract methods, public static abstract methods, protected abstract methods, protected static abstract methods,
+public static methods, protected static methods, private static methods,
+private methods
+
+**List of supported shortcuts**:
+constants, properties, static properties, methods, all public methods, all protected methods, all private methods, static methods, final methods, abstract methods
 
 ```xml
 <rule ref="SlevomatCodingStandard.Classes.ClassStructure">
 	<properties>
 		<property name="groups" type="array">
 			<element value="uses"/>
+
+			<!-- Public constants are first but you don't care about the order of protected or private constants -->
 			<element value="public constants"/>
-			<element value="protected constants"/>
-			<element value="private constants"/>
+			<element value="constants"/>
+
+			<!-- You don't care about the order among the properties. The same can be done with "properties" shortcut -->
 			<element value="public properties, protected properties, private properties"/>
+
+			<!-- Constructor is first, then all public methods, then protected/private methods and magic methods are last -->
 			<element value="constructor"/>
-			<element value="public methods, protected methods, private methods"/>
+			<element value="all public methods"/>
+			<element value="methods"/>
 			<element value="magic methods"/>
 		</property>
 	</properties>
@@ -144,6 +163,15 @@ Assignment in `while` loop condition is specifically allowed because it's common
 
 This is a great addition to already existing `SlevomatCodingStandard.ControlStructures.DisallowYodaComparison` because it prevents the danger of assigning something by mistake instead of using comparison operator like `===`.
 
+Sniff provides the following settings:
+* `ignoreAssignmentsInsideFunctionCalls`: ignores assignment inside function calls, like this:
+
+```php
+if (in_array(1, $haystack, $strict = true)) {
+
+}
+```
+
 #### SlevomatCodingStandard.ControlStructures.DisallowContinueWithoutIntegerOperandInSwitch 🔧
 
 Disallows use of `continue` without integer operand in `switch` because it emits a warning in PHP 7.3 and higher.
@@ -159,6 +187,10 @@ Requires use of null coalesce operator when possible.
 #### SlevomatCodingStandard.ControlStructures.RequireNullCoalesceEqualOperator 🔧
 
 Requires use of null coalesce equal operator when possible.
+
+This sniff provides the following setting:
+
+* `enable`: either to enable or no this sniff. By default, it is enabled for PHP versions 7.4 or higher.
 
 #### SlevomatCodingStandard.ControlStructures.EarlyExit 🔧
 
@@ -176,9 +208,43 @@ foreach ($values as $value) {
 }
 ```
 
+* `ignoreOneLineTrailingIf`: ignores `if` that has one line content and is on the last position in scope, like this:
+
+```php
+foreach ($values as $value) {
+	$value .= 'whatever';
+
+	if ($value) {
+		doSomething();
+	}
+}
+```
+
+* `ignoreTrailingIfWithOneInstruction`: ignores `if` that has only one instruction and is on the last position in scope, like this:
+
+```php
+foreach ($values as $value) {
+	$value .= 'whatever';
+
+	if ($value) {
+		doSomething(function () {
+			// Anything
+		});
+	}
+}
+```
+
+#### SlevomatCodingStandard.Functions.StrictCall
+
+Some functions have `$strict` parameter. This sniff reports calls to these functions without the parameter or with `$strict = false`.
+
 #### SlevomatCodingStandard.Functions.StaticClosure 🔧
 
 Reports closures not using `$this` that are not declared `static`.
+
+#### SlevomatCodingStandard.PHP.DisallowDirectMagicInvokeCall 🔧
+
+Disallows direct call of `__invoke()`.
 
 #### SlevomatCodingStandard.Operators.DisallowEqualOperators 🔧
 
@@ -199,6 +265,9 @@ Requires using combined assignment operators, eg `+=`, `.=` etc.
 ### Cleaning - detecting dead code
 
 #### SlevomatCodingStandard.Classes.UnusedPrivateElements 🚧
+
+**DEPRECATED**
+See https://phpstan.org/blog/detecting-unused-private-properties-methods-constants
 
 Although PHP_CodeSniffer is not suitable for static analysis because it is limited to analysing one file at a time, it is possible to use it to perform certain checks. `UnusedPrivateElementsSniff` checks for unused methods, unused or write-only properties in a class and unused private constants. Reported unused elements are safe to remove.
 
@@ -250,6 +319,30 @@ Looks for `use` alias that is same as unqualified name.
 
 Disallows references.
 
+#### SlevomatCodingStandard.PHP.ForbiddenClasses 🔧
+
+Reports usage of forbidden classes, interfaces, parent classes and traits. And provide the following settings:
+
+* `forbiddenClasses`: forbids creating instances with `new` keyword or accessing with `::` operator
+* `forbiddenExtends`: forbids extending with `extends` keyword
+* `forbiddenInterfaces`: forbids usage in `implements` section
+* `forbiddenTraits`: forbids imports with `use` keyword
+
+Optionally can be passed as an alternative for auto fixes. See `phpcs.xml` file example:
+
+```xml
+<rule ref="SlevomatCodingStandard.PHP.ForbiddenClasses">
+    <properties>
+        <property name="forbiddenClasses" type="array">
+            <element key="Validator" value="Illuminate\Support\Facades\Validator"/>
+        </property>
+        <property name="forbiddenTraits" type="array">
+            <element key="\AuthTrait" value="null"/>
+        </property>
+    </properties>
+</rule>
+```
+
 #### SlevomatCodingStandard.PHP.RequireExplicitAssertion 🔧
 
 Requires assertion via `assert` instead of inline documentation comments.
@@ -276,6 +369,10 @@ The list of these functions varies across PHP versions, but is the same as funct
 
 Looks for useless semicolons.
 
+#### SlevomatCodingStandard.Variables.DisallowSuperGlobalVariable
+
+Disallows use of super global variables.
+
 #### SlevomatCodingStandard.Variables.DuplicateAssignmentToVariable
 
 Looks for duplicate assignments to a variable.
@@ -290,7 +387,7 @@ Sniff provides the following settings:
 
 ```php
 foreach ($values as $key => $value) {
-  echo $key;
+	echo $key;
 }
 ```
 
@@ -316,7 +413,7 @@ try {
 
 #### SlevomatCodingStandard.Arrays.MultiLineArrayEndBracketPlacement 🔧
 
-Enforces reasonable end bracket placement for multiline arrays.
+Enforces reasonable end bracket placement for multi-line arrays.
 
 #### SlevomatCodingStandard.Arrays.SingleLineArrayWhitespace 🔧
 
@@ -337,6 +434,14 @@ Sniff provides the following settings:
 
 * `enableAfterHeredoc`: enables/disables trailing commas after HEREDOC/NOWDOC, default based on PHP version.
 
+#### SlevomatCodingStandard.Classes.ClassMemberSpacing 🔧
+
+Checks lines count between different class members, eg. between last property and first method.
+
+Sniff provides the following settings:
+
+* `linesCountBetweenMembers`: lines count between different class members
+
 #### SlevomatCodingStandard.Classes.ConstantSpacing 🔧
 
 Checks that there is a certain number of blank lines between constants.
@@ -347,6 +452,23 @@ Sniff provides the following settings:
 * `maxLinesCountBeforeWithComment`: maximum number of lines before constant with a doc comment
 * `minLinesCountBeforeWithoutComment`: minimum number of lines before constant without a doc comment
 * `maxLinesCountBeforeWithoutComment`: maximum number of lines before constant without a doc comment
+
+#### SlevomatCodingStandard.Classes.DisallowMultiConstantDefinition 🔧
+
+Disallows multi constant definition.
+
+#### SlevomatCodingStandard.Classes.DisallowMultiPropertyDefinition 🔧
+
+Disallows multi property definition.
+
+#### SlevomatCodingStandard.Classes.MethodSpacing 🔧
+
+Checks that there is a certain number of blank lines between methods.
+
+Sniff provides the following settings:
+
+* `minLinesCount`: minimum number of blank lines
+* `maxLinesCount`: maximum number of blank lines
 
 #### SlevomatCodingStandard.Classes.ModernClassNameReference 🔧
 
@@ -360,7 +482,7 @@ Enforces configurable number of lines around parent method call.
 Sniff provides the following settings:
 
 * `linesCountBeforeParentCall`: allows to configure the number of lines before parent call.
-* `linesCountBeforeFirstControlParentCalle`: allows to configure the number of lines before first parent call.
+* `linesCountBeforeFirstParentCall`: allows to configure the number of lines before first parent call.
 * `linesCountAfterParentCall`: allows to configure the number of lines after parent call.
 * `linesCountAfterLastParentCall`: allows to configure the number of lines after last parent call.
 
@@ -410,6 +532,10 @@ Reports use of superfluous prefix or suffix "Interface" for interfaces.
 #### SlevomatCodingStandard.Classes.SuperfluousExceptionNaming
 
 Reports use of superfluous suffix "Exception" for exceptions.
+
+#### SlevomatCodingStandard.Classes.SuperfluousErrorNaming
+
+Reports use of superfluous suffix "Error" for errors.
 
 #### SlevomatCodingStandard.Classes.SuperfluousTraitNaming
 
@@ -465,8 +591,11 @@ Sniff provides the following settings:
 * `allowSingleLineYieldStacking`: whether or not to allow multiple yield/yield from statements in a row without blank lines.
 * `linesCountBeforeControlStructure`: allows to configure the number of lines before jump statement.
 * `linesCountBeforeFirstControlStructure`: allows to configure the number of lines before first jump statement.
+* `linesCountBeforeWhenFirstInCaseOrDefault`: allows to configure the number of lines before jump statement that is first in `case` or `default`
 * `linesCountAfterControlStructure`: allows to configure the number of lines after jump statement.
 * `linesCountAfterLastControlStructure`: allows to configure the number of lines after last jump statement.
+* `linesCountAfterWhenLastInCaseOrDefault`: allows to configure the number of lines after jump statement that is last in `case` or `default`
+* `linesCountAfterWhenLastInLastCaseOrDefault`: allows to configure the number of lines after jump statement that is last in last `case` or `default`
 * `tokensToCheck`: allows to narrow the list of checked tokens.
 
 For example, with the following setting, only `continue` and `break` tokens are checked.
@@ -510,6 +639,26 @@ Sniff provides the following settings:
 
 * `lineLengthLimit` (defaults to `0`)
 
+#### SlevomatCodingStandard.ControlStructures.RequireSingleLineCondition 🔧
+
+Enforces conditions of `if`, `elseif`, `while` and `do-while` to be on a single line.
+
+Sniff provides the following settings:
+
+* `maxLineLength`: specifies max allowed line length. If conditition (and the rest of the line) would fit on it, it's enforced. Use 0 value to enforce for all conditions, regardless of length.
+* `alwaysForSimpleConditions`: allows to enforce single line for all simple conditions (i.e no `&&`, `||` or `xor`), regardless of length.
+
+#### SlevomatCodingStandard.ControlStructures.RequireMultiLineCondition 🔧
+
+Enforces conditions of `if`, `elseif`, `while` and `do-while` with one or more boolean operators to be splitted to more lines
+so each condition part is on its own line.
+
+Sniff provides the following settings:
+
+* `minLineLength`: specifies mininum line length to enforce condition to be splitted. Use 0 value to enforce for all conditions, regardless of length.
+* `booleanOperatorOnPreviousLine`: boolean operator is placed at the end of previous line when fixing.
+* `alwaysSplitAllConditionParts`: require all condition parts to be on its own line - it reports error even if condition is already multi-line but there are some condition parts on the same line.
+
 #### SlevomatCodingStandard.ControlStructures.RequireShortTernaryOperator 🔧
 
 Requires short ternary operator `?:` when possible.
@@ -520,11 +669,15 @@ Requires ternary operator when possible.
 
 Sniff provides the following settings:
 
-* `ignoreMultiLine` (defaults to `false`): ignores multiLine statements.
+* `ignoreMultiLine` (defaults to `false`): ignores multi-line statements.
 
 #### SlevomatCodingStandard.ControlStructures.DisallowYodaComparison/RequireYodaComparison 🔧
 
 [Yoda conditions](https://en.wikipedia.org/wiki/Yoda_conditions) decrease code comprehensibility and readability by switching operands around comparison operators forcing the reader to read the code in an unnatural way.
+
+Sniff provides the following settings:
+
+* `alwaysVariableOnRight` (defaults to `false`): moves variables always to right.
 
 `DisallowYodaComparisonSniff` looks for and fixes such comparisons not only in `if` statements but in the whole code.
 
@@ -539,6 +692,17 @@ Sniff provides the following settings:
 * `lineLengthLimit`: actual limit of the line length
 * `ignoreComments`: whether or not to ignore line length of comments
 * `ignoreImports`: whether or not to ignore line length of import (use) statements
+
+#### SlevomatCodingStandard.Functions.ArrowFunctionDeclaration
+
+Checks `fn` declaration.
+
+Sniff provides the following settings:
+
+* `spacesCountAfterKeyword`: the number of spaces after `fn`.
+* `spacesCountBeforeArrow`: the number of spaces before `=>`.
+* `spacesCountAfterArrow`: the number of spaces after `=>`.
+* `allowMultiLine`: allows multi-line declaration.
 
 #### SlevomatCodingStandard.Functions.DisallowEmptyFunction
 
@@ -555,12 +719,34 @@ Requires arrow functions.
 Sniff provides the following settings:
 
 * `allowNested` (defaults to `true`)
+* `enable`: either to enable or no this sniff. By default, it is enabled for PHP versions 7.4 or higher.
+
+#### SlevomatCodingStandard.Functions.RequireMultiLineCall 🔧
+
+Enforces function call to be splitted to more lines so each parameter is on its own line.
+
+Sniff provides the following settings:
+
+* `minLineLength`: specifies min line length to enforce call to be splitted. Use 0 value to enforce for all calls, regardless of length.
+
+#### SlevomatCodingStandard.Functions.RequireSingleLineCall 🔧
+
+Enforces function call to be on a single line.
+
+Sniff provides the following settings:
+
+* `maxLineLength`: specifies max allowed line length. If call would fit on it, it's enforced. Use 0 value to enforce for all calls, regardless of length.
+* `ignoreWithComplexParameter` (defaults to `true`): ignores calls with arrays, closures, arrow functions and nested calls.
 
 #### SlevomatCodingStandard.Functions.TrailingCommaInCall 🔧
 
 Commas after the last parameter in function or method call make adding a new parameter easier and result in a cleaner versioning diff.
 
 This sniff enforces trailing commas in multi-line calls.
+
+This sniff provides the following setting:
+
+* `enable`: either to enable or no this sniff. By default, it is enabled for PHP versions 7.3 or higher.
 
 #### SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses 🔧
 
@@ -625,6 +811,12 @@ Disallows numeric literal separators.
 
 Requires use of numeric literal separators.
 
+This sniff provides the following setting:
+
+* `enable`: either to enable or no this sniff. By default, it is enabled for PHP versions 7.4 or higher.
+* `minDigitsBeforeDecimalPoint`: the mininum digits before decimal point to require separator.
+* `minDigitsAfterDecimalPoint`: the mininum digits after decimal point to require separator.
+
 #### SlevomatCodingStandard.PHP.ReferenceSpacing 🔧
 
 Enforces configurable number of spaces after reference.
@@ -679,6 +871,16 @@ Enforces using short form of list syntax, `[...]` instead of `list(...)`.
 
 Enforces using shorthand cast operators, forbids use of unset and binary cast operators: `(bool)` instead of `(boolean)`, `(int)` instead of `(integer)`, `(float)` instead of `(double)` or `(real)`. `(binary)` and `(unset)` are forbidden.
 
+#### SlevomatCodingStandard.Whitespaces.DuplicateSpaces 🔧
+
+Checks duplicate spaces anywhere because there aren't sniffs for every part of code to check formatting.
+
+Sniff provides the following settings:
+
+* `ignoreSpacesBeforeAssignment`: to allow multiple spaces to align assignments.
+* `ignoreSpacesInAnnotation`: to allow multiple spaces to align annotations.
+* `ignoreSpacesInComment`: to allow multiple spaces to align content of the comment.
+* `ignoreSpacesInParameters`: to allow multiple spaces to align parameters.
 
 #### SlevomatCodingStandard.Files.TypeNameMatchesFileName
 
@@ -825,6 +1027,7 @@ All references to global constants must be referenced via a fully qualified name
 
 Sniff provides the following settings:
 
+* `include`: list of global constants that must be referenced via FQN. If not set all constants are considered.
 * `exclude`: list of global constants that are allowed not to be referenced via FQN.
 
 #### SlevomatCodingStandard.Namespaces.FullyQualifiedGlobalFunctions 🔧
@@ -833,6 +1036,8 @@ All references to global functions must be referenced via a fully qualified name
 
 Sniff provides the following settings:
 
+* `include`: list of global functions that must be referenced via FQN. If not set all functions are considered.
+* `includeSpecialFunctions`: include complete list of PHP internal functions that could be optimized when referenced via FQN.
 * `exclude`: list of global functions that are allowed not to be referenced via FQN.
 
 #### SlevomatCodingStandard.Namespaces.MultipleUsesPerLine
@@ -894,6 +1099,14 @@ Sniff provides the following settings:
 #### SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameInAnnotation 🔧
 
 Enforces fully qualified names of classes and interfaces in phpDocs - in annotations. This results in unambiguous phpDocs.
+
+#### SlevomatCodingStandard.Commenting.DeprecatedAnnotationDeclarationSniff
+
+Reports `@deprecated` annotations without description.
+
+#### SlevomatCodingStandard.Commenting.DisallowCommentAfterCode 🔧
+
+Disallows comments after code at the same line.
 
 #### SlevomatCodingStandard.Commenting.ForbiddenAnnotations 🔧
 
@@ -963,6 +1176,11 @@ Reports empty comments.
 
 Reports invalid inline phpDocs with `@var`.
 
+Sniff provides the following settings:
+
+* `allowDocCommentAboveReturn`: Allows documentation comments without variable name above `return` statemens.
+* `allowAboveNonAssignment`: Allows documentation comments above non-assigment if the line contains the right variable name.
+
 #### SlevomatCodingStandard.Commenting.RequireOneLinePropertyDocComment 🔧
 
 Requires property comments with single-line content to be written as one-liners.
@@ -1018,7 +1236,7 @@ The recommended way to install Slevomat Coding Standard is [through Composer](ht
 }
 ```
 
-It's also recommended to install [jakub-onderka/php-parallel-lint](https://github.com/JakubOnderka/PHP-Parallel-Lint) which checks source code for syntax errors. Sniffs count on the processed code to be syntactically valid (no parse errors), otherwise they can behave unexpectedly. It is advised to run `PHP-Parallel-Lint` in your build tool before running `PHP_CodeSniffer` and exiting the build process early if `PHP-Parallel-Lint` fails.
+It's also recommended to install [php-parallel-lint/php-parallel-lint](https://github.com/php-parallel-lint/PHP-Parallel-Lint) which checks source code for syntax errors. Sniffs count on the processed code to be syntactically valid (no parse errors), otherwise they can behave unexpectedly. It is advised to run `PHP-Parallel-Lint` in your build tool before running `PHP_CodeSniffer` and exiting the build process early if `PHP-Parallel-Lint` fails.
 
 ## How to run the sniffs
 
@@ -1026,26 +1244,7 @@ You can choose one of two ways to run only selected sniffs from the standard on 
 
 ### Choose which sniffs to run
 
-Mention Slevomat Coding Standard in your project's `ruleset.xml`:
-
-```xml
-<?xml version="1.0"?>
-<ruleset name="AcmeProject">
-	<rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml"><!-- relative path to your ruleset.xml -->
-		<!-- sniffs to exclude -->
-	</rule>
-</ruleset>
-```
-
-When running `phpcs` [on the command line](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage), use the `--sniffs` option to list all the sniffs you want to use separated by a comma:
-
-```
-vendor/bin/phpcs --standard=ruleset.xml \
---sniffs=SlevomatCodingStandard.ControlStructures.DisallowYodaComparison,SlevomatCodingStandard.Namespaces.AlphabeticallySortedUses \
---extensions=php --encoding=utf-8 --tab-width=4 -sp src tests
-```
-
-Or write your own ruleset.xml by referencing the selected sniffs. This is a sample ruleset.xml:
+The recommended way is to write your own ruleset.xml by referencing only the selected sniffs. This is a sample ruleset.xml:
 
 ```xml
 <?xml version="1.0"?>
@@ -1062,37 +1261,20 @@ Then run the `phpcs` executable the usual way:
 vendor/bin/phpcs --standard=ruleset.xml --extensions=php --tab-width=4 -sp src tests
 ```
 
-### Using all sniffs from the standard
+### Exclude sniffs you don't want to run
 
-⚠️ This is no longer a recommended way to use Slevomat Coding Standard, because your build can break when moving between minor versions of the standard (which can happen if you use `^` or `~` version constraint in `composer.json`). We regularly add new sniffs even in minor versions meaning your code won't most likely comply with new minor versions of the package.
-
-If you want to use the whole coding standard, besides requiring `slevomat/coding-standard` in composer.json, require also Consistence Coding Standard:
-
-```JSON
-{
-	"require-dev": {
-		"consistence/coding-standard": "~2.0"
-	}
-}
-```
-
-Then mention both standards in `ruleset.xml`:
+You can also mention Slevomat Coding Standard in your project's `ruleset.xml` and exclude only some sniffs:
 
 ```xml
 <?xml version="1.0"?>
 <ruleset name="AcmeProject">
-	<rule ref="vendor/consistence/coding-standard/Consistence/ruleset.xml" />
-	<rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml" />
-	<!-- additional settings -->
+	<rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml"><!-- relative path to your ruleset.xml -->
+		<!-- sniffs to exclude -->
+	</rule>
 </ruleset>
 ```
 
-To check your code base for violations, run `PHP-Parallel-Lint` and `PHP_CodeSniffer` from the command line:
-
-```
-vendor/bin/parallel-lint src tests
-vendor/bin/phpcs --standard=ruleset.xml --extensions=php --tab-width=4 -sp src tests
-```
+However it is not a recommended way to use Slevomat Coding Standard, because your build can break when moving between minor versions of the standard (which can happen if you use `^` or `~` version constraint in `composer.json`). We regularly add new sniffs even in minor versions meaning your code won't most likely comply with new minor versions of the package.
 
 ## Fixing errors automatically
 

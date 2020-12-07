@@ -1,5 +1,5 @@
 name: Site
-version: 1.0.2
+version: 1.5.0
 description: Site plugin to display entries content on the website frontend.
 icon: fas fa-globe
 author:
@@ -7,11 +7,9 @@ author:
   email: support@flextype.org
   url: https://flextype.org
 homepage: https://github.com/flextype-plugins/site
-documentation: https://github.com/flextype-plugins/site
-changelog: https://github.com/flextype-plugins/site/CHANGELOG.md
 bugs: https://github.com/flextype-plugins/site/issues
 license: MIT
 
 dependencies:
-  flextype: 0.9.8
+  flextype: 0.9.12
   twig: '>=1.0.0'

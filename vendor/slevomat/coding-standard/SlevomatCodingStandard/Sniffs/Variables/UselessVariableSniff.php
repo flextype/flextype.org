@@ -16,6 +16,7 @@ use function preg_quote;
 use function sprintf;
 use const T_AND_EQUAL;
 use const T_BITWISE_AND;
+use const T_CLOSE_CURLY_BRACKET;
 use const T_CONCAT_EQUAL;
 use const T_DIV_EQUAL;
 use const T_DO;
@@ -81,16 +82,18 @@ class UselessVariableSniff implements Sniff
 
 		$functionPointer = $this->findFunctionPointer($phpcsFile, $variablePointer);
 
-		if ($this->isReturnedByReference($phpcsFile, $functionPointer)) {
-			return;
-		}
+		if ($functionPointer !== null) {
+			if ($this->isReturnedByReference($phpcsFile, $functionPointer)) {
+				return;
+			}
 
-		if ($this->isStaticVariable($phpcsFile, $functionPointer, $variablePointer, $variableName)) {
-			return;
-		}
+			if ($this->isStaticVariable($phpcsFile, $functionPointer, $variablePointer, $variableName)) {
+				return;
+			}
 
-		if ($this->isFunctionParameter($phpcsFile, $functionPointer, $variableName)) {
-			return;
+			if ($this->isFunctionParameter($phpcsFile, $functionPointer, $variableName)) {
+				return;
+			}
 		}
 
 		$previousVariablePointer = $this->findPreviousVariablePointer($phpcsFile, $returnPointer, $variableName);
@@ -120,17 +123,32 @@ class UselessVariableSniff implements Sniff
 			self::CODE_USELESS_VARIABLE,
 		];
 
+		$searchBefore = $previousVariablePointer;
+		do {
+			$previousOpenParenthesisPointer = TokenHelper::findPrevious($phpcsFile, T_OPEN_PARENTHESIS, $searchBefore - 1);
+
+			if (
+				$previousOpenParenthesisPointer === null
+				|| $tokens[$previousOpenParenthesisPointer]['parenthesis_closer'] < $previousVariablePointer
+			) {
+				break;
+			}
+
+			if (
+				array_key_exists('parenthesis_owner', $tokens[$previousOpenParenthesisPointer])
+				&& in_array($tokens[$tokens[$previousOpenParenthesisPointer]['parenthesis_owner']]['code'], [T_IF, T_ELSEIF, T_WHILE], true)
+			) {
+				return;
+			}
+
+			$searchBefore = $previousOpenParenthesisPointer;
+
+		} while (true);
+
 		$pointerBeforePreviousVariable = TokenHelper::findPreviousEffective($phpcsFile, $previousVariablePointer - 1);
-		if (
-			$tokens[$pointerBeforePreviousVariable]['code'] === T_OPEN_PARENTHESIS
-			&& array_key_exists('parenthesis_owner', $tokens[$pointerBeforePreviousVariable])
-			&& in_array($tokens[$tokens[$pointerBeforePreviousVariable]['parenthesis_owner']]['code'], [T_IF, T_ELSEIF, T_WHILE], true)
-		) {
-			return;
-		}
 
 		if (
-			!in_array($tokens[$pointerBeforePreviousVariable]['code'], [T_SEMICOLON, T_OPEN_CURLY_BRACKET], true)
+			!in_array($tokens[$pointerBeforePreviousVariable]['code'], [T_SEMICOLON, T_OPEN_CURLY_BRACKET, T_CLOSE_CURLY_BRACKET], true)
 			&& TokenHelper::findNextEffective($phpcsFile, $returnSemicolonPointer + 1) !== null
 		) {
 			$phpcsFile->addError(...$errorParameters);
@@ -250,12 +268,8 @@ class UselessVariableSniff implements Sniff
 		return null;
 	}
 
-	private function isStaticVariable(File $phpcsFile, ?int $functionPointer, int $variablePointer, string $variableName): bool
+	private function isStaticVariable(File $phpcsFile, int $functionPointer, int $variablePointer, string $variableName): bool
 	{
-		if ($functionPointer === null) {
-			return false;
-		}
-
 		$tokens = $phpcsFile->getTokens();
 
 		for ($i = $tokens[$functionPointer]['scope_opener'] + 1; $i < $variablePointer; $i++) {
@@ -275,12 +289,8 @@ class UselessVariableSniff implements Sniff
 		return false;
 	}
 
-	private function isFunctionParameter(File $phpcsFile, ?int $functionPointer, string $variableName): bool
+	private function isFunctionParameter(File $phpcsFile, int $functionPointer, string $variableName): bool
 	{
-		if ($functionPointer === null) {
-			return false;
-		}
-
 		$tokens = $phpcsFile->getTokens();
 
 		for ($i = $tokens[$functionPointer]['parenthesis_opener'] + 1; $i < $tokens[$functionPointer]['parenthesis_closer']; $i++) {
@@ -297,12 +307,8 @@ class UselessVariableSniff implements Sniff
 		return false;
 	}
 
-	private function isReturnedByReference(File $phpcsFile, ?int $functionPointer): bool
+	private function isReturnedByReference(File $phpcsFile, int $functionPointer): bool
 	{
-		if ($functionPointer === null) {
-			return false;
-		}
-
 		$tokens = $phpcsFile->getTokens();
 
 		$referencePointer = TokenHelper::findNextEffective($phpcsFile, $functionPointer + 1);
@@ -319,7 +325,10 @@ class UselessVariableSniff implements Sniff
 		}
 
 		$docCommentContent = TokenHelper::getContent($phpcsFile, $tokens[$pointerBeforeVariable]['comment_opener'], $pointerBeforeVariable);
-		return preg_match('~@(?:(?:phpstan|psalm)-)?var\\s+.+\\s+' . preg_quote($tokens[$variablePointer]['content'], '~') . '(?:\\s|$)~', $docCommentContent) !== 0;
+		return preg_match(
+			'~@(?:(?:phpstan|psalm)-)?var\\s+.+\\s+' . preg_quote($tokens[$variablePointer]['content'], '~') . '(?:\\s|$)~',
+			$docCommentContent
+		) !== 0;
 	}
 
 	private function hasAnotherAssigmentBefore(File $phpcsFile, int $variablePointer, string $variableName): bool

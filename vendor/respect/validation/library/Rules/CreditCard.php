@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Respect\Validation\Exceptions\ComponentException;
+
 use function array_keys;
 use function implode;
 use function is_scalar;
@@ -91,7 +92,7 @@ final class CreditCard extends AbstractRule
             return false;
         }
 
-        $input = preg_replace('/[ .-]/', '', (string) $input);
+        $input = (string) preg_replace('/[ .-]/', '', (string) $input);
         if (!(new Luhn())->validate($input)) {
             return false;
         }

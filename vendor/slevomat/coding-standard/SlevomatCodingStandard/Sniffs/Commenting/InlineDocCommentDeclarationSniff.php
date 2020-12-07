@@ -25,6 +25,7 @@ use const T_OPEN_SHORT_ARRAY;
 use const T_PRIVATE;
 use const T_PROTECTED;
 use const T_PUBLIC;
+use const T_RETURN;
 use const T_SEMICOLON;
 use const T_STATIC;
 use const T_VARIABLE;
@@ -37,6 +38,12 @@ class InlineDocCommentDeclarationSniff implements Sniff
 	public const CODE_INVALID_COMMENT_TYPE = 'InvalidCommentType';
 	public const CODE_MISSING_VARIABLE = 'MissingVariable';
 	public const CODE_NO_ASSIGNMENT = 'NoAssignment';
+
+	/** @var bool */
+	public $allowDocCommentAboveReturn = false;
+
+	/** @var bool */
+	public $allowAboveNonAssignment = false;
 
 	/**
 	 * @return array<int, (int|string)>
@@ -58,7 +65,9 @@ class InlineDocCommentDeclarationSniff implements Sniff
 	{
 		$tokens = $phpcsFile->getTokens();
 
-		$commentClosePointer = $tokens[$commentOpenPointer]['code'] === T_COMMENT ? $commentOpenPointer : $tokens[$commentOpenPointer]['comment_closer'];
+		$commentClosePointer = $tokens[$commentOpenPointer]['code'] === T_COMMENT
+			? $commentOpenPointer
+			: $tokens[$commentOpenPointer]['comment_closer'];
 
 		$pointerAfterCommentClosePointer = TokenHelper::findNextEffective($phpcsFile, $commentClosePointer + 1);
 		if ($pointerAfterCommentClosePointer !== null) {
@@ -113,7 +122,17 @@ class InlineDocCommentDeclarationSniff implements Sniff
 			return;
 		}
 
-		if (preg_match('~^@var\\s+(?:\\S+(?:<.+>|\{.+\})?)(?:\\s*[|&]\\s*(?:\\S+(?:<.+>|\{.+\})?))*\\s+\$\\S+(?:\\s+.+)?$~', $commentContent) !== 0) {
+		if ($this->allowDocCommentAboveReturn) {
+			$pointerAfterCommentClosePointer = TokenHelper::findNextEffective($phpcsFile, $commentClosePointer + 1);
+			if ($tokens[$pointerAfterCommentClosePointer]['code'] === T_RETURN) {
+				return;
+			}
+		}
+
+		if (preg_match(
+			'~^@var\\s+(?:\\S+?( ?: ?\S+)?(?:<.+>|{.+})?)(?:\\s*[|&]\\s*(?:\\S+(?:<.+>|\{.+\})?))*\\s+\$\\S+(?:\\s+.+)?$~',
+			$commentContent
+		) !== 0) {
 			return;
 		}
 
@@ -186,12 +205,18 @@ class InlineDocCommentDeclarationSniff implements Sniff
 			$variableNames[] = $variableName;
 		}
 
-		$improveCodePointer = static function (int $codePointer) use ($phpcsFile, $tokens, $checkedTokens, $variableNames): int {
+		$improveCodePointer = function (int $codePointer) use ($phpcsFile, $tokens, $checkedTokens, $variableNames): int {
 			$shouldSearchClosure = false;
 
 			if (!in_array($tokens[$codePointer]['code'], $checkedTokens, true)) {
 				$shouldSearchClosure = true;
-			} elseif ($tokens[$codePointer]['code'] === T_VARIABLE && !in_array($tokens[$codePointer]['content'], $variableNames, true)) {
+			} elseif (
+				$tokens[$codePointer]['code'] === T_VARIABLE
+				&& (
+					!$this->isAssignment($phpcsFile, $codePointer)
+					|| !in_array($tokens[$codePointer]['content'], $variableNames, true)
+				)
+			) {
 				$shouldSearchClosure = true;
 			}
 
@@ -207,7 +232,9 @@ class InlineDocCommentDeclarationSniff implements Sniff
 			return $codePointer;
 		};
 
-		$codePointerAfter = TokenHelper::findFirstNonWhitespaceOnNextLine($phpcsFile, $commentClosePointer);
+		$firstPointerOnNextLine = TokenHelper::findFirstNonWhitespaceOnNextLine($phpcsFile, $commentClosePointer);
+
+		$codePointerAfter = $firstPointerOnNextLine;
 		while ($codePointerAfter !== null && $tokens[$codePointerAfter]['code'] === T_DOC_COMMENT_OPEN_TAG) {
 			$codePointerAfter = TokenHelper::findFirstNonWhitespaceOnNextLine($phpcsFile, $codePointerAfter + 1);
 		}
@@ -252,6 +279,22 @@ class InlineDocCommentDeclarationSniff implements Sniff
 				self::CODE_NO_ASSIGNMENT,
 			];
 
+			if ($this->allowAboveNonAssignment && $firstPointerOnNextLine !== null) {
+				for ($i = $firstPointerOnNextLine; $i < count($tokens); $i++) {
+					if ($tokens[$i]['line'] > $tokens[$firstPointerOnNextLine]['line']) {
+						break;
+					}
+
+					if ($tokens[$i]['code'] !== T_VARIABLE) {
+						continue;
+					}
+
+					if ($tokens[$i]['content'] === $variableName) {
+						return;
+					}
+				}
+			}
+
 			foreach ([1 => $codePointerBefore, 2 => $codePointerAfter] as $tryNo => $codePointer) {
 				if ($codePointer === null || !in_array($tokens[$codePointer]['code'], $checkedTokens, true)) {
 					if ($tryNo === 2) {
@@ -262,19 +305,7 @@ class InlineDocCommentDeclarationSniff implements Sniff
 				}
 
 				if ($tokens[$codePointer]['code'] === T_VARIABLE) {
-					$assigmentFound = false;
-
-					$pointerAfterVariable = TokenHelper::findNextEffective($phpcsFile, $codePointer + 1);
-					if ($tokens[$pointerAfterVariable]['code'] === T_SEMICOLON) {
-						$pointerBeforeVariable = TokenHelper::findPreviousEffective($phpcsFile, $codePointer - 1);
-						if ($tokens[$pointerBeforeVariable]['code'] === T_STATIC) {
-							$assigmentFound = true;
-						}
-					} elseif ($tokens[$pointerAfterVariable]['code'] === T_EQUAL) {
-						$assigmentFound = true;
-					}
-
-					if (!$assigmentFound) {
+					if (!$this->isAssignment($phpcsFile, $codePointer)) {
 						if ($tryNo === 2) {
 							$phpcsFile->addError(...$noAssignmentErrorParameters);
 						}
@@ -292,7 +323,13 @@ class InlineDocCommentDeclarationSniff implements Sniff
 				} elseif ($tokens[$codePointer]['code'] === T_LIST) {
 					$listParenthesisOpener = TokenHelper::findNextEffective($phpcsFile, $codePointer + 1);
 
-					$variablePointerInList = TokenHelper::findNextContent($phpcsFile, T_VARIABLE, $variableName, $listParenthesisOpener + 1, $tokens[$listParenthesisOpener]['parenthesis_closer']);
+					$variablePointerInList = TokenHelper::findNextContent(
+						$phpcsFile,
+						T_VARIABLE,
+						$variableName,
+						$listParenthesisOpener + 1,
+						$tokens[$listParenthesisOpener]['parenthesis_closer']
+					);
 					if ($variablePointerInList === null) {
 						if ($tryNo === 2) {
 							$phpcsFile->addError(...$missingVariableErrorParameters);
@@ -311,7 +348,13 @@ class InlineDocCommentDeclarationSniff implements Sniff
 						continue;
 					}
 
-					$variablePointerInList = TokenHelper::findNextContent($phpcsFile, T_VARIABLE, $variableName, $codePointer + 1, $tokens[$codePointer]['bracket_closer']);
+					$variablePointerInList = TokenHelper::findNextContent(
+						$phpcsFile,
+						T_VARIABLE,
+						$variableName,
+						$codePointer + 1,
+						$tokens[$codePointer]['bracket_closer']
+					);
 					if ($variablePointerInList === null) {
 						if ($tryNo === 2) {
 							$phpcsFile->addError(...$missingVariableErrorParameters);
@@ -321,7 +364,13 @@ class InlineDocCommentDeclarationSniff implements Sniff
 					}
 
 				} elseif (in_array($tokens[$codePointer]['code'], [T_CLOSURE, T_FN], true)) {
-					$parameterPointer = TokenHelper::findNextContent($phpcsFile, T_VARIABLE, $variableName, $tokens[$codePointer]['parenthesis_opener'] + 1, $tokens[$codePointer]['parenthesis_closer']);
+					$parameterPointer = TokenHelper::findNextContent(
+						$phpcsFile,
+						T_VARIABLE,
+						$variableName,
+						$tokens[$codePointer]['parenthesis_opener'] + 1,
+						$tokens[$codePointer]['parenthesis_closer']
+					);
 					if ($parameterPointer === null) {
 						if ($tryNo === 2) {
 							$phpcsFile->addError(...$missingVariableErrorParameters);
@@ -332,7 +381,13 @@ class InlineDocCommentDeclarationSniff implements Sniff
 
 				} else {
 					if ($tokens[$codePointer]['code'] === T_WHILE) {
-						$variablePointerInWhile = TokenHelper::findNextContent($phpcsFile, T_VARIABLE, $variableName, $tokens[$codePointer]['parenthesis_opener'] + 1, $tokens[$codePointer]['parenthesis_closer']);
+						$variablePointerInWhile = TokenHelper::findNextContent(
+							$phpcsFile,
+							T_VARIABLE,
+							$variableName,
+							$tokens[$codePointer]['parenthesis_opener'] + 1,
+							$tokens[$codePointer]['parenthesis_closer']
+						);
 						if ($variablePointerInWhile === null) {
 							if ($tryNo === 2) {
 								$phpcsFile->addError(...$missingVariableErrorParameters);
@@ -350,8 +405,19 @@ class InlineDocCommentDeclarationSniff implements Sniff
 							continue;
 						}
 					} else {
-						$asPointer = TokenHelper::findNext($phpcsFile, T_AS, $tokens[$codePointer]['parenthesis_opener'] + 1, $tokens[$codePointer]['parenthesis_closer']);
-						$variablePointerInForeach = TokenHelper::findNextContent($phpcsFile, T_VARIABLE, $variableName, $asPointer + 1, $tokens[$codePointer]['parenthesis_closer']);
+						$asPointer = TokenHelper::findNext(
+							$phpcsFile,
+							T_AS,
+							$tokens[$codePointer]['parenthesis_opener'] + 1,
+							$tokens[$codePointer]['parenthesis_closer']
+						);
+						$variablePointerInForeach = TokenHelper::findNextContent(
+							$phpcsFile,
+							T_VARIABLE,
+							$variableName,
+							$asPointer + 1,
+							$tokens[$codePointer]['parenthesis_closer']
+						);
 						if ($variablePointerInForeach === null) {
 							if ($tryNo === 2) {
 								$phpcsFile->addError(...$missingVariableErrorParameters);
@@ -366,6 +432,19 @@ class InlineDocCommentDeclarationSniff implements Sniff
 				continue 2;
 			}
 		}
+	}
+
+	private function isAssignment(File $phpcsFile, int $pointer): bool
+	{
+		$tokens = $phpcsFile->getTokens();
+
+		$pointerAfterVariable = TokenHelper::findNextEffective($phpcsFile, $pointer + 1);
+		if ($tokens[$pointerAfterVariable]['code'] === T_SEMICOLON) {
+			$pointerBeforeVariable = TokenHelper::findPreviousEffective($phpcsFile, $pointer - 1);
+			return $tokens[$pointerBeforeVariable]['code'] === T_STATIC;
+		}
+
+		return $tokens[$pointerAfterVariable]['code'] === T_EQUAL;
 	}
 
 }

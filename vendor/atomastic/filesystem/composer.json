@@ -1,0 +1,39 @@
+{
+    "name": "atomastic/filesystem",
+    "description": "Filesystem Component provide a fluent, object-oriented interface for working with filesystem.",
+    "license": "MIT",
+    "keywords": [
+        "Filesystem", "filesystem", "php-filesystem", "php", "atomastic"
+    ],
+    "support": {
+      "source": "https://github.com/atomastic/filesystem",
+      "issues": "https://github.com/atomastic/filesystem/issues"
+    },
+    "authors": [
+        {
+            "name": "Sergey Romanenko",
+            "email": "sergey.romanenko@flextype.org",
+            "homepage": "https://github.com/Awilum"
+        }
+    ],
+    "require": {
+        "ext-spl": "*",
+        "ext-fileinfo": "*",
+        "php": "^7.3 || ^8.0",
+        "symfony/finder": "^5.1",
+        "atomastic/macroable": "^1.0"
+    },
+    "autoload":{
+        "psr-4": {
+            "Atomastic\\Filesystem\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "require-dev": {
+        "doctrine/coding-standard": "8.1.0",
+        "pestphp/pest": "^0.3.3",
+        "phpstan/phpstan": "^0.12.42"
+    }
+}

@@ -22,6 +22,9 @@ class MultiConstraint implements ConstraintInterface
     /** @var string|null */
     protected $prettyString;
 
+    /** @var string|null */
+    protected $string;
+
     /** @var bool */
     protected $conjunctive;
 
@@ -39,10 +42,10 @@ class MultiConstraint implements ConstraintInterface
      */
     public function __construct(array $constraints, $conjunctive = true)
     {
-        if (count($constraints) < 2) {
+        if (\count($constraints) < 2) {
             throw new \InvalidArgumentException(
                 'Must provide at least two constraints for a MultiConstraint. Use '.
-                'the regular Constraint class for one constraint only or EmptyConstraint for none. You may use '.
+                'the regular Constraint class for one constraint only or MatchAllConstraint for none. You may use '.
                 'MultiConstraint::create() which optimizes and handles those cases automatically.'
             );
         }
@@ -75,6 +78,31 @@ class MultiConstraint implements ConstraintInterface
         return !$this->conjunctive;
     }
 
+    public function compile($otherOperator)
+    {
+        $parts = array();
+        foreach ($this->constraints as $constraint) {
+            $code = $constraint->compile($otherOperator);
+            if ($code === 'true') {
+                if (!$this->conjunctive) {
+                    return 'true';
+                }
+            } elseif ($code === 'false') {
+                if ($this->conjunctive) {
+                    return 'false';
+                }
+            } else {
+                $parts[] = '('.$code.')';
+            }
+        }
+
+        if (!$parts) {
+            return $this->conjunctive ? 'true' : 'false';
+        }
+
+        return $this->conjunctive ? implode('&&', $parts) : implode('||', $parts);
+    }
+
     /**
      * @param ConstraintInterface $provider
      *
@@ -84,7 +112,7 @@ class MultiConstraint implements ConstraintInterface
     {
         if (false === $this->conjunctive) {
             foreach ($this->constraints as $constraint) {
-                if ($constraint->matches($provider)) {
+                if ($provider->matches($constraint)) {
                     return true;
                 }
             }
@@ -93,7 +121,7 @@ class MultiConstraint implements ConstraintInterface
         }
 
         foreach ($this->constraints as $constraint) {
-            if (!$constraint->matches($provider)) {
+            if (!$provider->matches($constraint)) {
                 return false;
             }
         }
@@ -126,12 +154,16 @@ class MultiConstraint implements ConstraintInterface
      */
     public function __toString()
     {
+        if ($this->string !== null) {
+            return $this->string;
+        }
+
         $constraints = array();
         foreach ($this->constraints as $constraint) {
             $constraints[] = (string) $constraint;
         }
 
-        return '[' . implode($this->conjunctive ? ' ' : ' || ', $constraints) . ']';
+        return $this->string = '[' . implode($this->conjunctive ? ' ' : ' || ', $constraints) . ']';
     }
 
     /**
@@ -167,17 +199,20 @@ class MultiConstraint implements ConstraintInterface
      */
     public static function create(array $constraints, $conjunctive = true)
     {
-        if (0 === count($constraints)) {
-            return new EmptyConstraint();
+        if (0 === \count($constraints)) {
+            return new MatchAllConstraint();
         }
 
-        if (1 === count($constraints)) {
+        if (1 === \count($constraints)) {
             return $constraints[0];
         }
 
         $optimized = self::optimizeConstraints($constraints, $conjunctive);
         if ($optimized !== null) {
             list($constraints, $conjunctive) = $optimized;
+            if (\count($constraints) === 1) {
+                return $constraints[0];
+            }
         }
 
         return new self($constraints, $conjunctive);
@@ -190,25 +225,46 @@ class MultiConstraint implements ConstraintInterface
     {
         // parse the two OR groups and if they are contiguous we collapse
         // them into one constraint
-        if (!$conjunctive
-            && 2 === count($constraints)
-            && $constraints[0] instanceof MultiConstraint
-            && $constraints[1] instanceof MultiConstraint
-            && 2 === count($constraints[0]->getConstraints())
-            && 2 === count($constraints[1]->getConstraints())
-            && ($a = (string) $constraints[0])
-            && strpos($a, '[>=') === 0 && (false !== ($posA = strpos($a, '<', 4)))
-            && ($b = (string) $constraints[1])
-            && strpos($b, '[>=') === 0 && (false !== ($posB = strpos($b, '<', 4)))
-            && substr($a, $posA + 2, -1) === substr($b, 4, $posB - 5)
-        ) {
-            return array(
-                array(
-                    new Constraint('>=', substr($a, 4, $posB - 5)),
-                    new Constraint('<', substr($b, $posB + 2, -1)),
-                ),
-                true,
-            );
+        // [>= 1 < 2] || [>= 2 < 3] || [>= 3 < 4] => [>= 1 < 4]
+        if (!$conjunctive) {
+            $left = $constraints[0];
+            $mergedConstraints = array();
+            $optimized = false;
+            for ($i = 1, $l = \count($constraints); $i < $l; $i++) {
+                $right = $constraints[$i];
+                if (
+                    $left instanceof self
+                    && $left->conjunctive
+                    && $right instanceof self
+                    && $right->conjunctive
+                    && \count($left->constraints) === 2
+                    && \count($right->constraints) === 2
+                    && ($left0 = (string) $left->constraints[0])
+                    && $left0[0] === '>' && $left0[1] === '='
+                    && ($left1 = (string) $left->constraints[1])
+                    && $left1[0] === '<'
+                    && ($right0 = (string) $right->constraints[0])
+                    && $right0[0] === '>' && $right0[1] === '='
+                    && ($right1 = (string) $right->constraints[1])
+                    && $right1[0] === '<'
+                    && substr($left1, 2) === substr($right0, 3)
+                ) {
+                    $optimized = true;
+                    $left = new MultiConstraint(
+                        array(
+                            $left->constraints[0],
+                            $right->constraints[1],
+                        ),
+                        true);
+                } else {
+                    $mergedConstraints[] = $left;
+                    $left = $right;
+                }
+            }
+            if ($optimized) {
+                $mergedConstraints[] = $left;
+                return array($mergedConstraints, false);
+            }
         }
 
         // TODO: Here's the place to put more optimizations

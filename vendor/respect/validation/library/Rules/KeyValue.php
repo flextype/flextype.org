@@ -17,6 +17,7 @@ use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Factory;
 use Respect\Validation\Validatable;
+
 use function array_keys;
 use function in_array;
 
@@ -120,7 +121,7 @@ final class KeyValue extends AbstractRule
 
         try {
             $rule = Factory::getDefaultInstance()->rule($this->ruleName, [$input[$this->baseKey]]);
-            $rule->setName($this->comparedKey);
+            $rule->setName((string) $this->comparedKey);
         } catch (ComponentException $exception) {
             throw parent::reportError($input, ['component' => true]);
         }

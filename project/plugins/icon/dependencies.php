@@ -9,7 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Flextype;
+namespace Flextype\Plugin\Icon;
+
+use Flextype\Plugin\Icon\Twig\IconTwigExtension;
 
 // Add Icon Twig Extension
-$flextype->twig->addExtension(new IconTwigExtension($flextype));
+flextype('twig')->addExtension(new IconTwigExtension());

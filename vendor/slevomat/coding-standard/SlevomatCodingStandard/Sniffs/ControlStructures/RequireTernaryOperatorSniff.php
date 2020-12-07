@@ -4,6 +4,7 @@ namespace SlevomatCodingStandard\Sniffs\ControlStructures;
 
 use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Util\Tokens;
 use SlevomatCodingStandard\Helpers\IdentificatorHelper;
 use SlevomatCodingStandard\Helpers\TokenHelper;
 use function array_key_exists;
@@ -13,6 +14,9 @@ use const T_ELSE;
 use const T_EQUAL;
 use const T_IF;
 use const T_INLINE_THEN;
+use const T_LOGICAL_AND;
+use const T_LOGICAL_OR;
+use const T_LOGICAL_XOR;
 use const T_RETURN;
 use const T_SEMICOLON;
 use const T_WHITESPACE;
@@ -81,7 +85,22 @@ class RequireTernaryOperatorSniff implements Sniff
 
 	private function checkIfWithReturns(File $phpcsFile, int $ifPointer, int $elsePointer, int $returnInIf, int $returnInElse): void
 	{
-		$fix = $phpcsFile->addFixableError('Use ternary operator.', $ifPointer, self::CODE_TERNARY_OPERATOR_NOT_USED);
+		$ifContainsComment = $this->containsComment($phpcsFile, $ifPointer);
+		$elseContainsComment = $this->containsComment($phpcsFile, $elsePointer);
+		$conditionContainsLogicalOperators = $this->containsLogicalOperators($phpcsFile, $ifPointer);
+
+		$errorParameters = [
+			'Use ternary operator.',
+			$ifPointer,
+			self::CODE_TERNARY_OPERATOR_NOT_USED,
+		];
+
+		if ($ifContainsComment || $elseContainsComment || $conditionContainsLogicalOperators) {
+			$phpcsFile->addError(...$errorParameters);
+			return;
+		}
+
+		$fix = $phpcsFile->addFixableError(...$errorParameters);
 
 		if (!$fix) {
 			return;
@@ -97,6 +116,9 @@ class RequireTernaryOperatorSniff implements Sniff
 
 		$phpcsFile->fixer->beginChangeset();
 		$phpcsFile->fixer->replaceToken($ifPointer, 'return');
+		if ($ifPointer + 1 === $tokens[$ifPointer]['parenthesis_opener']) {
+			$phpcsFile->fixer->addContent($ifPointer, ' ');
+		}
 		$phpcsFile->fixer->replaceToken($tokens[$ifPointer]['parenthesis_opener'], '');
 		$phpcsFile->fixer->replaceToken($tokens[$ifPointer]['parenthesis_closer'], ' ? ');
 
@@ -143,7 +165,10 @@ class RequireTernaryOperatorSniff implements Sniff
 		$assignmentPointerInIf = TokenHelper::findNextEffective($phpcsFile, $identificatorEndPointerInIf + 1);
 		$assignmentPointerInElse = TokenHelper::findNextEffective($phpcsFile, $identificatorEndPointerInElse + 1);
 
-		if ($tokens[$assignmentPointerInIf]['code'] !== T_EQUAL || $tokens[$assignmentPointerInElse]['code'] !== T_EQUAL) {
+		if (
+			$tokens[$assignmentPointerInIf]['code'] !== T_EQUAL
+			|| $tokens[$assignmentPointerInElse]['code'] !== T_EQUAL
+		) {
 			return;
 		}
 
@@ -157,7 +182,22 @@ class RequireTernaryOperatorSniff implements Sniff
 			return;
 		}
 
-		$fix = $phpcsFile->addFixableError('Use ternary operator.', $ifPointer, self::CODE_TERNARY_OPERATOR_NOT_USED);
+		$ifContainsComment = $this->containsComment($phpcsFile, $ifPointer);
+		$elseContainsComment = $this->containsComment($phpcsFile, $elsePointer);
+		$conditionContainsLogicalOperators = $this->containsLogicalOperators($phpcsFile, $ifPointer);
+
+		$errorParameters = [
+			'Use ternary operator.',
+			$ifPointer,
+			self::CODE_TERNARY_OPERATOR_NOT_USED,
+		];
+
+		if ($ifContainsComment || $elseContainsComment || $conditionContainsLogicalOperators) {
+			$phpcsFile->addError(...$errorParameters);
+			return;
+		}
+
+		$fix = $phpcsFile->addFixableError(...$errorParameters);
 
 		if (!$fix) {
 			return;
@@ -204,13 +244,41 @@ class RequireTernaryOperatorSniff implements Sniff
 
 		if ($this->ignoreMultiLine) {
 			$firstContentPointer = TokenHelper::findNextEffective($phpcsFile, $scopeOpenerPointer + 1);
-			if (TokenHelper::findNextContent($phpcsFile, T_WHITESPACE, $phpcsFile->eolChar, $firstContentPointer + 1, $semicolonPointer) !== null) {
+			if (TokenHelper::findNextContent(
+				$phpcsFile,
+				T_WHITESPACE,
+				$phpcsFile->eolChar,
+				$firstContentPointer + 1,
+				$semicolonPointer
+			) !== null) {
 				return false;
 			}
 		}
 
 		$pointerAfterSemicolon = TokenHelper::findNextEffective($phpcsFile, $semicolonPointer + 1);
 		return $pointerAfterSemicolon === $scopeCloserPointer;
+	}
+
+	private function containsComment(File $phpcsFile, int $scopeOwnerPointer): bool
+	{
+		$tokens = $phpcsFile->getTokens();
+		return TokenHelper::findNext(
+			$phpcsFile,
+			Tokens::$commentTokens,
+			$tokens[$scopeOwnerPointer]['scope_opener'] + 1,
+			$tokens[$scopeOwnerPointer]['scope_closer']
+		) !== null;
+	}
+
+	private function containsLogicalOperators(File $phpcsFile, int $scopeOwnerPointer): bool
+	{
+		$tokens = $phpcsFile->getTokens();
+		return TokenHelper::findNext(
+			$phpcsFile,
+			[T_LOGICAL_AND, T_LOGICAL_OR, T_LOGICAL_XOR],
+			$tokens[$scopeOwnerPointer]['parenthesis_opener'] + 1,
+			$tokens[$scopeOwnerPointer]['parenthesis_closer']
+		) !== null;
 	}
 
 }

@@ -1,3 +1,31 @@
+<a name="2.5.0"></a>
+# [2.5.0](https://github.com/flextype-plugins/sitemap/compare/v2.4.0...v2.5.0) (2020-12-07)
+
+### Features
+
+* **core** update code base for new Flextype 0.9.12
+
+<a name="2.4.0"></a>
+# [2.4.0](https://github.com/flextype-plugins/sitemap/compare/v2.3.0...v2.4.0) (2020-08-25)
+
+### Features
+
+* **core** update code base for new Flextype 0.9.11
+
+<a name="2.3.0"></a>
+# [2.3.0](https://github.com/flextype-plugins/sitemap/compare/v2.2.0...v2.3.0) (2020-08-19)
+
+### Features
+
+* **core** update code base for new Flextype 0.9.10
+
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/flextype-plugins/sitemap/compare/v2.1.0...v2.2.0) (2020-08-05)
+
+### Features
+
+* **core** update code base for new Flextype 0.9.9
+
 # v2.1.0, 2020-07-10
 
 ### Features

@@ -7,14 +7,12 @@ declare(strict_types=1);
  * Founded by Sergey Romanenko and maintained by Flextype Community.
  */
 
-namespace Flextype;
+namespace Flextype\Plugin\Twig\Twig;
 
 use Flextype\Component\I18n\I18n;
-use Twig_Extension;
-use Twig_SimpleFilter;
-use Twig_SimpleFunction;
+use Twig\Extension\AbstractExtension;
 
-class I18nTwigExtension extends Twig_Extension
+class I18nTwigExtension extends AbstractExtension
 {
     /**
      * Returns a list of functions to add to the existing list.
@@ -24,8 +22,8 @@ class I18nTwigExtension extends Twig_Extension
     public function getFunctions() : array
     {
         return [
-            new Twig_SimpleFunction('tr', [$this, 'tr']),
-            new Twig_SimpleFunction('__', [$this, 'tr']),
+            new \Twig\TwigFunction('tr', [$this, 'tr']),
+            new \Twig\TwigFunction('__', [$this, 'tr']),
         ];
     }
 
@@ -37,7 +35,7 @@ class I18nTwigExtension extends Twig_Extension
     public function getFilters() : array
     {
         return [
-            new Twig_SimpleFilter('tr', [$this, 'tr'])
+            new \Twig\TwigFilter('tr', [$this, 'tr'])
         ];
     }
 

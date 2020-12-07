@@ -23,6 +23,7 @@ use const T_COMMA;
 use const T_ELLIPSIS;
 use const T_EQUAL;
 use const T_FUNCTION;
+use const T_INLINE_THEN;
 use const T_INTERFACE;
 use const T_NULLABLE;
 use const T_RETURN;
@@ -36,6 +37,42 @@ use const T_YIELD_FROM;
 class FunctionHelper
 {
 
+	public const SPECIAL_FUNCTIONS = [
+		'array_key_exists',
+		'array_slice',
+		'boolval',
+		'call_user_func',
+		'call_user_func_array',
+		'chr',
+		'count',
+		'doubleval',
+		'defined',
+		'floatval',
+		'func_get_args',
+		'func_num_args',
+		'get_called_class',
+		'get_class',
+		'gettype',
+		'in_array',
+		'intval',
+		'is_array',
+		'is_bool',
+		'is_double',
+		'is_float',
+		'is_long',
+		'is_int',
+		'is_integer',
+		'is_null',
+		'is_object',
+		'is_real',
+		'is_resource',
+		'is_string',
+		'ord',
+		'sizeof',
+		'strlen',
+		'strval',
+	];
+
 	public static function getTypeLabel(File $phpcsFile, int $functionPointer): string
 	{
 		return self::isMethod($phpcsFile, $functionPointer) ? 'Method' : 'Function';
@@ -44,7 +81,12 @@ class FunctionHelper
 	public static function getName(File $phpcsFile, int $functionPointer): string
 	{
 		$tokens = $phpcsFile->getTokens();
-		return $tokens[TokenHelper::findNext($phpcsFile, T_STRING, $functionPointer + 1, $tokens[$functionPointer]['parenthesis_opener'])]['content'];
+		return $tokens[TokenHelper::findNext(
+			$phpcsFile,
+			T_STRING,
+			$functionPointer + 1,
+			$tokens[$functionPointer]['parenthesis_opener']
+		)]['content'];
 	}
 
 	public static function getFullyQualifiedName(File $phpcsFile, int $functionPointer): string
@@ -53,13 +95,21 @@ class FunctionHelper
 		$namespace = NamespaceHelper::findCurrentNamespaceName($phpcsFile, $functionPointer);
 
 		if (self::isMethod($phpcsFile, $functionPointer)) {
-			foreach (array_reverse($phpcsFile->getTokens()[$functionPointer]['conditions'], true) as $conditionPointer => $conditionTokenCode) {
+			foreach (array_reverse(
+				$phpcsFile->getTokens()[$functionPointer]['conditions'],
+				true
+			) as $conditionPointer => $conditionTokenCode) {
 				if ($conditionTokenCode === T_ANON_CLASS) {
 					return sprintf('class@anonymous::%s', $name);
 				}
 
 				if (in_array($conditionTokenCode, [T_CLASS, T_INTERFACE, T_TRAIT], true)) {
-					$name = sprintf('%s%s::%s', NamespaceHelper::NAMESPACE_SEPARATOR, ClassHelper::getName($phpcsFile, $conditionPointer), $name);
+					$name = sprintf(
+						'%s%s::%s',
+						NamespaceHelper::NAMESPACE_SEPARATOR,
+						ClassHelper::getName($phpcsFile, $conditionPointer),
+						$name
+					);
 					break;
 				}
 			}
@@ -67,7 +117,9 @@ class FunctionHelper
 			return $namespace !== null ? sprintf('%s%s%s', NamespaceHelper::NAMESPACE_SEPARATOR, $namespace, $name) : $name;
 		}
 
-		return $namespace !== null ? sprintf('%s%s%s%s', NamespaceHelper::NAMESPACE_SEPARATOR, $namespace, NamespaceHelper::NAMESPACE_SEPARATOR, $name) : $name;
+		return $namespace !== null
+			? sprintf('%s%s%s%s', NamespaceHelper::NAMESPACE_SEPARATOR, $namespace, NamespaceHelper::NAMESPACE_SEPARATOR, $name)
+			: $name;
 	}
 
 	public static function isAbstract(File $phpcsFile, int $functionPointer): bool
@@ -149,20 +201,26 @@ class FunctionHelper
 
 			$previousToken = $i;
 			do {
-				$previousToken = TokenHelper::findPreviousExcluding($phpcsFile, array_merge(TokenHelper::$ineffectiveTokenCodes, [T_BITWISE_AND, T_ELLIPSIS]), $previousToken - 1, $tokens[$functionPointer]['parenthesis_opener'] + 1);
+				$previousToken = TokenHelper::findPreviousExcluding(
+					$phpcsFile,
+					array_merge(TokenHelper::$ineffectiveTokenCodes, [T_BITWISE_AND, T_ELLIPSIS]),
+					$previousToken - 1,
+					$tokens[$functionPointer]['parenthesis_opener'] + 1
+				);
 				if ($previousToken !== null) {
-					$isTypeHint = $tokens[$previousToken]['code'] !== T_COMMA && $tokens[$previousToken]['code'] !== T_NULLABLE;
-					if ($tokens[$previousToken]['code'] === T_NULLABLE) {
+					// PHPCS reports T_NULLABLE as T_INLINE_THEN in PHP 8
+					$isTypeHint = !in_array($tokens[$previousToken]['code'], [T_COMMA, T_NULLABLE, T_INLINE_THEN], true);
+					if (in_array($tokens[$previousToken]['code'], [T_NULLABLE, T_INLINE_THEN], true)) {
 						$isNullable = true;
 					}
 				} else {
 					$isTypeHint = false;
 				}
-				if (!$isTypeHint) {
-					continue;
+
+				if ($isTypeHint) {
+					$typeHint = $tokens[$previousToken]['content'] . $typeHint;
 				}
 
-				$typeHint = $tokens[$previousToken]['content'] . $typeHint;
 			} while ($isTypeHint);
 
 			$equalsPointer = TokenHelper::findNextEffective($phpcsFile, $i + 1, $tokens[$functionPointer]['parenthesis_closer']);
@@ -216,7 +274,12 @@ class FunctionHelper
 
 		$colonToken = $isAbstract
 			? TokenHelper::findNextLocal($phpcsFile, T_COLON, $tokens[$functionPointer]['parenthesis_closer'] + 1)
-			: TokenHelper::findNext($phpcsFile, T_COLON, $tokens[$functionPointer]['parenthesis_closer'] + 1, $tokens[$functionPointer]['scope_opener'] - 1);
+			: TokenHelper::findNext(
+				$phpcsFile,
+				T_COLON,
+				$tokens[$functionPointer]['parenthesis_closer'] + 1,
+				$tokens[$functionPointer]['scope_opener'] - 1
+			);
 
 		if ($colonToken === null) {
 			return null;
@@ -226,7 +289,12 @@ class FunctionHelper
 
 		$nullableToken = $isAbstract
 			? TokenHelper::findNextLocalExcluding($phpcsFile, $abstractExcludeTokens, $colonToken + 1)
-			: TokenHelper::findNextExcluding($phpcsFile, TokenHelper::$ineffectiveTokenCodes, $colonToken + 1, $tokens[$functionPointer]['scope_opener'] - 1);
+			: TokenHelper::findNextExcluding(
+				$phpcsFile,
+				TokenHelper::$ineffectiveTokenCodes,
+				$colonToken + 1,
+				$tokens[$functionPointer]['scope_opener'] - 1
+			);
 
 		$nullable = $nullableToken !== null && $tokens[$nullableToken]['code'] === T_NULLABLE;
 
@@ -237,7 +305,12 @@ class FunctionHelper
 		do {
 			$nextToken = $isAbstract
 				? TokenHelper::findNextLocalExcluding($phpcsFile, $abstractExcludeTokens, $nextToken + 1)
-				: TokenHelper::findNextExcluding($phpcsFile, TokenHelper::$ineffectiveTokenCodes, $nextToken + 1, $tokens[$functionPointer]['scope_opener']);
+				: TokenHelper::findNextExcluding(
+					$phpcsFile,
+					TokenHelper::$ineffectiveTokenCodes,
+					$nextToken + 1,
+					$tokens[$functionPointer]['scope_opener']
+				);
 
 			$isTypeHint = $nextToken !== null;
 			if (!$isTypeHint) {
@@ -296,6 +369,33 @@ class FunctionHelper
 		return $parametersAnnotations;
 	}
 
+	/**
+	 * @param File $phpcsFile
+	 * @param int $functionPointer
+	 * @return array<string, ParameterAnnotation>
+	 */
+	public static function getValidPrefixedParametersAnnotations(File $phpcsFile, int $functionPointer): array
+	{
+		$parametersAnnotations = [];
+		foreach (AnnotationHelper::PREFIXES as $prefix) {
+			/** @var ParameterAnnotation[] $annotations */
+			$annotations = AnnotationHelper::getAnnotationsByName($phpcsFile, $functionPointer, sprintf('@%s-param', $prefix));
+			foreach ($annotations as $parameterAnnotation) {
+				if ($parameterAnnotation->getContent() === null) {
+					continue;
+				}
+
+				if ($parameterAnnotation->isInvalid()) {
+					continue;
+				}
+
+				$parametersAnnotations[$parameterAnnotation->getParameterName()] = $parameterAnnotation;
+			}
+		}
+
+		return $parametersAnnotations;
+	}
+
 	public static function findReturnAnnotation(File $phpcsFile, int $functionPointer): ?ReturnAnnotation
 	{
 		/** @var ReturnAnnotation[] $returnAnnotations */
@@ -306,6 +406,29 @@ class FunctionHelper
 		}
 
 		return $returnAnnotations[0];
+	}
+
+	/**
+	 * @param File $phpcsFile
+	 * @param int $functionPointer
+	 * @return ReturnAnnotation[]
+	 */
+	public static function getValidPrefixedReturnAnnotations(File $phpcsFile, int $functionPointer): array
+	{
+		$returnAnnotations = [];
+
+		foreach (AnnotationHelper::PREFIXES as $prefix) {
+			/** @var ReturnAnnotation[] $annotations */
+			$annotations = AnnotationHelper::getAnnotationsByName($phpcsFile, $functionPointer, sprintf('@%s-return', $prefix));
+			foreach ($annotations as $annotation) {
+				if (!$annotation->isInvalid()) {
+					$returnAnnotations[] = $annotation;
+					break;
+				}
+			}
+		}
+
+		return $returnAnnotations;
 	}
 
 	/**
