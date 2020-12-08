@@ -21,7 +21,7 @@ Flextype - это проект с открытым исходным кодом, 
     <img src="[url]/api/images/en/sponsors/webeasy.png?dpr=2&w=80&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703" alt="" class="inline">
 </a>
 
-* Jeremy Monroe
+* <a href="https://twitter.com/jeremyjmonroe">Jeremy Monroe</a>
 
 ### Generous Backer
 
