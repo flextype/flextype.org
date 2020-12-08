@@ -130,7 +130,7 @@
 
         </div>
         <div class="w-full lg:w-3/12 p-2">
-            <div class="text-black text-left p-6 plate">
+            <div class="text-black text-left p-6 mb-6 plate">
             {# keywords-cloud #}
             {% set keywords_cloud = [] %}
             {% for post in entries.fetchCollection(locale ~ '/downloads/extend/themes')
@@ -147,8 +147,9 @@
                 {% endfor %}
             {% endif %}
             {# /keywords-cloud #}
-
             </div>
+            <a class="pl-6 pr-6 pt-2 pb-2 wow w-full fadeIn button text-base"
+            href="https://github.com/flextype/flextype.org/tree/dev/project/entries/en/downloads/extend/themes">SUBMIT THEME</a>
             <!--
             <div class="text-black text-center p-6">
                 <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 hover:bg-black hover:text-white hover:border-black" href="https://docs.flextype.org/{{ locale }}/getting-started/installation">SUBMIT A PLUGIN</a>
