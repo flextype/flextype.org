@@ -24,7 +24,6 @@ Flextype - это проект с открытым исходным кодом, 
 * Jeremy Monroe
 
 ### Generous Backer
-* Theodore Zhvania
 
 ### Backers
 * Arseni Khramenkin
