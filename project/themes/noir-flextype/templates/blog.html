@@ -15,18 +15,10 @@
     {% if tag %}
 
         {# @todo get count from cache! #}
-        {% set blog_posts_length = entries.fetch(locale ~ '/blog', {
-                                                            'where': {
-                                                                'key': 'tags',
-                                                                'expr': 'contains',
-                                                                'value': tag
-                                                            },
-                                                            'and_where': [{
-                                                                'key': 'visibility',
-                                                                'expr': 'nin',
-                                                                'value': ['draft', 'hidden']
-                                                            }]
-                                                        })|length %}
+        {% set blog_posts_length = entries.fetchCollection(locale ~ '/blog')
+                                          .where('tags', 'contains', tag)
+                                          .where('visibility', 'nin', ['draft', 'hidden'])
+                                          .count() %}
 
         {% set blog_posts_pages = (blog_posts_length/blog_posts_limit)|round(0, 'ceil') %}
         {% if page < 1 %}
@@ -37,34 +29,17 @@
         {% set blog_posts_offset = (page-1)*blog_posts_limit %}
         {% if blog_posts_offset < 0 %}{% set blog_posts_offset = 0 %}{% endif %}
 
-        {% set blog_posts = entries.fetch(locale ~ '/blog', {
-                                                    'where': {
-                                                        'key': 'tags',
-                                                        'expr': 'contains',
-                                                        'value': tag
-                                                    },
-                                                    'and_where': [{
-                                                        'key': 'visibility',
-                                                        'expr': 'nin',
-                                                        'value': ['draft', 'hidden']
-                                                    }],
-                                                    'order_by': {
-                                                        'field': 'published_at',
-                                                        'direction': 'desc'
-                                                    },
-                                                    'set_max_result': blog_posts_limit,
-                                                    'set_first_result': blog_posts_offset
-                                                }) %}
+        {% set blog_posts = entries.fetchCollection(locale ~ '/blog')
+                                   .where('tags', 'contains', tag)
+                                   .where('visibility', 'nin', ['draft', 'hidden'])
+                                   .sortBy('published_at', 'DESC')
+                                   .slice(blog_posts_offset, blog_posts_limit) %}
     {% else %}
 
         {# @todo get count from cache! #}
-        {% set blog_posts_length = entries.fetch(locale ~ '/blog', {
-                                                            'where': {
-                                                                'key': 'visibility',
-                                                                'expr': 'nin',
-                                                                'value': ['draft', 'hidden']
-                                                            }
-                                                        })|length %}
+        {% set blog_posts_length = entries.fetchCollection(locale ~ '/blog')
+                                          .where('visibility', 'nin', ['draft', 'hidden'])
+                                          .count() %}
 
         {% set blog_posts_pages = (blog_posts_length/blog_posts_limit)|round(0, 'ceil') %}
 
@@ -77,18 +52,10 @@
         {% set blog_posts_offset = (page-1)*blog_posts_limit %}
         {% if blog_posts_offset < 0 %}{% set blog_posts_offset = 0 %}{% endif %}
 
-        {% set blog_posts = entries.fetch(locale ~ '/blog', {
-                                                    'where': {
-                                                        'key': 'visibility',
-                                                        'expr': 'nin',
-                                                        'value': ['draft', 'hidden']
-                                                    },
-                                                    'order_by': {
-                                                        'field': 'published_at',
-                                                        'direction': 'desc'
-                                                    },
-                                                    'set_max_result': blog_posts_limit,
-                                                    'set_first_result': blog_posts_offset}) %}
+        {% set blog_posts = entries.fetchCollection(locale ~ '/blog')
+                                   .where('visibility', 'nin', ['draft', 'hidden'])
+                                   .sortBy('published_at', 'DESC')
+                                   .slice(blog_posts_offset, blog_posts_limit) %}
 
     {% endif %}
 
@@ -127,17 +94,9 @@
                 <div class="text-black text-left  p-6 plate">
                     {# tags-cloud #}
                     {% set tags_cloud = [] %}
-                    {% for post in entries.fetch(locale ~ '/blog', {
-                                                            'where': {
-                                                                'key': 'visibility',
-                                                                'expr': 'nin',
-                                                                'value': ['draft', 'hidden']
-                                                            },
-                                                            'order_by': {
-                                                                'field': 'published_at',
-                                                                'direction': 'desc'
-                                                            }
-                                                        }) %}
+                    {% for post in entries.fetchCollection(locale ~ '/blog')
+                                          .where('visibility', 'nin', ['draft', 'hidden'])
+                                          .sortBy('published_at', 'DESC') %}
                         {% set tags = post.tags|replace({' ': ''}) %}
                         {% set tags_cloud = tags_cloud|merge(post.tags|split(',')) %}
                     {% endfor %}

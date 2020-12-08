@@ -21,7 +21,7 @@
         {% set repo_name = entry.github|split('/')  %}
         {% set repo_name_length = repo_name|length %}
 
-        {% set plugin = serializer_decode(filesystem_read("https://raw.githubusercontent.com/" ~ repo_name[repo_name_length-2] ~ "/" ~ repo_name[repo_name_length-1] ~ "/master/plugin.yaml"), "yaml") %}
+        {% set plugin = yaml_decode(filesystem_read("https://raw.githubusercontent.com/" ~ repo_name[repo_name_length-2] ~ "/" ~ repo_name[repo_name_length-1] ~ "/master/plugin.yaml")) %}
 
         <div class="p-6 text-black mb-6">
             <div class="flex align-middle items-center">
@@ -102,18 +102,9 @@
         <div class="p-2 text-black mb-6">
             <h4>Other plugins by {{ plugin.author.name }}</h4>
             {% if entry.author.email is not empty %}
-                {% set related_plugins = entries.fetch(locale ~ '/downloads/extend/plugins', {
-                                                                    'where': {
-                                                                        'key': 'author.email',
-                                                                        'expr': 'eq',
-                                                                        'value': entry.author.email
-                                                                    },
-                                                                    'and_where': [{
-                                                                        'key': 'visibility',
-                                                                        'expr': 'nin',
-                                                                        'value': ['draft', 'hidden']
-                                                                    }]
-                                                                }) %}
+                {% set related_plugins = entries.fetchCollection(locale ~ '/downloads/extend/plugins')
+                                                .where('author.email', 'eq', entry.author.email)
+                                                .where('visibility', 'nin', ['draft', 'hidden']) %}
 
                 {% if related_plugins|length > 0 %}
 

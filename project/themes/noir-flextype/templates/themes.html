@@ -33,18 +33,10 @@
               {% if tag %}
 
                   {# @todo get count from cache! #}
-                  {% set themes_items_length = entries.fetch(locale ~ '/downloads/extend/themes', {
-                                                                      'where': {
-                                                                          'key': 'keywords',
-                                                                          'expr': 'contains',
-                                                                          'value': tag
-                                                                      },
-                                                                      'and_where': [{
-                                                                          'key': 'visibility',
-                                                                          'expr': 'nin',
-                                                                          'value': ['draft', 'hidden']
-                                                                      }]
-                                                                  })|length %}
+                  {% set themes_items_length = entries.fetchCollection(locale ~ '/downloads/extend/themes')
+                                                      .where('keywords', 'contains', 'tag')
+                                                      .where('visibility', 'nin', ['draft', 'hidden'])
+                                                      .count() %}
 
                   {% set themes_items_pages = (themes_items_length/themes_items_limit)|round(0, 'ceil') %}
                   {% if page < 1 %}
@@ -55,40 +47,19 @@
                   {% set themes_items_offset = (page-1)*themes_items_limit %}
                   {% if themes_items_offset < 0 %}{% set themes_items_offset = 0 %}{% endif %}
 
-                  {% set themes_items = entries.fetch(locale ~ '/downloads/extend/themes', {
-                                                              'where': {
-                                                                  'key': 'keywords',
-                                                                  'expr': 'contains',
-                                                                  'value': tag
-                                                              },
-                                                              'and_where': [{
-                                                                  'key': 'visibility',
-                                                                  'expr': 'nin',
-                                                                  'value': ['draft', 'hidden']
-                                                              }],
-                                                              'order_by': {
-                                                                  'field': 'published_at',
-                                                                  'direction': 'desc'
-                                                              },
-                                                              'set_max_result': themes_items_limit,
-                                                              'set_first_result': themes_items_offset
-                                                          }) %}
+                  {% set themes_items = entries.fetchCollection(locale ~ '/downloads/extend/themes')
+                                               .where('keywords', 'contains', tag)
+                                               .where('visibility', 'nin', ['draft', 'hidden'])
+                                               .sortBy('published_at', 'DESC')
+                                               .slice(themes_items_offset, themes_items_limit) %}
 
               {% elseif author %}
 
                 {# @todo get count from cache! #}
-                {% set themes_items_length = entries.fetch(locale ~ '/downloads/extend/themes', {
-                                                                    'where': {
-                                                                        'key': 'author.email',
-                                                                        'expr': 'eq',
-                                                                        'value': author
-                                                                    },
-                                                                    'and_where': [{
-                                                                        'key': 'visibility',
-                                                                        'expr': 'nin',
-                                                                        'value': ['draft', 'hidden']
-                                                                    }]
-                                                                })|length %}
+                {% set themes_items_length = entries.fetchCollection(locale ~ '/downloads/extend/themes')
+                                                    .where('author.email', 'eq', author)
+                                                    .where('visibility', 'nin', ['draft', 'hidden'])
+                                                    .count() %}
 
                 {% set themes_items_pages = (themes_items_length/themes_items_limit)|round(0, 'ceil') %}
                 {% if page < 1 %}
@@ -99,34 +70,17 @@
                 {% set themes_items_offset = (page-1)*themes_items_limit %}
                 {% if themes_items_offset < 0 %}{% set themes_items_offset = 0 %}{% endif %}
 
-                {% set themes_items = entries.fetch(locale ~ '/downloads/extend/themes', {
-                                                            'where': {
-                                                                'key': 'author.email',
-                                                                'expr': 'eq',
-                                                                'value': author
-                                                            },
-                                                            'and_where': [{
-                                                                'key': 'visibility',
-                                                                'expr': 'nin',
-                                                                'value': ['draft', 'hidden']
-                                                            }],
-                                                            'order_by': {
-                                                                'field': 'published_at',
-                                                                'direction': 'desc'
-                                                            },
-                                                            'set_max_result': themes_items_limit,
-                                                            'set_first_result': themes_items_offset
-                                                        }) %}
+                {% set themes_items = entries.fetchCollection(locale ~ '/downloads/extend/themes')
+                                             .where('author.email', 'eq', author)
+                                             .where('visibility', 'nin', ['draft', 'hidden'])
+                                             .sortBy('published_at', 'DESC')
+                                             .slice(themes_items_offset, themes_items_limit) %}
               {% else %}
 
                   {# @todo get count from cache! #}
-                  {% set themes_items_length = entries.fetch(locale ~ '/downloads/extend/themes', {
-                                                                      'where': {
-                                                                          'key': 'visibility',
-                                                                          'expr': 'nin',
-                                                                          'value': ['draft', 'hidden']
-                                                                      }
-                                                                  })|length %}
+                  {% set themes_items_length = entries.fetchCollection(locale ~ '/downloads/extend/themes')
+                                                      .where('visibility', 'nin', ['draft', 'hidden'])
+                                                      .count() %}
 
                   {% set themes_items_pages = (themes_items_length/themes_items_limit)|round(0, 'ceil') %}
 
@@ -139,18 +93,10 @@
                   {% set themes_items_offset = (page-1)*themes_items_limit %}
                   {% if themes_items_offset < 0 %}{% set themes_items_offset = 0 %}{% endif %}
 
-                  {% set themes_items = entries.fetch(locale ~ '/downloads/extend/themes', {
-                                                              'where': {
-                                                                  'key': 'visibility',
-                                                                  'expr': 'nin',
-                                                                  'value': ['draft', 'hidden']
-                                                              },
-                                                              'order_by': {
-                                                                  'field': 'published_at',
-                                                                  'direction': 'desc'
-                                                              },
-                                                              'set_max_result': themes_items_limit,
-                                                              'set_first_result': themes_items_offset}) %}
+                  {% set themes_items = entries.fetchCollection(locale ~ '/downloads/extend/themes')
+                                               .where('visibility', 'nin', ['draft', 'hidden'])
+                                               .sortBy('published_at', 'DESC')
+                                               .slice(themes_items_offset, themes_items_limit) %}
 
               {% endif %}
 
@@ -187,17 +133,9 @@
             <div class="text-black text-left p-6 plate">
             {# keywords-cloud #}
             {% set keywords_cloud = [] %}
-            {% for post in entries.fetch(locale ~ '/downloads/extend/themes', {
-                                                    'where': {
-                                                        'key': 'visibility',
-                                                        'expr': 'nin',
-                                                        'value': ['draft', 'hidden']
-                                                    },
-                                                    'order_by': {
-                                                        'field': 'published_at',
-                                                        'direction': 'desc'
-                                                    }
-                                                }) %}
+            {% for post in entries.fetchCollection(locale ~ '/downloads/extend/themes')
+                                  .where('visibility', 'nin', ['draft', 'hidden'])
+                                  .sortBy('published_at', 'DESC') %}
                 {% set keywords = post.keywords|replace({' ': ''}) %}
                 {% set keywords_cloud = keywords_cloud|merge(keywords|split(',')) %}
             {% endfor %}
