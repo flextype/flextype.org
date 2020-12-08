@@ -70,40 +70,41 @@ txt_github_button: "Внести свой вклад"
 txt_twitter_heading: "Twitter"
 txt_twitter_p: "Подписывайтесь на наш официальный Twitter чтобы получать в режиме реального времени новости о разработке и всех мероприятиях."
 txt_twitter_button: "Подпишитесь"
-txt_link_about: О Проекте
-txt_link_media: Медиа
-txt_link_donate: Донат
-txt_link_sponsors: Спонсоры
-txt_link_plugins: Расширения
-txt_link_themes: Темы
-txt_link_downloads: Загрузки
-txt_link_community: Сообщество
-txt_link_documentation: Документация
-txt_link_changelog: Список изменений
-txt_link_press_kit: Пресс-Кит
-txt_link_team: Команда
-txt_contribution_financial_support_heading: ФИНАНСОВАЯ ПОДДЕРЖКА
+txt_sponsors_heading: Sponsors
+txt_link_about: About
+txt_link_media: Media
+txt_link_donate: Donate
+txt_link_sponsors: Sponsors
+txt_link_plugins: Plugins
+txt_link_themes: Themes
+txt_link_downloads: Downloads
+txt_link_community: Community
+txt_link_documentation: Documentation
+txt_link_changelog: Changelog
+txt_link_press_kit: Press kit
+txt_link_team: Team
+txt_contribution_financial_support_heading: FINANCIAL SUPPORT
 txt_contribution_financial_support_p: |
-  Flextype - это проект с открытым исходным кодом, лицензированный MIT, и он абсолютно бесплатный для использования. Однако объем усилий, необходимых для поддержания и развития новых возможностей для проекта, не является устойчивым без надлежащей финансовой поддержки. Вы можете поддержать развитие проекта, будучи cпонсором:<br> <br><br>Стать спонсором на Patreon.<a class="invert" href="https://www.patreon.com/awilum"></a><a class="invert" href="//flextype.org/en/one-time-donation">Одноразовое пожертвование через PayPal, QIWI, Sberbank, Яндекс</a>
-txt_contribution_itt_heading: КОМАНДА ПЕРЕВОДЧИКОВ
+  Flextype is an MIT-licensed open source project and completely free to use. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. <br><br> You can support it's ongoing development by being a project backer or a sponsor:<br><a class="invert" href="https://www.patreon.com/awilum">Become a backer or sponsor on Patreon</a>, <a class="invert" href="//flextype.org/en/one-time-donation">One-time donation via PayPal, QIWI, Sberbank, Yandex</a>, <a class="invert" href="//flextype.org/en/sponsors">Visit our Sponsors & Backers page</a>
+txt_contribution_itt_heading: INTERNATIONAL TRANSLATOR TEAM
 txt_contribution_itt_p: |
-  Мы работаем над созданием высоко качественной платформы управления контентом!<br><br>Если вы хотите принять участие в переводе Flextype, пожалуйста, присоединитесь к международной команде переводчиков Flextype и начните переводить!<br><br>Наши проекты crowdin:<br> <a href="https://crowdin.com/project/flextype-plugin-admin" class="invert">Админка</a>, <a href="https://crowdin.com/project/flextype-plugin-form-admin" class="invert">Админка Форм</a>, <a href="https://crowdin.com/project/flextype-plugin-themes-admin" class="invert">Админка Тем</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Админка Аккаунтов</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Аккаунты</a>, <a href="https://crowdin.com/project/flextype-website" class="invert">Веб-сайт Flextype</a>, <a href="https://crowdin.com/project/flextype-documentation" class="invert">Документация по Flextype</a>
+  We are on a mission to build high quality platform to develop fast, flexible, easier to manage websites with Flextype!<br><br>If you wish to participate in the translation of Flextype, please Join Flextype International Translator Team and start translating!<br><br>Our crowdin projects:<br> <a href="https://crowdin.com/project/flextype-plugin-admin" class="invert">Flextype Admin Panel Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-form-admin" class="invert">Flextype Form Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-themes-admin" class="invert">Flextype Themes Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Flextype Accounts Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Flextype Accounts Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-website" class="invert">Flextype Website</a>, <a href="https://crowdin.com/project/flextype-documentation" class="invert">Flextype Documentation</a>
 navigation:
   - 
-    title: Блог
+    title: Blog
     link: blog
   - 
-    title: Загрузки
+    title: Downloads
     link: downloads
   - 
-    title: Документация
+    title: Documentation
     link: docs.flextype.org
     external: true
   - 
-    title: Сообщество
+    title: Community
     link: community
   - 
-    title: О проекте
+    title: About
     link: about
 ---
 

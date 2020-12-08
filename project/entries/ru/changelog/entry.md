@@ -10,6 +10,429 @@ published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 ---
 
+<a name="0.9.12"></a>
+
+# [0.9.12](https://github.com/flextype/flextype/compare/v0.9.11...v0.9.12) (2020-12-07)
+
+### Features
+* **core** add Atomastic Components instead of Flextype Components ([#478](https://github.com/flextype/flextype/issues/478))
+
+    Added:
+    - atomastic/session
+    - atomastic/arrays
+    - atomastic/filesystem
+    - atomastic/registry
+    - atomastic/strings
+
+* **entries** Entries API return Arrays Object instead of plain array on fetch. ([#485](https://github.com/flextype/flextype/issues/485))
+
+    From no we have ability to work with entries singles and collections as with smart objects for further data manipulations with help of Atomastic Arrays Component.
+
+    Example:
+    ```php
+    // Fetch random 10 posts created by Awilum and sort them by published_at field.
+    $posts = flextype('entries')
+               ->fetchCollection('blog')
+               ->where('author.name', 'eq', 'Awilum')
+               ->sortBy('published_at')
+               ->limit(10)
+               ->random();
+    ```
+
+* **entries** Standardize Entries API fetch. ([#486](https://github.com/flextype/flextype/issues/486))
+
+* **entries** Standardize Media Files API fetch. ([#487](https://github.com/flextype/flextype/issues/487))
+
+* **entries** Standardize Media Folders API fetch. ([#488](https://github.com/flextype/flextype/issues/488))
+
+* **entries** Add ability to extend Core class with Macros. ([#489](https://github.com/flextype/flextype/issues/489))
+
+* **cache** add new cache engine - PHPFastCache instead of Doctrine Cache ([#457](https://github.com/flextype/flextype/issues/457))
+
+
+    #### New config for PhpFastCache
+    https://github.com/flextype/flextype/blob/dev/src/flextype/settings.yaml#L127-L241
+
+
+    #### New methods from PhpFastCache
+    We are start using PhpFastCache PSR16 adapter  
+    https://github.com/PHPSocialNetwork/phpfastcache
+
+
+* **core** Unit Test powered by PestPHP.
+
+* **media** add new `move()` method instead of `rename()`
+
+* **entries** add new `move()` method instead of `rename()`
+
+* **core** add new `PATH['tmp']` constant ([#470](https://github.com/flextype/flextype/issues/470))
+
+    Now we have:
+
+    `PATH['tmp']` constant instead of `PATH['cache']` and `PATH['logs']`
+
+* **markdown** add markdown basic settings ([#471](https://github.com/flextype/flextype/issues/471))
+
+    ```yaml
+    markdown:
+      auto_line_breaks: false
+      auto_url_links: false
+      escape_markup: false
+    ```
+
+* **markdown** add ability to access markdown parser instance ([#468](https://github.com/flextype/flextype/issues/468))
+
+    Usage:
+
+    ```php
+    $markdown = flextype('markdown')->getInstance();
+    ```
+
+* **entries** add new Flextype Entries Memory Storage (Flextype EMS). New private property `$storage` for storing current requested entry(or entries) data and all Entries CRUD operations data in memory with ability to change them dynamically on fly. New public methods `getStorage()` `setStorage()` ([#467](https://github.com/flextype/flextype/issues/467))
+
+    Structure (Flextype EMS):
+
+    ```php
+    $storage = [
+        'fetch' => [
+          'id' => '',
+          'data' => '',
+        ],
+        'create' => [
+          'id' => '',
+          'data' => '',
+        ],
+        'update' => [
+          'id' => '',
+          'data' => '',
+        ],
+        'delete' => [
+          'id' => '',
+        ],
+        'copy' => [
+          'id' => '',
+          'new_id' => '',
+        ],
+        'move' => [
+          'id' => '',
+          'new_id' => '',
+        ],
+        'has' => [
+          'id' => '',
+        ],
+    ];
+    ```
+
+    Accessing storage example:
+
+    ```php
+    flextype('emitter')->addListener('onEntryAfterInitialized', static function () : void {
+        flextype('entries')->setStorage('fetch.data.title', 'New title');
+    });
+
+    $entry = flextype('entries')->fetchSingle('about');
+
+    echo $entry['title'];
+    ```
+
+* **entries** add new events: `onEntryHas`, `onEntryInitialized`, `onEntriesInitialized` ([#467](https://github.com/flextype/flextype/issues/467))
+
+* **helpers** add new support helper `find()` for files and directories searching instead of `find_filter()`
+
+* **helpers** add new support helper `filter()` for data collection filtering instead of `arrays_filter()`
+
+### Bug Fixes
+
+* **entries** fix issue with `delete()` method ([#465](https://github.com/flextype/flextype/issues/465))
+
+* **media** fix issue with `exif_read_data()` on files upload.
+
+### Refactoring
+
+* **entries** remove App from all core namespaces ([#469](https://github.com/flextype/flextype/issues/469))
+
+### BREAKING CHANGES
+
+* **entries** removed properties from Entries API ([#467](https://github.com/flextype/flextype/issues/467))
+
+    ```php  
+    $entry_id
+    $entry
+    $entry_create_data
+    $entry_update_data
+    $entries_id
+    $entries
+    ```
+
+    Use public methods `getStorage()` `setStorage()` instead.
+
+    Example:
+
+    ```php
+    // old
+    flextype('entries')->entry['title'] = 'New title';
+
+    // new
+    flextype('entries')->setStorage('fetch.data.title', 'New title');
+
+    // old
+    $title = flextype('entries')->entry['title'];
+
+    // new
+    $title = flextype('entries')->getStorage('fetch.data.title');
+    $title = flextype('entries')->getStorage('fetch.data')['title'];
+    ```
+* **core** Removed App from all core namespaces ([#469](https://github.com/flextype/flextype/issues/469))
+
+    **We should have**
+
+    ```
+    use Flextype\Foundation\Entries\Entries;
+    ```
+
+    **instead of**
+
+    ```
+    use Flextype\App\Foundation\Entries\Entries;
+    ```
+
+* **core** use new `PATH['tmp']` constant instead of `PATH['cache']` and `PATH['logs']` ([#470](https://github.com/flextype/flextype/issues/470))
+
+* **cache** old cache config removed, use new config for PhpFastCache ([#457](https://github.com/flextype/flextype/issues/457))
+
+* **cache** use methods `has()` `set()` `get()` instead of `contains()` `save()` `fetch()` ([#457](https://github.com/flextype/flextype/issues/457))
+
+* **core** remove flextype-components/session ([#473](https://github.com/flextype/flextype/issues/473))
+
+* **core** remove flextype-components/cookie ([#473](https://github.com/flextype/flextype/issues/473))
+
+* **core** remove flextype-components/number ([#474](https://github.com/flextype/flextype/issues/474))
+
+* **core** remove flextype-components/filesystem ([#474](https://github.com/flextype/flextype/issues/474))
+
+* **core** remove flextype-components/arrays ([#474](https://github.com/flextype/flextype/issues/474))
+
+<a name="0.9.11"></a>
+
+# [0.9.11](https://github.com/flextype/flextype/compare/v0.9.10...v0.9.11) (2020-08-25)
+
+### Features
+
+* New helper function added for access all Flextype features in one place
+
+    ```php
+    flextype($container_name = null, $container = [])
+    ```
+
+    **IMPORTANT**
+
+    Do not use `$flextype` object to access Flextype features, use `flextype()` helper function.
+
+### Bug Fixes
+
+* **core** fix bug - Cannot access protected property Flextype\App\Foundation\Flextype::$container ([#462](https://github.com/flextype/flextype/issues/462))
+* **core** fix bug - Cannot use object of type Flextype\App\Foundation\Flextype as array ([#461](https://github.com/flextype/flextype/issues/461))
+* **media** fix Media exif_read_data warning - File not supported ([#464](https://github.com/flextype/flextype/issues/464))
+
+### Refactoring
+
+* **plugins** remove $flextype variable from plugins init method.
+* **entries** update return type for fetch() method.
+* **entries** add additional check for getTimestamp() method in the getCacheID()
+* **entries** remove dead code from fetchCollection() method.
+
+### Vendor Updates
+
+* **core:** Update vendor flextype-components/filesystem to 2.0.8
+* **core:** Update vendor ramsey/uuid to 4.1.1
+
+<a name="0.9.10"></a>
+
+# [0.9.10](https://github.com/flextype/flextype/compare/v0.9.9...v0.9.10) (2020-08-19)
+
+### Features
+
+* **core** Moving to PHP 7.3.0 ([#456](https://github.com/flextype/flextype/issues/456))
+* **core** add new class `Flextype` that extends `Slim\App` ([#458](https://github.com/flextype/flextype/issues/458))
+
+    with methods:
+
+    ```
+    /**
+     * Get Dependency Injection Container.
+     *
+     * @param string $key DI Container key.
+     */
+    public function container(?string $key = null)
+
+    /**
+     * Returns Flextype Instance
+     */
+    public static function getInstance()
+
+    /**
+     * This method will returns the current Flextype version
+     */
+    public static function getVersion() : string
+    ```
+
+* **collection** Add `only()` method for Collection ([#455](https://github.com/flextype/flextype/issues/455))
+
+    Example:
+    ```
+    ...->only(['id', 'title'])->...
+    ```
+
+* **entries** Rename path to id in Entries API ([#453](https://github.com/flextype/flextype/issues/453))
+
+    New implementation
+    ```
+    // Entry properties
+    $entry_id
+    $entries_id
+
+    // Arguments
+    $id
+    $new_id
+    ```
+
+* **shortcode** add New Shortcode ([#454](https://github.com/flextype/flextype/issues/454))
+
+    ```
+    [raw] Raw shortcode content [/raw]
+    ```
+
+* **shortcode** add New Shortcode Methods ([#454](https://github.com/flextype/flextype/issues/454))
+
+    ```
+    // Get shortcode instance.
+    getInstance()
+
+    // Add shortcode handler.
+    addHandler(string $name, $handler)
+
+    // Add event handler.
+    addEventHandler($name, $handler)
+
+    // Processes text and replaces shortcodes.
+    process(string $input, bool $cache = true)
+    ```
+
+### Bug Fixes
+
+* **entries** fix issue with entries paths on Windows ([#460](https://github.com/flextype/flextype/issues/460))
+* **cache** fix issue with `purge()` method. ([#451](https://github.com/flextype/flextype/issues/451))
+* **entries** fix wrong Implementation of Slug Field for Entries ([#452](https://github.com/flextype/flextype/issues/452))
+* **entries** add new entry field `id` ([#452](https://github.com/flextype/flextype/issues/452))
+
+### BREAKING CHANGES
+
+* **entries** Rename path to id in Entries API ([#453](https://github.com/flextype/flextype/issues/453))
+
+    Old Entry properties
+    ```
+    $entry_path
+    $entries_path
+    ```
+
+    New Entry properties
+    ```
+    $entry_id
+    $entries_id
+    ```
+
+* **entries** fix wrong Implementation of Slug Field for Entries ([#452](https://github.com/flextype/flextype/issues/452))
+
+    From now we have entry fields:
+
+    `slug` with current entry slug.
+
+    Example:
+    ```
+    flextype-0.9.10
+    ```
+
+    `id` with current entry full path as it is was for slug field.
+
+    Example:
+    ```
+    blog/flextype-0.9.10
+    ```
+
+* **shortcode** We should use `process()` method instead of `parse()` for shortcode processing. ([#454](https://github.com/flextype/flextype/issues/454))
+
+    Example of new usage in PHP:
+
+    ```
+    ...->shortcode->process($input, $cache);
+    ```
+
+* **core** `$container`, `$flextype` and `$app` objects removed! ([#458](https://github.com/flextype/flextype/issues/458))
+
+    We should use new object `$flextype` as it is a consolidate entry point to all Flextype features.
+
+    Here is some examples:
+
+    ```
+    // OLD
+    $app->get(...)
+    $app->post(...)
+    ...
+
+    // NEW
+    $flextype->get(...)
+    $flextype->post(...)
+    ...
+    ```
+    ```
+    // OLD
+    $container['registry'] = static function ($container) {
+    return new Registry($container);
+    };
+
+    $container->registry->get(...)
+
+    // NEW
+    $flextype->container()['registry'] = static function () use ($flextype) {
+    return new Registry($flextype);
+    };
+
+    $flextype->container('registry')->get(....)
+    ```
+
+* **core** class `Container` removed! ([#458](https://github.com/flextype/flextype/issues/458))
+
+    We should use `$flextype` object to access all Flextype features inside Service Controllers and Models.
+
+    Here is some examples:
+
+    ```
+    // OLD
+    class FooController extends Container
+    {
+      public function bar()
+      {
+          return $this->registry->get('.....');
+      }
+    }
+
+    // NEW
+    class FooController
+    {
+      protected $flextype;
+
+      public function __construct($flextype)
+      {
+          $this->flextype = $flextype;
+      }
+
+      public function bar()
+      {
+          return $this->flextype->container('registry')->get('.....');
+      }
+    }
+    ```
+
 <a name="0.9.9"></a>
 
 # [0.9.9](https://github.com/flextype/flextype/compare/v0.9.8...v0.9.9) (2020-08-05)
