@@ -13,12 +13,12 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 ### Основатель проекта{.text-4xl .text-center .uppercase .pt-24}
 
 <p class="text-center">
-    <img alt="Наша миссия заключается в создании высококачественной веб-платформы для быстрого, гибкого и удобного управления веб-сайтами с помощью Flextype!" src="https://avatars0.githubusercontent.com/u/477114?s=460&v=4" class="rounded-full inline w-48 p-5" />
+    <img alt="Наша миссия заключается в создании высококачественной веб-платформы для быстрого, гибкого и удобного управления веб-сайтами с помощью Flextype!" src="https://avatars0.githubusercontent.com/u/477114?s=460&v=4" class="rounded-full inline w-48 m-5 border-2 border-black" />
 </p>
 
 <p class="text-center">
-    <strong>Сергей Романенко</strong><br /> Основатель и ведущий разработчик<br />
-<a href="https://digital.flextype.org" class="invert">romanenko.digital</a>
+    <strong>Sergey Romanenko</strong><br /> Founder & Lead Developer<br />
+    <a href="https://github.com/Awilum" class="invert">github.com/Awilum</a>
 </p>
 
 ### Команда переводчиков{.text-4xl .text-center .uppercase .pt-24}

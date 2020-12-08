@@ -8,7 +8,6 @@ Flextype - это проект с открытым исходным кодом, 
 Однако объем усилий, необходимых для поддержания и развития новых возможностей проекта, не является устойчивым без надлежащей финансовой поддержки. Вы можете поддержать его текущее развитие, став спонсором:
 
 * [Станьте спонсором на Patreon](https://www.patreon.com/awilum ""){.invert}.
-* [Become a backer or sponsor on VK Donut](https://vk.com/flextype?w=wall-163249105_766).
 * [One-time donation via PayPal, QIWI, Sberbank, Yandex](//flextype.org/en/one-time-donation ""){.invert}
 * [Visit our Sponsors & Backers page](//flextype.org/en/sponsors ""){.invert}
 
@@ -17,15 +16,19 @@ Flextype - это проект с открытым исходным кодом, 
 ### Silver Sponsor
 
 ### Bronze Sponsor
-* Jeremy Monroe
+
+<a href="https://web-easy.org">
+    <img src="[url]/api/images/en/sponsors/webeasy.png?dpr=2&w=80&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703" alt="" class="inline">
+</a>
+
+* <a href="https://twitter.com/jeremyjmonroe">Jeremy Monroe</a>
 
 ### Generous Backer
-* Theodore Zhvania
 
 ### Backers
+* Arseni Khramenkin
 
 ### Coffee Supporter
-* Arseni Khramenkin
 * Roman
 * Viktoriya Kozyr
 
