@@ -17,8 +17,8 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 </p>
 
 <p class="text-center">
-    <strong>Сергей Романенко</strong><br /> Основатель и ведущий разработчик<br />
-<a href="https://digital.flextype.org" class="invert">romanenko.digital</a>
+    <strong>Sergey Romanenko</strong><br /> Founder & Lead Developer<br />
+    <a href="https://github.com/Awilum" class="invert">github.com/Awilum</a>
 </p>
 
 ### Команда переводчиков{.text-4xl .text-center .uppercase .pt-24}
