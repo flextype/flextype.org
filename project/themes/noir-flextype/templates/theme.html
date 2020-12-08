@@ -21,7 +21,7 @@
         {% set repo_name = entry.github|split('/')  %}
         {% set repo_name_length = repo_name|length %}
 
-        {% set theme = serializer_decode(filesystem_read("https://raw.githubusercontent.com/" ~ repo_name[repo_name_length-2] ~ "/" ~ repo_name[repo_name_length-1] ~ "/master/theme.yaml"), "yaml") %}
+        {% set theme = yaml_decode(filesystem_read("https://raw.githubusercontent.com/" ~ repo_name[repo_name_length-2] ~ "/" ~ repo_name[repo_name_length-1] ~ "/master/theme.yaml")) %}
 
         <div class="p-6 text-black mb-6">
             <div class="flex align-middle items-center">
@@ -101,18 +101,9 @@
         <div class="p-2 text-black mb-6">
             <h4>Other themes by {{ theme.author.name }}</h4>
             {% if entry.author.email is not empty %}
-                {% set related_themes = entries.fetch(locale ~ '/downloads/extend/themes', {
-                                                                    'where': {
-                                                                        'key': 'author.email',
-                                                                        'expr': 'eq',
-                                                                        'value': entry.author.email
-                                                                    },
-                                                                    'and_where': [{
-                                                                        'key': 'visibility',
-                                                                        'expr': 'nin',
-                                                                        'value': ['draft', 'hidden']
-                                                                    }]
-                                                                }) %}
+                {% set related_themes = entries.fetchCollection(locale ~ '/downloads/extend/themes')
+                                               .where('author.email', 'eq', entry.author.email)
+                                               .where('visibility', 'nin', ['draft', 'hidden']) %}
 
                 {% if related_themes|length > 0 %}
 
