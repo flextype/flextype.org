@@ -18,7 +18,7 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 
 <p class="text-center">
     <strong>Sergey Romanenko</strong><br /> Founder & Lead Developer<br />
-    <a href="https://digital.flextype.org" class="invert">digital.flextype.org</a>
+    <a href="https://github.com/Awilum" class="invert">github.com/Awilum</a>
 </p>
 
 ### Translation Team{.text-4xl .text-center .uppercase .pt-24}
