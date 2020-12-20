@@ -68,7 +68,7 @@ txt_github_heading: "Github"
 txt_github_p: "Если вы хотите сообщить об ошибке или поделиться своими идеями, вы можете использовать Flextype GitHub Issues tracker."
 txt_github_button: "Внести свой вклад"
 txt_twitter_heading: "Twitter"
-txt_twitter_p: "Подписывайтесь на наш официальный Twitter чтобы получать в режиме реального времени новости о разработке и всех мероприятиях."
+txt_twitter_p: "%url_start%Follow on Twitter%url_end% to get real-time news regarding the development and all events we are attending."
 txt_twitter_button: "Подпишитесь"
 txt_sponsors_heading: Sponsors
 txt_link_about: About
