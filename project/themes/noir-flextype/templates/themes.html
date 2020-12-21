@@ -7,12 +7,12 @@
 <div class="container mx-auto bg-white text-black pb-24">
     <div class="uppercase text-center pt-24 pb-24 m-0">
         <div>
-            <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/{{ name }}">{{ entry.title }}</a></h1>
+            <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/{{ locale() }}/downloads/extend/{{ name }}">{{ entry.title }}</a></h1>
         </div>
         <div>
-            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads">DOWNLOADS</a></span>
+            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale() }}/downloads">DOWNLOADS</a></span>
             <span class="opacity-50">/</span>
-            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend">EXTEND</a></span>
+            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale() }}/downloads/extend">EXTEND</a></span>
         </div>
     </div>
     <div class="flex content-center flex-wrap">
@@ -33,7 +33,7 @@
               {% if tag %}
 
                   {# @todo get count from cache! #}
-                  {% set themes_items_length = entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true})
+                  {% set themes_items_length = entries.fetch(locale() ~ '/downloads/extend/themes', {'collection': true})
                                                       .where('keywords', 'contains', 'tag')
                                                       .where('visibility', 'nin', ['draft', 'hidden'])
                                                       .count() %}
@@ -47,7 +47,7 @@
                   {% set themes_items_offset = (page-1)*themes_items_limit %}
                   {% if themes_items_offset < 0 %}{% set themes_items_offset = 0 %}{% endif %}
 
-                  {% set themes_items = entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true})
+                  {% set themes_items = entries.fetch(locale() ~ '/downloads/extend/themes', {'collection': true})
                                                .where('keywords', 'contains', tag)
                                                .where('visibility', 'nin', ['draft', 'hidden'])
                                                .sortBy('published_at', 'DESC')
@@ -56,7 +56,7 @@
               {% elseif author %}
 
                 {# @todo get count from cache! #}
-                {% set themes_items_length = entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true})
+                {% set themes_items_length = entries.fetch(locale() ~ '/downloads/extend/themes', {'collection': true})
                                                     .where('author.email', 'eq', author)
                                                     .where('visibility', 'nin', ['draft', 'hidden'])
                                                     .count() %}
@@ -70,7 +70,7 @@
                 {% set themes_items_offset = (page-1)*themes_items_limit %}
                 {% if themes_items_offset < 0 %}{% set themes_items_offset = 0 %}{% endif %}
 
-                {% set themes_items = entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true})
+                {% set themes_items = entries.fetch(locale() ~ '/downloads/extend/themes', {'collection': true})
                                              .where('author.email', 'eq', author)
                                              .where('visibility', 'nin', ['draft', 'hidden'])
                                              .sortBy('published_at', 'DESC')
@@ -78,7 +78,7 @@
               {% else %}
 
                   {# @todo get count from cache! #}
-                  {% set themes_items_length = entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true})
+                  {% set themes_items_length = entries.fetch(locale() ~ '/downloads/extend/themes', {'collection': true})
                                                       .where('visibility', 'nin', ['draft', 'hidden'])
                                                       .count() %}
 
@@ -93,7 +93,7 @@
                   {% set themes_items_offset = (page-1)*themes_items_limit %}
                   {% if themes_items_offset < 0 %}{% set themes_items_offset = 0 %}{% endif %}
 
-                  {% set themes_items = entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true})
+                  {% set themes_items = entries.fetch(locale() ~ '/downloads/extend/themes', {'collection': true})
                                                .where('visibility', 'nin', ['draft', 'hidden'])
                                                .sortBy('published_at', 'DESC')
                                                .slice(themes_items_offset, themes_items_limit) %}
@@ -133,7 +133,7 @@
             <div class="text-black text-left p-6 mb-6 plate">
             {# keywords-cloud #}
             {% set keywords_cloud = [] %}
-            {% for post in entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true})
+            {% for post in entries.fetch(locale() ~ '/downloads/extend/themes', {'collection': true})
                                   .where('visibility', 'nin', ['draft', 'hidden'])
                                   .sortBy('published_at', 'DESC') %}
                 {% set keywords = post.keywords|replace({' ': ''}) %}
@@ -143,7 +143,7 @@
             {% if keywords_cloud|length > 0 %}
                 <h4 class="text-left mb-2">Tags</h4>
                 {% for tag in keywords_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
-                    <a class="no-underline px-2 mb-2 block" href="{{ url() }}/{{ locale }}/downloads/extend/plugins?tag={{ tag|trim }}">#{{ tag|trim }}</a>
+                    <a class="no-underline px-2 mb-2 block" href="{{ url() }}/{{ locale() }}/downloads/extend/plugins?tag={{ tag|trim }}">#{{ tag|trim }}</a>
                 {% endfor %}
             {% endif %}
             {# /keywords-cloud #}
@@ -152,7 +152,7 @@
             href="https://github.com/flextype/flextype.org/tree/dev/project/entries/en/downloads/extend/themes">SUBMIT THEME</a>
             <!--
             <div class="text-black text-center p-6">
-                <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 hover:bg-black hover:text-white hover:border-black" href="https://docs.flextype.org/{{ locale }}/getting-started/installation">SUBMIT A PLUGIN</a>
+                <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 hover:bg-black hover:text-white hover:border-black" href="https://docs.flextype.org/{{ locale() }}/getting-started/installation">SUBMIT A PLUGIN</a>
             </div>
             -->
         </div>
