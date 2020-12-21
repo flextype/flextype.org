@@ -15,7 +15,7 @@
     {% if tag %}
 
         {# @todo get count from cache! #}
-        {% set blog_posts_length = entries.fetchCollection(locale ~ '/blog')
+        {% set blog_posts_length = entries.fetch(locale ~ '/blog', {'colleciton': true})
                                           .where('tags', 'contains', tag)
                                           .where('visibility', 'nin', ['draft', 'hidden'])
                                           .count() %}
@@ -29,7 +29,7 @@
         {% set blog_posts_offset = (page-1)*blog_posts_limit %}
         {% if blog_posts_offset < 0 %}{% set blog_posts_offset = 0 %}{% endif %}
 
-        {% set blog_posts = entries.fetchCollection(locale ~ '/blog')
+        {% set blog_posts = entries.fetch(locale ~ '/blog', {'colleciton': true})
                                    .where('tags', 'contains', tag)
                                    .where('visibility', 'nin', ['draft', 'hidden'])
                                    .sortBy('published_at', 'DESC')
@@ -37,7 +37,7 @@
     {% else %}
 
         {# @todo get count from cache! #}
-        {% set blog_posts_length = entries.fetchCollection(locale ~ '/blog')
+        {% set blog_posts_length = entries.fetch(locale ~ '/blog', {'colleciton': true})
                                           .where('visibility', 'nin', ['draft', 'hidden'])
                                           .count() %}
 
@@ -52,7 +52,7 @@
         {% set blog_posts_offset = (page-1)*blog_posts_limit %}
         {% if blog_posts_offset < 0 %}{% set blog_posts_offset = 0 %}{% endif %}
 
-        {% set blog_posts = entries.fetchCollection(locale ~ '/blog')
+        {% set blog_posts = entries.fetch(locale ~ '/blog', {'colleciton': true})
                                    .where('visibility', 'nin', ['draft', 'hidden'])
                                    .sortBy('published_at', 'DESC')
                                    .slice(blog_posts_offset, blog_posts_limit) %}
@@ -94,7 +94,7 @@
                 <div class="text-black text-left  p-6 plate">
                     {# tags-cloud #}
                     {% set tags_cloud = [] %}
-                    {% for post in entries.fetchCollection(locale ~ '/blog')
+                    {% for post in entries.fetch(locale ~ '/blog', {'colleciton': true})
                                           .where('visibility', 'nin', ['draft', 'hidden'])
                                           .sortBy('published_at', 'DESC') %}
                         {% set tags = post.tags|replace({' ': ''}) %}

@@ -1,3 +1,40 @@
+<a name="1.6.0"></a>
+# [1.6.0](https://github.com/flextype-plugins/twig/compare/v1.5.1...v1.6.0) (2020-12-20)
+
+### Features
+
+* **core** update code base for new Flextype 0.9.13
+
+<a name="1.5.1"></a>
+# [1.5.1](https://github.com/flextype-plugins/twig/compare/v1.5.0...v1.5.1) (2020-12-10)
+
+### Bug fixes
+
+* **media** fix namespace for media
+
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/flextype-plugins/twig/compare/v1.4.0...v1.5.0) (2020-12-10)
+
+### Features
+
+* **core** add Media support
+
+    ```
+    media_files.fetchSingle()
+    media_files.fetchCollection()
+    media_files.has()
+    media_files.getFileLocation()
+
+    media_files_meta.getFileMetaLocation()
+
+    media_folders.fetchSingle()
+    media_folders.fetchCollection()
+    media_folders.has()
+    media_folders.getDirectoryLocation()
+
+    media_files_meta.getDirectoryMetaLocation()
+    ```
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/flextype-plugins/twig/compare/v1.3.0...v1.4.0) (2020-12-07)
 

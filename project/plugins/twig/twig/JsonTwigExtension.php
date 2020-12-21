@@ -52,7 +52,7 @@ class JsonTwigExtension extends AbstractExtension
      */
     public function encode($input) : string
     {
-        return flextype('json')->encode($input);
+        return flextype('serializers')->json()->encode($input);
     }
 
     /**
@@ -60,6 +60,6 @@ class JsonTwigExtension extends AbstractExtension
      */
     public function decode(string $input, bool $cache = true)
     {
-        return flextype('json')->decode($input, $cache);
+        return flextype('serializers')->json()->decode($input, $cache);
     }
 }

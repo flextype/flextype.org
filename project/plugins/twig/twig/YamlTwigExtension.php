@@ -52,7 +52,7 @@ class YamlTwigExtension extends AbstractExtension
      */
     public function encode($input) : string
     {
-        return flextype('yaml')->encode($input);
+        return flextype('serializers')->yaml()->encode($input);
     }
 
     /**
@@ -60,6 +60,6 @@ class YamlTwigExtension extends AbstractExtension
      */
     public function decode(string $input, bool $cache = true)
     {
-        return flextype('yaml')->decode($input, $cache);
+        return flextype('serializers')->yaml()->decode($input, $cache);
     }
 }

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Flextype\Plugin\Twig\Twig;
 
+use Atomastic\Arrays\Arrays;
 use Twig\Extension\AbstractExtension;
 
 class ArraysTwigExtension extends AbstractExtension
@@ -33,8 +34,17 @@ class ArraysTwigExtension extends AbstractExtension
         ];
     }
 
-    public function arrays($items)
+    /**
+     * Create a new arrayable object from the given elements.
+     *
+     * Initializes a Arrays object and assigns $items the supplied values.
+     *
+     * @param  mixed $items Items
+     *
+     * @return Atomastic\Arrays\Arrays<Arrays>
+     */
+    function arrays($items = []): Arrays
     {
-        return arrays($items);
+        return Arrays::create($items);
     }
 }

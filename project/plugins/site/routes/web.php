@@ -9,4 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-flextype()->get('{uri:.+}', 'SiteController:index')->setName('site.index')->add('csrf');
+use Slim\Http\Environment;
+use Slim\Http\Uri;
+
+if (! flextype()->isApiRequest()) {
+    flextype()->get('{uri:.+}', 'SiteController:index')->setName('site.index')->add('csrf');
+}

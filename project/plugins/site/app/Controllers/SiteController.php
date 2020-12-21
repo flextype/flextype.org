@@ -54,7 +54,7 @@ class SiteController
         }
 
         // Get entry body
-        $entry_body = flextype('entries')->fetchSingle($entry_uri)->toArray();
+        $entry_body = flextype('entries')->fetch($entry_uri)->toArray();
 
         // is entry not found
         $is_entry_not_found = false;
@@ -109,8 +109,6 @@ class SiteController
         // Set template path for current entry
         $path = 'themes/' . flextype('registry')->get('plugins.site.settings.theme') . '/' . (empty($this->entry['template']) ? 'templates/default' : 'templates/' . $this->entry['template']) . '.html';
 
-        self::includeCurrentThemeBootstrap();
-
         if (! Filesystem::has(PATH['project'] . '/' . $path)) {
             return $response->write("Template {$this->entry['template']} not found");
         }
@@ -120,15 +118,6 @@ class SiteController
         }
 
         return flextype('twig')->render($response, $path, ['entry' => $this->entry, 'query' => $query, 'uri' => $uri, 'locale' => $locale, 'api_tokens' => $api_tokens]);
-    }
-
-    private static function includeCurrentThemeBootstrap()
-    {
-        $bootstrap_path = 'themes/' . flextype('registry')->get('plugins.site.settings.theme') . '/bootstrap.php';
-
-        if (Filesystem::has(PATH['project'] . '/' . $bootstrap_path)) {
-            include_once PATH['project'] . '/' . $bootstrap_path;
-        }
     }
 
     /**

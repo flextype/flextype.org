@@ -1,7 +1,7 @@
 <h1 align="center">Twig Plugin for <a href="https://flextype.org/">Flextype</a></h1>
 
 <p align="center">
-<a href="https://github.com/flextype-plugins/twig/releases"><img alt="Version" src="https://img.shields.io/github/release/flextype-plugins/twig.svg?label=version&color=black"></a> <a href="https://github.com/flextype-plugins/twig"><img src="https://img.shields.io/badge/license-MIT-blue.svg?color=black" alt="License"></a> <a href="https://github.com/flextype-plugins/twig"><img src="https://img.shields.io/github/downloads/flextype-plugins/twig/total.svg?color=black" alt="Total downloads"></a> <a href="https://github.com/flextype-plugins/twig"><img src="https://img.shields.io/badge/Flextype-0.9.12-green.svg?color=black" alt="Flextype"></a> <a href="https://flextype.org/en/discord"><img src="https://img.shields.io/discord/423097982498635778.svg?logo=discord&color=black&label=Discord%20Chat" alt="Discord"></a>
+<a href="https://github.com/flextype-plugins/twig/releases"><img alt="Version" src="https://img.shields.io/github/release/flextype-plugins/twig.svg?label=version&color=black"></a> <a href="https://github.com/flextype-plugins/twig"><img src="https://img.shields.io/badge/license-MIT-blue.svg?color=black" alt="License"></a> <a href="https://github.com/flextype-plugins/twig"><img src="https://img.shields.io/github/downloads/flextype-plugins/twig/total.svg?color=black" alt="Total downloads"></a> <a href="https://github.com/flextype-plugins/twig"><img src="https://img.shields.io/badge/Flextype-0.9.13-green.svg?color=black" alt="Flextype"></a> <a href="https://flextype.org/en/discord"><img src="https://img.shields.io/discord/423097982498635778.svg?logo=discord&color=black&label=Discord%20Chat" alt="Discord"></a>
 </p>
 
 Twig plugin to present Twig template engine for Flextype.
@@ -12,7 +12,7 @@ The following dependencies need to be installed for Twig Plugin.
 
 | Item | Version | Download |
 |---|---|---|
-| [flextype](https://github.com/flextype/flextype) | 0.9.12 | [download](https://github.com/flextype/flextype/releases) |
+| [flextype](https://github.com/flextype/flextype) | 0.9.13 | [download](https://github.com/flextype/flextype/releases) |
 
 ## Installation
 
@@ -178,7 +178,7 @@ Check whether a file exists
 
 Usage:
 ```twig
-{% if (filesystem_has(PATH_PROJECT ~ '/uploads/' ~ entry.id ~ '/about.md')) %}
+{% if (filesystem_has(PATH_PROJECT ~ '/media/' ~ entry.id ~ '/about.md')) %}
     Show something...
 {% endif %}
 ```
@@ -189,7 +189,7 @@ Read a file
 
 Usage:
 ```twig
-{{ filesystem_read(PATH_PROJECT ~ '/uploads/' ~ entry.id ~ '/about.md') }}
+{{ filesystem_read(PATH_PROJECT ~ '/media/' ~ entry.id ~ '/about.md') }}
 ```
 
 Result:
@@ -204,7 +204,7 @@ Get file extension
 
 Usage:
 ```twig
-{{ filesystem_ext(PATH_PROJECT ~ '/uploads/' ~ entry.id ~ '/about.md') }}
+{{ filesystem_ext(PATH_PROJECT ~ '/media/' ~ entry.id ~ '/about.md') }}
 ```
 
 Result:
@@ -218,7 +218,7 @@ Get filename
 Usage:
 
 ```twig
-{{ filesystem_basename(PATH_PROJECT ~ '/uploads/' ~ entry.id ~ '/about.md') }}
+{{ filesystem_basename(PATH_PROJECT ~ '/media/' ~ entry.id ~ '/about.md') }}
 ```
 
 Result:
@@ -306,7 +306,7 @@ Fetch single entry
 Usage:
 
 ```twig
-{% set about_entry = entries.fetchSingle('about') %}
+{% set about_entry = entries.fetch('about') %}
 ```
 
 Fetch collection of entries
@@ -314,9 +314,7 @@ Fetch collection of entries
 Usage:
 
 ```twig
-{% set posts = entries.fetchSingle('blog', {}) %}
-or
-{% set posts = entries.fetchCollection('blog') %}
+{% set posts = entries.fetch('blog', {'collection': true}) %}
 ```
 
 ##### emitter

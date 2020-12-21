@@ -86,7 +86,7 @@ class Themes
                 if (trim($default_theme_settings_file_content) === '') {
                     $default_theme_settings = [];
                 } else {
-                    $default_theme_settings = flextype('yaml')->decode($default_theme_settings_file_content);
+                    $default_theme_settings = flextype('serializers')->yaml()->decode($default_theme_settings_file_content);
                 }
 
                 // Create custom theme settings file
@@ -97,7 +97,7 @@ class Themes
                 if (trim($custom_theme_settings_file_content) === '') {
                     $custom_theme_settings = [];
                 } else {
-                    $custom_theme_settings = flextype('yaml')->decode($custom_theme_settings_file_content);
+                    $custom_theme_settings = flextype('serializers')->yaml()->decode($custom_theme_settings_file_content);
                 }
 
                 // Check if default theme manifest file exists
@@ -107,7 +107,7 @@ class Themes
 
                 // Get default theme manifest content
                 $default_theme_manifest_file_content = Filesystem::read($default_theme_manifest_file);
-                $default_theme_manifest              = flextype('yaml')->decode($default_theme_manifest_file_content);
+                $default_theme_manifest              = flextype('serializers')->yaml()->decode($default_theme_manifest_file_content);
 
                 // Merge theme settings and manifest data
                 $themes[$theme['dirname']]['manifest'] = $default_theme_manifest;
