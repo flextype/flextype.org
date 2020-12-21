@@ -89,23 +89,6 @@ class SiteController
             return $response->withJson($this->entry);
         }
 
-        // ========== custom code here ==========
-        if ($uri === '/') {
-            return $response->withRedirect('./en');
-        }
-
-        $api_tokens['entries']['uuid']  = bin2hex(random_bytes(16));
-        $api_tokens['registry']['uuid'] = bin2hex(random_bytes(16));
-        $api_tokens['files']['uuid'] = bin2hex(random_bytes(16));
-        $api_tokens['folders']['uuid'] = bin2hex(random_bytes(16));
-        $api_tokens['images']['uuid'] = bin2hex(random_bytes(16));
-        $api_tokens['access']['uuid'] = bin2hex(random_bytes(16));
-
-        $locale = explode('/',$uri)[1];
-        $locale = (empty($locale)) ? 'en' : $locale;
-        // ========== end of custom code here ==========
-
-
         // Set template path for current entry
         $path = 'themes/' . flextype('registry')->get('plugins.site.settings.theme') . '/' . (empty($this->entry['template']) ? 'templates/default' : 'templates/' . $this->entry['template']) . '.html';
 
@@ -114,10 +97,10 @@ class SiteController
         }
 
         if ($is_entry_not_found) {
-            return flextype('twig')->render($response->withStatus(404), $path, ['entry' => $this->entry, 'query' => $query, 'uri' => $uri, 'locale' => $locale, 'api_tokens' => $api_tokens]);
+            return flextype('twig')->render($response->withStatus(404), $path, ['entry' => $this->entry, 'query' => $query, 'uri' => $uri]);
         }
 
-        return flextype('twig')->render($response, $path, ['entry' => $this->entry, 'query' => $query, 'uri' => $uri, 'locale' => $locale, 'api_tokens' => $api_tokens]);
+        return flextype('twig')->render($response, $path, ['entry' => $this->entry, 'query' => $query, 'uri' => $uri]);
     }
 
     /**
