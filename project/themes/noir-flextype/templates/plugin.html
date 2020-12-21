@@ -111,7 +111,7 @@
                 <div class="flex content-center flex-wrap mt-10">
                     {% for related_plugin in related_plugins %}
                         {% if related_plugin.slug != entry.slug %}
-                        <a href="{{ url() }}/{{ related_plugin.slug }}" class="w-full p-2 lg:w-6/12 no-underline">
+                        <a href="{{ url() }}/{{ related_plugin.id }}" class="w-full p-2 lg:w-6/12 no-underline">
                             <div class="flex p-6 text-black align-middle extend wow fadeIn">
                                 <i class="{{ related_plugin.icon }} text-5xl mr-5"></i>
                                 <div class="text-left">
