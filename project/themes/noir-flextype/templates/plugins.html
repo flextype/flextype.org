@@ -105,7 +105,7 @@
               {# /pagination #}
 
              {% for item in plugins_items %}
-             <a href="{{ url() }}/{{ item.slug }}" class="flex align-middle mb-6 extend wow fadeIn">
+             <a href="{{ url() }}/{{ item.id }}" class="flex align-middle mb-6 extend wow fadeIn">
                  <i class="{{ item.icon }} text-5xl mr-5 ml-5"></i>
                  <div class="text-left">
                      <h4 class="text-xl pb-0 mb-0 block">{{ item.title }}</h4>
