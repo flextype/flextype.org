@@ -1,24 +1,25 @@
 {% extends 'themes/' ~ registry.get('plugins.site.settings.theme') ~ '/templates/partials/base.html' %}
 
 {% block content %}
-    {# pagination #}
 
     {% set page = query.page %}
     {% set tag = query.tag %}
-
     {% set blog_posts_limit = 5 %}
 
-    {% if blog_posts_limit == 0 %}
-        {% set blog_posts_limit = 5 %}
+    {% set blogCacheID = strings('blogCacheID' ~ entry.id).hash().toString() %}
+    {% if cache.has(blogCacheID) %}
+        {% set blog = cache.get(blogCacheID) %}
+    {% else %}
+        {% set blog = entries.fetch(locale() ~ '/blog', {'collection': true}) %}
+        {% do cache.set(blogCacheID, blog) %}
     {% endif %}
 
     {% if tag %}
 
-        {# @todo get count from cache! #}
-        {% set blog_posts_length = entries.fetch(locale() ~ '/blog', {'collection': true})
-                                          .where('tags', 'contains', tag)
-                                          .where('visibility', 'nin', ['draft', 'hidden'])
-                                          .count() %}
+        {% set blog_posts_length = blog.copy()
+                                       .where('tags', 'contains', tag)
+                                       .where('visibility', 'nin', ['draft', 'hidden'])
+                                       .count() %}
 
         {% set blog_posts_pages = (blog_posts_length/blog_posts_limit)|round(0, 'ceil') %}
         {% if page < 1 %}
@@ -29,17 +30,16 @@
         {% set blog_posts_offset = (page-1)*blog_posts_limit %}
         {% if blog_posts_offset < 0 %}{% set blog_posts_offset = 0 %}{% endif %}
 
-        {% set blog_posts = entries.fetch(locale() ~ '/blog', {'collection': true})
-                                   .where('tags', 'contains', tag)
-                                   .where('visibility', 'nin', ['draft', 'hidden'])
-                                   .sortBy('published_at', 'DESC')
-                                   .slice(blog_posts_offset, blog_posts_limit) %}
+        {% set blog_posts = blog.copy()
+                                .where('tags', 'contains', tag)
+                                .where('visibility', 'nin', ['draft', 'hidden'])
+                                .sortBy('published_at', 'DESC')
+                                .slice(blog_posts_offset, blog_posts_limit) %}
     {% else %}
 
-        {# @todo get count from cache! #}
-        {% set blog_posts_length = entries.fetch(locale() ~ '/blog', {'collection': true})
-                                          .where('visibility', 'nin', ['draft', 'hidden'])
-                                          .count() %}
+        {% set blog_posts_length = blog.copy()
+                                       .where('visibility', 'nin', ['draft', 'hidden'])
+                                       .count() %}
 
         {% set blog_posts_pages = (blog_posts_length/blog_posts_limit)|round(0, 'ceil') %}
 
@@ -52,14 +52,12 @@
         {% set blog_posts_offset = (page-1)*blog_posts_limit %}
         {% if blog_posts_offset < 0 %}{% set blog_posts_offset = 0 %}{% endif %}
 
-        {% set blog_posts = entries.fetch(locale() ~ '/blog', {'collection': true})
-                                   .where('visibility', 'nin', ['draft', 'hidden'])
-                                   .sortBy('published_at', 'DESC')
-                                   .slice(blog_posts_offset, blog_posts_limit) %}
+        {% set blog_posts = blog.copy()
+                                .where('visibility', 'nin', ['draft', 'hidden'])
+                                .sortBy('published_at', 'DESC')
+                                .slice(blog_posts_offset, blog_posts_limit) %}
 
     {% endif %}
-
-    {# /pagination #}
 
     <div class="container mx-auto bg-white text-black pb-24">
         <h1 class="uppercase text-center text-3xl lg:text-6xl pt-24 pb-24 m-0">
@@ -89,14 +87,15 @@
                     {% endif %}
                 </div>
                 {# /pagination navigation #}
+
             </div>
             <div class="w-full lg:w-3/12 p-2 wow fadeIn">
-                <div class="text-black text-left  p-6 plate">
+                <div class="text-black text-left p-6 plate">
                     {# tags-cloud #}
                     {% set tags_cloud = [] %}
-                    {% for post in entries.fetch(locale() ~ '/blog', {'collection': true})
-                                          .where('visibility', 'nin', ['draft', 'hidden'])
-                                          .sortBy('published_at', 'DESC') %}
+                    {% for post in blog.copy()
+                                       .where('visibility', 'nin', ['draft', 'hidden'])
+                                       .sortBy('published_at', 'DESC') %}
                         {% set tags = post.tags|replace({' ': ''}) %}
                         {% set tags_cloud = tags_cloud|merge(post.tags|split(',')) %}
                     {% endfor %}
