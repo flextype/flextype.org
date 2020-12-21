@@ -33,7 +33,7 @@
               {% if tag %}
 
                   {# @todo get count from cache! #}
-                  {% set plugins_items_length = entries.fetch(locale ~ '/downloads/extend/plugins', {'colleciton': true})
+                  {% set plugins_items_length = entries.fetch(locale ~ '/downloads/extend/plugins', {'collection': true})
                                                        .where('keywords', 'contains', tag)
                                                        .where('visibility', 'nin', ['draft', 'hidden'])
                                                        .count() %}
@@ -47,7 +47,7 @@
                   {% set plugins_items_offset = (page-1)*plugins_items_limit %}
                   {% if plugins_items_offset < 0 %}{% set plugins_items_offset = 0 %}{% endif %}
 
-                  {% set plugins_items = entries.fetch(locale ~ '/downloads/extend/plugins', {'colleciton': true})
+                  {% set plugins_items = entries.fetch(locale ~ '/downloads/extend/plugins', {'collection': true})
                                                 .where('keywords', 'contains', tag)
                                                 .where('visibility', 'nin', ['draft', 'hidden'])
                                                 .sortBy('published_at', 'DESC')
@@ -57,7 +57,7 @@
               {% elseif author %}
 
                 {# @todo get count from cache! #}
-                {% set plugins_items_length = entries.fetch(locale ~ '/downloads/extend/plugins', {'colleciton': true})
+                {% set plugins_items_length = entries.fetch(locale ~ '/downloads/extend/plugins', {'collection': true})
                                                      .where('author.email', 'eq', author)
                                                      .where('visibility', 'nin', ['draft', 'hidden'])
                                                      .count() %}
@@ -72,7 +72,7 @@
                 {% if plugins_items_offset < 0 %}{% set plugins_items_offset = 0 %}{% endif %}
 
 
-                {% set plugins_items = entries.fetch(locale ~ '/downloads/extend/plugins', {'colleciton': true})
+                {% set plugins_items = entries.fetch(locale ~ '/downloads/extend/plugins', {'collection': true})
                                               .where('author.email', 'eq', 'author')
                                               .where('visibility', 'nin', ['draft', 'hidden'])
                                               .sortBy('published_at', 'DESC')
@@ -81,7 +81,7 @@
               {% else %}
 
                   {# @todo get count from cache! #}
-                  {% set plugins_items_length = entries.fetch(locale ~ '/downloads/extend/plugins', {'colleciton': true})
+                  {% set plugins_items_length = entries.fetch(locale ~ '/downloads/extend/plugins', {'collection': true})
                                                        .where('visibility', 'nin', ['draft', 'hidden'])
                                                        .count() %}
 
@@ -96,7 +96,7 @@
                   {% set plugins_items_offset = (page-1)*plugins_items_limit %}
                   {% if plugins_items_offset < 0 %}{% set plugins_items_offset = 0 %}{% endif %}
 
-                  {% set plugins_items = entries.fetch(locale ~ '/downloads/extend/plugins', {'colleciton': true})
+                  {% set plugins_items = entries.fetch(locale ~ '/downloads/extend/plugins', {'collection': true})
                                                 .where('visibility', 'nin', ['draft', 'hidden'])
                                                 .sortBy('published_at', 'DESC')
                                                 .slice(plugins_items_offset, plugins_items_limit) %}
@@ -136,7 +136,7 @@
             {# keywords-cloud #}
             {% set keywords_cloud = [] %}
 
-            {% for post in entries.fetch(locale ~ '/downloads/extend/plugins', {'colleciton': true})
+            {% for post in entries.fetch(locale ~ '/downloads/extend/plugins', {'collection': true})
                                           .where('visibility', 'nin', ['draft', 'hidden'])
                                           .sortBy('published_at', 'DESC') %}
                 {% set keywords = post.keywords|replace({' ': ''}) %}

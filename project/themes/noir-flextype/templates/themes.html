@@ -33,7 +33,7 @@
               {% if tag %}
 
                   {# @todo get count from cache! #}
-                  {% set themes_items_length = entries.fetch(locale ~ '/downloads/extend/themes', {'colleciton': true})
+                  {% set themes_items_length = entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true})
                                                       .where('keywords', 'contains', 'tag')
                                                       .where('visibility', 'nin', ['draft', 'hidden'])
                                                       .count() %}
@@ -47,7 +47,7 @@
                   {% set themes_items_offset = (page-1)*themes_items_limit %}
                   {% if themes_items_offset < 0 %}{% set themes_items_offset = 0 %}{% endif %}
 
-                  {% set themes_items = entries.fetch(locale ~ '/downloads/extend/themes', {'colleciton': true})
+                  {% set themes_items = entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true})
                                                .where('keywords', 'contains', tag)
                                                .where('visibility', 'nin', ['draft', 'hidden'])
                                                .sortBy('published_at', 'DESC')
@@ -56,7 +56,7 @@
               {% elseif author %}
 
                 {# @todo get count from cache! #}
-                {% set themes_items_length = entries.fetch(locale ~ '/downloads/extend/themes', {'colleciton': true})
+                {% set themes_items_length = entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true})
                                                     .where('author.email', 'eq', author)
                                                     .where('visibility', 'nin', ['draft', 'hidden'])
                                                     .count() %}
@@ -70,7 +70,7 @@
                 {% set themes_items_offset = (page-1)*themes_items_limit %}
                 {% if themes_items_offset < 0 %}{% set themes_items_offset = 0 %}{% endif %}
 
-                {% set themes_items = entries.fetch(locale ~ '/downloads/extend/themes', {'colleciton': true})
+                {% set themes_items = entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true})
                                              .where('author.email', 'eq', author)
                                              .where('visibility', 'nin', ['draft', 'hidden'])
                                              .sortBy('published_at', 'DESC')
@@ -78,7 +78,7 @@
               {% else %}
 
                   {# @todo get count from cache! #}
-                  {% set themes_items_length = entries.fetch(locale ~ '/downloads/extend/themes', {'colleciton': true})
+                  {% set themes_items_length = entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true})
                                                       .where('visibility', 'nin', ['draft', 'hidden'])
                                                       .count() %}
 
@@ -93,7 +93,7 @@
                   {% set themes_items_offset = (page-1)*themes_items_limit %}
                   {% if themes_items_offset < 0 %}{% set themes_items_offset = 0 %}{% endif %}
 
-                  {% set themes_items = entries.fetch(locale ~ '/downloads/extend/themes', {'colleciton': true})
+                  {% set themes_items = entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true})
                                                .where('visibility', 'nin', ['draft', 'hidden'])
                                                .sortBy('published_at', 'DESC')
                                                .slice(themes_items_offset, themes_items_limit) %}
@@ -133,7 +133,7 @@
             <div class="text-black text-left p-6 mb-6 plate">
             {# keywords-cloud #}
             {% set keywords_cloud = [] %}
-            {% for post in entries.fetch(locale ~ '/downloads/extend/themes', {'colleciton': true})
+            {% for post in entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true})
                                   .where('visibility', 'nin', ['draft', 'hidden'])
                                   .sortBy('published_at', 'DESC') %}
                 {% set keywords = post.keywords|replace({' ': ''}) %}
