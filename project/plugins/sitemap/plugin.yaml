@@ -1,5 +1,5 @@
 name: Sitemap
-version: 2.5.0
+version: 2.6.0
 description: Provide automatically generated XML sitemap.
 author:
   name: Sergey Romanenko
@@ -14,5 +14,5 @@ keywords: sitemap, plugin, xml, map, index
 license: MIT
 
 dependencies:
-  flextype: 0.9.12
+  flextype: 0.9.13
   twig: '>=1.0.0'

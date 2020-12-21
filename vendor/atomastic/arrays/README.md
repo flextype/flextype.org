@@ -136,6 +136,7 @@ echo $arrays->customMethod();
 | <a href="#arrays_toString">`toString()`</a> | Convert the current array to string recursively implodes an array with optional key inclusion. |
 | <a href="#arrays_set">`set()`</a> | Set an array item to a given value using "dot" notation. If no key is given to the method, the entire array will be replaced. |
 | <a href="#arrays_slice">`slice()`</a> | Extract a slice of the current array. |
+| <a href="#arrays_skip">`skip()`</a> | Skip the first count items. |
 | <a href="#arrays_search">`search()`</a> | Searches the array for a given value and returns the first corresponding key if successful. |
 | <a href="#arrays_sort">`sort()`</a> | Sorts array by values. |
 | <a href="#arrays_sortKeys">`sortKeys()`</a> | Sorts array by keys. |
@@ -148,6 +149,24 @@ echo $arrays->customMethod();
 | <a href="#arrays_unique">`unique()`</a> | Remove duplicate values from the current array. |
 | <a href="#arrays_walk">`walk()`</a> | Apply the given function to the every element of the current array, discarding the results. |
 | <a href="#arrays_where">`where()`</a> | Filters the array items by a given condition. |
+| <a href="#arrays_whereIn">`whereIn()`</a> | Filters the array items by the given key value pair. |
+| <a href="#arrays_whereNotIn">`whereNotIn()`</a> | Filters the array items by the given key value pair. |
+| <a href="#arrays_whereBetween">`whereBetween()`</a> | Filters the array items by the given key is between the given values. |
+| <a href="#arrays_whereNotBetween">`whereNotBetween()`</a> | Filters the array items by the given key is not between the given values. |
+| <a href="#arrays_whereLess">`whereLess()`</a> | Filters the array items by the given key is less the given value. |
+| <a href="#arrays_whereLessOrEqual">`whereLessOrEqual()`</a> | Filters the array items by the given key is less or equal the given value. |
+| <a href="#arrays_whereGreater">`whereGreater()`</a> | Filters the array items by the given key is greater the given value. |
+| <a href="#arrays_whereGreaterOrEqual">`whereGreaterOrEqual()`</a> | Filters the array items by the given key is greater or equal the given value.|
+| <a href="#arrays_whereContains">`whereContains()`</a> | Filters the array items by the given key is contains given value.|
+| <a href="#arrays_whereNotContains">`whereNotContains()`</a> | Filters the array items by the given key is not contains given value. |
+| <a href="#arrays_whereEqual">`whereEqual()`</a> | Filters the array items by the given key is equal given value. |
+| <a href="#arrays_whereNotEqual">`whereNotEqual()`</a> | Filters the array items by the given key is not equal given value. |
+| <a href="#arrays_whereStartsWith">`whereStartsWith()`</a> | Filters the array items by the given key is starts with given value. |
+| <a href="#arrays_whereEndsWith">`whereEndsWith()`</a> | Filters the array items by the given key is ends with given value. |
+| <a href="#arrays_whereNewer">`whereNewer()`</a> | Filters the array items by the given key is newer given value. |
+| <a href="#arrays_whereOlder">`whereOlder()`</a> | Filters the array items by the given key is older given value. |
+| <a href="#arrays_whereRegexp">`whereRegexp()`</a> | Filters the array items by the given key is matches to given regexp. |
+| <a href="#arrays_whereNotRegexp">`whereNotRegexp()`</a> | Filters the array items by the given key is not matches to given regexp. |
 
 #### Methods Details
 
@@ -2793,6 +2812,27 @@ $arrays = Arrays::create(['a', 'b', 'c', 'd', 'e'])->slice(0, 3)->toArray();
 print_r($arrays);
 ```
 
+##### <a name="arrays_skip"></a> Method: `skip()`
+
+```php
+/**
+ * Skip the first count items.
+ *
+ * @param  int  $count Count of first items to skip.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function skip(int $count): self
+```
+
+##### Example
+
+```php
+$arrays = Arrays::create(['a', 'b', 'c', 'd', 'e'])->skip(2)->toArray();
+
+print_r($arrays);
+```
+
 ##### <a name="arrays_search"></a> Method: `search()`
 
 ```php
@@ -3297,6 +3337,466 @@ Filter your array items by checking if your custom attribute (key) is match the 
 
 Filter your array items by checking if your custom attribute (key) is not match the provided regexp.
 
+##### <a name="arrays_whereIn"></a> Method: `whereIn()`
+
+```php
+/**
+ * Filters the array items by the given key value pair.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereIn(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([
+                    0 => ['title' => 'FòôBar'],
+                    1 => ['title' => 'BarFòô'],
+                ])->whereIn('title', ['FòôBar'])
+                  ->toArray();
+);
+```
+
+##### <a name="arrays_whereNotIn"></a> Method: `whereNotIn()`
+
+```php
+/**
+ * Filters the array items by the given key value pair.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereNotIn(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([
+                0 => ['title' => 'FòôBar'],
+                1 => ['title' => 'BarFòô'],
+            ])->whereNotIn('title', ['FòôBar'])
+              ->toArray();
+);
+```
+
+##### <a name="arrays_whereBetween"></a> Method: `whereBetween()`
+
+```php
+/**
+ * Filters the array items by the given key is between the given values.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereBetween(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([['price' => '100'], ['price' => '150'], ['price' => '200']])
+        ->whereBetween('price', [150, 200])
+        ->toArray();
+);
+```
+
+##### <a name="arrays_whereNotBetween"></a> Method: `whereNotBetween()`
+
+```php
+/**
+ * Filters the array items by the given key is not between the given values.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereNotBetween(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([['price' => '100'], ['price' => '150'], ['price' => '200']])
+        ->whereNotBetween('price', [150, 200])
+        ->toArray();
+);
+```
+
+##### <a name="arrays_whereLess"></a> Method: `whereLess()`
+
+```php
+/**
+ * Filters the array items by the given key is less the given value.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereLess(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([
+                    0 => ['price' => 10],
+                    1 => ['price' => 20],
+                ])
+                ->whereLess('price', 20)
+                ->toArray();
+);
+```
+
+##### <a name="arrays_whereLessOrEqual"></a> Method: `whereLessOrEqual()`
+
+```php
+/**
+ * Filters the array items by the given key is less or equal the given value.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereLessOrEqual(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([
+                    0 => ['price' => 10],
+                    1 => ['price' => 20],
+                ])
+                ->whereLessOrEqual('price', 20)
+                ->toArray();
+);
+```
+
+##### <a name="arrays_whereGreater"></a> Method: `whereGreater()`
+
+```php
+/**
+ * Filters the array items by the given key is greater the given value.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereGreater(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([
+                    0 => ['price' => 10],
+                    1 => ['price' => 20],
+                ])
+                ->whereGreater('price', 10)
+                ->toArray();
+);
+```
+
+##### <a name="arrays_whereGreaterOrEqual"></a> Method: `whereGreaterOrEqual()`
+
+```php
+/**
+ * Filters the array items by the given key is greater or equal the given value.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereGreaterOrEqual(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([
+                    0 => ['price' => 10],
+                    1 => ['price' => 20],
+                ])
+                ->whereGreaterOrEqual('price', 10)
+                ->toArray();
+);
+```
+
+##### <a name="arrays_whereContains"></a> Method: `whereContains()`
+
+```php
+/**
+ * Filters the array items by the given key is contains given value.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereContains(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([
+                    0 => ['title' => 'FòôBar'],
+                    1 => ['title' => 'BarFòô'],
+                ])->whereContains('title', 'Fòô')
+                  ->toArray();
+);
+```
+
+##### <a name="arrays_whereNotContains"></a> Method: `whereNotContains()`
+
+```php
+/**
+ * Filters the array items by the given key is not contains given value.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereNotContains(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([
+                    0 => ['title' => 'FòôBar'],
+                    1 => ['title' => 'BarFòô'],
+                ])->whereNotContains('title', 'Fòô')
+                  ->toArray();
+);
+```
+
+##### <a name="arrays_whereEqual"></a> Method: `whereEqual()`
+
+```php
+/**
+ * Filters the array items by the given key is equal given value.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereEqual(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([
+                    0 => ['title' => 'FòôBar'],
+                    1 => ['title' => 'BarFòô', 'published' => true],
+                    2 => ['title' => 'BarFòô', 'published' => false],
+                ])->whereEqual('title', 'BarFòô')
+                  ->whereEqual('published', true)  // and where
+                  ->toArray();
+);
+```
+
+##### <a name="arrays_whereNotEqual"></a> Method: `whereNotEqual()`
+
+```php
+/**
+ * Filters the array items by the given key is not equal given value.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereNotEqual(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([
+                    0 => ['title' => 'FòôBar'],
+                    1 => ['title' => 'BarFòô'],
+                ])->whereNotEqual('title', 'BarFòô')
+                  ->toArray();
+);
+```
+
+##### <a name="arrays_whereStartsWith"></a> Method: `whereStartsWith()`
+
+```php
+/**
+ * Filters the array items by the given key is starts with given value.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereStartsWith(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([
+                    0 => ['title' => 'Foo'],
+                    1 => ['title' => 'Bar'],
+                ])
+                ->whereStartsWith('title', 'Foo')
+                ->toArray();
+);
+```
+
+##### <a name="arrays_whereEndsWith"></a> Method: `whereEndsWith()`
+
+```php
+/**
+ * Filters the array items by the given key is ends with given value.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereEndsWith(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([
+                    0 => ['title' => 'Foo'],
+                    1 => ['title' => 'Bar'],
+                ])
+                ->whereEndsWith('title', 'Bar')
+                ->toArray();
+);
+```
+
+##### <a name="arrays_whereNewer"></a> Method: `whereNewer()`
+
+```php
+/**
+ * Filters the array items by the given key is newer given value.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereNewer(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([
+                    0 => ['date' => '2020-11-11'],
+                    1 => ['date' => '2020-11-12'],
+                ])
+                ->whereNewer('date', '2020-11-11')
+                ->toArray();
+);
+```
+
+##### <a name="arrays_whereOlder"></a> Method: `whereOlder()`
+
+```php
+/**
+ * Filters the array items by the given key is older given value.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereOlder(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([
+                    0 => ['date' => '2020-11-11'],
+                    1 => ['date' => '2020-11-12'],
+                ])
+                ->whereOlder('date', '2020-11-12')
+                ->toArray();
+);
+```
+
+##### <a name="arrays_whereRegexp"></a> Method: `whereRegexp()`
+
+```php
+/**
+ * Filters the array items by the given key is matches to given regexp.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereRegexp(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([
+                    0 => ['message' => '42'],
+                    1 => ['message' => '21'],
+                    2 => ['message' => 'Hello'],
+                    3 => ['message' => 'Hello 42'],
+                ])
+                ->whereRegexp('message', '^\d+$')
+                ->toArray();
+);
+```
+
+##### <a name="arrays_whereNotRegexp"></a> Method: `whereNotRegexp()`
+
+```php
+/**
+ * Filters the array items by the given key is not matches to given regexp.
+ *
+ * @param string $key   Key of the array for comparison.
+ * @param mixed  $value Value used for comparison.
+ *
+ * @return self Returns instance of The Arrays class.
+ */
+public function whereNotRegexp(string $key, $value): self
+```
+
+##### Example
+
+```php
+    $result = Arrays::create([
+                    0 => ['message' => '42'],
+                    1 => ['message' => '21'],
+                    2 => ['message' => 'Hello'],
+                    3 => ['message' => 'Hello 42'],
+                ])->whereNotRegexp('message', '^\d+$')
+                  ->toArray();
+);
+```
 
 ### Tests
 

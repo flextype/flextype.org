@@ -39,7 +39,7 @@ class ShortcodeTwigExtension extends AbstractExtension
     public function shortcode($value) : string
     {
         if (!empty($value)) {
-            return flextype('shortcode')->process($value);
+            return flextype('parsers')->shortcode()->process($value);
         }
 
         return '';

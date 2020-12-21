@@ -40,18 +40,10 @@ class EntriesTwig
     }
 
     /**
-     * Fetch single entry
+     * Fetch.
      */
-    public function fetchSingle(string $id, array $options = [])
+    public function fetch(string $id, array $options = [])
     {
-        return flextype('entries')->fetchSingle($id, $options);
-    }
-
-    /**
-     * Fetch entries collection
-     */
-    public function fetchCollection(string $id, array $options = [])
-    {
-        return flextype('entries')->fetchCollection($id, $options);
+        return flextype('entries')->fetch($id, $options);
     }
 }

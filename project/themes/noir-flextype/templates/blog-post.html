@@ -28,7 +28,7 @@
                 {% set related_posts = [] %}
 
                 {% for tag in tags %}
-                    {% set related_posts = related_posts|merge(entries.fetchCollection(locale ~ '/blog')
+                    {% set related_posts = related_posts|merge(entries.fetch(locale ~ '/blog', {'collection': true})
                                                                       .where('tags', 'contains', tag)
                                                                       .where('visibility', 'nin', ['draft', 'hidden'])
                                                                       .sortBy('published_at', 'DESC')

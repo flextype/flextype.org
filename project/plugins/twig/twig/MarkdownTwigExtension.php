@@ -39,7 +39,7 @@ class MarkdownTwigExtension extends AbstractExtension
     public function markdown($input, bool $cache = true) : string
     {
         if (!empty($input)) {
-            return flextype('markdown')->parse($input, $cache);
+            return flextype('parsers')->markdown()->parse($input, $cache);
         }
 
         return '';

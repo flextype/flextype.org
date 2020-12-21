@@ -1,3 +1,10 @@
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/flextype-plugins/icon/compare/v1.4.0...v1.5.0) (2020-12-20)
+
+### Features
+
+* **core** update code base for new Flextype 0.9.13
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/flextype-plugins/icon/compare/v1.3.0...v1.4.0) (2020-12-07)
 

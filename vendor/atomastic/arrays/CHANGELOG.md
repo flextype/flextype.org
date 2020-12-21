@@ -1,4 +1,29 @@
-<a name="2.0.0"></a>
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/atomastic/arrays) (2020-12-10)
+* add whereIn() method.
+* add whereNotIn() method.
+* add whereBetween() method.
+* add whereNotBetween() method.
+* add whereLess() method.
+* add whereLessOrEqual() method.
+* add whereGreater() method.
+* add whereGreaterOrEqual() method.
+* add whereContains() method.
+* add whereNotContains() method.
+* add whereEqual() method.
+* add whereNotEqual() method.
+* add whereStartsWith() method.
+* add whereEndsWith() method.
+* add whereNewer() method.
+* add whereOlder() method.
+* add whereRegexp() method.
+* add whereNotRegexp() method.
+* add sortByDesc() method.
+* and sortByAsc() method.
+* and skip() method.
+* improve sortBy() method.
+
+<a name="2.1.0"></a>
 # [2.1.0](https://github.com/atomastic/arrays) (2020-12-05)
 * add ability to extend Arrays class with Macros.
 
@@ -11,7 +36,7 @@
     });
 
     $arrays = new Arrays([1, 2, 3]);
-    
+
     echo $arrays->customMethod(1, 2);
     echo $arrays->customMethod();
     ```

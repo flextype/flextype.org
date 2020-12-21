@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit623b062a8c958c83e9e785bf191ee054
+class ComposerStaticInitaee8019807679bc0e5ab9ecb81261368
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -90,9 +90,16 @@ class ComposerStaticInit623b062a8c958c83e9e785bf191ee054
         'Flextype\\Plugin\\Twig\\Twig\\I18nTwigExtension' => __DIR__ . '/../..' . '/twig/I18nTwigExtension.php',
         'Flextype\\Plugin\\Twig\\Twig\\JsonTwigExtension' => __DIR__ . '/../..' . '/twig/JsonTwigExtension.php',
         'Flextype\\Plugin\\Twig\\Twig\\MarkdownTwigExtension' => __DIR__ . '/../..' . '/twig/MarkdownTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\MediaTwig' => __DIR__ . '/../..' . '/twig/MediaTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\MediaTwigExtension' => __DIR__ . '/../..' . '/twig/MediaTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\MediaTwigFiles' => __DIR__ . '/../..' . '/twig/MediaTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\MediaTwigFilesMeta' => __DIR__ . '/../..' . '/twig/MediaTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\MediaTwigFolders' => __DIR__ . '/../..' . '/twig/MediaTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\MediaTwigFoldersMeta' => __DIR__ . '/../..' . '/twig/MediaTwigExtension.php',
         'Flextype\\Plugin\\Twig\\Twig\\RegistryTwig' => __DIR__ . '/../..' . '/twig/RegistryTwigExtension.php',
         'Flextype\\Plugin\\Twig\\Twig\\RegistryTwigExtension' => __DIR__ . '/../..' . '/twig/RegistryTwigExtension.php',
         'Flextype\\Plugin\\Twig\\Twig\\ShortcodeTwigExtension' => __DIR__ . '/../..' . '/twig/ShortcodeTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\StringsTwigExtension' => __DIR__ . '/../..' . '/twig/StringsTwigExtension.php',
         'Flextype\\Plugin\\Twig\\Twig\\UrlTwigExtension' => __DIR__ . '/../..' . '/twig/UrlTwigExtension.php',
         'Flextype\\Plugin\\Twig\\Twig\\YamlTwigExtension' => __DIR__ . '/../..' . '/twig/YamlTwigExtension.php',
         'Psr\\Http\\Message\\MessageInterface' => __DIR__ . '/..' . '/psr/http-message/src/MessageInterface.php',
@@ -287,9 +294,9 @@ class ComposerStaticInit623b062a8c958c83e9e785bf191ee054
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit623b062a8c958c83e9e785bf191ee054::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit623b062a8c958c83e9e785bf191ee054::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit623b062a8c958c83e9e785bf191ee054::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitaee8019807679bc0e5ab9ecb81261368::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitaee8019807679bc0e5ab9ecb81261368::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitaee8019807679bc0e5ab9ecb81261368::$classMap;
 
         }, null, ClassLoader::class);
     }
