@@ -8,7 +8,7 @@ use Slim\Http\Environment;
 use Slim\Http\Uri;
 use Twig\Extension\AbstractExtension;
 
-class NoirThemeTwigExtension extends AbstractExtension
+class LocaleTwigExtension extends AbstractExtension
 {
     /**
      * Returns a list of functions to add to the existing list.
@@ -31,4 +31,4 @@ class NoirThemeTwigExtension extends AbstractExtension
     }
 }
 
-flextype('twig')->addExtension(new NoirThemeTwigExtension());
+flextype('twig')->addExtension(new LocaleTwigExtension());
