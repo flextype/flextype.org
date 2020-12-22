@@ -45,6 +45,8 @@
 
             {% set theme = registry.get('plugins.site.settings.theme') %}
 
+            {# <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> #}
+
             {% do registry.set('assets.site.css.noir_flextype', 'project/themes/' ~ theme ~ '/assets/dist/css/build.min.css') %}
 
             {% if registry.has('assets.site.css') %}
