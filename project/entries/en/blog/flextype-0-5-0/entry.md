@@ -3,6 +3,8 @@ title: Flextype 0.5.0 release
 tags: release
 template: blog-post
 published_at: '03-06-2018 09:46'
+author:
+  name: Sergey Romanenko
 ---
 
 * Delete folders: site/data and site/accounts

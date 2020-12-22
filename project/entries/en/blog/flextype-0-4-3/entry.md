@@ -3,6 +3,8 @@ title: Flextype 0.4.3 release
 tags: release
 template: blog-post
 published_at: '28-05-2018 09:46'
+author:
+  name: Sergey Romanenko
 ---
 
 * Content: set text/html request headers for displayCurrentPage() method

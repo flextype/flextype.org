@@ -1,8 +1,10 @@
 ---
-title: Flextype 0.7.1 release
+title: Flextype 0.7.0 release
 tags: release
 template: blog-post
 published_at: '17-11-2018 09:46'
+author:
+  name: Sergey Romanenko
 ---
 
 * Update Symfony YAML to 4.1.1

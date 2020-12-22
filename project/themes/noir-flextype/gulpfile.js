@@ -12,28 +12,7 @@ class TailwindExtractor {
   }
 }
 
-gulp.task("css-dev", function() {
-  const atimport = require("postcss-import");
-  const postcss = require("gulp-postcss");
-  const tailwindcss = require("tailwindcss");
-  const concat = require('gulp-concat');
-  const csso = require('gulp-csso');
-  const autoprefixer = require('gulp-autoprefixer');
-
-  return gulp
-    .src(mainCSS)
-    .pipe(postcss([atimport(), tailwindcss(tailwindConfig)]))
-    .pipe(autoprefixer({
-        overrideBrowserslist: [
-            "last 1 version"
-        ],
-        cascade: false
-    }))
-    .pipe(concat('dev.css'))
-    .pipe(gulp.dest("assets/dist/css/"));
-});
-
-gulp.task("css-production", function() {
+gulp.task("css", function() {
   const atimport = require("postcss-import");
   const postcss = require("gulp-postcss");
   const tailwindcss = require("tailwindcss");

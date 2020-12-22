@@ -3,6 +3,8 @@ title: Flextype 0.7.3 release
 tags: release
 template: blog-post
 published_at: '13-12-2018 09:46'
+author:
+  name: Sergey Romanenko
 ---
 
 * Content: visibility hidden for pages - added

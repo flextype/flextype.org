@@ -3,6 +3,8 @@ title: Flextype 0.8.2 release
 tags: release
 template: blog-post
 published_at: '09-01-2019 09:46'
+author:
+  name: Sergey Romanenko
 ---
 
 ### Added

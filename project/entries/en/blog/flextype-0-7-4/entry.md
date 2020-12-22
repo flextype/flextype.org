@@ -3,6 +3,8 @@ title: Flextype 0.7.4 release
 tags: release
 template: blog-post
 published_at: '14-12-2018 09:46'
+author:
+  name: Sergey Romanenko
 ---
 
 * Content: new frontMatterParser() - added
