@@ -5,7 +5,7 @@
     {% set tag = query.tag %}
     {% set blog_posts_limit = 7 %}
 
-    {% set blogCacheID = strings('blogCacheID' ~ entry.id).hash().toString() %}
+    {% set blogCacheID = strings('blogCacheID').hash().toString() %}
     {% if cache.has(blogCacheID) %}
         {% set blog = cache.get(blogCacheID) %}
     {% else %}
