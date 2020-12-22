@@ -68,30 +68,30 @@
             <div class="w-full lg:w-9/12 p-2 text-left">
                 {% for post in blog_posts %}
                 <a href="{{ url() }}/{{ post.id }}" class="flex align-middle mb-6 px-6 post wow fadeIn">
-                    <h4 class="w-8/12 text-xl pb-0 mb-0">{{ post.title }}</h4>
-                    <div class="w-4/12 text-xl text-right opacity-50">
-                        {{ post.published_at|date(registry.get('flextype.settings.date_display_format')) }}
+                    <h4 class="w-full text-xl pb-0 mb-0">{{ post.title }}</h4>
+                    <div class="text-xs text-center text-gray-800 px-2 pb-2 absolute right-0 bottom-0">
+                        {{ post.author.name }} / {{ post.published_at|date(registry.get('flextype.settings.date_display_format')) }}
                     </div>
                 </a>
                 {% endfor %}
 
                 {# PAGINATION NAVIGATION #}
-                <div class="text-center">
+                <div class="text-center mt-10">
                     {% if (page - 1) > 0 %}
-                        <a href="?page={{ page - 1 }}{% if tag %}&tag={{ tag }}{% endif %}">&larr;</a>
+                        <a class="no-underline" href="?page={{ page - 1 }}{% if tag %}&tag={{ tag }}{% endif %}">&larr;</a>
                     {% endif %}
                     {% if blog_posts_pages is not null and blog_posts_pages > 1 %}
                         {{ page }} / {{ blog_posts_pages }}
                     {% endif %}
                     {% if (page) < blog_posts_pages %}
-                        <a href="?page={{ page + 1 }}{% if tag %}&tag={{ tag }}{% endif %}">&rarr;</a>
+                        <a class="no-underline" href="?page={{ page + 1 }}{% if tag %}&tag={{ tag }}{% endif %}">&rarr;</a>
                     {% endif %}
                 </div>
                 {# /PAGINATION NAVIGATION #}
 
             </div>
             <div class="w-full lg:w-3/12 p-2 wow fadeIn">
-                <div class="text-black text-left p-6 plate">
+                <div class="text-black text-left p-6 mb-6 plate">
                     {# TAGS CLOUD #}
                     {% set tagsCloudCacheID = strings('tagsCloudCacheID').hash().toString() %}
                     {% if cache.has(tagsCloudCacheID) %}
@@ -102,16 +102,18 @@
                                            .where('visibility', 'nin', ['draft', 'hidden'])
                                            .sortBy('published_at', 'DESC') %}
                             {% set tags = post.tags|replace({' ': ''}) %}
-                            {% set tags_cloud = tags_cloud|merge(post.tags|split(',')) %}
+                            {% set tags_cloud = tags_cloud|merge(tags|split(',')) %}
                         {% endfor %}
                         {% do cache.set(tagsCloudCacheID, tags_cloud) %}
                     {% endif %}
 
                     {% if tags_cloud|length > 0 %}
                         <h4 class="text-left mb-2">Tags</h4>
-                        {% for tag in tags_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
-                            <a class="no-underline px-2 mb-2 block" href="{{ url() }}/{{ locale() }}/blog?tag={{ tag|trim }}">#{{ tag|trim }}</a>
-                        {% endfor %}
+                        <div class="mr-12 mt-3">
+                            {% for tag in tags_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
+                                <a class="no-underline px-1 mb-2 block" href="{{ url() }}/{{ locale() }}/blog?tag={{ tag|trim }}"># {{ tag|trim }}</a>
+                            {% endfor %}
+                        </div>
                     {% endif %}
                     {# /TAGS CLOUD #}
                 </div>
