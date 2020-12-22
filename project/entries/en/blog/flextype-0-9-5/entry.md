@@ -3,6 +3,8 @@ title: Flextype 0.9.5 release
 tags: release
 template: blog-post
 published_at: '21-09-2019 09:46'
+author:
+  name: Sergey Romanenko
 ---
 
 ### Bug Fixes

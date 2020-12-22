@@ -3,6 +3,8 @@ title: Flextype 0.4.2 release
 tags: release
 template: blog-post
 published_at: '22-05-2018 09:46'
+author:
+  name: Sergey Romanenko
 ---
 
 * Settings: cache.enabled is true from now

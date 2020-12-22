@@ -3,6 +3,8 @@ title: Flextype 0.6.1 release
 tags: release
 template: blog-post
 published_at: '17-06-2018 09:46'
+author:
+  name: Sergey Romanenko
 ---
 
 * Fixed issue with not found pages status code

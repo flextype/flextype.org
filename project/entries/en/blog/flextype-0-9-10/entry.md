@@ -3,6 +3,8 @@ title: Flextype 0.9.10 release
 tags: release
 template: blog-post
 published_at: '19-08-2020 09:46'
+author:
+  name: Sergey Romanenko
 ---
 
 

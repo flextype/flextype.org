@@ -3,6 +3,8 @@ title: Flextype 0.4.4 release
 tags: release
 template: blog-post
 published_at: '29-05-2018 09:46'
+author:
+  name: Sergey Romanenko
 ---
 
 * Content: added ability to work with CONTENT SECTIONS with help of shortcodes [section] and [section_create]

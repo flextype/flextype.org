@@ -3,6 +3,8 @@ title: Flextype 0.4.1 release
 tags: release
 template: blog-post
 published_at: '17-05-2018 09:46'
+author:
+  name: Sergey Romanenko
 ---
 
 * Using SCSS for Simple theme

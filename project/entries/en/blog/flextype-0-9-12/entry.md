@@ -1,8 +1,10 @@
 ---
 title: Flextype 0.9.12 release
-tags: release
+tags: release, php, cms, js, css, html, dev, coding, web
 template: blog-post
 published_at: '07-12-2020 09:46'
+author:
+  name: Sergey Romanenko
 ---
 
 ### Features
