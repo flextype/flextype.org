@@ -31,7 +31,7 @@
                     {% if cache.has(relatedBlogPostsCacheID) %}
                         {% set blog = cache.get(relatedBlogPostsCacheID) %}
                     {% else %}
-                        {% set blog = entries.fetch(locale() ~ '/blog', {'collection': true}) %}
+                        {% set blog = entries.fetch(locale() ~ '/blog', {'collection': true}).exceptFromCollection(['content']) %}
                         {% do cache.set(relatedBlogPostsCacheID, blog) %}
                     {% endif %}
 

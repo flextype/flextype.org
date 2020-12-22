@@ -1,10 +1,9 @@
 {% extends 'themes/' ~ registry.get('plugins.site.settings.theme') ~ '/templates/partials/base.html' %}
 
 {% block content %}
-
     {% set page = query.page %}
     {% set tag = query.tag %}
-    {% set blog_posts_limit = 5 %}
+    {% set blog_posts_limit = 7 %}
 
     {% set blogCacheID = strings('blogCacheID' ~ entry.id).hash().toString() %}
     {% if cache.has(blogCacheID) %}
@@ -22,11 +21,13 @@
                                        .count() %}
 
         {% set blog_posts_pages = (blog_posts_length/blog_posts_limit)|round(0, 'ceil') %}
+
         {% if page < 1 %}
             {% set page = 1 %}
         {% elseif page > blog_posts_pages %}
             {% set page = blog_posts_pages %}
         {% endif %}
+
         {% set blog_posts_offset = (page-1)*blog_posts_limit %}
         {% if blog_posts_offset < 0 %}{% set blog_posts_offset = 0 %}{% endif %}
 
@@ -74,7 +75,7 @@
                 </a>
                 {% endfor %}
 
-                {# pagination navigation #}
+                {# PAGINATION NAVIGATION #}
                 <div class="text-center">
                     {% if (page - 1) > 0 %}
                         <a href="?page={{ page - 1 }}{% if tag %}&tag={{ tag }}{% endif %}">&larr;</a>
@@ -86,19 +87,25 @@
                         <a href="?page={{ page + 1 }}{% if tag %}&tag={{ tag }}{% endif %}">&rarr;</a>
                     {% endif %}
                 </div>
-                {# /pagination navigation #}
+                {# /PAGINATION NAVIGATION #}
 
             </div>
             <div class="w-full lg:w-3/12 p-2 wow fadeIn">
                 <div class="text-black text-left p-6 plate">
-                    {# tags-cloud #}
-                    {% set tags_cloud = [] %}
-                    {% for post in blog.copy()
-                                       .where('visibility', 'nin', ['draft', 'hidden'])
-                                       .sortBy('published_at', 'DESC') %}
-                        {% set tags = post.tags|replace({' ': ''}) %}
-                        {% set tags_cloud = tags_cloud|merge(post.tags|split(',')) %}
-                    {% endfor %}
+                    {# TAGS CLOUD #}
+                    {% set tagsCloudCacheID = strings('tagsCloudCacheID').hash().toString() %}
+                    {% if cache.has(tagsCloudCacheID) %}
+                        {% set tags_cloud = cache.get(tagsCloudCacheID) %}
+                    {% else %}
+                        {% set tags_cloud = [] %}
+                        {% for post in blog.copy()
+                                           .where('visibility', 'nin', ['draft', 'hidden'])
+                                           .sortBy('published_at', 'DESC') %}
+                            {% set tags = post.tags|replace({' ': ''}) %}
+                            {% set tags_cloud = tags_cloud|merge(post.tags|split(',')) %}
+                        {% endfor %}
+                        {% do cache.set(tagsCloudCacheID, tags_cloud) %}
+                    {% endif %}
 
                     {% if tags_cloud|length > 0 %}
                         <h4 class="text-left mb-2">Tags</h4>
@@ -106,7 +113,7 @@
                             <a class="no-underline px-2 mb-2 block" href="{{ url() }}/{{ locale() }}/blog?tag={{ tag|trim }}">#{{ tag|trim }}</a>
                         {% endfor %}
                     {% endif %}
-                    {# /tags-cloud #}
+                    {# /TAGS CLOUD #}
                 </div>
             </div>
         </div>
