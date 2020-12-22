@@ -12,3 +12,5 @@ $scriptPath = PATH['project'] . '/themes/' . flextype('registry')->get('plugins.
 include_once $scriptPath . '/locale.php';
 include_once $scriptPath . '/tokens.php';
 include_once $scriptPath . '/blog.php';
+include_once $scriptPath . '/dump.php';
+include_once $scriptPath . '/arrays.php';
