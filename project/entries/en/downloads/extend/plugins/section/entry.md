@@ -2,7 +2,7 @@
 title: Section
 description: Section plugin provides a basic way to work with content sections.
 icon: fas fa-layer-group
-keywords: section
+category: content
 author:
   name: Sergey Romanenko
   email: support@flextype.org

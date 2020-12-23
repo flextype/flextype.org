@@ -2,7 +2,7 @@
 title: jQuery
 description: jQuery plugin for Flextype.
 icon: fab fa-js-square
-keywords: jquery, js
+keywords: javascript
 author:
   name: Sergey Romanenko
   email: support@flextype.org
