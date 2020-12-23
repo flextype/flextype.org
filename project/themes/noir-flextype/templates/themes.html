@@ -19,24 +19,25 @@
         <div class="w-full lg:w-9/12 p-2 text-center">
 
             {# pagination #}
-
               {% set page = query.page %}
-              {% set tag = query.tag %}
+              {% set category = query.category %}
               {% set author = query.author %}
+              {% set themes_items_limit = 10 %}
 
-              {% set plugins_items_limit = 10 %}
-
-              {% if themes_items_limit == 0 %}
-                  {% set themes_items_limit = 5 %}
+              {% set themesCacheID = strings('themesCacheID').hash().toString() %}
+              {% if cache.has(themesCacheID) %}
+                  {% set themes = cache.get(themesCacheID) %}
+              {% else %}
+                  {% set themes = entries.fetch(locale() ~ '/downloads/extend/themes', {'collection': true}) %}
+                  {% do cache.set(themesCacheID, themes) %}
               {% endif %}
 
-              {% if tag %}
+              {% if category %}
 
-                  {# @todo get count from cache! #}
-                  {% set themes_items_length = entries.fetch(locale() ~ '/downloads/extend/themes', {'collection': true})
-                                                      .where('keywords', 'contains', 'tag')
-                                                      .where('visibility', 'nin', ['draft', 'hidden'])
-                                                      .count() %}
+                  {% set themes_items_length = themes.copy()
+                                                     .where('category', 'contains', 'tag')
+                                                     .where('visibility', 'nin', ['draft', 'hidden'])
+                                                     .count() %}
 
                   {% set themes_items_pages = (themes_items_length/themes_items_limit)|round(0, 'ceil') %}
                   {% if page < 1 %}
@@ -47,38 +48,15 @@
                   {% set themes_items_offset = (page-1)*themes_items_limit %}
                   {% if themes_items_offset < 0 %}{% set themes_items_offset = 0 %}{% endif %}
 
-                  {% set themes_items = entries.fetch(locale() ~ '/downloads/extend/themes', {'collection': true})
-                                               .where('keywords', 'contains', tag)
+                  {% set themes_items = themes.copy()
+                                               .where('category', 'contains', category)
                                                .where('visibility', 'nin', ['draft', 'hidden'])
                                                .sortBy('published_at', 'DESC')
                                                .slice(themes_items_offset, themes_items_limit) %}
 
-              {% elseif author %}
-
-                {# @todo get count from cache! #}
-                {% set themes_items_length = entries.fetch(locale() ~ '/downloads/extend/themes', {'collection': true})
-                                                    .where('author.email', 'eq', author)
-                                                    .where('visibility', 'nin', ['draft', 'hidden'])
-                                                    .count() %}
-
-                {% set themes_items_pages = (themes_items_length/themes_items_limit)|round(0, 'ceil') %}
-                {% if page < 1 %}
-                    {% set page = 1 %}
-                {% elseif page > themes_items_pages %}
-                    {% set page = themes_items_pages %}
-                {% endif %}
-                {% set themes_items_offset = (page-1)*themes_items_limit %}
-                {% if themes_items_offset < 0 %}{% set themes_items_offset = 0 %}{% endif %}
-
-                {% set themes_items = entries.fetch(locale() ~ '/downloads/extend/themes', {'collection': true})
-                                             .where('author.email', 'eq', author)
-                                             .where('visibility', 'nin', ['draft', 'hidden'])
-                                             .sortBy('published_at', 'DESC')
-                                             .slice(themes_items_offset, themes_items_limit) %}
               {% else %}
 
-                  {# @todo get count from cache! #}
-                  {% set themes_items_length = entries.fetch(locale() ~ '/downloads/extend/themes', {'collection': true})
+                  {% set themes_items_length = themes.copy()
                                                       .where('visibility', 'nin', ['draft', 'hidden'])
                                                       .count() %}
 
@@ -93,7 +71,7 @@
                   {% set themes_items_offset = (page-1)*themes_items_limit %}
                   {% if themes_items_offset < 0 %}{% set themes_items_offset = 0 %}{% endif %}
 
-                  {% set themes_items = entries.fetch(locale() ~ '/downloads/extend/themes', {'collection': true})
+                  {% set themes_items = themes.copy()
                                                .where('visibility', 'nin', ['draft', 'hidden'])
                                                .sortBy('published_at', 'DESC')
                                                .slice(themes_items_offset, themes_items_limit) %}
@@ -110,6 +88,9 @@
                      <p class="m-0">
                          {{ item.description }}
                      </p>
+                     <div class="text-xs text-center text-gray-800 px-2 pb-2 absolute right-0 bottom-0">
+                         <i class="fas fa-user-circle"></i> {{ item.author.name }}
+                     </div>
                  </div>
              </a>
            {% endfor %}
@@ -129,33 +110,47 @@
            {# /pagination navigation #}
 
         </div>
-        <div class="w-full lg:w-3/12 p-2">
+        <div class="w-full lg:w-3/12 p-2 wow fadeIn">
             <div class="text-black text-left p-6 mb-6 plate">
-            {# keywords-cloud #}
-            {% set keywords_cloud = [] %}
-            {% for post in entries.fetch(locale() ~ '/downloads/extend/themes', {'collection': true})
-                                  .where('visibility', 'nin', ['draft', 'hidden'])
-                                  .sortBy('published_at', 'DESC') %}
-                {% set keywords = post.keywords|replace({' ': ''}) %}
-                {% set keywords_cloud = keywords_cloud|merge(keywords|split(',')) %}
-            {% endfor %}
+                {# CATEGORY CLOUD #}
+                {% set categoryThemesCloudCacheID = strings('categoryThemesCloudCacheID').hash().toString() %}
+                {% if cache.has(categoryThemesCloudCacheID) %}
+                    {% set category_cloud = cache.get(categoryThemesCloudCacheID) %}
+                {% else %}
+                    {% set category_cloud = [] %}
+                    {% for item in themes.copy()
+                                       .where('visibility', 'nin', ['draft', 'hidden'])
+                                       .sortBy('published_at', 'DESC') %}
+                        {% set category = item.category|replace({' ': ''}) %}
+                        {% set category_cloud = category_cloud|merge(category|split(',')) %}
+                    {% endfor %}
+                    {% do cache.set(categoryThemesCloudCacheID, category_cloud) %}
+                {% endif %}
 
-            {% if keywords_cloud|length > 0 %}
-                <h4 class="text-left mb-2">Tags</h4>
-                {% for tag in keywords_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
-                    <a class="no-underline px-2 mb-2 block" href="{{ url() }}/{{ locale() }}/downloads/extend/plugins?tag={{ tag|trim }}">#{{ tag|trim }}</a>
+                {% set category_cloud = [] %}
+                {% for item in themes.copy() %}
+                    {% set category = item.category|replace({' ': ''}) %}
+                    {% set category_cloud = category_cloud|merge(category|split(',')) %}
                 {% endfor %}
-            {% endif %}
-            {# /keywords-cloud #}
+
+                {% if category_cloud|length > 0 %}
+                    <h4 class="text-left mb-2">Category</h4>
+                    <div class="mr-12 mt-3">
+                        {% for category in category_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
+                            <a class="no-underline px-1 mb-2 block" href="{{ url() }}/{{ locale() }}/downloads/extend/themes?category={{ category|trim }}">
+                                {% if category == 'framework' %}
+                                <i class="fab fa-bootstrap"></i>
+                                {% else %}
+                                <i class="fas fa-palette"></i>
+                                {% endif %}
+                                <span class="pl-1">{{ category|trim }}</span></a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {# /TAGS CLOUD #}
             </div>
             <a class="pl-6 pr-6 pt-2 pb-2 wow w-full fadeIn button text-base"
             href="https://github.com/flextype/flextype.org/tree/dev/project/entries/en/downloads/extend/themes">SUBMIT THEME</a>
-            <!--
-            <div class="text-black text-center p-6">
-                <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 hover:bg-black hover:text-white hover:border-black" href="https://docs.flextype.org/{{ locale() }}/getting-started/installation">SUBMIT A PLUGIN</a>
-            </div>
-            -->
         </div>
-    </div>
 </div>
 {% endblock %}
