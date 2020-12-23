@@ -18,7 +18,7 @@
                 <b>Tags:</b>
                 {% if entry.tags is not empty %}
                     {% for tag in entry.tags|split(',') %}
-                        <a class="no-underline" href="{{ url() }}/{{ locale() }}/blog?tag={{ tag }}">#{{ tag|trim }}</a>
+                        <a class="no-underline" href="{{ url() }}/{{ locale() }}/blog?tag={{ tag }}">{{ tag|trim }}</a>{% if not loop.last %}, {% endif %}
                     {% endfor %}
                 {% endif %}
             </div>

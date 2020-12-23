@@ -86,11 +86,11 @@
             </div>
             <div class="flex content-center flex-wrap">
                 <div class="w-full">
-                    <p class="m-0 opacity-50">Tags</p>
+                    <p class="m-0 opacity-50">Categories</p>
                     <p>
-                        {% set keywords = entry.keywords|replace({' ': ''}) %}
-                        {% for tag in keywords|split(',') %}
-                            <a class="no-underline" href="{{ url() }}/{{ locale() }}/downloads/extend/plugins?tag={{ tag|trim }}">{{ tag|trim }}</a>{% if not loop.last %}, {% endif %}
+                        {% set categories = entry.category|replace({' ': ''}) %}
+                        {% for category in categories|split(',') %}
+                            <a class="no-underline" href="{{ url() }}/{{ locale() }}/downloads/extend/plugins?category={{ category|trim }}">{{ category|trim }}</a>{% if not loop.last %}, {% endif %}
                         {% endfor %}
                     </p>
                 </div>

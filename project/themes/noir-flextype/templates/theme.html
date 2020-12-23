@@ -87,8 +87,8 @@
                 <div class="w-full">
                     <p class="m-0 opacity-50">Categories</p>
                     <p>
-                        {% set category = entry.category|replace({' ': ''}) %}
-                        {% for tag in category|split(',') %}
+                        {% set categories = entry.category|replace({' ': ''}) %}
+                        {% for category in categories|split(',') %}
                             <a class="no-underline" href="{{ url() }}/{{ locale() }}/downloads/extend/themes?category={{ category|trim }}">{{ category|trim }}</a>{% if not loop.last %}, {% endif %}
                         {% endfor %}
                     </p>
