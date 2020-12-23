@@ -2,7 +2,7 @@
 title: ACL
 description: ACL Panel plugin for Flextype.
 icon: fas fa-users-cog
-keywords: accounts, acl, users
+category: accounts
 author:
   name: Sergey Romanenko
   email: support@flextype.org

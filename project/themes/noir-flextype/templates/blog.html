@@ -70,7 +70,7 @@
                 <a href="{{ url() }}/{{ post.id }}" class="flex align-middle mb-6 px-6 post wow fadeIn">
                     <h4 class="w-full text-xl pb-0 mb-0">{{ post.title }}</h4>
                     <div class="text-xs text-center text-gray-800 px-2 pb-2 absolute right-0 bottom-0">
-                        {{ post.author.name }} / {{ post.published_at|date(registry.get('flextype.settings.date_display_format')) }}
+                        <i class="fas fa-user-circle"></i> {{ post.author.name }} <i class="ml-2 far fa-calendar-alt"></i> {{ post.published_at|date(registry.get('flextype.settings.date_display_format')) }}
                     </div>
                 </a>
                 {% endfor %}
@@ -108,10 +108,10 @@
                     {% endif %}
 
                     {% if tags_cloud|length > 0 %}
-                        <h4 class="text-left mb-2">Tags</h4>
-                        <div class="mr-12 mt-3">
+                        <h4 class="text-center mb-2 pb-3 border-b border-black uppercase font-semibold">Tags</h4>
+                        <div class="mr-12 mt-5">
                             {% for tag in tags_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
-                                <a class="no-underline px-1 mb-2 block" href="{{ url() }}/{{ locale() }}/blog?tag={{ tag|trim }}"># {{ tag|trim }}</a>
+                                <a class="no-underline px-1 mb-2 block" href="{{ url() }}/{{ locale() }}/blog?tag={{ tag|trim }}"><i class="fas fa-hashtag"></i> {{ tag|trim }}</a>
                             {% endfor %}
                         </div>
                     {% endif %}
