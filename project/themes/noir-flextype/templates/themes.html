@@ -21,7 +21,6 @@
             {# pagination #}
               {% set page = query.page %}
               {% set category = query.category %}
-              {% set author = query.author %}
               {% set themes_items_limit = 10 %}
 
               {% set themesCacheID = strings('themesCacheID').hash().toString() %}
