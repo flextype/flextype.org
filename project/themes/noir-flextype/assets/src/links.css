@@ -28,7 +28,7 @@ a:hover {
 .button {
     box-shadow: 3px 3px 0 #090e24;
     border: 1px solid #090e24;
-    @apply inline-block no-underline uppercase text-center text-lg relative pr-2 pl-2 pt-6 pb-6 border-black bg-white border-1 text-black;
+    @apply inline-block no-underline uppercase text-center text-lg relative pr-2 pl-2 pt-6 pb-6 border-black bg-white border text-black;
 }
 
 .button:hover {
@@ -44,7 +44,7 @@ a:hover {
 .extend {
     box-shadow: 3px 3px 0 #090e24;
     border: 1px solid #090e24;
-    @apply inline-block no-underline relative pr-2 pl-2 pt-6 pb-6 border-black bg-white border-1 text-black;
+    @apply inline-block no-underline relative pr-2 pl-2 pt-6 pb-6 border-black bg-white border text-black;
 }
 
 .extend:hover {
@@ -54,7 +54,7 @@ a:hover {
 .post {
     box-shadow: 3px 3px 0 #090e24;
     border: 1px solid #090e24;
-    @apply inline-block no-underline relative pr-2 pl-2 pt-6 pb-6 border-black bg-white border-1 text-black;
+    @apply inline-block no-underline relative pr-2 pl-2 pt-6 pb-6 border-black bg-white border text-black;
 }
 
 .post:hover {
