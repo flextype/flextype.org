@@ -2,7 +2,7 @@
 title: Accounts Admin
 description: Accounts Panel plugin for Flextype.
 icon: fas fa-users
-keywords: admin, accounts, panel, manager, users
+category: accounts, admin
 author:
   name: Sergey Romanenko
   email: support@flextype.org

@@ -1,7 +1,7 @@
 ---
 title: Bootstrap Site
 description: Bootstrap Site theme for Flextype
-keywords: bootstrap, site, html, css
+category: framework
 github: https://github.com/flextype-themes/bootstrap-site
 preview: https://github.com/flextype-themes/bootstrap-site/raw/master/preview.png
 author:

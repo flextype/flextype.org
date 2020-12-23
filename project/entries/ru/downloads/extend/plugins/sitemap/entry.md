@@ -2,7 +2,7 @@
 title: Sitemap
 description: Provide automatically generated XML sitemap.
 icon: fas fa-map-marked-alt
-keywords: site, sitemap, xml
+category: seo
 author:
   name: Sergey Romanenko
   email: support@flextype.org

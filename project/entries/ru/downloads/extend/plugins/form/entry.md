@@ -2,7 +2,7 @@
 title: Form
 description: Form Plugin to render user forms for Flextype.
 icon: fas fa-check-circle
-keywords: forms, fieldsets
+category: forms
 author:
   name: Sergey Romanenko
   email: support@flextype.org

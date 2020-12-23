@@ -2,7 +2,7 @@
 title: Twig
 description: Twig plugin to present Twig template engine for Flextype.
 icon: fas fa-palette
-keywords: twig, templates
+category: templating
 author:
   name: Sergey Romanenko
   email: support@flextype.org

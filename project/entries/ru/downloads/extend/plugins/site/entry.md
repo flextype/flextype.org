@@ -2,7 +2,7 @@
 title: Site
 description: Site plugin to display entries content on the website frontend.
 icon: fas fa-globe
-keywords: site
+category: content
 author:
   name: Sergey Romanenko
   email: support@flextype.org

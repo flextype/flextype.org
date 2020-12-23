@@ -2,7 +2,7 @@
 title: PHP Mailer
 description: PHP Mailer plugin for Flextype.
 icon: fas fa-envelope
-keywords: emails
+category: emails
 author:
   name: Sergey Romanenko
   email: support@flextype.org
