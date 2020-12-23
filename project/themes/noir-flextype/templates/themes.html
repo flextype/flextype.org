@@ -133,8 +133,8 @@
                 {% endfor %}
 
                 {% if category_cloud|length > 0 %}
-                    <h4 class="text-left mb-2">Category</h4>
-                    <div class="mr-12 mt-3">
+                    <h4 class="text-center mb-2 pb-3 border-b border-black uppercase font-semibold">Category</h4>
+                    <div class="mr-12 mt-5">
                         {% for category in category_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
                             <a class="no-underline px-1 mb-2 block" href="{{ url() }}/{{ locale() }}/downloads/extend/themes?category={{ category|trim }}">
                                 {% if category == 'framework' %}
