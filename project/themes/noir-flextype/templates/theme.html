@@ -36,7 +36,7 @@
                 </div>
                 <div class="flex-grow"></div>
                 <div>
-                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base wow fadeIn"
+                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base"
                     href="{{ entry.github }}/releases/download/v{{ theme.version }}/{{ name }}-{{ theme.version }}.zip">DOWNLOAD</a>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                     {% for related_theme in related_themes %}
                         {% if related_theme.slug != entry.slug %}
                         <a href="{{ url() }}/{{ related_theme.id }}" class="w-full p-2 lg:w-6/12 no-underline">
-                            <div class="flex p-6 text-black align-middle extend wow fadeIn">
+                            <div class="flex p-6 text-black align-middle extend">
                                 <img src="{{ related_theme.preview }}" alt="{{ related_theme.title }}" style="height: 120px; margin-right: 20px;">
                                 <div class="text-left">
                                     <h4 class="text-xl pb-0 mb-0 block">{{ related_theme.title }}</h4>

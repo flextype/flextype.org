@@ -80,7 +80,7 @@
               {# /pagination #}
 
              {% for item in plugins_items %}
-             <a href="{{ url() }}/{{ item.id }}" class="flex align-middle mb-6 px-6 post wow fadeIn">
+             <a href="{{ url() }}/{{ item.id }}" class="flex align-middle mb-6 px-6 post">
                  <i class="{{ item.icon }} text-5xl mr-5 ml-1"></i>
                  <div class="text-left">
                      <h4 class="w-full text-xl pb-0 mb-0">{{ item.title }}</h4>
@@ -109,7 +109,7 @@
            {# /pagination navigation #}
 
         </div>
-        <div class="w-full lg:w-3/12 p-2 wow fadeIn">
+        <div class="w-full lg:w-3/12 p-2">
             <div class="text-black text-left p-6 mb-6 plate">
                 {# CATEGORY CLOUD #}
                 {% set categoryPluginsCloudCacheID = strings('categoryPluginsCloudCacheID').hash().toString() %}

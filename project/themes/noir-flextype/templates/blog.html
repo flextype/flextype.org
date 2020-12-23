@@ -67,7 +67,7 @@
         <div class="flex content-center flex-wrap">
             <div class="w-full lg:w-9/12 p-2 text-left">
                 {% for post in blog_posts %}
-                <a href="{{ url() }}/{{ post.id }}" class="flex align-middle mb-6 px-6 post wow fadeIn">
+                <a href="{{ url() }}/{{ post.id }}" class="flex align-middle mb-6 px-6 post">
                     <h4 class="w-full text-xl pb-0 mb-0">{{ post.title }}</h4>
                     <div class="text-xs text-center text-gray-800 px-2 pb-2 absolute right-0 bottom-0">
                         <i class="fas fa-user-circle"></i> {{ post.author.name }} <i class="far fa-calendar-alt ml-2"></i> {{ post.published_at|date(registry.get('flextype.settings.date_display_format')) }}
@@ -90,7 +90,7 @@
                 {# /PAGINATION NAVIGATION #}
 
             </div>
-            <div class="w-full lg:w-3/12 p-2 wow fadeIn">
+            <div class="w-full lg:w-3/12 p-2">
                 <div class="text-black text-left p-6 mb-6 plate">
                     {# TAGS CLOUD #}
                     {% set tagsCloudCacheID = strings('tagsCloudCacheID').hash().toString() %}

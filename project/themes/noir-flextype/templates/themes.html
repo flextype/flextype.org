@@ -80,7 +80,7 @@
               {# /pagination #}
 
              {% for item in themes_items %}
-             <a href="{{ url() }}/{{ item.id }}" class="p-6 flex align-middle mb-6 extend wow fadeIn">
+             <a href="{{ url() }}/{{ item.id }}" class="p-6 flex align-middle mb-6 extend">
                  <img src="{{ item.preview }}" alt="{{ item.title }}" style="height: 120px; margin-right: 20px;">
                  <div class="text-left">
                      <h4 class="text-xl pb-0 mb-0 block">{{ item.title }}</h4>
@@ -109,7 +109,7 @@
            {# /pagination navigation #}
 
         </div>
-        <div class="w-full lg:w-3/12 p-2 wow fadeIn">
+        <div class="w-full lg:w-3/12 p-2">
             <div class="text-black text-left p-6 mb-6 plate">
                 {# CATEGORY CLOUD #}
                 {% set categoryThemesCloudCacheID = strings('categoryThemesCloudCacheID').hash().toString() %}
