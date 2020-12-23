@@ -108,8 +108,8 @@
                     {% endif %}
 
                     {% if tags_cloud|length > 0 %}
-                        <h4 class="text-left mb-2">Tags</h4>
-                        <div class="mr-12 mt-3">
+                        <h4 class="text-center mb-2 pb-3 border-b border-black uppercase font-semibold">Tags</h4>
+                        <div class="mr-12 mt-5">
                             {% for tag in tags_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
                                 <a class="no-underline px-1 mb-2 block" href="{{ url() }}/{{ locale() }}/blog?tag={{ tag|trim }}"><i class="fas fa-hashtag"></i> {{ tag|trim }}</a>
                             {% endfor %}
