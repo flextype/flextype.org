@@ -133,7 +133,7 @@
                 {% endfor %}
 
                 {% if category_cloud|length > 0 %}
-                    <h4 class="text-center mb-2 pb-3 border-b border-black uppercase font-semibold">Category</h4>
+                    <h4 class="text-center mb-2 pb-3 border-b border-black uppercase font-semibold">Categories</h4>
                     <div class="mr-12 mt-5">
                         {% for category in category_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
                             {% if category != '' %}
