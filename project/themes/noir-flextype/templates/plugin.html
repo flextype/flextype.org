@@ -37,7 +37,7 @@
                 </div>
                 <div class="flex-grow"></div>
                 <div>
-                    <a class="pl-6 pr-6 pt-2 pb-2 wow fadeIn button text-base"
+                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base"
                     href="{{ entry.github }}/releases/download/v{{ plugin.version }}/{{ name }}-{{ plugin.version }}.zip">DOWNLOAD</a>
                 </div>
             </div>
@@ -112,7 +112,7 @@
                     {% for related_plugin in related_plugins %}
                         {% if related_plugin.slug != entry.slug %}
                         <a href="{{ url() }}/{{ related_plugin.id }}" class="w-full p-2 lg:w-6/12 no-underline">
-                            <div class="flex p-6 text-black align-middle extend wow fadeIn">
+                            <div class="flex p-6 text-black align-middle extend">
                                 <i class="{{ related_plugin.icon }} text-5xl mr-5"></i>
                                 <div class="text-left">
                                     <h4 class="text-xl pb-0 mb-0 block">{{ related_plugin.title }}</h4>
