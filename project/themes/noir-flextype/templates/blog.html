@@ -5,7 +5,7 @@
     {% set tag = query.tag %}
     {% set blog_posts_limit = 7 %}
 
-    {% set blogCacheID = strings('blogCacheID').hash().toString() %}
+    {% set blogCacheID = strings('blogCacheID' ~ locale()).hash().toString() %}
     {% if cache.has(blogCacheID) %}
         {% set blog = cache.get(blogCacheID) %}
     {% else %}
@@ -93,7 +93,7 @@
             <div class="w-full lg:w-3/12 p-2">
                 <div class="text-black text-left p-6 mb-6 plate">
                     {# TAGS CLOUD #}
-                    {% set tagsCloudCacheID = strings('tagsCloudCacheID').hash().toString() %}
+                    {% set tagsCloudCacheID = strings('tagsCloudCacheID' ~ locale()).hash().toString() %}
                     {% if cache.has(tagsCloudCacheID) %}
                         {% set tags_cloud = cache.get(tagsCloudCacheID) %}
                     {% else %}
@@ -117,7 +117,7 @@
                     {% endif %}
                 </div>
                 <a class="pl-6 pr-6 pt-2 pb-2 wow w-full fadeIn button text-base"
-                href="https://github.com/flextype/flextype.org/tree/dev/project/entries/en/blog">SUBMIT POST</a>
+                href="https://github.com/flextype/flextype.org/tree/dev/project/entries/{{ locale() }}/blog">SUBMIT POST</a>
             </div>
 
         </div>

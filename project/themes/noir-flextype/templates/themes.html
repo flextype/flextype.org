@@ -23,7 +23,7 @@
               {% set category = query.category %}
               {% set themes_items_limit = 10 %}
 
-              {% set themesCacheID = strings('themesCacheID').hash().toString() %}
+              {% set themesCacheID = strings('themesCacheID' ~ locale()).hash().toString() %}
               {% if cache.has(themesCacheID) %}
                   {% set themes = cache.get(themesCacheID) %}
               {% else %}
@@ -112,7 +112,7 @@
         <div class="w-full lg:w-3/12 p-2">
             <div class="text-black text-left p-6 mb-6 plate">
                 {# CATEGORY CLOUD #}
-                {% set categoryThemesCloudCacheID = strings('categoryThemesCloudCacheID').hash().toString() %}
+                {% set categoryThemesCloudCacheID = strings('categoryThemesCloudCacheID' ~ locale()).hash().toString() %}
                 {% if cache.has(categoryThemesCloudCacheID) %}
                     {% set category_cloud = cache.get(categoryThemesCloudCacheID) %}
                 {% else %}

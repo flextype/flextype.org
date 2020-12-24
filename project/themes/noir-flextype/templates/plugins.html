@@ -24,7 +24,7 @@
               {% set category = query.category %}
               {% set plugins_items_limit = 10 %}
 
-              {% set pluginsCacheID = strings('pluginsCacheID').hash().toString() %}
+              {% set pluginsCacheID = strings('pluginsCacheID' ~ locale()).hash().toString() %}
               {% if cache.has(pluginsCacheID) %}
                   {% set plugins = cache.get(pluginsCacheID) %}
               {% else %}
@@ -112,7 +112,7 @@
         <div class="w-full lg:w-3/12 p-2">
             <div class="text-black text-left p-6 mb-6 plate">
                 {# CATEGORY CLOUD #}
-                {% set categoryPluginsCloudCacheID = strings('categoryPluginsCloudCacheID').hash().toString() %}
+                {% set categoryPluginsCloudCacheID = strings('categoryPluginsCloudCacheID' ~ locale()).hash().toString() %}
                 {% if cache.has(categoryPluginsCloudCacheID) %}
                     {% set category_cloud = cache.get(categoryPluginsCloudCacheID) %}
                 {% else %}
