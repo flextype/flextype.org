@@ -3,9 +3,6 @@
     {% set home = entries.fetch(locale()) %}
     {% set static_version = 12 %}
     <head>
-        {% if uri == '/' %}
-            <script>document.location.href='./en';</script>
-        {% endif %}
         {% block head %}
             <meta charset="{{ registry.get('flextype.settings.charset')|lower }}">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
