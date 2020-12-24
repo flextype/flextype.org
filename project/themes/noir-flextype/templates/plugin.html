@@ -25,14 +25,14 @@
 
         <div class="p-6 text-black mb-6">
             <div class="flex align-middle items-center">
-                <i class="{{ plugin.icon }} text-6xl mr-5"></i>
+                <span class="icon-svg-large mr-5">{{ icon(plugin.icon) }}</span>
                 <div class="text-left">
                     <h4 class="text-2xl pb-0 mb-0 block">{{ plugin.name }}</h4>
                     <p class="m-0">
                         {{ plugin.description }}
                     </p>
                     <p class="m-0 text-sm">
-                        <a class="no-underline" href="#">{{ plugin.author.name }}</a>
+                        {{ home.txt_by }} <a class="no-underline" href="#">{{ plugin.author.name }}</a>
                     </p>
                 </div>
                 <div class="flex-grow"></div>
@@ -107,25 +107,23 @@
                                                 .where('visibility', 'nin', ['draft', 'hidden']) %}
 
                 {% if related_plugins|length > 0 %}
-
-                <div class="flex content-center flex-wrap mt-10">
-                    {% for related_plugin in related_plugins %}
-                        {% if related_plugin.slug != entry.slug %}
-                        <a href="{{ url() }}/{{ related_plugin.id }}" class="w-full p-2 lg:w-6/12 no-underline">
-                            <div class="flex p-6 text-black align-middle extend">
-                                <i class="{{ related_plugin.icon }} text-5xl mr-5"></i>
-                                <div class="text-left">
-                                    <h4 class="text-xl pb-0 mb-0 block">{{ related_plugin.title }}</h4>
-                                    <p class="m-0">
-                                        {{ related_plugin.description }}
-                                    </p>
+                    <div class="flex content-center flex-wrap mt-10">
+                        {% for related_plugin in related_plugins %}
+                            {% if related_plugin.slug != entry.slug %}
+                            <a href="{{ url() }}/{{ related_plugin.id }}" class="w-full p-2 lg:w-6/12 no-underline">
+                                <div class="flex p-6 text-black align-middle extend">
+                                    <span class="icon-svg-large mr-5">{{ icon(related_plugin.icon) }}</span>
+                                    <div class="text-left">
+                                        <h4 class="text-xl pb-0 mb-0 block">{{ related_plugin.title }}</h4>
+                                        <p class="m-0">
+                                            {{ related_plugin.description }}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-
+                            </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 {% endif %}
             {% endif %}
         </div>

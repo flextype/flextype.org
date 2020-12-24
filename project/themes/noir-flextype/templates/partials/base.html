@@ -136,15 +136,13 @@
                 <div class="w-full mt-8 lg:mt-0">
                     <a href="{{ url() }}/en" class="text-sm">English</a> /
                     <a href="{{ url() }}/ru" class="text-sm">Русский</a>
-                    <a href="{{ url() }}/sitemap.xml" class="float-right text-sm" title="Sitemap"><i class="fas fa-sitemap"></i></a>
+                    <a href="{{ url() }}/sitemap.xml" class="float-right text-sm" title="Sitemap">{{ icon('fas fa-sitemap') }}</a>
                 </div>
             </div>
         </footer>
         <!-- /Footer -->
 
         {% set theme = registry.get('plugins.site.settings.theme') %}
-        {% do registry.set('assets.site.js.noir_flextype', 'project/themes/' ~ theme ~ '/assets/dist/js/build.min.js') %}
-
 
         {% set highlight_js = url() ~ '/project/themes/' ~ registry.get('plugins.site.settings.theme') ~ '/assets/highlight/highlight.pack.js' %}
         <script src="{{ highlight_js }}"></script>

@@ -67,6 +67,7 @@ txt_discord_button: "Join the Conversation"
 txt_github_heading: "Github"
 txt_github_p: "If you want to report a bug or contribute your ideas, you can use the %url_start%Flextype GitHub Issues tracker%url_end%."
 txt_github_button: "Contribute"
+txt_by: by
 txt_twitter_heading: "Twitter"
 txt_twitter_p: "%url_start%Follow on Twitter%url_end% to get real-time news regarding the development and all events we are attending."
 txt_twitter_button: "Follow Us"
