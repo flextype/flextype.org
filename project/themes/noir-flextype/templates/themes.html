@@ -133,7 +133,7 @@
                 {% endfor %}
 
                 {% if category_cloud|length > 0 %}
-                    <h4 class="text-center mb-2 pb-3 border-b border-black uppercase font-semibold">Categories</h4>
+                    <h4 class="text-center mb-2 pb-3 border-b border-black uppercase font-semibold">{{ entry.txt_categories }}</h4>
                     <div class="mr-12 mt-5">
                         {% for category in category_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
                             <a class="no-underline px-1 mb-2 block" href="{{ url() }}/{{ locale() }}/downloads/extend/themes?category={{ category|trim }}">
@@ -148,8 +148,8 @@
                 {% endif %}
                 {# /TAGS CLOUD #}
             </div>
-            <a class="pl-6 pr-6 pt-2 pb-2 wow w-full fadeIn button text-base"
-            href="https://github.com/flextype/flextype.org/tree/dev/project/entries/en/downloads/extend/themes">SUBMIT THEME</a>
+            <a class="pl-6 pr-6 pt-2 pb-2 wow w-full fadeIn button text-base uppercase"
+            href="https://github.com/flextype/flextype.org/tree/dev/project/entries/en/downloads/extend/themes">{{ entry.txt_submit_theme }}</a>
         </div>
 </div>
 {% endblock %}
