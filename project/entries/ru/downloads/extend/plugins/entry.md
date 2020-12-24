@@ -1,7 +1,7 @@
 ---
 title: Плагины
 template: plugins
-txt_categories: Categories
-txt_submit_plugin: Submit plugin
+txt_categories: Категории
+txt_submit_plugin: Добавить плагин
 ---
 
