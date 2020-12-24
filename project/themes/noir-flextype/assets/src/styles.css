@@ -3,6 +3,7 @@
 @import "base.css";
 @import "headings.css";
 @import "links.css";
+@import "code.css";
 @import "animations.css";
 
 @import "tailwindcss/components";
