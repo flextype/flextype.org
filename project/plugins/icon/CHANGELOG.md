@@ -1,3 +1,10 @@
+<a name="1.5.1"></a>
+# [1.5.1](https://github.com/flextype-plugins/icon/compare/v1.5.0...v1.5.1) (2020-12-25)
+
+### Features
+
+* **core** feat(core): update @fortawesome/fontawesome-free to 5.15.1
+
 <a name="1.5.0"></a>
 # [1.5.0](https://github.com/flextype-plugins/icon/compare/v1.4.0...v1.5.0) (2020-12-20)
 
