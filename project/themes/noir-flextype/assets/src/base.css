@@ -47,3 +47,28 @@ hr {
     border-left: none;
     border-right: none;
 }
+
+.icon-svg-large > svg {
+    height: 72px;
+    @apply inline-block;
+}
+
+.icon-svg-medium > svg {
+    height: 55px;
+    @apply inline-block;
+}
+
+.icon-svg-normal > svg {
+    height: 18px;
+    @apply inline-block;
+}
+
+.icon-svg-small > svg {
+    height: 16px;
+    @apply inline-block;
+}
+
+.icon-svg-xsmall > svg {
+    height: 13px;
+    @apply inline-block;
+}

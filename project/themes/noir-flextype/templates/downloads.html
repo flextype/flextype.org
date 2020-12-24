@@ -9,7 +9,7 @@
             <div class="flex content-center flex-wrap">
                 <div class="w-full lg:w-6/12 p-6 text-center">
                     <div class="p-12 h-full text-black plate">
-                        <i class="fas fa-download text-6xl mb-5" aria-hidden="true"></i>
+                        <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-download') }}</div>
                         <h4 class="text-2xl">Flextype CMS</h4>
                         <div class="h-48 mb-10">
                             {{ entry.txt_release_package_contains|raw }}:<br><br>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="w-full lg:w-6/12 p-6 text-center">
                     <div class="p-12 h-full text-black plate">
-                        <i class="fas fa-download text-6xl mb-5" aria-hidden="true"></i>
+                        <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-download') }}</div>
                         <h4 class="text-2xl">Flextype Core</h4>
                         <div class="h-48 mb-10">
                             {{ entry.txt_release_package_contains|raw }}:<br><br>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="w-full lg:w-6/12 p-6 text-center">
                     <div class="p-12 h-full text-black plate">
-                        <i class="fas fa-star text-6xl mb-5" aria-hidden="true"></i>
+                        <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-star') }}</div>
                         <h4 class="text-2xl">{{ entry.txt_extend|raw }}</h4>
                         <div class="h-48 mb-10">
                             {{ entry.txt_extend_p|raw }}
@@ -46,7 +46,7 @@
                 </div>
                 <div class="w-full lg:w-6/12 p-6 text-center">
                     <div class="p-12 h-full text-black plate">
-                        <i class="fas fa-user-astronaut text-6xl mb-5"></i>
+                        <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-user-astronaut') }}</div>
                         <h4 class="text-2xl">{{ entry.txt_contribution_financial_support_heading|raw }}</h4>
                         <div class="h-48 mb-10 text-left">
                             {{ entry.txt_contribution_financial_support_p|raw }}

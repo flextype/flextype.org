@@ -91,7 +91,7 @@ class SiteController
 
         // ========== custom code here ==========
         if ($uri === '/') {
-            return $response->withRedirect('./en');
+            return $response->withRedirect('https://flextype.org/en');
         }
         // ========== custom code here ==========
 

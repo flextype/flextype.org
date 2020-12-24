@@ -14,7 +14,7 @@
             <div class="flex content-center flex-wrap">
                 <div class="w-full lg:w-6/12 p-6 text-center">
                     <div class="p-12 h-full text-black plate">
-                        <i class="fas fa-plug text-6xl mb-5" aria-hidden="true"></i>
+                        <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-plug') }}</div>
                         <h4 class="text-2xl">{{ entry.txt_plugins|raw }}</h4>
                         <div class="h-24 mb-10">
                             {{ entry.txt_plugins_p|raw }}
@@ -25,7 +25,7 @@
                 </div>
                 <div class="w-full lg:w-6/12 p-6 text-center">
                     <div class="p-12 h-full text-black plate">
-                        <i class="fas fa-palette text-6xl mb-5" aria-hidden="true"></i>
+                        <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-palette') }}</div>
                         <h4 class="text-2xl">{{ entry.txt_themes|raw }}</h4>
                         <div class="h-24 mb-10">
                             {{ entry.txt_themes_p|raw }}

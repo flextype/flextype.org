@@ -22,7 +22,7 @@
 
             <div class="flex content-center flex-wrap mt-12">
                 <div class="w-full lg:w-1/3 p-8">
-                    <i class="fa fa-rocket text-6xl mb-5" aria-hidden="true"></i>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-rocket') }}</div>
                     <h4 class="text-2xl">{{ entry.txt_features_fast_heading|raw }}</h4>
                     <p>
                         {{ entry.txt_features_fast_p|raw }}
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
-                    <i class="fa fa-cogs text-6xl mb-5" aria-hidden="true"></i>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-cogs') }}</div>
                     <h4 class="text-2xl">{{ entry.txt_features_flexible_heading|raw }}</h4>
                     <p>
                         {{ entry.txt_features_flexible_p|raw }}
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
-                    <i class="fa fa-font text-6xl mb-5" aria-hidden="true"></i>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-font') }}</div>
                     <h4 class="text-2xl">{{ entry.txt_features_easy_editing_heading|raw }}</h4>
                     <p>
                         {{ entry.txt_features_easy_editing_p|replace({"%url_start%": '<a href="https://flextype.org/en/downloads/extend/plugins/admin">', "%url_end%": "</a>"})|raw }}
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
-                    <i class="fas fa-network-wired text-6xl mb-5" aria-hidden="true"></i>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-network-wired') }}</div>
                     <h4 class="text-2xl">{{ entry.txt_features_built_in_rest_api_heading|raw }}</h4>
                     <p>
                         {{ entry.txt_features_built_in_rest_api_p|raw }}
@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
-                    <i class="fa fa-list-alt text-6xl mb-5" aria-hidden="true"></i>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-list-alt') }}</div>
                     <h4 class="text-2xl">{{ entry.txt_features_dynamic_content_types_heading|raw }}</h4>
                     <p>
                         {{ entry.txt_features_dynamic_content_types_p|raw }}
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
-                    <i class="fas fa-code-branch text-6xl mb-5" aria-hidden="true"></i>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-code-branch') }}</div>
                     <h4 class="text-2xl">{{ entry.txt_features_version_control_heading|raw }}</h4>
                     <p>
                         {{ entry.txt_features_version_control_p|raw }}
@@ -82,7 +82,7 @@
             <div class="flex content-center flex-wrap mt-12">
 
                 <div class="w-full lg:w-3/12 p-6">
-                    <i class="fas fa-desktop text-6xl mb-5" aria-hidden="true"></i>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-desktop') }}</div>
                     <h4 class="text-2xl">{{ entry.txt_no_limits_websites_heading|raw }}</h4>
                     <p>
                         {{ entry.txt_no_limits_websites_p|raw }}
@@ -90,16 +90,15 @@
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
-                    <i class="fas fa-mobile-alt text-6xl mb-5" aria-hidden="true"></i>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-mobile-alt') }}</div>
                     <h4 class="text-2xl">{{ entry.txt_native_apps_heading|raw }}</h4>
                     <p>
                         {{ entry.txt_native_apps_p|raw }}
-
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
-                    <i class="far fa-square text-6xl mb-5" aria-hidden="true"></i>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('far fa-square') }}</div>
                     <h4 class="text-2xl">{{ entry.txt_kiosks_heading|raw }}</h4>
                     <p>
                         {{ entry.txt_kiosks_p|raw }}
@@ -107,7 +106,7 @@
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
-                    <i class="fas fa-running text-6xl mb-5" aria-hidden="true"></i>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-running') }}</div>
                     <h4 class="text-2xl">{{ entry.txt_wearables_heading|raw }}</h4>
                     <p>
                         {{ entry.txt_wearables_p|raw }}
@@ -115,7 +114,7 @@
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
-                    <i class="far fa-lightbulb text-6xl mb-5" aria-hidden="true"></i>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('far fa-lightbulb') }}</div>
                     <h4 class="text-2xl">{{ entry.txt_iot_devices_heading|raw }}</h4>
                     <p>
                         {{ entry.txt_iot_devices_heading|raw }}
@@ -123,7 +122,7 @@
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
-                    <i class="fas fa-gamepad text-6xl mb-5" aria-hidden="true"></i>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-gamepad') }}</div>
                     <h4 class="text-2xl">{{ entry.txt_game_data_heading|raw }}</h4>
                     <p>
                         {{ entry.txt_game_data_p|raw }}
@@ -131,7 +130,7 @@
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
-                    <i class="far fa-compass text-6xl mb-5" aria-hidden="true"></i>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('far fa-compass') }}</div>
                     <h4 class="text-2xl">{{ entry.txt_saas_platforms_heading|raw }}</h4>
                     <p>
                         {{ entry.txt_saas_platforms_p|raw }}
@@ -139,7 +138,7 @@
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
-                    <i class="fas fa-shopping-cart text-6xl mb-5" aria-hidden="true"></i>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-shopping-cart') }}</div>
                     <h4 class="text-2xl">{{ entry.txt_ecommerce_heading|raw }}</h4>
                     <p>
                         {{ entry.txt_ecommerce_heading|raw }}
@@ -158,7 +157,7 @@
 
             <div class="flex content-center flex-wrap mt-12">
                 <div class="w-full lg:w-4/12 p-6">
-                    <i class="fab fa-discord text-7xl mb-5"></i>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('fab fa-discord') }}</div>
                     <h4 class="text-2xl">{{ entry.txt_discord_heading|raw }}</h4>
                     <div class="text-base h-40">
                         {{ entry.txt_discord_p|raw }}
@@ -167,7 +166,7 @@
                 </div>
 
                 <div class="w-full lg:w-4/12 p-6">
-                    <i class="fab fa-github text-7xl mb-5"></i>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('fab fa-github') }}</div>
                     <h4 class="text-2xl">{{ entry.txt_github_heading|raw }}</h4>
                     <div class="text-base h-40">
                         {{ entry.txt_github_p|replace({"%url_start%": '<a href="https://github.com/flextype/flextype/issues">', "%url_end%": "</a>"})|raw }}
@@ -176,7 +175,7 @@
                 </div>
 
                 <div class="w-full lg:w-4/12 p-6">
-                    <i class="fab fa-twitter text-7xl mb-5"></i>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('fab fa-twitter') }}</div>
                     <h4 class="text-2xl">{{ entry.txt_twitter_heading|raw }}</h4>
                     <div class="text-base h-40">
                         {{ entry.txt_twitter_p|replace({"%url_start%": '<a href="https://twitter.com/getflextype">', "%url_end%": "</a>"})|raw }}
@@ -184,7 +183,6 @@
                     <a class="pl-6 pr-6 pt-2 pb-2 button text-base" href="https://twitter.com/getflextype">{{ entry.txt_twitter_button|raw }}</a>
                 </div>
             </div>
-
         </div>
     </div>
     <!-- /community section -->

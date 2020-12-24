@@ -12,19 +12,19 @@
             <meta name="robots" content="{% if entry.robots %}{{ entry.robots }}{% else %}{{ registry.get('plugins.site.settings.robots') }}{% endif %}">
             <meta name="generator" content="Powered by Flextype"/>
 
-            <meta name="image" content="{{ url() }}/image/{{ locale }}/preview.png?dpr=2&w=1100&q=70">
+            <meta name="image" content="{{ url() }}/api/images/entries/{{ locale }}/banner.png?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
 
             <meta name="twitter:card" content="summary_large_image">
             <meta name="twitter:site" content="{{ url() }}/{{ entry.id }}">
             <meta name="twitter:title" content="{{ entry.title }}">
             <meta name="twitter:description" content="{{ entry.description }}">
-            <meta name="twitter:image" content="{{ url() }}/image/{{ locale }}/preview.png?dpr=2&w=1100&q=70">
+            <meta name="twitter:image" content="{{ url() }}/api/images/entries/{{ locale }}/banner.png?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
 
             <meta property="og:url" content="{{ url() }}/{{ entry.id }}">
             <meta property="og:title" content="{{ entry.title }}">
             <meta property="og:description" content="{{ entry.description }}">
             <meta property="og:type" content="website">
-            <meta property="og:image" content="{{ url() }}/image/{{ locale }}/preview.png?dpr=2&w=1100&q=70">
+            <meta property="og:image" content="{{ url() }}/api/images/entries/{{ locale }}/banner.png?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
             <meta property="og:image:type" content="image/png">
 
             <meta name="yandex-verification" content="920bbfc83bbe3fbe" />
@@ -136,15 +136,13 @@
                 <div class="w-full mt-8 lg:mt-0">
                     <a href="{{ url() }}/en" class="text-sm">English</a> /
                     <a href="{{ url() }}/ru" class="text-sm">Русский</a>
-                    <a href="{{ url() }}/sitemap.xml" class="float-right text-sm" title="Sitemap"><i class="fas fa-sitemap"></i></a>
+                    <a href="{{ url() }}/sitemap.xml" class="float-right text-sm" title="Sitemap">{{ icon('fas fa-sitemap') }}</a>
                 </div>
             </div>
         </footer>
         <!-- /Footer -->
 
         {% set theme = registry.get('plugins.site.settings.theme') %}
-        {% do registry.set('assets.site.js.noir_flextype', 'project/themes/' ~ theme ~ '/assets/dist/js/build.min.js') %}
-
 
         {% set highlight_js = url() ~ '/project/themes/' ~ registry.get('plugins.site.settings.theme') ~ '/assets/highlight/highlight.pack.js' %}
         <script src="{{ highlight_js }}"></script>
