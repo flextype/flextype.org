@@ -41,7 +41,7 @@
                             {{ entry.txt_extend_p|raw }}
                             <br>
                         </div>
-                        <a class="pl-6 pr-6 pt-2 pb-2 button text-base" href="{{ url() }}/{{ locale() }}/downloads/extend">{{ entry.txt_extend_flextype|raw }}</a>
+                        <a class="pl-6 pr-6 pt-2 pb-2 button text-base" href="{{ url() }}/{{ locale }}/downloads/extend">{{ entry.txt_extend_flextype|raw }}</a>
                     </div>
                 </div>
                 <div class="w-full lg:w-6/12 p-6 text-center">
@@ -61,7 +61,7 @@
                         <div class="mb-10 text-left">
                             1. <a href="https://flextype.org/en/downloads">Download the latest version of Flextype.</a><br>
                             2. Unzip the contents to a new folder on your local computer, and upload to your webhost using the (S)FTP client of your choice. After you’ve done this, create directory <code>/project</code> and be sure to chmod the following directory to <code>755</code> (or <code>777</code>), so it is readable and writable by Flextype.<br>
-                            3. Create CDA, CMA and Access tokens for your project using this <a href="{{ url() }}/{{ locale() }}/api-token-generator">webpage</a>.
+                            3. Create CDA, CMA and Access tokens for your project using this <a href="{{ url() }}/{{ locale }}/api-token-generator">webpage</a>.
                             <br><br><br><br>
                             <div class="text-center">
                                 <a class="no-underline uppercase text-center relative text-base relative pl-6 pr-6 pt-2 pb-2 text-black bg-white border-black border-2 hover:bg-black hover:text-white hover:border-black"  href="https://docs.flextype.org/en/getting-started/installation">READ THE DOCUMENTATION</a>
