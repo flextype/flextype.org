@@ -1,7 +1,7 @@
 ---
-title: Themes
+title: Темы
 template: themes
-txt_categories: Categories
-txt_submit_theme: Submit theme
+txt_categories: Категории
+txt_submit_theme: Добавить тему
 ---
 
