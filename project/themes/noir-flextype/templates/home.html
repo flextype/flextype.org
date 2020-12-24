@@ -4,11 +4,11 @@
     <!-- introducing section -->
     <div class="container relative mx-auto mb-10">
         <div class="text-center">
-            <h1 class="uppercase m-0 p-24 text-xl lg:text-5xl">{{ entry.txt_intro_section_h1|raw }}</h1>
+            <h1 class="uppercase m-0 p-24 text-xl lg:text-5xl">{{ txt.intro_section_h1|raw }}</h1>
             <div class="flex justify-center">
                 <a
                     href="{{ base_url() }}/{{ locale }}/downloads"
-                    class="w-10/12 lg:w-3/12 button">{{ entry.txt_intro_section_button|raw }}</a>
+                    class="w-10/12 lg:w-3/12 button">{{ txt.intro_section_button|raw }}</a>
             </div>
         </div>
     </div>
@@ -17,55 +17,55 @@
     <!-- features section -->
     <div class="text-center pt-20">
         <div class="container relative mx-auto">
-            <h3 class="uppercase text-xl lg:text-5xl">{{ entry.txt_features_heading|raw }}</h3>
-            <p class="text-xl lg:text-2xl">{{ entry.txt_features_description|raw }}</p>
+            <h3 class="uppercase text-xl lg:text-5xl">{{ txt.features_heading|raw }}</h3>
+            <p class="text-xl lg:text-2xl">{{ txt.features_description|raw }}</p>
 
             <div class="flex content-center flex-wrap mt-12">
                 <div class="w-full lg:w-1/3 p-8">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-rocket') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_features_fast_heading|raw }}</h4>
+                    <h4 class="text-2xl">{{ txt.features_fast_heading|raw }}</h4>
                     <p>
-                        {{ entry.txt_features_fast_p|raw }}
+                        {{ txt.features_fast_p|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-cogs') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_features_flexible_heading|raw }}</h4>
+                    <h4 class="text-2xl">{{ txt.features_flexible_heading|raw }}</h4>
                     <p>
-                        {{ entry.txt_features_flexible_p|raw }}
+                        {{ txt.features_flexible_p|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-font') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_features_easy_editing_heading|raw }}</h4>
+                    <h4 class="text-2xl">{{ txt.features_easy_editing_heading|raw }}</h4>
                     <p>
-                        {{ entry.txt_features_easy_editing_p|replace({"%url_start%": '<a href="https://flextype.org/en/downloads/extend/plugins/admin">', "%url_end%": "</a>"})|raw }}
+                        {{ txt.features_easy_editing_p|replace({"%url_start%": '<a href="https://flextype.org/en/downloads/extend/plugins/admin">', "%url_end%": "</a>"})|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-network-wired') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_features_built_in_rest_api_heading|raw }}</h4>
+                    <h4 class="text-2xl">{{ txt.features_built_in_rest_api_heading|raw }}</h4>
                     <p>
-                        {{ entry.txt_features_built_in_rest_api_p|raw }}
+                        {{ txt.features_built_in_rest_api_p|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-list-alt') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_features_dynamic_content_types_heading|raw }}</h4>
+                    <h4 class="text-2xl">{{ txt.features_dynamic_content_types_heading|raw }}</h4>
                     <p>
-                        {{ entry.txt_features_dynamic_content_types_p|raw }}
+                        {{ txt.features_dynamic_content_types_p|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-code-branch') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_features_version_control_heading|raw }}</h4>
+                    <h4 class="text-2xl">{{ txt.features_version_control_heading|raw }}</h4>
                     <p>
-                        {{ entry.txt_features_version_control_p|raw }}
+                        {{ txt.features_version_control_p|raw }}
                     </p>
                 </div>
             </div>
@@ -76,72 +76,72 @@
     <!-- no limits section -->
     <div class="text-center">
         <div class="container mx-auto pt-20 pb-20">
-            <h3 class="uppercase text-xl lg:text-5xl">{{ entry.txt_features_no_limits_heading|raw }}</h3>
-            <p class="text-xl lg:text-2xl px-20">{{ entry.txt_features_no_limits_p|raw }}</p>
+            <h3 class="uppercase text-xl lg:text-5xl">{{ txt.features_no_limits_heading|raw }}</h3>
+            <p class="text-xl lg:text-2xl px-20">{{ txt.features_no_limits_p|raw }}</p>
 
             <div class="flex content-center flex-wrap mt-12">
 
                 <div class="w-full lg:w-3/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-desktop') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_no_limits_websites_heading|raw }}</h4>
+                    <h4 class="text-2xl">{{ txt.no_limits_websites_heading|raw }}</h4>
                     <p>
-                        {{ entry.txt_no_limits_websites_p|raw }}
+                        {{ txt.no_limits_websites_p|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-mobile-alt') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_native_apps_heading|raw }}</h4>
+                    <h4 class="text-2xl">{{ txt.native_apps_heading|raw }}</h4>
                     <p>
-                        {{ entry.txt_native_apps_p|raw }}
+                        {{ txt.native_apps_p|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('far fa-square') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_kiosks_heading|raw }}</h4>
+                    <h4 class="text-2xl">{{ txt.kiosks_heading|raw }}</h4>
                     <p>
-                        {{ entry.txt_kiosks_p|raw }}
+                        {{ txt.kiosks_p|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-running') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_wearables_heading|raw }}</h4>
+                    <h4 class="text-2xl">{{ txt.wearables_heading|raw }}</h4>
                     <p>
-                        {{ entry.txt_wearables_p|raw }}
+                        {{ txt.wearables_p|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('far fa-lightbulb') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_iot_devices_heading|raw }}</h4>
+                    <h4 class="text-2xl">{{ txt.iot_devices_heading|raw }}</h4>
                     <p>
-                        {{ entry.txt_iot_devices_heading|raw }}
+                        {{ txt.iot_devices_heading|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-gamepad') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_game_data_heading|raw }}</h4>
+                    <h4 class="text-2xl">{{ txt.game_data_heading|raw }}</h4>
                     <p>
-                        {{ entry.txt_game_data_p|raw }}
+                        {{ txt.game_data_p|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('far fa-compass') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_saas_platforms_heading|raw }}</h4>
+                    <h4 class="text-2xl">{{ txt.saas_platforms_heading|raw }}</h4>
                     <p>
-                        {{ entry.txt_saas_platforms_p|raw }}
+                        {{ txt.saas_platforms_p|raw }}
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-shopping-cart') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_ecommerce_heading|raw }}</h4>
+                    <h4 class="text-2xl">{{ txt.ecommerce_heading|raw }}</h4>
                     <p>
-                        {{ entry.txt_ecommerce_heading|raw }}
+                        {{ txt.ecommerce_heading|raw }}
                     </p>
                 </div>
             </div>
@@ -152,35 +152,35 @@
     <!-- community section -->
     <div class="text-center">
         <div class="container mx-auto pt-20 pb-20">
-            <h3 class="uppercase text-xl lg:text-5xl">{{ entry.txt_community_heading|raw }}</h3>
-            <p class="text-xl lg:text-2xl px-20">{{ entry.txt_community_p|raw }}</p>
+            <h3 class="uppercase text-xl lg:text-5xl">{{ txt.community_heading|raw }}</h3>
+            <p class="text-xl lg:text-2xl px-20">{{ txt.community_p|raw }}</p>
 
             <div class="flex content-center flex-wrap mt-12">
                 <div class="w-full lg:w-4/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('fab fa-discord') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_discord_heading|raw }}</h4>
+                    <h4 class="text-2xl">{{ txt.discord_heading|raw }}</h4>
                     <div class="text-base h-40">
-                        {{ entry.txt_discord_p|raw }}
+                        {{ txt.discord_p|raw }}
                     </div>
-                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base" href="https://discord.gg/CCKPKVG">{{ entry.txt_discord_button|raw }}</a>
+                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base" href="https://discord.gg/CCKPKVG">{{ txt.discord_button|raw }}</a>
                 </div>
 
                 <div class="w-full lg:w-4/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('fab fa-github') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_github_heading|raw }}</h4>
+                    <h4 class="text-2xl">{{ txt.github_heading|raw }}</h4>
                     <div class="text-base h-40">
-                        {{ entry.txt_github_p|replace({"%url_start%": '<a href="https://github.com/flextype/flextype/issues">', "%url_end%": "</a>"})|raw }}
+                        {{ txt.github_p|replace({"%url_start%": '<a href="https://github.com/flextype/flextype/issues">', "%url_end%": "</a>"})|raw }}
                     </div>
-                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base" href="https://github.com/flextype">{{ entry.txt_github_button|raw }}</a>
+                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base" href="https://github.com/flextype">{{ txt.github_button|raw }}</a>
                 </div>
 
                 <div class="w-full lg:w-4/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('fab fa-twitter') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_twitter_heading|raw }}</h4>
+                    <h4 class="text-2xl">{{ txt.twitter_heading|raw }}</h4>
                     <div class="text-base h-40">
-                        {{ entry.txt_twitter_p|replace({"%url_start%": '<a href="https://twitter.com/getflextype">', "%url_end%": "</a>"})|raw }}
+                        {{ txt.twitter_p|replace({"%url_start%": '<a href="https://twitter.com/getflextype">', "%url_end%": "</a>"})|raw }}
                     </div>
-                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base" href="https://twitter.com/getflextype">{{ entry.txt_twitter_button|raw }}</a>
+                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base" href="https://twitter.com/getflextype">{{ txt.twitter_button|raw }}</a>
                 </div>
             </div>
         </div>
@@ -190,21 +190,21 @@
     <!-- /contribution section -->
     <div class="text-center">
         <div class="container mx-auto pt-20 pb-40">
-            <h3 class="uppercase text-xl lg:text-5xl">{{ entry.txt_contribution_heading|raw }}</h3>
-            <p class="text-xl lg:text-2xl px-20 mb-8">{{ entry.txt_contribution_p|raw }}</p>
+            <h3 class="uppercase text-xl lg:text-5xl">{{ txt.contribution_heading|raw }}</h3>
+            <p class="text-xl lg:text-2xl px-20 mb-8">{{ txt.contribution_p|raw }}</p>
             <div class="w-full text-center">
                 <div class="mb-10">
                     <div class="flex content-center flex-wrap">
                         <div class="w-full lg:w-6/12 p-2">
                             <div class="text-left">
-                                <h4 class="text-center">{{ entry.txt_contribution_financial_support_heading|raw }}</h4>
-                                {{ entry.txt_contribution_financial_support_p|raw }}
+                                <h4 class="text-center">{{ txt.contribution_financial_support_heading|raw }}</h4>
+                                {{ txt.contribution_financial_support_p|raw }}
                             </div>
                         </div>
                         <div class="w-full lg:w-6/12 p-2">
                             <div class="text-left">
-                                <h4 class="text-center">{{ entry.txt_contribution_itt_heading|raw }}</h4>
-                                {{ entry.txt_contribution_itt_p|raw }}
+                                <h4 class="text-center">{{ txt.contribution_itt_heading|raw }}</h4>
+                                {{ txt.contribution_itt_p|raw }}
                             </div>
                         </div>
                     </div>
@@ -217,7 +217,7 @@
     <!-- /sponsors section -->
     <div class="text-center">
         <div class="container mx-auto pb-40">
-            <h3 class="uppercase text-xl lg:text-5xl">{{ entry.txt_sponsors_heading|raw }}</h3>
+            <h3 class="uppercase text-xl lg:text-5xl">{{ txt.sponsors_heading|raw }}</h3>
             <div class="w-full text-center">
                 <div class="mb-10">
                     <div class="flex content-center flex-wrap">

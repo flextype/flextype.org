@@ -15,7 +15,7 @@
             <div class="mt-10">
                 <b>Date:</b>
                 {{ entry.published_at|date(registry.get('flextype.settings.date_display_format')) }}
-                <b>Tags:</b>
+                <b>{{ txt.tags }}:</b>
                 {% if entry.tags is not empty %}
                     {% for tag in entry.tags|split(',') %}
                         <a class="no-underline" href="{{ url() }}/{{ locale }}/blog?tag={{ tag }}">{{ tag|trim }}</a>{% if not loop.last %}, {% endif %}
