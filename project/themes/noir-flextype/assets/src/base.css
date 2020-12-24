@@ -48,6 +48,14 @@ hr {
     border-right: none;
 }
 
+.icon-svg-black > svg {
+    fill: black;
+}
+
+.icon-svg-white > svg {
+    fill: white;
+}
+
 .icon-svg-large > svg {
     height: 72px;
     @apply inline-block;
