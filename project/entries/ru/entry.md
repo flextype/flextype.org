@@ -12,32 +12,32 @@ date: 'August 04 2019 10:16:23'
 txt:
   navigation:
     - 
-      title: Blog
+      title: Блог
       link: blog
     - 
-      title: Downloads
+      title: Скачать
       link: downloads
     - 
-      title: Documentation
+      title: Документация
       link: docs.flextype.org
       external: true
     - 
-      title: Community
+      title: Сообщество
       link: community
     - 
-      title: About
+      title: О Проекте
       link: about
-  intro_section_h1: 'The freedom of a headless CMS with the full functionality of a traditional CMS.'
-  intro_section_button: 'Get Flextype'
-  features_heading: Features
-  features_description: 'Flextype provides faster, more productive way<br> for you to build and manage content for any kind of projects.'
-  features_simple_heading: Simple
-  features_simple_p: 'Easy to install, upgrade and use.<br>No installation needed, just copy files to your server!'
-  features_fast_heading: Fast
-  features_fast_p: 'Flextype is super fast content management system because of its elegance architecture and built-in smart cache.'
-  features_flexible_heading: Flexible
-  features_flexible_p: "Building this content management system, we focused on simplicity and flexibility. To achieve this, we implemented a simple but powerful Core API's."
-  features_easy_editing_heading: 'Easy editing'
+  intro_section_h1: 'Свобода Headless CMS с полной функциональностью Традиционных CMS.'
+  intro_section_button: 'Скачать Flextype'
+  features_heading: Особенности
+  features_description: 'Flextype предлагает быстрый и продуктивный способ<br> создания и управлениями веб-сайтами.'
+  features_simple_heading: Простота
+  features_simple_p: 'Просто установить, обновить и использовать.<br>Не требуется специальной установки, просто скопируйте файлы на ваш сервер!'
+  features_fast_heading: Скорость
+  features_fast_p: 'Flextype - это очень быстрая система управления контентом благодаря элегантной архитектуре и встроенному умному кэшу.'
+  features_flexible_heading: Гибкость
+  features_flexible_p: "При создании этой системы управления контентом, мы сосредоточились на простоте и гибкости. Для этого мы создали простой, но мощный API."
+  features_easy_editing_heading: 'Простое редактирование'
   features_easy_editing_p: 'With Flextype you are free to use any of your favorite content editor to write content or our gorgeous %url_start%Admin Panel%url_end%.'
   features_dynamic_content_types_heading: 'Dynamic Content Types'
   features_dynamic_content_types_p: 'The flat-file nature of Flextype lets you define unlimited custom fields for any of your entries.'
