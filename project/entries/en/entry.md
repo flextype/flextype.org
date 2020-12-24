@@ -89,7 +89,10 @@ txt:
   twitter_heading: "Twitter"
   twitter_p: "%url_start%Follow on Twitter%url_end% to get real-time news regarding the development and all events we are attending."
   twitter_button: "Follow Us"
-  sponsors_heading:  Sponsors
+  sponsors_heading: Sponsors
+  blog: Blog
+  downloads: Donwloads
+  extends: Extends
   link_about: About
   link_media: Media
   link_donate: Donate
