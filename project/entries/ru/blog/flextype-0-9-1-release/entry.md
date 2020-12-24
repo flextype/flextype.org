@@ -3,9 +3,11 @@ title: Flextype 0.9.1 — релиз!
 tags: релиз
 template: blog-post
 published_at: '18-06-2019 09:46'
+author:
+  name: Sergey Romanenko
 ---
 
-Дорогие Друзья!
+**Дорогие Друзья!**
 
 Рад вам сообщить о выходе новой версии движка Flextype 0.9.1
 

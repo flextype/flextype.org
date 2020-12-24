@@ -3,9 +3,11 @@ title: Flextype 0.9.7 — релиз!
 tags: релиз
 template: blog-post
 published_at: '03-03-2020 09:46'
+author:
+  name: Sergey Romanenko
 ---
 
-Дорогие Друзья!
+**Дорогие Друзья!**
 
 В декабре 2019 года я начал разработку новой Flextype 0.9.7 и вот спустя три месяца, я рад вам сообщить о выходе новой версии движка Flextype!
 

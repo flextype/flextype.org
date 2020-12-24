@@ -89,6 +89,12 @@ class SiteController
             return $response->withJson($this->entry);
         }
 
+        // ========== custom code here ==========
+        if ($uri === '/') {
+            return $response->withRedirect('./en');
+        }
+        // ========== custom code here ==========
+
         // Set template path for current entry
         $path = 'themes/' . flextype('registry')->get('plugins.site.settings.theme') . '/' . (empty($this->entry['template']) ? 'templates/default' : 'templates/' . $this->entry['template']) . '.html';
 
