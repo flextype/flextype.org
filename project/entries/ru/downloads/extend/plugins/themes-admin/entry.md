@@ -2,7 +2,7 @@
 title: Themes Admin
 description: Themes Admin plugin to manage site themes for the website frontend.
 icon: fas fa-paint-brush
-keywords: admin, manager, themes, templates
+category: admin
 author:
   name: Sergey Romanenko
   email: support@flextype.org
