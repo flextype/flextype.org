@@ -90,16 +90,19 @@ txt:
   twitter_p: "%url_start%Подписывайтесь%url_end% на наш официальный Twitter чтобы получать в режиме реального времени новости о разработке и всех мероприятиях."
   twitter_button: "Подписаться"
   sponsors_heading: Спонсоры
+  blog: Блог
+  downloads: Donwloads
+  extends: Расширения
   link_about: О Проекте
   link_media: Медиа
-  link_donate: Донат
+  link_donate: Пожертвование
   link_sponsors: Спонсоры
   link_plugins: Плагины
   link_themes: Темы
-  link_downloads: Скачать
+  link_downloads: Загрузки
   link_community: Сообщество
-  link_documentation: Документацию
-  link_changelog: Изменения
+  link_documentation: Документация
+  link_changelog: Список изменений
   link_press_kit: Пресс-Кит
   link_team: Команда
   tags: Теги
