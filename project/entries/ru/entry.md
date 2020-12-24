@@ -38,70 +38,70 @@ txt:
   features_flexible_heading: Гибкость
   features_flexible_p: "При создании этой системы управления контентом, мы сосредоточились на простоте и гибкости. Для этого мы создали простой, но мощный API."
   features_easy_editing_heading: 'Простое редактирование'
-  features_easy_editing_p: 'With Flextype you are free to use any of your favorite content editor to write content or our gorgeous %url_start%Admin Panel%url_end%.'
-  features_dynamic_content_types_heading: 'Dynamic Content Types'
-  features_dynamic_content_types_p: 'The flat-file nature of Flextype lets you define unlimited custom fields for any of your entries.'
-  features_open_source_heading: 'Open Source'
-  features_open_source_p: 'Flextype is an open-source project founded by Sergey Romanenko and maintained by  Flextype Community.<br>Flextype licensed under the MIT LICENSE<br>to set the world free!'
-  features_built_in_rest_api_heading: "Built-in REST API"
-  features_built_in_rest_api_p: "Flextype REST API with compact JSON payloads gives you full programmatic control over your content management system."
-  features_version_control_heading: "Version Control"
-  features_version_control_p: "Flextype is a file-based CMS, you can version control all content with GIT or any other Version Control System."
-  features_Internationalization_heading: "Internationalization"
-  features_Internationalization_p: "Multi-language support is baked right into the core. You may integrate your Flextype powered website with any cloud-based solution for localization management, like Crowdin or Transifex."
-  features_no_limits_heading: 'Use Cases'
-  features_no_limits_p: 'On top of Flextype you may build any project you want.'
-  project_business_site: 'Business site'
-  project_landing_page: 'Landing page'
-  project_personal_site: 'Personal site'
-  project_portfolio: Portfolio
-  project_product_site: 'Product site'
-  project_e_commerce: E-Commerce
-  project_documentation: 'Personal resume'
-  project_blog: Blog
-  community_heading: Community
-  community_p: 'Flextype is open source, community driven project,<br>and maintained by community!'
-  contribution_heading: CONTRIBUTE
-  contribution_p: 'Flextype is an open source project and community contributions are essential to its growing and success. Contributing to the Flextype is easy and you can give as little or as much time as you want.'
-  no_limits_websites_heading: "Websites"
-  no_limits_websites_p: "Business sites, Landing pages, Personal site, Portfolios, Product sites, Blogs, Web Apps"
-  native_apps_heading: "Native Apps"
+  features_easy_editing_p: 'С Flextype вы можете использовать любой из ваших любимых редакторов контента для создания контента или может использовать нашу великолепную %url_start%Админку%url_end%.'
+  features_dynamic_content_types_heading: 'Индивидуальные поля'
+  features_dynamic_content_types_p: 'Flextype позволяет создать неограниченное количество индивидуальных полей для любых из ваших записей.'
+  features_open_source_heading: 'Открытый исходный код'
+  features_open_source_p: 'Flextype - проект с открытым исходным кодом, основанный Сергеем Романенко и поддерживаемый Сообществом Flextype .<br>и опубликован под лицензией MIT<br>,'
+  features_built_in_rest_api_heading: "Встроенный REST API"
+  features_built_in_rest_api_p: "Flextype REST API дает вам полный программный контроль над управлением контентом."
+  features_version_control_heading: "Управление версиями"
+  features_version_control_p: "Flextype - Файловая CMS, вы можете управлять версиями всего контента с помощью GIT или любой другой системы контроля версий."
+  features_Internationalization_heading: "Интернационализация"
+  features_Internationalization_p: "Поддержка нескольких языков прямо в из коробки. Вы можете интегрировать ваш сайт разработанный на Flextype с любым облачным решением для управления локализацией, таким как Crowdin или Transifex."
+  features_no_limits_heading: 'Варианты использования'
+  features_no_limits_p: 'Вы можете использовать Flextype в любом проекте!'
+  project_business_site: 'Бизнес сайт'
+  project_landing_page: 'Посадочная страница'
+  project_personal_site: 'Персональный сайт'
+  project_portfolio: Портфолио
+  project_product_site: 'Сайт бренда'
+  project_e_commerce: Каталог
+  project_documentation: 'Личное резюме'
+  project_blog: Блог
+  community_heading: Сообщество
+  community_p: "Flextype - это проект с открытым исходным кодом,\nуправляемый сообществом и поддерживаемый сообществом!"
+  contribution_heading: ВНЕСТИ СВОЙ ВКЛАД
+  contribution_p: 'Flextype - это проект с открытым исходным кодом, и вклад сообщества важен для его роста и успеха.  Внести свой вклад в Flextype легко, и вы можете выделить столько времени, сколько захотите.'
+  no_limits_websites_heading: "Сайты"
+  no_limits_websites_p: "Бизнес-сайты, Посадочные страницы, Персональный сайт, Портфолио, Товары сайтов, Блоги и Веб-приложения"
+  native_apps_heading: "Нативные приложения"
   native_apps_p: "iOS, Android, Windows, Kai, Lineage, Fire, Flyme, Sailfish, Tizen, Remix."
-  kiosks_heading: "Kiosks"
-  kiosks_p: "Kiosks, Billboards, Digital Signage"
-  wearables_heading: "Wearables"
-  wearables_p: "Smartwatch Apps, Activity Trackers"
-  iot_devices_heading: "IoY Devices"
-  iot_devices_p: "Lights, Appliances, Auto"
-  game_data_heading: "Game Data"
-  game_data_p: "Mobile Games, VR, DLC"
-  saas_platforms_heading: "SaaS Platforms"
-  saas_platforms_p: "CRM, Productivity Tools, & Commerce"
-  ecommerce_heading: "E-Commerce"
+  kiosks_heading: "Киоски"
+  kiosks_p: "Киоски, биллборды"
+  wearables_heading: "Носимые устройства"
+  wearables_p: "Приложения Smartwatch, Трекеры активности"
+  iot_devices_heading: "IoY устройства"
+  iot_devices_p: "Умный холодильник, кофемашина, дроны, системы мониторинга жизнедеятельности города."
+  game_data_heading: "Игровые данные"
+  game_data_p: "Мобильные игры, VR, DLC"
+  saas_platforms_heading: "Платформы SaaS"
+  saas_platforms_p: "CRM, Инструменты производительности, & коммерция"
+  ecommerce_heading: "Электронная коммерция"
   ecommerce_p: "E-Commerce, Inventory, & POS"
   discord_heading: "Discord"
-  discord_p: "Got a question about setting up or using Flextype? We'll do our best to help you out. Also here you may start discussions about core, plugin and themes development."
-  discord_button: "Join the Conversation"
+  discord_p: "У вас есть вопрос о настройке или использовании Flextype? Мы сделаем все возможное, чтобы помочь вам. Также здесь вы можете начать обсуждение разработки ядра, плагинов и тем."
+  discord_button: "Присоединиться к беседе"
   github_heading: "Github"
-  github_p: "If you want to report a bug or contribute your ideas, you can use the %url_start%Flextype GitHub Issues tracker%url_end%."
-  github_button: "Contribute"
-  by: by
+  github_p: "Если вы хотите сообщить об ошибке или поделиться своими идеями, вы можете использовать %url_start%Flextype GitHub Issues tracker.%url_end%F"
+  github_button: "Внести свой вклад"
+  by: от
   twitter_heading: "Twitter"
-  twitter_p: "%url_start%Follow on Twitter%url_end% to get real-time news regarding the development and all events we are attending."
-  twitter_button: "Follow Us"
-  sponsors_heading: Sponsors
-  link_about: About
-  link_media: Media
-  link_donate: Donate
-  link_sponsors: Sponsors
-  link_plugins: Plugins
-  link_themes: Themes
-  link_downloads: Downloads
-  link_community: Community
-  link_documentation: Documentation
-  link_changelog: Changelog
-  link_press_kit: Press kit
-  link_team: Team
+  twitter_p: "%url_start%Подписывайтесь%url_end% на наш официальный Twitter чтобы получать в режиме реального времени новости о разработке и всех мероприятиях."
+  twitter_button: "Подписаться"
+  sponsors_heading: Спонсоры
+  link_about: О Проекте
+  link_media: Медиа
+  link_donate: Донат
+  link_sponsors: Спонсоры
+  link_plugins: Плагины
+  link_themes: Темы
+  link_downloads: Скачать
+  link_community: Сообщество
+  link_documentation: Документацию
+  link_changelog: Изменения
+  link_press_kit: Пресс-Кит
+  link_team: Команда
   common: Tags
   contribution_financial_support_heading: FINANCIAL SUPPORT
   contribution_financial_support_p: |
