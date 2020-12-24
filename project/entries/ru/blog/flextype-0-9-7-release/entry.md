@@ -3,6 +3,8 @@ title: Flextype 0.9.7 — релиз!
 tags: релиз
 template: blog-post
 published_at: '03-03-2020 09:46'
+author:
+  name: Sergey Romanenko
 ---
 
 Дорогие Друзья!
