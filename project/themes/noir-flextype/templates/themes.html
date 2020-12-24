@@ -7,12 +7,12 @@
 <div class="container mx-auto bg-white text-black pb-24">
     <div class="uppercase text-center pt-24 pb-24 m-0">
         <div>
-            <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/{{ locale() }}/downloads/extend/{{ name }}">{{ entry.title }}</a></h1>
+            <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/{{ name }}">{{ entry.title }}</a></h1>
         </div>
         <div>
-            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale() }}/downloads">DOWNLOADS</a></span>
+            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads">DOWNLOADS</a></span>
             <span class="opacity-50">/</span>
-            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale() }}/downloads/extend">EXTEND</a></span>
+            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend">EXTEND</a></span>
         </div>
     </div>
     <div class="flex content-center flex-wrap">
@@ -23,11 +23,11 @@
               {% set category = query.category %}
               {% set themes_items_limit = 10 %}
 
-              {% set themesCacheID = strings('themesCacheID' ~ locale()).hash().toString() %}
+              {% set themesCacheID = strings('themesCacheID' ~ locale).hash().toString() %}
               {% if cache.has(themesCacheID) %}
                   {% set themes = cache.get(themesCacheID) %}
               {% else %}
-                  {% set themes = entries.fetch(locale() ~ '/downloads/extend/themes', {'collection': true}) %}
+                  {% set themes = entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true}) %}
                   {% do cache.set(themesCacheID, themes) %}
               {% endif %}
 
@@ -112,7 +112,7 @@
         <div class="w-full lg:w-3/12 p-2">
             <div class="text-black text-left p-6 mb-6 plate">
                 {# CATEGORY CLOUD #}
-                {% set categoryThemesCloudCacheID = strings('categoryThemesCloudCacheID' ~ locale()).hash().toString() %}
+                {% set categoryThemesCloudCacheID = strings('categoryThemesCloudCacheID' ~ locale).hash().toString() %}
                 {% if cache.has(categoryThemesCloudCacheID) %}
                     {% set category_cloud = cache.get(categoryThemesCloudCacheID) %}
                 {% else %}
@@ -136,7 +136,7 @@
                     <h4 class="text-center mb-2 pb-3 border-b border-black uppercase font-semibold">{{ entry.txt_categories }}</h4>
                     <div class="mr-12 mt-5">
                         {% for category in category_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
-                            <a class="no-underline px-1 mb-2 block" href="{{ url() }}/{{ locale() }}/downloads/extend/themes?category={{ category|trim }}">
+                            <a class="no-underline px-1 mb-2 block" href="{{ url() }}/{{ locale }}/downloads/extend/themes?category={{ category|trim }}">
                                 {% if category == 'framework' %}
                                 <span class="inline-block w-6 text-center bg-gray-100 mr-1"><i class="fab fa-bootstrap"></i></span>
                                 {% else %}

@@ -7,12 +7,12 @@
 <div class="container mx-auto bg-white text-black pb-24">
     <div class="uppercase text-center pt-24 pb-24 m-0">
         <div>
-            <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/{{ locale() }}/downloads/extend/{{ name }}">{{ entry.title }}</a></h1>
+            <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/{{ name }}">{{ entry.title }}</a></h1>
         </div>
         <div>
-            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale() }}/downloads">DOWNLOADS</a></span>
+            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads">DOWNLOADS</a></span>
             <span class="opacity-50">/</span>
-            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale() }}/downloads/extend">EXTEND</a></span>
+            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend">EXTEND</a></span>
         </div>
     </div>
     <div class="flex content-center flex-wrap">
@@ -24,11 +24,11 @@
               {% set category = query.category %}
               {% set plugins_items_limit = 10 %}
 
-              {% set pluginsCacheID = strings('pluginsCacheID' ~ locale()).hash().toString() %}
+              {% set pluginsCacheID = strings('pluginsCacheID' ~ locale).hash().toString() %}
               {% if cache.has(pluginsCacheID) %}
                   {% set plugins = cache.get(pluginsCacheID) %}
               {% else %}
-                  {% set plugins = entries.fetch(locale() ~ '/downloads/extend/plugins', {'collection': true}) %}
+                  {% set plugins = entries.fetch(locale ~ '/downloads/extend/plugins', {'collection': true}) %}
                   {% do cache.set(pluginsCacheID, plugins) %}
               {% endif %}
 
@@ -56,7 +56,7 @@
               {% else %}
 
                   {# @todo get count from cache! #}
-                  {% set plugins_items_length = entries.fetch(locale() ~ '/downloads/extend/plugins', {'collection': true})
+                  {% set plugins_items_length = entries.fetch(locale ~ '/downloads/extend/plugins', {'collection': true})
                                                        .where('visibility', 'nin', ['draft', 'hidden'])
                                                        .count() %}
 
@@ -112,7 +112,7 @@
         <div class="w-full lg:w-3/12 p-2">
             <div class="text-black text-left p-6 mb-6 plate">
                 {# CATEGORY CLOUD #}
-                {% set categoryPluginsCloudCacheID = strings('categoryPluginsCloudCacheID' ~ locale()).hash().toString() %}
+                {% set categoryPluginsCloudCacheID = strings('categoryPluginsCloudCacheID' ~ locale).hash().toString() %}
                 {% if cache.has(categoryPluginsCloudCacheID) %}
                     {% set category_cloud = cache.get(categoryPluginsCloudCacheID) %}
                 {% else %}
@@ -137,7 +137,7 @@
                     <div class="mr-12 mt-5">
                         {% for category in category_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
                             {% if category != '' %}
-                            <a class="no-underline px-1 mb-2 block" href="{{ url() }}/{{ locale() }}/downloads/extend/plugins?category={{ category|trim }}">
+                            <a class="no-underline px-1 mb-2 block" href="{{ url() }}/{{ locale }}/downloads/extend/plugins?category={{ category|trim }}">
                                 {% if category == 'accounts' %}
                                 <span class="inline-block w-6 text-center bg-gray-100 mr-1"><i class="fas fa-users"></i></span>
                                 {% elseif category == 'emails' %}

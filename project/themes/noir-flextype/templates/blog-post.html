@@ -4,10 +4,10 @@
     <div class="container mx-auto bg-white text-black pb-24">
         <div class="uppercase text-center pt-24 pb-24 m-0">
             <div>
-                <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/{{ locale() }}/downloads/extend/plugins/{{ name }}">{{ entry.title }}</a></h1>
+                <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/plugins/{{ name }}">{{ entry.title }}</a></h1>
             </div>
             <div>
-                <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale() }}/blog">Blog</a></span>
+                <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/blog">Blog</a></span>
             </div>
         </div>
         <div>
@@ -18,7 +18,7 @@
                 <b>Tags:</b>
                 {% if entry.tags is not empty %}
                     {% for tag in entry.tags|split(',') %}
-                        <a class="no-underline" href="{{ url() }}/{{ locale() }}/blog?tag={{ tag }}">{{ tag|trim }}</a>{% if not loop.last %}, {% endif %}
+                        <a class="no-underline" href="{{ url() }}/{{ locale }}/blog?tag={{ tag }}">{{ tag|trim }}</a>{% if not loop.last %}, {% endif %}
                     {% endfor %}
                 {% endif %}
             </div>
@@ -31,7 +31,7 @@
                     {% if cache.has(relatedBlogPostsCacheID) %}
                         {% set blog = cache.get(relatedBlogPostsCacheID) %}
                     {% else %}
-                        {% set blog = entries.fetch(locale() ~ '/blog', {'collection': true}).exceptFromCollection(['content']) %}
+                        {% set blog = entries.fetch(locale ~ '/blog', {'collection': true}).exceptFromCollection(['content']) %}
                         {% do cache.set(relatedBlogPostsCacheID, blog) %}
                     {% endif %}
 

@@ -1,6 +1,7 @@
 <!doctype html>
-<html lang="{{ locale() }}">
-    {% set home = entries.fetch(locale()) %}
+{% set locale = uri|split('/').1 %}
+<html lang="{{ locale }}">
+    {% set home = entries.fetch(locale) %}
     {% set static_version = 12 %}
     <head>
         {% block head %}
@@ -11,19 +12,19 @@
             <meta name="robots" content="{% if entry.robots %}{{ entry.robots }}{% else %}{{ registry.get('plugins.site.settings.robots') }}{% endif %}">
             <meta name="generator" content="Powered by Flextype"/>
 
-            <meta name="image" content="{{ url() }}/image/{{ locale() }}/preview.png?dpr=2&w=1100&q=70">
+            <meta name="image" content="{{ url() }}/image/{{ locale }}/preview.png?dpr=2&w=1100&q=70">
 
             <meta name="twitter:card" content="summary_large_image">
             <meta name="twitter:site" content="{{ url() }}/{{ entry.id }}">
             <meta name="twitter:title" content="{{ entry.title }}">
             <meta name="twitter:description" content="{{ entry.description }}">
-            <meta name="twitter:image" content="{{ url() }}/image/{{ locale() }}/preview.png?dpr=2&w=1100&q=70">
+            <meta name="twitter:image" content="{{ url() }}/image/{{ locale }}/preview.png?dpr=2&w=1100&q=70">
 
             <meta property="og:url" content="{{ url() }}/{{ entry.id }}">
             <meta property="og:title" content="{{ entry.title }}">
             <meta property="og:description" content="{{ entry.description }}">
             <meta property="og:type" content="website">
-            <meta property="og:image" content="{{ url() }}/image/{{ locale() }}/preview.png?dpr=2&w=1100&q=70">
+            <meta property="og:image" content="{{ url() }}/image/{{ locale }}/preview.png?dpr=2&w=1100&q=70">
             <meta property="og:image:type" content="image/png">
 
             <meta name="yandex-verification" content="920bbfc83bbe3fbe" />
@@ -64,13 +65,13 @@
               <div class="w-full lg:w-2/12
                           text-center lg:text-left
                           float-left text-black tracking-wide">
-                <a href="{{ url() }}/{{ locale() }}" class="no-underline w-full lg:w-2/12 text-base logo no-underline">flextype</a>
+                <a href="{{ url() }}/{{ locale }}" class="no-underline w-full lg:w-2/12 text-base logo no-underline">flextype</a>
               </div>
               <div class="w-full float-right lg:w-9/12">
                 <div class="text-right">
                     {% for item in home.navigation %}
-                        <a href="{% if item.external %}//{{ item.link }}{% else %}{{ url() }}/{{ locale() }}/{{ item.link }}{% endif %}"
-                           class="{% if entry.slug == locale() ~ '/' ~ item.link %}active{% endif %}
+                        <a href="{% if item.external %}//{{ item.link }}{% else %}{{ url() }}/{{ locale }}/{{ item.link }}{% endif %}"
+                           class="{% if entry.slug == locale ~ '/' ~ item.link %}active{% endif %}
                                    uppercase
                                    relative
                                    block
@@ -101,25 +102,25 @@
                 <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
                     <h4>Flextype</h4>
                     <ul class="list-none m-0 p-0">
-                        <li><a href="{{ url() }}/{{ locale() }}/about">{{ home.txt_link_about }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale() }}/team">{{ home.txt_link_team }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale() }}/sponsors">{{ home.txt_link_sponsors }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale() }}/press-kit">{{ home.txt_link_press_kit }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale() }}/changelog">{{ home.txt_link_changelog }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/about">{{ home.txt_link_about }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/team">{{ home.txt_link_team }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/sponsors">{{ home.txt_link_sponsors }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/press-kit">{{ home.txt_link_press_kit }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/changelog">{{ home.txt_link_changelog }}</a></li>
                     </ul>
                 </div>
                 <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
                     <h4>{{ home.txt_link_downloads }}</h4>
                     <ul class="list-none m-0 p-0">
-                        <li><a href="{{ url() }}/{{ locale() }}/downloads">Flextype</a></li>
-                        <li><a href="{{ url() }}/{{ locale() }}/downloads/extend/plugins">{{ home.txt_link_plugins }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale() }}/downloads/extend/themes">{{ home.txt_link_themes }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/downloads">Flextype</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/downloads/extend/plugins">{{ home.txt_link_plugins }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/downloads/extend/themes">{{ home.txt_link_themes }}</a></li>
                     </ul>
                 </div>
                 <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
                     <h4>{{ home.txt_link_community }}</h4>
                     <ul class="list-none m-0 p-0">
-                        <li><a href="{{ url() }}/{{ locale() }}/discord">Discord</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/discord">Discord</a></li>
                         <li><a href="https://github.com/flextype">Github</a></li>
                         <li><a href="https://vk.com/flextype">Vkontakte</a></li>
                         <li><a href="https://twitter.com/getflextype">Twitter</a></li>
@@ -127,7 +128,7 @@
                     </ul>
                 </div>
                 <div class="w-full lg:w-6/12 mt-8 lg:mt-0">
-                    <p><a href="{{ url() }}/{{ locale() }}">Flextype</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="//digital.flextype.org" class="highlight">Sergey Romanenko</a> and <a href="https://github.com/flextype/flextype/graphs/contributors" class="highlight">Flextype Community</a></p>
+                    <p><a href="{{ url() }}/{{ locale }}">Flextype</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="//digital.flextype.org" class="highlight">Sergey Romanenko</a> and <a href="https://github.com/flextype/flextype/graphs/contributors" class="highlight">Flextype Community</a></p>
                     <p>Copyright © 2021 - <a href="https://github.com/Awilum">Sergey Romanenko</a></p>
                 </div>
             </div>
