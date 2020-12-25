@@ -8,6 +8,9 @@ jobs:
     name: Deploy
     runs-on: 'ubuntu-latest'
     steps:
+      - name: Get latest code
+        uses: actions/checkout@v2
+        
       - name: Deploy on Live
         uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
         with:
