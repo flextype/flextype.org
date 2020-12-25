@@ -12,6 +12,6 @@ declare(strict_types=1);
 use Slim\Http\Environment;
 use Slim\Http\Uri;
 
-if (! flextype()->isApiRequest()) {
+flextype('emitter')->addListener('onFlextypeBeforeRun', static function (): void {
     flextype()->get('{uri:.+}', 'SiteController:index')->setName('site.index')->add('csrf');
-}
+});
