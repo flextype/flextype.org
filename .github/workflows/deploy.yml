@@ -1,0 +1,19 @@
+name: Deploy
+on: 
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    - name: Deploy on Live
+      uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
+      with:
+        ftp_host: ${{ secrets.FTP_HOST }}
+        ftp_username: ${{ secrets.FTP_USERNAME }}
+        ftp_password: ${{ secrets.FTP_PASSWORD }}
+        local_source_dir: "."
+        dist_target_dir: ${{ secrets.FTP_TARGET_DIR }}
+        delete: "true"
+        only_newer: "true"
+        ignore_time: "false"
+
