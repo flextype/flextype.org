@@ -2,7 +2,7 @@
 title: Icon
 description: Icon plugin to present Font Awesome icons set for Flextype.
 icon: fab fa-font-awesome-flag
-keywords: icons
+category: templating, icons
 author:
   name: Sergey Romanenko
   email: support@flextype.org
