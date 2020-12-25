@@ -21,4 +21,5 @@ jobs:
           delete: "true"
           only_newer: "true"
           ignore_time: "false"
+          exclude: "'^.git/' '^.github/' '^.editorconfig' '^.gitignore' '^composer.json'"
 
