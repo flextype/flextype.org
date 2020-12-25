@@ -1,7 +1,7 @@
 <!doctype html>
 {% set locale = uri|split('/').1 %}
 <html lang="{{ locale }}">
-    {% set home = entries.fetch(locale) %}
+    {% set txt = entries.fetch(locale).txt %}
     {% set static_version = 12 %}
     <head>
         {% block head %}
@@ -69,7 +69,7 @@
               </div>
               <div class="w-full float-right lg:w-9/12">
                 <div class="text-right">
-                    {% for item in home.navigation %}
+                    {% for item in txt.navigation %}
                         <a href="{% if item.external %}//{{ item.link }}{% else %}{{ url() }}/{{ locale }}/{{ item.link }}{% endif %}"
                            class="{% if entry.slug == locale ~ '/' ~ item.link %}active{% endif %}
                                    uppercase
@@ -102,23 +102,23 @@
                 <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
                     <h4>Flextype</h4>
                     <ul class="list-none m-0 p-0">
-                        <li><a href="{{ url() }}/{{ locale }}/about">{{ home.txt_link_about }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/team">{{ home.txt_link_team }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/sponsors">{{ home.txt_link_sponsors }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/press-kit">{{ home.txt_link_press_kit }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/changelog">{{ home.txt_link_changelog }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/about">{{ txt.link_about }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/team">{{ txt.link_team }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/sponsors">{{ txt.link_sponsors }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/press-kit">{{ txt.link_press_kit }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/changelog">{{ txt.link_changelog }}</a></li>
                     </ul>
                 </div>
                 <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
-                    <h4>{{ home.txt_link_downloads }}</h4>
+                    <h4>{{ txt.link_downloads }}</h4>
                     <ul class="list-none m-0 p-0">
                         <li><a href="{{ url() }}/{{ locale }}/downloads">Flextype</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/downloads/extend/plugins">{{ home.txt_link_plugins }}</a></li>
-                        <li><a href="{{ url() }}/{{ locale }}/downloads/extend/themes">{{ home.txt_link_themes }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/downloads/extend/plugins">{{ txt.link_plugins }}</a></li>
+                        <li><a href="{{ url() }}/{{ locale }}/downloads/extend/themes">{{ txt.link_themes }}</a></li>
                     </ul>
                 </div>
                 <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
-                    <h4>{{ home.txt_link_community }}</h4>
+                    <h4>{{ txt.link_community }}</h4>
                     <ul class="list-none m-0 p-0">
                         <li><a href="{{ url() }}/{{ locale }}/discord">Discord</a></li>
                         <li><a href="https://github.com/flextype">Github</a></li>
@@ -136,7 +136,7 @@
                 <div class="w-full mt-8 lg:mt-0">
                     <a href="{{ url() }}/en" class="text-sm">English</a> /
                     <a href="{{ url() }}/ru" class="text-sm">Русский</a>
-                    <a href="{{ url() }}/sitemap.xml" class="float-right text-sm" title="Sitemap">{{ icon('fas fa-sitemap') }}</a>
+                    <a href="{{ url() }}/sitemap.xml" class="float-right text-sm icon-svg-small icon-svg-white" title="Sitemap">{{ icon('fas fa-sitemap') }}</a>
                 </div>
             </div>
         </footer>

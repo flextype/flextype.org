@@ -7,7 +7,7 @@
                 <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/plugins/{{ name }}">{{ entry.title }}</a></h1>
             </div>
             <div>
-                <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/blog">Blog</a></span>
+                <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/blog">{{ txt.blog }}</a></span>
             </div>
         </div>
         <div>
@@ -15,51 +15,16 @@
             <div class="mt-10">
                 <b>Date:</b>
                 {{ entry.published_at|date(registry.get('flextype.settings.date_display_format')) }}
-                <b>Tags:</b>
+                <b>{{ txt.tags }}:</b>
                 {% if entry.tags is not empty %}
                     {% for tag in entry.tags|split(',') %}
                         <a class="no-underline" href="{{ url() }}/{{ locale }}/blog?tag={{ tag }}">{{ tag|trim }}</a>{% if not loop.last %}, {% endif %}
                     {% endfor %}
                 {% endif %}
             </div>
-            <div>
-                {% if entry.tags is not empty %}
-                    {% set tags = entry.tags|split(',') %}
-                    {% set related_posts = [] %}
-
-                    {% set relatedBlogPostsCacheID = strings('relatedBlogPostsCacheID' ~ entry.id).hash().toString() %}
-                    {% if cache.has(relatedBlogPostsCacheID) %}
-                        {% set blog = cache.get(relatedBlogPostsCacheID) %}
-                    {% else %}
-                        {% set blog = entries.fetch(locale ~ '/blog', {'collection': true}).exceptFromCollection(['content']) %}
-                        {% do cache.set(relatedBlogPostsCacheID, blog) %}
-                    {% endif %}
-
-                    {% for tag in tags %}
-                        {% set related_posts = related_posts|merge(blog.copy()
-                                                                       .where('tags', 'contains', tag)
-                                                                       .where('visibility', 'nin', ['draft', 'hidden'])
-                                                                       .sortBy('published_at', 'DESC')
-                                                                       .limit(6)) %}
-                    {% endfor %}
-
-                    {% if related_posts|length > 0 %}
-                    <hr class="mt-6 mb-6 border-2">
-                    <div class="p-2 text-black mb-6">
-                        <h4>Related Posts</h4>
-                        {% for related_post in related_posts %}
-                            {% if related_post.slug != entry.slug %}
-                            <a href="{{ url() }}/{{ related_post.id }}" class="flex align-middle mb-6 px-6 post">
-                                <h4 class="w-8/12 text-xl pb-0 mb-0">{{ related_post.title }}</h4>
-                                <div class="w-4/12 text-xl text-right opacity-50">
-                                    {{ related_post.published_at|date(registry.get('flextype.settings.date_display_format')) }}
-                                </div>
-                            </a>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                {% endif %}
+            <hr class="mt-6 border-2">
+            <div class="mt-6 mb-6">
+                <a href="{{ url() }}/{{ locale }}/discord">Discuss this post</a>
             </div>
         </div>
     </div>

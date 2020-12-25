@@ -17,7 +17,7 @@
     "url": "https://github.com/flextype-plugins/icon/issues"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "5.14.0",
+    "@fortawesome/fontawesome-free": "5.15.1",
     "gulp": "4.0.2"
   }
 }

@@ -70,7 +70,7 @@
                 <a href="{{ url() }}/{{ post.id }}" class="flex align-middle mb-6 px-6 post">
                     <h4 class="w-full text-xl pb-0 mb-0">{{ post.title }}</h4>
                     <div class="text-xs text-center text-gray-800 px-2 pb-2 absolute right-0 bottom-0">
-                        <b>{{ post.published_at|date(registry.get('flextype.settings.date_display_format')) }}</b>, {{ entry.txt_by }} <b>{{ post.author.name }}</b>
+                        <b>{{ post.published_at|date(registry.get('flextype.settings.date_display_format')) }}</b>, {{ txt.by }} <b>{{ post.author.name }}</b>
                     </div>
                 </a>
                 {% endfor %}
