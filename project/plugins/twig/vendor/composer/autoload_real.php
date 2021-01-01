@@ -45,7 +45,7 @@ class ComposerAutoloaderInitaee8019807679bc0e5ab9ecb81261368
             }
         }
 
-        $loader->setApcuPrefix('FMimgGm1/LffnDQpSXt+1');
+        $loader->setApcuPrefix('/GPAeC0EnJxDJKefonEMh');
         $loader->register(true);
 
         if ($useStaticLoader) {
