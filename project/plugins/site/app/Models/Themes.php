@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Flextype (http://flextype.org)
+ * Flextype (https://flextype.org)
  * Founded by Sergey Romanenko and maintained by Flextype Community.
  */
 
@@ -20,16 +20,6 @@ use function md5;
 
 class Themes
 {
-    /**
-     * Private construct method to enforce singleton behavior.
-     *
-     * @access private
-     */
-    public function __construct()
-    {
-
-    }
-
     /**
      * Init themes
      */

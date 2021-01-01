@@ -17,9 +17,7 @@ use Flextype\Plugin\Site\Models\Themes;
 /**
  * Add themes service to Flextype container
  */
-flextype()->container()['themes'] = static function () {
-    return new Themes();
-};
+flextype()->container()['themes'] = fn() => new Themes();
 
 /**
  * Init themes
@@ -29,10 +27,7 @@ flextype()->container()['themes']->init();
 /**
  * Add site controller to Flextype container
  */
-flextype()->container()['SiteController'] = static function () {
-    return new SiteController();
-};
+flextype()->container()['SiteController'] = fn() => new SiteController();
 
-
-$bootstrapPath = PATH['project']. '/themes/' . flextype('registry')->get('plugins.site.settings.theme') . '/bootstrap.php';
-filesystem()->file($bootstrapPath)->exists() and include_once $bootstrapPath;
+$themeBootstrapPath = PATH['project']. '/themes/' . flextype('registry')->get('plugins.site.settings.theme') . '/theme.php';
+filesystem()->file($themeBootstrapPath)->exists() and include_once $themeBootstrapPath;

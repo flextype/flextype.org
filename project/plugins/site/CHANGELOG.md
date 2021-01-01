@@ -1,3 +1,33 @@
+<a name="1.8.0"></a>
+# [1.8.0](https://github.com/flextype-plugins/site/compare/v1.7.0...v1.8.0) (2020-12-30)
+
+### Features
+
+* **core** update code base for new Flextype 0.9.14
+* **core** Moving to PHP 7.4
+* **core** use new TWIG Plugin 1.7.0
+* **routes** use new `onFlextypeBeforeRun` event for site routing.
+
+BREAKING CHANGES
+
+* removed `$entry` property, use entries storage functionality instead.
+* removed even `onSiteEntryAfterInitialized`, use event `onEntriesFetchSingleHasResult` instead.
+* removed template variable `query` and `uri`, use an full power of new `$request` variable.
+
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/flextype-plugins/site/compare/v1.6.1...v1.7.0) (2020-12-23)
+
+### Features
+
+* **core** add ability to use variables $args and $request inside templates
+
+<a name="1.6.1"></a>
+# [1.6.1](https://github.com/flextype-plugins/site/compare/v1.6.0...v1.6.1) (2020-12-20)
+
+### Bug Fixes
+
+* **bootstrap** fix and improve bootstrap loading.
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/flextype-plugins/site/compare/v1.5.0...v1.6.0) (2020-12-20)
 

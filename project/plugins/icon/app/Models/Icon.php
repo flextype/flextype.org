@@ -15,15 +15,6 @@ use Flextype\Component\Filesystem\Filesystem;
 
 class Icon
 {
-
-    /**
-     * __construct
-     */
-     public function __construct()
-     {
-
-     }
-
     public static function icon($value = null) : string
     {
         $icon_fallback_file_path = PATH['project'] . '/plugins/icon/assets/dist/fontawesome/svgs/regular/file-alt.svg';

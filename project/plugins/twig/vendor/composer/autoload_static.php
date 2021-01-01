@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitaee8019807679bc0e5ab9ecb81261368
+class ComposerStaticInitf9239916c3b4448c16f4517c6c1f8772
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -78,30 +78,24 @@ class ComposerStaticInitaee8019807679bc0e5ab9ecb81261368
         'Flextype\\Component\\Arrays\\Arrays' => __DIR__ . '/..' . '/flextype-components/arrays/src/Arrays.php',
         'Flextype\\Component\\Filesystem\\Filesystem' => __DIR__ . '/..' . '/flextype-components/filesystem/Filesystem.php',
         'Flextype\\Plugin\\Twig\\Twig\\ArraysTwigExtension' => __DIR__ . '/../..' . '/twig/ArraysTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\CacheTwigExtension' => __DIR__ . '/../..' . '/twig/CacheTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\ConstantsTwigExtension' => __DIR__ . '/../..' . '/twig/ConstantsTwigExtension.php',
         'Flextype\\Plugin\\Twig\\Twig\\CsrfTwigExtension' => __DIR__ . '/../..' . '/twig/CsrfTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\EmitterTwig' => __DIR__ . '/../..' . '/twig/EmitterTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\EmitterTwigExtension' => __DIR__ . '/../..' . '/twig/EmitterTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\EntriesTwig' => __DIR__ . '/../..' . '/twig/EntriesTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\EntriesTwigExtension' => __DIR__ . '/../..' . '/twig/EntriesTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\EntriesTwig' => __DIR__ . '/../..' . '/twig/FlextypeTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\FilesystemDirectoryTwig' => __DIR__ . '/../..' . '/twig/FilesystemTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\FilesystemFileTwig' => __DIR__ . '/../..' . '/twig/FilesystemTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\FilesystemTwig' => __DIR__ . '/../..' . '/twig/FilesystemTwigExtension.php',
         'Flextype\\Plugin\\Twig\\Twig\\FilesystemTwigExtension' => __DIR__ . '/../..' . '/twig/FilesystemTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\FlashTwigExtension' => __DIR__ . '/../..' . '/twig/FlashTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\GlobalVarsTwigExtension' => __DIR__ . '/../..' . '/twig/GlobalVarsTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\FiltersTwigExtension' => __DIR__ . '/../..' . '/twig/FiltersTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\FlextypeTwig' => __DIR__ . '/../..' . '/twig/FlextypeTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\FlextypeTwigExtension' => __DIR__ . '/../..' . '/twig/FlextypeTwigExtension.php',
         'Flextype\\Plugin\\Twig\\Twig\\I18nTwigExtension' => __DIR__ . '/../..' . '/twig/I18nTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\JsonTwigExtension' => __DIR__ . '/../..' . '/twig/JsonTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\MarkdownTwigExtension' => __DIR__ . '/../..' . '/twig/MarkdownTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\MediaTwig' => __DIR__ . '/../..' . '/twig/MediaTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\MediaTwigExtension' => __DIR__ . '/../..' . '/twig/MediaTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\MediaTwigFiles' => __DIR__ . '/../..' . '/twig/MediaTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\MediaTwigFilesMeta' => __DIR__ . '/../..' . '/twig/MediaTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\MediaTwigFolders' => __DIR__ . '/../..' . '/twig/MediaTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\MediaTwigFoldersMeta' => __DIR__ . '/../..' . '/twig/MediaTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\RegistryTwig' => __DIR__ . '/../..' . '/twig/RegistryTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\RegistryTwigExtension' => __DIR__ . '/../..' . '/twig/RegistryTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\ShortcodeTwigExtension' => __DIR__ . '/../..' . '/twig/ShortcodeTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\MediaFilesMetaTwig' => __DIR__ . '/../..' . '/twig/FlextypeTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\MediaFilesTwig' => __DIR__ . '/../..' . '/twig/FlextypeTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\MediaFoldersMetaTwig' => __DIR__ . '/../..' . '/twig/FlextypeTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\MediaFoldersTwig' => __DIR__ . '/../..' . '/twig/FlextypeTwigExtension.php',
+        'Flextype\\Plugin\\Twig\\Twig\\MediaTwig' => __DIR__ . '/../..' . '/twig/FlextypeTwigExtension.php',
         'Flextype\\Plugin\\Twig\\Twig\\StringsTwigExtension' => __DIR__ . '/../..' . '/twig/StringsTwigExtension.php',
         'Flextype\\Plugin\\Twig\\Twig\\UrlTwigExtension' => __DIR__ . '/../..' . '/twig/UrlTwigExtension.php',
-        'Flextype\\Plugin\\Twig\\Twig\\YamlTwigExtension' => __DIR__ . '/../..' . '/twig/YamlTwigExtension.php',
         'Psr\\Http\\Message\\MessageInterface' => __DIR__ . '/..' . '/psr/http-message/src/MessageInterface.php',
         'Psr\\Http\\Message\\RequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/RequestInterface.php',
         'Psr\\Http\\Message\\ResponseInterface' => __DIR__ . '/..' . '/psr/http-message/src/ResponseInterface.php',
@@ -294,9 +288,9 @@ class ComposerStaticInitaee8019807679bc0e5ab9ecb81261368
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitaee8019807679bc0e5ab9ecb81261368::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitaee8019807679bc0e5ab9ecb81261368::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitaee8019807679bc0e5ab9ecb81261368::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf9239916c3b4448c16f4517c6c1f8772::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf9239916c3b4448c16f4517c6c1f8772::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf9239916c3b4448c16f4517c6c1f8772::$classMap;
 
         }, null, ClassLoader::class);
     }

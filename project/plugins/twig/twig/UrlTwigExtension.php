@@ -16,14 +16,6 @@ use Slim\Http\Uri;
 class UrlTwigExtension extends AbstractExtension
 {
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-
-    }
-
-    /**
      * Callback for twig.
      *
      * @return array

@@ -15,14 +15,6 @@ use Twig\Extension\GlobalsInterface;
 class CsrfTwigExtension extends AbstractExtension implements GlobalsInterface
 {
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-
-    }
-
-    /**
      * Register Global variables in an extension
      */
     public function getGlobals() : array

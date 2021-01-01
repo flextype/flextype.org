@@ -1,10 +1,17 @@
 <h1 align="center">Twig Plugin for <a href="https://flextype.org/">Flextype</a></h1>
 
 <p align="center">
-<a href="https://github.com/flextype-plugins/twig/releases"><img alt="Version" src="https://img.shields.io/github/release/flextype-plugins/twig.svg?label=version&color=black"></a> <a href="https://github.com/flextype-plugins/twig"><img src="https://img.shields.io/badge/license-MIT-blue.svg?color=black" alt="License"></a> <a href="https://github.com/flextype-plugins/twig"><img src="https://img.shields.io/github/downloads/flextype-plugins/twig/total.svg?color=black" alt="Total downloads"></a> <a href="https://github.com/flextype-plugins/twig"><img src="https://img.shields.io/badge/Flextype-0.9.13-green.svg?color=black" alt="Flextype"></a> <a href="https://flextype.org/en/discord"><img src="https://img.shields.io/discord/423097982498635778.svg?logo=discord&color=black&label=Discord%20Chat" alt="Discord"></a>
+<a href="https://github.com/flextype-plugins/twig/releases"><img alt="Version" src="https://img.shields.io/github/release/flextype-plugins/twig.svg?label=version&color=black"></a> <a href="https://github.com/flextype-plugins/twig"><img src="https://img.shields.io/badge/license-MIT-blue.svg?color=black" alt="License"></a> <a href="https://github.com/flextype-plugins/twig"><img src="https://img.shields.io/github/downloads/flextype-plugins/twig/total.svg?color=black" alt="Total downloads"></a> <a href="https://github.com/flextype-plugins/twig"><img src="https://img.shields.io/badge/Flextype-0.9.14-green.svg?color=black" alt="Flextype"></a> <a href="https://flextype.org/en/discord"><img src="https://img.shields.io/discord/423097982498635778.svg?logo=discord&color=black&label=Discord%20Chat" alt="Discord"></a>
 </p>
 
 Twig plugin to present Twig template engine for Flextype.
+
+* [Dependencies](#dependencies)
+* [Installation](#installation)
+* [Global Variables](#global-variables)
+* [Functions](#functions)
+* [Filters](#filters)
+* [License](#license)
 
 ## Dependencies
 
@@ -12,7 +19,7 @@ The following dependencies need to be installed for Twig Plugin.
 
 | Item | Version | Download |
 |---|---|---|
-| [flextype](https://github.com/flextype/flextype) | 0.9.13 | [download](https://github.com/flextype/flextype/releases) |
+| [flextype](https://github.com/flextype/flextype) | 0.9.14 | [download](https://github.com/flextype/flextype/releases) |
 
 ## Installation
 
@@ -20,468 +27,178 @@ The following dependencies need to be installed for Twig Plugin.
 2. Create new folder `/project/plugins/twig`
 3. Download Twig Plugin and unzip plugin content to the folder `/project/plugins/twig`
 
-## Documentation
+### Introduction
 
-### Twig Filters & Functions
+Twig is a modern template engine for PHP.
 
-Twig already provides an extensive list of [filters, functions, and tags](https://twig.symfony.com/doc/2.x/), Flextype also provides a selection of useful additions to make the process of theming easier.
+* **Fast**: Twig compiles templates down to plain optimized PHP code. The overhead compared to regular PHP code was reduced to the very minimum.
+* **Secure**: Twig has a sandbox mode to evaluate untrusted template code. This allows Twig to be used as a template language for applications where users may modify the template design.
+* **Flexible**: Twig is powered by a flexible lexer and parser. This allows the developer to define its own custom tags and filters, and create its own DSL.
 
-#### Flextype Twig Filters
+Twig templates are HTML files that are sprinkled with bits of Twig code. When Twig loads a template, the first thing it will do is separate the raw HTML code from the Twig code. The raw HTML code will be output to the browser without any tampering.
 
-Twig filters are applied to Twig variables by using the `|` character followed by the filter name. Parameters can be passed in just like Twig functions using parenthesis.
+All Twig code follows a basic pattern that separates it from the surrounding HTML. At its outer edges you will find left and right curly braces {{ and }}, coupled with another character that signifies what type of Twig code it is. These sets of characters are called “delimiters”.
 
-##### shortcode
+There are three types of delimiters that Twig looks out for:
 
-Parse shortcode
+`{#` – [Comments](#comments)  
+`{%` – [Tags](#tags)  
+`{{` – [Print statements](#print-statements)  
 
-Usage:
+#### <a name="comments"></a> Comments
 
-```twig
-{{ '[b]Bold text[/b]'|shortcode }}
+Twig comments are wrapped in {# and #} delimiters. You can use them to leave little notes for yourself in the code.
+
+They are similar to HTML comments in that they won’t show up as rendered text in the browser. The difference is that they will never make it into the HTML source in the first place.
+
+```
+<!-- This will be visible in the HTML source -->
+{# This won’t! #}
 ```
 
-Result:
+#### <a name="tags"></a> Tags
 
-**Bold text**
+Twig tags are wrapped in {% and %} delimiters, and are used to define the logic of your template, such as conditionals, loops, variable definitions, template includes, and other things.
 
-##### markdown
+The syntax within the {% and %} delimiters varies from tag to tag, but they will always start with the same thing: the name of the tag.
 
-Parse markdown
+#### <a name="print-statements"></a> Print Statements
 
-Usage: markdown
+To output additional HTML code dynamically, use a print statement. They are wrapped in {{ and }} delimiters, and you can put just about anything inside them, as long as it can be treated as a string.
 
-```twig
-{{ '**Bold text**'|markdown }}
+```
+<p>Hi, {{ entry.title }}</p>
 ```
 
-Result:
+Don’t place a print statement (or any other Twig code) within another print statement. [See Combining Strings to learn how to combine strings with other expressions](#combining-strings).
 
-**Bold text**
+#### <a name="auto-escaping"></a> Auto-escaping
 
-##### tr
+Most of the time, print statements will automatically HTML-encode the content before actually outputting it (called auto-escaping), which helps defend against cross-site scripting (XSS) vulnerabilities.
 
-Translate text
+For example, let’s say you have a search results page, where the search query is defined by a q query string parameter, and in the event that there are no results, you want to output a message to the user that includes the query:
 
-Usage:
-```twig
-{{ 'site_powered_by_flextype'|tr }}
 ```
+{% set query = request.getQueryParam().q %}
 
-Result:
+{% set entries = flextype.entries.fetch('blog', {'collection': true})
+                                 .where('title', 'contains', query)
+                                 .all() %}
 
-Build fast, flexible, easier to manage websites with
-<a href="https://flextype.org">Flextype</a>.
-
-Multiple filters can be chained. The output of one filter is applied to the next.
-
-Usage:
-```twig
-{{ '[b]Bold text[/b] *Italic text*'|shortcode|markdown }}
-```
-
-Result:
-
-**Bold text** *Italic text*
-
-#### Flextype Twig Functions
-
-Twig functions are called directly with any parameters being passed in via parenthesis.
-
-##### yaml_decode
-
-Decode valid yaml string into array
-
-Usage:
-```twig
-{{ yaml_decode('title: Hello World!').title }}
-```
-
-Result:
-```twig
-Hello World!
-```
-
-##### yaml_encode
-
-Encode array into valid yaml string
-
-Usage:
-```twig
-{{ yaml_encode({'title': 'Hello World!'})}}
-```
-
-Result:
-```yaml
-title: 'Hello World!'
-```
-
-##### json_decode
-
-Decode valid json string into array
-
-Usage:
-```twig
-{{ json_decode('{"title": "Hello World!"}').title }}
-```
-
-Result:
-```twig
-Hello World!
-```
-
-##### json_encode
-
-Encode array into valid json string
-
-Usage:
-```twig
-{{ json_encode({'title': 'Hello World!'})}}
-```
-
-Result:
-```json
-{"title": "Hello World!"}
-```
-
-##### tr or __
-
-Translate string
-
-Usage:
-```twig
-{{ tr('site_powered_by_flextype') }}
-{{ __('site_powered_by_flextype') }}
-```
-
-Result:
-
-Build fast, flexible, easier to manage websites with
-<a href="https://flextype.org">Flextype</a>.
-
-##### filesystem_list_contents
-
-List contents of a directory
-
-Usage:
-
-```twig
-{% set media = filesystem_list_contents(PATH_UPLOADS ~ '/' ~ entry.id) %}
-```
-
-Result:
-
-array (media)
-
-##### filesystem_has
-
-Check whether a file exists
-
-Usage:
-```twig
-{% if (filesystem_has(PATH_PROJECT ~ '/media/' ~ entry.id ~ '/about.md')) %}
-    Show something...
+{% if entries %}
+  <h3>Search Results</h3>
+  <ul>
+    {% for entry in entries %}
+      <li>{{ entry.id }}</li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Sorry, no results for <strong>{{ query }}</strong> were found.</p>
 {% endif %}
 ```
 
-##### filesystem_read
-
-Read a file
-
-Usage:
-```twig
-{{ filesystem_read(PATH_PROJECT ~ '/media/' ~ entry.id ~ '/about.md') }}
-```
-
-Result:
+If it weren’t for auto-escaping, a search for <script>alert('Danger!!!')</script> would result in this HTML:
 
 ```
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<p>Sorry, no results for <strong><script>alert('Danger!!!')</script></strong>.</p>
 ```
 
-##### filesystem_ext
+Which would cause JavaScript to execute on the page, even though it wasn’t part of the original Twig template. But thanks to auto-escaping, you’d actually end up with this HTML:
 
-Get file extension
-
-Usage:
-```twig
-{{ filesystem_ext(PATH_PROJECT ~ '/media/' ~ entry.id ~ '/about.md') }}
+```
+<p>Sorry, no results for <strong>&lt;script&gt;alert('Danger!!!')&lt;/script&gt;</strong>.</p>
 ```
 
-Result:
+There are two cases where print statements will output content directly, without auto-escaping it first:
 
-.md
+* When the content is deemed safe by the last tag or function that was called within the print statement (such as the markdown filter).
+* When you explicitly mark the content as safe using a raw filter.
 
-##### filesystem_basename
+#### <a name="manual-escaping"></a> Manual escaping
 
-Get filename
+There are times where you may need to work with both trusted and untrusted content together. For example, let’s say you want to output user-supplied content as Markdown, but you want to ensure they haven’t put anything nefarious in there first.
 
-Usage:
+To do that, you could explicitly encode all HTML within the user-supplied content using the escape (opens new window) filter, before passing it to the markdown filter:
 
-```twig
-{{ filesystem_basename(PATH_PROJECT ~ '/media/' ~ entry.id ~ '/about.md') }}
+```
+{# Escape any HTML in the Content field, then format as Markdown #}
+{{ entry.content|escape|markdown }}
 ```
 
-Result:
+#### <a name="resources"></a> Resources
 
-entry
+* [Official Twig Documentation](http://twig.sensiolabs.org/documentation)
+* [Twig for Template Designers](http://twig.sensiolabs.org/doc/templates.html)
+* [Twig for Developers](http://twig.sensiolabs.org/doc/api.html)
+* [6 Minute Video Introduction to Twig](http://www.dev-metal.com/6min-video-introduction-twig-php-templating-engine/)
+* [Introduction to Twig](http://www.slideshare.net/markstory/introduction-to-twig)
 
-##### path_for
+### <a name="global-variables"></a> Global Variables
 
-Returns the URL for a given route.
+The following Flextype Twig Global variables are available in Flextype Twig Templates:
 
-Usage:
-```twig
-{{ path_for('profile') }}
+| Variable | Description |
+|---|---|
+| _self | The current template name. |
+| _context | The currently-defined variables. |
+| _charset | The current charset. |
+| PATH_PROJECT | Project path (without trailing slash). |
+| PHP_VERSION | PHP Version. |
+| flextype | Returns Flextype object. |
+
+#### PATH_PROJECT
+
+Project path (without trailing slash).
+
+```
+{{ PATH_PROJECT }}
 ```
 
-##### base_url
+#### PHP_VERSION
 
-Returns the Uri object's base URL.
+PHP Version.
 
-Usage:
-```twig
-{{ base_url() }}
+```
+{{ PHP_VERSION }}
 ```
 
-##### url
-
-Returns the Uri object's App URL.
-
-Usage:
-```twig
-{{ url() }}
-```
-
-##### is_current_path
-
-Returns true is the provided route name and parameters are valid for the current path.
-```twig
-{% if is_current_path('profile') %}
-    Show profile page
-{% endif %}
-```
-
-##### current_path
-
-Renders the current path, with or without the query string.
-```twig
-{{ current_path() }}
-```
-
-### Twig Variables
-
-When you are working with twig templates, for e.g. when you designing a theme, Twig Plugin gives you access to all sorts of objects and variables available in Flextype within your Twig templates. The Twig templating framework provides powerful ways to read and manipulate these objects and variables.
-
-#### Core Objects
-
-There are several **core objects** that are available to a Twig template, and each object has a set of **variables** and **functions**.
-
-#### registry
-
-Registry stored all flextype, themes and plugins settings.<br>
-You can access Flextype registry via the registry object.
-
-Usage:
-
-```twig
-{{ registry.flextype.theme }} {# returns the currently configured theme #}
-```
-
-##### entry
-
-Because Flextype is built using the structure defined in the `/project/entries/` folder, each entry is represented by a entry object.
-
-The entry object is probably the most important object you will work with as it contains all the information about the current page you are currently on.
-
-Usage:
-
-```twig
-{{ entry.title }} {# returns the current entry title #}
-```
-
-##### entries
-
-Fetch single entry
-
-Usage:
-
-```twig
-{% set about_entry = entries.fetch('about') %}
-```
-
-Fetch collection of entries
-
-Usage:
-
-```twig
-{% set posts = entries.fetch('blog', {'collection': true}) %}
-```
-
-##### emitter
-
-Emitting events
-
-Usage:
-```twig
-{% do emitter.emit('onThemeHeader') %}
-```
-
-Emitting events in batches
-
-Usage:
-
-```twig
-{% do emitter.emitBatch({'onThemeHeader', 'onSomeOtherEvent'}) %}
-```
-
-##### arr
-
-Contains methods that can be useful when working with arrays.
-
-Sorts a multi-dimensional array by a certain column
-
-Usage:
-
-```twig
-{% set new_array = arr.sort(old.array, 'title') %}
-```
-
-Sets an array value using "dot notation".
-
-Usage:
-
-```twig
-{% set entry = arr.set(entry, 'title', 'New Title') %}
-```
-
-Return value from array using "dot notation".
-If the key does not exist in the array, the default value will be returned instead.
-
-Usage:
-
-```twig
-{{ arr.get(entry, 'title') }}
-```
-
-Delete an array value using "dot notation".
-
-Usage:
-
-```twig
-{% set entry = arr.delete(entry, 'title') %}
-```
-
-Checks if the given dot-notated key exists in the array.
-
-Usage:
-
-```twig
-{% if arr.keyExists(entry, 'title') %}
-    Do something...
-{% endif %}
-```
-
-Returns a random value from an array.
-
-Usage:
-
-```twig
-{{ arr.random(['php', 'js', 'css', 'html']) }}
-```
-
-Returns TRUE if the array is associative and FALSE if not.
-
-Usage:
-
-```twig
-{% if arr.isAssoc(entry) %}
-    Do something...
-{% endif %}
-```
-
-Returns TRUE if the array is associative and FALSE if not.
-
-Usage:
-
-```twig
-{% set array1 = {'name': 'john', 'mood': 'happy', 'food': 'bacon'} %}
-{% set array2 = {'name': 'jack', 'food': 'tacos', 'drink': 'beer'} %}
-{% set array3 = arr.overwrite(array1, array2) %}
-```
-
-Converts an array to a JSON string
-
-Usage:
-
-```twig
-{{ arr.json(entry) }}
-```
-
-Returns the first element of an array
-
-Usage:
-
-```twig
-{{ arr.first(entry) }}
-```
-
-Returns the last element of an array
-
-Usage:
-
-```twig
-{{ arr.last(entry) }}
-```
-
-Converts an array to a JSON string
-
-Usage:
-
-```twig
-{{ arr.toJson(entry) }}
-```
-
-Create an new Array from JSON string.
-
-Usage:
-
-```twig
-{% set array = arr.createFromJson($string) %}
-```
-
-Create an new Array object via string.
-
-Usage:
-
-```twig
-{% set array = arr.createFromString('cat, dog, bird', ',') %}
-```
-
-Counts all elements in an array.
-
-Usage:
-
-```twig
-{{ arr.size(array) }}
-```
-
-Return an array with elements in reverse order.
-
-Usage:
-
-```twig
-{% set new_array = arr.reverse(old_array) %}
-```
-
-#### Global Variables
-
-```twig
-{{ PATH_PROJECT }} {# Returns the path to the project directory (without trailing slash). #}
-{{ PATH_LOGS }} {# Returns the path to the logs directory (without trailing slash). #}
-{{ PATH_CONFIG }} {# Returns the path to the default config directory (without trailing slash). #}
-{{ PATH_CACHE }} {# Returns the path to the cache directory (without trailing slash). #}
-{{ PHP_VERSION }} {# Returns the php version #}
-```
+#### flextype
+
+Returns Flextype object, which provides access points to various helper functions and objects for templates.
+
+| Objects | Available Methods |
+|---|---|
+| `flextype.entries` | [fetch()](https://docs.flextype.org/en/core/entries#methods-fetch)
+| `flextype.media.files` | [fetch()](https://docs.flextype.org/en/core/media#methods-files-fetch) [has()](https://docs.flextype.org/en/core/media#methods-files-has) |
+| `flextype.media.files.meta` | [getFileMetaLocation()](https://docs.flextype.org/en/core/media#methods-files-meta-getFileMetaLocation) |
+| `flextype.media.folders` | [fetch()](https://docs.flextype.org/en/core/media#methods-folders-fetch) [getDirectoryLocation()](https://docs.flextype.org/en/core/media#methods-folders-getDirLocation) |
+| `flextype.media.folders.meta` | [getDirMetaLocation()](https://docs.flextype.org/en/core/media#methods-folders-meta-getDirMetaLocation) |
+| `flextype.registry` | [all methods available](https://docs.flextype.org/en/core/registry) |
+| `flextype.parsers` | [all methods available](https://docs.flextype.org/en/core/parsers) |
+| `flextype.serializers` | [all methods available](https://docs.flextype.org/en/core/serializers) |
+| `flextype.cache` | [all methods available](https://www.phpfastcache.com) |
+| `flextype.emitter` | [all methods available](https://event.thephpleague.com/2.0/) |
+
+### <a name="functions"></a> Functions
+
+The following Flextype Twig Functions are available in Flextype Twig Templates:
+
+| Variable | Description |
+|---|---|
+| arrays | Returns a new arrays object from the given elements. |
+| strings | Returns a new strings object from the given string. |
+| filesystem | Returns a new filesystem object from the given string. |
+| url | Returns application URL. |
+
+### <a name="filters"></a> Filters
+
+The following Flextype Twig Filters are available in Flextype Twig Templates:
+
+| Variable | Description |
+|---|---|
+| __ | Translate string |
+| shortcode | Shortcode parser |
+| markdown | Markdown parser |
 
 ## LICENSE
 [The MIT License (MIT)](https://github.com/flextype-plugins/twig/blob/master/LICENSE.txt)

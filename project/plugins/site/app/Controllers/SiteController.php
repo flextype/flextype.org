@@ -21,14 +21,6 @@ use Flextype\Component\Filesystem\Filesystem;
 class SiteController
 {
     /**
-     * Current entry data array
-     *
-     * @var array
-     * @access private
-     */
-    public $entry = [];
-
-    /**
      * Index page
      *
      * @param Request  $request  PSR7 request
@@ -44,7 +36,7 @@ class SiteController
         $uri = $args['uri'];
 
         // Is JSON Format
-        $is_json = isset($query['format']) && $query['format'] === 'json';
+        $isJson = isset($query['format']) && $query['format'] === 'json';
 
         // If uri is empty then it is main entry else use entry uri
         if ($uri === '/') {
@@ -57,7 +49,7 @@ class SiteController
         $entry_body = flextype('entries')->fetch($entry_uri)->toArray();
 
         // is entry not found
-        $is_entry_not_found = false;
+        $isEntryNotFound = false;
 
         // If entry body is not false
         if (is_array($entry_body) and count($entry_body) > 0) {
@@ -65,28 +57,22 @@ class SiteController
             if ((isset($entry_body['visibility']) && ($entry_body['visibility'] === 'draft' || $entry_body['visibility'] === 'hidden')) ||
                 (isset($entry_body['routable']) && ($entry_body['routable'] === false))) {
                 $entry              = $this->error404();
-                $is_entry_not_found = true;
+                $isEntryNotFound = true;
             } else {
                 $entry = $entry_body;
             }
         } else {
-            $entry              = $this->error404();
-            $is_entry_not_found = true;
+            $entry           = $this->error404();
+            $isEntryNotFound = true;
         }
 
-        // Set entry
-        $this->entry = $entry;
-
-        // Run event onSiteEntryAfterInitialized
-        flextype('emitter')->emit('onSiteEntryAfterInitialized');
-
         // Return in JSON Format
-        if ($is_json) {
-            if ($is_entry_not_found) {
-                return $response->withJson($this->entry, 404);
+        if ($isJson) {
+            if ($isEntryNotFound) {
+                return $response->withJson($entry, 404);
             }
 
-            return $response->withJson($this->entry);
+            return $response->withJson($entry);
         }
 
         // ========== custom code here ==========
@@ -96,17 +82,21 @@ class SiteController
         // ========== custom code here ==========
 
         // Set template path for current entry
-        $path = 'themes/' . flextype('registry')->get('plugins.site.settings.theme') . '/' . (empty($this->entry['template']) ? 'templates/default' : 'templates/' . $this->entry['template']) . '.html';
+        $path = 'themes/' . flextype('registry')->get('plugins.site.settings.theme') . '/' . (empty($entry['template']) ? 'templates/default' : 'templates/' . $entry['template']) . '.html';
 
         if (! Filesystem::has(PATH['project'] . '/' . $path)) {
-            return $response->write("Template {$this->entry['template']} not found");
+            return $response->write("Template {$entry['template']} not found");
         }
 
-        if ($is_entry_not_found) {
-            return flextype('twig')->render($response->withStatus(404), $path, ['entry' => $this->entry, 'query' => $query, 'uri' => $uri]);
+        $data = ['entry'   => $entry,
+                 'args'    => $args,
+                 'request' => $request];
+
+        if ($isEntryNotFound) {
+            return flextype('twig')->render($response->withStatus(404), $path, $data);
         }
 
-        return flextype('twig')->render($response, $path, ['entry' => $this->entry, 'query' => $query, 'uri' => $uri]);
+        return flextype('twig')->render($response, $path, $data);
     }
 
     /**

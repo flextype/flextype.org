@@ -1,3 +1,24 @@
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/flextype-plugins/twig/compare/v1.6.0...v1.7.0) (2020-12-30)
+
+### Features
+
+* **core** update code base for new Flextype 0.9.14
+* **core** Moving to PHP 7.4
+* **core** use new TWIG Plugin 1.7.0
+* **extension** new Constants Extension
+* **extension** new Filesystem Extension
+* **extension** new Flextype Extension
+* **extension** new Filters Extension
+
+New docs on the way here https://github.com/flextype-plugins/twig/
+
+BREAKING CHANGES
+
+* in the templates use `flextype.registry` instead of `registry`
+* in the templates use `flextype.entries` instead of `entries`
+* in the templates use `flextype.media` instead of `media_*`
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/flextype-plugins/twig/compare/v1.5.1...v1.6.0) (2020-12-20)
 

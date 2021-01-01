@@ -16,7 +16,7 @@
       "issues": "https://github.com/flextype-plugins/site/issues"
     },
     "require": {
-        "php": ">=7.3.0",
+        "php": ">=7.4.0",
         "ext-json": "*",
         "middlewares/trailing-slash": "~1.1.0",
         "flextype-components/arrays" : "3.0.1",
@@ -26,7 +26,7 @@
         "apcu-autoloader": true,
         "optimize-autoloader": true,
         "platform": {
-            "php": "7.3.0"
+            "php": "7.4.0"
         }
     },
     "autoload": {
