@@ -1,4 +1,4 @@
-{% extends "themes/" ~ registry.get('plugins.site.settings.theme') ~ "/templates/partials/base.html" %}
+{% extends "themes/" ~ flextype.registry.get('plugins.site.settings.theme') ~ "/templates/partials/base.html" %}
 
 {% block content %}
 
@@ -19,16 +19,16 @@
         <div class="w-full lg:w-9/12 p-2 text-center">
 
             {# pagination #}
-              {% set page = query.page %}
-              {% set category = query.category %}
+              {% set page = request.getUri().getQuery().page %}
+              {% set category = request.getUri().getQuery().category %}
               {% set themes_items_limit = 10 %}
 
               {% set themesCacheID = strings('themesCacheID' ~ locale).hash().toString() %}
-              {% if cache.has(themesCacheID) %}
-                  {% set themes = cache.get(themesCacheID) %}
+              {% if flextype.cache.has(themesCacheID) %}
+                  {% set themes = flextype.cache.get(themesCacheID) %}
               {% else %}
-                  {% set themes = entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true}) %}
-                  {% do cache.set(themesCacheID, themes) %}
+                  {% set themes = flextype.entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true}) %}
+                  {% do flextype.cache.set(themesCacheID, themes) %}
               {% endif %}
 
               {% if category %}
@@ -113,8 +113,8 @@
             <div class="text-black text-left p-6 mb-6 plate">
                 {# CATEGORY CLOUD #}
                 {% set categoryThemesCloudCacheID = strings('categoryThemesCloudCacheID' ~ locale).hash().toString() %}
-                {% if cache.has(categoryThemesCloudCacheID) %}
-                    {% set category_cloud = cache.get(categoryThemesCloudCacheID) %}
+                {% if flextype.cache.has(categoryThemesCloudCacheID) %}
+                    {% set category_cloud = flextype.cache.get(categoryThemesCloudCacheID) %}
                 {% else %}
                     {% set category_cloud = [] %}
                     {% for item in themes.copy()
@@ -123,7 +123,7 @@
                         {% set category = item.category|replace({' ': ''}) %}
                         {% set category_cloud = category_cloud|merge(category|split(',')) %}
                     {% endfor %}
-                    {% do cache.set(categoryThemesCloudCacheID, category_cloud) %}
+                    {% do flextype.cache.set(categoryThemesCloudCacheID, category_cloud) %}
                 {% endif %}
 
                 {% set category_cloud = [] %}

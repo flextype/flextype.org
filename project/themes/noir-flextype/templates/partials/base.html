@@ -1,15 +1,15 @@
 <!doctype html>
-{% set locale = uri|split('/').1 %}
+{% set locale = request.getUri().getPath()|split('/').0 %}
 <html lang="{{ locale }}">
-    {% set txt = entries.fetch(locale).txt %}
+    {% set txt = flextype.entries.fetch(locale).txt %}
     {% set static_version = 12 %}
     <head>
         {% block head %}
-            <meta charset="{{ registry.get('flextype.settings.charset')|lower }}">
+            <meta charset="{{ flextype.registry.get('flextype.settings.charset')|lower }}">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <meta name="description" content="{% if entry.description %}{{ entry.description }}{% else %}{{ registry.get('plugins.site.settings.description') }}{% endif %}">
-            <meta name="keywords" content="{% if entry.keywords %}{{ entry.keywords }}{% else %}{{ registry.get('plugins.site.settings.keywords') }}{% endif %}">
-            <meta name="robots" content="{% if entry.robots %}{{ entry.robots }}{% else %}{{ registry.get('plugins.site.settings.robots') }}{% endif %}">
+            <meta name="description" content="{% if entry.description %}{{ entry.description }}{% else %}{{ flextype.registry.get('plugins.site.settings.description') }}{% endif %}">
+            <meta name="keywords" content="{% if entry.keywords %}{{ entry.keywords }}{% else %}{{ flextype.registry.get('plugins.site.settings.keywords') }}{% endif %}">
+            <meta name="robots" content="{% if entry.robots %}{{ entry.robots }}{% else %}{{ flextype.registry.get('plugins.site.settings.robots') }}{% endif %}">
             <meta name="generator" content="Powered by Flextype"/>
 
             <meta name="image" content="{{ url() }}/api/images/entries/{{ locale }}/banner.png?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
@@ -34,28 +34,28 @@
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
             <link rel="manifest" href="/site.webmanifest">
 
-            {% do emitter.emit('onThemeMeta') %}
+            {% do flextype.emitter.emit('onThemeMeta') %}
 
             <title>
                 {% if entry.title %}{{ entry.title|e('html')|shortcode }}
                     |
-                {% endif %}{{ registry.get('plugins.site.settings.title')|e('html') }}</title>
+                {% endif %}{{ flextype.registry.get('plugins.site.settings.title')|e('html') }}</title>
 
-            {% set theme = registry.get('plugins.site.settings.theme') %}
+            {% set theme = flextype.registry.get('plugins.site.settings.theme') %}
 
-            <link href="{{ url() ~ '/project/themes/' ~ registry.get('plugins.site.settings.theme') ~ '/assets/highlight/styles/atom-one-light.css' }}?v={{ static_version }}" rel="stylesheet">
+            <link href="{{ url() ~ '/project/themes/' ~ flextype.registry.get('plugins.site.settings.theme') ~ '/assets/highlight/styles/atom-one-light.css' }}?v={{ static_version }}" rel="stylesheet">
 
             {# <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> #}
 
-            {% do registry.set('assets.site.css.noir_flextype', 'project/themes/' ~ theme ~ '/assets/dist/css/build.min.css') %}
+            {% do flextype.registry.set('assets.site.css.noir_flextype', 'project/themes/' ~ theme ~ '/assets/dist/css/build.min.css') %}
 
-            {% if registry.has('assets.site.css') %}
-                {% for css in registry.get('assets.site.css') %}
+            {% if flextype.registry.has('assets.site.css') %}
+                {% for css in flextype.registry.get('assets.site.css') %}
                     <link href="{{ url() }}/{{ css }}" rel="stylesheet">
                 {% endfor %}
             {% endif %}
 
-            {% do emitter.emit('onThemeHeader') %}
+            {% do flextype.emitter.emit('onThemeHeader') %}
         {% endblock %}
     </head>
     <body>
@@ -142,9 +142,9 @@
         </footer>
         <!-- /Footer -->
 
-        {% set theme = registry.get('plugins.site.settings.theme') %}
+        {% set theme = flextype.registry.get('plugins.site.settings.theme') %}
 
-        {% set highlight_js = url() ~ '/project/themes/' ~ registry.get('plugins.site.settings.theme') ~ '/assets/highlight/highlight.pack.js' %}
+        {% set highlight_js = url() ~ '/project/themes/' ~ flextype.registry.get('plugins.site.settings.theme') ~ '/assets/highlight/highlight.pack.js' %}
         <script src="{{ highlight_js }}"></script>
 
         <script type="text/javascript">
@@ -154,8 +154,8 @@
             });
         </script>
 
-        {% if registry.has('assets.site.js') %}
-            {% for js in registry.get('assets.site.js') %}
+        {% if flextype.registry.has('assets.site.js') %}
+            {% for js in flextype.registry.get('assets.site.js') %}
                 {% if js %}
                     <script type="text/javascript" src="{{ url() }}/{{ js }}"></script>
                 {% endif %}
@@ -165,6 +165,6 @@
 
         <!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js", "ym"); ym(48198194, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/48198194" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 
-        {% do emitter.emit('onThemeTail') %}
+        {% do flextype.emitter.emit('onThemeTail') %}
     </body>
 </html>

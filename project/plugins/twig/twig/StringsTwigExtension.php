@@ -15,14 +15,6 @@ use Twig\Extension\AbstractExtension;
 class StringsTwigExtension extends AbstractExtension
 {
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-
-    }
-
-    /**
      * Callback for twig.
      *
      * @return array
@@ -30,23 +22,7 @@ class StringsTwigExtension extends AbstractExtension
     public function getFunctions() : array
     {
         return [
-            new \Twig\TwigFunction('strings', [$this, 'strings']),
+            new \Twig\TwigFunction('strings', 'strings'),
         ];
-    }
-
-    /**
-     * Create a new stringable object from the given string.
-     *
-     * Initializes a Strings object and assigns both $string and $encoding properties
-     * the supplied values. $string is cast to a string prior to assignment. Throws
-     * an InvalidArgumentException if the first argument is an array or object
-     * without a __toString method.
-     *
-     * @param mixed  $string   Value to modify, after being cast to string. Default: ''
-     * @param mixed  $encoding The character encoding. Default: UTF-8
-     */
-    function strings($string = '', $encoding = 'UTF-8'): Strings
-    {
-        return new Strings($string, $encoding);
     }
 }

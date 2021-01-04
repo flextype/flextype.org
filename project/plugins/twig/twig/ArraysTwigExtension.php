@@ -9,19 +9,10 @@ declare(strict_types=1);
 
 namespace Flextype\Plugin\Twig\Twig;
 
-use Atomastic\Arrays\Arrays;
 use Twig\Extension\AbstractExtension;
 
 class ArraysTwigExtension extends AbstractExtension
 {
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-
-    }
-
     /**
      * Callback for twig.
      *
@@ -30,21 +21,7 @@ class ArraysTwigExtension extends AbstractExtension
     public function getFunctions() : array
     {
         return [
-            new \Twig\TwigFunction('arrays', [$this, 'arrays']),
+            new \Twig\TwigFunction('arrays', 'arrays'),
         ];
-    }
-
-    /**
-     * Create a new arrayable object from the given elements.
-     *
-     * Initializes a Arrays object and assigns $items the supplied values.
-     *
-     * @param  mixed $items Items
-     *
-     * @return Atomastic\Arrays\Arrays<Arrays>
-     */
-    function arrays($items = []): Arrays
-    {
-        return Arrays::create($items);
     }
 }

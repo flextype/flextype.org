@@ -2,7 +2,7 @@
 enabled: true
 
 # Sitemap plugin priority
-priority: 95
+priority: 100
 
 # Route
 route: sitemap.xml

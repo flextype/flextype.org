@@ -1,4 +1,4 @@
-{% extends "themes/" ~ registry.get('plugins.site.settings.theme') ~ "/templates/partials/base.html" %}
+{% extends "themes/" ~ flextype.registry.get('plugins.site.settings.theme') ~ "/templates/partials/base.html" %}
 
 {% block content %}
 
@@ -20,16 +20,16 @@
 
             {# pagination #}
 
-              {% set page = query.page %}
-              {% set category = query.category %}
+              {% set page = request.getUri().getQuery().page %}
+              {% set category = request.getUri().getQuery().category %}
               {% set plugins_items_limit = 10 %}
 
               {% set pluginsCacheID = strings('pluginsCacheID' ~ locale).hash().toString() %}
-              {% if cache.has(pluginsCacheID) %}
-                  {% set plugins = cache.get(pluginsCacheID) %}
+              {% if flextype.cache.has(pluginsCacheID) %}
+                  {% set plugins = flextype.cache.get(pluginsCacheID) %}
               {% else %}
-                  {% set plugins = entries.fetch(locale ~ '/downloads/extend/plugins', {'collection': true}) %}
-                  {% do cache.set(pluginsCacheID, plugins) %}
+                  {% set plugins = flextype.entries.fetch(locale ~ '/downloads/extend/plugins', {'collection': true}) %}
+                  {% do flextype.cache.set(pluginsCacheID, plugins) %}
               {% endif %}
 
               {% if category %}
@@ -56,7 +56,7 @@
               {% else %}
 
                   {# @todo get count from cache! #}
-                  {% set plugins_items_length = entries.fetch(locale ~ '/downloads/extend/plugins', {'collection': true})
+                  {% set plugins_items_length = flextype.entries.fetch(locale ~ '/downloads/extend/plugins', {'collection': true})
                                                        .where('visibility', 'nin', ['draft', 'hidden'])
                                                        .count() %}
 
@@ -113,8 +113,8 @@
             <div class="text-black text-left p-6 mb-6 plate">
                 {# CATEGORY CLOUD #}
                 {% set categoryPluginsCloudCacheID = strings('categoryPluginsCloudCacheID' ~ locale).hash().toString() %}
-                {% if cache.has(categoryPluginsCloudCacheID) %}
-                    {% set category_cloud = cache.get(categoryPluginsCloudCacheID) %}
+                {% if flextype.cache.has(categoryPluginsCloudCacheID) %}
+                    {% set category_cloud = flextype.cache.get(categoryPluginsCloudCacheID) %}
                 {% else %}
                     {% set category_cloud = [] %}
                     {% for item in plugins.copy()
@@ -123,7 +123,7 @@
                         {% set category = item.category|replace({' ': ''}) %}
                         {% set category_cloud = category_cloud|merge(category|split(',')) %}
                     {% endfor %}
-                    {% do cache.set(categoryPluginsCloudCacheID, category_cloud) %}
+                    {% do flextype.cache.set(categoryPluginsCloudCacheID, category_cloud) %}
                 {% endif %}
 
                 {% set category_cloud = [] %}

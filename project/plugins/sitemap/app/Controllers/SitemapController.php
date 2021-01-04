@@ -41,7 +41,7 @@ class SitemapController
                         ->fetch('', ['collection' => true, 'find' => ['depth' => '> 0']])
                         ->sortBy('modified_at', 'asc')
                         ->all();
-
+                        
         foreach ($entries as $entry) {
 
             // Check entry visibility field

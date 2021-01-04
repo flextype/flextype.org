@@ -1,16 +1,16 @@
-{% extends 'themes/' ~ registry.get('plugins.site.settings.theme') ~ '/templates/partials/base.html' %}
+{% extends 'themes/' ~ flextype.registry.get('plugins.site.settings.theme') ~ '/templates/partials/base.html' %}
 
 {% block content %}
-    {% set page = query.page %}
-    {% set tag = query.tag %}
+    {% set page = request.getUri().getQuery().page %}
+    {% set tag = request.getUri().getQuery().tag %}
     {% set blog_posts_limit = 7 %}
 
     {% set blogCacheID = strings('blogCacheID' ~ locale).hash().toString() %}
-    {% if cache.has(blogCacheID) %}
-        {% set blog = cache.get(blogCacheID) %}
+    {% if flextype.cache.has(blogCacheID) %}
+        {% set blog = flextype.cache.get(blogCacheID) %}
     {% else %}
-        {% set blog = entries.fetch(locale ~ '/blog', {'collection': true}).exceptFromCollection(['content']) %}
-        {% do cache.set(blogCacheID, blog) %}
+        {% set blog = flextype.entries.fetch(locale ~ '/blog', {'collection': true}).exceptFromCollection(['content']) %}
+        {% do flextype.cache.set(blogCacheID, blog) %}
     {% endif %}
 
     {% if tag %}
@@ -70,7 +70,7 @@
                 <a href="{{ url() }}/{{ post.id }}" class="flex align-middle mb-6 px-6 post">
                     <h4 class="w-full text-xl pb-0 mb-0">{{ post.title }}</h4>
                     <div class="text-xs text-center text-gray-800 px-2 pb-2 absolute right-0 bottom-0">
-                        <b>{{ post.published_at|date(registry.get('flextype.settings.date_display_format')) }}</b>, {{ txt.by }} <b>{{ post.author.name }}</b>
+                        <b>{{ post.published_at|date(flextype.registry.get('flextype.settings.date_display_format')) }}</b>, {{ txt.by }} <b>{{ post.author.name }}</b>
                     </div>
                 </a>
                 {% endfor %}
@@ -94,8 +94,8 @@
                 <div class="text-black text-left p-6 mb-6 plate">
                     {# TAGS CLOUD #}
                     {% set tagsCloudCacheID = strings('tagsCloudCacheID' ~ locale).hash().toString() %}
-                    {% if cache.has(tagsCloudCacheID) %}
-                        {% set tags_cloud = cache.get(tagsCloudCacheID) %}
+                    {% if flextype.cache.has(tagsCloudCacheID) %}
+                        {% set tags_cloud = flextype.cache.get(tagsCloudCacheID) %}
                     {% else %}
                         {% set tags_cloud = [] %}
                         {% for post in blog.copy()
@@ -104,7 +104,7 @@
                             {% set tags = post.tags|replace({' ': ''}) %}
                             {% set tags_cloud = tags_cloud|merge(tags|split(',')) %}
                         {% endfor %}
-                        {% do cache.set(tagsCloudCacheID, tags_cloud) %}
+                        {% do flextype.cache.set(tagsCloudCacheID, tags_cloud) %}
                     {% endif %}
 
                     {% if tags_cloud|length > 0 %}

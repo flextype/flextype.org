@@ -1,4 +1,4 @@
-{% extends "themes/" ~ registry.get('plugins.site.settings.theme') ~ "/templates/partials/base.html" %}
+{% extends "themes/" ~ flextype.registry.get('plugins.site.settings.theme') ~ "/templates/partials/base.html" %}
 
 {% block content %}
     <div class="container mx-auto bg-white text-black pb-24">
@@ -17,9 +17,9 @@
                         <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-database') }}</div>
                         <h4 class="text-xl">Entries Rest API</h4>
                         <div class="mb-10">
-                            Token: {{ tokens().entries.uuid }} <br><br>
+                            Token: {{ tokens().flextype.entries.fetch.uuid }} <br><br>
                             <div class="text-left">
-                                1. Create Entries token folder <code>{{ tokens().entries.uuid }}</code> in <code>project/tokens/entries/</code>
+                                1. Create Entries token folder <code>{{ tokens().flextype.entries.fetch.uuid }}</code> in <code>project/tokens/entries/</code>
 
                                 <br><br>
 
@@ -41,9 +41,9 @@
                         <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-archive') }}</div>
                         <h4 class="text-xl">Registry Rest API</h4>
                         <div class="mb-10">
-                            Token: {{ tokens().registry.uuid }} <br><br>
+                            Token: {{ tokens().flextype.registry.uuid }} <br><br>
                             <div class="text-left">
-                                1. Create Registry token folder <code>{{ tokens().registry.uuid }}</code> in <code>project/tokens/registry/</code>
+                                1. Create Registry token folder <code>{{ tokens().flextype.registry.uuid }}</code> in <code>project/tokens/registry/</code>
 
                                 <br><br>
 

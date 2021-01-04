@@ -2,7 +2,7 @@
 enabled: true
 
 # Site plugin priority
-priority: 0
+priority: 10000
 
 # The title of the website
 title: Flextype

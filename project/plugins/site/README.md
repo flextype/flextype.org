@@ -1,7 +1,7 @@
-<h1 align="center">Site Plugin for <a href="http://flextype.org/">Flextype</a></h1>
+<h1 align="center">Site Plugin for <a href="https://flextype.org/">Flextype</a></h1>
 
 <p align="center">
-<a href="https://github.com/flextype-plugins/site/releases"><img alt="Version" src="https://img.shields.io/github/release/flextype-plugins/site.svg?label=version&color=black"></a> <a href="https://github.com/flextype-plugins/site"><img src="https://img.shields.io/badge/license-MIT-blue.svg?color=black" alt="License"></a> <a href="https://github.com/flextype-plugins/site"><img src="https://img.shields.io/github/downloads/flextype-plugins/site/total.svg?color=black" alt="Total downloads"></a> <a href="https://github.com/flextype/flextype"><img src="https://img.shields.io/badge/Flextype-0.9.13-green.svg" alt="Flextype"></a> <a href=""><img src="https://img.shields.io/discord/423097982498635778.svg?logo=discord&color=black&label=Discord%20Chat" alt="Discord"></a>
+<a href="https://github.com/flextype-plugins/site/releases"><img alt="Version" src="https://img.shields.io/github/release/flextype-plugins/site.svg?label=version&color=black"></a> <a href="https://github.com/flextype-plugins/site"><img src="https://img.shields.io/badge/license-MIT-blue.svg?color=black" alt="License"></a> <a href="https://github.com/flextype-plugins/site"><img src="https://img.shields.io/github/downloads/flextype-plugins/site/total.svg?color=black" alt="Total downloads"></a> <a href="https://github.com/flextype/flextype"><img src="https://img.shields.io/badge/Flextype-0.9.14-green.svg" alt="Flextype"></a> <a href=""><img src="https://img.shields.io/discord/423097982498635778.svg?logo=discord&color=black&label=Discord%20Chat" alt="Discord"></a>
 </p>
 
 Site plugin to display entries content on the website frontend.
@@ -14,7 +14,7 @@ The following dependencies need to be downloaded and installed for Site Plugin.
 
 | Item | Version | Download |
 |---|---|---|
-| [flextype](https://github.com/flextype/flextype) | 0.9.13 | [download](https://github.com/flextype/flextype/releases) |
+| [flextype](https://github.com/flextype/flextype) | 0.9.14 | [download](https://github.com/flextype/flextype/releases) |
 | [twig](https://github.com/flextype-plugins/twig) | >=1.0.0 | [download](https://github.com/flextype-plugins/twig/releases) |
 | [noir](https://github.com/flextype-themes/noir) | >=1.0.0 | [download](https://github.com/flextype-themes/noir/releases) |
 
@@ -76,8 +76,8 @@ You can reach any of these items via registry `themes` by using the standard dot
 Usage:
 
 ```twig
-Theme name: {{ registry.get('themes.noir.manifest.name') }}
-Theme version: {{ registry.get('themes.noir.manifest.version') }}
+Theme name: {{ flextype.registry.get('themes.noir.manifest.name') }}
+Theme version: {{ flextype.registry.get('themes.noir.manifest.version') }}
 ```
 
 Result:
@@ -118,7 +118,7 @@ highlight: red
 Then in your theme templates you can access these variable using the `themes.noir` object:
 
 ```twig
-<h1 style="color:{{ registry.get('themes.noir.settings.highlight') }}">
+<h1 style="color:{{ flextype.registry.get('themes.noir.settings.highlight') }}">
     BUILD FAST, FLEXIBLE, EASIER TO MANAGE WEBSITES WITH FLEXTYPE.
 </h1>
 ```

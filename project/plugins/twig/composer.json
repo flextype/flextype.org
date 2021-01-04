@@ -16,7 +16,7 @@
       "issues": "https://github.com/flextype-plugins/twig/issues"
     },
     "require": {
-        "php": ">=7.3.0",
+        "php": ">=7.4.0",
         "slim/twig-view": "~2.5.0",
         "slim/csrf": "~0.8.3",
         "slim/flash": "~0.4.0",
@@ -27,7 +27,7 @@
         "apcu-autoloader": true,
         "optimize-autoloader": true,
         "platform": {
-            "php": "7.3.0"
+            "php": "7.4.0"
         }
     },
     "autoload": {

@@ -2,7 +2,7 @@
 enabled: true
 
 # Site plugin priority
-priority: 0
+priority: 10000
 
 # The title of the website
 title: Flextype
@@ -36,7 +36,7 @@ theme: noir-flextype
 # - error404.content:     Content to display on Error404 page
 # - error404.template:    Template to use on Error404 page
 entries:
-  main: home
+  main: en
   error404:
     title: Error 404
     description: We're sorry but the page you are looking for doesn't appear to exist!
