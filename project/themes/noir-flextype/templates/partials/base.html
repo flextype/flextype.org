@@ -1,6 +1,6 @@
 <!doctype html>
 {% set locale = request.getUri().getPath()|split('/').1 %}
-{% if locale == '' %}{% set locale = 'en' %}{% endif %}
+{% if locale == '' %}{% set locale == 'en' %}{% endif %}
 <html lang="{{ locale }}">
     {% set txt = flextype.entries.fetch(locale).txt %}
     {% set static_version = 12 %}
