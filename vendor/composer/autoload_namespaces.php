@@ -9,5 +9,4 @@ return array(
     'Pimple' => array($vendorDir . '/pimple/pimple/src'),
     'ParsedownExtra' => array($vendorDir . '/erusev/parsedown-extra'),
     'Parsedown' => array($vendorDir . '/erusev/parsedown'),
-    'PHPDocsMD' => array($vendorDir . '/victorjonsson/markdowndocs/src'),
 );
