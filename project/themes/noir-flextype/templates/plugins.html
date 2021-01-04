@@ -20,8 +20,8 @@
 
             {# pagination #}
 
-              {% set page = request.getUri().getQuery().page %}
-              {% set category = request.getUri().getQuery().category %}
+              {% set page = request.getQueryParams().page %}
+              {% set category = request.getQueryParams().category %}
               {% set plugins_items_limit = 10 %}
 
               {% set pluginsCacheID = strings('pluginsCacheID' ~ locale).hash().toString() %}
