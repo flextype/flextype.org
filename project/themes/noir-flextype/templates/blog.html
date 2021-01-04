@@ -1,8 +1,8 @@
 {% extends 'themes/' ~ flextype.registry.get('plugins.site.settings.theme') ~ '/templates/partials/base.html' %}
 
 {% block content %}
-    {% set page = request.getUri().getQuery().page %}
-    {% set tag = request.getUri().getQuery().tag %}
+    {% set page = request.getQueryParams().page %}
+    {% set tag = request.getQueryParams().tag %}
     {% set blog_posts_limit = 7 %}
 
     {% set blogCacheID = strings('blogCacheID' ~ locale).hash().toString() %}

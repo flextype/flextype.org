@@ -19,8 +19,8 @@
         <div class="w-full lg:w-9/12 p-2 text-center">
 
             {# pagination #}
-              {% set page = request.getUri().getQuery().page %}
-              {% set category = request.getUri().getQuery().category %}
+              {% set page = request.getQueryParams().page %}
+              {% set category = request.getQueryParams().category %}
               {% set themes_items_limit = 10 %}
 
               {% set themesCacheID = strings('themesCacheID' ~ locale).hash().toString() %}
