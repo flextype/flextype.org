@@ -2,4 +2,6 @@
 
 namespace Flextype;
 
-flextype()->get('/' . flextype('registry')->get('plugins.sitemap.settings.route'), 'SitemapController:index')->setName('sitemap.index');
+use Flextype\Plugin\Sitemap\Controllers\SitemapController;
+
+flextype()->get('/' . flextype('registry')->get('plugins.sitemap.settings.route'), SitemapController::class . ':index')->setName('sitemap.index');
