@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Flextype\Plugin\Site;
 
-use Flextype\Plugin\Site\Controllers\SiteController;
 use Flextype\Plugin\Site\Models\Themes;
 
 /**
@@ -23,11 +22,3 @@ flextype()->container()['themes'] = fn() => new Themes();
  * Init themes
  */
 flextype()->container()['themes']->init();
-
-/**
- * Add site controller to Flextype container
- */
-flextype()->container()['SiteController'] = fn() => new SiteController();
-
-$themeBootstrapPath = PATH['project']. '/themes/' . flextype('registry')->get('plugins.site.settings.theme') . '/theme.php';
-filesystem()->file($themeBootstrapPath)->exists() and include_once $themeBootstrapPath;
