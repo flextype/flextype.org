@@ -1,6 +1,5 @@
 <!doctype html>
 {% set locale = request.getUri().getPath()|split('/').1 %}
-{% if locale == '' %}{% set locale = 'en' %}{% endif %}
 <html lang="{{ locale }}">
     {% set txt = flextype.entries.fetch(locale).txt %}
     {% set static_version = 12 %}
@@ -13,19 +12,19 @@
             <meta name="robots" content="{% if entry.robots %}{{ entry.robots }}{% else %}{{ flextype.registry.get('plugins.site.settings.robots') }}{% endif %}">
             <meta name="generator" content="Powered by Flextype"/>
 
-            <meta name="image" content="{{ url() }}/api/images/entries/{{ locale }}/banner.png?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
+            <meta name="image" content="{{ url() }}/api/images/entries/{{ locale }}/banner.jpg?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
 
             <meta name="twitter:card" content="summary_large_image">
             <meta name="twitter:site" content="{{ url() }}/{{ entry.id }}">
             <meta name="twitter:title" content="{{ entry.title }}">
             <meta name="twitter:description" content="{{ entry.description }}">
-            <meta name="twitter:image" content="{{ url() }}/api/images/entries/{{ locale }}/banner.png?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
+            <meta name="twitter:image" content="{{ url() }}/api/images/entries/{{ locale }}/banner.jpg?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
 
             <meta property="og:url" content="{{ url() }}/{{ entry.id }}">
             <meta property="og:title" content="{{ entry.title }}">
             <meta property="og:description" content="{{ entry.description }}">
             <meta property="og:type" content="website">
-            <meta property="og:image" content="{{ url() }}/api/images/entries/{{ locale }}/banner.png?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
+            <meta property="og:image" content="{{ url() }}/api/images/entries/{{ locale }}/banner.jpg?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
             <meta property="og:image:type" content="image/png">
 
             <meta name="yandex-verification" content="920bbfc83bbe3fbe" />
@@ -34,6 +33,7 @@
             <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
             <link rel="manifest" href="/site.webmanifest">
+            <link rel="manifest" href="{{ url() }}/site.webmanifest">
 
             {% do flextype.emitter.emit('onThemeMeta') %}
 
