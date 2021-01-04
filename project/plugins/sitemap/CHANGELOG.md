@@ -1,3 +1,10 @@
+<a name="2.8.0"></a>
+# [2.8.0](https://github.com/flextype-plugins/sitemap/compare/v2.7.0...v2.8.0) (2021-01-03)
+
+### Features
+
+* **core** update code base for new Flextype 0.9.15
+
 <a name="2.7.0"></a>
 # [2.7.0](https://github.com/flextype-plugins/sitemap/compare/v2.6.1...v2.7.0) (2020-12-30)
 
