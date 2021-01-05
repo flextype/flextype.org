@@ -7,6 +7,7 @@ author:
   name: Sergey Romanenko
   email: support@flextype.org
 github: https://github.com/flextype-plugins/phpmailer
+documentation: https://github.com/flextype-plugins/phpmailer
 template: plugin
 ---
 
