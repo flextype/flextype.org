@@ -7,5 +7,6 @@ author:
   name: Sergey Romanenko
   email: support@flextype.org
 github: https://github.com/flextype-plugins/themes-admin
+documentation: https://github.com/flextype-plugins/themes-admin
 template: plugin
 ---
