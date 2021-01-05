@@ -76,10 +76,10 @@
                 <div class="w-full lg:w-3/12">
                     <p class="m-0 opacity-50">Links</p>
                     <p>
-                        {% if theme.homepage %}<a href="{{ theme.homepage }}">Homepage</a><br>{% endif %}
-                        {% if theme.documentation %}<a href="{{ theme.documentation }}">Documentation</a><br>{% endif %}
-                        {% if theme.changelog %}<a href="{{ theme.changelog }}">Changelog</a><br>{% endif %}
-                        {% if theme.bugs %}<a href="{{ theme.bugs }}">Issues</a>{% endif %}
+                        {% if theme.homepage %}<a href="{{ theme.homepage }}">Homepage</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Homepage</a><br>{% endif %}
+                        {% if theme.documentation %}<a href="{{ theme.documentation }}">Documentation</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Documentation</a><br>{% endif %}
+                        {% if theme.changelog %}<a href="{{ theme.changelog }}">Changelog</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Changelog</a><br>{% endif %}
+                        {% if theme.bugs %}<a href="{{ theme.bugs }}">Issues</a>{% elseif entry.github %}<a href="{{ entry.github }}">Issues</a><br>{% endif %}
                     </p>
                 </div>
             </div>
