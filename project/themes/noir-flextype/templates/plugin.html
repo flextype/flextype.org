@@ -77,10 +77,10 @@
                 <div class="w-full lg:w-3/12">
                     <p class="m-0 opacity-50">Links</p>
                     <p>
-                        {% if plugin.homepage %}<a href="{{ plugin.homepage }}">Homepage</a><br>{% endif %}
-                        {% if plugin.documentation %}<a href="{{ plugin.documentation }}">Documentation</a><br>{% endif %}
-                        {% if plugin.changelog %}<a href="{{ plugin.changelog }}">Changelog</a><br>{% endif %}
-                        {% if plugin.bugs %}<a href="{{ plugin.bugs }}">Issues</a>{% endif %}
+                        {% if plugin.homepage %}<a href="{{ plugin.homepage }}">Homepage</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Homepage</a><br>{% endif %}
+                        {% if plugin.documentation %}<a href="{{ plugin.documentation }}">Documentation</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Documentation</a><br>{% endif %}
+                        {% if plugin.changelog %}<a href="{{ plugin.changelog }}">Changelog</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Changelog</a><br>{% endif %}
+                        {% if plugin.bugs %}<a href="{{ plugin.bugs }}">Issues</a>{% elseif entry.github %}<a href="{{ entry.github }}">Issues</a><br>{% endif %}
                     </p>
                 </div>
             </div>
