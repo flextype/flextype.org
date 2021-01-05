@@ -75,10 +75,15 @@ class SiteController
             return $response->withJson($entry);
         }
 
+        // ========== custom code here ==========
+        if ($uri === '/') {
+            return $response->withRedirect('https://flextype.org/en');
+        }
+        // ========== custom code here ==========
 
         $themeBootstrapPath = PATH['project']. '/themes/' . flextype('registry')->get('plugins.site.settings.theme') . '/theme.php';
         filesystem()->file($themeBootstrapPath)->exists() and include_once $themeBootstrapPath;
-        
+
         // Set template path for current entry
         $path = 'themes/' . flextype('registry')->get('plugins.site.settings.theme') . '/' . (empty($entry['template']) ? 'templates/default' : 'templates/' . $entry['template']) . '.html';
 

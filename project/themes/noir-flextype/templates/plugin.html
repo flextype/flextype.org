@@ -21,7 +21,7 @@
         {% set repo_name = entry.github|split('/')  %}
         {% set repo_name_length = repo_name|length %}
 
-        {% set plugin = yaml_decode(filesystem_read("https://raw.githubusercontent.com/" ~ repo_name[repo_name_length-2] ~ "/" ~ repo_name[repo_name_length-1] ~ "/master/plugin.yaml")) %}
+        {% set plugin = flextype.serializers.yaml.decode(filesystem().file("https://raw.githubusercontent.com/" ~ repo_name[repo_name_length-2] ~ "/" ~ repo_name[repo_name_length-1] ~ "/master/plugin.yaml").get()) %}
 
         <div class="p-6 text-black mb-6">
             <div class="flex align-middle items-center">

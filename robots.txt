@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /flextype/
+Disallow: /src/
 Disallow: /project/
 Disallow: /vendor/
