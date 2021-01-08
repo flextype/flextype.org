@@ -1,7 +1,9 @@
 ---
 title: Twig
 description: Twig plugin to present Twig template engine for Flextype.
-icon: fas fa-palette
+icon:
+  name: palette
+  set: fontawesome|solid
 category: templating
 author:
   name: Sergey Romanenko

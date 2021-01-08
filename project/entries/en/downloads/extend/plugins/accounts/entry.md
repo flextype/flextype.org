@@ -1,7 +1,9 @@
 ---
 title: Accounts
 description: Accounts plugins for Flextype.
-icon: fas fa-users
+icon:
+  name: users
+  set: fontawesome|solid
 category: accounts
 github: https://github.com/flextype-plugins/accounts
 documentation: https://github.com/flextype-plugins/accounts
