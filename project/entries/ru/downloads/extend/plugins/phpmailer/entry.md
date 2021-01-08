@@ -13,7 +13,7 @@ documentation: https://github.com/flextype-plugins/phpmailer
 template: plugin
 ---
 
-## Features
+#### Features
 
 * The world's most popular code for sending email from PHP!
 * Integrated SMTP support - send without a local mail server
@@ -29,3 +29,20 @@ template: plugin
 * Compatible with PHP 5.5 and later
 * Namespaced to prevent name clashes
 * Much more!
+
+#### Installation
+
+1. Download & Install all required dependencies.
+2. Create new folder `/project/plugins/phpmailer`
+3. Download PHP Mailer Plugin and unzip plugin content to the folder `/project/plugins/phpmailer`
+
+#### Documentation
+
+#### Settings
+
+| Key      | Value | Description                         |
+| -------- | ----- | ----------------------------------- |
+| enabled  | true  | true or false to disable the plugin |
+| priority | 100   | phpmailer plugin priority           |
+
+[Official PHP Mailer documentation](https://github.com/PHPMailer/PHPMailer)

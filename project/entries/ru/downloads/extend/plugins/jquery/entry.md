@@ -4,7 +4,7 @@ description: jQuery plugin for Flextype.
 icon:
   name: js-square
   set: fontawesome|brands
-keywords: javascript
+category: javascript
 author:
   name: Sergey Romanenko
   email: support@flextype.org
@@ -13,3 +13,17 @@ documentation: https://github.com/flextype-plugins/jquery
 template: plugin
 ---
 
+#### Installation
+
+1. Download & Install all required dependencies.
+2. Create new folder `/project/plugins/jquery`
+3. Download jQuery Plugin and unzip plugin content to the folder `/project/plugins/jquery`
+
+#### Settings
+
+| Key             | Value | Description                          |
+| --------------- | ----- | ------------------------------------ |
+| enabled         | true  | true or false to disable the plugin  |
+| priority        | 1     | jquery plugin priority               |
+| load_on_site  | true  | place to load on Website Frontend    |
+| load_on_admin | true  | place to load on Admin Panel Backend |

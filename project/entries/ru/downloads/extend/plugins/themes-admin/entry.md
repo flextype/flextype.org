@@ -13,3 +13,8 @@ documentation: https://github.com/flextype-plugins/themes-admin
 template: plugin
 ---
 
+#### INSTALLATION
+
+1. Download & Install all required dependencies.
+2. Create new folder `/project/plugins/themes-admin`
+3. Download Themes Admin Plugin and unzip plugin content to the folder `/project/plugins/themes-admin`
