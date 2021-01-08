@@ -146,16 +146,17 @@
 
         {% set theme = flextype.registry.get('plugins.site.settings.theme') %}
 
-        {{ currentUrl() }}
-        {% set highlight_js = url() ~ '/project/themes/' ~ flextype.registry.get('plugins.site.settings.theme') ~ '/assets/highlight/highlight.pack.js' %}
-        <script src="{{ highlight_js }}"></script>
+        {% if (currentUrl() !== '/en' && currentUrl() !== '/ru') %}
+            {% set highlight_js = url() ~ '/project/themes/' ~ flextype.registry.get('plugins.site.settings.theme') ~ '/assets/highlight/highlight.pack.js' %}
+            <script src="{{ highlight_js }}"></script>
 
-        <script type="text/javascript">
-            hljs.configure({useBR: false});
-            document.querySelectorAll('pre code').forEach((block) => {
-                hljs.highlightBlock(block);
-            });
-        </script>
+            <script type="text/javascript">
+                hljs.configure({useBR: false});
+                document.querySelectorAll('pre code').forEach((block) => {
+                    hljs.highlightBlock(block);
+                });
+            </script>
+        {% endif %}
 
         {% if flextype.registry.has('assets.site.js') %}
             {% for js in flextype.registry.get('assets.site.js') %}
