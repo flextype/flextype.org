@@ -1,5 +1,5 @@
 <!doctype html>
-{% set locale = request.getUri().getPath()|split('/').1 %}
+{% set locale = request.getUri().getPath()|split('/').0 %}
 <html lang="{{ locale }}">
     {% set txt = flextype.entries.fetch(locale).txt %}
     {% set static_version = 12 %}
@@ -137,7 +137,7 @@
                 <div class="w-full mt-8 lg:mt-0">
                     <a href="{{ url() }}/en" class="text-sm">English</a> /
                     <a href="{{ url() }}/ru" class="text-sm">Русский</a>
-                    <a href="{{ url() }}/sitemap.xml" class="float-right text-sm icon-svg-small icon-svg-white" title="Sitemap">{{ icon('fas fa-sitemap') }}</a>
+                    <a href="{{ url() }}/sitemap.xml" class="float-right text-sm icon-svg-small icon-svg-white" title="Sitemap">{{ icon('sitemap', 'fontawesome|solid') }}</a>
                 </div>
             </div>
         </footer>

@@ -25,7 +25,7 @@
 
         <div class="p-6 text-black mb-6">
             <div class="flex align-middle items-center">
-                <span class="icon-svg-large mr-5">{{ icon(plugin.icon) }}</span>
+                <span class="icon-svg-large mr-5">{{ icon(plugin.icon.name, plugin.icon.set) }}</span>
                 <div class="text-left">
                     <h4 class="text-2xl pb-0 mb-0 block">{{ plugin.name }}</h4>
                     <p class="m-0">
@@ -112,7 +112,7 @@
                             {% if related_plugin.slug != entry.slug %}
                             <a href="{{ url() }}/{{ related_plugin.id }}" class="w-full p-2 lg:w-6/12 no-underline">
                                 <div class="flex p-6 text-black align-middle extend">
-                                    <span class="icon-svg-large mr-5">{{ icon(related_plugin.icon) }}</span>
+                                    <span class="icon-svg-large mr-5">{{ icon(related_plugin.icon.name, related_plugin.icon.set) }}</span>
                                     <div class="text-left">
                                         <h4 class="text-xl pb-0 mb-0 block">{{ related_plugin.title }}</h4>
                                         <p class="m-0">
