@@ -1,8 +1,8 @@
 <!doctype html>
-{% set locale = request.getUri().getPath()|split('/').0 %}
+{% set locale = request.getUri().getPath()|split('/').1 %}
 <html lang="{{ locale }}">
     {% set txt = flextype.entries.fetch(locale).txt %}
-    {% set static_version = 12 %}
+    {% set static_version = 13 %}
     <head>
         {% block head %}
             <meta charset="{{ flextype.registry.get('flextype.settings.charset')|lower }}">

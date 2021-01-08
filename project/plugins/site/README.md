@@ -34,7 +34,7 @@ The following dependencies need to be downloaded and installed for Site Plugin.
 | query | The Query Params |
 | uri | The URI string |
 
-#### Examples
+**Examples:**
 
 ```twig
 {{ entry.title }} {# returns the current entry title #}
