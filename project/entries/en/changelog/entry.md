@@ -10,6 +10,54 @@ published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 ---
 
+<a name="0.9.15"></a>
+# [0.9.15](https://github.com/flextype/flextype/compare/v0.9.14...v0.9.15) (2020-01-03)
+
+### Features
+
+* **media** add method `has()` for Media Folders ([#534](https://github.com/flextype/flextype/issues/534))
+* **entries** simplify functionality to work with online entries storage. ([#536](https://github.com/flextype/flextype/issues/536))
+* **parsers** move markdown and shortcode settings under parsers setting. ([#539](https://github.com/flextype/flextype/issues/539))
+
+### Bug Fixes
+
+* **entries** fix issue with individual entries cache field ([#537](https://github.com/flextype/flextype/issues/537))
+* **plugins** fix issue with empty manifest and settings yaml files ([#538](https://github.com/flextype/flextype/issues/538))
+
+### BREAKING CHANGES
+
+* **entries** according to this ticket ([#536](https://github.com/flextype/flextype/issues/536)) we have several changes for entries storage.
+
+    * use `flextype('entries')->storage()->get()` instead of `flextype('entries')->getStorage()`
+    * use `flextype('entries')->storage()->set()` instead of `flextype('entries')->setStorage()`
+    * use `flextype('entries')->storage()->has()` instead of `flextype('entries')->hasStorage()`
+    * use `flextype('entries')->storage()->delete()` instead of `flextype('entries')->deleteStorage()`
+
+    note: all method from Atomastic Arrays are available for Arrays Storage Object manipulations
+    docs: https://github.com/atomastic/arrays
+
+
+<a name="0.9.14"></a>
+# [0.9.14](https://github.com/flextype/flextype/compare/v0.9.13...v0.9.14) (2020-12-30)
+
+### Features
+
+* **core** Moving to PHP 7.4.0 ([#524](https://github.com/flextype/flextype/issues/524))
+
+* **plugins** Set default plugin priority 100 and SORT them ascending ([#523](https://github.com/flextype/flextype/issues/523))
+
+### Bug Fixes
+
+* **core** fix issue with Rest API endpoints detection. ([#522](https://github.com/flextype/flextype/issues/522))
+
+* **entries** fix issue with empty variable $data in fetch() method. ([#531](https://github.com/flextype/flextype/issues/531))
+
+* **entries** fix issue with deleteStorage() method return data.
+
+### Refactoring
+
+* **core** general code refactoring and improvements.
+
 <a name="0.9.13"></a>
 # [0.9.13](https://github.com/flextype/flextype/compare/v0.9.12...v0.9.13) (2020-12-20)
 
