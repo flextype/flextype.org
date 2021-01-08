@@ -111,7 +111,7 @@
                         <h4 class="text-center mb-2 pb-3 border-b border-black uppercase font-semibold">{{ entry.txt_tags }}</h4>
                         <div class="mr-12 mt-5">
                             {% for tag in tags_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
-                                <a class="no-underline px-1 mb-2 flex items-center" href="{{ url() }}/{{ locale }}/blog?tag={{ tag|trim }}"><span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('fas fa-hashtag') }}</span> {{ tag|trim }}</a>
+                                <a class="no-underline px-1 mb-2 flex items-center" href="{{ url() }}/{{ locale }}/blog?tag={{ tag|trim }}"><span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('hashtag', 'fontawesome|solid') }}</span> {{ tag|trim }}</a>
                             {% endfor %}
                         </div>
                     {% endif %}

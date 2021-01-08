@@ -9,7 +9,6 @@ return array(
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
-    'Slim\\Views\\' => array($vendorDir . '/slim/twig-view/src'),
     'Slim\\Flash\\' => array($vendorDir . '/slim/flash/src'),
     'Slim\\Csrf\\' => array($vendorDir . '/slim/csrf/src'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),

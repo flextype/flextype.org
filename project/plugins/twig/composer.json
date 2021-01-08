@@ -17,7 +17,7 @@
     },
     "require": {
         "php": ">=7.4.0",
-        "slim/twig-view": "~2.5.0",
+        "twig/twig": "^3.2.1",
         "slim/csrf": "~0.8.3",
         "slim/flash": "~0.4.0",
         "flextype-components/arrays" : "3.0.1",

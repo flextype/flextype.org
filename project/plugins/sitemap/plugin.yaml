@@ -1,5 +1,5 @@
 name: Sitemap
-version: 2.8.0
+version: 2.9.1
 description: Provide automatically generated XML sitemap.
 author:
   name: Sergey Romanenko
@@ -9,10 +9,12 @@ homepage: https://github.com/flextype-plugins/sitemap
 documentation: https://github.com/flextype-plugins/sitemap
 changelog: https://github.com/flextype-plugins/sitemap/blob/master/CHANGELOG.md
 bugs: https://github.com/flextype-plugins/sitemap/issues
-icon: fas fa-map-marked-alt
+icon:
+  name: map-marked-alt
+  set: "fontawesome|solid"
 keywords: sitemap, plugin, xml, map, index
 license: MIT
 
 dependencies:
   flextype: 0.9.15
-  twig: '>=1.0.0'
+  twig: '>=2.0.0'

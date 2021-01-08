@@ -1,3 +1,29 @@
+<a name="2.0.1"></a>
+# [2.0.1](https://github.com/flextype-plugins/icon/compare/v2.0.0...v2.0.1) (2021-01-07)
+
+### Bug Fixes
+
+* **core** fix possible issue with null icon name.
+
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/flextype-plugins/icon/compare/v1.7.0...v2.0.0) (2021-01-07)
+
+### Features
+
+* **core** new global function `icon()`.
+* **core** add support for `tabler` icons.
+* **core** add support for `bootstrap` icons.
+* **shortcode** add shortcode for `[icon]`.
+
+### BREAKING CHANGES
+
+* use new global function `icon()`.
+
+    docs: https://github.com/flextype-plugins/icon
+
+affected plugins: account, accounts-admin, admin, form, form-admin, icon, themes-admin
+
+
 <a name="1.7.0"></a>
 # [1.7.0](https://github.com/flextype-plugins/icon/compare/v1.6.0...v1.7.0) (2021-01-03)
 

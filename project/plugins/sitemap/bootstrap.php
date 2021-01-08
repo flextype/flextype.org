@@ -15,4 +15,3 @@ namespace Flextype\Plugin\Sitemap;
 
 include_once 'app/Controllers/SitemapController.php';
 include_once 'routes/web.php';
-include_once 'dependencies.php';

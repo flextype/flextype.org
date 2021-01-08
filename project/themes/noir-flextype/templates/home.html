@@ -7,7 +7,7 @@
             <h1 class="uppercase m-0 p-24 text-xl lg:text-5xl">{{ txt.intro_section_h1|raw }}</h1>
             <div class="flex justify-center">
                 <a
-                    href="{{ base_url() }}/{{ locale }}/downloads"
+                    href="{{ baseUrl() }}/{{ locale }}/downloads"
                     class="w-10/12 lg:w-3/12 button">{{ txt.intro_section_button|raw }}</a>
             </div>
         </div>
@@ -22,7 +22,7 @@
 
             <div class="flex content-center flex-wrap mt-12">
                 <div class="w-full lg:w-1/3 p-8">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-rocket') }}</div>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('rocket', 'fontawesome|solid') }}</div>
                     <h4 class="text-2xl">{{ txt.features_fast_heading|raw }}</h4>
                     <p>
                         {{ txt.features_fast_p|raw }}
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-cogs') }}</div>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('cogs', 'fontawesome|solid') }}</div>
                     <h4 class="text-2xl">{{ txt.features_flexible_heading|raw }}</h4>
                     <p>
                         {{ txt.features_flexible_p|raw }}
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-font') }}</div>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('font', 'fontawesome|solid') }}</div>
                     <h4 class="text-2xl">{{ txt.features_easy_editing_heading|raw }}</h4>
                     <p>
                         {{ txt.features_easy_editing_p|replace({"%url_start%": '<a href="https://flextype.org/en/downloads/extend/plugins/admin">', "%url_end%": "</a>"})|raw }}
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-network-wired') }}</div>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('network-wired', 'fontawesome|solid') }}</div>
                     <h4 class="text-2xl">{{ txt.features_built_in_rest_api_heading|raw }}</h4>
                     <p>
                         {{ txt.features_built_in_rest_api_p|raw }}
@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-list-alt') }}</div>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('list-alt', 'fontawesome|solid') }}</div>
                     <h4 class="text-2xl">{{ txt.features_dynamic_content_types_heading|raw }}</h4>
                     <p>
                         {{ txt.features_dynamic_content_types_p|raw }}
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-code-branch') }}</div>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('code-branch', 'fontawesome|solid') }}</div>
                     <h4 class="text-2xl">{{ txt.features_version_control_heading|raw }}</h4>
                     <p>
                         {{ txt.features_version_control_p|raw }}
@@ -82,7 +82,7 @@
             <div class="flex content-center flex-wrap mt-12">
 
                 <div class="w-full lg:w-3/12 p-6">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-desktop') }}</div>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('desktop', 'fontawesome|solid') }}</div>
                     <h4 class="text-2xl">{{ txt.no_limits_websites_heading|raw }}</h4>
                     <p>
                         {{ txt.no_limits_websites_p|raw }}
@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-mobile-alt') }}</div>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('mobile-alt', 'fontawesome|solid') }}</div>
                     <h4 class="text-2xl">{{ txt.native_apps_heading|raw }}</h4>
                     <p>
                         {{ txt.native_apps_p|raw }}
@@ -98,7 +98,7 @@
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('far fa-square') }}</div>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('square', 'fontawesome|regular') }}</div>
                     <h4 class="text-2xl">{{ txt.kiosks_heading|raw }}</h4>
                     <p>
                         {{ txt.kiosks_p|raw }}
@@ -106,7 +106,7 @@
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-running') }}</div>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('running', 'fontawesome|solid') }}</div>
                     <h4 class="text-2xl">{{ txt.wearables_heading|raw }}</h4>
                     <p>
                         {{ txt.wearables_p|raw }}
@@ -114,7 +114,7 @@
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('far fa-lightbulb') }}</div>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('lightbulb', 'fontawesome|regular') }}</div>
                     <h4 class="text-2xl">{{ txt.iot_devices_heading|raw }}</h4>
                     <p>
                         {{ txt.iot_devices_heading|raw }}
@@ -122,7 +122,7 @@
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-gamepad') }}</div>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('gamepad', 'fontawesome|solid') }}</div>
                     <h4 class="text-2xl">{{ txt.game_data_heading|raw }}</h4>
                     <p>
                         {{ txt.game_data_p|raw }}
@@ -130,7 +130,7 @@
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('far fa-compass') }}</div>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('compass', 'fontawesome|regular') }}</div>
                     <h4 class="text-2xl">{{ txt.saas_platforms_heading|raw }}</h4>
                     <p>
                         {{ txt.saas_platforms_p|raw }}
@@ -138,7 +138,7 @@
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('fas fa-shopping-cart') }}</div>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('shopping-cart', 'fontawesome|solid') }}</div>
                     <h4 class="text-2xl">{{ txt.ecommerce_heading|raw }}</h4>
                     <p>
                         {{ txt.ecommerce_heading|raw }}
@@ -157,7 +157,7 @@
 
             <div class="flex content-center flex-wrap mt-12">
                 <div class="w-full lg:w-4/12 p-6">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('fab fa-discord') }}</div>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('discord', 'fontawesome|brands') }}</div>
                     <h4 class="text-2xl">{{ txt.discord_heading|raw }}</h4>
                     <div class="text-base h-40">
                         {{ txt.discord_p|raw }}
@@ -166,7 +166,7 @@
                 </div>
 
                 <div class="w-full lg:w-4/12 p-6">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('fab fa-github') }}</div>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('github', 'fontawesome|brands') }}</div>
                     <h4 class="text-2xl">{{ txt.github_heading|raw }}</h4>
                     <div class="text-base h-40">
                         {{ txt.github_p|replace({"%url_start%": '<a href="https://github.com/flextype/flextype/issues">', "%url_end%": "</a>"})|raw }}
@@ -175,7 +175,7 @@
                 </div>
 
                 <div class="w-full lg:w-4/12 p-6">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('fab fa-twitter') }}</div>
+                    <div class="icon-svg-large mb-5 text-center">{{ icon('twitter', 'fontawesome|brands') }}</div>
                     <h4 class="text-2xl">{{ txt.twitter_heading|raw }}</h4>
                     <div class="text-base h-40">
                         {{ txt.twitter_p|replace({"%url_start%": '<a href="https://twitter.com/getflextype">', "%url_end%": "</a>"})|raw }}

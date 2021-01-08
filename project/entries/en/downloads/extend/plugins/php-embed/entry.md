@@ -1,7 +1,9 @@
 ---
 title: PHP Embed
 description: PHP Embed plugin allows you to embed php code into your page.
-icon: fab fa-php
+icon:
+  name: php
+  set: fontawesome|brands
 category: content
 author:
   name: Sergey Romanenko

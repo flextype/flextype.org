@@ -1,7 +1,9 @@
 ---
 title: Admin
 description: Admin Panel plugin for Flextype.
-icon: fab fa-fort-awesome
+icon:
+  name: fort-awesome
+  set: fontawesome|brands
 category: admin
 author:
   name: Sergey Romanenko

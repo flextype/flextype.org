@@ -1,7 +1,9 @@
 name: Twig
-version: 1.8.0
+version: 2.0.0
 description: Twig plugin to present Twig template engine for Flextype.
-icon: fas fa-palette
+icon:
+  name: palette
+  set: "fontawesome|solid"
 author:
   name: Sergey Romanenko
   email: support@flextype.org

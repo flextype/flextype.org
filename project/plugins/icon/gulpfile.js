@@ -1,16 +1,34 @@
 const gulp = require('gulp');
 
 /**
- * Task: gulp fontawesome-icons
+ * Task: gulp fontawesome
  */
-gulp.task('fontawesome-icons', function(){
-    return gulp.src(['node_modules/@fortawesome/fontawesome-free/svgs/**/*'])
-        .pipe(gulp.dest('assets/dist/fontawesome/svgs'));
+gulp.task('fontawesome', function(){
+    return gulp.src(['node_modules/@fortawesome/fontawesome-free/svgs/**/*.svg'])
+        .pipe(gulp.dest('assets/dist/fontawesome/icons'));
+});
+
+/**
+ * Task: gulp tabler
+ */
+gulp.task('tabler', function(){
+    return gulp.src(['node_modules/@tabler/icons/icons/**/*.svg'])
+        .pipe(gulp.dest('assets/dist/tabler/icons'));
+});
+
+/**
+ * Task: gulp bootstrap
+ */
+gulp.task('bootstrap', function(){
+    return gulp.src(['node_modules/bootstrap-icons/icons/**/*.svg'])
+        .pipe(gulp.dest('assets/dist/bootstrap/icons'));
 });
 
 /**
  * Task: gulp default
  */
 gulp.task('default', gulp.series(
-    'fontawesome-icons'
+    'fontawesome',
+    'bootstrap',
+    'tabler'
 ));

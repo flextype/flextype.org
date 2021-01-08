@@ -81,7 +81,7 @@
 
              {% for item in plugins_items %}
              <a href="{{ url() }}/{{ item.id }}" class="flex align-middle mb-6 px-6 post">
-                 <span class="icon-svg-large mr-5">{{ icon(item.icon) }}</span>
+                 <span class="icon-svg-large mr-5">{{ icon(item.icon.name, item.icon.set) }}</span>
                  <div class="text-left">
                      <h4 class="w-full text-xl pb-0 mb-0">{{ item.title }}</h4>
                      <p class="m-0">
@@ -139,19 +139,19 @@
                             {% if category != '' %}
                             <a class="no-underline px-1 mb-2 flex items-center" href="{{ url() }}/{{ locale }}/downloads/extend/plugins?category={{ category|trim }}">
                                 {% if category == 'accounts' %}
-                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('fas fa-users') }}</span>
+                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('users', 'fontawesome|solid') }}</span>
                                 {% elseif category == 'emails' %}
-                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('fas fa-envelope') }}</span>
+                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('envelope', 'fontawesome|solid') }}</span>
                                 {% elseif category == 'content' %}
-                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('fas fa-file-alt') }}</span>
+                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('file-alt', 'fontawesome|solid') }}</span>
                                 {% elseif category == 'admin' %}
-                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('fab fa-fort-awesome') }}</span>
+                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('fort-awesome', 'fontawesome|brands') }}</span>
                                 {% elseif category == 'forms' %}
-                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('fas fa-list-alt') }}</span>
+                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('list-alt', 'fontawesome|solid') }}</span>
                                 {% elseif category == 'seo' %}
-                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('fas fa-globe') }}</span>
+                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('globe', 'fontawesome|solid') }}</span>
                                 {% else %}
-                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('fas fa-palette') }}</span>
+                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('palette', 'fontawesome|solid') }}</span>
                                 {% endif %}
                                 {{ category|trim }}</a>
                             {% endif %}

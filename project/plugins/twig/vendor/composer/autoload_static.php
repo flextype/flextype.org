@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb5941cfbc4ee70b75c7d3c9993f25fca
+class ComposerStaticInit20dd1f662e5f720206a31c2636e91083
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -20,7 +20,6 @@ class ComposerStaticInitb5941cfbc4ee70b75c7d3c9993f25fca
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
-            'Slim\\Views\\' => 11,
             'Slim\\Flash\\' => 11,
             'Slim\\Csrf\\' => 10,
         ),
@@ -47,10 +46,6 @@ class ComposerStaticInitb5941cfbc4ee70b75c7d3c9993f25fca
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
-        ),
-        'Slim\\Views\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/slim/twig-view/src',
         ),
         'Slim\\Flash\\' => 
         array (
@@ -105,8 +100,6 @@ class ComposerStaticInitb5941cfbc4ee70b75c7d3c9993f25fca
         'Psr\\Http\\Message\\UriInterface' => __DIR__ . '/..' . '/psr/http-message/src/UriInterface.php',
         'Slim\\Csrf\\Guard' => __DIR__ . '/..' . '/slim/csrf/src/Guard.php',
         'Slim\\Flash\\Messages' => __DIR__ . '/..' . '/slim/flash/src/Messages.php',
-        'Slim\\Views\\Twig' => __DIR__ . '/..' . '/slim/twig-view/src/Twig.php',
-        'Slim\\Views\\TwigExtension' => __DIR__ . '/..' . '/slim/twig-view/src/TwigExtension.php',
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Twig\\Cache\\CacheInterface' => __DIR__ . '/..' . '/twig/twig/src/Cache/CacheInterface.php',
@@ -288,9 +281,9 @@ class ComposerStaticInitb5941cfbc4ee70b75c7d3c9993f25fca
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb5941cfbc4ee70b75c7d3c9993f25fca::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb5941cfbc4ee70b75c7d3c9993f25fca::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitb5941cfbc4ee70b75c7d3c9993f25fca::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit20dd1f662e5f720206a31c2636e91083::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit20dd1f662e5f720206a31c2636e91083::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit20dd1f662e5f720206a31c2636e91083::$classMap;
 
         }, null, ClassLoader::class);
     }

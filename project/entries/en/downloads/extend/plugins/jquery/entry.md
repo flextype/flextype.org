@@ -1,7 +1,9 @@
 ---
 title: jQuery
 description: jQuery plugin for Flextype.
-icon: fab fa-js-square
+icon:
+  name: js-square
+  set: fontawesome|brands
 keywords: javascript
 author:
   name: Sergey Romanenko

@@ -1,7 +1,9 @@
 ---
 title: Form
 description: Form Plugin to render user forms for Flextype.
-icon: fas fa-check-circle
+icon:
+  name: check-circle
+  set: fontawesome|solid
 category: forms
 author:
   name: Sergey Romanenko

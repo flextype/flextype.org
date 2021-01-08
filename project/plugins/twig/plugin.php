@@ -30,6 +30,11 @@ use function is_file;
 $twig_loader = require_once $twig_autoload;
 
 /**
+ * Include Twig
+ */
+include_once 'Twig.php';
+
+/**
  * Include dependencies
  */
 include_once 'dependencies.php';

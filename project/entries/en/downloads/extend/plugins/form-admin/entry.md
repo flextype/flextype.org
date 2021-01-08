@@ -1,7 +1,9 @@
 ---
 title: Form Admin
 description: Form Admin Plugin to manage user forms in Flextype Admin Panel.
-icon: fas fa-check-circle
+icon:
+  name: check-circle
+  set: fontawesome|solid
 category: admin, forms
 author:
   name: Sergey Romanenko

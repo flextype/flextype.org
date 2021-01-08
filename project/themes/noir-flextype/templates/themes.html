@@ -138,9 +138,9 @@
                         {% for category in category_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
                             <a class="no-underline px-1 mb-2 flex items-center" href="{{ url() }}/{{ locale }}/downloads/extend/themes?category={{ category|trim }}">
                                 {% if category == 'framework' %}
-                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('fab fa-bootstrap') }}</span>
+                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('bootstrap', 'fontawesome|brands') }}</span>
                                 {% else %}
-                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('fas fa-palette') }}</span>
+                                <span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('palette', 'fontawesome|solid') }}</span>
                                 {% endif %}
                                 {{ category|trim }}</a>
                         {% endfor %}

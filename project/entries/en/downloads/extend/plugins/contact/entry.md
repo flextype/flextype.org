@@ -1,7 +1,9 @@
 ---
 title: Contact
 description: Contact Plugin for Flextype.
-icon: fas fa-envelope
+icon:
+  name: envelope
+  set: fontawesome|solid
 category: emails
 author:
   name: Sergey Romanenko

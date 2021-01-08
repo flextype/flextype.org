@@ -13,7 +13,7 @@ The following dependencies need to be downloaded and installed for Sitemap Plugi
 | Item | Version | Download |
 |---|---|---|
 | [flextype](https://github.com/flextype/flextype) | 0.9.15 | [download](https://github.com/flextype/flextype/releases) |
-| [twig](https://github.com/flextype-plugins/twig) | >=1.0.0 | [download](https://github.com/flextype-plugins/twig/releases) |
+| [twig](https://github.com/flextype-plugins/twig) | >=2.0.0 | [download](https://github.com/flextype-plugins/twig/releases) |
 
 ## Installation
 
@@ -28,7 +28,7 @@ The following dependencies need to be downloaded and installed for Sitemap Plugi
 | Key | Value | Description |
 |---|---|---|
 | enabled | true | true or false to disable the plugin |
-| priority | 95 | sitemap plugin priority |
+| priority | 100 | sitemap plugin priority |
 | route | sitemap.xml | sitemap route |
 | ignore | [] | List of entries to ignore |
 | additions | [] | List of additions to add |
