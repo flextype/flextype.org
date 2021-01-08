@@ -23,80 +23,74 @@
 
         {% set theme = flextype.serializers.yaml.decode(filesystem().file("https://raw.githubusercontent.com/" ~ repo_name[repo_name_length-2] ~ "/" ~ repo_name[repo_name_length-1] ~ "/master/theme.yaml").get()) %}
 
-        <div class="p-6 text-black mb-6">
-            <div class="flex align-middle items-center">
-                <div class="text-left">
-                    <h4 class="text-2xl pb-0 mb-0 block">{{ theme.name }}</h4>
-                    <p class="m-0">
-                        {{ theme.description }}
-                    </p>
-                    <p class="m-0 text-sm">
-                        {{ txt.by }} <a class="no-underline" href="#">{{ theme.author.name }}</a>
-                    </p>
+        <div class="flex content-center flex-wrap">
+            <div class="w-full lg:w-9/12 pl-2 pr-7 text-left">
+                <div class="text-black mb-6">
+                    <div class="flex align-middle items-center">
+                        <div class="text-left">
+                            <h4 class="text-2xl pb-0 mb-0 block">{{ theme.name }}</h4>
+                            <p class="m-0">
+                                {{ theme.description }}
+                            </p>
+                            <p class="m-0 text-sm">
+                                {{ txt.by }} <a class="no-underline" href="#"><b>{{ theme.author.name }}</b></a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-grow"></div>
+
+                <hr class="mb-6 mb-6 border-b border-black">
+
+                {{ entry.content|shortcode|markdown|raw }}
+            </div>
+            <div class="w-full lg:w-3/12 p-2">
+                <div class="text-black text-left p-6 mb-6 plate">
+                    <div class="flex content-center flex-wrap">
+                        <div class="w-full">
+                            <p class="m-0 opacity-50">Version</p>
+                            <p>{{ theme.version }}</p>
+                        </div>
+                        <div class="w-full">
+                            <p class="m-0 opacity-50">Lincense</p>
+                            <p>{{ theme.license }}</p>
+                        </div>
+                        <div class="w-full">
+                            <p class="m-0 opacity-50">Dependencies</p>
+                            {% for key, val in theme.dependencies %}
+                                <a href="{{ url() }}/{{ locale }}/downloads/extend/themes/{{ key }}">{{ key }}</a>: {{ val }}<br>
+                            {% endfor %}
+                            <p></p>
+                        </div>
+                        <div class="w-full">
+                            <p class="m-0 opacity-50">Links</p>
+                            <p>
+                                {% if theme.homepage %}<a href="{{ theme.homepage }}">Homepage</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Homepage</a><br>{% endif %}
+                                {% if theme.documentation %}<a href="{{ theme.documentation }}">Documentation</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Documentation</a><br>{% endif %}
+                                {% if theme.changelog %}<a href="{{ theme.changelog }}">Changelog</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Changelog</a><br>{% endif %}
+                                {% if theme.bugs %}<a href="{{ theme.bugs }}">Issues</a>{% elseif entry.github %}<a href="{{ entry.github }}">Issues</a><br>{% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex content-center flex-wrap">
+                        <div class="w-full">
+                            <p class="m-0 opacity-50">Categories</p>
+                            <p>
+                                {% set categories = entry.category|replace({' ': ''}) %}
+                                {% for category in categories|split(',') %}
+                                    <a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/themes?category={{ category|trim }}">{{ category|trim }}</a>{% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <div>
-                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base"
+                    <a class="pl-6 pr-6 pt-2 pb-2 w-full fadeIn button text-base uppercase"
                     href="{{ entry.github }}/releases/download/v{{ theme.version }}/{{ name }}-{{ theme.version }}.zip">DOWNLOAD</a>
                 </div>
             </div>
         </div>
 
-        <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
-
-        {% if entry.content %}
-            {{ entry.content|shortcode|markdown|raw }}
-        <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
-        {% endif %}
-
-        {% if entry.preview %}
-        <div class="text-center">
-            <img class="" src="{{ entry.preview }}" alt="">
-        </div>
-        <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
-        {% endif %}
-
-        <div class="p-6 text-black mb-6">
-            <h4>Information</h4>
-            <div class="flex content-center flex-wrap">
-                <div class="w-full lg:w-3/12">
-                    <p class="m-0 opacity-50">Version</p>
-                    <p>{{ theme.version }}</p>
-                </div>
-                <div class="w-full lg:w-3/12">
-                    <p class="m-0 opacity-50">Lincense</p>
-                    <p>{{ theme.license }}</p>
-                </div>
-                <div class="w-full lg:w-3/12">
-                    <p class="m-0 opacity-50">Dependencies</p>
-                    {% for key, val in theme.dependencies %}
-                        <a href="{{ url() }}/{{ locale }}/downloads/extend/themes/{{ key }}">{{ key }}</a>: {{ val }}<br>
-                    {% endfor %}
-                </div>
-                <div class="w-full lg:w-3/12">
-                    <p class="m-0 opacity-50">Links</p>
-                    <p>
-                        {% if theme.homepage %}<a href="{{ theme.homepage }}">Homepage</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Homepage</a><br>{% endif %}
-                        {% if theme.documentation %}<a href="{{ theme.documentation }}">Documentation</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Documentation</a><br>{% endif %}
-                        {% if theme.changelog %}<a href="{{ theme.changelog }}">Changelog</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Changelog</a><br>{% endif %}
-                        {% if theme.bugs %}<a href="{{ theme.bugs }}">Issues</a>{% elseif entry.github %}<a href="{{ entry.github }}">Issues</a><br>{% endif %}
-                    </p>
-                </div>
-            </div>
-            <div class="flex content-center flex-wrap">
-                <div class="w-full">
-                    <p class="m-0 opacity-50">Categories</p>
-                    <p>
-                        {% set categories = entry.category|replace({' ': ''}) %}
-                        {% for category in categories|split(',') %}
-                            <a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/themes?category={{ category|trim }}">{{ category|trim }}</a>{% if not loop.last %}, {% endif %}
-                        {% endfor %}
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
+        <hr class="mb-6 mb-6 border-b border-black">
 
         <div class="p-2 text-black mb-6">
             <h4>Other themes by {{ theme.author.name }}</h4>
