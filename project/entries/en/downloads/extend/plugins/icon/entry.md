@@ -65,7 +65,7 @@ function icon(?string $name = null, ?string $set = 'fontawesome|solid', ?string 
 
 **Display icon in the entry content**
 ```
-[icon name="apple" set="fontawesome|brands"]
+[raw][icon name="apple" set="fontawesome|brands"][/raw]
 ```
 
 **Display icon in the php**

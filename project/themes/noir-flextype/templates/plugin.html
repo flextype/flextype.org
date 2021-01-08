@@ -23,35 +23,29 @@
 
         {% set plugin = flextype.serializers.yaml.decode(filesystem().file("https://raw.githubusercontent.com/" ~ repo_name[repo_name_length-2] ~ "/" ~ repo_name[repo_name_length-1] ~ "/master/plugin.yaml").get()) %}
 
-        <div class="p-6 text-black mb-6">
-            <div class="flex align-middle items-center">
-                <span class="icon-svg-large mr-5">{{ icon(plugin.icon.name, plugin.icon.set) }}</span>
-                <div class="text-left">
-                    <h4 class="text-2xl pb-0 mb-0 block">{{ plugin.name }}</h4>
-                    <p class="m-0">
-                        {{ plugin.description }}
-                    </p>
-                    <p class="m-0 text-sm">
-                        {{ txt.by }} <a class="no-underline" href="#">{{ plugin.author.name }}</a>
-                    </p>
-                </div>
-                <div class="flex-grow"></div>
-                <div>
-                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base"
-                    href="{{ entry.github }}/releases/download/v{{ plugin.version }}/{{ name }}-{{ plugin.version }}.zip">DOWNLOAD</a>
-                </div>
-            </div>
-        </div>
-
-        <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
-
         <div class="flex content-center flex-wrap">
-            <div class="w-full lg:w-9/12 p-2 text-left">
+            <div class="w-full lg:w-9/12 pl-2 pr-7 text-left">
+                <div class="text-black mb-6">
+                    <div class="flex align-middle items-center">
+                        <span class="icon-svg-large mr-5">{{ icon(plugin.icon.name, plugin.icon.set) }}</span>
+                        <div class="text-left">
+                            <h4 class="text-2xl pb-0 mb-0 block">{{ plugin.name }}</h4>
+                            <p class="m-0">
+                                {{ plugin.description }}
+                            </p>
+                            <p class="m-0 text-sm">
+                                {{ txt.by }} <a class="no-underline" href="#"><b>{{ plugin.author.name }}</b></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="mb-6 mb-6 border-b border-black">
+
                 {{ entry.content|shortcode|markdown|raw }}
             </div>
-            <div class="w-full lg:w-3/12">
-                <div class="text-black lg:pl-8 mb-6">
-                    <h4>Information</h4>
+            <div class="w-full lg:w-3/12 p-2">
+                <div class="text-black text-left p-6 mb-6 plate">
                     <div class="flex content-center flex-wrap">
                         <div class="w-full">
                             <p class="m-0 opacity-50">Version</p>
@@ -90,10 +84,14 @@
                         </div>
                     </div>
                 </div>
+                <div>
+                    <a class="pl-6 pr-6 pt-2 pb-2 w-full fadeIn button text-base uppercase"
+                    href="{{ entry.github }}/releases/download/v{{ plugin.version }}/{{ name }}-{{ plugin.version }}.zip">DOWNLOAD</a>
+                </div>
             </div>
         </div>
-        
-        <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
+
+        <hr class="mb-6 mb-6 border-b border-black">
 
         <div class="p-2 text-black mb-6">
             <h4>Other plugins by {{ plugin.author.name }}</h4>

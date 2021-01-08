@@ -73,7 +73,7 @@ form:
 
 The email field for email text blocks.
 
-#**Example:**
+**Example:**
 
 ```yaml
 form:
