@@ -45,58 +45,54 @@
 
         <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
 
-        {% if entry.content %}
-            {{ entry.content|shortcode|markdown|raw }}
-            <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
-        {% endif %}
-
-        {% if entry.preview %}
-            <div class="text-center">
-                <img class="" src="{{ entry.preview }}" alt="">
+        <div class="flex content-center flex-wrap">
+            <div class="w-full lg:w-9/12 p-2 text-left">
+                {{ entry.content|shortcode|markdown|raw }}
             </div>
-            <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
-        {% endif %}
-
-        <div class="p-6 text-black mb-6">
-            <h4>Information</h4>
-            <div class="flex content-center flex-wrap">
-                <div class="w-full lg:w-3/12">
-                    <p class="m-0 opacity-50">Version</p>
-                    <p>{{ plugin.version }}</p>
-                </div>
-                <div class="w-full lg:w-3/12">
-                    <p class="m-0 opacity-50">Lincense</p>
-                    <p>{{ plugin.license }}</p>
-                </div>
-                <div class="w-full lg:w-3/12">
-                    <p class="m-0 opacity-50">Dependencies</p>
-                    {% for key, val in plugin.dependencies %}
-                        <a href="{{ url() }}/{{ locale }}/downloads/extend/plugins/{{ key }}">{{ key }}</a>: {{ val }}<br>
-                    {% endfor %}
-                </div>
-                <div class="w-full lg:w-3/12">
-                    <p class="m-0 opacity-50">Links</p>
-                    <p>
-                        {% if plugin.homepage %}<a href="{{ plugin.homepage }}">Homepage</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Homepage</a><br>{% endif %}
-                        {% if plugin.documentation %}<a href="{{ plugin.documentation }}">Documentation</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Documentation</a><br>{% endif %}
-                        {% if plugin.changelog %}<a href="{{ plugin.changelog }}">Changelog</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Changelog</a><br>{% endif %}
-                        {% if plugin.bugs %}<a href="{{ plugin.bugs }}">Issues</a>{% elseif entry.github %}<a href="{{ entry.github }}">Issues</a><br>{% endif %}
-                    </p>
-                </div>
-            </div>
-            <div class="flex content-center flex-wrap">
-                <div class="w-full">
-                    <p class="m-0 opacity-50">Categories</p>
-                    <p>
-                        {% set categories = entry.category|replace({' ': ''}) %}
-                        {% for category in categories|split(',') %}
-                            <a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/plugins?category={{ category|trim }}">{{ category|trim }}</a>{% if not loop.last %}, {% endif %}
-                        {% endfor %}
-                    </p>
+            <div class="w-full lg:w-3/12">
+                <div class="text-black lg:pl-8 mb-6">
+                    <h4>Information</h4>
+                    <div class="flex content-center flex-wrap">
+                        <div class="w-full">
+                            <p class="m-0 opacity-50">Version</p>
+                            <p>{{ plugin.version }}</p>
+                        </div>
+                        <div class="w-full">
+                            <p class="m-0 opacity-50">Lincense</p>
+                            <p>{{ plugin.license }}</p>
+                        </div>
+                        <div class="w-full">
+                            <p class="m-0 opacity-50">Dependencies</p>
+                            {% for key, val in plugin.dependencies %}
+                                <a href="{{ url() }}/{{ locale }}/downloads/extend/plugins/{{ key }}">{{ key }}</a>: {{ val }}<br>
+                            {% endfor %}
+                            <p></p>
+                        </div>
+                        <div class="w-full">
+                            <p class="m-0 opacity-50">Links</p>
+                            <p>
+                                {% if plugin.homepage %}<a href="{{ plugin.homepage }}">Homepage</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Homepage</a><br>{% endif %}
+                                {% if plugin.documentation %}<a href="{{ plugin.documentation }}">Documentation</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Documentation</a><br>{% endif %}
+                                {% if plugin.changelog %}<a href="{{ plugin.changelog }}">Changelog</a><br>{% elseif entry.github %}<a href="{{ entry.github }}">Changelog</a><br>{% endif %}
+                                {% if plugin.bugs %}<a href="{{ plugin.bugs }}">Issues</a>{% elseif entry.github %}<a href="{{ entry.github }}">Issues</a><br>{% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex content-center flex-wrap">
+                        <div class="w-full">
+                            <p class="m-0 opacity-50">Categories</p>
+                            <p>
+                                {% set categories = entry.category|replace({' ': ''}) %}
+                                {% for category in categories|split(',') %}
+                                    <a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/plugins?category={{ category|trim }}">{{ category|trim }}</a>{% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
+        
         <hr class="mb-6 mb-6 border-1" style="border-color: #f8f9fb;">
 
         <div class="p-2 text-black mb-6">
