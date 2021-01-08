@@ -1026,7 +1026,7 @@ Valid values for setting **result** is **toObject** or **toArray**
     $flextype['media_folders']
     ```
 
-    See: http://docs.flextype.org/en/core/media
+    See: https://docs.flextype.org/en/core/media
 
 * **core** New simplified parsers and serializers functionality #438
 
@@ -1070,7 +1070,7 @@ Valid values for setting **result** is **toObject** or **toArray**
     * `public function fetchSingle(string $path) : array` Fetch single entry.
     * `public function fetchCollection(string $path, $filter = []) : array` Fetch entries collection.
 
-    See: http://docs.flextype.org/en/core/entries#methods
+    See: https://docs.flextype.org/en/core/entries#methods
 
 * **entries** New events added for Entries API.
 
@@ -1159,7 +1159,7 @@ Valid values for setting **result** is **toObject** or **toArray**
 
     We are able to use collections for any type of items, not just for entries. New Collection are simple and powerful!
 
-    See: http://docs.flextype.org/en/core/collections
+    See: https://docs.flextype.org/en/core/collections
 
 * **settings** Set max_file_size 8mb for uploads.
 
@@ -1511,7 +1511,7 @@ Valid values for setting **result** is **toObject** or **toArray**
 * **core:** remove Debug, Html and Form Flextype Components.
 * **core:** all images links should be updated
     ```
-    http://docs.flextype.org/en/content/media
+    https://docs.flextype.org/en/content/media
     ```
 * **core:** core and plugin settings keys renamed
     ```
@@ -1583,7 +1583,7 @@ Valid values for setting **result** is **toObject** or **toArray**
     gt - Greater than
     gte - Greater than or equal to
     ```
-    docs: http://docs.flextype.org/en/themes/entries-fetch
+    docs: https://docs.flextype.org/en/themes/entries-fetch
 
 * **core:** add `json_encode` and `json_decode` twig filter #289
 

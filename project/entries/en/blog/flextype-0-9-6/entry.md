@@ -55,7 +55,7 @@ author:
     gt - Greater than
     gte - Greater than or equal to
     ```  
-    docs: http://docs.flextype.org/en/themes/entries-fetch
+    docs: https://docs.flextype.org/en/themes/entries-fetch
 
 * **core:** add `json_encode` and `json_decode` twig filter #289  
 

@@ -145,7 +145,7 @@ author:
 * **core:** remove Debug, Html and Form Flextype Components.
 * **core:** all images links should be updated
     ```
-    http://docs.flextype.org/en/content/media
+    https://docs.flextype.org/en/content/media
     ```
 * **core:** core and plugin settings keys renamed
     ```
