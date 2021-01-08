@@ -38,7 +38,7 @@ author:
     $flextype['media_folders']
     ```
 
-    See: http://docs.flextype.org/en/core/media
+    See: https://docs.flextype.org/en/core/media
 
 * **core** New simplified parsers and serializers functionality #438
 
@@ -85,7 +85,7 @@ author:
     * `public function fetchCollection(string $path, $filter = []) : array`
        Fetch entries collection.
 
-    See: http://docs.flextype.org/en/core/entries#methods
+    See: https://docs.flextype.org/en/core/entries#methods
 
 * **entries** New events added for Entries API.
 
@@ -175,7 +175,7 @@ author:
     We are able to use collections for any type of items, not just for entries.
     New Collection are simple and powerful!
 
-    See: http://docs.flextype.org/en/core/collections
+    See: https://docs.flextype.org/en/core/collections
 
 * **settings** Set max_file_size 8mb for uploads.
 

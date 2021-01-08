@@ -114,11 +114,11 @@ To do that, you could explicitly encode all HTML within the user-supplied conten
 
 #### <a name="resources"></a> Resources
 
-* [Official Twig Documentation](http://twig.sensiolabs.org/documentation)
-* [Twig for Template Designers](http://twig.sensiolabs.org/doc/templates.html)
-* [Twig for Developers](http://twig.sensiolabs.org/doc/api.html)
-* [6 Minute Video Introduction to Twig](http://www.dev-metal.com/6min-video-introduction-twig-php-templating-engine/)
-* [Introduction to Twig](http://www.slideshare.net/markstory/introduction-to-twig)
+* [Official Twig Documentation](https://twig.sensiolabs.org/documentation)
+* [Twig for Template Designers](https://twig.sensiolabs.org/doc/templates.html)
+* [Twig for Developers](https://twig.sensiolabs.org/doc/api.html)
+* [6 Minute Video Introduction to Twig](https://www.dev-metal.com/6min-video-introduction-twig-php-templating-engine/)
+* [Introduction to Twig](https://www.slideshare.net/markstory/introduction-to-twig)
 
 #### <a name="global-variables"></a> Global Variables
 
