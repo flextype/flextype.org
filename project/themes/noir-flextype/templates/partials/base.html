@@ -146,6 +146,7 @@
 
         {% set theme = flextype.registry.get('plugins.site.settings.theme') %}
 
+        {{ currentUrl() }}
         {% set highlight_js = url() ~ '/project/themes/' ~ flextype.registry.get('plugins.site.settings.theme') ~ '/assets/highlight/highlight.pack.js' %}
         <script src="{{ highlight_js }}"></script>
 
