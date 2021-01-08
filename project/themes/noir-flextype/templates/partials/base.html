@@ -146,7 +146,7 @@
 
         {% set theme = flextype.registry.get('plugins.site.settings.theme') %}
 
-
+        {% if (currentUrl() != '/en' and currentUrl() != '/ru') %}
             {% set highlight_js = url() ~ '/project/themes/' ~ flextype.registry.get('plugins.site.settings.theme') ~ '/assets/highlight/highlight.pack.js' %}
             <script src="{{ highlight_js }}"></script>
 
@@ -156,7 +156,7 @@
                     hljs.highlightBlock(block);
                 });
             </script>
-
+        {% endif %}
 
         {% if flextype.registry.has('assets.site.js') %}
             {% for js in flextype.registry.get('assets.site.js') %}
