@@ -1,7 +1,9 @@
 ---
 title: Site
 description: Site plugin to display entries content on the website frontend.
-icon: fas fa-globe
+icon:
+  name: globe
+  set: solid
 category: content
 author:
   name: Sergey Romanenko
