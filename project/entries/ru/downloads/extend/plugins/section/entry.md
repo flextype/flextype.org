@@ -7,6 +7,7 @@ author:
   name: Sergey Romanenko
   email: support@flextype.org
 github: https://github.com/flextype-plugins/section
+documentation: https://github.com/flextype-plugins/section
 template: plugin
 ---
 
