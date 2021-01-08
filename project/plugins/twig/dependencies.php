@@ -11,8 +11,6 @@ declare(strict_types=1);
 
 namespace Flextype\Plugin\Twig;
 
-use Slim\Views\Twig;
-use Slim\Views\TwigExtension;
 use Slim\Http\Environment;
 use Slim\Http\Uri;
 use Slim\Csrf\Guard;
@@ -36,10 +34,6 @@ flextype()->container()['twig'] = function () {
                          'debug' => flextype('registry')->get('plugins.twig.settings.debug'),
                          'charset' => flextype('registry')->get('plugins.twig.settings.charset')]);
 
-    // Add Twig Extension
-    $twig->addExtension(new TwigExtension(flextype('router'),
-                                          Uri::createFromEnvironment(new Environment($_SERVER))));
-
     // Add Twig Debug Extension
     $twig->addExtension(new DebugExtension());
 
@@ -57,6 +51,7 @@ flextype()->container()['twig'] = function () {
             }
 
             $twig->addExtension(new $twigExtensionClassNameWithNamespace());
+
         }
     }
 

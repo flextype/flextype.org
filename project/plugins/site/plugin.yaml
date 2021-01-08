@@ -1,7 +1,9 @@
 name: Site
-version: 1.9.0
+version: 1.10.0
 description: Site plugin to display entries content on the website frontend.
-icon: fas fa-globe
+icon:
+  name: globe
+  set: "fontawesome|solid"
 author:
   name: Sergey Romanenko
   email: support@flextype.org
@@ -12,4 +14,4 @@ license: MIT
 
 dependencies:
   flextype: 0.9.15
-  twig: '>=1.0.0'
+  twig: '>=2.0.0'

@@ -1,7 +1,9 @@
 name: Icon
-version: 1.7.0
-description: Icon plugin to present Font Awesome icons set for Flextype.
-icon: fab fa-font-awesome-flag
+version: 2.0.0
+description: Icon plugin to present most popular icons sets in SVG format for Flextype.
+icon:
+  name: font-awesome-flag
+  set: "fontawesome|brands"
 author:
   name: Sergey Romanenko
   email: support@flextype.org
@@ -12,4 +14,4 @@ license: MIT
 
 dependencies:
   flextype: 0.9.15
-  twig: '>=1.0.0'
+  twig: '>=2.0.0'

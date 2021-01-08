@@ -1,3 +1,25 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/flextype-plugins/twig/compare/v1.7.0...v2.0.0) (2021-01-07)
+
+### Features
+
+* add native support for Twig.
+* add new method `urlFor()`
+* add new method `fullUrlFor()`
+* add new method `baseUrl()`
+* add new method `isCurrentUrl()`
+* add new method `currentUrl()`
+
+### BREAKING CHANGES
+
+* use function `urlFor()` instead of `path_for()`
+* use function `fullUrlFor()` instead of `full_url_for()`
+* use function `baseUrl()` instead of `base_url()`
+* use function `isCurrentUrl()` instead of `is_current_path()`
+* use function `currentUrl()` instead of `current_path()`
+
+affected plugins: account, accounts-admin, admin, form, form-admin, icon, themes-admin
+
 <a name="1.8.0"></a>
 # [1.8.0](https://github.com/flextype-plugins/twig/compare/v1.6.0...v1.7.0) (2021-01-03)
 

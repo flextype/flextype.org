@@ -36,8 +36,6 @@ return array(
     'Psr\\Http\\Message\\UriInterface' => $vendorDir . '/psr/http-message/src/UriInterface.php',
     'Slim\\Csrf\\Guard' => $vendorDir . '/slim/csrf/src/Guard.php',
     'Slim\\Flash\\Messages' => $vendorDir . '/slim/flash/src/Messages.php',
-    'Slim\\Views\\Twig' => $vendorDir . '/slim/twig-view/src/Twig.php',
-    'Slim\\Views\\TwigExtension' => $vendorDir . '/slim/twig-view/src/TwigExtension.php',
     'Symfony\\Polyfill\\Ctype\\Ctype' => $vendorDir . '/symfony/polyfill-ctype/Ctype.php',
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
     'Twig\\Cache\\CacheInterface' => $vendorDir . '/twig/twig/src/Cache/CacheInterface.php',

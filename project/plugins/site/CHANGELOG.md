@@ -1,3 +1,10 @@
+<a name="1.10.0"></a>
+# [1.10.0](https://github.com/flextype-plugins/site/compare/v1.9.0...v1.10.0) (2021-01-07)
+
+### Features
+
+* Update code base for new Icon 2.0.0
+
 <a name="1.9.0"></a>
 # [1.9.0](https://github.com/flextype-plugins/site/compare/v1.8.0...v1.9.0) (2021-01-03)
 
@@ -5,7 +12,6 @@
 
 * **core** add plugin.php file
 * **core** improve controllers handling in routes for performance enhancements
-* **core** add plugin.php file
 
 ### Bug Fixes
 
