@@ -16,6 +16,6 @@ txt_installation_video_tutorials_links: |
   <a href="https://www.youtube.com/watch?v=R_NPR9bWxUA">Установка Flextype Core</a> / <a href="https://www.youtube.com/watch?v=s5HEOmawFOA">Установка Flextype Website</a>
 txt_contribution_financial_support_heading: ФИНАНСОВАЯ ПОДДЕРЖКА
 txt_contribution_financial_support_p: |
-  Flextype - это проект с открытым исходным кодом, лицензированный MIT, и он абсолютно бесплатный для использования. Однако объем усилий, необходимых для поддержания и развития новых возможностей проекта, не будут устойчивыми без надлежащей финансовой поддержки. Вы можете поддержать развитие проекта, будучи cпонсором: <a class="invert" href="https://www.patreon.com/awilum">Стать спонсором на Patreon.</a>, <a class="invert" href="//flextype.org/en/one-time-donation">Одноразовое пожертвование через PayPal, QIWI, Sberbank, Яндекс</a>
+  Flextype - это проект с открытым исходным кодом, лицензированный MIT, и он абсолютно бесплатный для использования. Однако объем усилий, необходимых для поддержания и развития новых возможностей проекта, не будут устойчивыми без надлежащей финансовой поддержки. <br><br> You can support it's ongoing development by being a project backer or a sponsor:<br><a class="invert" href="https://www.patreon.com/awilum">Become a backer or sponsor on Patreon</a>, <a class="invert" href="//flextype.org/en/one-time-donation">One-time donation via PayPal, QIWI, Sberbank</a>, <a class="invert" href="//flextype.org/en/sponsors">Visit our Sponsors & Backers page</a>
 ---
 
