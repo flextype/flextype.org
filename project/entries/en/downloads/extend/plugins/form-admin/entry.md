@@ -13,8 +13,14 @@ documentation: https://github.com/flextype-plugins/form-admin
 template: plugin
 ---
 
-#### INSTALLATION
+#### Installation
 
 1. Download & Install all required dependencies.
 2. Create new folder `/project/plugins/form-admin`
 3. Download Form Admin Plugin and unzip plugin content to the folder `/project/plugins/form-admin`
+
+#### Settings
+
+| Key | Value | Description |
+|---|---|---|
+| enabled | true | true or false to disable the plugin |

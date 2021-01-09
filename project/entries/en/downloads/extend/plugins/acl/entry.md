@@ -24,9 +24,6 @@ template: plugin
 2. Create new folder `/project/plugins/acl`
 3. Download ACL Plugin and unzip plugin content to the folder `/project/plugins/acl`
 
-#### Documentation
-
-
 #### Settings
 
 | Key | Value | Description |

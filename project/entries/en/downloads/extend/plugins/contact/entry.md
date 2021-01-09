@@ -20,8 +20,6 @@ template: plugin
 3. Download PHP Mailer Plugin and unzip plugin content to the folder `/project/plugins/contact`
 4. Copy `_project` folder content into your `project` folder.
 
-#### Documentation
-
 #### Settings
 
 | Key | Value | Description |

@@ -13,12 +13,18 @@ documentation: https://github.com/flextype-plugins/accounts-admin
 template: plugin
 ---
 
-#### INSTALLATION
+#### Installation
 
 1. Download & Install all required dependencies.
 2. Create new folder `/project/plugins/accounts-admin`
 3. Download Accounts Admin Plugin and unzip plugin content to the folder `/project/plugins/accounts-admin`
 4. Copy all fieldsets from `/project/plugins/accounts-admin/fieldsets` to `/project/fieldsets` folder.
+
+#### Settings
+
+| Key | Value | Description |
+|---|---|---|
+| enabled | true | true or false to disable the plugin |
 
 #### Events
 

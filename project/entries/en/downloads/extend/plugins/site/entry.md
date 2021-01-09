@@ -19,8 +19,6 @@ template: plugin
 2. Create new folder `/project/plugins/site`
 3. Download Site Plugin and unzip plugin content to the folder `/project/plugins/site`
 
-#### Documentation
-
 #### Twig variables for Site Plugin
 
 | Variable | Description |
