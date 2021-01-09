@@ -35,12 +35,14 @@ template: plugin
 
 #### Create your own contact form
 
-here is an example of simpe contact form:
+here is an example of simple contact form:
 
-```
+```yaml
 title: Contact
 default_field: title
-icon: 'fas fa-envelope'
+icon:
+  name: envelope
+  set: 'fontawesome|solid'
 size: 6/12
 hide: true
 form:
@@ -73,9 +75,31 @@ form:
         required: true
 ```
 
-#### Usage in the TWIG templates
+Read documentation about creating forms here:  
+https://github.com/flextype-plugins/form
 
+### Usage in the PHP
+
+```php
+// Show success message
+if (isset(flextype('flash')->getMessages()['success']) and count(flextype('flash')->getMessages()['success']) > 0)
+    foreach (flextype('flash')->getMessages()['success'] as $message) {
+        echo $message;
+    }
+}
+
+// Render contact form
+echo flextype('form')
+        ->render(flextype('serializers')
+                    ->yaml()
+                    ->decode(filesystem()
+                                ->file(PATH['project'] . '/fieldsets/contact.yaml')
+                                ->get()), []);
 ```
+
+### Usage in the TWIG templates
+
+```twig
 {# Show success message #}
 {% for message in flextype.flash.getMessages()['success'] %}
     {{ message }}
