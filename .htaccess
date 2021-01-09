@@ -44,7 +44,6 @@ Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains
 Header set X-Content-Type-Options nosniff
 Header set X-XSS-Protection "1; mode=block"
 Header always append X-Frame-Options SAMEORIGIN
-#Header Referrer-Policy: no-referrer-when-downgrade
 
 ## Begin - Index
 # If the requested path and file is not /index.php and the request
