@@ -33,8 +33,6 @@ This plugin currently contains 3 primary SVG icon sets:
 | enabled  | true  | true or false to disable the plugin |
 | priority | 1     | Icon plugin priority                |
 
-#### Documentation
-
 Global function `icon()`
 
 ```php
