@@ -40,6 +40,8 @@ RewriteRule .* index.php [F]
 #
 ## End - Exploits
 
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
+
 ## Begin - Index
 # If the requested path and file is not /index.php and the request
 # has not already been internally rewritten to the index.php script
@@ -70,7 +72,7 @@ RewriteRule ^(LICENSE\.txt|composer\.lock|composer\.json|\.htaccess)$ error [F]
 ## Begin - Rewrite rules for SEO improvements.
 # RewriteCond %{HTTP_HOST} ^www.example.org [NC]
 # RewriteRule ^(.*)$ http://example.org/$1 [R=301,L]
-# Redirect 301 /index http://example.org/
+# Redirect 301 / http://example.org/en
 ## End - Rewrite rules for SEO improvements.
 
 </IfModule>
