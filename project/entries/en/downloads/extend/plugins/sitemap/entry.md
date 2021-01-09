@@ -19,8 +19,6 @@ template: plugin
 2. Create new folder `/project/plugins/sitemap`
 3. Download Sitemap Plugin and unzip plugin content to the folder `/project/plugins/sitemap`
 
-#### Documentation
-
 #### Settings
 
 | Key | Value | Description |

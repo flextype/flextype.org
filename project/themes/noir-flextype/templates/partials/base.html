@@ -28,6 +28,7 @@
             <meta property="og:image:type" content="image/png">
 
             <meta name="yandex-verification" content="920bbfc83bbe3fbe" />
+            <meta name="google-site-verification" content="JC00E2Po4kPLaTK0V2PJphPnE7UgP4g6O087FHYczWw" />
 
             <link rel="apple-touch-icon" sizes="180x180" href="{{ url() }}/apple-touch-icon.png">
             <link rel="icon" type="image/png" sizes="32x32" href="{{ url() }}/favicon-32x32.png">
@@ -145,15 +146,17 @@
 
         {% set theme = flextype.registry.get('plugins.site.settings.theme') %}
 
-        {% set highlight_js = url() ~ '/project/themes/' ~ flextype.registry.get('plugins.site.settings.theme') ~ '/assets/highlight/highlight.pack.js' %}
-        <script src="{{ highlight_js }}"></script>
+        {% if (currentUrl() != '/en' and currentUrl() != '/ru') %}
+            {% set highlight_js = url() ~ '/project/themes/' ~ flextype.registry.get('plugins.site.settings.theme') ~ '/assets/highlight/highlight.pack.js' %}
+            <script src="{{ highlight_js }}"></script>
 
-        <script type="text/javascript">
-            hljs.configure({useBR: false});
-            document.querySelectorAll('pre code').forEach((block) => {
-                hljs.highlightBlock(block);
-            });
-        </script>
+            <script type="text/javascript">
+                hljs.configure({useBR: false});
+                document.querySelectorAll('pre code').forEach((block) => {
+                    hljs.highlightBlock(block);
+                });
+            </script>
+        {% endif %}
 
         {% if flextype.registry.has('assets.site.js') %}
             {% for js in flextype.registry.get('assets.site.js') %}
