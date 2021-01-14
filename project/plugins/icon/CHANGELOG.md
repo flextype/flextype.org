@@ -1,3 +1,12 @@
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/flextype-plugins/icon/compare/v2.0.1...v2.1.0) (2021-01-14)
+
+### Features
+
+* **core** update code base for new Flextype 0.9.16
+* **core** update fortawesome/fontawesome-free to 5.15.2
+* **core** update bootstrap-icons to 1.3.0
+
 <a name="2.0.1"></a>
 # [2.0.1](https://github.com/flextype-plugins/icon/compare/v2.0.0...v2.0.1) (2021-01-07)
 

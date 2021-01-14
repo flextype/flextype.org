@@ -22,3 +22,9 @@ flextype()->container()['themes'] = fn() => new Themes();
  * Init themes
  */
 flextype()->container()['themes']->init();
+
+/**
+ * Init current activated theme
+ */
+$themeBootstrapPath = PATH['project']. '/themes/' . flextype('registry')->get('plugins.site.settings.theme') . '/theme.php';
+filesystem()->file($themeBootstrapPath)->exists() and include_once $themeBootstrapPath;
