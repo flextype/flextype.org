@@ -10,7 +10,8 @@ published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 ---
 
-### Behind The Project{.text-4xl .text-center .uppercase .pt-24}
+{.text-4xl .text-center .uppercase .pt-24}
+### Behind The Project
 
 <p class="text-center">
     <img alt="We are on a mission to build high quality web platform to develop fast, flexible, easier to manage websites with Flextype!" src="https://avatars0.githubusercontent.com/u/477114?s=460&v=4" class="rounded-full inline w-48 m-5 border-3 border-black" />
@@ -21,7 +22,8 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
     <a href="https://github.com/Awilum" class="invert">github.com/Awilum</a>
 </p>
 
-### Translation Team{.text-4xl .text-center .uppercase .pt-24}
+{.text-4xl .text-center .uppercase .pt-24}
+### Translation Team
 
 If you wish to participate in the translation of Flextype, please <b>Join Flextype International Translator Team</b> and start translating!
 
