@@ -10,7 +10,8 @@ published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 ---
 
-### Introducing{.text-4xl .text-center .uppercase}
+{.text-4xl .text-center .uppercase}
+### Introducing
 
 Flextype is an open-source self-hosted <strong>Data-First Headless CMS & API</strong>. It is was <strong>founded in March 2018</strong> as lightweight alternative to other heavy and outdated CMS. Many people use complex solutions for simple pages, unnecessarily. Building this content management system, we focused on simplicity - even novice webmaster adapt his template and writes his own plugin. To achieve this, we implemented a simple but powerful API's.
 
@@ -18,7 +19,8 @@ With Flextype, you are in complete control. Design your data structure the way y
 
 [entries_fetch id="en/team" field="content"]
 
-### Supporting Flextype{.text-4xl .text-center .uppercase .pt-24}
+{.text-4xl .text-center .uppercase .pt-24}
+### Supporting Flextype
 
 <div class="w-full text-center">
     <div class="mb-10">

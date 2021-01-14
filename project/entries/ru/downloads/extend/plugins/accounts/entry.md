@@ -24,7 +24,11 @@ template: plugin
 3. Download Accounts Plugin and unzip plugin content to the folder `/project/plugins/accounts`
 4. Copy all fieldsets from `/project/plugins/accounts/fieldsets` to `/project/fieldsets` folder.
 
-#### Documentation
+#### Settings
+
+| Key     | Value | Description                         |
+| ------- | ----- | ----------------------------------- |
+| enabled | true  | true or false to disable the plugin |
 
 #### Routes
 | Method | Route                                 | Route Name                            | Description                             |

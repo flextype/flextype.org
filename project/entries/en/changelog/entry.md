@@ -3,12 +3,34 @@ title: 'Changelog'
 template: changelog
 visibility: visible
 created_at: '22-09-2019 19:15'
-published_at: '22-09-2019 s19:15'
+published_at: '22-09-2019 19:15'
 description: ''
 uuid: 94f5eff7-28fb-4fce-a4d0-7dffcda31f4a
 published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 ---
+
+<a name="0.9.16"></a>
+# [0.9.16](https://github.com/flextype/flextype/compare/v0.9.15...v0.9.16) (2020-01-14)
+
+### Features
+
+* **parsers** add commonmark instead of parsedown ([#540](https://github.com/flextype/flextype/issues/540))
+* **shortcodes** add new shortcode - media_files_fetch
+
+    example:
+
+    ```
+    [media_files_fetch id="entries/home/foo.txt" field="title" default="Bar"]
+    ```
+
+### Bug Fixes
+
+* **bootstrap** fix include path for dependencies.
+
+### Refactoring
+
+* **core** general code refactoring and improvements.
 
 <a name="0.9.15"></a>
 # [0.9.15](https://github.com/flextype/flextype/compare/v0.9.14...v0.9.15) (2020-01-03)

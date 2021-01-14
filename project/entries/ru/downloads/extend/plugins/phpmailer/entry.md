@@ -36,8 +36,6 @@ template: plugin
 2. Create new folder `/project/plugins/phpmailer`
 3. Download PHP Mailer Plugin and unzip plugin content to the folder `/project/plugins/phpmailer`
 
-#### Documentation
-
 #### Settings
 
 | Key      | Value | Description                         |
