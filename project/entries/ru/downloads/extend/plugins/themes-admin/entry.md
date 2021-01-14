@@ -18,3 +18,9 @@ template: plugin
 1. Download & Install all required dependencies.
 2. Create new folder `/project/plugins/themes-admin`
 3. Download Themes Admin Plugin and unzip plugin content to the folder `/project/plugins/themes-admin`
+
+#### Settings
+
+| Key     | Value | Description                         |
+| ------- | ----- | ----------------------------------- |
+| enabled | true  | true or false to disable the plugin |

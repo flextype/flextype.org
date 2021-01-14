@@ -34,7 +34,7 @@ txt:
   features_simple_heading: Простота
   features_simple_p: 'Просто установить, обновить и использовать.<br>Не требуется специальной установки, просто скопируйте файлы на ваш сервер!'
   features_fast_heading: Скорость
-  features_fast_p: 'Flextype - это очень быстрая система управления контентом благодаря элегантной архитектуре и встроенному умному кэшу.'
+  features_fast_p: 'Flextype is super fast content management system because of its simple elegance architecture and built-in smart cache.'
   features_flexible_heading: Гибкость
   features_flexible_p: "При создании этой системы управления контентом, мы сосредоточились на простоте и гибкости. Для этого мы создали простой, но мощный API."
   features_easy_editing_heading: 'Простое редактирование'
@@ -50,7 +50,7 @@ txt:
   features_Internationalization_heading: "Интернационализация"
   features_Internationalization_p: "Поддержка нескольких языков прямо в из коробки. Вы можете интегрировать ваш сайт разработанный на Flextype с любым облачным решением для управления локализацией, таким как Crowdin или Transifex."
   features_no_limits_heading: 'Варианты использования'
-  features_no_limits_p: 'Вы можете использовать Flextype в любом проекте!'
+  features_no_limits_p: 'Use Flextype for any project you want.'
   project_business_site: 'Бизнес сайт'
   project_landing_page: 'Посадочная страница'
   project_personal_site: 'Персональный сайт'
@@ -108,7 +108,7 @@ txt:
   tags: Теги
   contribution_financial_support_heading: ФИНАНСОВАЯ ПОДДЕРЖКА
   contribution_financial_support_p: |
-    Flextype это лицензированный MIT-проект с открытым исходным кодом и полностью бесплатный для использования. Однако объем усилий, необходимых для поддержания и развития новых возможностей проекта, не является устойчивым без надлежащей финансовой поддержки. Вы можете поддержать развитие проекта, будучи cпонсором:<br> <br><br>Стать спонсором на Patreon.<a class="invert" href="https://www.patreon.com/awilum"></a><a class="invert" href="//flextype.org/en/one-time-donation">Одноразовое пожертвование через PayPal, QIWI, Sberbank, Яндекс</a>
+    Flextype это лицензированный MIT-проект с открытым исходным кодом и полностью бесплатный для использования. Однако объем усилий, необходимых для поддержания и развития новых возможностей проекта, не является устойчивым без надлежащей финансовой поддержки. <br><br> You can support it's ongoing development by being a project backer or a sponsor:<br><a class="invert" href="https://www.patreon.com/awilum">Become a backer or sponsor on Patreon</a>, <a class="invert" href="//flextype.org/en/one-time-donation">One-time donation via PayPal, QIWI, Sberbank</a>, <a class="invert" href="//flextype.org/en/sponsors">Visit our Sponsors & Backers page</a>
   contribution_itt_heading: КОМАНДА ПЕРЕВОДЧИКОВ
   contribution_itt_p: |
     Мы работаем над созданием высоко качественной платформы управления контентом!<br><br>Если вы хотите принять участие в переводе Flextype, пожалуйста, присоединитесь к международной команде переводчиков Flextype и начните переводить!<br><br>Наши проекты crowdin:<br> <a href="https://crowdin.com/project/flextype-plugin-admin" class="invert">Админка</a>, <a href="https://crowdin.com/project/flextype-plugin-form-admin" class="invert">Админка Форм</a>, <a href="https://crowdin.com/project/flextype-plugin-themes-admin" class="invert">Админка Тем</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Админка Аккаунтов</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Аккаунты</a>, <a href="https://crowdin.com/project/flextype-website" class="invert">Веб-сайт Flextype</a>, <a href="https://crowdin.com/project/flextype-documentation" class="invert">Документация по Flextype</a>

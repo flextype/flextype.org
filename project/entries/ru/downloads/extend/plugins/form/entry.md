@@ -19,9 +19,13 @@ template: plugin
 2. Create new folder `project/plugins/form/`
 3. Download Form Plugin and unzip plugin content to the folder `project/plugins/form/`
 
-#### Documentation
-
 Fieldsets are configuration files written in YAML for Admin Panel to create publish forms. They establish your content model. Essentially, a schema that defines your fields, data types, and the interface used to manage them.
+
+#### Settings
+
+| Key     | Value | Description                         |
+| ------- | ----- | ----------------------------------- |
+| enabled | true  | true or false to disable the plugin |
 
 #### Fields
 
