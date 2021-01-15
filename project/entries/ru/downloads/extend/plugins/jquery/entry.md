@@ -7,7 +7,7 @@ icon:
 category: javascript
 author:
   name: Sergey Romanenko
-  email: support@flextype.org
+  email: sergey.romanenko@flextype.org
 github: https://github.com/flextype-plugins/jquery
 documentation: https://github.com/flextype-plugins/jquery
 template: plugin
