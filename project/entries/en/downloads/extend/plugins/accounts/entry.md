@@ -9,7 +9,7 @@ github: https://github.com/flextype-plugins/accounts
 documentation: https://github.com/flextype-plugins/accounts
 author:
   name: Sergey Romanenko
-  email: support@flextype.org
+  email: sergey.romanenko@flextype.org
 template: plugin
 ---
 
@@ -52,7 +52,7 @@ template: plugin
 |---|---|---|
 | enabled | true | true or false to disable the plugin |
 | priority | 80 | Accounts plugin priority |
-| from.email | support@flextype.org | From email |
+| from.email | sergey.romanenko@flextype.org | From email |
 | index.enabled | true | Allow accounts index `true` or `false` |
 | registration.enabled | true | Allow user registration `true` or `false` |
 | registration.default_roles | user | Default roles for new users |
