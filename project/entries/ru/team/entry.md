@@ -10,10 +10,11 @@ published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 ---
 
-### Основатель проекта{.text-4xl .text-center .uppercase .pt-24}
+{.text-4xl .text-center .uppercase .pt-24}
+### Behind The Project
 
 <p class="text-center">
-    <img alt="Наша миссия заключается в создании высококачественной веб-платформы для быстрого, гибкого и удобного управления веб-сайтами с помощью Flextype!" src="https://avatars0.githubusercontent.com/u/477114?s=460&v=4" class="rounded-full inline w-48 m-5 border-3 border-black" />
+    <img alt="We are on a mission to build high quality web platform to develop fast, flexible, easier to manage websites with Flextype!" src="https://avatars0.githubusercontent.com/u/477114?s=460&v=4" class="rounded-full inline w-48 m-5 border-3 border-black" />
 </p>
 
 <p class="text-center">
@@ -21,11 +22,12 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
     <a href="https://github.com/Awilum" class="invert">github.com/Awilum</a>
 </p>
 
-### Команда переводчиков{.text-4xl .text-center .uppercase .pt-24}
+{.text-4xl .text-center .uppercase .pt-24}
+### Translation Team
 
-Если вы хотите принять участие в переводе Flextype, пожалуйста, <b>Присоединяйтесь к международной команде переводчиков Flextype</b> и начните перевод!
+If you wish to participate in the translation of Flextype, please <b>Join Flextype International Translator Team</b> and start translating!
 
-Наши проекты crowdin: <a href="https://crowdin.com/project/flextype-plugin-admin" class="invert">плагин панели администратора Flextype</a>, <a href="https://crowdin.com/project/flextype-plugin-form-admin" class="invert">Плагин администратора Flextype Form</a>, <a href="https://crowdin.com/project/flextype-plugin-themes-admin" class="invert">Плагин администратора Flextype</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Плагин клиентов Flextype</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Плагин администратора Flextype</a>, <a href="https://crowdin.com/project/flextype-website" class="invert">Веб-сайт Flextype</a>, <a href="https://crowdin.com/project/flextype-documentation" class="invert">Документация по лексическому типу</a>
+Our crowdin projects: <a href="https://crowdin.com/project/flextype-plugin-admin" class="invert">Flextype Admin Panel Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-form-admin" class="invert">Flextype Form Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-themes-admin" class="invert">Flextype Themes Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Flextype Accounts Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin" class="invert">Flextype Accounts Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-website" class="invert">Flextype Website</a>, <a href="https://crowdin.com/project/flextype-documentation" class="invert">Flextype Documentation</a>
 
 <table class="table">
     <tbody>
