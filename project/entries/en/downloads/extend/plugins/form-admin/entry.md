@@ -7,7 +7,7 @@ icon:
 category: admin, forms
 author:
   name: Sergey Romanenko
-  email: support@flextype.org
+  email: sergey.romanenko@flextype.org
 github: https://github.com/flextype-plugins/form-admin
 documentation: https://github.com/flextype-plugins/form-admin
 template: plugin
