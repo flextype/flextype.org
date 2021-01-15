@@ -10,15 +10,17 @@ published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
 ---
 
-### Представляем{.text-4xl .text-center .uppercase}
+{.text-4xl .text-center .uppercase}
+### Introducing
 
-Flextype является открытым исходным кодом <strong>Data-First Headless CMS & API</strong>. Flextype был <strong>основан в марте 2018</strong> как легкая альтернатива другим тяжелым и устаревшим CMS. Многие люди используют комплексные решения для простых проектов, необоснованно. Создавая эту систему управления контентом, мы сосредоточили внимание на простоте - даже разработчик новичок может адаптировать любой шаблон и написать свой собственный плагин. Для этого мы внедрили простой, но мощный API.
+Flextype is an open-source self-hosted <strong>Data-First Headless CMS & API</strong>. It is was <strong>founded in March 2018</strong> as lightweight alternative to other heavy and outdated CMS. Many people use complex solutions for simple pages, unnecessarily. Building this content management system, we focused on simplicity - even novice webmaster adapt his template and writes his own plugin. To achieve this, we implemented a simple but powerful API's.
 
-С Flextype вы полностью контролируете ситуацию. Разработайте структуру ваших данных так, как вы хотите. Обновляйте и передавайте свои данные другим пользователям и командам с помощью системы управления версиями. Flextype не требует базы данных MySQL, потому что все данные собираются в простых файлах. Идеальная переносимость при смене хостинг-провайдера. Просто скопируйте все файлы из одной учетной записи в другую.
+With Flextype, you are in complete control. Design your data structure the way you want. Update and share your data with others and teams using version control. Flextype does not require MySQL database, because all the data are collected in a simple files. Perfect portability when changing your hosting provider. Just copy all the files from one account to another.
 
-[entries_fetch id="ru/team" field="content"]
+[entries_fetch id="en/team" field="content"]
 
-### ВНЕСТИ СВОЙ ВКЛАД{.text-4xl .text-center .uppercase .pt-24}
+{.text-4xl .text-center .uppercase .pt-24}
+### Supporting Flextype
 
 <div class="w-full text-center">
     <div class="mb-10">
