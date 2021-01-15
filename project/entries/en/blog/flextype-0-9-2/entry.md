@@ -10,7 +10,7 @@ author:
 ### Added
 - Flextype Default Theme: pagination for blog entries added. #164 #165
 - Flextype Default Theme: New templates for entry Gallery - added. #165
-- Flextype Core: New Shortcode [registry_get] - added. #165
+- Flextype Core: New Shortcode `[raw][registry_get][/raw]` - added. #165
 - Flextype Core: New entry Gallery - added. #165
 - Flextype Core: New fieldsets for entry Gallery - added. #165
 - Flextype Core: Doctrine Collections - added. #175 #165

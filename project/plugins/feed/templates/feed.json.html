@@ -1,0 +1,37 @@
+{# Format specification: https://www.jsonfeed.org/version/1/ #}
+{% extends 'plugins/feed/templates/partials/base.html' %}
+{% if item.options.url %}{% set home_page_url = item.options.url %}{% else %}{% set home_page_url = url() %}{% endif %}
+{% set jsonfeed = {
+    "version" : "https://jsonfeed.org/version/1",
+    "title": item.options.title,
+    "home_page_url": home_page_url,
+    "feed_url": url() ~ item.options.route,
+    "description": item.options.description,
+    "author": {"name": flextype.registry.get('plugins.site.settings.author.name')}
+} %}
+
+{% set itemList = [] %}
+{% for entry in entries %}
+    {%- set content_html = entry.content|shortcode|markdown|raw -%}
+    {%- set post = {
+        "title": entry.title|e,
+        "date_published": entry.published_at|date('Y-m-d\\TH:i:sP'),
+        "id": entry.id,
+        "url": url() ~ entry.id,
+        "content_html": content_html
+    } %}
+
+    {% if entry.description %}
+        {%- set post = post|merge({"summary": entry.description|e}) %}
+    {% endif %}
+
+    {% if item.options.show_last_modified %}
+        {%- set post = post|merge({"date_modified": entry.modified_at|date('Y-m-d\\TH:i:sP')}) %}
+    {% endif %}
+
+    {%- set itemList = itemList|merge([post]) %}
+{% endfor %}
+
+{% set jsonfeed = jsonfeed|merge({"items": itemList}) %}
+
+{% block feed %}{{- jsonfeed|json_encode|raw }}{% endblock %}

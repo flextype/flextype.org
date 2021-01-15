@@ -1,0 +1,19 @@
+name: Feed
+version: 1.0.0
+description: Feed plugin for Flextype
+author:
+  name: Sergey Romanenko
+  email: sergey.romanenko@flextype.org
+  url: https://flextype.org
+homepage: https://github.com/flextype-plugins/feed
+documentation: https://github.com/flextype-plugins/feed
+changelog: https://github.com/flextype-plugins/feed/blob/master/CHANGELOG.md
+bugs: https://github.com/flextype-plugins/feed/issues
+icon:
+  name: map-marked-alt
+  set: "fontawesome|solid"
+license: MIT
+
+dependencies:
+  flextype: 0.9.16
+  twig: '>=2.0.0'
