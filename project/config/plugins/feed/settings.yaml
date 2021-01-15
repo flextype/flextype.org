@@ -1,0 +1,21 @@
+enabled: true
+priority: 100
+feed:
+  blog-rss:
+    id: en/blog
+    options:
+      title: Blog
+      description: Blog description
+      collection: true
+      length: 400
+      format: rss
+      route: '/en/blog.rss'
+  blog-atom:
+    id: en/blog
+    options:
+      title: Blog
+      description: Blog description
+      collection: true
+      length: 400
+      format: atom
+      route: '/en/blog.atom'
