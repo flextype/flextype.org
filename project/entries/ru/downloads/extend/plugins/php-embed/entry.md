@@ -7,7 +7,7 @@ icon:
 category: content
 author:
   name: Sergey Romanenko
-  email: support@flextype.org
+  email: sergey.romanenko@flextype.org
 github: https://github.com/flextype-plugins/php-embed
 documentation: https://github.com/flextype-plugins/php-embed
 template: plugin

@@ -6,7 +6,7 @@ github: https://github.com/flextype-themes/noir
 preview: https://github.com/flextype-themes/noir/raw/master/preview.png
 author:
   name: Sergey Romanenko
-  email: support@flextype.org
+  email: sergey.romanenko@flextype.org
 template: theme
 ---
 
