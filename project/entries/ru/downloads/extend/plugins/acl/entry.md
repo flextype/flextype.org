@@ -7,7 +7,7 @@ icon:
 category: accounts
 author:
   name: Sergey Romanenko
-  email: support@flextype.org
+  email: sergey.romanenko@flextype.org
 github: https://github.com/flextype-plugins/acl
 documentation: https://github.com/flextype-plugins/acl
 template: plugin
