@@ -97,11 +97,12 @@
             {% if entry.author.email is not empty %}
                 {% set related_themes = flextype.entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true})
                                                .where('author.email', 'eq', entry.author.email)
-                                               .where('visibility', 'nin', ['draft', 'hidden']) %}
+                                               .where('visibility', 'nin', ['draft', 'hidden'])
+                                               .random(6) %}
 
                 {% if related_themes|length > 0 %}
 
-                <div class="flex content-center flex-wrap mt-10">
+                <div class="flex content-center flex-wrap mt-5">
                     {% for related_theme in related_themes %}
                         {% if related_theme.slug != entry.slug %}
                         <a href="{{ url() }}/{{ related_theme.id }}" class="w-full p-2 lg:w-6/12 no-underline">
@@ -121,6 +122,12 @@
 
                 {% endif %}
             {% endif %}
+        </div>
+
+        <hr class="mb-6 mb-6 border-b border-black">
+
+        <div class="p-2">
+            <a href="{{ url() }}/{{ locale }}/downloads/extend/themes">More themes</a>
         </div>
     </div>
 </div>

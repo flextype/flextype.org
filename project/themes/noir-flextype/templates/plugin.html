@@ -98,10 +98,11 @@
             {% if entry.author.email is not empty %}
                 {% set related_plugins = flextype.entries.fetch(locale ~ '/downloads/extend/plugins', {'collection': true})
                                                 .where('author.email', 'eq', entry.author.email)
-                                                .where('visibility', 'nin', ['draft', 'hidden']) %}
+                                                .where('visibility', 'nin', ['draft', 'hidden'])
+                                                .random(6) %}
 
                 {% if related_plugins|length > 0 %}
-                    <div class="flex content-center flex-wrap mt-10">
+                    <div class="flex content-center flex-wrap mt-5">
                         {% for related_plugin in related_plugins %}
                             {% if related_plugin.slug != entry.slug %}
                             <a href="{{ url() }}/{{ related_plugin.id }}" class="w-full p-2 lg:w-6/12 no-underline">
@@ -120,6 +121,12 @@
                     </div>
                 {% endif %}
             {% endif %}
+        </div>
+
+        <hr class="mb-6 mb-6 border-b border-black">
+
+        <div class="p-2">
+            <a href="{{ url() }}/{{ locale }}/downloads/extend/plugins">More plugins</a>
         </div>
     </div>
 </div>
