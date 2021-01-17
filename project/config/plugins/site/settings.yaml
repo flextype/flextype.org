@@ -18,8 +18,8 @@ robots: index, follow
 
 # The name and email address of the website author
 author:
-  email: ''
-  name: ''
+  email: 'sergey.romanenko@flextype.org'
+  name: 'Sergey Romaneko'
 
 # The theme to use.
 #

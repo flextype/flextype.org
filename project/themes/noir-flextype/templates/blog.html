@@ -116,8 +116,14 @@
                         </div>
                     {% endif %}
                 </div>
-                <a class="pl-6 pr-6 pt-2 pb-2 w-full fadeIn button text-base uppercase"
+                <a class="pl-6 pr-6 pt-2 pb-2 w-full button text-base uppercase"
                 href="https://github.com/flextype/flextype.org/tree/dev/project/entries/{{ locale }}/blog">{{ entry.txt_submit_post }}</a>
+
+                <div class="text-center mt-4">
+                    <hr class="mt-6 mb-5 border-b border-black">
+                    <a class="text-base uppercase" href="{{ url() }}/{{ locale }}/blog.atom">ATOM 1.0</a>
+                    <a class="text-base uppercase" href="{{ url() }}/{{ locale }}/blog.rss">RSS</a>
+                </div>
             </div>
 
         </div>

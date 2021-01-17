@@ -1,6 +1,6 @@
 ---
 title: Sponsors & Backers
-description: 'We are on a mission to build high quality web platform to develop fast, flexible, easier to manage websites with Flextype!'
+description: 'Flextype is an MIT-licensed open source project and completely free to use. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing.'
 ---
 
 Flextype is an MIT-licensed open source project and completely free to use..

@@ -1,6 +1,6 @@
 ---
 title: International Translator Team
-description: 'We are on a mission to build high quality web platform to develop fast, flexible, easier to manage websites with Flextype!'
+description: 'Participate in the translation of Flextype'
 ---
 
 <p>If you wish to participate in the translation of Flextype, please <b>Join Flextype International Translator Team</b> and start translating!</p>
