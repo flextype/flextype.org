@@ -1,5 +1,5 @@
 <!doctype html>
-{% set locale = request.getUri().getPath()|split('/').0 %}
+{% set locale = request.getUri().getPath()|split('/').1 %}
 <html lang="{{ locale }}">
     {% set txt = flextype.entries.fetch(locale).txt %}
     {% set static_version = 15 %}
