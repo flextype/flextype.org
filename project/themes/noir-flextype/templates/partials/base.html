@@ -2,7 +2,7 @@
 {% set locale = request.getUri().getPath()|split('/').1 %}
 <html lang="{{ locale }}">
     {% set txt = flextype.entries.fetch(locale).txt %}
-    {% set static_version = 13 %}
+    {% set static_version = 15 %}
     <head>
         {% block head %}
             <meta charset="{{ flextype.registry.get('flextype.settings.charset')|lower }}">
@@ -45,11 +45,15 @@
 
             {% set theme = flextype.registry.get('plugins.site.settings.theme') %}
 
-            <link href="{{ url() ~ '/project/themes/' ~ flextype.registry.get('plugins.site.settings.theme') ~ '/assets/highlight/styles/atom-one-light.css' }}?v={{ static_version }}" rel="stylesheet">
-
             {# <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> #}
 
-            {% do flextype.registry.set('assets.site.css.noir_flextype', 'project/themes/' ~ theme ~ '/assets/dist/css/build.min.css') %}
+
+            <style type="text/css">
+            {% if (currentUrl() != '/en' and currentUrl() != '/ru') %}
+            .hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}.hljs-comment,.hljs-quote{color:#a0a1a7;font-style:italic}.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4}.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#e45649}.hljs-literal{color:#0184bb}.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#50a14f}.hljs-built_in,.hljs-class .hljs-title{color:#c18401}.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801}.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#4078f2}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.hljs-link{text-decoration:underline}
+            {% endif %}
+            {{ filesystem().file(url() ~ '/project/themes/noir-flextype/assets/dist/css/build.min.css').get()|raw }}
+            </style>
 
             {% if flextype.registry.has('assets.site.css') %}
                 {% for css in flextype.registry.get('assets.site.css') %}
@@ -58,6 +62,23 @@
             {% endif %}
 
             {% do flextype.emitter.emit('onThemeHeader') %}
+
+            <!-- Matomo -->
+            <script type="text/javascript">
+              var _paq = window._paq = window._paq || [];
+              /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+              _paq.push(['trackPageView']);
+              _paq.push(['enableLinkTracking']);
+              (function() {
+                var u="https://digital.flextype.org/matomo/";
+                _paq.push(['setTrackerUrl', u+'matomo.php']);
+                _paq.push(['setSiteId', '1']);
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+                g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+              })();
+            </script>
+            <noscript><p><img src="https://digital.flextype.org/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+            <!-- End Matomo Code -->
         {% endblock %}
     </head>
     <body>
@@ -165,9 +186,6 @@
                 {% endif %}
             {% endfor %}
         {% endif %}
-
-
-        <!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js", "ym"); ym(48198194, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/48198194" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 
         {% do flextype.emitter.emit('onThemeTail') %}
     </body>

@@ -16,7 +16,7 @@ enabled: true
 # - cache:       Set false to disable caching.
 #
 # - extensions   Flextype Twig Extension to load.
-auto_reload: true
+auto_reload: false
 cache: true
 debug: false
 charset: "UTF-8"

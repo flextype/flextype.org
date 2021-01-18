@@ -30,16 +30,16 @@ if (isset($feed) and count($feed) > 0) {
 
             switch ($item['options']['format']) {
                 case 'rss':
-                    $response = $response->withHeader('Content-Type', 'application/rss+xml');
+                    $response = $response->withHeader('Content-Type', 'application/rss+xml; charset=utf-8');
                     $template = 'plugins/feed/templates/feed.rss.html';
                     break;
                 case 'atom':
-                    $response = $response->withHeader('Content-Type', 'application/atom+xml');
+                    $response = $response->withHeader('Content-Type', 'application/atom+xml; charset=utf-8');
                     $template = 'plugins/feed/templates/feed.atom.html';
                     break;
                 case 'json':
                 default:
-                    $response = $response->withHeader('Content-Type', 'application/json');
+                    $response = $response->withHeader('Content-Type', 'application/json; charset=utf-8');
                     $template = 'plugins/feed/templates/feed.json.html';
                     break;
             }

@@ -142,7 +142,7 @@ entries:
 
 cache:
   enabled: true
-  driver: auto
+  driver: files
   drivers:
     apcu: {}
     cassandra:
@@ -185,7 +185,7 @@ cache:
       htaccess: true
       secure_file_manipulation: false
       cache_file_extension: txt
-      default_ttl: 900
+      default_ttl: 86400
     leveldb:
       path: '/data'
       security_key: 'auto'
