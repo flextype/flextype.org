@@ -185,7 +185,7 @@ cache:
       htaccess: true
       secure_file_manipulation: false
       cache_file_extension: txt
-      default_ttl: 900
+      default_ttl: 3600
     leveldb:
       path: '/data'
       security_key: 'auto'
