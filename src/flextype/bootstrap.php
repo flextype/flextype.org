@@ -115,7 +115,7 @@ flextype('session')->setOptions(flextype('registry')->get('flextype.settings.ses
 /**
  * Start the session
  */
-flextype('session')->start();
+//flextype('session')->start();
 
 /**
  * Set internal encoding
