@@ -11,6 +11,10 @@ author:
 github: https://github.com/flextype-plugins/contact
 documentation: https://github.com/flextype-plugins/contact
 template: plugin
+seo:
+  title: Get Contact Plugin for Open Source Hybrid Content Management System
+  description: Contact Plugin to manage contact forms in Open Source Hybrid Content Management System
+  keywords: Flextype Contact Plugin, Flextype CMS Contact Plugin, Headless CMS Contact Plugin, Download Flat File CMS Contact Plugin, Download Flat File Content Management System Contact Plugin, Download PHP CMS Contact Plugin, Contact Plugin, Plugin, Contact, Content, Management, System, PHP, CMS
 ---
 
 #### Installation
