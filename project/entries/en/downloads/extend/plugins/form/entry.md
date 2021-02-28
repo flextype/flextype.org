@@ -1,7 +1,7 @@
 ---
 title: Form
 description: Form Plugin to render user forms for Flextype.
-Form:
+icon:
   name: check-circle
   set: fontawesome|solid
 category: forms
