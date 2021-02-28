@@ -11,6 +11,10 @@ author:
 github: https://github.com/flextype-plugins/php-embed
 documentation: https://github.com/flextype-plugins/php-embed
 template: plugin
+seo:
+  title: Get PHP Embed Plugin for Open Source Hybrid Content Management System
+  description: PHP Embed Plugin to embed php code into your pages for Open Source Hybrid Content Management System
+  keywords: Flextype PHP Embed Plugin, Flextype CMS PHP Embed Plugin, Headless CMS PHP Embed Plugin, Download Flat File CMS PHP Embed Plugin, Download Flat File Content Management System PHP Embed Plugin, Download PHP CMS PHP Embed Plugin, PHP Embed Plugin, Plugin, PHP Embed, Content, Management, System, PHP, CMS
 ---
 
 #### Installation
