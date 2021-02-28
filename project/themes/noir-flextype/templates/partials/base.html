@@ -21,7 +21,7 @@
 
             <meta name="twitter:card" content="summary_large_image">
             <meta name="twitter:site" content="{{ url() }}/{{ entry.id }}">
-            <meta name="twitter:title" content="{% if entry.seo.title %}{{ entry.seo.title|e('html') }}{% else %}{{ entry.title|e('html') }}{% endif %} | {{ flextype.registry.get('plugins.site.settings.title')|e('html') }}{% if request.getQueryParams().page %} | {{ txt.page }} {{ request.getQueryParams().page }}{% endif %}">
+            <meta name="twitter:title" content="{% if entry.seo.title %}{{ entry.seo.title|e('html') }}{% else %}{{ entry.title|e('html') }}{% endif %} | {{ flextype.registry.get('plugins.site.settings.title')|e('html') }}{% if request.getQueryParams().page %} | {{ txt.page }} {{ request.getQueryParams().page }}{% endif %}{% if request.getQueryParams().tag %} | {{ txt.tag }} {{ request.getQueryParams().tag }}{% endif %}{% if request.getQueryParams().category %} | {{ txt.category }} {{ request.getQueryParams().category }}{% endif %}">
             <meta name="twitter:description" content="{% if entry.seo.description %}{{ entry.seo.description|e('html') }}{% else %}{{ entry.description|e('html') }}{% endif %}">
             <meta name="twitter:image" content="{{ url() }}/api/images/entries/{{ locale }}/banner.jpg?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
 
@@ -30,7 +30,7 @@
 
             <meta property="og:site_name" content="{{ flextype.registry.get('plugins.site.settings.title')|e('html') }}">
             <meta property="og:url" content="{{ url() }}/{{ entry.id }}">
-            <meta property="og:title" content="{% if entry.seo.title %}{{ entry.seo.title|e('html') }}{% else %}{{ entry.title|e('html') }}{% endif %} | {{ flextype.registry.get('plugins.site.settings.title')|e('html') }}{% if request.getQueryParams().page %} | {{ txt.page }} {{ request.getQueryParams().page }}{% endif %}">
+            <meta property="og:title" content="{% if entry.seo.title %}{{ entry.seo.title|e('html') }}{% else %}{{ entry.title|e('html') }}{% endif %} | {{ flextype.registry.get('plugins.site.settings.title')|e('html') }}{% if request.getQueryParams().page %} | {{ txt.page }} {{ request.getQueryParams().page }}{% endif %}{% if request.getQueryParams().tag %} | {{ txt.tag }} {{ request.getQueryParams().tag }}{% endif %}{% if request.getQueryParams().category %} | {{ txt.category }} {{ request.getQueryParams().category }}{% endif %}">
             <meta property="og:description" content="{% if entry.seo.description %}{{ entry.seo.description|e('html') }}{% else %}{{ entry.description|e('html') }}{% endif %}">
             <meta property="og:type" content="website">
             <meta property="og:image" content="{{ url() }}/api/images/entries/{{ locale }}/banner.jpg?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
@@ -47,7 +47,7 @@
 
             {% do flextype.emitter.emit('onThemeMeta') %}
 
-            <title>{% if entry.seo.title %}{{ entry.seo.title|e('html') }}{% else %}{{ entry.title|e('html') }}{% endif %} | {{ flextype.registry.get('plugins.site.settings.title')|e('html') }}{% if request.getQueryParams().page %} | {{ txt.page }} {{ request.getQueryParams().page }}{% endif %}</title>
+            <title>{% if entry.seo.title %}{{ entry.seo.title|e('html') }}{% else %}{{ entry.title|e('html') }}{% endif %} | {{ flextype.registry.get('plugins.site.settings.title')|e('html') }}{% if request.getQueryParams().page %} | {{ txt.page }} {{ request.getQueryParams().page }}{% endif %}{% if request.getQueryParams().tag %} | {{ txt.tag }} {{ request.getQueryParams().tag }}{% endif %}{% if request.getQueryParams().category %} | {{ txt.category }} {{ request.getQueryParams().category }}{% endif %}</title>
 
             {% set theme = flextype.registry.get('plugins.site.settings.theme') %}
 
