@@ -4,6 +4,10 @@ description: Noir theme for Flextype.
 category: framework
 github: https://github.com/flextype-themes/noir
 preview: https://github.com/flextype-themes/noir/raw/master/preview.png
+seo:
+  title: Get Noir Theme for Open Source Hybrid Content Management System
+  description: Noir Theme for Open Source Hybrid Content Management System
+  keywords: Flextype Noir Theme, Flextype CMS Noir Theme, Headless CMS Noir Theme, Download Flat File CMS Noir Theme, Download Flat File Content Management System Noir Theme, Download PHP CMS Noir Theme, Noir, Theme, Content, Management, System, PHP, CMS
 author:
   name: Sergey Romanenko
   email: sergey.romanenko@flextype.org

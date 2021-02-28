@@ -11,6 +11,10 @@ author:
 github: https://github.com/flextype-plugins/accounts-admin
 documentation: https://github.com/flextype-plugins/accounts-admin
 template: plugin
+seo:
+  title: Get Accounts Admin Plugin for Open Source Hybrid Content Management System
+  description: Accounts Admin Plugin for Open Source Hybrid Content Management System
+  keywords: Flextype Accounts Admin Plugin, Flextype CMS Accounts Admin Plugin, Headless CMS Accounts Admin Plugin, Download Flat File CMS Accounts Admin Plugin, Download Flat File Content Management System Accounts Admin Plugin, Download PHP CMS Accounts Admin Plugin, Accounts Admin Plugin, Plugin, Accounts Admin, Content, Management, System, PHP, CMS
 ---
 
 #### Installation

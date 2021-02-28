@@ -11,6 +11,10 @@ author:
 github: https://github.com/flextype-plugins/reading-time
 documentation: https://github.com/flextype-plugins/reading-time
 template: plugin
+seo:
+  title: Get Reading Time Plugin for Open Source Hybrid Content Management System
+  description: Reading Time Plugin to estimated reading time for Open Source Hybrid Content Management System
+  keywords: Flextype Reading Time Plugin, Flextype CMS Reading Time Plugin, Headless CMS Reading Time Plugin, Download Flat File CMS Reading Time Plugin, Download Flat File Content Management System Reading Time Plugin, Download PHP CMS Reading Time Plugin, Reading Time Plugin, Plugin, Reading Time, Content, Management, System, PHP, CMS
 ---
 
 #### Installation

@@ -11,6 +11,10 @@ author:
 github: https://github.com/flextype-plugins/jquery
 documentation: https://github.com/flextype-plugins/jquery
 template: plugin
+seo:
+  title: Get jQuery Plugin for Open Source Hybrid Content Management System
+  description: jQuery Plugin to provides a basic way to work with jQuery for Open Source Hybrid Content Management System
+  keywords: Flextype jQuery Plugin, Flextype CMS jQuery Plugin, Headless CMS jQuery Plugin, Download Flat File CMS jQuery Plugin, Download Flat File Content Management System jQuery Plugin, Download PHP CMS jQuery Plugin, jQuery Plugin, Plugin, jQuery, Content, Management, System, PHP, CMS
 ---
 
 #### Installation

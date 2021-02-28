@@ -11,6 +11,10 @@ author:
 github: https://github.com/flextype-plugins/form-admin
 documentation: https://github.com/flextype-plugins/form-admin
 template: plugin
+seo:
+  title: Get Form Admin Plugin for Open Source Hybrid Content Management System
+  description: Form Admin Plugin to manage user forms in Open Source Hybrid Content Management System
+  keywords: Flextype Form Admin Plugin, Flextype CMS Form Admin Plugin, Headless CMS Form Admin Plugin, Download Flat File CMS Form Admin Plugin, Download Flat File Content Management System Form Admin Plugin, Download PHP CMS Form Admin Plugin, Form Admin Plugin, Plugin, Form Admin, Content, Management, System, PHP, CMS
 ---
 
 #### Installation
