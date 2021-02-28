@@ -1,6 +1,6 @@
 ---
 title: Feed
-description: Feed plugin for Flextype
+description: Feed plugin for Flextype supports Atom 1.0, RSS and JSON feed types and allows you to generate feeds for entries.
 icon:
   name: rss-square
   set: fontawesome|solid
@@ -11,6 +11,10 @@ author:
 github: https://github.com/flextype-plugins/feed
 documentation: https://github.com/flextype-plugins/feed
 template: plugin
+seo:
+  title: Get Feed Plugin for Open Source Hybrid Content Management System
+  description: Feed Plugin for Open Source Hybrid Content Management System supports Atom 1.0, RSS and JSON feed types and allows you to generate feeds
+  keywords: Flextype Feed Plugin, Flextype CMS Feed Plugin, Headless CMS Feed Plugin, Download Flat File CMS Feed Plugin, Download Flat File Content Management System Feed Plugin, Download PHP CMS Feed Plugin, Feed Plugin, Plugin, Feed, Content, Management, System, PHP, CMS
 ---
 
 #### Features
@@ -45,7 +49,7 @@ feed:
       title: Blog
       description: Blog description
       collection: true
-      format: rss
+      Feedat: rss
       route: '/blog.rss'
   blog-atom:
     id: blog
@@ -53,7 +57,7 @@ feed:
       title: Blog
       description: Blog description
       collection: true
-      format: atom
+      Feedat: atom
       route: '/blog.atom'
   blog-json:
     id: blog
@@ -61,7 +65,7 @@ feed:
       title: Blog
       description: Blog description
       collection: true
-      format: json
+      Feedat: json
       route: '/blog.json'
 ```
 

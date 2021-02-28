@@ -1,6 +1,6 @@
 ---
 title: Icon
-description: Icon plugin to present Font Awesome icons set for Flextype.
+description: Icon plugin to present most popular icons sets in SVG format for Flextype.
 icon:
   name: font-awesome-flag
   set: fontawesome|brands
@@ -11,6 +11,10 @@ author:
 github: https://github.com/flextype-plugins/icon
 documentation: https://github.com/flextype-plugins/icon
 template: plugin
+seo:
+  title: Get Icon Plugin for Open Source Hybrid Content Management System
+  description: Icon Plugin to present most popular icons sets in SVG format Open Source Hybrid Content Management System
+  keywords: Flextype Icon Plugin, Flextype CMS Icon Plugin, Headless CMS Icon Plugin, Download Flat File CMS Icon Plugin, Download Flat File Content Management System Icon Plugin, Download PHP CMS Icon Plugin, Icon Plugin, Plugin, Icon, Content, Management, System, PHP, CMS
 ---
 
 Icon plugin to present most popular icons sets in SVG format for Flextype.  

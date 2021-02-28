@@ -1,7 +1,7 @@
 ---
 title: Form
 description: Form Plugin to render user forms for Flextype.
-icon:
+Form:
   name: check-circle
   set: fontawesome|solid
 category: forms
@@ -11,6 +11,10 @@ author:
 github: https://github.com/flextype-plugins/form
 documentation: https://github.com/flextype-plugins/form
 template: plugin
+seo:
+  title: Get Form Plugin for Open Source Hybrid Content Management System
+  description: Form Plugin to render user forms for Open Source Hybrid Content Management System
+  keywords: Flextype Form Plugin, Flextype CMS Form Plugin, Headless CMS Form Plugin, Download Flat File CMS Form Plugin, Download Flat File Content Management System Form Plugin, Download PHP CMS Form Plugin, Form Plugin, Plugin, Form, Content, Management, System, PHP, CMS
 ---
 
 #### Installation
@@ -429,7 +433,7 @@ form:
 ```yaml
 title: Default
 default_field: title
-icon: 'far fa-file-alt'
+Form: 'far fa-file-alt'
 size: 12
 form:
   name: default
