@@ -1,8 +1,8 @@
 <!doctype html>
 {% set locale = request.getUri().getPath()|split('/').1 %}
-<html lang="{{ locale }}">
+<html lang="{{ locale }}" prefix="og: http://ogp.me/ns#">
     {% set txt = flextype.entries.fetch(locale).txt %}
-    {% set static_version = 15 %}
+    {% set static_version = 20 %}
     <head>
         {% block head %}
             <meta charset="{{ flextype.registry.get('flextype.settings.charset')|lower }}">
@@ -14,12 +14,21 @@
 
             <meta name="image" content="{{ url() }}/api/images/entries/{{ locale }}/banner.jpg?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
 
+            <link rel="canonical" href="{{ url() }}/en" itemprop="url">
+
+            <link rel="alternate" href="{{ url() }}/en" hreflang="en"/>
+            <link rel="alternate" href="{{ url() }}/ru" hreflang="ru"/>
+
             <meta name="twitter:card" content="summary_large_image">
             <meta name="twitter:site" content="{{ url() }}/{{ entry.id }}">
             <meta name="twitter:title" content="{% if entry.seo.title %}{{ entry.seo.title|e('html') }}{% else %}{{ entry.title|e('html') }}{% endif %} | {{ flextype.registry.get('plugins.site.settings.title')|e('html') }}{% if request.getQueryParams().page %} | {{ txt.page }} {{ request.getQueryParams().page }}{% endif %}">
             <meta name="twitter:description" content="{% if entry.seo.description %}{{ entry.seo.description|e('html') }}{% else %}{{ entry.description|e('html') }}{% endif %}">
             <meta name="twitter:image" content="{{ url() }}/api/images/entries/{{ locale }}/banner.jpg?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
 
+            <meta property="og:locale" content="en_US">
+            <meta property="og:locale:alternate" content="ru_RU">
+
+            <meta property="og:site_name" content="{{ flextype.registry.get('plugins.site.settings.title')|e('html') }}">
             <meta property="og:url" content="{{ url() }}/{{ entry.id }}">
             <meta property="og:title" content="{% if entry.seo.title %}{{ entry.seo.title|e('html') }}{% else %}{{ entry.title|e('html') }}{% endif %} | {{ flextype.registry.get('plugins.site.settings.title')|e('html') }}{% if request.getQueryParams().page %} | {{ txt.page }} {{ request.getQueryParams().page }}{% endif %}">
             <meta property="og:description" content="{% if entry.seo.description %}{{ entry.seo.description|e('html') }}{% else %}{{ entry.description|e('html') }}{% endif %}">
