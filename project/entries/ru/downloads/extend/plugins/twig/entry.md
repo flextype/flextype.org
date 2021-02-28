@@ -13,7 +13,7 @@ documentation: https://github.com/flextype-plugins/twig
 template: plugin
 seo:
   title: Get Twig Plugin for Open Source Hybrid Content Management System
-  description: Get Twig Plugin to present Twig template engine for Open Source Hybrid Content Management System
+  description: Twig Plugin to present Twig template engine for Open Source Hybrid Content Management System
   keywords: Flextype Twig Plugin, Flextype CMS Twig Plugin, Headless CMS Twig Plugin, Download Flat File CMS Twig Plugin, Download Flat File Content Management System Twig Plugin, Download PHP CMS Twig Plugin, Twig Plugin, Plugin, Twig, Content, Management, System, PHP, CMS
 ---
 
