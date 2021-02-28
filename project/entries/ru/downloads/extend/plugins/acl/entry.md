@@ -1,6 +1,6 @@
 ---
 title: ACL
-description: ACL Panel plugin for Flextype.
+description: Access Control List plugin for Flextype.
 icon:
   name: users-cog
   set: fontawesome|solid
@@ -11,6 +11,10 @@ author:
 github: https://github.com/flextype-plugins/acl
 documentation: https://github.com/flextype-plugins/acl
 template: plugin
+seo:
+  title: Get Access Control List Plugin for Open Source Hybrid Content Management System
+  description: Access Control List Plugin for Open Source Hybrid Content Management System
+  keywords: Flextype ACL Plugin, Flextype CMS ACL Plugin, Headless CMS ACL Plugin, Download Flat File CMS ACL Plugin, Download Flat File Content Management System ACL Plugin, Download PHP CMS ACL Plugin, ACL Plugin, Plugin, ACL, Content, Management, System, PHP, CMS
 ---
 
 #### Features
@@ -74,7 +78,7 @@ flextype()->get('/my-route', 'MyController:method()')
 flextype()->get('/my-route', 'MyController:method()')
      ->setName('my.route.name')
      ->add(new AclAccountsIsUserLoggedInRolesInMiddleware([
-                                                           'roles' => 'admin, moderator'
+                                                           'roles' => 'ACL, moderator'
                                                            'redirect' => 'another.route.name']));
 ```
 
@@ -147,7 +151,7 @@ flextype()->get('/my-route', 'MyController:method()')
 flextype()->get('/my-route', 'MyController:method()')
      ->setName('my.route.name')
      ->add(new AclAccountsIsUserLoggedInRolesNotInMiddleware([
-                                                              'roles' => 'admin, moderator'
+                                                              'roles' => 'ACL, moderator'
                                                               'redirect' => 'another.route.name']));
 ```
 
@@ -199,7 +203,7 @@ You may restrict access for specific users to your entry(entries) in the entry(e
     title: Lesson 42
     acl:
       accounts:
-        roles: student, admin
+        roles: student, ACL
         emails: jack@flextype.org, sam@flextype.org
         uuids: ea7432a3-b2d5-4b04-b31d-1c5acc7a55e2, d549af27-79a0-44f2-b9b1-e82b47bf87e2
     ---
@@ -224,7 +228,7 @@ You may restrict access for specific users to your specific content inside the e
     [/userLoggedIn]
 
 
-#### Show private content for users with roles: admin and student
+#### Show private content for users with roles: ACL and student
 
 `/project/entries/lessons/lesson-42.md`
 
@@ -233,7 +237,7 @@ You may restrict access for specific users to your specific content inside the e
     ---
     Public text here...
     
-    [userLoggedInRolesIn roles="admin, student"]
+    [userLoggedInRolesIn roles="ACL, student"]
         Private content here..
     [/userLoggedInRolesIn]
 
@@ -329,7 +333,7 @@ Example:
     [/userNotLoggedIn]
 
 
-#### Show public content for users with roles: admin and student
+#### Show public content for users with roles: ACL and student
 
 `/project/entries/lessons/lesson-42.md`
 
@@ -338,7 +342,7 @@ Example:
     ---
     Public text here...
     
-    [userLoggedInRolesNotIn roles="admin, student"]
+    [userLoggedInRolesNotIn roles="ACL, student"]
         Public content for users is here...
     [/userLoggedInRolesNotIn]
 
@@ -433,10 +437,10 @@ You may restrict access for specific users to your specific content inside the T
 {% endif %}
 ```
 
-#### Show private content for users with roles: admin and student
+#### Show private content for users with roles: ACL and student
 
 ```
-{% if flextype.acl.isUserLoggedInRolesIn('admin, student') %}
+{% if flextype.acl.isUserLoggedInRolesIn('ACL, student') %}
     Private content here..
 {% else %}
     Public content for users is here...
@@ -496,10 +500,10 @@ if (flextype('acl')->isUserLoggedIn()) {
 }
 ```
 
-#### Run private content for users with roles: admin and student
+#### Run private content for users with roles: ACL and student
 
 ```php
-if (flextype('acl')->isUserLoggedInRolesIn('admin, student')) {
+if (flextype('acl')->isUserLoggedInRolesIn('ACL, student')) {
     // Private code here..
 }
 ```

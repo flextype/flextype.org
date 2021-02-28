@@ -11,6 +11,10 @@ author:
 github: https://github.com/flextype-plugins/sitemap
 documentation: https://github.com/flextype-plugins/sitemap
 template: plugin
+seo:
+  title: Get Sitemap Plugin for Open Source Hybrid Content Management System
+  description: Sitemap Plugin to provide automatically generated XML sitemap for Open Source Hybrid Content Management System
+  keywords: Flextype Sitemap Plugin, Flextype CMS Sitemap Plugin, Headless CMS Sitemap Plugin, Download Flat File CMS Sitemap Plugin, Download Flat File Content Management System Sitemap Plugin, Download PHP CMS Sitemap Plugin, Sitemap Plugin, Plugin, Sitemap, Content, Management, System, PHP, CMS
 ---
 
 #### Installation

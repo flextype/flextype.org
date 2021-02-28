@@ -11,6 +11,10 @@ author:
 github: https://github.com/flextype-plugins/site
 documentation: https://github.com/flextype-plugins/site
 template: plugin
+seo:
+  title: Get Site Plugin for Open Source Hybrid Content Management System
+  description: Site Plugin to display entries content on the website frontend for Open Source Hybrid Content Management System
+  keywords: Flextype Site Plugin, Flextype CMS Site Plugin, Headless CMS Site Plugin, Download Flat File CMS Site Plugin, Download Flat File Content Management System Site Plugin, Download PHP CMS Site Plugin, Site Plugin, Plugin, Site, Content, Management, System, PHP, CMS
 ---
 
 #### Installation
