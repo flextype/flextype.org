@@ -108,6 +108,7 @@ txt:
   link_changelog: Changelog
   link_press_kit: Press kit
   link_team: Team
+  page: Page
   tags: Tags
   contribution_financial_support_heading: FINANCIAL SUPPORT
   contribution_financial_support_p: |
