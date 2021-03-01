@@ -110,6 +110,8 @@ txt:
   link_team: Team
   page: Page
   tags: Tags
+  category: Category
+  tag: Tag
   contribution_financial_support_heading: FINANCIAL SUPPORT
   contribution_financial_support_p: |
     Flextype is an MIT-licensed open source project and completely free to use. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. <br><br> You can support it's ongoing development by being a project backer or a sponsor:<br><a class="invert" href="https://www.patreon.com/awilum">Become a backer or sponsor on Patreon</a>, <a class="invert" href="//flextype.org/en/one-time-donation">One-time donation via PayPal, QIWI, Sberbank</a>, <a class="invert" href="//flextype.org/en/sponsors">Visit our Sponsors & Backers page</a>
