@@ -2,13 +2,21 @@
 
 {% block content %}
     <!-- introducing section -->
-    <div class="container relative mx-auto mb-10">
-        <div class="text-center">
-            <h1 class="uppercase m-0 p-24 text-xl lg:text-5xl">{{ txt.intro_section_h1|raw }}</h1>
-            <div class="flex justify-center">
-                <a
-                    href="{{ baseUrl() }}/{{ locale }}/downloads"
-                    class="w-10/12 lg:w-3/12 button">{{ txt.intro_section_button|raw }}</a>
+    <div class="container relative mx-auto mb-20">
+        <div class="flex pt-24">
+            <div class="text-center px-24">
+                <h1 class="uppercase m-0 pb-10 text-xl lg:text-5xl">{{ txt.intro_section_h1|raw }}</h1>
+                <div class="text-centeer">
+                    <a
+                        href="{{ baseUrl() }}/{{ locale }}/downloads"
+                        class="w-auto button py-3 px-5 lg:mr-5">{{ txt.intro_section_button|raw }}</a>
+                    <a
+                        href="{{ baseUrl() }}/{{ locale }}/demo"
+                        class="w-auto button py-3 px-5">{{ txt.intro_section_try_demo_button|raw }}</a>
+                </div>
+                <div class="text-center mt-10">
+                    <a href="{{ baseUrl() }}/{{ locale }}/sponsors">Donate to keep Flextype free!</a>
+                </div>
             </div>
         </div>
     </div>
