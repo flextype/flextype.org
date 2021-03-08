@@ -16,17 +16,20 @@ However, the amount of effort needed to maintain and develop new features for th
 ### Silver Sponsor
 
 ### Bronze Sponsor
-* <a href="https://twitter.com/jeremyjmonroe">Jeremy Monroe</a>
 
 ### Generous Backer
 
 ### Backers
-* Arseni Khramenkin
 
 ### Coffee Supporter
-* Roman
-* Viktoriya Kozyr
+* Anastasiia G.
 
 ### One-time donations
-* Alexander Greca
+* Viktoriya Kozyr
 * Izabela Sokołowska
+
+### Previous supporters
+
+* Jeremy Monroe
+* web-easy
+* Arseni Khramenkin
