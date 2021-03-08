@@ -32,6 +32,7 @@ txt:
       link: about
   intro_section_h1: 'The freedom of a headless CMS with the full functionality of a traditional CMS.'
   intro_section_button: 'Get Flextype'
+  intro_section_try_demo_button: 'Try Demo'
   features_heading: Features
   features_description: 'Flextype provides faster, more productive way<br> for you to build and manage content for any kind of projects.'
   features_simple_heading: Simple

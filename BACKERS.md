@@ -17,17 +17,16 @@ However, the amount of effort needed to maintain and develop new features for th
 ### Generous Backer
 
 ### Backers
-* Arseni Khramenkin
 
 ### Coffee Supporter
 * Anastasiia G.
 
 ### One-time donations
 * Viktoriya Kozyr
-* Alexander Greca
 * Izabela Sokołowska
 
 ### Previous supporters
 
 * Jeremy Monroe
 * web-easy
+* Arseni Khramenkin
