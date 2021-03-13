@@ -210,11 +210,11 @@ List of available registered services in Flextype Dependency Injection Container
         </tr>
         <tr>
             <td>parsers</td>
-            <td><a href="[url]/documentation/parsers">documentation</a></td>
+            <td><a href="[url]/documentation/core/parsers">documentation</a></td>
         </tr>
         <tr>
             <td>serializers</td>
-            <td><a href="[url]/documentation/serializers">documentation</a></td>
+            <td><a href="[url]/documentation/core/serializers">documentation</a></td>
         </tr>
         <tr>
             <td>images</td>
