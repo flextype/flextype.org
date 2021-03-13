@@ -11,7 +11,7 @@
 ## Common PHP Overrides
 #
 # Some of the most common settings that can (sometimes) be overridden.
-php_value memory_limit 256M
+php_value memory_limit 1024M
 php_value post_max_size 16M
 php_value max_execution_time 90
 php_value max_input_time 120
@@ -76,6 +76,11 @@ RewriteRule ^(LICENSE\.txt|composer\.lock|composer\.json|\.htaccess)$ error [F]
 # RewriteCond %{HTTP_HOST} ^www.example.org [NC]
 # RewriteRule ^(.*)$ http://example.org/$1 [R=301,L]
 # Redirect 301 / http://example.org/en
+Redirect 301 /en https://flextype.org
+Redirect 301 /ru https://flextype.org
+Redirect 301 /home https://flextype.org
+RewriteRule ^en/(.*)$ /$1 [R=301,NC,L]
+RewriteRule ^ru/(.*)$ /$1 [R=301,NC,L]
 ## End - Rewrite rules for SEO improvements.
 
 </IfModule>
