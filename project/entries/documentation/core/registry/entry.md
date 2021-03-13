@@ -1,6 +1,6 @@
 ---
 title: Registry
-template: docs 
+template: docs
 breadcrumbs:
   -
     title: "Core Concepts"
@@ -37,46 +37,44 @@ A registry is a container for storing objects and values in the Flextype applica
 
 ### <a name="methods"></a> Methods
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><a href="#methods-getInstance">getInstance()</a></td>
-                <td>Gets the instance via lazy initialization (created on first usage)</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-get">get()</a></td>
-                <td>Get item from the registry.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-set">set()</a></td>
-                <td>Set an registry data to a given value using "dot" notation. If no key is given to the method, the entire registry data will be replaced.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-has">has()</a></td>
-                <td>Determine if the registry has a value for the given name.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-all">all()</a></td>
-                <td>Get all items from the registry.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-delete">delete()</a></td>
-                <td>Get item from the registry.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-flush">flush()</a></td>
-                <td>Flush all items from the registry.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#methods-getInstance">getInstance()</a></td>
+            <td>Gets the instance via lazy initialization (created on first usage)</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-get">get()</a></td>
+            <td>Get item from the registry.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-set">set()</a></td>
+            <td>Set an registry data to a given value using "dot" notation. If no key is given to the method, the entire registry data will be replaced.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-has">has()</a></td>
+            <td>Determine if the registry has a value for the given name.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-all">all()</a></td>
+            <td>Get all items from the registry.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-delete">delete()</a></td>
+            <td>Get item from the registry.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-flush">flush()</a></td>
+            <td>Flush all items from the registry.</td>
+        </tr>
+    </tbody>
+</table>
 
 ### Methods Details
 

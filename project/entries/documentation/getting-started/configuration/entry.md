@@ -460,37 +460,35 @@ api:
   images:
     enabled: true
     default_token:
-</code>
+```
 
 ### PHP constants
 
 Your `index.php` file can define certain PHP constants, which Flextype bootstrap script will check for while loading and configuring Flextype.
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>FLEXTYPE_MINIMUM_PHP</td>
-                <td>Define the application minimum supported PHP version.</td>
-            </tr>
-            <tr>
-                <td>ROOT_DIR</td>
-                <td>Define the path to the root directory (without trailing slash).</td>
-            </tr>
-            <tr>
-                <td>PATH['project']</td>
-                <td>Define the PATH to the project (without trailing slash).</td>
-            </tr>
-            <tr>
-                <td>PATH['tmp']</td>
-                <td>Define the PATH to the tmp (without trailing slash).</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>FLEXTYPE_MINIMUM_PHP</td>
+            <td>Define the application minimum supported PHP version.</td>
+        </tr>
+        <tr>
+            <td>ROOT_DIR</td>
+            <td>Define the path to the root directory (without trailing slash).</td>
+        </tr>
+        <tr>
+            <td>PATH['project']</td>
+            <td>Define the PATH to the project (without trailing slash).</td>
+        </tr>
+        <tr>
+            <td>PATH['tmp']</td>
+            <td>Define the PATH to the tmp (without trailing slash).</td>
+        </tr>
+    </tbody>
+</table>

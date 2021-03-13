@@ -1,7 +1,7 @@
 ---
 title: YAML
 description: Flextype uses YAML because it's as close to plain English as data serialization and configuration formats get. It has no curly braces, it allows you to omit quotation marks for strings in most cases, and it relies on indentation for structure, which makes it incredibly readable compared to other languages, such as JSON and XML.
-template: docs 
+template: docs
 breadcrumbs:
   -
     title: "Core Concepts"
@@ -915,26 +915,24 @@ Array
 
 ### <a name="methods"></a> Methods
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><a href="#methods-encode">encode()</a></td>
-                <td>Dumps a PHP value to a YAML string.<br><br>The dump method, when supplied with an array, will do its best to convert the array into friendly YAML.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-decode">decode()</a></td>
-                <td>Parses YAML into a PHP value.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#methods-encode">encode()</a></td>
+            <td>Dumps a PHP value to a YAML string.<br><br>The dump method, when supplied with an array, will do its best to convert the array into friendly YAML.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-decode">decode()</a></td>
+            <td>Parses YAML into a PHP value.</td>
+        </tr>
+    </tbody>
+</table>
 
 ### Methods Details
 

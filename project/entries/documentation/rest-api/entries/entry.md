@@ -1,6 +1,6 @@
 ---
 title: Entries
-template: docs 
+template: docs
 breadcrumbs:
   -
     title: "Rest API"
@@ -33,49 +33,47 @@ The Flextype Entries API organized around Representational State Transfer (REST)
 
 ### <a name="endpoints"></a> Endpoints
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Method</th>
-                <th>Endpoint</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>GET</td>
-                <td>/api/entries</td>
-                <td>Fetch entry or entries collection.</td>
-            </tr>
-            <tr>
-                <td>POST</td>
-                <td>/api/entries</td>
-                <td>Create entry.</td>
-            </tr>
-            <tr>
-                <td>PATCH</td>
-                <td>/api/entries</td>
-                <td>Update entry.</td>
-            </tr>
-            <tr>
-                <td>PUT</td>
-                <td>/api/entries</td>
-                <td>Move entry.</td>
-            </tr>
-            <tr>
-                <td>PUT</td>
-                <td>/api/entries/copy</td>
-                <td>Copy entry or entries collection.</td>
-            </tr>
-            <tr>
-                <td>DELETE</td>
-                <td>/api/entries</td>
-                <td>Delete entry.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>GET</td>
+            <td>/api/entries</td>
+            <td>Fetch entry or entries collection.</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/api/entries</td>
+            <td>Create entry.</td>
+        </tr>
+        <tr>
+            <td>PATCH</td>
+            <td>/api/entries</td>
+            <td>Update entry.</td>
+        </tr>
+        <tr>
+            <td>PUT</td>
+            <td>/api/entries</td>
+            <td>Move entry.</td>
+        </tr>
+        <tr>
+            <td>PUT</td>
+            <td>/api/entries/copy</td>
+            <td>Copy entry or entries collection.</td>
+        </tr>
+        <tr>
+            <td>DELETE</td>
+            <td>/api/entries</td>
+            <td>Delete entry.</td>
+        </tr>
+    </tbody>
+</table>
 
 ### <a name="fetch-entry"></a> Fetch entry
 
@@ -89,34 +87,32 @@ GET /api/entries?id=YOUR_ENTRY_ID&[options]&token=YOUR_ENTRIES_TOKEN
 
 ##### Query
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Valid Entry ID (slug)</td>
-            </tr>
-            <tr>
-                <td>options</td>
-                <td>OPTIONAL</td>
-                <td>A set of valid arguments to search and sort specific needed entries.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Entries Token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Valid Entry ID (slug)</td>
+        </tr>
+        <tr>
+            <td>options</td>
+            <td>OPTIONAL</td>
+            <td>A set of valid arguments to search and sort specific needed entries.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Entries Token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 
@@ -142,34 +138,33 @@ GET /api/entries?id=YOUR_ENTRY_ID&options[collection]=true&token=YOUR_ENTRIES_TO
 
 ##### Query
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Valid Entry ID (slug)</td>
-            </tr>
-            <tr>
-                <td>options</td>
-                <td>OPTIONAL</td>
-                <td>A set of valid arguments to search and sort specific needed entries.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Entries Token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Valid Entry ID (slug)</td>
+        </tr>
+        <tr>
+            <td>options</td>
+            <td>OPTIONAL</td>
+            <td>A set of valid arguments to search and sort specific needed entries.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Entries Token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 
@@ -227,39 +222,37 @@ POST /api/entries
 
 ##### Body
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Unique identifier of the entry.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Entries token.</td>
-            </tr>
-            <tr>
-                <td>access_token</td>
-                <td>REQUIRED</td>
-                <td>Valid Access token.</td>
-            </tr>
-            <tr>
-                <td>data</td>
-                <td>REQUIRED</td>
-                <td>Data to store for the entry.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Unique identifier of the entry.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Entries token.</td>
+        </tr>
+        <tr>
+            <td>access_token</td>
+            <td>REQUIRED</td>
+            <td>Valid Access token.</td>
+        </tr>
+        <tr>
+            <td>data</td>
+            <td>REQUIRED</td>
+            <td>Data to store for the entry.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 Returns the entry item object for the entry item that was just created.
@@ -318,39 +311,37 @@ PATCH /api/entries
 
 ##### Body
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Unique identifier of the entry.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Entries token.</td>
-            </tr>
-            <tr>
-                <td>access_token</td>
-                <td>REQUIRED</td>
-                <td>Valid Access token.</td>
-            </tr>
-            <tr>
-                <td>data</td>
-                <td>REQUIRED</td>
-                <td>Data to store for the entry.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Unique identifier of the entry.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Entries token.</td>
+        </tr>
+        <tr>
+            <td>access_token</td>
+            <td>REQUIRED</td>
+            <td>Valid Access token.</td>
+        </tr>
+        <tr>
+            <td>data</td>
+            <td>REQUIRED</td>
+            <td>Data to store for the entry.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 Returns the entry item object for the entry item that was just updated.
@@ -408,39 +399,37 @@ PUT /api/entries
 
 ##### Body
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Unique identifier of the entry.</td>
-            </tr>
-            <tr>
-                <td>new_id</td>
-                <td>REQUIRED</td>
-                <td>New Unique identifier of the entry.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Entries token.</td>
-            </tr>
-            <tr>
-                <td>access_token</td>
-                <td>REQUIRED</td>
-                <td>Valid Access token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Unique identifier of the entry.</td>
+        </tr>
+        <tr>
+            <td>new_id</td>
+            <td>REQUIRED</td>
+            <td>New Unique identifier of the entry.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Entries token.</td>
+        </tr>
+        <tr>
+            <td>access_token</td>
+            <td>REQUIRED</td>
+            <td>Valid Access token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 Returns the entry item object for the entry item that was just moved.
@@ -535,8 +524,7 @@ PUT /api/entries/copy
 
 ##### Body
 
-<div class="table">
-    <table>
+<table>
     <thead>
         <tr>
             <th>Name</th>
@@ -566,8 +554,7 @@ PUT /api/entries/copy
             <td>Valid Access token.</td>
         </tr>
     </tbody>
-    </table>
-</div>
+</table>
 
 ##### Result
 Returns the entry item object for the entry item that was just copied.
@@ -623,34 +610,32 @@ DELETE /api/entries
 
 ##### Body
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Unique identifier of the entry.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Entries token.</td>
-            </tr>
-            <tr>
-                <td>access_token</td>
-                <td>REQUIRED</td>
-                <td>Valid Access token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Unique identifier of the entry.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Entries token.</td>
+        </tr>
+        <tr>
+            <td>access_token</td>
+            <td>REQUIRED</td>
+            <td>Valid Access token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 Returns an empty body with HTTP status 204

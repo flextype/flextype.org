@@ -1,7 +1,7 @@
 ---
 title: FRONTMATTER
 description: Any file that contains a YAML front matter block will be processed by Flextype as a special file. The front matter must be the first thing in the file and must take the form of valid YAML set between triple-dashed lines. Between these triple-dashed lines, you can set predefined variables or even create custom ones of your own.
-template: docs 
+template: docs
 breadcrumbs:
   -
     title: "Core Concepts"
@@ -26,26 +26,24 @@ Any file that contains a YAML front matter block will be processed by Flextype a
 
 ### <a name="methods"></a> Methods
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><a href="#methods-encode">encode()</a></td>
-                <td>Returns the FRONTMATTER representation of a value.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-decode">decode()</a></td>
-                <td>Takes a FRONTMATTER encoded string and converts it into a PHP variable.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#methods-encode">encode()</a></td>
+            <td>Returns the FRONTMATTER representation of a value.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-decode">decode()</a></td>
+            <td>Takes a FRONTMATTER encoded string and converts it into a PHP variable.</td>
+        </tr>
+    </tbody>
+</table>
 
 ### Methods Details
 

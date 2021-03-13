@@ -1,7 +1,7 @@
 ---
 title: Images
 description: The Flextype Images allows the retrieval and manipulation of image files referenced from media.
-template: docs 
+template: docs
 breadcrumbs:
   1:
     title: "Rest API"
@@ -22,24 +22,22 @@ The Flextype Images API allows the retrieval and manipulation of image files ref
 
 ### <a name="endpoints"></a> Endpoints
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Method</th>
-                <th>Endpoint</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>GET</td>
-                <td>/api/images</td>
-                <td>Fetch image</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>GET</td>
+            <td>/api/images</td>
+            <td>Fetch image</td>
+        </tr>
+    </tbody>
+</table>
 
 ### <a name="fetch-image"></a> Fetch image
 
@@ -51,7 +49,6 @@ GET /api/images/{path:.+}?VALID_ARGUMENTS&token=YOUR_IMAGES_TOKEN
 
 ##### Parameters
 
-<div class="table">
 <table>
 <thead>
 <tr>
@@ -68,11 +65,9 @@ GET /api/images/{path:.+}?VALID_ARGUMENTS&token=YOUR_IMAGES_TOKEN
 </tr>
 </tbody>
 </table>
-</div>
 
 ##### Query
 
-<div class="table">
 <table>
 <thead>
 <tr>
@@ -94,7 +89,6 @@ GET /api/images/{path:.+}?VALID_ARGUMENTS&token=YOUR_IMAGES_TOKEN
 </tr>
 </tbody>
 </table>
-</div>
 
 ##### Examples
 

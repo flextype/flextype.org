@@ -1,7 +1,7 @@
 ---
 title: JSON
 description: Flextype uses YAML because it's as close to plain English as data serialization and configuration formats get. It has no curly braces, it allows you to omit quotation marks for strings in most cases, and it relies on indentation for structure, which makes it incredibly readable compared to other languages, such as JSON and XML.
-template: docs 
+template: docs
 breadcrumbs:
   -
     title: "Core Concepts"
@@ -124,102 +124,98 @@ JSON consist of 6 data types. First four data types (string, number, boolean and
 * object
 * array
 
-<div class="table">
-    <table>
-        <tr>
-            <td><b>Data Type</b></td>
-            <td><b>Description</b></td>
-        </tr>
-        <tr>
-            <td>string</td>
-            <td>
-            Strings in JSON must be written in double quotes. <br><br>
-    <pre><code class="hljs">{
-      "color" : "Purple"
-    }
-    </pre>
-            </td>
-        </tr>
-        <tr>
-            <td>number</td>
-            <td>
-            Numbers in JSON must be an integer or a floating point. <br><br>
-    <pre><code class="hljs">{
-      "number_1": 210,
-      "number_2": -210,
-      "number_3": 21.05,
-      "number_4": 1.0E+2
-    }
-    </pre>
-            </td>
-        </tr>
-        <tr>
-            <td>boolean</td>
-            <td>
-            Value can be either true or false. <br><br>
-    <pre><code class="hljs">{
-      "visibility": true
-    }
-    </pre>
-            </td>
-        </tr>
-        <tr>
-            <td>null</td>
-            <td>
-            Values in JSON can be null. <br><br>
-    <pre><code class="hljs">{
-       "middlename": null
-    }
-    </pre>
-            </td>
-        </tr>
-        <tr>
-            <td>object</td>
-            <td>
-            Values in JSON can be objects. <br><br>
-    <pre><code class="hljs">"employee": {
-      "name": "John",
-      "age": 30,
-      "city": "New York"
-    }
-    </pre>
-            </td>
-        </tr>
-        <tr>
-            <td>array</td>
-            <td>
-            Values in JSON can be arrays. <br><br>
-    <pre><code class="hljs">{
-      "employees": [ "John", "Anna", "Peter" ]
-    }
-    </pre>
-            </td>
-        </tr>
-    </table>
-</div>
+<table>
+    <tr>
+        <td><b>Data Type</b></td>
+        <td><b>Description</b></td>
+    </tr>
+    <tr>
+        <td>string</td>
+        <td>
+        Strings in JSON must be written in double quotes. <br><br>
+<pre><code class="hljs">{
+  "color" : "Purple"
+}
+</pre>
+        </td>
+    </tr>
+    <tr>
+        <td>number</td>
+        <td>
+        Numbers in JSON must be an integer or a floating point. <br><br>
+<pre><code class="hljs">{
+  "number_1": 210,
+  "number_2": -210,
+  "number_3": 21.05,
+  "number_4": 1.0E+2
+}
+</pre>
+        </td>
+    </tr>
+    <tr>
+        <td>boolean</td>
+        <td>
+        Value can be either true or false. <br><br>
+<pre><code class="hljs">{
+  "visibility": true
+}
+</pre>
+        </td>
+    </tr>
+    <tr>
+        <td>null</td>
+        <td>
+        Values in JSON can be null. <br><br>
+<pre><code class="hljs">{
+   "middlename": null
+}
+</pre>
+        </td>
+    </tr>
+    <tr>
+        <td>object</td>
+        <td>
+        Values in JSON can be objects. <br><br>
+<pre><code class="hljs">"employee": {
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}
+</pre>
+        </td>
+    </tr>
+    <tr>
+        <td>array</td>
+        <td>
+        Values in JSON can be arrays. <br><br>
+<pre><code class="hljs">{
+  "employees": [ "John", "Anna", "Peter" ]
+}
+</pre>
+        </td>
+    </tr>
+</table>
 
 ### <a name="methods"></a> Methods
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><a href="#methods-encode">encode()</a></td>
-                <td>Returns the JSON representation of a value.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-decode">decode()</a></td>
-                <td>Takes a JSON encoded string and converts it into a PHP variable.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#methods-encode">encode()</a></td>
+            <td>Returns the JSON representation of a value.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-decode">decode()</a></td>
+            <td>Takes a JSON encoded string and converts it into a PHP variable.</td>
+        </tr>
+    </tbody>
+</table>
 
 ### Methods Details
 

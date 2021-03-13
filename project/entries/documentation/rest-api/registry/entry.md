@@ -1,6 +1,6 @@
 ---
 title: Registry
-template: docs 
+template: docs
 breadcrumbs:
   1:
     title: "Rest API"
@@ -18,7 +18,6 @@ The Flextype Registry API organized around Representational State Transfer (REST
 
 #### <a name="endpoints"></a> Endpoints
 
-<div class="table">
     <table>
     <thead>
         <tr>
@@ -47,29 +46,27 @@ GET /api/registry?id=YOUR_REGISTRY_ITEM_ID&token=YOUR_REGISTRY_TOKEN
 
 ##### Query
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Valid Entry ID (slug)</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Registry Token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Valid Entry ID (slug)</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Registry Token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 

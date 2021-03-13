@@ -1,6 +1,6 @@
 ---
 title: Introducion
-template: docs 
+template: docs
 breadcrumbs:
   1:
     title: "Rest API"
@@ -75,26 +75,24 @@ When something goes wrong with an API request, our server generates an error. Th
 
 #### Error types
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>HTTP status code</th>
-                <th>Error code</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>401 Unauthorized</td>
-                <td>AccessTokenInvalid</td>
-                <td>Incorrect authentication credentials.</td>
-            </tr>
-            <tr>
-                <td>404 Not Found</td>
-                <td>NotFound</td>
-                <td>The requested resource or endpoint could not be found.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>HTTP status code</th>
+            <th>Error code</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>AccessTokenInvalid</td>
+            <td>Incorrect authentication credentials.</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>NotFound</td>
+            <td>The requested resource or endpoint could not be found.</td>
+        </tr>
+    </tbody>
+</table>

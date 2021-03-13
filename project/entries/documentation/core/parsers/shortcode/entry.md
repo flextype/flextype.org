@@ -1,7 +1,7 @@
 ---
 title: SHORTCODE
 description: Shortcode is a small piece of code, indicated by brackets like `[this]`, that performs a dedicated function on your site.
-template: docs 
+template: docs
 breadcrumbs:
   -
     title: "Core Concepts"
@@ -24,39 +24,37 @@ Shortcode is a small piece of code, indicated by brackets like `[raw][this][/raw
 
 There are a number of default shortcodes available.
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Parameters</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><a href="#shortcodes-entries_fetch">[raw][entries_fetch][/raw]</a></td>
-                <td>id, field</td>
-                <td>Fetch specific entry field.</td>
-            </tr>
-            <tr>
-                <td><a href="#shortcodes-registry">[raw][registry][/raw]</a></td>
-                <td>name, default</td>
-                <td>Fetch specific item from registry.</td>
-            </tr>
-            <tr>
-                <td><a href="#shortcodes-raw">[raw][url]/documentation[/raw]</a></td>
-                <td></td>
-                <td>Display application url.</td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    You may ignore shortcodes processing by wrapping entry content in <code>raw</code> shortcode tag.
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Parameters</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#shortcodes-entries_fetch">[raw][entries_fetch][/raw]</a></td>
+            <td>id, field</td>
+            <td>Fetch specific entry field.</td>
+        </tr>
+        <tr>
+            <td><a href="#shortcodes-registry">[raw][registry][/raw]</a></td>
+            <td>name, default</td>
+            <td>Fetch specific item from registry.</td>
+        </tr>
+        <tr>
+            <td><a href="#shortcodes-raw">[raw][url]/documentation[/raw]</a></td>
+            <td></td>
+            <td>Display application url.</td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                You may ignore shortcodes processing by wrapping entry content in <code>raw</code> shortcode tag.
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 ### Shortocodes Details
 
@@ -92,38 +90,36 @@ Display application url.
 
 ### <a name="methods"></a> Methods
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><a href="#methods-addHandler">addHandler()</a></td>
-                <td>Add shortcode handler.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-addEventHandler">addEventHandler()</a></td>
-                <td>Add event handler.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-process">process()</a></td>
-                <td>Processes text and replaces shortcodes.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-parse">parse()</a></td>
-                <td>Parses text into shortcodes.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-getCacheID">getCacheID()</a></td>
-                <td>Get Cache ID for shortcode</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#methods-addHandler">addHandler()</a></td>
+            <td>Add shortcode handler.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-addEventHandler">addEventHandler()</a></td>
+            <td>Add event handler.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-process">process()</a></td>
+            <td>Processes text and replaces shortcodes.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-parse">parse()</a></td>
+            <td>Parses text into shortcodes.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-getCacheID">getCacheID()</a></td>
+            <td>Get Cache ID for shortcode</td>
+        </tr>
+    </tbody>
+</table>
 
 ### Methods Details
 

@@ -1,6 +1,6 @@
 ---
 title: Media
-template: docs 
+template: docs
 breadcrumbs:
   1:
     title: "Rest API"
@@ -67,59 +67,57 @@ The Flextype Files API organized around Representational State Transfer (REST) f
 
 ### <a name="media-files-endpoints"></a> Endpoints
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Method</th>
-                <th>Endpoint</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>GET</td>
-                <td>/api/media/files</td>
-                <td>Fetch file or files collection.</td>
-            </tr>
-            <tr>
-                <td>POST</td>
-                <td>/api/media/files</td>
-                <td>Upload file.</td>
-            </tr>
-            <tr>
-                <td>PUT</td>
-                <td>/api/media/files</td>
-                <td>Move file.</td>
-            </tr>
-            <tr>
-                <td>PUT</td>
-                <td>/api/media/files/copy</td>
-                <td>Copy file.</td>
-            </tr>
-            <tr>
-                <td>DELETE</td>
-                <td>/api/media/files</td>
-                <td>Delete file.</td>
-            </tr>
-            <tr>
-                <td>PATCH</td>
-                <td>/api/media/files/meta</td>
-                <td>Updates file meta information.</td>
-            </tr>
-            <tr>
-                <td>POST</td>
-                <td>/api/media/files/meta</td>
-                <td>Add file meta information.</td>
-            </tr>
-            <tr>
-                <td>DELETE</td>
-                <td>/api/media/files/meta</td>
-                <td>Delete file meta information.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>GET</td>
+            <td>/api/media/files</td>
+            <td>Fetch file or files collection.</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/api/media/files</td>
+            <td>Upload file.</td>
+        </tr>
+        <tr>
+            <td>PUT</td>
+            <td>/api/media/files</td>
+            <td>Move file.</td>
+        </tr>
+        <tr>
+            <td>PUT</td>
+            <td>/api/media/files/copy</td>
+            <td>Copy file.</td>
+        </tr>
+        <tr>
+            <td>DELETE</td>
+            <td>/api/media/files</td>
+            <td>Delete file.</td>
+        </tr>
+        <tr>
+            <td>PATCH</td>
+            <td>/api/media/files/meta</td>
+            <td>Updates file meta information.</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/api/media/files/meta</td>
+            <td>Add file meta information.</td>
+        </tr>
+        <tr>
+            <td>DELETE</td>
+            <td>/api/media/files/meta</td>
+            <td>Delete file meta information.</td>
+        </tr>
+    </tbody>
+</table>
 
 ### <a name="media-files-fetch-file"></a> Fetch file
 
@@ -133,34 +131,32 @@ GET /api/media/files?id=YOUR_MEDIA_FILES_ID&token=YOUR_MEDIA_FILES_TOKEN
 
 ##### Query
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>File ID.</td>
-            </tr>
-            <tr>
-                <td>options</td>
-                <td>OPTIONAL</td>
-                <td>Array of options.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Files Token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>File ID.</td>
+        </tr>
+        <tr>
+            <td>options</td>
+            <td>OPTIONAL</td>
+            <td>Array of options.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Files Token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 
@@ -202,34 +198,32 @@ GET /api/media/files?id=YOUR_MEDIA_FILES_ID&options[collection]=true&token=YOUR_
 
 ##### Query
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Folder ID.</td>
-            </tr>
-            <tr>
-                <td>options</td>
-                <td>OPTIONAL</td>
-                <td>Array of options.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Files Token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Folder ID.</td>
+        </tr>
+        <tr>
+            <td>options</td>
+            <td>OPTIONAL</td>
+            <td>Array of options.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Files Token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 
@@ -274,39 +268,37 @@ POST /api/media/files
 
 ##### Body
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>folder</td>
-                <td>REQUIRED</td>
-                <td>The folder you're targetting.</td>
-            </tr>
-            <tr>
-                <td>file</td>
-                <td>REQUIRED</td>
-                <td>Raw file data (multipart/form-data).</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Files token.</td>
-            </tr>
-            <tr>
-                <td>access_token</td>
-                <td>REQUIRED</td>
-                <td>Valid Access token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>folder</td>
+            <td>REQUIRED</td>
+            <td>The folder you're targetting.</td>
+        </tr>
+        <tr>
+            <td>file</td>
+            <td>REQUIRED</td>
+            <td>Raw file data (multipart/form-data).</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Files token.</td>
+        </tr>
+        <tr>
+            <td>access_token</td>
+            <td>REQUIRED</td>
+            <td>Valid Access token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 Returns the file object for the file that was just uploaded.
@@ -368,39 +360,37 @@ PUT /api/media/files
 
 ##### Body
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Unique identifier of the file.</td>
-            </tr>
-            <tr>
-                <td>new_id</td>
-                <td>REQUIRED</td>
-                <td>New Unique identifier of the file.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Files token.</td>
-            </tr>
-            <tr>
-                <td>access_token</td>
-                <td>REQUIRED</td>
-                <td>Valid Access token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Unique identifier of the file.</td>
+        </tr>
+        <tr>
+            <td>new_id</td>
+            <td>REQUIRED</td>
+            <td>New Unique identifier of the file.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Files token.</td>
+        </tr>
+        <tr>
+            <td>access_token</td>
+            <td>REQUIRED</td>
+            <td>Valid Access token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 Returns the folders object for the file that was just moved.
@@ -487,39 +477,37 @@ PUT /api/media/files/copy
 
 ##### Body
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Unique identifier of the file.</td>
-            </tr>
-            <tr>
-                <td>new_id</td>
-                <td>REQUIRED</td>
-                <td>New Unique identifier of the file.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Folders token.</td>
-            </tr>
-            <tr>
-                <td>access_token</td>
-                <td>REQUIRED</td>
-                <td>Valid Access token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Unique identifier of the file.</td>
+        </tr>
+        <tr>
+            <td>new_id</td>
+            <td>REQUIRED</td>
+            <td>New Unique identifier of the file.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Folders token.</td>
+        </tr>
+        <tr>
+            <td>access_token</td>
+            <td>REQUIRED</td>
+            <td>Valid Access token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 Returns the file object for the file that was just copied.
@@ -571,34 +559,32 @@ DELETE /api/media/files
 
 ##### Body
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Unique identifier of the file.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Files token.</td>
-            </tr>
-            <tr>
-                <td>access_token</td>
-                <td>REQUIRED</td>
-                <td>Valid Access token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Unique identifier of the file.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Files token.</td>
+        </tr>
+        <tr>
+            <td>access_token</td>
+            <td>REQUIRED</td>
+            <td>Valid Access token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 Returns an empty body with HTTP status 204
@@ -633,44 +619,42 @@ PUT /api/media/files
 
 ##### Body
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Unique identifier of the file.</td>
-            </tr>
-            <tr>
-                <td>field</td>
-                <td>REQUIRED</td>
-                <td>Field name.</td>
-            </tr>
-            <tr>
-                <td>value</td>
-                <td>REQUIRED</td>
-                <td>Field value.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Files token.</td>
-            </tr>
-            <tr>
-                <td>access_token</td>
-                <td>REQUIRED</td>
-                <td>Valid Access token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Unique identifier of the file.</td>
+        </tr>
+        <tr>
+            <td>field</td>
+            <td>REQUIRED</td>
+            <td>Field name.</td>
+        </tr>
+        <tr>
+            <td>value</td>
+            <td>REQUIRED</td>
+            <td>Field value.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Files token.</td>
+        </tr>
+        <tr>
+            <td>access_token</td>
+            <td>REQUIRED</td>
+            <td>Valid Access token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 Returns the file object for the file that was just updated.
@@ -724,44 +708,42 @@ POST /api/media/files
 
 ##### Body
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Unique identifier of the file.</td>
-            </tr>
-            <tr>
-                <td>field</td>
-                <td>REQUIRED</td>
-                <td>Field name.</td>
-            </tr>
-            <tr>
-                <td>value</td>
-                <td>REQUIRED</td>
-                <td>Field value.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Files token.</td>
-            </tr>
-            <tr>
-                <td>access_token</td>
-                <td>REQUIRED</td>
-                <td>Valid Access token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Unique identifier of the file.</td>
+        </tr>
+        <tr>
+            <td>field</td>
+            <td>REQUIRED</td>
+            <td>Field name.</td>
+        </tr>
+        <tr>
+            <td>value</td>
+            <td>REQUIRED</td>
+            <td>Field value.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Files token.</td>
+        </tr>
+        <tr>
+            <td>access_token</td>
+            <td>REQUIRED</td>
+            <td>Valid Access token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 Returns the file object for the file that was just updated.
@@ -817,39 +799,37 @@ DELETE /api/media/files
 
 ##### Body
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Unique identifier of the file.</td>
-            </tr>
-            <tr>
-                <td>field</td>
-                <td>REQUIRED</td>
-                <td>Field name.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Files token.</td>
-            </tr>
-            <tr>
-                <td>access_token</td>
-                <td>REQUIRED</td>
-                <td>Valid Access token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Unique identifier of the file.</td>
+        </tr>
+        <tr>
+            <td>field</td>
+            <td>REQUIRED</td>
+            <td>Field name.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Files token.</td>
+        </tr>
+        <tr>
+            <td>access_token</td>
+            <td>REQUIRED</td>
+            <td>Valid Access token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 Returns the file object for the file that was just updated.
@@ -898,44 +878,42 @@ The Flextype Folders API organized around Representational State Transfer (REST)
 
 ### <a name="media-folders-endpoints"></a> Endpoints
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Method</th>
-                <th>Endpoint</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>GET</td>
-                <td>/api/media/folders</td>
-                <td>Fetch folder(folders)</td>
-            </tr>
-            <tr>
-                <td>POST</td>
-                <td>/api/media/folders</td>
-                <td>Create folder</td>
-            </tr>
-            <tr>
-                <td>PUT</td>
-                <td>/api/media/folders</td>
-                <td>Move folder</td>
-            </tr>
-            <tr>
-                <td>PUT</td>
-                <td>/api/media/folders/copy</td>
-                <td>Copy folder</td>
-            </tr>
-            <tr>
-                <td>DELETE</td>
-                <td>/api/media/folders</td>
-                <td>Delete folder</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>GET</td>
+            <td>/api/media/folders</td>
+            <td>Fetch folder(folders)</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/api/media/folders</td>
+            <td>Create folder</td>
+        </tr>
+        <tr>
+            <td>PUT</td>
+            <td>/api/media/folders</td>
+            <td>Move folder</td>
+        </tr>
+        <tr>
+            <td>PUT</td>
+            <td>/api/media/folders/copy</td>
+            <td>Copy folder</td>
+        </tr>
+        <tr>
+            <td>DELETE</td>
+            <td>/api/media/folders</td>
+            <td>Delete folder</td>
+        </tr>
+    </tbody>
+</table>
 
 ### <a name="media-folders-fetch-folder"></a> Fetch Folder
 
@@ -949,34 +927,32 @@ GET /api/media/folders?id=YOUR_FOLDER_ID&options=[]&token=YOUR_FOLDERS_TOKEN
 
 ##### Query
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Folder id.</td>
-            </tr>
-            <tr>
-                <td>options</td>
-                <td>OPTIONAL</td>
-                <td>Array of options.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Folders Token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Folder id.</td>
+        </tr>
+        <tr>
+            <td>options</td>
+            <td>OPTIONAL</td>
+            <td>Array of options.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Folders Token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 
@@ -1002,34 +978,32 @@ GET /api/entries?id=YOUR_FOLDER_ID&options[collection]=true&token=YOUR_FOLDERS_T
 
 ##### Query
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Folder id.</td>
-            </tr>
-            <tr>
-                <td>options</td>
-                <td>OPTIONAL</td>
-                <td>Array of options.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Folders Token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Folder id.</td>
+        </tr>
+        <tr>
+            <td>options</td>
+            <td>OPTIONAL</td>
+            <td>Array of options.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Folders Token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 
@@ -1055,34 +1029,32 @@ POST /api/media/folders
 
 ##### Body
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>New folder id.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Folders token.</td>
-            </tr>
-            <tr>
-                <td>access_token</td>
-                <td>REQUIRED</td>
-                <td>Valid Access token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>New folder id.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Folders token.</td>
+        </tr>
+        <tr>
+            <td>access_token</td>
+            <td>REQUIRED</td>
+            <td>Valid Access token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 Returns the folder object for the folder that was just created.
@@ -1130,39 +1102,37 @@ PUT /api/media/folders
 
 ##### Body
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Unique identifier of the folder.</td>
-            </tr>
-            <tr>
-                <td>new_id</td>
-                <td>REQUIRED</td>
-                <td>New Unique identifier of the folder.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Entries token.</td>
-            </tr>
-            <tr>
-                <td>access_token</td>
-                <td>REQUIRED</td>
-                <td>Valid Access token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Unique identifier of the folder.</td>
+        </tr>
+        <tr>
+            <td>new_id</td>
+            <td>REQUIRED</td>
+            <td>New Unique identifier of the folder.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Entries token.</td>
+        </tr>
+        <tr>
+            <td>access_token</td>
+            <td>REQUIRED</td>
+            <td>Valid Access token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 Returns the folders object for the folders that was just moved.
@@ -1243,39 +1213,37 @@ PUT /api/media/folders/copy
 
 ##### Body
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Unique identifier of the folder.</td>
-            </tr>
-            <tr>
-                <td>new_id</td>
-                <td>REQUIRED</td>
-                <td>New Unique identifier of the folder.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Folders token.</td>
-            </tr>
-            <tr>
-                <td>access_token</td>
-                <td>REQUIRED</td>
-                <td>Valid Access token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Unique identifier of the folder.</td>
+        </tr>
+        <tr>
+            <td>new_id</td>
+            <td>REQUIRED</td>
+            <td>New Unique identifier of the folder.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Folders token.</td>
+        </tr>
+        <tr>
+            <td>access_token</td>
+            <td>REQUIRED</td>
+            <td>Valid Access token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 Returns the folders object for the folders that was just copied.
@@ -1324,34 +1292,32 @@ DELETE /api/media/folders
 
 ##### Body
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>REQUIRED</td>
-                <td>Unique identifier of the folder.</td>
-            </tr>
-            <tr>
-                <td>token</td>
-                <td>REQUIRED</td>
-                <td>Valid Folders token.</td>
-            </tr>
-            <tr>
-                <td>access_token</td>
-                <td>REQUIRED</td>
-                <td>Valid Access token.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>REQUIRED</td>
+            <td>Unique identifier of the folder.</td>
+        </tr>
+        <tr>
+            <td>token</td>
+            <td>REQUIRED</td>
+            <td>Valid Folders token.</td>
+        </tr>
+        <tr>
+            <td>access_token</td>
+            <td>REQUIRED</td>
+            <td>Valid Access token.</td>
+        </tr>
+    </tbody>
+</table>
 
 ##### Result
 Returns an empty body with HTTP status 204

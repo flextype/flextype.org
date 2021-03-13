@@ -1,7 +1,7 @@
 ---
 title: MARKDOWN
 description: Markdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents. Created by John Gruber in 2004, Markdown is now one of the world’s most popular markup languages.
-template: docs 
+template: docs
 breadcrumbs:
   -
     title: "Core Concepts"
@@ -38,7 +38,6 @@ For more details about MARKDOWN syntax <a href="https://www.markdownguide.org/ba
 
 To create a heading, add number signs (`#`) in front of a word or phrase. The number of number signs you use should correspond to the heading level. For example, to create a heading level three (`<h3>`), use three number signs (e.g., `### My Header`).
 
-<div class="table">
 <table>
   <thead>
     <tr>
@@ -73,90 +72,83 @@ To create a heading, add number signs (`#`) in front of a word or phrase. The nu
     </tr>
   </tbody>
 </table>
-</div>
 
 ##### Alternate Syntax
 
 Alternatively, on the line below the text, add any number of `==` characters for heading level 1 or `--` characters for heading level 2.
 
-<div class="table">
-    <table>
-      <thead>
-        <tr>
-          <th>Markdown</th>
-          <th>HTML</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Heading level 1<br/>===============</td>
-          <td>&lt;h1&gt;Heading level 1&lt;/h1&gt;</td>
-        </tr>
-        <tr>
-          <td>Heading level 2<br/>---------------</td>
-          <td>&lt;h2&gt;Heading level 2&lt;/h2&gt;</td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Markdown</th>
+      <th>HTML</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Heading level 1<br/>===============</td>
+      <td>&lt;h1&gt;Heading level 1&lt;/h1&gt;</td>
+    </tr>
+    <tr>
+      <td>Heading level 2<br/>---------------</td>
+      <td>&lt;h2&gt;Heading level 2&lt;/h2&gt;</td>
+    </tr>
+  </tbody>
+</table>
 
 ##### Heading Best Practices
 
 Markdown applications don't agree on how to handle a missing space between the number signs (`#`) and the heading name. For compatibility, always put a space between the number signs and the heading name.
 
-<div class="table">
-    <table>
-      <thead>
-        <tr>
-          <th><i class="fas fa-check"></i> Do this</th>
-          <th><i class="fas fa-times"></i> Don't do this</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-              # Here's a Heading
-          </td>
-          <td>
-              #Here's a Heading
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th><i class="fas fa-check"></i> Do this</th>
+      <th><i class="fas fa-times"></i> Don't do this</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+          # Here's a Heading
+      </td>
+      <td>
+          #Here's a Heading
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 #### Paragraphs
 
 To create paragraphs, use a blank line to separate one or more lines of text.
 
-<div class="table">
-    <table>
-      <thead>
-        <tr>
-          <th>Markdown</th>
-          <th>HTML</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-              I really like using Markdown.<br /><br />
-              I think I'll use it to format all of my documents from now on.
-          </td>
-          <td>
-            &lt;p&gt;I really like using Markdown.&lt;/p&gt;<br /><br />
-            &lt;p&gt;I think I'll use it to format all of my documents from now on.&lt;/p&gt;
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Markdown</th>
+      <th>HTML</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+          I really like using Markdown.<br /><br />
+          I think I'll use it to format all of my documents from now on.
+      </td>
+      <td>
+        &lt;p&gt;I really like using Markdown.&lt;/p&gt;<br /><br />
+        &lt;p&gt;I think I'll use it to format all of my documents from now on.&lt;/p&gt;
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ##### Paragraph Best Practices
 
 Unless the [paragraph is in a list](/basic-syntax/#paragraphs), don't indent paragraphs with spaces or tabs.
 
-<div class="table">
 <table>
 <thead>
 <tr>
@@ -178,39 +170,36 @@ formatting problems.<br><br>
 </tr>
 </tbody>
 </table>
-</div>
 
 #### Line Breaks
 
 To create a line break (`<br>`), end a line with two or more spaces, and then type return.
 
-<div class="table">
-    <table>
-      <thead>
-        <tr>
-          <th>Markdown</th>
-          <th>HTML</th>
-          <th>Rendered Output</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-              This is the first line. &nbsp;<br />
-              And this is the second line.
-          </td>
-          <td>
-            &lt;p&gt;This is the first line.&lt;br&gt;<br />
-            And this is the second line.&lt;/p&gt;
-          </td>
-          <td>
-            <p>This is the first line.<br />   
-            And this is the second line.</p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Markdown</th>
+      <th>HTML</th>
+      <th>Rendered Output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+          This is the first line. &nbsp;<br />
+          And this is the second line.
+      </td>
+      <td>
+        &lt;p&gt;This is the first line.&lt;br&gt;<br />
+        And this is the second line.&lt;/p&gt;
+      </td>
+      <td>
+        <p>This is the first line.<br />   
+        And this is the second line.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ##### Line Break Best Practices
 
@@ -220,32 +209,30 @@ For compatibility, use trailing white space or the `<br>` HTML tag at the end of
 
 There are two other options I don't recommend using. CommonMark and a few other lightweight markup languages let you type a backslash (`\`) at the end of the line, but not all Markdown applications support this, so it isn't a great option from a compatibility perspective. And at least a couple lightweight markup languages don't require anything at the end of the line — just type return and they'll create a line break.
 
-<div class="table">
-    <table>
-      <thead>
-        <tr>
-          <th><i class="fas fa-check"></i> Do this</th>
-          <th><i class="fas fa-times"></i> Don't do this</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-              First line with two spaces after. &nbsp;<br>
-              And the next line.<br><br>
-              First line with the HTML tag after.&lt;br&gt;<br>
-              And the next line.<br><br>
-          </td>
-          <td>
-            First line with a backslash after.\<br>
-            And the next line.<br><br>
-            First line with nothing after.<br>
-            And the next line.<br><br>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th><i class="fas fa-check"></i> Do this</th>
+      <th><i class="fas fa-times"></i> Don't do this</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+          First line with two spaces after. &nbsp;<br>
+          And the next line.<br><br>
+          First line with the HTML tag after.&lt;br&gt;<br>
+          And the next line.<br><br>
+      </td>
+      <td>
+        First line with a backslash after.\<br>
+        And the next line.<br><br>
+        First line with nothing after.<br>
+        And the next line.<br><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ### Emphasis
 
@@ -253,171 +240,158 @@ There are two other options I don't recommend using. CommonMark and a few other 
 
 To bold text, add two asterisks or underscores before and after a word or phrase. To bold the middle of a word for emphasis, add two asterisks without spaces around the letters.
 
-<div class="table">
-    <table>
-      <thead>
-        <tr>
-          <th>Markdown</th>
-          <th>HTML</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>I just love **bold text**.</td>
-          <td>I just love &lt;strong&gt;bold text&lt;/strong&gt;.</td>
-        </tr>
-        <tr>
-          <td>I just love __bold text__.</td>
-          <td>I just love &lt;strong&gt;bold text&lt;/strong&gt;.</td>
-        </tr>
-        <tr>
-          <td>Love**is**bold</td> <td>Love&lt;strong&gt;is&lt;/strong&gt;bold</td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Markdown</th>
+      <th>HTML</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>I just love **bold text**.</td>
+      <td>I just love &lt;strong&gt;bold text&lt;/strong&gt;.</td>
+    </tr>
+    <tr>
+      <td>I just love __bold text__.</td>
+      <td>I just love &lt;strong&gt;bold text&lt;/strong&gt;.</td>
+    </tr>
+    <tr>
+      <td>Love**is**bold</td> <td>Love&lt;strong&gt;is&lt;/strong&gt;bold</td>
+    </tr>
+  </tbody>
+</table>
 
 ##### Bold Best Practices
 
 Markdown applications don't agree on how to handle underscores in the middle of a word. For compatibility, use asterisks to bold the middle of a word for emphasis.
 
-<div class="table">
-    <table>
-      <thead>
-        <tr>
-          <th><i class="fas fa-check"></i> Do this</th>
-          <th><i class="fas fa-times"></i> Don't do this</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-              Love**is**bold
-          </td>
-          <td>
-              Love__is__bold
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th><i class="fas fa-check"></i> Do this</th>
+      <th><i class="fas fa-times"></i> Don't do this</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+          Love**is**bold
+      </td>
+      <td>
+          Love__is__bold
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 #### Italic
 
 To italicize text, add one asterisk or underscore before and after a word or phrase. To italicize the middle of a word for emphasis, add one asterisk without spaces around the letters.
 
-<div class="table">
-    <table>
-      <thead>
-        <tr>
-          <th>Markdown</th>
-          <th>HTML</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Italicized text is the *cat's meow*.</td>
-          <td>Italicized text is the &lt;em&gt;cat's meow&lt;/em&gt;.</td>
-        </tr>
-        <tr>
-          <td>Italicized text is the _cat's meow_.</td>
-          <td>Italicized text is the &lt;em&gt;cat's meow&lt;/em&gt;.</td>
-        </tr>
-        <tr>
-          <td>A*cat*meow</td>
-          <td>A&lt;em&gt;cat&lt;/em&gt;meow</td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Markdown</th>
+      <th>HTML</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Italicized text is the *cat's meow*.</td>
+      <td>Italicized text is the &lt;em&gt;cat's meow&lt;/em&gt;.</td>
+    </tr>
+    <tr>
+      <td>Italicized text is the _cat's meow_.</td>
+      <td>Italicized text is the &lt;em&gt;cat's meow&lt;/em&gt;.</td>
+    </tr>
+    <tr>
+      <td>A*cat*meow</td>
+      <td>A&lt;em&gt;cat&lt;/em&gt;meow</td>
+    </tr>
+  </tbody>
+</table>
 
 ##### Italic Best Practices
 
 Markdown applications don't agree on how to handle underscores in the middle of a word. For compatibility, use asterisks to italicize the middle of a word for emphasis.
 
-<div class="table">
-    <table>
-      <thead>
-        <tr>
-          <th><i class="fas fa-check"></i> Do this</th>
-          <th><i class="fas fa-times"></i> Don't do this</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-              A*cat*meow
-          </td>
-          <td>
-              A_cat_meow
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th><i class="fas fa-check"></i> Do this</th>
+      <th><i class="fas fa-times"></i> Don't do this</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+          A*cat*meow
+      </td>
+      <td>
+          A_cat_meow
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 #### Bold and Italic
 
 To emphasize text with bold and italics at the same time, add three asterisks or underscores before and after a word or phrase. To bold and italicize the middle of a word for emphasis, add three asterisks without spaces around the letters.
 
-<div class="table">
-    <table>
-      <thead>
-        <tr>
-          <th>Markdown</th>
-          <th>HTML</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>This text is ***really important***.</td>
-          <td>This text is &lt;strong&gt;&lt;em&gt;really important&lt;/em&gt;&lt;/strong&gt;.</td>
-        </tr>
-        <tr>
-          <td>This text is ___really important___.</td>
-          <td>This text is &lt;strong&gt;&lt;em&gt;really important&lt;/em&gt;&lt;/strong&gt;.</td>
-        </tr>
-        <tr>
-          <td>This text is __*really important*__.</td>
-          <td>This text is &lt;strong&gt;&lt;em&gt;really important&lt;/em&gt;&lt;/strong&gt;.</td>
-        </tr>
-        <tr>
-          <td>This text is **_really important_**.</td>
-          <td>This text is &lt;strong&gt;&lt;em&gt;really important&lt;/em&gt;&lt;/strong&gt;.</td>
-        </tr>
-        <tr>
-          <td>This is really***very***important text.</td>
-          <td>This is really&lt;strong&gt;&lt;em&gt;very&lt;/em&gt;&lt;/strong&gt;important text.</td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Markdown</th>
+      <th>HTML</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>This text is ***really important***.</td>
+      <td>This text is &lt;strong&gt;&lt;em&gt;really important&lt;/em&gt;&lt;/strong&gt;.</td>
+    </tr>
+    <tr>
+      <td>This text is ___really important___.</td>
+      <td>This text is &lt;strong&gt;&lt;em&gt;really important&lt;/em&gt;&lt;/strong&gt;.</td>
+    </tr>
+    <tr>
+      <td>This text is __*really important*__.</td>
+      <td>This text is &lt;strong&gt;&lt;em&gt;really important&lt;/em&gt;&lt;/strong&gt;.</td>
+    </tr>
+    <tr>
+      <td>This text is **_really important_**.</td>
+      <td>This text is &lt;strong&gt;&lt;em&gt;really important&lt;/em&gt;&lt;/strong&gt;.</td>
+    </tr>
+    <tr>
+      <td>This is really***very***important text.</td>
+      <td>This is really&lt;strong&gt;&lt;em&gt;very&lt;/em&gt;&lt;/strong&gt;important text.</td>
+    </tr>
+  </tbody>
+</table>
 
 ##### Bold and Italic Best Practices
 
 Markdown applications don't agree on how to handle underscores in the middle of a word. For compatibility, use asterisks to bold and italicize the middle of a word for emphasis.
 
-<div class="table">
-    <table>
-      <thead>
-        <tr>
-          <th><i class="fas fa-check"></i> Do this</th>
-          <th><i class="fas fa-times"></i> Don't do this</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-              This is really***very***important text.
-          </td>
-          <td>
-              This is really___very___important text.
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</div>
-
+<table>
+  <thead>
+    <tr>
+      <th><i class="fas fa-check"></i> Do this</th>
+      <th><i class="fas fa-times"></i> Don't do this</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+          This is really***very***important text.
+      </td>
+      <td>
+          This is really___very___important text.
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 #### Blockquotes
 
@@ -494,210 +468,203 @@ You can organize items into ordered and unordered lists.
 
 To create an ordered list, add line items with numbers followed by periods. The numbers don't have to be in numerical order, but the list should start with the number one.
 
-<div class="table">
-    <table>
-      <thead">
-        <tr>
-          <th>Markdown</th>
-          <th>HTML</th>
-        </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>
-            1. First item<br/>
-            2. Second item<br/>
-            3. Third item<br/>
-            4. Fourth item
-        </td>
-        <td>
-            &lt;ol&gt;<br>
-            &nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Third item&lt;/li&gt;<br/>
-            &nbsp;&nbsp;&lt;li&gt;Fourth item&lt;/li&gt;<br/>
-            &lt;/ol&gt;
-        </td>
-        </tr>
-        <tr>
-          <td>
-              1. First item<br/>
-              1. Second item<br/>
-              1. Third item<br/>
-              1. Fourth item
-          </td>
-          <td>
-              &lt;ol&gt;<br>
-              &nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Third item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&lt;li&gt;Fourth item&lt;/li&gt;<br/>
-              &lt;/ol&gt;
-          </td>
-        </tr>
-        <tr>
-          <td>
-              1. First item<br/>
-              8. Second item<br/>
-              3. Third item<br/>
-              5. Fourth item
-          </td>
-          <td>
-              &lt;ol&gt;<br>
-              &nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Third item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&lt;li&gt;Fourth item&lt;/li&gt;<br/>
-              &lt;/ol&gt;
-          </td>
-        </tr>
-        <tr>
-          <td>
-              1. First item<br/>
-              2. Second item<br/>
-              3. Third item<br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;1. Indented item<br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;2. Indented item<br/>
-              4. Fourth item
-          </td>
-          <td>
-              &lt;ol&gt;<br>
-              &nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&nbsp;&lt;li&gt;Third item<br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ol&gt;<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Indented item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Indented item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ol&gt;<br/>
-              &nbsp;&nbsp;&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&lt;li&gt;Fourth item&lt;/li&gt;<br/>
-              &lt;/ol&gt;
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+<table>
+  <thead">
+    <tr>
+      <th>Markdown</th>
+      <th>HTML</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+        1. First item<br/>
+        2. Second item<br/>
+        3. Third item<br/>
+        4. Fourth item
+    </td>
+    <td>
+        &lt;ol&gt;<br>
+        &nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Third item&lt;/li&gt;<br/>
+        &nbsp;&nbsp;&lt;li&gt;Fourth item&lt;/li&gt;<br/>
+        &lt;/ol&gt;
+    </td>
+    </tr>
+    <tr>
+      <td>
+          1. First item<br/>
+          1. Second item<br/>
+          1. Third item<br/>
+          1. Fourth item
+      </td>
+      <td>
+          &lt;ol&gt;<br>
+          &nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Third item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&lt;li&gt;Fourth item&lt;/li&gt;<br/>
+          &lt;/ol&gt;
+      </td>
+    </tr>
+    <tr>
+      <td>
+          1. First item<br/>
+          8. Second item<br/>
+          3. Third item<br/>
+          5. Fourth item
+      </td>
+      <td>
+          &lt;ol&gt;<br>
+          &nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Third item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&lt;li&gt;Fourth item&lt;/li&gt;<br/>
+          &lt;/ol&gt;
+      </td>
+    </tr>
+    <tr>
+      <td>
+          1. First item<br/>
+          2. Second item<br/>
+          3. Third item<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;1. Indented item<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;2. Indented item<br/>
+          4. Fourth item
+      </td>
+      <td>
+          &lt;ol&gt;<br>
+          &nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&lt;li&gt;Third item<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ol&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Indented item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Indented item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ol&gt;<br/>
+          &nbsp;&nbsp;&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&lt;li&gt;Fourth item&lt;/li&gt;<br/>
+          &lt;/ol&gt;
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 #### Ordered List Best Practices
 
 CommonMark and a few other lightweight markup languages let you use a parenthesis (`)`) as a delimiter (e.g., `1) First item`), but not all Markdown applications support this, so it isn’t a great option from a compatibility perspective. For compatibility, use periods only.
 
-<div class="table">
-    <table>
-      <thead">
-        <tr>
-          <th><i class="fas fa-check"></i> Do this</th>
-          <th><i class="fas fa-times"></i> Don't do this</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-              1. First item<br>
-              2. Second item
-          </td>
-          <td>
-              1) First item<br>
-              2) Second item
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+<table>
+  <thead">
+    <tr>
+      <th><i class="fas fa-check"></i> Do this</th>
+      <th><i class="fas fa-times"></i> Don't do this</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+          1. First item<br>
+          2. Second item
+      </td>
+      <td>
+          1) First item<br>
+          2) Second item
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ##### Unordered Lists
 
 To create an unordered list, add dashes (`-`), asterisks (`*`), or plus signs (`+`) in front of line items. Indent one or more items to create a nested list.
 
-<div class="table">
-    <table>
-      <thead>
-        <tr>
-          <th>Markdown</th>
-          <th>HTML</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-              - First item<br/>
-              - Second item<br/>
-              - Third item<br/>
-              - Fourth item
-          </td>
-          <td>
-              &lt;ul&gt;<br>
-              &nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&lt;li&gt;Third item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&lt;li&gt;Fourth item&lt;/li&gt;<br/>
-              &lt;/ul&gt;
-          </td>
-        </tr>
-        <tr>
-          <td>
-              * First item<br/>
-              * Second item<br>
-              * Third item<br/>
-              * Fourth item
-          </td>
-          <td>
-              &lt;ul&gt;<br>
-              &nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&lt;li&gt;Third item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&lt;li&gt;Fourth item&lt;/li&gt;<br/>
-              &lt;/ul&gt;
-          </td>
-        </tr>
-        <tr>
-          <td>
-              + First item<br/>
-              + Second item<br/>
-              + Third item<br/>
-              + Fourth item
-          </td>
-          <td>
-              &lt;ul&gt;<br>
-              &nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&lt;li&gt;Third item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&lt;li&gt;Fourth item&lt;/li&gt;<br/>
-              &lt;/ul&gt;
-          </td>
-        </tr>
-        <tr>
-          <td>
-              - First item<br/>
-              - Second item<br/>
-              - Third item<br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;- Indented item<br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;- Indented item<br/>
-              - Fourth item
-          </td>
-          <td>
-              &lt;ol&gt;<br>
-              &nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&nbsp;&lt;li&gt;Third item<br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ol&gt;<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Indented item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Indented item&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ol&gt;<br/>
-              &nbsp;&nbsp;&lt;/li&gt;<br/>
-              &nbsp;&nbsp;&lt;li&gt;Fourth item&lt;/li&gt;<br/>
-              &lt;/ol&gt;
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Markdown</th>
+      <th>HTML</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+          - First item<br/>
+          - Second item<br/>
+          - Third item<br/>
+          - Fourth item
+      </td>
+      <td>
+          &lt;ul&gt;<br>
+          &nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&lt;li&gt;Third item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&lt;li&gt;Fourth item&lt;/li&gt;<br/>
+          &lt;/ul&gt;
+      </td>
+    </tr>
+    <tr>
+      <td>
+          * First item<br/>
+          * Second item<br>
+          * Third item<br/>
+          * Fourth item
+      </td>
+      <td>
+          &lt;ul&gt;<br>
+          &nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&lt;li&gt;Third item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&lt;li&gt;Fourth item&lt;/li&gt;<br/>
+          &lt;/ul&gt;
+      </td>
+    </tr>
+    <tr>
+      <td>
+          + First item<br/>
+          + Second item<br/>
+          + Third item<br/>
+          + Fourth item
+      </td>
+      <td>
+          &lt;ul&gt;<br>
+          &nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&lt;li&gt;Third item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&lt;li&gt;Fourth item&lt;/li&gt;<br/>
+          &lt;/ul&gt;
+      </td>
+    </tr>
+    <tr>
+      <td>
+          - First item<br/>
+          - Second item<br/>
+          - Third item<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;- Indented item<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;- Indented item<br/>
+          - Fourth item
+      </td>
+      <td>
+          &lt;ol&gt;<br>
+          &nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&lt;li&gt;Third item<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ol&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Indented item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Indented item&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ol&gt;<br/>
+          &nbsp;&nbsp;&lt;/li&gt;<br/>
+          &nbsp;&nbsp;&lt;li&gt;Fourth item&lt;/li&gt;<br/>
+          &lt;/ol&gt;
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ##### Unordered List Best Practices
 
 Markdown applications don’t agree on how to handle different delimiters in the same list. For compatibility, don't mix and match delimiters in the same list — pick one and stick with it.
 
-<div class="table">
 <table>
   <thead>
     <tr>
@@ -722,7 +689,6 @@ Markdown applications don’t agree on how to handle different delimiters in the
     </tr>
   </tbody>
 </table>
-</div>
 
 ##### Adding Elements in Lists
 
@@ -813,28 +779,25 @@ You can nest an unordered list in an ordered list, or vice versa.
 
 To denote a word or phrase as code, enclose it in backticks (&#96;).
 
-<div class="table">
-    <table>
-      <thead>
-        <tr>
-          <th>Markdown</th>
-          <th>HTML</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>At the command prompt, type `nano`.</td>
-          <td>At the command prompt, type &lt;code&gt;nano&lt;/code&gt;. </td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Markdown</th>
+      <th>HTML</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>At the command prompt, type `nano`.</td>
+      <td>At the command prompt, type &lt;code&gt;nano&lt;/code&gt;. </td>
+    </tr>
+  </tbody>
+</table>
 
 #### Horizontal Rules
 
 If the word or phrase you want to denote as code includes one or more backticks, you can escape it by enclosing the word or phrase in double backticks (&#96;).
 
-<div class="table">
 <table>
   <thead>
     <tr>
@@ -849,7 +812,6 @@ If the word or phrase you want to denote as code includes one or more backticks,
     </tr>
   </tbody>
 </table>
-</div>
 
 <i class="fas fa-info-circle"></i> <strong>Note:</strong> To create code blocks without indenting lines, use <a href="/extended-syntax/#fenced-code-blocks">fenced code blocks</a>.
 
@@ -870,7 +832,6 @@ _________________
 
 For compatibility, put blank lines before and after horizontal rules.
 
-<div class="table">
 <table>
   <thead>
     <tr>
@@ -893,7 +854,6 @@ For compatibility, put blank lines before and after horizontal rules.
     </tr>
   </tbody>
 </table>
-</div>
 
 #### Links
 
@@ -1018,26 +978,24 @@ and the HTML for the link would be:
 
 Markdown applications don't agree on how to handle spaces in the middle of a URL. For compatibility, try to URL encode any spaces with `%20`.
 
-<div class="table">
-    <table>
-      <thead>
-        <tr>
-            <th><i class="fas fa-check"></i> Do this</th>
-            <th><i class="fas fa-times"></i> Don't do this</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            [link](https://www.example.com/my%20great%20page)
-          </td>
-          <td>
-            [link](https://www.example.com/my great page)
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+<table>
+  <thead>
+    <tr>
+        <th><i class="fas fa-check"></i> Do this</th>
+        <th><i class="fas fa-times"></i> Don't do this</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        [link](https://www.example.com/my%20great%20page)
+      </td>
+      <td>
+        [link](https://www.example.com/my great page)
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 #### Images
 
@@ -1081,70 +1039,68 @@ The rendered output looks like this:
 
 You can use a backslash to escape the following characters.
 
-<div class="table">
-    <table>
-      <thead>
-        <tr>
-          <th>Character</th>
-          <th>Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>\</td>
-          <td>backslash</td>
-        </tr>
-        <tr>
-          <td>&#96;</td>
-          <td>backtick (see also <a href="#escaping-backticks">escaping backticks in code</a>)</td>
-        </tr>
-        <tr>
-          <td>&#42;</td>
-          <td>asterisk</td>
-        </tr>
-        <tr>
-          <td>&#95;</td>
-          <td>underscore</td>
-        </tr>
-        <tr>
-          <td>{ }</td>
-          <td>curly braces</td>
-        </tr>
-        <tr>
-          <td>[ ]</td>
-          <td>brackets</td>
-        </tr>
-        <tr>
-          <td>( )</td>
-          <td>parentheses</td>
-        </tr>
-        <tr>
-          <td>#</td>
-          <td>pound sign</td>
-        </tr>
-        <tr>
-          <td>+</td>
-          <td>plus sign</td>
-        </tr>
-        <tr>
-          <td>-</td>
-          <td>minus sign (hyphen)</td>
-        </tr>
-        <tr>
-          <td>.</td>
-          <td>dot</td>
-        </tr>
-        <tr>
-          <td>!</td>
-          <td>exclamation mark</td>
-        </tr>
-        <tr>
-          <td>|</td>
-          <td>pipe (see also <a href="/extended-syntax/#escaping-pipe-characters-in-tables">escaping pipe in tables</a>)</td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Character</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\</td>
+      <td>backslash</td>
+    </tr>
+    <tr>
+      <td>&#96;</td>
+      <td>backtick (see also <a href="#escaping-backticks">escaping backticks in code</a>)</td>
+    </tr>
+    <tr>
+      <td>&#42;</td>
+      <td>asterisk</td>
+    </tr>
+    <tr>
+      <td>&#95;</td>
+      <td>underscore</td>
+    </tr>
+    <tr>
+      <td>{ }</td>
+      <td>curly braces</td>
+    </tr>
+    <tr>
+      <td>[ ]</td>
+      <td>brackets</td>
+    </tr>
+    <tr>
+      <td>( )</td>
+      <td>parentheses</td>
+    </tr>
+    <tr>
+      <td>#</td>
+      <td>pound sign</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>plus sign</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>minus sign (hyphen)</td>
+    </tr>
+    <tr>
+      <td>.</td>
+      <td>dot</td>
+    </tr>
+    <tr>
+      <td>!</td>
+      <td>exclamation mark</td>
+    </tr>
+    <tr>
+      <td>|</td>
+      <td>pipe (see also <a href="/extended-syntax/#escaping-pipe-characters-in-tables">escaping pipe in tables</a>)</td>
+    </tr>
+  </tbody>
+</table>
 
 #### HTML
 
@@ -1172,26 +1128,24 @@ For example, `<p>italic and **bold**</p>` won't work.
 
 ### <a name="methods"></a> Methods
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><a href="#methods-parse">parse()</a></td>
-                <td>Takes a MARKDOWN encoded string and converts it into a HTML.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-getCacheID">getCacheID()</a></td>
-                <td>Get Cache ID for MARKDOWN.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#methods-parse">parse()</a></td>
+            <td>Takes a MARKDOWN encoded string and converts it into a HTML.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-getCacheID">getCacheID()</a></td>
+            <td>Get Cache ID for MARKDOWN.</td>
+        </tr>
+    </tbody>
+</table>
 
 ### Methods Details
 

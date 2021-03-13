@@ -1,7 +1,7 @@
 ---
 title: Plugins
 description: Plugins are the foundation for adding new features to the Flextype by extending it. Each Flextype plugin is an additional piece of software that can be easily installed to extend the functionality of Flextype core.
-template: docs 
+template: docs
 breadcrumbs:
   -
     title: "Core Concepts"
@@ -110,76 +110,74 @@ Event Hooks are a way for one piece of code to interact/modify another piece of 
 
 #### Available core event hooks
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>onPluginsInitialized</td>
-                <td>Fires when all enabled plugins initialized.</td>
-            </tr>
-            <tr>
-                <td>onEntryAfterInitialized</td>
-                <td>
-                    Fires when current entry requested by fetchSingle() method has been loaded into the entry object.
-                </td>
-            </tr>
-            <tr>
-                <td>onEntryAfterCacheInitialized</td>
-                <td>
-                    Fires when current entry requested by fetchSingle() method has been loaded from cache into the entry object.
-                </td>
-            </tr>
-            <tr>
-                <td>onEntriesAfterInitialized</td>
-                <td>
-                    Fires when current entries collection requested by fetchCollection() method has been loaded into the entries object.
-                </td>
-            </tr>
-            <tr>
-                <td>onEntryCreate</td>
-                <td>
-                    Fires on new entry create.
-                </td>
-            </tr>
-            <tr>
-                <td>onEntryUpdate</td>
-                <td>
-                    Fires on entry update.
-                </td>
-            </tr>
-            <tr>
-                <td>onEntryMove</td>
-                <td>
-                    Fires on entry move.
-                </td>
-            </tr>
-            <tr>
-                <td>onEntryCopy</td>
-                <td>
-                    Fires on entry copy.
-                </td>
-            </tr>
-            <tr>
-                <td>onEntryHas</td>
-                <td>
-                    Fires on entry has.
-                </td>
-            </tr>
-            <tr>
-                <td>onEntryDelete</td>
-                <td>
-                    Fires on entry delete.
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>onPluginsInitialized</td>
+            <td>Fires when all enabled plugins initialized.</td>
+        </tr>
+        <tr>
+            <td>onEntryAfterInitialized</td>
+            <td>
+                Fires when current entry requested by fetchSingle() method has been loaded into the entry object.
+            </td>
+        </tr>
+        <tr>
+            <td>onEntryAfterCacheInitialized</td>
+            <td>
+                Fires when current entry requested by fetchSingle() method has been loaded from cache into the entry object.
+            </td>
+        </tr>
+        <tr>
+            <td>onEntriesAfterInitialized</td>
+            <td>
+                Fires when current entries collection requested by fetchCollection() method has been loaded into the entries object.
+            </td>
+        </tr>
+        <tr>
+            <td>onEntryCreate</td>
+            <td>
+                Fires on new entry create.
+            </td>
+        </tr>
+        <tr>
+            <td>onEntryUpdate</td>
+            <td>
+                Fires on entry update.
+            </td>
+        </tr>
+        <tr>
+            <td>onEntryMove</td>
+            <td>
+                Fires on entry move.
+            </td>
+        </tr>
+        <tr>
+            <td>onEntryCopy</td>
+            <td>
+                Fires on entry copy.
+            </td>
+        </tr>
+        <tr>
+            <td>onEntryHas</td>
+            <td>
+                Fires on entry has.
+            </td>
+        </tr>
+        <tr>
+            <td>onEntryDelete</td>
+            <td>
+                Fires on entry delete.
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 #### Using events hooks
 

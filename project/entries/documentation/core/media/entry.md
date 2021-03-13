@@ -1,6 +1,6 @@
 ---
 title: Media
-template: docs 
+template: docs
 breadcrumbs:
   -
     title: "Core Concepts"
@@ -79,46 +79,45 @@ on_this_page:
 
 #### Media Files <a name="media-files"></a>
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Method</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><a href="#methods-files-upload">upload()</a></td>
-                <td>Upload media file.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-files-fetch">fetch()</a></td>
-                <td>Fetch file or files collection.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-files-move">move()</a></td>
-                <td>Move file.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-files-copy">copy()</a></td>
-                <td>Copy file.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-files-delete">delete()</a></td>
-                <td>Delete file.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-files-has">has()</a></td>
-                <td>Check whether a file exists.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-files-getFileLocation">getFileLocation()</a></td>
-                <td>Get file location.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#methods-files-upload">upload()</a></td>
+            <td>Upload media file.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-files-fetch">fetch()</a></td>
+            <td>Fetch file or files collection.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-files-move">move()</a></td>
+            <td>Move file.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-files-copy">copy()</a></td>
+            <td>Copy file.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-files-delete">delete()</a></td>
+            <td>Delete file.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-files-has">has()</a></td>
+            <td>Check whether a file exists.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-files-getFileLocation">getFileLocation()</a></td>
+            <td>Get file location.</td>
+        </tr>
+    </tbody>
+</table>
 
 ### Methods Details
 
@@ -345,34 +344,32 @@ flextype('media')
 
 #### <a name="files-meta-methods"></a> Media Files Meta
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Method</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><a href="#methods-files-meta-update">update()</a></td>
-                <td>Update file meta information.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-files-meta-add">add()</a></td>
-                <td>Add file meta information.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-files-meta-delete">delete()</a></td>
-                <td>Delete file meta information.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-files-meta-getFileMetaLocation">getFileMetaLocation()</a></td>
-                <td>Get file meta location.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#methods-files-meta-update">update()</a></td>
+            <td>Update file meta information.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-files-meta-add">add()</a></td>
+            <td>Add file meta information.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-files-meta-delete">delete()</a></td>
+            <td>Delete file meta information.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-files-meta-getFileMetaLocation">getFileMetaLocation()</a></td>
+            <td>Get file meta location.</td>
+        </tr>
+    </tbody>
+</table>
 
 ### Methods Details
 
@@ -435,38 +432,36 @@ flextype('media')
 
 #### <a name="folders-methods"></a> Media Folders
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Method</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><a href="#methods-folders-fetch">fetch()</a></td>
-                <td>Fetch folder or folders collection.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-folders-create">move()</a></td>
-                <td>Create folder.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-folders-move">move()</a></td>
-                <td>Move folder.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-folders-delete">delete()</a></td>
-                <td>Delete folder.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-folders-getDirLocation">getDirLocation()</a></td>
-                <td>Get folder location.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#methods-folders-fetch">fetch()</a></td>
+            <td>Fetch folder or folders collection.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-folders-create">move()</a></td>
+            <td>Create folder.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-folders-move">move()</a></td>
+            <td>Move folder.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-folders-delete">delete()</a></td>
+            <td>Delete folder.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-folders-getDirLocation">getDirLocation()</a></td>
+            <td>Get folder location.</td>
+        </tr>
+    </tbody>
+</table>
 
 ### Methods Details
 
@@ -553,22 +548,20 @@ flextype('media')
 
 #### <a name="folders-meta-methods"></a> Media Folders Meta
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Method</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><a href="#methods-folders-meta-getDirMetaLocation">getDirMetaLocation()</a></td>
-                <td>Get files directory meta location.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#methods-folders-meta-getDirMetaLocation">getDirMetaLocation()</a></td>
+            <td>Get files directory meta location.</td>
+        </tr>
+    </tbody>
+</table>
 
 ### Methods Details
 

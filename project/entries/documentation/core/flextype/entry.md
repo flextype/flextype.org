@@ -1,7 +1,7 @@
 ---
 title: Flextype
 description: Common part of Flextype is a Flextype Core Class that extends Slim Framework that we are using under the hood. Slim is amazing PHP micro framework that helps quickly write simple yet powerful web applications and APIs.
-template: docs 
+template: docs
 breadcrumbs:
   -
     title: "Core Concepts"
@@ -38,30 +38,29 @@ With help of Flextype Core Class we are able to access all features and develop 
 
 ### <a name="methods"></a> Methods
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Method</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><a href="#methods-getInstance">getInstance()</a></td>
-                <td>Get the available Flextype Application instance.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-getVersion">getVersion()</a></td>
-                <td>Get current Flextype version.</td>
-            </tr>
-            <tr>
-                <td><a href="#methods-container">container()</a></td>
-                <td>Get and Set Dependency Injection Container.</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#methods-getInstance">getInstance()</a></td>
+            <td>Get the available Flextype Application instance.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-getVersion">getVersion()</a></td>
+            <td>Get current Flextype version.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-container">container()</a></td>
+            <td>Get and Set Dependency Injection Container.</td>
+        </tr>
+    </tbody>
+</table>
 
 ### Methods Details
 
@@ -177,67 +176,65 @@ Check all available methods: [//slimframework.com/docs/v3/](//slimframework.com/
 
 List of available registered services in Flextype Dependency Injection Container.
 
-<div class="table">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Links</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>session</td>
-                <td><a href="https://github.com/atomastic/session">documentation</a></td>
-            </tr>
-            <tr>
-                <td>registry</td>
-                <td><a href="https://github.com/atomastic/registry">documentation</a></td>
-            </tr>
-            <tr>
-                <td>logger</td>
-                <td><a href="https://github.com/Seldaek/monolog">documentation</a></td>
-            </tr>
-            <tr>
-                <td>emitter</td>
-                <td><a href="https://event.thephpleague.com">documentation</a></td>
-            </tr>
-            <tr>
-                <td>slugify</td>
-                <td><a href="https://github.com/cocur/slugify">documentation</a></td>
-            </tr>
-            <tr>
-                <td>cache</td>
-                <td><a href="https://www.phpfastcache.com">documentation</a></td>
-            </tr>
-            <tr>
-                <td>parsers</td>
-                <td><a href="[url]/documentation/parsers">documentation</a></td>
-            </tr>
-            <tr>
-                <td>serializers</td>
-                <td><a href="[url]/documentation/serializers">documentation</a></td>
-            </tr>
-            <tr>
-                <td>images</td>
-                <td><a href="https://glide.thephpleague.com">documentation</a></td>
-            </tr>
-            <tr>
-                <td>entries</td>
-                <td><a href="[url]/documentation/core/entries">documentation</a></td>
-            </tr>
-            <tr>
-                <td>media</td>
-                <td><a href="[url]/documentation/core/media">documentation</a></td>
-            </tr>
-            <tr>
-                <td>plugins</td>
-                <td><a href="[url]/documentation/core/plugins">documentation</a></td>
-            </tr>
-            <tr>
-                <td>cors</td>
-                <td><a href="#">documentation</a></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Links</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>session</td>
+            <td><a href="https://github.com/atomastic/session">documentation</a></td>
+        </tr>
+        <tr>
+            <td>registry</td>
+            <td><a href="https://github.com/atomastic/registry">documentation</a></td>
+        </tr>
+        <tr>
+            <td>logger</td>
+            <td><a href="https://github.com/Seldaek/monolog">documentation</a></td>
+        </tr>
+        <tr>
+            <td>emitter</td>
+            <td><a href="https://event.thephpleague.com">documentation</a></td>
+        </tr>
+        <tr>
+            <td>slugify</td>
+            <td><a href="https://github.com/cocur/slugify">documentation</a></td>
+        </tr>
+        <tr>
+            <td>cache</td>
+            <td><a href="https://www.phpfastcache.com">documentation</a></td>
+        </tr>
+        <tr>
+            <td>parsers</td>
+            <td><a href="[url]/documentation/parsers">documentation</a></td>
+        </tr>
+        <tr>
+            <td>serializers</td>
+            <td><a href="[url]/documentation/serializers">documentation</a></td>
+        </tr>
+        <tr>
+            <td>images</td>
+            <td><a href="https://glide.thephpleague.com">documentation</a></td>
+        </tr>
+        <tr>
+            <td>entries</td>
+            <td><a href="[url]/documentation/core/entries">documentation</a></td>
+        </tr>
+        <tr>
+            <td>media</td>
+            <td><a href="[url]/documentation/core/media">documentation</a></td>
+        </tr>
+        <tr>
+            <td>plugins</td>
+            <td><a href="[url]/documentation/core/plugins">documentation</a></td>
+        </tr>
+        <tr>
+            <td>cors</td>
+            <td><a href="#">documentation</a></td>
+        </tr>
+    </tbody>
+</table>
