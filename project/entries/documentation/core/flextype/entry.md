@@ -12,13 +12,13 @@ on_this_page:
     link: "methods"
     level2:
       -
-        title: "getInstance()"
+        title: "getInstance"
         link: "methods-getInstance"
       -
-        title: "getVersion()"
+        title: "getVersion"
         link: "methods-getVersion"
       -
-        title: "container()"
+        title: "container"
         link: "methods-container"
   -
     title: "Services"
@@ -48,15 +48,15 @@ With help of Flextype Core Class we are able to access all features and develop 
     </thead>
     <tbody>
         <tr>
-            <td><a href="#methods-getInstance">getInstance()</a></td>
+            <td><a href="#methods-getInstance">getInstance</a></td>
             <td>Get the available Flextype Application instance.</td>
         </tr>
         <tr>
-            <td><a href="#methods-getVersion">getVersion()</a></td>
+            <td><a href="#methods-getVersion">getVersion</a></td>
             <td>Get current Flextype version.</td>
         </tr>
         <tr>
-            <td><a href="#methods-container">container()</a></td>
+            <td><a href="#methods-container">container</a></td>
             <td>Get and Set Dependency Injection Container.</td>
         </tr>
     </tbody>
@@ -64,7 +64,7 @@ With help of Flextype Core Class we are able to access all features and develop 
 
 ### Methods Details
 
-##### <a name="methods-getInstance"></a> `getInstance()`
+##### <a name="methods-getInstance"></a> `getInstance`
 
 Get the available Flextype Application instance.
 
@@ -83,7 +83,7 @@ public static function getInstance($container = []): Flextype
 $instance = Flextype::getInstance();
 ```
 
-##### <a name="methods-getVersion"></a> `getVersion()`
+##### <a name="methods-getVersion"></a> `getVersion`
 
 Get current Flextype version.
 
@@ -100,7 +100,7 @@ public function getVersion(): string
 $version = Flextype::getInstance()->getVersion();
 ```
 
-##### <a name="methods-container"></a> `container()`
+##### <a name="methods-container"></a> `container`
 
 Get and Set Dependency Injection Container.
 
@@ -128,7 +128,7 @@ Flextype::getInstance()->container()['name'] = function () {
 $entries = Flextype::getInstance()->container('entries');
 ```
 
-We recommend to use our `flextype()` helper function to access all Flexype Application methods, set and get containers.
+We recommend to use our `flextype` helper function to access all Flexype Application methods, set and get containers.
 
 **Examples**
 
@@ -154,7 +154,7 @@ $entries = flextype()->container('entries');
 $entries = flextype('entries');
 ```
 
-With `flextype()` helper function you can access Flexype Application and all available Slim Framework methods.
+With `flextype` helper function you can access Flexype Application and all available Slim Framework methods.
 
 **Examples**
 
@@ -170,7 +170,7 @@ flextype()
   ->setName('service.form.index');
 ```
 
-Check all available methods: [//slimframework.com/docs/v3/](//slimframework.com/docs/v3/)
+Check all available methods: [slimframework.com/docs/v3/](//slimframework.com/docs/v3/)
 
 ### Services <a name="services"></a>
 
