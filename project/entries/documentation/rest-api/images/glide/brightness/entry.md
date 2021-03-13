@@ -1,6 +1,6 @@
 ---
 title: Brightness
-template: docs 
+template: docs
 breadcrumbs:
   1:
     title: "Rest API"
@@ -28,11 +28,11 @@ GET YOUR_APP_URL/api/images/entries/image.jpg?bri=50&token=YOUR_IMAGES_TOKEN
 <div class="file-header">Request</div>
 
 ```http
-GET [url]/documentation/api/images/entries/image.jpg?bri=-50&token=4864fb8e1ebe080e6e4ad5c4363083a6
-GET [url]/documentation/api/images/entries/image.jpg?bri=50&token=4864fb8e1ebe080e6e4ad5c4363083a6
+GET [url]/api/images/entries/image.jpg?bri=-50&token=3b29b31ae05c89c2009f6e3f96e3d703
+GET [url]/api/images/entries/image.jpg?bri=50&token=3b29b31ae05c89c2009f6e3f96e3d703
 ```
 
 ##### Result
 
-<img width="200" class="inline" src="[url]/documentation/api/images/entries/image.jpg?bri=-50&token=4864fb8e1ebe080e6e4ad5c4363083a6">
-<img width="200" class="inline" src="[url]/documentation/api/images/entries/image.jpg?bri=50&token=4864fb8e1ebe080e6e4ad5c4363083a6">
+<img width="200" class="inline" src="[url]/api/images/entries/image.jpg?bri=-50&token=3b29b31ae05c89c2009f6e3f96e3d703">
+<img width="200" class="inline" src="[url]/api/images/entries/image.jpg?bri=50&token=3b29b31ae05c89c2009f6e3f96e3d703">

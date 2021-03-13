@@ -1,6 +1,6 @@
 ---
 title: Pixelate
-template: docs 
+template: docs
 breadcrumbs:
   1:
     title: "Rest API"

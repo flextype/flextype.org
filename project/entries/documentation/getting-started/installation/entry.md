@@ -32,11 +32,11 @@ This package contains example of content, fieldsets, plugins, default theme and 
     </li>
     <li>
         Visit your new Flextype site in your browser at <code>yourdomain.com</code>
-        <img class="inline" src="[url]/documentation/api/images/entries/getting-started/installation/flextype-cms-homepage.png?w=648&dpr=2&q=70&token=4864fb8e1ebe080e6e4ad5c4363083a6">
+        <img class="inline" src="[url]/api/images/entries/getting-started/installation/flextype-cms-homepage.png?w=648&dpr=2&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
     </li>
     <li>
         Visit the Flextype Admin Panel at <code>yourdomain.com/admin</code> and create admin account.
-        <img class="inline" src="[url]/documentation/api/images/entries/getting-started/installation/flextype-cms-registration.png?w=648&dpr=2&q=70&token=4864fb8e1ebe080e6e4ad5c4363083a6">
+        <img class="inline" src="[url]/api/images/entries/getting-started/installation/flextype-cms-registration.png?w=648&dpr=2&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
     </li>
 </ol>
 

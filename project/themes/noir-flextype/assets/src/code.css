@@ -45,7 +45,8 @@ code {
     margin-bottom: 40px;
 }
 
-.file-list i {
+.file-list svg {
+    display: inline-flex;
     margin-right: 5px;
 }
 
@@ -80,7 +81,8 @@ code {
     box-shadow: 3px 3px 0 #090e24;
 }
 
-.file-header > i {
+.file-header svg {
+    display: inline-flex;
     margin-right: 5px;
 }
 
