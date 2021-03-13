@@ -64,31 +64,31 @@ on_this_page:
     link: "methods"
     level2:
       -
-        title: "fetch()"
+        title: "fetch"
         link: "methods-fetch"
       -
-        title: "create()"
+        title: "create"
         link: "methods-create"
       -
-        title: "update()"
+        title: "update"
         link: "methods-update"
       -
-        title: "move()"
+        title: "move"
         link: "methods-move"
       -
-        title: "copy()"
+        title: "copy"
         link: "methods-copy"
       -
-        title: "delete()"
+        title: "delete"
         link: "methods-delete"
       -
-        title: "has()"
+        title: "has"
         link: "methods-has"
       -
-        title: "getFileLocation()"
+        title: "getFileLocation"
         link: "methods-getFileLocation"
       -
-        title: "getDirectoryLocation()"
+        title: "getDirectoryLocation"
         link: "methods-getDirectoryLocation"
   -
     title: Extending
@@ -99,7 +99,7 @@ Entries are the fundamental building-blocks of your project. We are using jekyll
 
 Here is a simple entry example:
 
-<div class="file-header"><i class="far fa-file-alt"></i> project/entries/movies/sg-1/season-5/episode-21/entry.md</div>
+<div class="file-header">[icon name="file-text" set="bootstrap"] project/entries/movies/sg-1/season-5/episode-21/entry.md</div>
 
     ---
     title: Meridian
@@ -585,38 +585,38 @@ Get variable `author.twitter` with [TWIG Plugin](https://github.com/flextype-plu
     </thead>
     <tbody>
         <tr>
-            <td><a href="#methods-fetch">fetch()</a></td>
+            <td><a href="#methods-fetch">fetch</a></td>
             <td>Fetch entry or entries collection.</td>
         </tr>
         <tr>
-            <td><a href="#methods-create">create()</a></td>
+            <td><a href="#methods-create">create</a></td>
             <td>Create entry</td>
         </tr>
         <tr>
-            <td><a href="#methods-update">update()</a></td>
+            <td><a href="#methods-update">update</a></td>
             <td>Update entry</td>
         </tr>
         <tr>
-            <td><a href="#methods-move">move()</a></td>
+            <td><a href="#methods-move">move</a></td>
             <td>Move entry</td>
         <tr>
-            <td><a href="#methods-copy">copy()</a></td>
+            <td><a href="#methods-copy">copy</a></td>
             <td>Copy entry</td>
         </tr>
         <tr>
-            <td><a href="#methods-delete">delete()</a></td>
+            <td><a href="#methods-delete">delete</a></td>
             <td>Delete entry</td>
         </tr>
         <tr>
-            <td><a href="#methods-has">has()</a></td>
+            <td><a href="#methods-has">has</a></td>
             <td>Check whether entry exists</td>
         </tr>
         <tr>
-            <td><a href="#methods-getFileLocation">getFileLocation()</a></td>
+            <td><a href="#methods-getFileLocation">getFileLocation</a></td>
             <td>Get entry file location</td>
         </tr>
         <tr>
-            <td><a href="#methods-getDirectoryLocation">getDirectoryLocation()</a></td>
+            <td><a href="#methods-getDirectoryLocation">getDirectoryLocation</a></td>
             <td>Get entry directory location</td>
         </tr>
     </tbody>
@@ -624,7 +624,7 @@ Get variable `author.twitter` with [TWIG Plugin](https://github.com/flextype-plu
 
 ### Methods Details
 
-##### <a name="methods-fetch"></a> `fetch()`
+##### <a name="methods-fetch"></a> `fetch`
 
 Fetch entry or entries collection.
 
@@ -658,7 +658,7 @@ Fetch singe entry in `movies/sg-1/season-5/episode-21` and send `$options`.
 $data = flextype('entries')->fetch('movies/sg-1/season-5', $options);
 ```
 
-`$options` is an array of valid values for [filter()](https://github.com/flextype/flextype/blob/dev/src/flextype/Support/Helpers/FilterHelper.php) helper.
+`$options` is an array of valid values for <code>[filter](https://github.com/flextype/flextype/blob/dev/src/flextype/Support/Helpers/FilterHelper.php)</code> helper.
 
 ```php
 $options = [
@@ -721,7 +721,7 @@ Fetch collections of entries in `movies/sg-1` and send `$options`.
 $data = flextype('entries')->fetch('movies/sg-1/season-5', $options);
 ```
 
-`$options` is an array of valid values for [find()](https://github.com/flextype/flextype/blob/dev/src/flextype/Support/Helpers/FindHelper.php) and [filter()](https://github.com/flextype/flextype/blob/dev/src/flextype/Support/Helpers/FilterHelper.php) helpers.
+`$options` is an array of valid values for <code>[find](https://github.com/flextype/flextype/blob/dev/src/flextype/Support/Helpers/FindHelper.php)</code> and <code>[filter](https://github.com/flextype/flextype/blob/dev/src/flextype/Support/Helpers/FilterHelper.php)</code> helpers.
 
 ```php
 $options = [
@@ -813,7 +813,7 @@ $options = [
 ];
 ```
 
-##### <a name="methods-create"></a> `create()`
+##### <a name="methods-create"></a> `create`
 
 Create entry.
 
@@ -849,7 +849,7 @@ $data = [
 flextype('entries')->create('movies/sg-1/season-5/episode-22', $data);
 ```
 
-##### <a name="methods-update"></a> `update()`
+##### <a name="methods-update"></a> `update`
 
 Update entry.
 
@@ -878,7 +878,7 @@ $data = ['soundtracks' => 'Joel Goldsmith'];
 flextype('entries')->update('movies/sg-1/season-5/episode-22', $data);
 ```
 
-##### <a name="methods-move"></a> `move()`
+##### <a name="methods-move"></a> `move`
 
 Move entry.
 
@@ -905,7 +905,7 @@ flextype('entries')->move('movies/sg-1/season-5/episode-22',
                           'movies/sg-1/season-5/episode-23');
 ```
 
-##### <a name="methods-copy"></a> `copy()`
+##### <a name="methods-copy"></a> `copy`
 
 Copy entry.
 
@@ -932,7 +932,7 @@ flextype('entries')->rename('movies/sg-1/season-5/episode-23',
                                        'movies/sg-1/season-5/episode-22');
 ```
 
-##### <a name="methods-delete"></a> `delete()`
+##### <a name="methods-delete"></a> `delete`
 
 Delete entry.
 
@@ -957,7 +957,7 @@ Delete entry `episode-23` in `movies/sg-1/season-5`
 flextype('entries')->delete('movies/sg-1/season-5/episode-23');
 ```
 
-##### <a name="methods-has"></a> `has()`
+##### <a name="methods-has"></a> `has`
 
 Check whether entry exists.
 
@@ -984,7 +984,7 @@ if (flextype('entries')->has('movies/sg-1/season-5/episode-23')) {
 }
 ```
 
-##### <a name="methods-getFileLocation"></a> `getFileLocation()`
+##### <a name="methods-getFileLocation"></a> `getFileLocation`
 
 Get entry file location
 
@@ -1010,7 +1010,7 @@ Check whether entry `episode-23` exists in `movies/sg-1/season-5`
 $data = flextype('entries')->getFileLocation('movies/sg-1/season-5/episode-23');
 ```
 
-##### <a name="methods-getDirectoryLocation"></a> `getDirectoryLocation()`
+##### <a name="methods-getDirectoryLocation"></a> `getDirectoryLocation`
 
 Get entry directory location
 
