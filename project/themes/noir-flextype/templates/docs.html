@@ -1,0 +1,122 @@
+{% extends "themes/" ~ flextype.registry.get('plugins.site.settings.theme') ~ "/templates/partials/base.html" %}
+
+{% block content %}
+{% set txt = flextype.entries.fetch('/docs') %}
+<div class="container mx-auto bg-white text-black pb-24">
+
+    <div class="uppercase text-center pt-24 pb-24 m-0">
+        <div>
+            <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/downloads/extend/{{ name }}">{{ entry.title }}</a></h1>
+        </div>
+        {% if entry.breadcrumbs %}
+        <div class="opacity-50">
+            <a class="no-underline" href="{{ url() }}/documentation">Documentation</a> <span>/</span>
+            {% for item in entry.breadcrumbs %}
+                <a class="no-underline" href="{{ item.link|shortcode }}">{{ item.title }}</a> {% if loop.last == false %}<span>/</span>{% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="flex flex-col-reverse lg:flex-row relative">
+        <div class="w-full lg:w-3/12">
+            <h4>Getting Started</h4>
+            <ul class="m-0 p-0 list-none">
+                <li class="{% if entry.id == locale %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/what-is-flextype" class="no-underline">What is Flextype?</a>
+                </li>
+                <li class="{% if entry.id == "/getting-started/requirements" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/getting-started/requirements" class="no-underline">Requirements</a>
+                </li>
+                <li class="{% if entry.id == "/getting-started/installation" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/getting-started/installation" class="no-underline">Installation</a>
+                </li>
+                <li class="{% if entry.id == "/getting-started/configuration" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/getting-started/configuration" class="no-underline">Configuration</a>
+                </li>
+                <li class="{% if entry.id == "/getting-started/folder-structure" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/getting-started/folder-structure" class="no-underline">Folder Structure</a>
+                </li>
+                <li class="{% if entry.id == "/getting-started/coc" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/getting-started/coc" class="no-underline">Code of Conduct</a>
+                </li>
+                <li class="{% if entry.id == "/getting-started/getting-help" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/getting-started/getting-help" class="no-underline">Getting Help</a>
+                </li>
+                <li class="{% if entry.id == "/getting-started/license" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/getting-started/license" class="no-underline">License</a>
+                </li>
+            </ul>
+            <h4 class="pt-8">Core Concepts</h4>
+            <ul class="m-0 p-0 list-none">
+                <li class="{% if entry.id == "/core/flextype" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/core/flextype" class="no-underline">Flextype</a>
+                </li>
+                <li class="{% if entry.id == "/core/entries" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/core/entries" class="no-underline">Entries</a>
+                </li>
+                <li class="{% if entry.id == "/core/plugins" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/core/plugins" class="no-underline">Plugins</a>
+                </li>
+                <li class="{% if entry.id == "/core/parsers" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/core/parsers" class="no-underline">Parsers</a>
+                </li>
+                <li class="{% if entry.id == "/core/serializers" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/core/serializers" class="no-underline">Serializers</a>
+                </li>
+                <li class="{% if entry.id == "/core/registry" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/core/registry" class="no-underline">Registry</a>
+                </li>
+                <li class="{% if entry.id == "/core/media" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/core/media" class="no-underline">Media</a>
+                </li>
+            </ul>
+            <h4 class="pt-8">Rest API</h4>
+            <ul class="m-0 p-0 list-none">
+                <li class="{% if entry.id == "/rest-api/introduction" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/rest-api/introduction" class="no-underline">Introduction</a>
+                </li>
+                <li class="{% if entry.id == "/rest-api/entries" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/rest-api/entries" class="no-underline">Entries</a>
+                </li>
+                <li class="{% if entry.id == "/rest-api/registry" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/rest-api/registry" class="no-underline">Registry</a>
+                </li>
+                <li class="{% if entry.id == "/rest-api/media" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/rest-api/media" class="no-underline">Media</a>
+                </li>
+                <li class="{% if entry.id == "/rest-api/images" %}active{% endif %}">
+                    <a href="{{ url() }}/documentation/rest-api/images" class="no-underline">Images</a>
+                </li>
+            </ul>
+        </div>
+        <div class="{% if entry.on_this_page %}w-full lg:w-9/12{% else %}w-full{% endif %}">
+            {{ entry.content|shortcode|markdown|raw }}
+        </div>
+        {% if entry.on_this_page %}
+        <div class="w-full lg:w-3/12 block relative">
+            <div class="lg:sticky lg:top-0 lg:overflow-y-auto lg:max-h-screen">
+                <div class="p-0 mb-10 lg:mb-0 lg:pl-10">
+                    <h4 class="m-0 p-0 pb-1">On This Page</h4>
+                    <ul class="list-none m-0 p-0">
+                        {% for item in entry.on_this_page %}
+                            <li class="mb-1">
+                                <a class="text-decoration-none text-sm" href="#{{ item.link }}">{{ item.title }}</a>
+                                {% if item.level2 %}
+                                <ul class="list-none m-0 ml-3 p-0">
+                                    {% for item in item.level2 %}
+                                    <li class="mb-1">
+                                        &#8227; <a class="text-decoration-none text-sm" href="#{{ item.link }}">{{ item.title }}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

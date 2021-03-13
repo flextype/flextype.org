@@ -7,14 +7,14 @@
 <div class="container mx-auto bg-white text-black pb-24">
     <div class="uppercase text-center pt-24 pb-24 m-0">
         <div>
-            <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/themes/{{ name }}">{{ entry.title }}</a></h1>
+            <h1 class="text-3xl lg:text-6xl mb-0"><a class="no-underline" href="{{ url() }}/downloads/extend/themes/{{ name }}">{{ entry.title }}</a></h1>
         </div>
         <div>
-            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads">DOWNLOADS</a></span>
+            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/downloads">DOWNLOADS</a></span>
             <span class="opacity-50">/</span>
-            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend">EXTEND</a></span>
+            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/downloads/extend">EXTEND</a></span>
             <span class="opacity-50">/</span>
-            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/themes">THEMES</a></span>
+            <span class="opacity-50"><a class="no-underline" href="{{ url() }}/downloads/extend/themes">THEMES</a></span>
         </div>
     </div>
     <div>
@@ -57,7 +57,7 @@
                         <div class="w-full">
                             <p class="m-0 opacity-50">Dependencies</p>
                             {% for key, val in theme.dependencies %}
-                                <a href="{{ url() }}/{{ locale }}/downloads/extend/themes/{{ key }}">{{ key }}</a>: {{ val }}<br>
+                                <a href="{{ url() }}/downloads/extend/themes/{{ key }}">{{ key }}</a>: {{ val }}<br>
                             {% endfor %}
                             <p></p>
                         </div>
@@ -77,7 +77,7 @@
                             <p>
                                 {% set categories = entry.category|replace({' ': ''}) %}
                                 {% for category in categories|split(',') %}
-                                    <a class="no-underline" href="{{ url() }}/{{ locale }}/downloads/extend/themes?category={{ category|trim }}">{{ category|trim }}</a>{% if not loop.last %}, {% endif %}
+                                    <a class="no-underline" href="{{ url() }}/downloads/extend/themes?category={{ category|trim }}">{{ category|trim }}</a>{% if not loop.last %}, {% endif %}
                                 {% endfor %}
                             </p>
                         </div>
@@ -95,7 +95,7 @@
         <div class="p-2 text-black mb-6">
             <h4>Other themes by {{ theme.author.name }}</h4>
             {% if entry.author.email is not empty %}
-                {% set related_themes = flextype.entries.fetch(locale ~ '/downloads/extend/themes', {'collection': true})
+                {% set related_themes = flextype.entries.fetch('/downloads/extend/themes', {'collection': true})
                                                .where('author.email', 'eq', entry.author.email)
                                                .where('visibility', 'nin', ['draft', 'hidden'])
                                                .random(6) %}
@@ -127,7 +127,7 @@
         <hr class="mb-6 border-b border-black">
 
         <div class="p-2">
-            <a href="{{ url() }}/{{ locale }}/downloads/extend/themes">More themes</a>
+            <a href="{{ url() }}/downloads/extend/themes">More themes</a>
         </div>
     </div>
 </div>

@@ -9,7 +9,7 @@
     {% if flextype.cache.has(blogCacheID) %}
         {% set blog = flextype.cache.get(blogCacheID) %}
     {% else %}
-        {% set blog = flextype.entries.fetch(locale ~ '/blog', {'collection': true}).exceptFromCollection(['content']) %}
+        {% set blog = flextype.entries.fetch('/blog', {'collection': true}).exceptFromCollection(['content']) %}
         {% do flextype.cache.set(blogCacheID, blog) %}
     {% endif %}
 
@@ -111,18 +111,18 @@
                         <h4 class="text-center mb-2 pb-3 border-b border-black uppercase font-semibold">{{ entry.txt_tags }}</h4>
                         <div class="mr-12 mt-5">
                             {% for tag in tags_cloud|reduce((unique, item) => item in unique ? unique : unique|merge([item]), [])  %}
-                                <a class="no-underline px-1 mb-2 flex items-center" href="{{ url() }}/{{ locale }}/blog?tag={{ tag|trim }}"><span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('hashtag', 'fontawesome|solid') }}</span> {{ tag|trim }}</a>
+                                <a class="no-underline px-1 mb-2 flex items-center" href="{{ url() }}/blog?tag={{ tag|trim }}"><span class="inline-block w-6 text-center mr-1 icon-svg-small">{{ icon('hashtag', 'fontawesome|solid') }}</span> {{ tag|trim }}</a>
                             {% endfor %}
                         </div>
                     {% endif %}
                 </div>
                 <a class="pl-6 pr-6 pt-2 pb-2 w-full button text-base uppercase"
-                href="https://github.com/flextype/flextype.org/tree/dev/project/entries/{{ locale }}/blog">{{ entry.txt_submit_post }}</a>
+                href="https://github.com/flextype/flextype.org/tree/dev/project/entries/blog">{{ entry.txt_submit_post }}</a>
 
                 <div class="text-center mt-4">
                     <hr class="mt-6 mb-5 border-b border-black">
-                    <a class="text-base uppercase" href="{{ url() }}/{{ locale }}/blog.atom">ATOM 1.0</a>
-                    <a class="text-base uppercase" href="{{ url() }}/{{ locale }}/blog.rss">RSS</a>
+                    <a class="text-base uppercase" href="{{ url() }}/blog.atom">ATOM 1.0</a>
+                    <a class="text-base uppercase" href="{{ url() }}/blog.rss">RSS</a>
                 </div>
             </div>
 
