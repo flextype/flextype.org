@@ -7,7 +7,7 @@ order: 1
 
 ### Topics
 
-* [What is Flextype?]([url]/documentation/en)
+* [What is Flextype?]([url]/documentation/getting-started/what-is-flextype)
 * [Requirements]([url]/documentation/getting-started/requirements)
 * [Installation]([url]/documentation/getting-started/installation)
 * [Configuration]([url]/documentation/getting-started/configuration)
