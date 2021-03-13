@@ -36,7 +36,7 @@ theme: noir-flextype
 # - error404.content:     Content to display on Error404 page
 # - error404.template:    Template to use on Error404 page
 entries:
-  main: en
+  main: home
   error404:
     title: Error 404
     description: We're sorry but the page you are looking for doesn't appear to exist!

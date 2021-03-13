@@ -5,17 +5,17 @@
     <div class="container relative mx-auto mb-20">
         <div class="flex pt-24">
             <div class="text-center px-24">
-                <h1 class="uppercase m-0 pb-10 text-xl lg:text-5xl">{{ txt.intro_section_h1|raw }}</h1>
+                <h1 class="uppercase m-0 pb-10 text-xl lg:text-5xl">The freedom of a headless CMS with the full functionality of a traditional CMS.</h1>
                 <div class="text-centeer">
                     <a
-                        href="{{ baseUrl() }}/{{ locale }}/downloads"
-                        class="w-auto button py-3 px-5 lg:mr-5">{{ txt.intro_section_button|raw }}</a>
+                        href="{{ baseUrl() }}/downloads"
+                        class="w-auto button py-3 px-5 lg:mr-5">Get Flextype</a>
                     <a
-                        href="{{ baseUrl() }}/{{ locale }}/demo"
-                        class="w-auto button py-3 px-5">{{ txt.intro_section_try_demo_button|raw }}</a>
+                        href="{{ baseUrl() }}/demo"
+                        class="w-auto button py-3 px-5">Try Demo</a>
                 </div>
                 <div class="text-center mt-10">
-                    <a href="{{ baseUrl() }}/{{ locale }}/sponsors">Donate to keep Flextype free!</a>
+                    <a href="{{ baseUrl() }}/sponsors">Donate to keep Flextype free!</a>
                 </div>
             </div>
         </div>
@@ -25,55 +25,55 @@
     <!-- features section -->
     <div class="text-center pt-20">
         <div class="container relative mx-auto">
-            <h3 class="uppercase text-xl lg:text-5xl">{{ txt.features_heading|raw }}</h3>
-            <p class="text-xl lg:text-2xl">{{ txt.features_description|raw }}</p>
+            <h3 class="uppercase text-xl lg:text-5xl">Features</h3>
+            <p class="text-xl lg:text-2xl">Flextype provides faster, more productive way<br> for you to build and manage content for any kind of projects.</p>
 
             <div class="flex content-center flex-wrap mt-12">
                 <div class="w-full lg:w-1/3 p-8">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('rocket', 'fontawesome|solid') }}</div>
-                    <h4 class="text-2xl">{{ txt.features_fast_heading|raw }}</h4>
+                    <h4 class="text-2xl">Fast</h4>
                     <p>
-                        {{ txt.features_fast_p|raw }}
+                        Flextype is super fast content management system because of its simple elegance architecture and built-in smart cache.
                     </p>
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('cogs', 'fontawesome|solid') }}</div>
-                    <h4 class="text-2xl">{{ txt.features_flexible_heading|raw }}</h4>
+                    <h4 class="text-2xl">Flexible</h4>
                     <p>
-                        {{ txt.features_flexible_p|raw }}
+                        Building this content management system, we focused on simplicity and flexibility. To achieve this, we implemented a simple but powerful Core API's.
                     </p>
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('font', 'fontawesome|solid') }}</div>
-                    <h4 class="text-2xl">{{ txt.features_easy_editing_heading|raw }}</h4>
+                    <h4 class="text-2xl">Easy editing</h4>
                     <p>
-                        {{ txt.features_easy_editing_p|replace({"%url_start%": '<a href="https://flextype.org/en/downloads/extend/plugins/admin">', "%url_end%": "</a>"})|raw }}
+                        With Flextype you are free to use any of your favorite content editor to write content or our gorgeous <a href="https://flextype.org/downloads/extend/plugins/admin">Admin Panel</a>.
                     </p>
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('network-wired', 'fontawesome|solid') }}</div>
-                    <h4 class="text-2xl">{{ txt.features_built_in_rest_api_heading|raw }}</h4>
+                    <h4 class="text-2xl">Built-in REST API</h4>
                     <p>
-                        {{ txt.features_built_in_rest_api_p|raw }}
+                        Flextype REST API with compact JSON payloads gives you full programmatic control over your content management system.
                     </p>
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('list-alt', 'fontawesome|solid') }}</div>
-                    <h4 class="text-2xl">{{ txt.features_dynamic_content_types_heading|raw }}</h4>
+                    <h4 class="text-2xl">Dynamic Content Types</h4>
                     <p>
-                        {{ txt.features_dynamic_content_types_p|raw }}
+                        The flat-file nature of Flextype lets you define unlimited custom fields for any of your entries.
                     </p>
                 </div>
 
                 <div class="w-full lg:w-1/3 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('code-branch', 'fontawesome|solid') }}</div>
-                    <h4 class="text-2xl">{{ txt.features_version_control_heading|raw }}</h4>
+                    <h4 class="text-2xl">Version Control</h4>
                     <p>
-                        {{ txt.features_version_control_p|raw }}
+                        Flextype is a file-based CMS, you can version control all content with GIT or any other Version Control System.
                     </p>
                 </div>
             </div>
@@ -84,72 +84,71 @@
     <!-- no limits section -->
     <div class="text-center">
         <div class="container mx-auto pt-20 pb-20">
-            <h3 class="uppercase text-xl lg:text-5xl">{{ txt.features_no_limits_heading|raw }}</h3>
-            <p class="text-xl lg:text-2xl px-20">{{ txt.features_no_limits_p|raw }}</p>
+            <h3 class="uppercase text-xl lg:text-5xl">Use Cases</h3>
+            <p class="text-xl lg:text-2xl px-20">Use Flextype for any project you want.</p>
 
             <div class="flex content-center flex-wrap mt-12">
-
                 <div class="w-full lg:w-3/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('desktop', 'fontawesome|solid') }}</div>
-                    <h4 class="text-2xl">{{ txt.no_limits_websites_heading|raw }}</h4>
+                    <h4 class="text-2xl">Websites</h4>
                     <p>
-                        {{ txt.no_limits_websites_p|raw }}
+                        Business sites, Landing pages, Personal site, Portfolios, Product sites, Blogs, Web Apps
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('mobile-alt', 'fontawesome|solid') }}</div>
-                    <h4 class="text-2xl">{{ txt.native_apps_heading|raw }}</h4>
+                    <h4 class="text-2xl">Native Apps</h4>
                     <p>
-                        {{ txt.native_apps_p|raw }}
+                        iOS, Android, Windows, Kai, Lineage, Fire, Flyme, Sailfish, Tizen, Remix.
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('square', 'fontawesome|regular') }}</div>
-                    <h4 class="text-2xl">{{ txt.kiosks_heading|raw }}</h4>
+                    <h4 class="text-2xl">Kiosks</h4>
                     <p>
-                        {{ txt.kiosks_p|raw }}
+                        Kiosks, Billboards, Digital Signage
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('running', 'fontawesome|solid') }}</div>
-                    <h4 class="text-2xl">{{ txt.wearables_heading|raw }}</h4>
+                    <h4 class="text-2xl">Wearables</h4>
                     <p>
-                        {{ txt.wearables_p|raw }}
+                        Smartwatch Apps, Activity Trackers
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('lightbulb', 'fontawesome|regular') }}</div>
-                    <h4 class="text-2xl">{{ txt.iot_devices_heading|raw }}</h4>
+                    <h4 class="text-2xl">IoY Devices</h4>
                     <p>
-                        {{ txt.iot_devices_heading|raw }}
+                        IoY Devices
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('gamepad', 'fontawesome|solid') }}</div>
-                    <h4 class="text-2xl">{{ txt.game_data_heading|raw }}</h4>
+                    <h4 class="text-2xl">Game Data</h4>
                     <p>
-                        {{ txt.game_data_p|raw }}
+                        Mobile Games, VR, DLC
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('compass', 'fontawesome|regular') }}</div>
-                    <h4 class="text-2xl">{{ txt.saas_platforms_heading|raw }}</h4>
+                    <h4 class="text-2xl">SaaS Platforms</h4>
                     <p>
-                        {{ txt.saas_platforms_p|raw }}
+                        CRM, Productivity Tools, & Commerce
                     </p>
                 </div>
 
                 <div class="w-full lg:w-3/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('shopping-cart', 'fontawesome|solid') }}</div>
-                    <h4 class="text-2xl">{{ txt.ecommerce_heading|raw }}</h4>
+                    <h4 class="text-2xl">E-Commerce</h4>
                     <p>
-                        {{ txt.ecommerce_heading|raw }}
+                        E-Commerce
                     </p>
                 </div>
             </div>
@@ -160,35 +159,36 @@
     <!-- community section -->
     <div class="text-center">
         <div class="container mx-auto pt-20 pb-20">
-            <h3 class="uppercase text-xl lg:text-5xl">{{ txt.community_heading|raw }}</h3>
-            <p class="text-xl lg:text-2xl px-20">{{ txt.community_p|raw }}</p>
+            <h3 class="uppercase text-xl lg:text-5xl">Community</h3>
+            <p class="text-xl lg:text-2xl px-20">Flextype is open source, community driven project,
+and maintained by community!</p>
 
             <div class="flex content-center flex-wrap mt-12">
                 <div class="w-full lg:w-4/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('discord', 'fontawesome|brands') }}</div>
-                    <h4 class="text-2xl">{{ txt.discord_heading|raw }}</h4>
+                    <h4 class="text-2xl">Discord</h4>
                     <div class="text-base h-40">
-                        {{ txt.discord_p|raw }}
+                        Got a question about setting up or using Flextype? We'll do our best to help you out. Also here you may start discussions about core, plugin and themes development.
                     </div>
-                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base" href="https://discord.gg/CCKPKVG">{{ txt.discord_button|raw }}</a>
+                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base" href="https://discord.gg/CCKPKVG">Join the Conversation</a>
                 </div>
 
                 <div class="w-full lg:w-4/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('github', 'fontawesome|brands') }}</div>
-                    <h4 class="text-2xl">{{ txt.github_heading|raw }}</h4>
+                    <h4 class="text-2xl">Github</h4>
                     <div class="text-base h-40">
-                        {{ txt.github_p|replace({"%url_start%": '<a href="https://github.com/flextype/flextype/issues">', "%url_end%": "</a>"})|raw }}
+                        If you want to report a bug or contribute your ideas, you can use the <a href="https://github.com/flextype/flextype/issues">Flextype GitHub Issues tracker.</a>
                     </div>
-                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base" href="https://github.com/flextype">{{ txt.github_button|raw }}</a>
+                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base" href="https://github.com/flextype">Contribute</a>
                 </div>
 
                 <div class="w-full lg:w-4/12 p-6">
                     <div class="icon-svg-large mb-5 text-center">{{ icon('twitter', 'fontawesome|brands') }}</div>
-                    <h4 class="text-2xl">{{ txt.twitter_heading|raw }}</h4>
+                    <h4 class="text-2xl">Twitter</h4>
                     <div class="text-base h-40">
-                        {{ txt.twitter_p|replace({"%url_start%": '<a href="https://twitter.com/getflextype">', "%url_end%": "</a>"})|raw }}
+                        <a href="https://twitter.com/getflextype">Follow on Twitter</a> to get real-time news regarding the development and all events we are attending.
                     </div>
-                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base" href="https://twitter.com/getflextype">{{ txt.twitter_button|raw }}</a>
+                    <a class="pl-6 pr-6 pt-2 pb-2 button text-base" href="https://twitter.com/getflextype">Follow Us</a>
                 </div>
             </div>
         </div>
@@ -198,21 +198,29 @@
     <!-- /contribution section -->
     <div class="text-center">
         <div class="container mx-auto pt-20 pb-40">
-            <h3 class="uppercase text-xl lg:text-5xl">{{ txt.contribution_heading|raw }}</h3>
-            <p class="text-xl lg:text-2xl px-20 mb-8">{{ txt.contribution_p|raw }}</p>
+            <h3 class="uppercase text-xl lg:text-5xl">CONTRIBUTE</h3>
+            <p class="text-xl lg:text-2xl px-20 mb-8">Flextype is an open source project and community contributions are essential to its growing and success. Contributing to the Flextype is easy and you can give as little or as much time as you want.</p>
             <div class="w-full text-center">
                 <div class="mb-10">
                     <div class="flex content-center flex-wrap">
-                        <div class="w-full lg:w-6/12 p-2">
+                        <div class="w-full lg:w-6/12 p-2 lg:pr-4">
                             <div class="text-left">
-                                <h4 class="text-center">{{ txt.contribution_financial_support_heading|raw }}</h4>
-                                {{ txt.contribution_financial_support_p|raw }}
+                                <h4 class="text-center">FINANCIAL SUPPORT</h4>
+                                Flextype is an MIT-licensed open source project and completely free to use. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. <br><br>
+
+                                You can support it's ongoing development by being a project backer or a sponsor:<br>
+                                <a class="invert" href="https://www.patreon.com/awilum">Become a backer or sponsor on Patreon</a>, <a class="invert" href="//flextype.org/en/one-time-donation">One-time donation via PayPal, QIWI, Sberbank</a>, <a class="invert" href="//flextype.org/en/sponsors">Visit our Sponsors &amp; Backers page</a>
                             </div>
                         </div>
-                        <div class="w-full lg:w-6/12 p-2">
+                        <div class="w-full lg:w-6/12 p-2 lg:pl-4">
                             <div class="text-left">
-                                <h4 class="text-center">{{ txt.contribution_itt_heading|raw }}</h4>
-                                {{ txt.contribution_itt_p|raw }}
+                                <h4 class="text-center">INTERNATIONAL TRANSLATOR TEAM</h4>
+                                 We are on a mission to build high quality platform to develop fast, flexible, easier to manage websites with Flextype!<br><br>
+
+                                 If you wish to participate in the translation of Flextype, please Join Flextype International Translator Team and start translating!<br><br>
+
+                                 Our crowdin projects:<br>
+                                 <a href="https://crowdin.com/project/flextype-plugin-admin">Flextype Admin Panel Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-form-admin">Flextype Form Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-themes-admin">Flextype Themes Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin">Flextype Accounts Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin">Flextype Accounts Admin Plugin</a>
                             </div>
                         </div>
                     </div>
@@ -222,10 +230,11 @@
     </div>
     <!-- /contribution section -->
 
+    {#
     <!-- /sponsors section -->
     <div class="text-center">
         <div class="container mx-auto pb-40">
-            <h3 class="uppercase text-xl lg:text-5xl">{{ txt.sponsors_heading|raw }}</h3>
+            <h3 class="uppercase text-xl lg:text-5xl">Sponsors</h3>
             <div class="w-full text-center">
                 <div class="mb-10">
                     <div class="flex content-center flex-wrap">
@@ -242,4 +251,5 @@
         </div>
     </div>
     <!-- /sponsors section -->
+    #}
 {% endblock %}

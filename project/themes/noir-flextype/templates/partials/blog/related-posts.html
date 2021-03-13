@@ -6,7 +6,7 @@
     {% if flextype.cache.has(relatedBlogPostsCacheID) %}
         {% set blog = flextype.cache.get(relatedBlogPostsCacheID) %}
     {% else %}
-        {% set blog = flextype.entries.fetch(locale ~ '/blog', {'collection': true}).exceptFromCollection(['content']) %}
+        {% set blog = flextype.entries.fetch('/blog', {'collection': true}).exceptFromCollection(['content']) %}
         {% do flextype.cache.set(relatedBlogPostsCacheID, blog) %}
     {% endif %}
 
