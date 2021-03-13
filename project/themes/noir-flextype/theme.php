@@ -15,18 +15,3 @@ include_once $scriptPath . '/tokens.php';
 include_once $scriptPath . '/blog.php';
 include_once $scriptPath . '/dump.php';
 include_once $scriptPath . '/arrays.php';
-
-// Redirects for old urls with SEO 301
-flextype()->get('en/{uri:.+}', function(Request $request, Response $response, $args) {
-    return $response->withRedirect('https://flextype.org' . $args['uri'], 301);
-});
-
-flextype()->get('ru/{uri:.+}', function(Request $request, Response $response, $args) {
-    return $response->withRedirect('https://flextype.org' . $args['uri'], 301);
-});
-//---------
-
-// Redirect from home page to root
-flextype()->get('home', function(Request $request, Response $response, $args) {
-    return $response->withRedirect('https://flextype.org' . $args['uri'], 301);
-});
