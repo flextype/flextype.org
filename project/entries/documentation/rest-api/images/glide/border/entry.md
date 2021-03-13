@@ -1,6 +1,6 @@
 ---
 title: Border
-template: docs 
+template: docs
 breadcrumbs:
   1:
     title: "Rest API"
@@ -44,8 +44,8 @@ GET YOUR_APP_URL/api/entries/images/image.jpg?border=10,FFCC33,expand&token=YOUR
 <div class="file-header">Request</div>
 
 ```http
-GET [url]/documentation/api/entries/images/image.jpg?border=30,5000,overlay&token=4864fb8e1ebe080e6e4ad5c4363083a6
-GET [url]/documentation/api/entries/images/image.jpg?border=30,FFCC33,expand&token=4864fb8e1ebe080e6e4ad5c4363083a6
+GET [url]/api/entries/images/image.jpg?border=30,5000,overlay&token=3b29b31ae05c89c2009f6e3f96e3d703
+GET [url]/api/entries/images/image.jpg?border=30,FFCC33,expand&token=3b29b31ae05c89c2009f6e3f96e3d703
 ```
 
 ##### Result
