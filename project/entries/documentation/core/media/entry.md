@@ -1,6 +1,7 @@
 ---
 title: Media
 template: docs
+order: 3
 breadcrumbs:
   -
     title: "Core Concepts"
@@ -11,67 +12,67 @@ on_this_page:
     link: "files-methods"
     level2:
       -
-        title: "upload()"
+        title: "upload"
         link: "methods-files-upload"
       -
-        title: "fetch()"
+        title: "fetch"
         link: "methods-files-fetch"
       -
-        title: "move()"
+        title: "move"
         link: "methods-files-move"
       -
-        title: "copy()"
+        title: "copy"
         link: "methods-files-copy"
       -
-        title: "delete()"
+        title: "delete"
         link: "methods-files-delete"
       -
-        title: "has()"
+        title: "has"
         link: "methods-files-has"
       -
-        title: "getFileLocation()"
+        title: "getFileLocation"
         link: "methods-files-getFileLocation"
   -
     title: "Files Meta Methods"
     link: "files-meta-methods"
     level2:
       -
-        title: "update()"
+        title: "update"
         link: "methods-files-meta-update"
       -
-        title: "add()"
+        title: "add"
         link: "methods-files-meta-add"
       -
-        title: "delete()"
+        title: "delete"
         link: "methods-files-meta-delete"
       -
-        title: "getFileMetaLocation()"
+        title: "getFileMetaLocation"
         link: "methods-files-meta-getFileMetaLocation"
   -
     title: "Folders Methods"
     link: "folders-methods"
     level2:
       -
-        title: "fetch()"
+        title: "fetch"
         link: "methods-folders-fetch"
       -
-        title: "create()"
+        title: "create"
         link: "methods-folders-create"
       -
-        title: "move()"
+        title: "move"
         link: "folders-move"
       -
-        title: "delete()"
+        title: "delete"
         link: "methods-folders-delete"
       -
-        title: "getDirLocation()"
+        title: "getDirLocation"
         link: "methods-folders-getDirLocation"
   -
     title: "Folders Meta Methods"
     link: "folders-meta-methods"
     level2:
       -
-        title: "getDirMetaLocation()"
+        title: "getDirMetaLocation"
         link: "methods-folders-meta-getDirMetaLocation"
 ---
 
@@ -89,31 +90,31 @@ on_this_page:
     </thead>
     <tbody>
         <tr>
-            <td><a href="#methods-files-upload">upload()</a></td>
+            <td><a href="#methods-files-upload">upload</a></td>
             <td>Upload media file.</td>
         </tr>
         <tr>
-            <td><a href="#methods-files-fetch">fetch()</a></td>
+            <td><a href="#methods-files-fetch">fetch</a></td>
             <td>Fetch file or files collection.</td>
         </tr>
         <tr>
-            <td><a href="#methods-files-move">move()</a></td>
+            <td><a href="#methods-files-move">move</a></td>
             <td>Move file.</td>
         </tr>
         <tr>
-            <td><a href="#methods-files-copy">copy()</a></td>
+            <td><a href="#methods-files-copy">copy</a></td>
             <td>Copy file.</td>
         </tr>
         <tr>
-            <td><a href="#methods-files-delete">delete()</a></td>
+            <td><a href="#methods-files-delete">delete</a></td>
             <td>Delete file.</td>
         </tr>
         <tr>
-            <td><a href="#methods-files-has">has()</a></td>
+            <td><a href="#methods-files-has">has</a></td>
             <td>Check whether a file exists.</td>
         </tr>
         <tr>
-            <td><a href="#methods-files-getFileLocation">getFileLocation()</a></td>
+            <td><a href="#methods-files-getFileLocation">getFileLocation</a></td>
             <td>Get file location.</td>
         </tr>
     </tbody>
@@ -121,7 +122,7 @@ on_this_page:
 
 ### Methods Details
 
-##### <a name="methods-files-upload"></a> `upload()`
+##### <a name="methods-files-upload"></a> `upload`
 
 Upload media file.
 
@@ -145,7 +146,7 @@ flextype('media')
   ->upload($_FILES['file'], '/entries/movies/sg-1/season-5/episode-21/');
 ```
 
-##### <a name="methods-files-fetch"></a> `fetch()`
+##### <a name="methods-files-fetch"></a> `fetch`
 
 Fetch file or files collection.
 
@@ -208,9 +209,9 @@ $cover = flextype('media')
 
 ```
 
-`$options` is an array of valid values for [filter()](https://github.com/flextype/flextype/blob/dev/src/flextype/Support/Helpers/FilterHelper.php) and [find()](https://github.com/flextype/flextype/blob/dev/src/flextype/Support/Helpers/FindHelper.php) helpers.
+`$options` is an array of valid values for <code>[filter](https://github.com/flextype/flextype/blob/dev/src/flextype/Support/Helpers/FilterHelper.php)</code> and <code>[find](https://github.com/flextype/flextype/blob/dev/src/flextype/Support/Helpers/FindHelper.php)</code> helpers.
 
-##### <a name="methods-files-move"></a> `move()`
+##### <a name="methods-files-move"></a> `move`
 
 Move file.
 
@@ -238,7 +239,7 @@ flextype('media')
 ```
 
 
-##### <a name="methods-files-copy"></a> `copy()`
+##### <a name="methods-files-copy"></a> `copy`
 
 Copy file.
 
@@ -265,7 +266,7 @@ flextype('media')
                           'entries/movies/sg-1/season-5/episode-22/cover.jpg');
 ```
 
-##### <a name="methods-files-delete"></a> `delete()`
+##### <a name="methods-files-delete"></a> `delete`
 
 Delete file.
 
@@ -290,7 +291,7 @@ flextype('media')
             ->delete('entries/movies/sg-1/season-5/episode-21/cover-image.jpg');
 ```
 
-##### <a name="methods-files-has"></a> `has()`
+##### <a name="methods-files-has"></a> `has`
 
 Check whether a file exists.
 
@@ -317,7 +318,7 @@ if (flextype('media')
 }
 ```
 
-##### <a name="files-getFileLocation"></a> `getFileLocation()`
+##### <a name="files-getFileLocation"></a> `getFileLocation`
 
 Get file location.
 
@@ -353,15 +354,15 @@ flextype('media')
     </thead>
     <tbody>
         <tr>
-            <td><a href="#methods-files-meta-update">update()</a></td>
+            <td><a href="#methods-files-meta-update">update</a></td>
             <td>Update file meta information.</td>
         </tr>
         <tr>
-            <td><a href="#methods-files-meta-add">add()</a></td>
+            <td><a href="#methods-files-meta-add">add</a></td>
             <td>Add file meta information.</td>
         </tr>
         <tr>
-            <td><a href="#methods-files-meta-delete">delete()</a></td>
+            <td><a href="#methods-files-meta-delete">delete</a></td>
             <td>Delete file meta information.</td>
         </tr>
         <tr>
@@ -373,7 +374,7 @@ flextype('media')
 
 ### Methods Details
 
-##### <a name="methods-files-meta-update"></a> `update()`
+##### <a name="methods-files-meta-update"></a> `update`
 
 Update file meta information.
 
@@ -388,7 +389,7 @@ flextype('media')
                      'Episode 21');
 ```
 
-##### <a name="methods-files-meta-add"></a> `add()`
+##### <a name="methods-files-meta-add"></a> `add`
 
 Add file meta information.
 
@@ -403,7 +404,7 @@ flextype('media')
                      'sg1');
 ```
 
-##### <a name="methods-files-meta-delete"></a> `delete()`
+##### <a name="methods-files-meta-delete"></a> `delete`
 
 Delete file meta information.
 
@@ -441,23 +442,23 @@ flextype('media')
     </thead>
     <tbody>
         <tr>
-            <td><a href="#methods-folders-fetch">fetch()</a></td>
+            <td><a href="#methods-folders-fetch">fetch</a></td>
             <td>Fetch folder or folders collection.</td>
         </tr>
         <tr>
-            <td><a href="#methods-folders-create">move()</a></td>
+            <td><a href="#methods-folders-create">move</a></td>
             <td>Create folder.</td>
         </tr>
         <tr>
-            <td><a href="#methods-folders-move">move()</a></td>
+            <td><a href="#methods-folders-move">move</a></td>
             <td>Move folder.</td>
         </tr>
         <tr>
-            <td><a href="#methods-folders-delete">delete()</a></td>
+            <td><a href="#methods-folders-delete">delete</a></td>
             <td>Delete folder.</td>
         </tr>
         <tr>
-            <td><a href="#methods-folders-getDirLocation">getDirLocation()</a></td>
+            <td><a href="#methods-folders-getDirLocation">getDirLocation</a></td>
             <td>Get folder location.</td>
         </tr>
     </tbody>
@@ -465,7 +466,7 @@ flextype('media')
 
 ### Methods Details
 
-##### <a name="methods-folders-fetch"></a> `fetch()`
+##### <a name="methods-folders-fetch"></a> `fetch`
 
 Fetch folder or folders collection.
 
@@ -497,7 +498,7 @@ $folders = flextype('media')
                 ->fetch('entries/movies/sg-1/season-5', ['collection' => true]);
 ```
 
-##### <a name="methods-folders-create"></a> `create()`
+##### <a name="methods-folders-create"></a> `create`
 
 Create folder.
 
@@ -509,7 +510,7 @@ flextype('media')
             ->create('entries/movies/sg-1/season-5/episode-22');
 ```
 
-##### <a name="methods-folders-move"></a> `move()`
+##### <a name="methods-folders-move"></a> `move`
 
 Move folder.
 
@@ -522,7 +523,7 @@ flextype('media')
                             'entries/movies/sg-1/season-5/episode-23');
 ```
 
-##### <a name="methods-folders-delete"></a> `delete()`
+##### <a name="methods-folders-delete"></a> `delete`
 
 Delete folder.
 
@@ -534,7 +535,7 @@ flextype('media')
             ->delete('entries/movies/sg-1/season-5/episode-23');
 ```
 
-##### <a name="methods-folders-getDirLocation"></a> `getDirLocation()`
+##### <a name="methods-folders-getDirLocation"></a> `getDirLocation`
 
 Get folder location.
 
@@ -557,7 +558,7 @@ flextype('media')
     </thead>
     <tbody>
         <tr>
-            <td><a href="#methods-folders-meta-getDirMetaLocation">getDirMetaLocation()</a></td>
+            <td><a href="#methods-folders-meta-getDirMetaLocation">getDirMetaLocation</a></td>
             <td>Get files directory meta location.</td>
         </tr>
     </tbody>
@@ -565,7 +566,7 @@ flextype('media')
 
 ### Methods Details
 
-##### <a name="methods-folders-meta-getDirMetaLocation"></a> `getDirMetaLocation()`
+##### <a name="methods-folders-meta-getDirMetaLocation"></a> `getDirMetaLocation`
 
 Get files directory meta location.
 

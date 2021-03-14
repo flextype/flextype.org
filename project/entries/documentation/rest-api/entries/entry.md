@@ -1,6 +1,7 @@
 ---
 title: Entries
 template: docs
+order: 2
 breadcrumbs:
   -
     title: "Rest API"

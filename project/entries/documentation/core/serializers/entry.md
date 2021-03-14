@@ -1,6 +1,7 @@
 ---
 title: Serializers
 template: docs
+order: 7
 breadcrumbs:
   1:
     title: "Core Concepts"

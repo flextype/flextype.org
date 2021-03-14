@@ -1,6 +1,7 @@
 ---
 title: Media
 template: docs
+order: 4
 breadcrumbs:
   1:
     title: "Rest API"
