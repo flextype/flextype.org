@@ -1,6 +1,7 @@
 ---
 title: Media
 template: docs
+order: 3
 breadcrumbs:
   -
     title: "Core Concepts"

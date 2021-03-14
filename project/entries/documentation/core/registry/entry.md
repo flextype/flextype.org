@@ -1,6 +1,7 @@
 ---
 title: Registry
 template: docs
+order: 5
 breadcrumbs:
   -
     title: "Core Concepts"

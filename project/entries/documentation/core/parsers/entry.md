@@ -1,6 +1,7 @@
 ---
 title: Parsers
-template: docs 
+template: docs
+order: 6
 breadcrumbs:
   1:
     title: "Core Concepts"
