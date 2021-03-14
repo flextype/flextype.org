@@ -15,10 +15,10 @@ on_this_page:
     link: "methods"
     level2:
       -
-        title: "encode()"
+        title: "encode"
         link: "methods-encode"
       -
-        title: "decode()"
+        title: "decode"
         link: "methods-decode"
 ---
 
@@ -35,11 +35,11 @@ Any file that contains a YAML front matter block will be processed by Flextype a
     </thead>
     <tbody>
         <tr>
-            <td><a href="#methods-encode">encode()</a></td>
+            <td><a href="#methods-encode">encode</a></td>
             <td>Returns the FRONTMATTER representation of a value.</td>
         </tr>
         <tr>
-            <td><a href="#methods-decode">decode()</a></td>
+            <td><a href="#methods-decode">decode</a></td>
             <td>Takes a FRONTMATTER encoded string and converts it into a PHP variable.</td>
         </tr>
     </tbody>
@@ -47,7 +47,7 @@ Any file that contains a YAML front matter block will be processed by Flextype a
 
 ### Methods Details
 
-##### <a name="methods-encode"></a> `encode()`
+##### <a name="methods-encode"></a> `encode`
 
 Returns the FRONTMATTER representation of a value.
 
@@ -67,7 +67,7 @@ $data = flextype('serializers')->frontmatter()->encode($data);
 
 ```
 
-##### <a name="methods-decode"></a> `decode()`
+##### <a name="methods-decode"></a> `decode`
 
 Takes a FRONTMATTER encoded string and converts it into a PHP variable.
 

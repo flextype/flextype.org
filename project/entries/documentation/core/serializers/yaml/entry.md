@@ -924,11 +924,11 @@ Array
     </thead>
     <tbody>
         <tr>
-            <td><a href="#methods-encode">encode()</a></td>
+            <td><a href="#methods-encode">encode</a></td>
             <td>Dumps a PHP value to a YAML string.<br><br>The dump method, when supplied with an array, will do its best to convert the array into friendly YAML.</td>
         </tr>
         <tr>
-            <td><a href="#methods-decode">decode()</a></td>
+            <td><a href="#methods-decode">decode</a></td>
             <td>Parses YAML into a PHP value.</td>
         </tr>
     </tbody>
@@ -936,7 +936,7 @@ Array
 
 ### Methods Details
 
-##### <a name="methods-encode"></a> `encode()`
+##### <a name="methods-encode"></a> `encode`
 
 Dumps a PHP value to a YAML string.<br><br>The dump method, when supplied with an array, will do its best to convert the array into friendly YAML.
 
@@ -956,7 +956,7 @@ $yaml = flextype('serializers')->yaml()->encode($data);
 
 ```
 
-##### <a name="methods-decode"></a> `decode()`
+##### <a name="methods-decode"></a> `decode`
 
 Parses YAML into a PHP value.
 

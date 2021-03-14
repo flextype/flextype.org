@@ -11,25 +11,25 @@ on_this_page:
     link: "methods"
     level2:
       -
-        title: "getInstance()"
+        title: "getInstance"
         link: "methods-getInstance"
       -
-        title: "get()"
+        title: "get"
         link: "methods-get"
       -
-        title: "set()"
+        title: "set"
         link: "methods-set"
       -
-        title: "has()"
+        title: "has"
         link: "methods-has"
       -
-        title: "all()"
+        title: "all"
         link: "methods-all"
       -
-        title: "delete()"
+        title: "delete"
         link: "methods-delete"
       -
-        title: "flush()"
+        title: "flush"
         link: "methods-flush"
 ---
 
@@ -46,31 +46,31 @@ A registry is a container for storing objects and values in the Flextype applica
     </thead>
     <tbody>
         <tr>
-            <td><a href="#methods-getInstance">getInstance()</a></td>
+            <td><a href="#methods-getInstance">getInstance</a></td>
             <td>Gets the instance via lazy initialization (created on first usage)</td>
         </tr>
         <tr>
-            <td><a href="#methods-get">get()</a></td>
+            <td><a href="#methods-get">get</a></td>
             <td>Get item from the registry.</td>
         </tr>
         <tr>
-            <td><a href="#methods-set">set()</a></td>
+            <td><a href="#methods-set">set</a></td>
             <td>Set an registry data to a given value using "dot" notation. If no key is given to the method, the entire registry data will be replaced.</td>
         </tr>
         <tr>
-            <td><a href="#methods-has">has()</a></td>
+            <td><a href="#methods-has">has</a></td>
             <td>Determine if the registry has a value for the given name.</td>
         </tr>
         <tr>
-            <td><a href="#methods-all">all()</a></td>
+            <td><a href="#methods-all">all</a></td>
             <td>Get all items from the registry.</td>
         </tr>
         <tr>
-            <td><a href="#methods-delete">delete()</a></td>
+            <td><a href="#methods-delete">delete</a></td>
             <td>Get item from the registry.</td>
         </tr>
         <tr>
-            <td><a href="#methods-flush">flush()</a></td>
+            <td><a href="#methods-flush">flush</a></td>
             <td>Flush all items from the registry.</td>
         </tr>
     </tbody>
@@ -78,7 +78,7 @@ A registry is a container for storing objects and values in the Flextype applica
 
 ### Methods Details
 
-##### <a name="methods-getInstance"></a> `getInstance()`
+##### <a name="methods-getInstance"></a> `getInstance`
 
 Gets the instance via lazy initialization (created on first usage)
 
@@ -97,7 +97,7 @@ Get `flextype.settings.timezone` item from the registry.
 $flextype_timezone = flextype('registry')->get('flextype.settings.timezone');
 ```
 
-##### <a name="methods-get"></a> `get()`
+##### <a name="methods-get"></a> `get`
 
 Get item from the registry.
 
@@ -119,7 +119,7 @@ Get `flextype.settings.timezone` item from the registry.
 $flextype_timezone = flextype('registry')->get('flextype.settings.timezone');
 ```
 
-##### <a name="methods-set"></a> `set()`
+##### <a name="methods-set"></a> `set`
 
 Set an registry data to a given value using "dot" notation. If no key is given to the method, the entire registry data will be replaced.
 
@@ -143,7 +143,7 @@ Set `flextype.settings.timezone` item in the registry.
 flextype('registry')->set('flextype.settings.timezone', 'America/New_York');
 ```
 
-##### <a name="methods-has"></a> `has()`
+##### <a name="methods-has"></a> `has`
 
 Determine if the registry has a value for the given name.
 
@@ -166,7 +166,7 @@ if (flextype('registry')->has('flextype.settings.timezone')) {
 }
 ```
 
-##### <a name="methods-all"></a> `all()`
+##### <a name="methods-all"></a> `all`
 
 Get all items from the registry.
 
@@ -202,7 +202,7 @@ public function delete($keys): self
 flextype('registry')->delete('flextype.settings.timezone');
 ```
 
-##### <a name="methods-flush"></a> `flush()`
+##### <a name="methods-flush"></a> `flush`
 
 Flush all values from the registry.
 
