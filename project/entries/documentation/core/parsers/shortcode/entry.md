@@ -44,7 +44,7 @@ There are a number of default shortcodes available.
             <td>Fetch specific item from registry.</td>
         </tr>
         <tr>
-            <td><a href="#shortcodes-raw">[raw][url]/documentation[/raw]</a></td>
+            <td><a href="#shortcodes-raw">[raw][url][/raw]</a></td>
             <td></td>
             <td>Display application url.</td>
         </tr>
@@ -85,7 +85,7 @@ Display application url.
 **Examples**
 
 ```
-[raw][url]/documentation[/raw]
+[raw][url][/raw]
 ```
 
 ### <a name="methods"></a> Methods
@@ -99,23 +99,23 @@ Display application url.
     </thead>
     <tbody>
         <tr>
-            <td><a href="#methods-addHandler">addHandler()</a></td>
+            <td><a href="#methods-addHandler">addHandler</a></td>
             <td>Add shortcode handler.</td>
         </tr>
         <tr>
-            <td><a href="#methods-addEventHandler">addEventHandler()</a></td>
+            <td><a href="#methods-addEventHandler">addEventHandler</a></td>
             <td>Add event handler.</td>
         </tr>
         <tr>
-            <td><a href="#methods-process">process()</a></td>
+            <td><a href="#methods-process">process</a></td>
             <td>Processes text and replaces shortcodes.</td>
         </tr>
         <tr>
-            <td><a href="#methods-parse">parse()</a></td>
+            <td><a href="#methods-parse">parse</a></td>
             <td>Parses text into shortcodes.</td>
         </tr>
         <tr>
-            <td><a href="#methods-getCacheID">getCacheID()</a></td>
+            <td><a href="#methods-getCacheID">getCacheID</a></td>
             <td>Get Cache ID for shortcode</td>
         </tr>
     </tbody>
@@ -123,7 +123,7 @@ Display application url.
 
 ### Methods Details
 
-##### <a name="methods-addHandler"></a> `addHandler()`
+##### <a name="methods-addHandler"></a> `addHandler`
 
 Add shortcode handler.
 
@@ -179,7 +179,7 @@ flextype('parsers')
 More details about events: [github.com/thunderer/Shortcode#events](https://github.com/thunderer/Shortcode#events)
 
 
-##### <a name="methods-process"></a> `process()`
+##### <a name="methods-process"></a> `process`
 
 Processes text and replaces shortcodes.
 
@@ -203,7 +203,7 @@ $shortcode = 'text with [message]';
 $html = flextype('parsers')->shortcode()->process($shortcode);
 ```
 
-##### <a name="methods-parse"></a> `parse()`
+##### <a name="methods-parse"></a> `parse`
 
 Parses text into shortcodes.
 
@@ -226,7 +226,7 @@ $shortcode = 'text with [message]';
 $text = flextype('parsers')->shortcode()->parse($shortcode);
 ```
 
-##### <a name="methods-getCacheID"></a> `getCacheID()`
+##### <a name="methods-getCacheID"></a> `getCacheID`
 
 Get Cache ID for shortcode.
 

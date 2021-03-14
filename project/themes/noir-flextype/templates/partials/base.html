@@ -88,11 +88,11 @@
         </div>
         <!-- Navigation -->
         <nav class="bg-white text-black">
-            <div class="container mx-auto px-4 pt-6 pb-6 clearfix">
+            <div class="container mx-auto px-6 pt-6 pb-6 clearfix">
               <div class="w-full lg:w-2/12
                           text-center lg:text-left
                           lg:float-left text-black tracking-wide">
-                <a href="{{ url() }}" class="no-underline w-full lg:w-2/12  logo no-underline">flextype</a>
+                <a href="{{ url() }}" class="no-underline w-full lg:w-2/12 logo no-underline" translate="no">flextype</a>
               </div>
               <div class="w-full mt-10 lg:mt-0 lg:float-right lg:w-9/12">
                 <div class="text-center lg:text-right">
@@ -147,15 +147,13 @@
         <!-- /Navigation -->
 
         <!-- Content -->
-        <div class="bg-white text-black">
-            <div class="px-4">
-                {% block content %}{% endblock %}
-            </div>
+        <div class="bg-white text-black px-6">
+            {% block content %}{% endblock %}
         </div>
         <!-- /Content -->
 
         <!-- Footer -->
-        <footer class="container px-4 relative mx-auto text-sm lg:text-left text-white bg-black">
+        <footer class="container px-6 relative mx-auto text-sm lg:text-left text-white bg-black">
             <div class="flex flex-wrap pt-24 pb-24">
                 <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
                     <h4>Flextype</h4>
