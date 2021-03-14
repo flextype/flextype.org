@@ -15,7 +15,7 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
         <div class="p-12 h-full text-black plate">
             <h4 class="text-2xl">Bible Site</h4>
             <div class="h-24 mb-10">
-                <img src="[url]/project/media/entries/demo.png" alt="">
+                <!--<img src="[url]/project/media/entries/demo.png" alt="">-->
             </div>
             <a class="pl-6 pr-6 pt-2 pb-2 button text-base" target="_blank" href="https://digital.flextype.org/bible">Visit Site</a>
         </div>
