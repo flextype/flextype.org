@@ -80,7 +80,7 @@ However, the amount of effort needed to maintain and develop new features for th
 We are on a mission to build high quality platform to develop fast, flexible, easier to manage websites with Flextype!<br><br>
 If you wish to participate in the translation of Flextype, please Join Flextype International Translator Team and start translating!<br><br>
 Our crowdin projects:<br>
-<a href="https://crowdin.com/project/flextype-plugin-admin">Flextype Admin Panel Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-form-admin">Flextype Form Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-themes-admin">Flextype Themes Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-website">Flextype Website</a>, <a href="https://crowdin.com/project/flextype-documentation">Flextype Documentation</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin">Flextype Accounts Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts">Flextype Accounts Admin Plugin</a>
+<a href="https://crowdin.com/project/flextype-plugin-admin">Flextype Admin Panel Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-form-admin">Flextype Form Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-themes-admin">Flextype Themes Admin Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts-admin">Flextype Accounts Plugin</a>, <a href="https://crowdin.com/project/flextype-plugin-accounts">Flextype Accounts Admin Plugin</a>
 
 ### Flextype Press kit
 
