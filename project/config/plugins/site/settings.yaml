@@ -26,7 +26,7 @@ author:
 # Don't edit the provided theme templates directly, because they get updated
 # in next releases. If you wish to modify a default theme, copy its folder, and
 # change the name here accordingly.
-theme: noir-flextype
+theme: flextype
 
 # The entries settings
 #
