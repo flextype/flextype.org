@@ -1,5 +1,5 @@
 {
-  "name": "noir-flextype",
+  "name": "flextype",
   "version": "1.0.0",
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.3.0",
