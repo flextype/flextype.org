@@ -3,7 +3,7 @@ title: 'Team'
 template: default
 visibility: visible
 published_at: '22-09-2019 19:15'
-description: 'We are on a mission to build high quality web platform to develop fast, flexible, easier to manage websites with Flextype!'
+description: ''
 created_at: '22-09-2019 19:15'
 uuid: 94f5eff7-28fb-4fce-a4d0-7dffcda31f4a
 published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a

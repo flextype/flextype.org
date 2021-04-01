@@ -3,9 +3,9 @@ title: Press kit
 description: 'Resources for members of the press including Flextype logos, texts and contact information.'
 ---
 
-Flextype was **founded in March 2018** as lightweight alternative to other heavy and outdated CMS. Many people use complex solutions for simple pages, unnecessarily. Building this content management system, we focused on simplicity - even novice webmaster adapt his template and writes his own plugin. To achieve this, we implemented a simple but powerful API's.
+Flextype is an open-source **Hybrid Content Management System** with the freedom of a headless CMS and with the full functionality of a traditional CMS. A true hybrid CMS gives you the freedom of a Headless CMS ー with the functionality and ease-of-use of a traditional content management system. Whether you’re looking to build headless, traditional, or a combination of both Flextype CMS has you covered.
 
-With Flextype, you are in complete control. Design your data structure the way you want. Update and share your data with others and teams using version control. Flextype does not require MySQL database, because all the data are collected in a simple files. Perfect portability when changing your hosting provider. Just copy all the files from one account to another.
+With Flextype, you are in complete control. Design your data structure the way you want. Update and share your data with others and teams using version control. Flextype does not require any relational database management system, because all the data are collected in a simple flat files. Perfect portability when changing your hosting provider. Just copy all the files from one server to another.
 
 ### LINKS
 
