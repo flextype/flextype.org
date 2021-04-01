@@ -5,9 +5,11 @@
     <h1 class="uppercase text-center text-3xl lg:text-6xl pt-24 pb-24 m-0">
         {{ entry.title|raw }}
     </h1>
+    {% if entry.description %}
     <h2 class="text-center m-0 pb-24 pl-6 pr-6 lg:pl-40 lg:pr-40 text-xl font-normal">
         {{ entry.description|raw }}
     </h2>
+    {% endif %}
     <div>
         {{ entry.content|shortcode|markdown|raw }}
     </div>
