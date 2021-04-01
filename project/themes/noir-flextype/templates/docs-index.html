@@ -11,8 +11,8 @@
                                                 .sortByAsc('order')
                                                 .onlyFromCollection(['title', 'id']) %}
         {% for category in docsCategories %}
-            <div class="w-4/12">
-                <h3>{{ category.title }}</h3>
+            <div class="lg:w-4/12">
+                <h3 class="mt-10 lg:mt-0">{{ category.title }}</h3>
                 {% set pages = flextype.entries.fetch(category.id, {'collection': true})
                                                .sortByAsc('order')
                                                .onlyFromCollection(['title', 'id'])%}

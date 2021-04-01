@@ -3,7 +3,7 @@
     <head>
         {% block head %}
             <meta charset="{{ flextype.registry.get('flextype.settings.charset')|lower }}">
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta name="description" content="{% if entry.seo.description %}{{ entry.seo.description|e('html') }}{% else %}{{ entry.description|e('html') }}{% endif %}">
             <meta name="keywords" content="{% if entry.seo.keywords %}{{ entry.seo.keywords|e('html') }}{% else %}{{ entry.keywords|e('html') }}{% endif %}">
             <meta name="robots" content="{% if entry.robots %}{{ entry.robots }}{% else %}{{ flextype.registry.get('plugins.site.settings.robots') }}{% endif %}">
@@ -92,7 +92,7 @@
               <div class="w-full lg:w-2/12
                           text-center lg:text-left
                           lg:float-left text-black tracking-wide">
-                <a href="{{ url() }}" class="no-underline w-full lg:w-2/12 logo no-underline" translate="no">flextype</a>
+                <a href="{{ url() }}" class="no-underline w-full lg:w-2/12 logo no-underline font-bold" translate="no">flextype</a>
               </div>
               <div class="w-full mt-10 lg:mt-0 lg:float-right lg:w-9/12">
                 <div class="text-center lg:text-right">
