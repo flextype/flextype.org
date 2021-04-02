@@ -1,0 +1,41 @@
+{
+    "name": "flarum/suspend",
+    "description": "Suspend users so they can't post.",
+    "type": "flarum-extension",
+    "keywords": ["moderation"],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/flarum/core/issues",
+        "source": "https://github.com/flarum/suspend",
+        "forum": "https://discuss.flarum.org"
+    },
+    "homepage": "https://flarum.org",
+    "funding": [
+        {
+            "type": "website",
+            "url": "https://flarum.org/donate/"
+        }
+    ],
+    "require": {
+        "flarum/core": "^0.1.0-beta.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "Flarum\\Suspend\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        },
+        "flarum-extension": {
+            "title": "Suspend",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-ban",
+                "backgroundColor": "#ddd",
+                "color": "#666"
+            }
+        }
+    }
+}
