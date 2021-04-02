@@ -17,7 +17,7 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
             <div class="h-24 mb-10">
                 <!--<img src="[url]/project/media/entries/demo.png" alt="">-->
             </div>
-            <a class="pl-6 pr-6 pt-2 pb-2 button text-base" target="_blank" href="https://digital.flextype.org/bible">Visit Site</a>
+            <a class="pl-6 pr-6 pt-2 pb-2 button text-base" target="_blank" href="https://demo.flextype.org/bible">Visit Site</a>
         </div>
     </div>
     <div class="w-full lg:w-6/12 p-6 text-center">
@@ -30,7 +30,7 @@ created_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
                 <b>Login:</b> demo@flextype.org <br>
                 <b>Password:</b> Number42
             </div>
-            <a class="pl-6 pr-6 pt-2 pb-2 button text-base" target="_blank" href="https://digital.flextype.org/bible/admin">Visit Admin panel</a>
+            <a class="pl-6 pr-6 pt-2 pb-2 button text-base" target="_blank" href="https://demo.flextype.org/bible/admin">Visit Admin panel</a>
         </div>
     </div>
 </div>
