@@ -175,6 +175,7 @@ GET /api/media/files?id=entries/movies/sg-1/season-5/episode-21/cover.jpg&token=
 ```
 
 <div class="file-header flex justify-between"><div>Response</div> <div class="text-right">200 OK</div></div>
+
 ```http
 {
     "data": {
@@ -315,6 +316,7 @@ POST /api/media/files
 ```
 
 <div class="file-header">Body</div>
+
 ```http
 curl -i -X POST \
   -H "Content-Type: multipart/form-data" \

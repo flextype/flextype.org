@@ -1,0 +1,41 @@
+{
+    "name": "flarum/tags",
+    "description": "Organize discussions into a hierarchy of tags and categories.",
+    "type": "flarum-extension",
+    "keywords": ["discussion"],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/flarum/core/issues",
+        "source": "https://github.com/flarum/tags",
+        "forum": "https://discuss.flarum.org"
+    },
+    "homepage": "https://flarum.org",
+    "funding": [
+        {
+            "type": "website",
+            "url": "https://flarum.org/donate/"
+        }
+    ],
+    "require": {
+        "flarum/core": "^0.1.0-beta.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "Flarum\\Tags\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        },
+        "flarum-extension": {
+            "title": "Tags",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-tags",
+                "backgroundColor": "#F28326",
+                "color": "#fff"
+            }
+        }
+    }
+}

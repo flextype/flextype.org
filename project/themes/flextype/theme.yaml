@@ -1,0 +1,10 @@
+name: Flextype
+version: 1.0.0
+description: Flextype theme for flextype.org
+author:
+  name: Sergey Romanenko
+  email: hello@romanenko.digital
+  url: http://romanenko.digital
+homepage: https://github.com/flextype/flextype
+bugs: https://github.com/flextype/flextype/issues
+license: MIT

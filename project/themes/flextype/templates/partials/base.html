@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+    <head>
+        {% block head %}
+            <meta charset="{{ flextype.registry.get('flextype.settings.charset')|lower }}">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="description" content="{% if entry.seo.description %}{{ entry.seo.description|e('html') }}{% else %}{{ entry.description|e('html') }}{% endif %}">
+            <meta name="keywords" content="{% if entry.seo.keywords %}{{ entry.seo.keywords|e('html') }}{% else %}{{ entry.keywords|e('html') }}{% endif %}">
+            <meta name="robots" content="{% if entry.robots %}{{ entry.robots }}{% else %}{{ flextype.registry.get('plugins.site.settings.robots') }}{% endif %}">
+            <meta name="generator" content="Powered by Flextype"/>
+
+            <meta name="image" content="{{ url() }}/api/images/entries/banner.jpg?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
+
+            <link rel="canonical" href="{{ url() }}" itemprop="url">
+
+
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:site" content="{{ url() }}/{{ entry.id }}">
+            <meta name="twitter:title" content="{% if entry.seo.title %}{{ entry.seo.title|e('html') }}{% else %}{{ entry.title|e('html') }}{% endif %} | {{ flextype.registry.get('plugins.site.settings.title')|e('html') }}{% if request.getQueryParams().page %} | {{ txt.page }} {{ request.getQueryParams().page }}{% endif %}{% if request.getQueryParams().tag %} | {{ txt.tag }} {{ request.getQueryParams().tag }}{% endif %}{% if request.getQueryParams().category %} | {{ txt.category }} {{ request.getQueryParams().category }}{% endif %}">
+            <meta name="twitter:description" content="{% if entry.seo.description %}{{ entry.seo.description|e('html') }}{% else %}{{ entry.description|e('html') }}{% endif %}">
+            <meta name="twitter:image" content="{{ url() }}/api/images/entries/banner.jpg?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
+
+            <meta property="og:locale" content="en_US">
+
+            <meta property="og:site_name" content="{{ flextype.registry.get('plugins.site.settings.title')|e('html') }}">
+            <meta property="og:url" content="{{ url() }}/{{ entry.id }}">
+            <meta property="og:title" content="{% if entry.seo.title %}{{ entry.seo.title|e('html') }}{% else %}{{ entry.title|e('html') }}{% endif %} | {{ flextype.registry.get('plugins.site.settings.title')|e('html') }}{% if request.getQueryParams().page %} | {{ txt.page }} {{ request.getQueryParams().page }}{% endif %}{% if request.getQueryParams().tag %} | {{ txt.tag }} {{ request.getQueryParams().tag }}{% endif %}{% if request.getQueryParams().category %} | {{ txt.category }} {{ request.getQueryParams().category }}{% endif %}">
+            <meta property="og:description" content="{% if entry.seo.description %}{{ entry.seo.description|e('html') }}{% else %}{{ entry.description|e('html') }}{% endif %}">
+            <meta property="og:type" content="website">
+            <meta property="og:image" content="{{ url() }}/api/images/entries/banner.jpg?dpr=2&w=1100&q=70&token=3b29b31ae05c89c2009f6e3f96e3d703">
+            <meta property="og:image:type" content="image/png">
+
+            <meta name="yandex-verification" content="920bbfc83bbe3fbe" />
+            <meta name="google-site-verification" content="JC00E2Po4kPLaTK0V2PJphPnE7UgP4g6O087FHYczWw" />
+
+            <link rel="apple-touch-icon" sizes="180x180" href="{{ url() }}/apple-touch-icon.png">
+            <link rel="icon" type="image/png" sizes="32x32" href="{{ url() }}/favicon-32x32.png">
+            <link rel="icon" type="image/png" sizes="16x16" href="{{ url() }}/favicon-16x16.png">
+            <link rel="manifest" href="{{ url() }}/site.webmanifest">
+            <link type="text/plain" href="{{ url() }}/humans.txt" rel="author">
+
+            {% do flextype.emitter.emit('onThemeMeta') %}
+
+            <title>{% if entry.seo.title %}{{ entry.seo.title|e('html') }}{% else %}{{ entry.title|e('html') }}{% endif %} | {{ flextype.registry.get('plugins.site.settings.title')|e('html') }}{% if request.getQueryParams().page %} | {{ txt.page }} {{ request.getQueryParams().page }}{% endif %}{% if request.getQueryParams().tag %} | {{ txt.tag }} {{ request.getQueryParams().tag }}{% endif %}{% if request.getQueryParams().category %} | {{ txt.category }} {{ request.getQueryParams().category }}{% endif %}</title>
+
+            {% set theme = flextype.registry.get('plugins.site.settings.theme') %}
+
+            {# <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> #}
+
+
+            <style type="text/css">
+            {% if (currentUrl() != '/') %}
+            .hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}.hljs-comment,.hljs-quote{color:#a0a1a7;font-style:italic}.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4}.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#e45649}.hljs-literal{color:#0184bb}.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#50a14f}.hljs-built_in,.hljs-class .hljs-title{color:#c18401}.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801}.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#4078f2}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.hljs-link{text-decoration:underline}
+            {% endif %}
+            {{ filesystem().file(url() ~ '/project/themes/flextype/assets/dist/css/build.min.css').get()|raw }}
+            </style>
+
+            {% if flextype.registry.has('assets.site.css') %}
+                {% for css in flextype.registry.get('assets.site.css') %}
+                    <link href="{{ url() }}/{{ css }}" rel="stylesheet">
+                {% endfor %}
+            {% endif %}
+
+            {% do flextype.emitter.emit('onThemeHeader') %}
+
+            <!-- Matomo -->
+            <script type="text/javascript">
+              var _paq = window._paq = window._paq || [];
+              /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+              _paq.push(['trackPageView']);
+              _paq.push(['enableLinkTracking']);
+              (function() {
+                var u="https://digital.flextype.org/matomo/";
+                _paq.push(['setTrackerUrl', u+'matomo.php']);
+                _paq.push(['setSiteId', '1']);
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+                g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+              })();
+            </script>
+            <noscript><p><img src="https://digital.flextype.org/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+            <!-- End Matomo Code -->
+        {% endblock %}
+    </head>
+    <body>
+        {% set promo = ['<a style="text-decoration: none;" href="https://www.slant.co/topics/9652/viewpoints/5/~flat-file-cms~flextype"><svg xmlns="http://www.w3.org/2000/svg" class="" style="display: inline-block; margin-right: 5px;" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 9h8v-3.586a1 1 0 0 1 1.707 -.707l6.586 6.586a1 1 0 0 1 0 1.414l-6.586 6.586a1 1 0 0 1 -1.707 -.707v-3.586h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1z" /></svg>Best Flat-File CMS for 2021! We are in the list!</a>', '<a style="text-decoration: none;" href="https://www.slant.co/topics/8122/viewpoints/12/~open-source-headless-cms-s~flextype"><svg xmlns="http://www.w3.org/2000/svg" class="" style="display: inline-block; margin-right: 5px;" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 9h8v-3.586a1 1 0 0 1 1.707 -.707l6.586 6.586a1 1 0 0 1 0 1.414l-6.586 6.586a1 1 0 0 1 -1.707 -.707v-3.586h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1z" /></svg>Best Open Source Headless CMS for 2021! We are in the list!</a>'] %}
+        <div style="background: white; text-align: center; border-bottom: 1px solid #333; padding-top: 5px; padding-bottom: 5px;">
+            {{ arrays(promo).random()|raw }}
+        </div>
+        <!-- Navigation -->
+        <nav class="bg-white text-black">
+            <div class="container mx-auto px-6 pt-6 pb-6 clearfix">
+              <div class="w-full lg:w-2/12
+                          text-center lg:text-left
+                          lg:float-left text-black tracking-wide">
+                <a href="{{ url() }}" class="no-underline w-full lg:w-2/12 logo no-underline font-bold" translate="no">flextype</a>
+              </div>
+              <div class="w-full mt-10 lg:mt-0 lg:float-right lg:w-9/12">
+                <div class="text-center lg:text-right">
+                    <a href="{{ url() }}/blog"
+                       class="uppercase
+                               relative
+                               block
+                               text-black
+                               nav-item
+                               lg:mr-4
+                               lg:inline-block">
+                               Blog</a>
+                   <a href="{{ url() }}/downloads"
+                      class="uppercase
+                              relative
+                              block
+                              text-black
+                              nav-item
+                              lg:mr-4
+                              lg:inline-block">
+                              Downloads</a>
+                  <a href="{{ url() }}/documentation"
+                     class="uppercase
+                             relative
+                             block
+                             text-black
+                             nav-item
+                             lg:mr-4
+                             lg:inline-block">
+                             Documentation</a>
+                 <a href="{{ url() }}/community"
+                    class="uppercase
+                            relative
+                            block
+                            text-black
+                            nav-item
+                            lg:mr-4
+                            lg:inline-block">
+                            Community</a>
+                <a href="{{ url() }}/about"
+                   class="uppercase
+                           relative
+                           block
+                           text-black
+                           nav-item
+                           lg:inline-block">
+                           About</a>
+                </div>
+              </div>
+          </div>
+        </nav>
+        <!-- /Navigation -->
+
+        <!-- Content -->
+        <div class="bg-white text-black px-6">
+            {% block content %}{% endblock %}
+        </div>
+        <!-- /Content -->
+
+        <!-- Footer -->
+        <footer class="container px-6 relative mx-auto text-sm lg:text-left text-white bg-black">
+            <div class="flex flex-wrap pt-24 pb-24">
+                <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
+                    <h4>Flextype</h4>
+                    <ul class="list-none m-0 p-0">
+                        <li><a href="{{ url() }}/about">About</a></li>
+                        <li><a href="{{ url() }}/team">Team</a></li>
+                        <li><a href="{{ url() }}/sponsors">Sponsors</a></li>
+                        <li><a href="{{ url() }}/press-kit">Press Kit</a></li>
+                        <li><a href="{{ url() }}/changelog">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
+                    <h4>Downloads</h4>
+                    <ul class="list-none m-0 p-0">
+                        <li><a href="{{ url() }}/downloads">Flextype</a></li>
+                        <li><a href="{{ url() }}/downloads/extend/plugins">Plugins</a></li>
+                        <li><a href="{{ url() }}/downloads/extend/themes">Themes</a></li>
+                    </ul>
+                </div>
+                <div class="w-full lg:w-2/12 mt-8 lg:mt-0">
+                    <h4>Community</h4>
+                    <ul class="list-none m-0 p-0">
+                        <li><a href="{{ url() }}/discord">Discord</a></li>
+                        <li><a href="https://github.com/flextype">Github</a></li>
+                        <li><a href="https://twitter.com/getflextype">Twitter</a></li>
+                        <li><a href="https://vk.com/flextype">Vkontakte</a></li>
+                        <li><a href="https://www.youtube.com/channel/UCmIAB-UDGCjF92iMNDdJR6Q?view_as=subscriber">Youtube</a></li>
+                    </ul>
+                </div>
+                <div class="w-full lg:w-6/12 mt-8 lg:mt-0">
+                    <p>Flextype is an open-source Hybrid Content Management System with the freedom of a headless CMS and with the full functionality of a traditional CMS.</p>
+                    <p>
+                        Copyright © 2021 <a href="https://github.com/Awilum">Sergey Romanenko</a>
+                    </p>
+                </div>
+            </div>
+            <div class="flex mb-6 mt-8">
+                <a href="{{ url() }}/sitemap.xml" class="float-right text-sm icon-svg-small icon-svg-white" title="Sitemap">{{ icon('sitemap', 'fontawesome|solid') }}</a>
+            </div>
+        </footer>
+        <!-- /Footer -->
+
+        {% set theme = flextype.registry.get('plugins.site.settings.theme') %}
+
+        {% if (currentUrl() != '/') %}
+            {% set highlight_js = url() ~ '/project/themes/' ~ flextype.registry.get('plugins.site.settings.theme') ~ '/assets/highlight/highlight.pack.js' %}
+            <script src="{{ highlight_js }}"></script>
+
+            <script type="text/javascript">
+                hljs.configure({useBR: false});
+                document.querySelectorAll('pre code').forEach((block) => {
+                    hljs.highlightBlock(block);
+                });
+            </script>
+        {% endif %}
+
+        {% if flextype.registry.has('assets.site.js') %}
+            {% for js in flextype.registry.get('assets.site.js') %}
+                {% if js %}
+                    <script type="text/javascript" src="{{ url() }}/{{ js }}"></script>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {% do flextype.emitter.emit('onThemeTail') %}
+    </body>
+</html>

@@ -2,38 +2,20 @@ enabled: true
 priority: 100
 feed:
   -
-    id: en/blog
+    id: blog
     options:
       title: Blog
       description: News, tips, guides for Flextype.
       collection: true
       length: 400
       format: rss
-      route: '/en/blog.rss'
+      route: '/blog.rss'
   -
-    id: en/blog
+    id: blog
     options:
       title: Blog
       description: News, tips, guides for Flextype.
       collection: true
       length: 400
       format: atom
-      route: '/en/blog.atom'
-  -
-    id: ru/blog
-    options:
-      title: Блог
-      description: Новости, советы, гайды по Flextype.
-      collection: true
-      length: 400
-      format: rss
-      route: '/ru/blog.rss'
-  -
-    id: ru/blog
-    options:
-      title: Блог
-      description: Новости, советы, гайды по Flextype.
-      collection: true
-      length: 400
-      format: atom
-      route: '/ru/blog.atom'
+      route: '/blog.atom'
