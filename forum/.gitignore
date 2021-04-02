@@ -1,0 +1,16 @@
+# Global
+.composer
+composer.lock
+package-lock.json
+node_modules/
+config.php
+
+# OS Generated
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+*.swp
+
+# phpstorm
+.idea/*
