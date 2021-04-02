@@ -1,6 +1,0 @@
-doc/ export-ignore
-tests/ export-ignore
-phpmd.sh export-ignore
-cs.sh export-ignore
-*.xml.dist export-ignore
-CHANGELOG.md export-ignore
