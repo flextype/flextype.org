@@ -3,6 +3,7 @@
 composer.lock
 package-lock.json
 node_modules/
+forum/config.php
 
 # Flextype Specific
 var/

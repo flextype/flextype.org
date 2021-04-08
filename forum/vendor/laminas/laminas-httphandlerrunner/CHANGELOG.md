@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 1.4.0 - 2021-04-08
+
+
+-----
+
+### Release Notes for [1.4.0](https://github.com/laminas/laminas-httphandlerrunner/milestone/3)
+
+Feature release (minor)
+
+### 1.4.0
+
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
+
+#### Enhancement
+
+ - [8: Initial migration to github ci workflows and psalm integration](https://github.com/laminas/laminas-httphandlerrunner/pull/8) thanks to @gsteel
+
 ## 1.3.0 - 2020-11-19
 
 ### Added

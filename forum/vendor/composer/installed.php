@@ -544,12 +544,12 @@
     ),
     'laminas/laminas-httphandlerrunner' => 
     array (
-      'pretty_version' => '1.3.0',
-      'version' => '1.3.0.0',
+      'pretty_version' => '1.4.0',
+      'version' => '1.4.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'e8f850bd12cb82b268ff235fe74b2df906e8bfe8',
+      'reference' => '6a2dd33e4166469ade07ad1283b45924383b224b',
     ),
     'laminas/laminas-stratigility' => 
     array (
