@@ -4,6 +4,7 @@ composer.lock
 package-lock.json
 node_modules/
 forum/config.php
+forum/storage/cache/
 
 # Flextype Specific
 var/
