@@ -82,10 +82,12 @@
         {% endblock %}
     </head>
     <body>
+        {#
         {% set promo = ['<a style="text-decoration: none;" href="https://www.slant.co/topics/9652/viewpoints/5/~flat-file-cms~flextype"><svg xmlns="http://www.w3.org/2000/svg" class="" style="display: inline-block; margin-right: 5px;" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 9h8v-3.586a1 1 0 0 1 1.707 -.707l6.586 6.586a1 1 0 0 1 0 1.414l-6.586 6.586a1 1 0 0 1 -1.707 -.707v-3.586h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1z" /></svg>Best Flat-File CMS for 2021! We are in the list!</a>', '<a style="text-decoration: none;" href="https://www.slant.co/topics/8122/viewpoints/12/~open-source-headless-cms-s~flextype"><svg xmlns="http://www.w3.org/2000/svg" class="" style="display: inline-block; margin-right: 5px;" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 9h8v-3.586a1 1 0 0 1 1.707 -.707l6.586 6.586a1 1 0 0 1 0 1.414l-6.586 6.586a1 1 0 0 1 -1.707 -.707v-3.586h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1z" /></svg>Best Open Source Headless CMS for 2021! We are in the list!</a>'] %}
         <div style="background: white; text-align: center; border-bottom: 1px solid #333; padding-top: 5px; padding-bottom: 5px;">
             {{ arrays(promo).random()|raw }}
         </div>
+        #}
         <!-- Navigation -->
         <nav class="bg-white text-black">
             <div class="container mx-auto px-6 pt-6 pb-6 clearfix">
