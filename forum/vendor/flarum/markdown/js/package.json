@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "@flarum/markdown",
+  "dependencies": {
+    "flarum-webpack-config": "0.1.0-beta.10",
+    "mdarea": "^2.0.9",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production"
+  }
+}
