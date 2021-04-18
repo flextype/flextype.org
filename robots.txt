@@ -5,3 +5,12 @@ Disallow: /vendor/
 
 User-agent: SemrushBot
 Disallow: /
+
+User-agent: MauiBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
