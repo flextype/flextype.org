@@ -1,16 +1,37 @@
 User-agent: *
+Crawl-delay: 10
 Disallow: /src/
 Disallow: /project/
 Disallow: /vendor/
 
+# Block bad bots
+
 User-agent: SemrushBot
 Disallow: /
 
-User-agent: MauiBot
+User-agent: MauiBot (crawler.feedback+wc@gmail.com)
 Disallow: /
 
 User-agent: MJ12bot
 Disallow: /
 
+User-agent: mj12bot
+Disallow: /
+
 User-agent: AhrefsBot
+Disallow: /
+
+User-agent: ahrefsbot
+Disallow: /
+
+User-agent: rogerbot
+Disallow: /
+
+User-agent: dotbot
+Disallow: /
+
+User-agent: Linguee Bot
+Disallow: /
+
+User-agent: Domain Re-Animator Bot
 Disallow: /
