@@ -12,7 +12,7 @@ txt_discord_heading: Discord
 txt_discord_p: Got a question about setting up or using Flextype? We'll do our best to help you out. Also here you may start discussions about core, plugin and themes development.
 txt_discord_button: "Join the Conversation"
 txt_github_heading: GitHub
-txt_github_p: "If you want to report a bug or contribute your ideas, you can use the <a href=https://github.com/flextype/flextype/issues>Flextype GitHub Issues tracker</a>."
+txt_github_p: 'You may use <a href="https://github.com/flextype/flextype/discussions">GitHub Discussions</a> to start discussion about core, plugin and themes development or If you want to report a bug, you can use the <a href="https://github.com/flextype/flextype/issues">GitHub Issues.</a>'
 txt_github_button: Contribute
 txt_vkontakte_heading: Vkontakte
 txt_vkontakte_p: Russian Flextype Community!

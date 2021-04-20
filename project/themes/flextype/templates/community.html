@@ -8,37 +8,35 @@
     <h2 class="text-center m-0 pl-6 pr-6 lg:pl-40 lg:pr-40 pb-24 text-xl font-normal">
         {{ entry.description|raw }}
     </h2>
-    <div class="">
-        <div class="flex content-center flex-wrap mt-12">
-            <div class="w-full lg:w-6/12 p-6 text-center">
-                <div class="p-12 h-full text-black plate">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('discord', 'fontawesome|brands') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_discord_heading|raw }}</h4>
-                    <div class="h-24 mb-10">
-                        {{ entry.txt_discord_p|raw }}
-                    </div>
-                    <a class="pl-6 pr-6 pt-2 pb-2 button " href="https://discord.gg/CCKPKVG">{{ entry.txt_discord_button|raw }}</a>
+    <div class="flex content-center flex-wrap mt-12 justify-center">
+        <div class="w-full lg:w-6/12 p-6 text-center">
+            <div class="p-12 h-full text-black plate">
+                <div class="icon-svg-large mb-5 text-center">{{ icon('github', 'fontawesome|brands') }}</div>
+                <h4 class="text-2xl">{{ entry.txt_github_heading|raw }}</h4>
+                <div class="h-24 mb-10">
+                    {{ entry.txt_github_p|raw }}
                 </div>
+                <a class="pl-6 pr-6 pt-2 pb-2 button " href="https://github.com/flextype">{{ entry.txt_github_button|raw }}</a>
             </div>
-            <div class="w-full lg:w-6/12 p-6 text-center">
-                <div class="p-12 h-full text-black plate">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('github', 'fontawesome|brands') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_github_heading|raw }}</h4>
-                    <div class="h-24 mb-10">
-                        {{ entry.txt_github_p|raw }}
-                    </div>
-                    <a class="pl-6 pr-6 pt-2 pb-2 button " href="https://github.com/flextype">{{ entry.txt_github_button|raw }}</a>
+        </div>
+        <div class="w-full lg:w-6/12 p-6 text-center">
+            <div class="p-12 h-full text-black plate">
+                <div class="icon-svg-large mb-5 text-center">{{ icon('discord', 'fontawesome|brands') }}</div>
+                <h4 class="text-2xl">{{ entry.txt_discord_heading|raw }}</h4>
+                <div class="h-24 mb-10">
+                    {{ entry.txt_discord_p|raw }}
                 </div>
+                <a class="pl-6 pr-6 pt-2 pb-2 button " href="https://discord.gg/CCKPKVG">{{ entry.txt_discord_button|raw }}</a>
             </div>
-            <div class="w-full lg:w-6/12 p-6 text-center">
-                <div class="p-12 h-full text-black plate">
-                    <div class="icon-svg-large mb-5 text-center">{{ icon('twitter', 'fontawesome|brands') }}</div>
-                    <h4 class="text-2xl">{{ entry.txt_twitter_heading|raw }}</h4>
-                    <div class="h-24 mb-10">
-                        {{ entry.txt_twitter_p|raw }}
-                    </div>
-                    <a class="pl-6 pr-6 pt-2 pb-2 button " href="https://twitter.com/getflextype">{{ entry.txt_twitter_button|raw }}</a>
+        </div>
+        <div class="w-full lg:w-6/12 p-6 text-center">
+            <div class="p-12 h-full text-black plate">
+                <div class="icon-svg-large mb-5 text-center">{{ icon('twitter', 'fontawesome|brands') }}</div>
+                <h4 class="text-2xl">{{ entry.txt_twitter_heading|raw }}</h4>
+                <div class="h-24 mb-10">
+                    {{ entry.txt_twitter_p|raw }}
                 </div>
+                <a class="pl-6 pr-6 pt-2 pb-2 button " href="https://twitter.com/getflextype">{{ entry.txt_twitter_button|raw }}</a>
             </div>
         </div>
     </div>
