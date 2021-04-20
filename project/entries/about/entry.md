@@ -1,9 +1,11 @@
 ---
 title: 'About Flextype'
+description: ''
 template: about
 visibility: visible
 published_at: '22-09-2019 19:15'
-description: Flextype is an open-source Hybrid Content Management System with the freedom of a headless CMS and with the full functionality of a traditional CMS. A true hybrid CMS gives you the freedom of a Headless CMS ー with the functionality and ease-of-use of a traditional content management system. Whether you’re looking to build headless, traditional, or a combination of both Flextype CMS has you covered.
+seo:
+  description: Flextype is an open-source Hybrid Content Management System with the freedom of a headless CMS and with the full functionality of a traditional CMS. A true hybrid CMS gives you the freedom of a Headless CMS ー with the functionality and ease-of-use of a traditional content management system. Whether you’re looking to build headless, traditional, or a combination of both Flextype CMS has you covered.
 created_at: '22-09-2019 19:15'
 uuid: 94f5eff7-28fb-4fce-a4d0-7dffcda31f4a
 published_by: bb7b1232-077e-4e14-8182-df386ed9aa1a
