@@ -58,7 +58,7 @@ GET /api/registry?id=YOUR_REGISTRY_ITEM_ID&token=YOUR_REGISTRY_TOKEN
         <tr>
             <td>id</td>
             <td>REQUIRED</td>
-            <td>Valid Entry ID (slug)</td>
+            <td>Valid Entry ID</td>
         </tr>
         <tr>
             <td>token</td>
