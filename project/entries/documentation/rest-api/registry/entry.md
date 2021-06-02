@@ -19,7 +19,7 @@ The Flextype Registry API organized around Representational State Transfer (REST
 
 #### <a name="endpoints"></a> Endpoints
 
-    <table>
+<table>
     <thead>
         <tr>
             <th>Method</th>
@@ -34,8 +34,7 @@ The Flextype Registry API organized around Representational State Transfer (REST
             <td>Fetch registry item</td>
         </tr>
     </tbody>
-    </table>
-</div>
+</table>
 
 ### <a name="fetch-registry-item"></a> Fetch registry item
 
