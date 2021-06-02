@@ -100,7 +100,7 @@ GET /api/entries?id=YOUR_ENTRY_ID&[options]&token=YOUR_ENTRIES_TOKEN
         <tr>
             <td>id</td>
             <td>REQUIRED</td>
-            <td>Valid Entry ID (slug)</td>
+            <td>Valid Entry ID</td>
         </tr>
         <tr>
             <td>options</td>
@@ -152,7 +152,7 @@ GET /api/entries?id=YOUR_ENTRY_ID&options[collection]=true&token=YOUR_ENTRIES_TO
         <tr>
             <td>id</td>
             <td>REQUIRED</td>
-            <td>Valid Entry ID (slug)</td>
+            <td>Valid Entry ID</td>
         </tr>
         <tr>
             <td>options</td>
