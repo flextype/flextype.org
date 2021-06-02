@@ -29,9 +29,3 @@ Link: <https://github.com/flextype>
 Follow [Flextype on Twitter](https://twitter.com/getflextype) to get real-time news regarding the development and all events we are attending.
 
 Link: <https://twitter.com/getflextype>
-
-### Vkontakte
-
-Russian Flextype Community!
-
-Link: <https://vk.com/flextype>
