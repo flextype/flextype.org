@@ -78,7 +78,7 @@ Fetch specific item from registry.
 [raw][registry_get name="item-name" default="default-value"][/raw]
 ```
 
-##### <a name="shortcodes-url"></a> `[raw][url]/documentation[/raw]`
+##### <a name="shortcodes-url"></a> `[raw][url][/raw]`
 
 Display application url.
 
