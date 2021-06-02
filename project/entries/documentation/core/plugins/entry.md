@@ -73,8 +73,8 @@ You can reach these items values from a Flextype plugin(s) with PHP syntax:
 Usage:
 
 ```php
-$plugin_name = flextype('registry')->get('plugins.site.manifest.name');
-$plugin_version = flextype('registry')->get('plugins.site.manifest.version');
+$pluginName = flextype('registry')->get('plugins.site.manifest.name');
+$pluginVersion = flextype('registry')->get('plugins.site.manifest.version');
 ```
 
 #### Accessing Plugin Configuration
