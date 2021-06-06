@@ -128,7 +128,7 @@ Provide contextual feedback messages for typical user actions with the handful o
 
     # Alert header
     header:
-      # Alert header classes seperated by (,)
+      # Alert header classes separated by (,)
       #
       # example: class-name
       class: 
@@ -164,7 +164,7 @@ Creates a clickable text.
     # Anchor href
     href: 
 
-    # Anchor classes seperated by (,)
+    # Anchor classes separated by (,)
     #
     # example: btn, btn-primary
     class: 
