@@ -124,7 +124,7 @@ Provide contextual feedback messages for typical user actions with the handful o
     # variants: primary, secondary, sucess, info, warning, danger
     #
     # example: primary
-    variants: 
+    type: 
 
     # Alert header
     header:
