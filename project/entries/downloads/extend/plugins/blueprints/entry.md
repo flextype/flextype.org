@@ -556,8 +556,8 @@ Creates column block.
     # https://getbootstrap.com/docs/5.0/layout/columns/
     size:
 
-    # Blocks
-    # Any other blokcs maybe included here.
+    # Column blocks
+    # Any other blocks may included here.
     blocks:
 ```
 
@@ -596,7 +596,96 @@ Creates container block the fundamental building block of your layouts.
     # https://getbootstrap.com/docs/5.0/layout/containers/
     breakpoint:
 
-    # Blocks
-    # Any other blokcs maybe included here.
+    # Container blocks
+    # Any other blocks may included here.
     blocks:
+```
+
+#### Divider
+
+Creates horizontal line to separate blocks.
+
+```yaml
+- type: Divider
+  properties:
+    # Divider unique ID 
+    id: 
+    
+    # Divider classes separated by (,)
+    #
+    # example: class-name
+    class: 
+
+    # Divider style array
+    #
+    # example:
+    #   color: red
+    #   backgroundColor: red
+    style:
+
+    # Divider data array
+    #
+    # example:
+    #   foo: bar
+    data: 
+
+    # Divider dashed or solid
+    # Default is false
+    #
+    # example:
+    #   dashed: true
+    dashed: 
+```
+
+#### Form
+
+Creates form for user input.
+
+```yaml
+- type: Form
+  properties:
+    # Form unique ID 
+    id: 
+
+    # Form unique name 
+    id: 
+    
+    # Form classes separated by (,)
+    #
+    # example: class-name
+    class: 
+
+    # Form data array
+    #
+    # example:
+    #   foo: bar
+    data: 
+
+    # Form events array
+    #
+    # events: onkeyup, onmousedown, onmousemove, onmouseout, onmouseover,
+    #         onmouseup, onkeypress, onclick, ondblclick, onkeydown,
+    #         onblur, onreset, onsubmit
+    #
+    # example:
+    #   onclick: "alert('Lorem ipsum...')"
+    events:
+    
+    # Form blocks
+    # Any other blocks may included here.
+    blocks:
+
+    # Form process
+    process:
+      # Actions array
+      actions: 
+
+      # Fields array
+      fields:
+
+      # Redirect array
+      redirect:
+
+      # Messages array
+      messages: 
 ```
