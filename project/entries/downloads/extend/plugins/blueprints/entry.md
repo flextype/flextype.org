@@ -509,7 +509,94 @@ Creates group a series of buttons together on a single line or stack them in a v
               events: 
 
               # Item icon name and icon set
-              item:
+              icon:
                 name:
                 set:
+```
+
+#### Column
+
+Creates column block.
+
+```yaml
+- type: Column
+  properties:
+    # Column unique ID 
+    id: 
+    
+    # Column classes separated by (,)
+    #
+    # example: class-name
+    class: 
+
+    # Column style array
+    #
+    # example:
+    #   color: red
+    #   backgroundColor: red
+    style:
+
+    # Column data array
+    #
+    # example:
+    #   foo: bar
+    data: 
+
+    # Colum media query breakpoint
+    # default is medium
+    #
+    # variants: extra small, small, medium, large, extra large, extra extra large
+    # https://getbootstrap.com/docs/5.0/layout/breakpoints/
+    breakpoint:
+
+    # Colum media query size
+    # default is 12
+    #
+    # variants: 1/12, 2/12, 3/12, 4/12, 5/15, 6/12, 7/12, 8/12, 9/12, 10/12, 11/12, 12/12, 12, full
+    # https://getbootstrap.com/docs/5.0/layout/columns/
+    size:
+
+    # Blocks
+    # Any other blokcs maybe included here.
+    blocks:
+```
+
+#### Container
+
+Creates container block the fundamental building block of your layouts.
+
+```yaml
+- type: Container
+  properties:
+    # Container unique ID 
+    id: 
+    
+    # Container classes separated by (,)
+    #
+    # example: class-name
+    class: 
+
+    # Container style array
+    #
+    # example:
+    #   color: red
+    #   backgroundColor: red
+    style:
+
+    # Container data array
+    #
+    # example:
+    #   foo: bar
+    data: 
+
+    # Container media query breakpoint
+    # default is empty container breakpoint value which sets a max-width at each responsive breakpoint
+    #
+    # variants: small, medium, large, extra large, extra extra large, fluid
+    # https://getbootstrap.com/docs/5.0/layout/containers/
+    breakpoint:
+
+    # Blocks
+    # Any other blokcs maybe included here.
+    blocks:
 ```
