@@ -422,4 +422,94 @@ Creates group a series of buttons together on a single line or stack them in a v
           #
           # variants: true or false
           disabled: 
+
+      - type: ButtonToggle
+          # ButtonToggle unique ID 
+          id: 
+          
+          # ButtonToggle title value
+          value: 
+
+          # ButtonToggle classes separated by (,)
+          #
+          # example: btn, btn-primary
+          class: 
+          
+          # ButtonToggle style array
+          #
+          # example:
+          #   color: red
+          #   backgroundColor: red
+          style:
+
+          # ButtonToggle data array
+          #
+          # example:
+          #   bs-toggle: modal
+          #   bs-target: "#exampleModal"
+          data: 
+          
+          # ButtonToggle events array
+          #
+          # events: onkeyup, onmousedown, onmousemove, onmouseout,
+          #         onmouseover, onmouseup, onkeypress, onclick, ondblclick,
+          #         onkeydown, onblur
+          #
+          # example:
+          #   onclick: "alert('Lorem ipsum...')"
+          events: 
+
+          # ButtonToggle type
+          # default is primary
+          #
+          # variants: primary, secondary, sucess, info, warning, danger
+          #
+          # example: primary
+          type: 
+          
+          # ButtonToggle items
+          items:
+
+              # Item href is an attribute of the anchor tag.
+            - href: 
+
+              # Item unique ID 
+              id: 
+              
+              # Item title value
+              value: 
+
+              # Item classes separated by (,)
+              #
+              # example: btn, btn-primary
+              class: 
+              
+              # Item style array
+              #
+              # example:
+              #   color: red
+              #   backgroundColor: red
+              style:
+
+              # Item data array
+              #
+              # example:
+              #   bs-toggle: modal
+              #   bs-target: "#exampleModal"
+              data: 
+              
+              # Item events array
+              #
+              # events: onkeyup, onmousedown, onmousemove, onmouseout,
+              #         onmouseover, onmouseup, onkeypress, onclick, ondblclick,
+              #         onkeydown, onblur
+              #
+              # example:
+              #   onclick: "alert('Lorem ipsum...')"
+              events: 
+
+              # Item icon name and icon set
+              item:
+                name:
+                set:
 ```
