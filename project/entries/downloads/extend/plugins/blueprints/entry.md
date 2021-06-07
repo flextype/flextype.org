@@ -150,19 +150,25 @@ Provide contextual feedback messages for typical user actions with the handful o
 
     # Alert classes seperated by (,)
     #
-    # example: class-name
+    # Examples
+    #
+    # class: class-name
     class: 
     
     # Alert style array
     #
-    # example:
+    # Examples
+    #
+    # style:
     #   color: red
     #   backgroundColor: red
     style:
 
     # Alert data array
     #
-    # example:
+    # Examples
+    #
+    # data:
     #   foo: bar
     data: 
 
@@ -171,26 +177,34 @@ Provide contextual feedback messages for typical user actions with the handful o
     #
     # variants: primary, secondary, sucess, info, warning, danger
     #
-    # example: primary
+    # Examples
+    #
+    # type: primary
     type: 
 
     # Alert header
     header:
       # Alert header classes separated by (,)
       #
-      # example: class-name
+      # Examples
+      #
+      # class: class-name
       class: 
       
       # Alert header style array
       #
-      # example:
+      # Examples
+      #
+      # style:
       #   color: red
       #   backgroundColor: red
       style:
 
       # Alert header data array
       #
-      # example:
+      # Examples
+      #
+      # data:
       #   foo: bar
       data:
    
@@ -214,19 +228,25 @@ Creates a clickable text.
 
     # Anchor classes separated by (,)
     #
-    # example: btn, btn-primary
+    # Examples
+    #
+    # class: btn, btn-primary
     class: 
     
     # Anchor style array
     #
-    # example:
+    # Examples
+    #
+    # style:
     #   color: red
     #   backgroundColor: red
     style:
 
     # Anchor data array
     #
-    # example:
+    # Examples
+    #
+    # data:
     #   bs-toggle: modal
     #   bs-target: "#exampleModal"
     data: 
@@ -237,7 +257,9 @@ Creates a clickable text.
     #         onmouseover, onmouseup, onkeypress, onclick, ondblclick,
     #         onkeydown, onblur
     #
-    # example:
+    # Examples
+    #
+    # events:
     #   onclick: "alert('Lorem ipsum...')"
     events: 
 
@@ -262,19 +284,25 @@ Creates button for actions in forms, dialogs, and more with support for multiple
 
     # Button classes separated by (,)
     #
-    # example: btn, btn-primary
+    # Examples
+    #
+    # class: btn, btn-primary
     class: 
     
     # Button style array
     #
-    # example:
+    # Examples
+    #
+    # style:
     #   color: red
     #   backgroundColor: red
     style:
 
     # Button data array
     #
-    # example:
+    # Examples
+    #
+    # data:
     #   bs-toggle: modal
     #   bs-target: "#exampleModal"
     data: 
@@ -285,7 +313,9 @@ Creates button for actions in forms, dialogs, and more with support for multiple
     #         onmouseover, onmouseup, onkeypress, onclick, ondblclick,
     #         onkeydown, onblur
     #
-    # example:
+    # Examples
+    #
+    # events:
     #   onclick: "alert('Lorem ipsum...')"
     events: 
 
@@ -294,14 +324,18 @@ Creates button for actions in forms, dialogs, and more with support for multiple
     #
     # variants: primary, secondary, sucess, info, warning, danger
     #
-    # example: primary
+    # Examples
+    #
+    # type: primary
     type: 
 
     # Button size
     #
     # variants: large, small
     #
-    # example: large
+    # Examples
+    #
+    # size: large
     size: 
 
     # Button disabled state
@@ -323,19 +357,25 @@ Creates group a series of buttons together on a single line or stack them in a v
     
     # ButtonGroup classes separated by (,)
     #
-    # example: btn, btn-primary
+    # Examples
+    #
+    # class: btn, btn-primary
     class: 
     
     # ButtonGroup style array
     #
-    # example:
+    # Examples
+    #
+    # style:
     #   color: red
     #   backgroundColor: red
     style:
 
     # ButtonGroup data array
     #
-    # example:
+    # Examples
+    #
+    # data:
     #   bs-toggle: modal
     #   bs-target: "#exampleModal"
     data: 
@@ -346,7 +386,9 @@ Creates group a series of buttons together on a single line or stack them in a v
     #         onmouseover, onmouseup, onkeypress, onclick, ondblclick,
     #         onkeydown, onblur
     #
-    # example:
+    # Examples
+    #
+    # events:
     #   onclick: "alert('Lorem ipsum...')"
     events:  
 
@@ -354,7 +396,9 @@ Creates group a series of buttons together on a single line or stack them in a v
     #
     # variants: large, small
     #
-    # example: large
+    # Examples
+    #
+    # size: large
     size: 
 
     # ButtonGroup display vertical or not
@@ -375,19 +419,25 @@ Creates group a series of buttons together on a single line or stack them in a v
 
           # Button classes separated by (,)
           #
-          # example: btn, btn-primary
+          # Examples
+          #
+          # class: btn, btn-primary
           class: 
           
           # Button style array
           #
-          # example:
+          # Examples
+          #
+          # style:
           #   color: red
           #   backgroundColor: red
           style:
 
           # Button data array
           #
-          # example:
+          # Examples
+          #
+          # data:
           #   bs-toggle: modal
           #   bs-target: "#exampleModal"
           data: 
@@ -398,7 +448,9 @@ Creates group a series of buttons together on a single line or stack them in a v
           #         onmouseover, onmouseup, onkeypress, onclick, ondblclick,
           #         onkeydown, onblur
           #
-          # example:
+          # Examples
+          #
+          # events:
           #   onclick: "alert('Lorem ipsum...')"
           events: 
 
@@ -407,14 +459,18 @@ Creates group a series of buttons together on a single line or stack them in a v
           #
           # variants: primary, secondary, sucess, info, warning, danger
           #
-          # example: primary
+          # Examples
+          #
+          # type: primary
           type: 
 
           # Button size
           #
           # variants: large, small
           #
-          # example: large
+          # Examples
+          #
+          # size: large
           size: 
 
           # Button disabled state
@@ -432,19 +488,25 @@ Creates group a series of buttons together on a single line or stack them in a v
 
           # ButtonToggle classes separated by (,)
           #
-          # example: btn, btn-primary
+          # Examples
+          #
+          # class: btn, btn-primary
           class: 
           
           # ButtonToggle style array
           #
-          # example:
+          # Examples
+          #
+          # style:
           #   color: red
           #   backgroundColor: red
           style:
 
           # ButtonToggle data array
           #
-          # example:
+          # Examples 
+          #
+          # data:
           #   bs-toggle: modal
           #   bs-target: "#exampleModal"
           data: 
@@ -455,7 +517,9 @@ Creates group a series of buttons together on a single line or stack them in a v
           #         onmouseover, onmouseup, onkeypress, onclick, ondblclick,
           #         onkeydown, onblur
           #
-          # example:
+          # Examples
+          #
+          # events:
           #   onclick: "alert('Lorem ipsum...')"
           events: 
 
@@ -464,7 +528,9 @@ Creates group a series of buttons together on a single line or stack them in a v
           #
           # variants: primary, secondary, sucess, info, warning, danger
           #
-          # example: primary
+          # Examples
+          # 
+          # type: primary
           type: 
           
           # ButtonToggle items
@@ -481,19 +547,25 @@ Creates group a series of buttons together on a single line or stack them in a v
 
               # Item classes separated by (,)
               #
-              # example: btn, btn-primary
+              # Examples
+              #
+              # class: btn, btn-primary
               class: 
               
               # Item style array
               #
-              # example:
+              # Examples
+              #
+              # style:
               #   color: red
               #   backgroundColor: red
               style:
 
               # Item data array
               #
-              # example:
+              # Examples
+              #
+              # data:
               #   bs-toggle: modal
               #   bs-target: "#exampleModal"
               data: 
@@ -504,7 +576,9 @@ Creates group a series of buttons together on a single line or stack them in a v
               #         onmouseover, onmouseup, onkeypress, onclick, ondblclick,
               #         onkeydown, onblur
               #
-              # example:
+              # Examples
+              #
+              # events:
               #   onclick: "alert('Lorem ipsum...')"
               events: 
 
@@ -526,19 +600,25 @@ Creates column block.
     
     # Column classes separated by (,)
     #
-    # example: class-name
+    # Examples
+    #
+    # class: class-name
     class: 
 
     # Column style array
     #
-    # example:
+    # Examples
+    #
+    # style:
     #   color: red
     #   backgroundColor: red
     style:
 
     # Column data array
     #
-    # example:
+    # Examples
+    #
+    # data:
     #   foo: bar
     data: 
 
@@ -573,19 +653,25 @@ Creates container block the fundamental building block of your layouts.
     
     # Container classes separated by (,)
     #
-    # example: class-name
+    # Examples
+    #
+    # class: class-name
     class: 
 
     # Container style array
     #
-    # example:
+    # Examples
+    #
+    # style:
     #   color: red
     #   backgroundColor: red
     style:
 
     # Container data array
     #
-    # example:
+    # Examples
+    #
+    # data:
     #   foo: bar
     data: 
 
@@ -613,27 +699,34 @@ Creates horizontal line to separate blocks.
     
     # Divider classes separated by (,)
     #
-    # example: class-name
+    # Examples
+    #
+    # class: class-name
     class: 
 
     # Divider style array
     #
-    # example:
+    # Examples
+    #
+    # style:
     #   color: red
     #   backgroundColor: red
     style:
 
     # Divider data array
     #
-    # example:
+    # Examples
+    #
+    # data: 
     #   foo: bar
     data: 
 
     # Divider dashed or solid
     # Default is false
     #
-    # example:
-    #   dashed: true
+    # Examples
+    #
+    # dashed: true
     dashed: 
 ```
 
@@ -652,22 +745,30 @@ Creates form for user input.
     
     # Form classes separated by (,)
     #
-    # example: class-name
+    # Examples
+    #
+    # class: class-name
     class: 
 
     # Form data array
     #
-    # example:
+    # Examples
+    #
+    # data:
     #   foo: bar
     data: 
 
     # Form events array
     #
-    # events: onkeyup, onmousedown, onmousemove, onmouseout, onmouseover,
-    #         onmouseup, onkeypress, onclick, ondblclick, onkeydown,
-    #         onblur, onreset, onsubmit
+    # Events
     #
-    # example:
+    # onkeyup, onmousedown, onmousemove, onmouseout, onmouseover,
+    # onmouseup, onkeypress, onclick, ondblclick, onkeydown,
+    # onblur, onreset, onsubmit
+    #
+    # Examples
+    # 
+    # events:
     #   onclick: "alert('Lorem ipsum...')"
     events:
     
@@ -675,17 +776,57 @@ Creates form for user input.
     # Any other blocks may included here.
     blocks:
 
-    # Form process
+    # Form process 
+    #
+    # Define form fields, actions, redirects, messages
     process:
       # Actions array
       actions: 
 
       # Fields array
+      #
+      # Field structure
+      #
+      # name - unique field name
+      # type - field type (bool, float, int, string)
+      # value - field value
+      # ignore - ignore field saving, by default ignore is false
+      #
+      # Examples
+      #
+      # fields:
+      #   - name: title
+      #     type: string
+      #     value: Lorem ipsum...
+      #     ignore: false 
       fields:
 
       # Redirect array
+      #
+      # Redirect structure
+      #
+      # route - registered route name
+      # url - url
+      # args - arguments array for route or url
+      #
+      # Examples
+      #
+      # redirect:
+      #   route: admin.entries.edit
+      #   args:
+      #     id: "{{ id }}"
       redirect:
 
       # Messages array
+      #
+      # Messages structure
+      #
+      # message_namespace - unique message namespace
+      #
+      # Examples
+      #
+      # messages:
+      #   error: "{{ __('admin_message_entry_was_not_created') }}"
+      #   success: "{{ __('admin_message_entry_created') }}"
       messages: 
 ```
