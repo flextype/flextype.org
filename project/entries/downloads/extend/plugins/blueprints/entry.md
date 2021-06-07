@@ -13,12 +13,12 @@ documentation: https://github.com/flextype-plugins/blueprints
 template: plugin
 ---
 
-* [Installation](Installation)
-* [Settings](Settings)
-* [Blocks](Blocks)
-  - [Alert](Alert)
-  - [Anchor](Anchor)
-  - [Button](Button)
+* [Installation](#Installation)
+* [Settings](#Settings)
+* [Blocks](#Blocks)
+  - [Alert](#Alert)
+  - [Anchor](#Anchor)
+  - [Button](#Button)
 
 #### Installation
 
