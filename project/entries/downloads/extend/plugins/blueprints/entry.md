@@ -120,6 +120,7 @@ Provide contextual feedback messages for typical user actions with the handful o
     data: 
 
     # Alert type
+    # default is primary
     #
     # variants: primary, secondary, sucess, info, warning, danger
     #
@@ -197,4 +198,68 @@ Creates a clickable text.
     #
     # variants: _self, _blank
     target: 
+```
+
+#### Button
+
+Creates button for actions in forms, dialogs, and more with support for multiple sizes, states, and more.
+
+```yaml
+- type: Button
+  Button:
+    # Anchor unique ID 
+    id: 
+    
+    # Button title value
+    value: 
+
+    # Button classes separated by (,)
+    #
+    # example: btn, btn-primary
+    class: 
+    
+    # Button style array
+    #
+    # example:
+    #   color: red
+    #   backgroundColor: red
+    style:
+
+    # Button data array
+    #
+    # example:
+    #   bs-toggle: modal
+    #   bs-target: "#exampleModal"
+    data: 
+    
+    # Button events array
+    #
+    # events: onkeyup, onmousedown, onmousemove, onmouseout,
+    #         onmouseover, onmouseup, onkeypress, onclick, ondblclick,
+    #         onkeydown, onblur
+    #
+    # example:
+    #   onclick: "alert('Lorem ipsum...')"
+    events: 
+
+    # Button type
+    # default is primary
+    #
+    # variants: primary, secondary, sucess, info, warning, danger
+    #
+    # example: primary
+    type: 
+
+    # Button size
+    #
+    # variants: large, small
+    #
+    # example: large
+    size: 
+
+    # Button disabled state
+    # default is false
+    #
+    # variants: true or false
+    disabled: 
 ```
