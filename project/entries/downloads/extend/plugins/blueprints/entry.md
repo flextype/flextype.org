@@ -317,7 +317,7 @@ Creates group a series of buttons together on a single line or stack them in a v
 
 ```yaml
 - type: ButtonGroup
-  Button:
+  properties:
     # ButtonGroup unique ID 
     id: 
     
