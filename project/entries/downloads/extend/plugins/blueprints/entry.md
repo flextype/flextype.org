@@ -253,8 +253,8 @@ Creates button for actions in forms, dialogs, and more with support for multiple
 
 ```yaml
 - type: Button
-  Button:
-    # Anchor unique ID 
+  properties:
+    # Button unique ID 
     id: 
     
     # Button title value
@@ -309,4 +309,117 @@ Creates button for actions in forms, dialogs, and more with support for multiple
     #
     # variants: true or false
     disabled: 
+```
+
+#### ButtonGroup
+
+Creates group a series of buttons together on a single line or stack them in a vertical column.
+
+```yaml
+- type: ButtonGroup
+  Button:
+    # ButtonGroup unique ID 
+    id: 
+    
+    # ButtonGroup classes separated by (,)
+    #
+    # example: btn, btn-primary
+    class: 
+    
+    # ButtonGroup style array
+    #
+    # example:
+    #   color: red
+    #   backgroundColor: red
+    style:
+
+    # ButtonGroup data array
+    #
+    # example:
+    #   bs-toggle: modal
+    #   bs-target: "#exampleModal"
+    data: 
+    
+    # ButtonGroup events array
+    #
+    # events: onkeyup, onmousedown, onmousemove, onmouseout,
+    #         onmouseover, onmouseup, onkeypress, onclick, ondblclick,
+    #         onkeydown, onblur
+    #
+    # example:
+    #   onclick: "alert('Lorem ipsum...')"
+    events:  
+
+    # ButtonGroup size
+    #
+    # variants: large, small
+    #
+    # example: large
+    size: 
+
+    # ButtonGroup display vertical or not
+    # default is false
+    #
+    # variants: true or false
+    vertical: 
+
+    # ButtonGroup buttons
+    buttons:
+      - type: Button
+        properties:
+          # Button unique ID 
+          id: 
+          
+          # Button title value
+          value: 
+
+          # Button classes separated by (,)
+          #
+          # example: btn, btn-primary
+          class: 
+          
+          # Button style array
+          #
+          # example:
+          #   color: red
+          #   backgroundColor: red
+          style:
+
+          # Button data array
+          #
+          # example:
+          #   bs-toggle: modal
+          #   bs-target: "#exampleModal"
+          data: 
+          
+          # Button events array
+          #
+          # events: onkeyup, onmousedown, onmousemove, onmouseout,
+          #         onmouseover, onmouseup, onkeypress, onclick, ondblclick,
+          #         onkeydown, onblur
+          #
+          # example:
+          #   onclick: "alert('Lorem ipsum...')"
+          events: 
+
+          # Button type
+          # default is primary
+          #
+          # variants: primary, secondary, sucess, info, warning, danger
+          #
+          # example: primary
+          type: 
+
+          # Button size
+          #
+          # variants: large, small
+          #
+          # example: large
+          size: 
+
+          # Button disabled state
+          # default is false
+          #
+          # variants: true or false
+          disabled: 
 ```
