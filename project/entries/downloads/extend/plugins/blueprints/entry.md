@@ -781,6 +781,23 @@ Creates form for user input.
     # Define form fields, actions, redirects, messages
     process:
       # Actions array
+      #
+      # Action structure 
+      #
+      # name - action name
+      # properties:
+      #   - type - property type (bool, float, int, string, array)
+      #     value - property value
+      #
+      # Examples
+      #
+      # actions: 
+      #   - name: actionName
+      #     properties:
+      #       - type: string
+      #         value: "{{ id }}"
+      #       - type: int
+      #         value: 42
       actions: 
 
       # Fields array
