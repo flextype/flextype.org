@@ -980,3 +980,90 @@ Creates image.
     # loading: eager
     loading: 
 ```
+
+#### InputButton
+
+Creates input button for user form.
+
+```yaml
+- type: InputButton
+  properties:
+    # InputButton unique ID 
+    id: 
+
+    # InputButton unique name 
+    name: 
+
+    # InputButton style array
+    #
+    # Examples
+    #
+    # style:
+    #   color: red
+    #   backgroundColor: red
+    style:
+
+    # InputButton classes separated by (,)
+    #
+    # Examples
+    #
+    # class: class-name
+    class: 
+
+    # InputButton data array
+    #
+    # Examples
+    #
+    # data:
+    #   foo: bar
+    data: 
+
+    # InputButton value
+    #
+    # Specifies the value of an InputButton.
+    #
+    # Examples
+    #
+    # value: Save
+    value:  
+
+    # InputButton disabled state
+    #
+    # Specifies that an InputButton should be disabled.
+    # Default is false.
+    #
+    # Examples
+    #
+    # disabled: true
+    disabled:  
+
+    # InputButton events
+    # 
+    # variants: onkeyup, onmousedown, onmousemove, onmouseout,
+    #           onmouseover, onmouseup, onkeypress, onclick, ondblclick,
+    #           onkeydown, onblur
+    #
+    # Examples
+    #
+    # events: 
+    #   onclick: "alert('Lorem');"
+    events: 
+
+    # InputButton type
+    # default is primary
+    #
+    # variants: primary, secondary, sucess, info, warning, danger
+    #
+    # Examples
+    #
+    # type: primary
+    type: 
+
+    # InputButton outline
+    # default is false
+    #
+    # Examples
+    #
+    # outline: true
+    outline: 
+```
