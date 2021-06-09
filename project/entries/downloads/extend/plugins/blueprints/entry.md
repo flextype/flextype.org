@@ -741,7 +741,7 @@ Creates form for user input.
     id: 
 
     # Form unique name 
-    id: 
+    name: 
     
     # Form classes separated by (,)
     #
@@ -846,4 +846,137 @@ Creates form for user input.
       #   error: "{{ __('admin_message_entry_was_not_created') }}"
       #   success: "{{ __('admin_message_entry_created') }}"
       messages: 
+```
+
+#### Heading
+
+Creates heading.
+
+```yaml
+- type: Heading
+  properties:
+    # Heading unique ID 
+    id: 
+
+    # Heading unique name 
+    name: 
+    
+    # Heading classes separated by (,)
+    #
+    # Examples
+    #
+    # class: class-name
+    class: 
+
+    # Heading style array
+    #
+    # Examples
+    #
+    # style:
+    #   color: red
+    #   backgroundColor: red
+    style:
+
+    # Heading data array
+    #
+    # Examples
+    #
+    # data:
+    #   foo: bar
+    data: 
+
+    # Heading size
+    #
+    # variants: huge, large, medium, small, tiny
+    #
+    # Examples
+    #
+    # size: large
+    size:  
+```
+
+#### Image
+
+Creates image.
+
+```yaml
+- type: Image
+  properties:
+    # Image unique ID 
+    id: 
+
+    # Image unique name 
+    name: 
+
+    # Image style array
+    #
+    # Examples
+    #
+    # style:
+    #   color: red
+    #   backgroundColor: red
+    style:
+
+    # Image classes separated by (,)
+    #
+    # Examples
+    #
+    # class: class-name
+    class: 
+
+    # Image data array
+    #
+    # Examples
+    #
+    # data:
+    #   foo: bar
+    data: 
+
+    # Image src
+    #
+    # Specifies the path to the image.
+    #
+    # Examples
+    #
+    # src: /img/image.jpg
+    src:  
+
+    # Image alt
+    #
+    # Specifies an alternate text for the image, if the image for some reason cannot be displayed.
+    #
+    # Examples
+    #
+    # alt: "Image"
+    alt:  
+
+    # Image height
+    #
+    # Specifies the height of an image.
+    #
+    # Examples
+    #
+    # height: 100
+    height: 
+
+    # Image width
+    #
+    # Specifies the width of an image.
+    #
+    # Examples
+    #
+    # width: 100
+    width: 
+
+    # Image loading
+    #
+    # Specifies whether a browser should load an image immediately or to defer loading of images until
+    # some conditions are met.
+    #
+    # variants: eager, lazy
+    #
+    # Examples
+    #
+    # loading: eager
+    loading: 
 ```
