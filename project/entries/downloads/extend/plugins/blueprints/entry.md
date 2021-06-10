@@ -26,7 +26,6 @@ template: plugin
   - [Divider](#Divider)
   - [Form](#Form)
   - [Heading](#Heading)
-  - [Html](#Html)
   - [Image](#Image)
   - [InputButton](#InputButton)
   - [InputEmail](#InputEmail)
@@ -38,9 +37,8 @@ template: plugin
   - [InputSubmit](#InputSubmit)
   - [InputText](#InputText)
   - [InputTextarea](#InputTextarea)
-  - [Markdown](#Markdown)
   - [Row](#Row)
-  - [Row](#Tabs)
+  - [Tabs](#Tabs)
 * [Handling](Handling)
   - [Methods](#methods)
     + [fetch](#fetch)
@@ -82,54 +80,100 @@ assetsLoadOnSite: false
 # Blocks
 blocks:
   Anchor:
+    type: Anchor
+    properties: []
     template: plugins/blueprints/blocks/blocks/Anchor/block.html
   Alert:
+    type: Alert
+    properties: []
     template: plugins/blueprints/blocks/blocks/Alert/block.html 
   Button:
+    type: Button 
+    properties: []
     template: plugins/blueprints/blocks/blocks/Button/block.html 
   ButtonGroup:
+    type: ButtonGroup 
+    properties: []
     template: plugins/blueprints/blocks/blocks/ButtonGroup/block.html 
   Divider:
+    type: Divider
+    properties: []
     template: plugins/blueprints/blocks/blocks/Divider/block.html 
   Container:
+    type: Container
+    properties: []
+    blocks: []
     template: plugins/blueprints/blocks/blocks/Container/block.html 
   Row:
+    type: Row
+    properties: []
+    blocks: []
     template: plugins/blueprints/blocks/blocks/Row/block.html 
   Column:
+    type: Column
+    properties: []
+    blocks: []
     template: plugins/blueprints/blocks/blocks/Column/block.html 
   Tabs:
+    type: Tabs
+    properties: []
     template: plugins/blueprints/blocks/blocks/Tabs/block.html 
   Form:
+    type: Form
+    properties: []
+    blocks: []
     template: plugins/blueprints/blocks/blocks/Form/block.html 
   Heading:
+    type: Heading
+    properties: []
     template: plugins/blueprints/blocks/blocks/Heading/block.html 
-  Html:
-    template: plugins/blueprints/blocks/blocks/Html/block.html 
-  Markdown:
-    template: plugins/blueprints/blocks/blocks/Markdown/block.html 
   Image:
+    type: Image
+    properties: []
     template: plugins/blueprints/blocks/blocks/Image/block.html 
   InputText:
+    type: InputText
+    properties: []
     template: plugins/blueprints/blocks/blocks/InputText/block.html
   InputEmail:
+    type: InputEmail
+    properties: []
     template: plugins/blueprints/blocks/blocks/InputEmail/block.html 
   InputPassword:
+    type: InputPassword
+    properties: []
     template: plugins/blueprints/blocks/blocks/InputPassword/block.html 
   InputTextarea:
+    type: InputTextarea
+    properties: []
     template: plugins/blueprints/blocks/blocks/InputTextarea/block.html 
   InputHidden:
+    type: InputHidden
+    properties: []
     template: plugins/blueprints/blocks/blocks/InputHidden/block.html 
   InputNumber:
+    type: InputNumber
+    properties: []
     template: plugins/blueprints/blocks/blocks/InputNumber/block.html 
   InputTags:
+    type: InputTags
+    properties: []
     template: plugins/blueprints/blocks/blocks/InputTags/block.html     
   InputSelect:
+    type: InputSelect
+    properties: []
     template: plugins/blueprints/blocks/blocks/InputSelect/block.html 
   InputReset:
+    type: InputReset
+    properties: []
     template: plugins/blueprints/blocks/blocks/InputReset/block.html 
   InputButton:
+    type: InputButton
+    properties: []
     template: plugins/blueprints/blocks/blocks/InputButton/block.html  
   InputSubmit:
+    type: InputSubmit
+    properties: []
     template: plugins/blueprints/blocks/blocks/InputSubmit/block.html    
 ```
 
@@ -142,7 +186,7 @@ Provide contextual feedback messages for typical user actions with the handful o
 ```yaml
 - type: Alert
   properties:
-  
+
     # Alert unique ID 
     id: 
     
