@@ -58,13 +58,13 @@ template: plugin
     + [getCacheID](#getCacheID)
 * [Extending](Extending)
 
-#### Installation
+### Installation
 
 1. Download & Install all required dependencies.
 2. Create new folder `/project/plugins/blueprints`
 3. Download Twig Plugin and unzip plugin content to the folder `/project/plugins/blueprints`
 
-#### Settings
+### Settings
 
 ```yaml
 # enabled: true or false to disable the plugin
