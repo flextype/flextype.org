@@ -142,6 +142,7 @@ Provide contextual feedback messages for typical user actions with the handful o
 ```yaml
 - type: Alert
   properties:
+  
     # Alert unique ID 
     id: 
     
@@ -217,6 +218,7 @@ Creates a clickable text.
 ```yaml
 - type: Anchor
   properties:
+
     # Anchor unique ID 
     id: 
     
@@ -276,6 +278,7 @@ Creates button for actions in forms, dialogs, and more with support for multiple
 ```yaml
 - type: Button
   properties:
+
     # Button unique ID 
     id: 
     
@@ -352,6 +355,7 @@ Creates group a series of buttons together on a single line or stack them in a v
 ```yaml
 - type: ButtonGroup
   properties:
+
     # ButtonGroup unique ID 
     id: 
     
@@ -595,6 +599,7 @@ Creates column block.
 ```yaml
 - type: Column
   properties:
+
     # Column unique ID 
     id: 
     
@@ -648,6 +653,7 @@ Creates container block the fundamental building block of your layouts.
 ```yaml
 - type: Container
   properties:
+
     # Container unique ID 
     id: 
     
@@ -694,6 +700,7 @@ Creates horizontal line to separate blocks.
 ```yaml
 - type: Divider
   properties:
+
     # Divider unique ID 
     id: 
     
@@ -737,6 +744,7 @@ Creates form for user input.
 ```yaml
 - type: Form
   properties:
+
     # Form unique ID 
     id: 
 
@@ -855,6 +863,7 @@ Creates heading.
 ```yaml
 - type: Heading
   properties:
+  
     # Heading unique ID 
     id: 
 
@@ -902,6 +911,7 @@ Creates image.
 ```yaml
 - type: Image
   properties:
+
     # Image unique ID 
     id: 
 
@@ -988,6 +998,7 @@ Creates input button for user form.
 ```yaml
 - type: InputButton
   properties:
+
     # InputButton unique ID 
     id: 
 
@@ -1075,6 +1086,7 @@ Creates email input for user form.
 ```yaml
 - type: InputEmail
   properties:
+
     # InputEmail unique ID 
     id: 
 
@@ -1124,7 +1136,7 @@ Creates email input for user form.
 
     # InputEmail disabled state
     #
-    # Specifies that an InputButton should be disabled.
+    # Specifies that an InputEmail should be disabled.
     # Default is false.
     #
     # Examples
@@ -1206,6 +1218,7 @@ Creates hidden input for user form.
 ```yaml
 - type: InputHidden
   properties:
+
     # InputHidden unique ID 
     id: 
 
@@ -1244,6 +1257,7 @@ Creates number input for user form.
 ```yaml
 - type: InputNumber
   properties:
+
     # InputNumber unique ID 
     id: 
 
@@ -1375,6 +1389,7 @@ Creates password input for user form.
 ```yaml
 - type: InputPassword
   properties:
+
     # InputPassword unique ID 
     id: 
 
@@ -1506,6 +1521,7 @@ Creates input reset button for user form.
 ```yaml
 - type: InputReset
   properties:
+
     # InputReset unique ID 
     id: 
 
@@ -1593,6 +1609,7 @@ Creates input select for user form.
 ```yaml
 - type: InputSelect
   properties:
+
     # InputSelect unique ID 
     id: 
 
@@ -1659,7 +1676,15 @@ Creates input select for user form.
 
     # InputSelect items
     #
-    # 
+    # Examples
+    #
+    # Using JSON 
+    # items: "{{ flextype.serializers.json.encode({'foo': 'Foo', 'bar': 'Bar'}) }}"
+    #
+    # Using Array
+    # items: 
+    #   foo: Foo
+    #   bar: Bar
     items: 
 
     # InputSelect label
@@ -1673,4 +1698,576 @@ Creates input select for user form.
 
       # InputSelect label style
       style: 
+```
+
+#### InputSubmit
+
+Creates input submit button for user form.
+
+```yaml
+- type: InputSubmit
+  properties:
+
+    # InputSubmit unique ID 
+    id: 
+
+    # InputSubmit unique name 
+    name: 
+
+    # InputSubmit style array
+    #
+    # Examples
+    #
+    # style:
+    #   color: red
+    #   backgroundColor: red
+    style:
+
+    # InputSubmit classes separated by (,)
+    #
+    # Examples
+    #
+    # class: class-name
+    class: 
+
+    # InputSubmit data array
+    #
+    # Examples
+    #
+    # data:
+    #   foo: bar
+    data: 
+
+    # InputSubmit value
+    #
+    # Specifies the value of an InputButton.
+    #
+    # Examples
+    #
+    # value: Save
+    value:  
+
+    # InputSubmit disabled state
+    #
+    # Specifies that an InputSubmit should be disabled.
+    # Default is false.
+    #
+    # Examples
+    #
+    # disabled: true
+    disabled:  
+
+    # InputSubmit events
+    # 
+    # variants: onkeyup, onmousedown, onmousemove, onmouseout,
+    #           onmouseover, onmouseup, onkeypress, onclick, ondblclick,
+    #           onkeydown, onblur
+    #
+    # Examples
+    #
+    # events: 
+    #   onclick: "alert('Lorem');"
+    events: 
+
+    # InputSubmit type
+    # default is primary
+    #
+    # variants: primary, secondary, sucess, info, warning, danger
+    #
+    # Examples
+    #
+    # type: primary
+    type: 
+
+    # InputSubmit outline
+    # default is false
+    #
+    # Examples
+    #
+    # outline: true
+    outline: 
+```
+
+#### InputText
+
+Creates email input for user form.
+
+```yaml
+- type: InputText
+  properties:
+
+    # InputText unique ID 
+    id: 
+
+    # InputText unique name 
+    name: 
+
+    # InputText style array
+    #
+    # Examples
+    #
+    # style:
+    #   color: red
+    #   backgroundColor: red
+    style:
+
+    # InputText classes separated by (,)
+    #
+    # Examples
+    #
+    # class: class-name
+    class: 
+
+    # InputText data array
+    #
+    # Examples
+    #
+    # data:
+    #   foo: bar
+    data: 
+
+    # InputText placeholder
+    #
+    # The placeholder attribute specifies a short hint that describes the expected value of an input 
+    # field (e.g. a sample value or a short description of the expected format).
+    #
+    # The short hint is displayed in the input field before the user enters a value.
+    placeholder:
+
+    # InputText value
+    #
+    # Specifies the value of an InputText.
+    #
+    # Examples
+    #
+    # value: Save
+    value:  
+
+    # InputText disabled state
+    #
+    # Specifies that an InputText should be disabled.
+    # Default is false.
+    #
+    # Examples
+    #
+    # disabled: true
+    disabled:  
+
+    # InputText events
+    # 
+    # variants: onkeyup, onmousedown, onmousemove, onmouseout,
+    #           onmouseover, onmouseup, onkeypress, onclick, ondblclick,
+    #           onkeydown, onblur
+    #
+    # Examples
+    #
+    # events: 
+    #   onclick: "alert('Lorem');"
+    events: 
+
+    # InputText type
+    # default is primary
+    #
+    # variants: primary, secondary, sucess, info, warning, danger
+    #
+    # Examples
+    #
+    # type: primary
+    type: 
+
+    # InputText readonly
+    # default is false
+    #
+    # Specifies that an input field is read-only.
+    #
+    # Examples
+    #
+    # readonly: true
+    readonly: 
+
+    # InputText help message
+    help: 
+
+    # InputText label
+    label:
+
+      # InputText label value
+      value: 
+
+      # InputText label class
+      class: 
+
+      # InputText label style
+      style: 
+
+    # InputText validation
+    validation: 
+
+      # Specifies error message
+      errorMessage: 
+
+      # Specifies the maximum length of textual data (strings)
+      maxlength: 
+
+      # Specifies the minimum length of textual data (strings)
+      minlength: 
+
+      # Specifies whether a form field needs to be filled in before the form can be submitted.
+      required: 
+
+      # Specifies a regular expression that defines a pattern the entered data needs to follow.
+      # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+      pattern: 
+```
+
+#### InputText
+
+Creates email input for user form.
+
+```yaml
+- type: InputText
+  properties:
+
+    # InputText unique ID 
+    id: 
+
+    # InputText unique name 
+    name: 
+
+    # InputText style array
+    #
+    # Examples
+    #
+    # style:
+    #   color: red
+    #   backgroundColor: red
+    style:
+
+    # InputText classes separated by (,)
+    #
+    # Examples
+    #
+    # class: class-name
+    class: 
+
+    # InputText data array
+    #
+    # Examples
+    #
+    # data:
+    #   foo: bar
+    data: 
+
+    # InputText placeholder
+    #
+    # The placeholder attribute specifies a short hint that describes the expected value of an input 
+    # field (e.g. a sample value or a short description of the expected format).
+    #
+    # The short hint is displayed in the input field before the user enters a value.
+    placeholder:
+
+    # InputText value
+    #
+    # Specifies the value of an InputText.
+    #
+    # Examples
+    #
+    # value: Save
+    value:  
+
+    # InputText disabled state
+    #
+    # Specifies that an InputText should be disabled.
+    # Default is false.
+    #
+    # Examples
+    #
+    # disabled: true
+    disabled:  
+
+    # InputText events
+    # 
+    # variants: onkeyup, onmousedown, onmousemove, onmouseout,
+    #           onmouseover, onmouseup, onkeypress, onclick, ondblclick,
+    #           onkeydown, onblur
+    #
+    # Examples
+    #
+    # events: 
+    #   onclick: "alert('Lorem');"
+    events: 
+
+    # InputText type
+    # default is primary
+    #
+    # variants: primary, secondary, sucess, info, warning, danger
+    #
+    # Examples
+    #
+    # type: primary
+    type: 
+
+    # InputText readonly
+    # default is false
+    #
+    # Specifies that an input field is read-only.
+    #
+    # Examples
+    #
+    # readonly: true
+    readonly: 
+
+    # InputText help message
+    help: 
+
+    # InputText label
+    label:
+
+      # InputText label value
+      value: 
+
+      # InputText label class
+      class: 
+
+      # InputText label style
+      style: 
+
+    # InputText validation
+    validation: 
+
+      # Specifies error message
+      errorMessage: 
+
+      # Specifies the maximum length of textual data (strings)
+      maxlength: 
+
+      # Specifies the minimum length of textual data (strings)
+      minlength: 
+
+      # Specifies whether a form field needs to be filled in before the form can be submitted.
+      required: 
+
+      # Specifies a regular expression that defines a pattern the entered data needs to follow.
+      # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+      pattern: 
+```
+
+#### InputTextarea
+
+Creates textarea input for user form.
+
+```yaml
+- type: InputTextarea
+  properties:
+
+    # InputText unique ID 
+    id: 
+
+    # InputTextarea unique name 
+    name: 
+
+    # InputTextarea style array
+    #
+    # Examples
+    #
+    # style:
+    #   color: red
+    #   backgroundColor: red
+    style:
+
+    # InputTextarea classes separated by (,)
+    #
+    # Examples
+    #
+    # class: class-name
+    class: 
+
+    # InputTextarea data array
+    #
+    # Examples
+    #
+    # data:
+    #   foo: bar
+    data: 
+
+    # InputTextarea placeholder
+    #
+    # The placeholder attribute specifies a short hint that describes the expected value of an input 
+    # field (e.g. a sample value or a short description of the expected format).
+    #
+    # The short hint is displayed in the input field before the user enters a value.
+    placeholder:
+
+    # InputTextarea value
+    #
+    # Specifies the value of an InputText.
+    #
+    # Examples
+    #
+    # value: Save
+    value:  
+
+    # InputTextarea disabled state
+    #
+    # Specifies that an InputText should be disabled.
+    # Default is false.
+    #
+    # Examples
+    #
+    # disabled: true
+    disabled:  
+
+    # InputTextarea events
+    # 
+    # variants: onkeyup, onmousedown, onmousemove, onmouseout,
+    #           onmouseover, onmouseup, onkeypress, onclick, ondblclick,
+    #           onkeydown, onblur
+    #
+    # Examples
+    #
+    # events: 
+    #   onclick: "alert('Lorem');"
+    events: 
+
+    # InputTextarea type
+    # default is primary
+    #
+    # variants: primary, secondary, sucess, info, warning, danger
+    #
+    # Examples
+    #
+    # type: primary
+    type: 
+
+    # InputTextarea readonly
+    # default is false
+    #
+    # Specifies that an input field is read-only.
+    #
+    # Examples
+    #
+    # readonly: true
+    readonly: 
+
+    # InputTextarea help message
+    help: 
+
+    # InputTextarea label
+    label:
+
+      # InputTextarea label value
+      value: 
+
+      # InputTextarea label class
+      class: 
+
+      # InputTextarea label style
+      style: 
+
+    # InputTextarea validation
+    validation: 
+
+      # Specifies error message
+      errorMessage: 
+
+      # Specifies the maximum length of textual data (strings)
+      maxlength: 
+
+      # Specifies the minimum length of textual data (strings)
+      minlength: 
+
+      # Specifies whether a form field needs to be filled in before the form can be submitted.
+      required: 
+
+      # Specifies a regular expression that defines a pattern the entered data needs to follow.
+      # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+      pattern: 
+```
+
+#### Row
+
+Creates row block.
+
+```yaml
+- type: Row
+  properties:
+
+    # Row unique ID 
+    id: 
+    
+    # Row classes separated by (,)
+    #
+    # Examples
+    #
+    # class: class-name
+    class: 
+
+    # Row style array
+    #
+    # Examples
+    #
+    # style:
+    #   color: red
+    #   backgroundColor: red
+    style:
+
+    # Row data array
+    #
+    # Examples
+    #
+    # data:
+    #   foo: bar
+    data: 
+
+    # Row blocks
+    # Any other blocks may included here.
+    blocks:
+```
+
+#### Tabs
+
+Creates tabs block.
+
+```yaml
+- type: Tabs
+  properties:
+
+    # Tabs unique ID 
+    id: 
+    
+    # Tabs classes separated by (,)
+    #
+    # Examples
+    #
+    # class: class-name
+    class: 
+
+    # Tabs style array
+    #
+    # Examples
+    #
+    # style:
+    #   color: red
+    #   backgroundColor: red
+    style:
+
+    # Tabs data array
+    #
+    # Examples
+    #
+    # data:
+    #   foo: bar
+    data: 
+    
+    # Tabs
+    tabs:
+      
+      # Unique tab name, example: main, settings, seo, etc...
+      name:
+
+        # Tab title
+        title: 
+        
+        # Tab blocks
+        blocks: 
 ```
