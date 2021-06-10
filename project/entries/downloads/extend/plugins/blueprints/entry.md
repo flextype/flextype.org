@@ -13,9 +13,10 @@ documentation: https://github.com/flextype-plugins/blueprints
 template: plugin
 ---
 
+* [Introduction](#Introduction)
 * [Installation](#Installation)
 * [Settings](#Settings)
-* [Emitter](Emitter)
+* [Structure](#Structure)
 * [Blocks](#Blocks)
   - [Alert](#Alert)
   - [Anchor](#Anchor)
@@ -39,6 +40,7 @@ template: plugin
   - [InputTextarea](#InputTextarea)
   - [Row](#Row)
   - [Tabs](#Tabs)
+* [Emitter](Emitter)
 * [Handling](Handling)
   - [Methods](#methods)
     + [fetch](#fetch)
@@ -57,6 +59,10 @@ template: plugin
     + [getDirectoryLocation](#getDirectoryLocation)
     + [getCacheID](#getCacheID)
 * [Extending](Extending)
+
+### Introduction
+
+Blueprints plugin simplifies creating truly customizable user interface and basic logic for data management, like handling user forms with simple config schema that is easy to learn, understand and remember.
 
 ### Installation
 
@@ -175,6 +181,66 @@ blocks:
     type: InputSubmit
     properties: []
     template: plugins/blueprints/blocks/blocks/InputSubmit/block.html    
+```
+
+### Structure
+
+```yaml
+# Blueprint title 
+#
+# Examples
+#
+# title: Create new entry
+title:
+
+# Blueprint icon
+icon:
+
+  # Blueprint icon set (tabler, bootstrap, fontawesome|brands, fontawesome|regular, fontawesome|solid)
+  #
+  # Examples
+  #
+  # set: bootstrap
+  set:
+
+  # Blueprint icon name
+  #
+  # Examples:
+  #
+  # name: file-text
+  name:
+
+# Blueprint emitter
+emitter: 
+
+  # Blueprint emit events array
+  #
+  # Examples
+  #
+  # emit:
+  #   - name: onCreateNewEntryForm
+  #   - name: onOtherEvent
+  emit:
+
+  # Blueprints registering listeners array
+  #
+  # Examples
+  #
+  # addListener:
+  #   - name: onAdminThemeTail
+  #     properties:
+  #       data: 
+  #         version: "{{ flextype.registry.get('flextype.manifest.version') }}"
+  #       value: |
+  #         Flextype: {{ version }}
+  #   - name: onOtherEvent
+  #     properties:
+  #       value: |
+  #         Display something...
+  addListener:
+
+# Blueprint blocks array
+blocks: 
 ```
 
 ### Blocks
