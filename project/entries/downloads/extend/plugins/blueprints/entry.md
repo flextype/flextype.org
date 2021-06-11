@@ -229,8 +229,9 @@ emitter:
   # addListener:
   #   - name: onAdminThemeTail
   #     properties:
-  #       data: 
-  #         version: "{{ flextype.registry.get('flextype.manifest.version') }}"
+  #       vars: 
+  #         - name: version
+  #           value: "{{ flextype.registry.get('flextype.manifest.version') }}"
   #       value: |
   #         Flextype: {{ version }}
   #   - name: onOtherEvent
@@ -904,18 +905,20 @@ Creates form for user input.
       #
       # name - action name
       # properties:
-      #   - type - property type (bool, float, int, string, array)
-      #     value - property value
+      #   vars:
+      #     - type - property type (bool, float, int, string, array)
+      #       value - property value
       #
       # Examples
       #
       # actions: 
       #   - name: actionName
       #     properties:
-      #       - type: string
-      #         value: "{{ id }}"
-      #       - type: int
-      #         value: 42
+      #       vars:
+      #         - type: string
+      #           value: "{{ id }}"
+      #         - type: int
+      #           value: 42
       actions: 
 
       # Fields array
@@ -923,17 +926,30 @@ Creates form for user input.
       # Field structure
       #
       # name - unique field name
-      # type - field type (bool, float, int, string)
-      # value - field value
-      # ignore - ignore field saving, by default ignore is false
+      # properties:
+      #   type - field type (array, bool, float, int, string)
+      #   vars - field variables array
+      #     - name - variable name
+      #       type - variable type (array, bool, float, int, string)
+      #       value - variable value
+      #   value - field value
+      #   ignore - ignore field saving, by default ignore is false
       #
       # Examples
       #
       # fields:
-      #   - name: title
-      #     type: string
-      #     value: Lorem ipsum...
-      #     ignore: false 
+      #   - name: info
+      #     properties:
+      #       type: string
+      #       vars:
+      #         - name: app
+      #           type: string
+      #           value: "{{ flextype.registry.get('flextype.manifest.name') }}"
+      #         - name: version
+      #           type: string
+      #           value: "{{ flextype.registry.get('flextype.manifest.version') }}"
+      #       value: "{{ app }} {{ version }}"
+      #       ignore: false 
       fields:
 
       # Redirect array
