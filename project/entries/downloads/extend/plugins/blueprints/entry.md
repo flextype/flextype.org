@@ -231,6 +231,7 @@ emitter:
   #     properties:
   #       vars: 
   #         - name: version
+  #           type: string
   #           value: "{{ flextype.registry.get('flextype.manifest.version') }}"
   #       value: |
   #         Flextype: {{ version }}
@@ -239,6 +240,28 @@ emitter:
   #       value: |
   #         Display something...
   addListener:
+
+# Blueprint actions
+#
+# Action structure 
+#
+# name - action name
+# properties:
+#   vars:
+#     - type - property type (array, bool, float, int, string)
+#       value - property value
+#
+# Examples
+#
+# actions: 
+#   - name: actionName
+#     properties:
+#       vars:
+#         - type: string
+#           value: "{{ id }}"
+#         - type: int
+#           value: 42
+actions:
 
 # Blueprint blocks array
 blocks: 
@@ -906,7 +929,7 @@ Creates form for user input.
       # name - action name
       # properties:
       #   vars:
-      #     - type - property type (bool, float, int, string, array)
+      #     - type - property type (array, bool, float, int, string)
       #       value - property value
       #
       # Examples
