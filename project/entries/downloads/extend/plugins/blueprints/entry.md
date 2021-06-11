@@ -210,6 +210,22 @@ icon:
   # name: file-text
   name:
 
+# Blueprint variables
+#
+# Variable structure 
+#
+# name - variable name
+# type - variable type (array, bool, float, int, string)
+# value - variable value
+#
+# Examples
+#
+# vars: 
+#   - name: version
+#     type: string
+#     value: "{{ flextype.registry.get('flextype.manifest.version') }}"
+vars:
+
 # Blueprint emitter
 emitter: 
 
@@ -263,7 +279,7 @@ emitter:
 #           value: 42
 actions:
 
-# Blueprint blocks array
+# Blueprint blocks
 blocks: 
 ```
 
