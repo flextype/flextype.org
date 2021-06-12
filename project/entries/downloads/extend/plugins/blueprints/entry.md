@@ -2874,6 +2874,74 @@ if (flextype('blueprints')->has('blog/post')) {
 }
 ```
 
+##### <a name="methods-storage"></a> `storage`
+
+Get Blueprints Storage
+
+```php
+/**
+ * Get Blueprints Storage
+ *
+ * @return Arrays
+ */
+public function storage(): Arrays
+```
+
+**Examples**
+
+Get blueprint storage.
+
+```php
+$storage = flextype('blueprints')->storage();
+```
+
+Get blueprint storage and set new variable.
+
+```php
+flextype('blueprints')->storage()->set('vars.foo', 'Foo');
+```
+
+Get blueprint storage and get variable `foo`.
+
+```php
+$foo = flextype('blueprints')->storage()->get('vars.foo');
+```
+
+Blueprints storage is extending [Arrays Component](https://atomastic.com/components/arrays). All methods of Arrays Component are available when using Blueprints storage in your projects for manipulations with Blueprints storage.
+
+##### <a name="methods-render"></a> `render`
+
+Render blueprint
+
+```php
+/**
+ * Render blueprint.
+ *
+ * @param string $id     Blueprint unique identifier.
+ * @param array  $values Blueprint values.
+ * @param array  $vars   Blueprint variables.
+ *
+ * @return void
+ *
+ * @access public
+ */
+public function render(string $id, array $values = [], array $vars = []): void
+``` 
+
+**Examples**
+
+Render `blog/post` blueprint.
+
+**PHP**
+```php
+flextype('blueprints')->render('blog/post');
+```
+
+**TWIG**
+```twig
+{{ flextype.blueprints.render('blog/post') }}
+```
+
 ##### <a name="methods-getFileLocation"></a> `getFileLocation`
 
 Get blueprint file location
