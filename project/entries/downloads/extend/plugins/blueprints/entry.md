@@ -1,6 +1,6 @@
 ---
 title: Blueprints
-description: Blueprints plugin to build truly customizable user interface and basic logic for data management, like handling user forms.
+description: Blueprints plugin simplifies creating truly customizable user interface and basic logic for data management, like handling user forms with simple config schema that is easy to learn, understand and remember.
 icon:
   name: check-circle
   set: fontawesome|solid
@@ -40,7 +40,6 @@ template: plugin
   - [InputTextarea](#InputTextarea)
   - [Row](#Row)
   - [Tabs](#Tabs)
-* [Emitter](Emitter)
 * [Handling](Handling)
   - [Methods](#methods)
     + [fetch](#fetch)
@@ -2435,4 +2434,520 @@ Creates tabs block.
         
         # Tab blocks
         blocks: 
+```
+
+### Handling
+
+#### Methods
+
+<table>
+    <thead>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="#methods-fetch">fetch</a></td>
+            <td>Fetch bluerint or blueprints collection.</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-create">create</a></td>
+            <td>Create blueprint</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-update">update</a></td>
+            <td>Update blueprint</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-move">move</a></td>
+            <td>Move blueprint</td>
+        <tr>
+            <td><a href="#methods-copy">copy</a></td>
+            <td>Copy blueprint</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-delete">delete</a></td>
+            <td>Delete blueprint</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-has">has</a></td>
+            <td>Check whether blueprint exists</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-getFileLocation">getFileLocation</a></td>
+            <td>Get blueprint file location</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-getDirectoryLocation">getDirectoryLocation</a></td>
+            <td>Get blueprint directory location</td>
+        </tr>
+    </tbody>
+</table>
+
+### Methods Details
+
+##### <a name="methods-fetch"></a> `fetch`
+
+Fetch blueprint or blueprints collection.
+
+```php
+/**
+ * Fetch bluerint or blueprints collection.
+ *
+ * @param string $id      Unique identifier of the blueprint.
+ * @param array  $options Options array.
+ *
+ * @access public
+ *
+ * @return Arrays Returns instance of The Arrays class with items.
+ */
+public function fetch(string $id, array $options = []): Arrays
+```
+
+##### Fetch single blueprint
+
+**Examples**
+
+Fetch single blueprint `blog/post`
+
+```php
+$data = flextype('blueprints')->fetch('blog/post');
+```
+
+Fetch singe blueprint in `blog/post` with `$options`.
+
+```php
+$data = flextype('blueprints')->fetch('blog/post', $options);
+```
+
+`$options` is an array of valid values for <code>[filter](https://github.com/flextype/flextype/blob/dev/src/flextype/Support/Helpers/FilterHelper.php)</code> helper.
+
+```php
+$options = [
+    'filter' => [
+        // Return items.
+        // Valid values: all, first, last, next, random, shuffle
+        'return' => 'all',
+
+        // Filters the array items by a given condition.
+        // key - of the array or object to used for comparison.
+        // operator - used for comparison.
+        //    operators: in, nin, lt, <, lte,
+        //         >, gt, gte, >=, contains, ncontains
+        //         >=, <=, like, nlike, regexp, nregexp,
+        //         eq, =, neq, !=, starts_with,
+        //         ends_with, between, nbetween, older, newer
+        // value - Value used for comparison.
+        'where' => [
+            [
+                'key' => '',
+                'operator' => '',
+                'value' => '',
+            ],
+            [...],
+            [...],
+        ],
+
+        // Group by key
+        'group_by' => '',
+
+        // Sort by key and direction.
+        // Order direction: DESC (descending) or ASC (ascending)
+        'sort_by' => [
+            'key' => '',
+            'direction' => 'ASC'
+        ],
+
+        // Extract a slice of the current array with specific offset.
+        'offset' => 0,
+
+        // Extract a slice of the current array with offset 0 and specific length.
+        'limit' => 10,
+    ],
+];
+```
+
+##### Fetch blueprints collection
+
+**Examples**
+
+Fetch collections of blueprints in `blog`
+
+```php
+$data = flextype('entries')->fetch('blog', $options);
+```
+
+Fetch collections of blueprints in `blog` with `$options`.
+
+```php
+$data = flextype('entries')->fetch('blog', $options);
+```
+
+`$options` is an array of valid values for <code>[find](https://github.com/flextype/flextype/blob/dev/src/flextype/Support/Helpers/FindHelper.php)</code> and <code>[filter](https://github.com/flextype/flextype/blob/dev/src/flextype/Support/Helpers/FilterHelper.php)</code> helpers.
+
+```php
+$options = [
+    'collection' => true,
+
+    'find' => [
+        // Restrict the depth of traversing
+        // https://symfony.com/doc/current/components/finder.html#directory-depth
+        'depth' => ['> 1', '< 5'],
+
+        // Restrict by a date range
+        // https://symfony.com/doc/current/components/finder.html#file-date
+        'date' => ['>= 2018-01-01', '<= 2018-12-31'],
+
+        // Restrict by a size range
+        // https://symfony.com/doc/current/components/finder.html#file-size
+        'size' => ['>= 1K', '<= 2K'],
+
+        // Exclude directories from matching
+        // https://symfony.com/doc/current/components/finder.html#location
+        'exclude' => 'directory',
+
+        // Find files by content
+        // https://symfony.com/doc/current/components/finder.html#file-contents
+        'contains' => '',
+
+        // Find files by content excludes files containing given pattern
+        // https://symfony.com/doc/current/components/finder.html#file-contents
+        'not_contains' => '',
+
+        // Filter results with your own strategy
+        // https://symfony.com/doc/current/components/finder.html#custom-filtering
+        'filter' => 'CALLBACK_FUNCTION',
+
+        // Sort results by your own sorting algorithm
+        // https://symfony.com/doc/current/components/finder.html#sorting-results
+        'sort' => 'CALLBACK_FUNCTION',
+
+        // Find files and directories by path
+        // https://symfony.com/doc/current/components/finder.html#path
+        'path' => 'data',
+
+        // Sort the files and directories by the last accessed, changed or modified time
+        // Values: atime, mtime, ctime
+        // https://symfony.com/doc/current/components/finder.html#sorting-results
+        'sort_by' => 'atime',
+    ],
+
+    'filter' => [
+        // Return items.
+        // Valid values: all, first, last, next, random, shuffle
+        'return' => 'all',
+
+        // Filters the array items by a given condition.
+        // key - of the array or object to used for comparison.
+        // operator - used for comparison.
+        //    operators: in, nin, lt, <, lte,
+        //         >, gt, gte, >=, contains, ncontains
+        //         >=, <=, like, nlike, regexp, nregexp,
+        //         eq, =, neq, !=, starts_with,
+        //         ends_with, between, nbetween, older, newer
+        // value - Value used for comparison.
+        'where' => [
+            [
+                'key' => '',
+                'operator' => '',
+                'value' => '',
+            ],
+            [...],
+            [...],
+        ],
+
+        // Group by key
+        'group_by' => '',
+
+        // Sort by key and direction.
+        // Order direction: DESC (descending) or ASC (ascending)
+        'sort_by' => [
+            'key' => '',
+            'direction' => 'ASC'
+        ],
+
+        // Extract a slice of the current array with specific offset.
+        'offset' => 0,
+
+        // Extract a slice of the current array with offset 0 and specific length.
+        'limit' => 10,
+    ],
+];
+```
+
+##### <a name="methods-create"></a> `create`
+
+Create blueprint.
+
+```php
+/**
+ * Create blueprint.
+ *
+ * @param string $id   Unique identifier of the blueprint.
+ * @param array  $data Data to create for the blueprint.
+ *
+ * @return bool True on success, false on failure.
+ *
+ * @access public
+ */
+public function create(string $id, array $data = []): bool
+```
+
+**Examples**
+
+Create new blueprint `post` in `blog`
+
+```php
+$data = [         
+          'title' => 'Create new post',
+          'icon' => ['set' => 'bootstrap', 'name' => 'file-text'],
+          'vars' => [],
+          'emitter' => [],
+          'actions' => [],
+          'blocks' => []
+        ];
+
+flextype('blueprints')->create('blog/post', $data);
+```
+
+##### <a name="methods-update"></a> `update`
+
+Update blueprint.
+
+```php
+/**
+ * Update blueprint.
+ *
+ * @param string $id   Unique identifier of the blueprint.
+ * @param array  $data Data to update for the blueprint.
+ *
+ * @return bool True on success, false on failure.
+ *
+ * @access public
+ */
+public function update(string $id, array $data): bool
+```
+
+**Examples**
+
+Update blueprint `post` in `blog`
+
+```php
+$data = ['title' => 'Create New Post'];
+
+flextype('blueprints')->update('blog/post', $data);
+```
+
+##### <a name="methods-move"></a> `move`
+
+Move blueprint.
+
+```php
+/**
+ * Move blueprint.
+ *
+ * @param string $id    Unique identifier of the blueprint.
+ * @param string $newID New Unique identifier of the blueprint.
+ *
+ * @return bool True on success, false on failure.
+ *
+ * @access public
+ */
+public function move(string $id, string $newID): bool
+```
+
+**Examples**
+
+Move blueprint `post` to `post-movies` in `blog`
+
+```php
+flextype('blueprints')->move('blog/post',
+                          'blog/post-movies');
+```
+
+##### <a name="methods-copy"></a> `copy`
+
+Copy blueprint.
+
+```php
+/**
+ * Copy blueprint.
+ *
+ * @param string $id    Unique identifier of the blueprint.
+ * @param string $newID New Unique identifier of the blueprint.
+ *
+ * @return bool|null True on success, false on failure.
+ *
+ * @access public
+ */
+public function copy(string $id, string $newID): ?bool
+```
+
+**Examples**
+
+Copy blueprint `post` to `post-movies` in `blog`
+
+```php
+flextype('blueprints')->copy('blog/post',
+                          'blog/post-movies');
+```
+
+##### <a name="methods-delete"></a> `delete`
+
+Delete blueprint.
+
+```php
+/**
+ * Delete blueprint.
+ *
+ * @param string $id Unique identifier of the blueprint.
+ *
+ * @return bool True on success, false on failure.
+ *
+ * @access public
+ */
+public function delete(string $id): bool
+```
+
+**Examples**
+
+Delete blueprint `post` in `blog`
+
+```php
+flextype('blueprints')->delete('blog/post');
+```
+
+##### <a name="methods-has"></a> `has`
+
+Check whether blueprint exists.
+
+```php
+/**
+ * Check whether blueprint exists.
+ *
+ * @param string $id Unique identifier of the blueprint(blueprints).
+ *
+ * @return bool True on success, false on failure.
+ *
+ * @access public
+ */
+public function has(string $id): bool
+```
+
+**Examples**
+
+Check whether blueprint `post` exists in `blog`
+
+```php
+if (flextype('blueprints')->has('blog/post')) {
+    // do something...
+}
+```
+
+##### <a name="methods-getFileLocation"></a> `getFileLocation`
+
+Get blueprint file location
+
+```php
+/**
+ * Get blueprint file location
+ *
+ * @param string $id Unique identifier of the blueprint(blueprints).
+ *
+ * @return string blueprint file location
+ *
+ * @access public
+ */
+public function getFileLocation(string $id): string
+```
+
+**Examples**
+
+Get blueprint `blog/post` file location.
+
+```php
+$data = flextype('blueprints')->getFileLocation('blog/post');
+```
+
+##### <a name="methods-getDirectoryLocation"></a> `getDirectoryLocation`
+
+Get blueprint directory location
+
+```php
+/**
+ * Get blueprint directory location
+ *
+ * @param string $id Unique identifier of the blueprint(blueprints).
+ *
+ * @return string blueprint directory location
+ *
+ * @access public
+ */
+public function getDirectoryLocation(string $id): string
+```
+
+**Examples**
+
+Get blueprint `blog/post` directory location.
+
+```php
+$data = flextype('blueprints')->getDirectoryLocation('blog/post');
+```
+
+### Extending
+
+Blueprints are "macroable", which allows you to add additional methods to the Blueprints API at run time.
+
+For example, the following code adds a `fetchRecentBlueprints` method to the Blueprints API.
+
+**Examples**
+
+```php
+// Create new macros for fetch recent blueprints.
+flextype('blueprints')::macro('fetchRecentBlueprints', function($limit = 10) {
+    return flextype('blueprints')
+                ->fetch('blog', ['collection' => true])
+                ->sortBy('publised_at')
+                ->limit($limit);
+});
+
+// Display recent blueprints.
+foreach (flextype('blueprints')->fetchRecentBlueprints(5) as $blueprint) {
+    echo $blueprint['title'] . "\n";
+}
+```
+
+As you can see, the macro method takes as arguments a name and an [anonymous function](https://php.net/manual/functions.anonymous.php) to call (optionally, you able to add additional arguments, if you need that).
+
+When you call a macro, your code in function would be called from the context of that class (in the example it is Blueprints API class context), allowing you to execute your code along with Flextype built-in features.
+
+#### Using mixins
+
+Macros awesome, and you may want to use a lot of them. You may group them with help of mixins.
+For this approach, you should use a mixin static method on the macroable Blueprints API class, and pass your mixin class as an argument.
+
+**Examples**
+
+```php
+// Bluperint Blog Mixin Class.
+class BlueprintBlogMixin {
+    public function fetchRecentBlueprints() {
+        return function($limit = 10) {
+            return flextype('blueprints')
+                        ->fetch('blog', ['collection' => true])
+                        ->sortBy('publised_at')
+                        ->limit($limit);
+        }
+    }
+}
+
+// Create new mixin BlueprintBlogMixin with it is macros.
+flextype('blueprints')::mixin(new BlueprintBlogMixin());
+
+// Display recent blueprints.
+foreach (flextype('blueprints')->fetchRecentBlueprints(5) as $blueprint) {
+    echo $blueprint['title'] . "\n";
+}
 ```
