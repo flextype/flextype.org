@@ -2476,6 +2476,30 @@ Creates tabs block.
             <td>Check whether blueprint exists</td>
         </tr>
         <tr>
+            <td><a href="#methods-storage">storage</a></td>
+            <td>Get blueprints storage</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-render">render</a></td>
+            <td>Render blueprint</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-renderFromArray">renderFromArray</a></td>
+            <td>Render blueprint from array</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-getBlockName">getBlockName</a></td>
+            <td>Get blueprint block name</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-getBlockID">getBlockID</a></td>
+            <td>Get blueprint block ID</td>
+        </tr>
+        <tr>
+            <td><a href="#methods-form">form</a></td>
+            <td>Get instance of The Form class</td>
+        </tr>
+        <tr>
             <td><a href="#methods-getFileLocation">getFileLocation</a></td>
             <td>Get blueprint file location</td>
         </tr>
@@ -2483,10 +2507,14 @@ Creates tabs block.
             <td><a href="#methods-getDirectoryLocation">getDirectoryLocation</a></td>
             <td>Get blueprint directory location</td>
         </tr>
+        <tr>
+            <td><a href="#methods-getCacheID">getCacheID</a></td>
+            <td>Get Cache ID for blueprint</td>
+        </tr>
     </tbody>
 </table>
 
-### Methods Details
+#### Methods Details
 
 ##### <a name="methods-fetch"></a> `fetch`
 
@@ -2506,7 +2534,7 @@ Fetch blueprint or blueprints collection.
 public function fetch(string $id, array $options = []): Arrays
 ```
 
-##### Fetch single blueprint
+**Fetch single blueprint**
 
 **Examples**
 
@@ -2569,7 +2597,7 @@ $options = [
 ];
 ```
 
-##### Fetch blueprints collection
+**Fetch blueprints collection**
 
 **Examples**
 
