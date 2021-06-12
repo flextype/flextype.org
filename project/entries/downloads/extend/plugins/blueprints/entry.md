@@ -2942,6 +2942,167 @@ flextype('blueprints')->render('blog/post');
 {{ flextype.blueprints.render('blog/post') }}
 ```
 
+##### <a name="methods-renderFromArray"></a> `renderFromArray`
+
+Render blueprint from array
+
+```php
+/**
+ * Render blueprint from array.
+ *
+ * @param array $blueprint Blueprint array.
+ * @param array $values    Blueprint values.
+ * @param array $vars      Blueprint variables.
+ *
+ * @return void
+ *
+ * @access public
+ */
+public function renderFromArray(array $blueprint, array $values = [], array $vars = []): void
+``` 
+
+**Examples**
+
+Render `blog/post` blueprint from array.
+
+**PHP**
+```php
+$blueprint = flextype('blueprints')->fetch('blog/post'); 
+
+flextype('blueprints')->renderFromArray($blueprint);
+```
+
+**TWIG**
+```twig
+{% set blueprint = flextype.blueprints.fetch('blog/post') %}
+
+{{ flextype.blueprints.renderFromArray('blog/post') }}
+```
+
+##### <a name="methods-getBlockName"></a> `getBlockName`
+
+Get blueprint block name.
+
+```php
+/**
+ * Get blueprint block name.
+ *
+ * @param string $name Block name.
+ *
+ * @return string Returns blueprint block name.
+ *
+ * @access public
+ */
+public function getBlockName(string $name) : string
+``` 
+
+Get name for block `author.email`
+
+**Examples**
+
+```php
+$blockName = flextype('blueprints')->getBlockName('author.email');
+
+// Result: author[email] 
+```
+
+##### <a name="methods-getBlockID"></a> `getBlockID`
+
+Get blueprint block id.
+
+```php
+/**
+ * Get blueprint block ID.
+ *
+ * @param string $id Block ID.
+ *
+ * @return string Returns blueprint block ID.
+ *
+ * @access public
+ */
+public function getBlockID(string $id) : string
+``` 
+
+Get ID for block `author.email`
+
+**Examples**
+
+```php
+$blockName = flextype('blueprints')->getBlockID('author.email');
+
+// Result: author_email
+```
+
+##### <a name="methods-form"></a> `form`
+
+Get instance of The Form class.
+
+```php
+/**
+ * Get instance of The Form class.
+ *
+ * @param array $data Form data.
+ *
+ * @return Returns instance of The Form class.
+ *
+ * @access public
+ */   
+public function form(array $data): Form
+``` 
+
+Get Form class instance.
+
+**Examples**
+
+```php
+$form = flextype('blueprints')->form([]);
+```
+
+Available methods for Form class instance.
+
+```php
+/**
+ * Get form storage.
+ *
+ * @return Arrays Form storage.
+ *
+ * @access public
+ */
+public function storage(): Arrays
+
+/**
+ * Get form redirect statament.
+ *
+ * @param array $values Values to replace for redirect arguments.
+ * 
+ * @return string Redirect statament.
+ *
+ * @access public
+ */
+public function getProcessRedirect(array $values = []): string
+
+/**
+ * Get form fields statement.
+ * 
+ * @return array Fields statement.
+ *
+ * @access public
+ */
+public function getProcessFields(): array
+
+/**
+ * Get form process messages statament.
+ * 
+ * @param string $type Message type.
+ * @param array  $vars Associative array of template variables.
+ * 
+ * @return string Message statament.
+ *
+ * @access public
+ */
+public function getProcessMessages(string $type, array $vars = []): string 
+```
+
 ##### <a name="methods-getFileLocation"></a> `getFileLocation`
 
 Get blueprint file location
