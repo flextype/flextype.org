@@ -57,7 +57,9 @@ template: plugin
     + [getFileLocation](#getFileLocation)
     + [getDirectoryLocation](#getDirectoryLocation)
     + [getCacheID](#getCacheID)
-* [Extending](Extending)
+* [Extending](#Extending)
+  - [Blueprints](#ExtendingBlueprints)
+  - [Blocks](#ExtendingBlocks)
 
 ### Introduction
 
@@ -3153,7 +3155,9 @@ Get blueprint `blog/post` directory location.
 $data = flextype('blueprints')->getDirectoryLocation('blog/post');
 ```
 
-### Extending
+### <a name="Extending"></a> Extending
+
+#### <a name="ExtendingBlueprint"></a> Blueprints 
 
 Blueprints are "macroable", which allows you to add additional methods to the Blueprints API at run time.
 
@@ -3208,3 +3212,5 @@ foreach (flextype('blueprints')->fetchRecentBlueprints(5) as $blueprint) {
     echo $blueprint['title'] . "\n";
 }
 ```
+
+#### <a name="ExtendingBlocks"></a> Blocks 
