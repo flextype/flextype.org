@@ -13,65 +13,65 @@ documentation: https://github.com/flextype-plugins/blueprints
 template: plugin
 ---
 
-* [Introduction](#Introduction)
-* [Installation](#Installation)
-* [Settings](#Settings)
-* [Structure](#Structure)
-* [Blocks](#Blocks)
-  - [Alert](#Alert)
-  - [Anchor](#Anchor)
-  - [Button](#Button)
-  - [ButtonGroup](#ButtonGroup)
-  - [Column](#Column)
-  - [Container](#Container)
-  - [Divider](#Divider)
-  - [Form](#Form)
-  - [Heading](#Heading)
-  - [Image](#Image)
-  - [InputButton](#InputButton)
-  - [InputEmail](#InputEmail)
-  - [InputHidden](#InputHidden)
-  - [InputNumber](#InputNumber)
-  - [InputPassword](#InputPassword)
-  - [InputReset](#InputReset)
-  - [InputSelect](#InputSelect)
-  - [InputSubmit](#InputSubmit)
-  - [InputText](#InputText)
-  - [InputTextarea](#InputTextarea)
-  - [Row](#Row)
-  - [Tabs](#Tabs)
-* [Handling](Handling)
+* [Introduction](#introduction)
+* [Installation](#installation)
+* [Settings](#settings)
+* [Structure](#structure)
+* [Blocks](#blocks)
+  - [Alert](#blocks-Alert)
+  - [Anchor](#blocks-Anchor)
+  - [Button](#blocks-Button)
+  - [ButtonGroup](#blocks-Group)
+  - [Column](#blocks-Column)
+  - [Container](#blocks-Container)
+  - [Divider](#blocks-Divider)
+  - [Form](#blocks-Form)
+  - [Heading](#blocks-Heading)
+  - [Image](#blocks-Image)
+  - [InputButton](#blocks-InputButton)
+  - [InputEmail](#blocks-InputEmail)
+  - [InputHidden](#blocks-InputHidden)
+  - [InputNumber](#blocks-InputNumber)
+  - [InputPassword](#blocks-InputPassword)
+  - [InputReset](#blocks-InputReset)
+  - [InputSelect](#blocks-InputSelect)
+  - [InputSubmit](#blocks-InputSubmit)
+  - [InputText](#blocks-InputText)
+  - [InputTextarea](#blocks-InputTextarea)
+  - [Row](#blocks-Row)
+  - [Tabs](#blocks-Tabs)
+* [Handling](#handling)
   - [Methods](#methods)
-    + [fetch](#fetch)
-    + [move](#move)
-    + [update](#update)
-    + [create](#create)
-    + [delete](#delete)
-    + [has](#has)
-    + [storage](#storage)
-    + [render](#render)
-    + [renderFromArray](#renderFromArray)
-    + [getBlockName](#getBlockName)
-    + [getBlockID](#getBlockID)
-    + [form](#form)
-    + [getFileLocation](#getFileLocation)
-    + [getDirectoryLocation](#getDirectoryLocation)
-    + [getCacheID](#getCacheID)
-* [Extending](#Extending)
+    + [fetch](#methods-fetch)
+    + [move](#methods-move)
+    + [update](#methods-update)
+    + [create](#methods-create)
+    + [delete](#methods-delete)
+    + [has](#methods-has)
+    + [storage](#methods-storage)
+    + [render](#methods-render)
+    + [renderFromArray](#methods-renderFromArray)
+    + [getBlockName](#methods-getBlockName)
+    + [getBlockID](#methods-getBlockID)
+    + [form](#methods-form)
+    + [getFileLocation](#methods-getFileLocation)
+    + [getDirectoryLocation](#methods-getDirectoryLocation)
+    + [getCacheID](#methods-getCacheID)
+* [Extending](#extending)
   - [Blueprints](#extending-blueprints)
   - [Blocks](#extending-blocks)
 
-### Introduction
+### <a name="introduction"></a> Introduction
 
 Blueprints plugin simplifies creating truly customizable user interface and basic logic for data management, like handling user forms with simple config schema that is easy to learn, understand and remember.
 
-### Installation
+### <a name="installation"></a> Installation
 
 1. Download & Install all required dependencies.
 2. Create new folder `/project/plugins/blueprints`
 3. Download Twig Plugin and unzip plugin content to the folder `/project/plugins/blueprints`
 
-### Settings
+### <a name="settings"></a> Settings
 
 ```yaml
 # enabled: true or false to disable the plugin
@@ -184,7 +184,7 @@ blocks:
     template: plugins/blueprints/blocks/blocks/InputSubmit/block.html    
 ```
 
-### Structure
+### <a name="structure"></a> Structure
 
 ```yaml
 # Blueprint title 
@@ -284,9 +284,9 @@ actions:
 blocks: 
 ```
 
-### Blocks
+### <a name="blocks"></a> Blocks
 
-#### Alert
+#### <a name="blocks-Alert"></a> Alert
 
 Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
 
@@ -362,7 +362,7 @@ Provide contextual feedback messages for typical user actions with the handful o
    
 ```
 
-#### Anchor
+#### <a name="blocks-Anchor"></a> Anchor
 
 Creates a clickable text.
 
@@ -422,7 +422,7 @@ Creates a clickable text.
     target: 
 ```
 
-#### Button
+#### <a name="blocks-Button"></a> Button
 
 Creates button for actions in forms, dialogs, and more with support for multiple sizes, states, and more.
 
@@ -499,7 +499,7 @@ Creates button for actions in forms, dialogs, and more with support for multiple
     disabled: 
 ```
 
-#### ButtonGroup
+#### <a name="blocks-ButtonGroup"></a> ButtonGroup
 
 Creates group a series of buttons together on a single line or stack them in a vertical column.
 
@@ -743,7 +743,7 @@ Creates group a series of buttons together on a single line or stack them in a v
                 set:
 ```
 
-#### Column
+#### <a name="blocks-Column"></a> Column
 
 Creates column block.
 
@@ -797,7 +797,7 @@ Creates column block.
     blocks:
 ```
 
-#### Container
+#### <a name="blocks-Container"></a> Container
 
 Creates container block the fundamental building block of your layouts.
 
@@ -844,7 +844,7 @@ Creates container block the fundamental building block of your layouts.
     blocks:
 ```
 
-#### Divider
+#### <a name="blocks-Divider"></a> Divider
 
 Creates horizontal line to separate blocks.
 
@@ -888,7 +888,7 @@ Creates horizontal line to separate blocks.
     dashed: 
 ```
 
-#### Form
+#### <a name="blocks-Form"></a> Form
 
 Creates form for user input.
 
@@ -1022,7 +1022,7 @@ Creates form for user input.
       messages: 
 ```
 
-#### Heading
+#### <a name="blocks-Heading"></a> Heading
 
 Creates heading.
 
@@ -1070,7 +1070,7 @@ Creates heading.
     size:  
 ```
 
-#### Image
+#### <a name="blocks-Image"></a> Image
 
 Creates image.
 
@@ -1157,7 +1157,7 @@ Creates image.
     loading: 
 ```
 
-#### InputButton
+#### <a name="blocks-InputButton"></a> InputButton
 
 Creates input button for user form.
 
@@ -1245,7 +1245,7 @@ Creates input button for user form.
     outline: 
 ```
 
-#### InputEmail
+#### <a name="blocks-InputEmail"></a> InputEmail
 
 Creates email input for user form.
 
@@ -1377,7 +1377,7 @@ Creates email input for user form.
       pattern: 
 ```
 
-#### InputHidden
+#### <a name="blocks-InputHidden"></a> InputHidden
 
 Creates hidden input for user form.
 
@@ -1416,7 +1416,7 @@ Creates hidden input for user form.
     value:  
 ```
 
-#### InputNumber
+#### <a name="blocks-InputNumber"></a> InputNumber
 
 Creates number input for user form.
 
@@ -1548,7 +1548,7 @@ Creates number input for user form.
       pattern: 
 ```
 
-#### InputPassword
+#### <a name="blocks-InputPassword"></a> InputPassword
 
 Creates password input for user form.
 
@@ -1680,7 +1680,7 @@ Creates password input for user form.
       pattern: 
 ```
 
-#### InputReset
+#### <a name="blocks-InputReset"></a> InputReset
 
 Creates input reset button for user form.
 
@@ -1768,7 +1768,7 @@ Creates input reset button for user form.
     outline: 
 ```
 
-#### InputSelect
+#### <a name="blocks-InputSelect"></a> InputSelect
 
 Creates input select for user form.
 
@@ -1866,7 +1866,7 @@ Creates input select for user form.
       style: 
 ```
 
-#### InputSubmit
+#### <a name="blocks-InputSubmit"></a> InputSubmit
 
 Creates input submit button for user form.
 
@@ -1954,141 +1954,9 @@ Creates input submit button for user form.
     outline: 
 ```
 
-#### InputText
+#### <a name="blocks-InputText"></a> InputText
 
-Creates email input for user form.
-
-```yaml
-- type: InputText
-  properties:
-
-    # InputText unique ID 
-    id: 
-
-    # InputText unique name 
-    name: 
-
-    # InputText style array
-    #
-    # Examples
-    #
-    # style:
-    #   color: red
-    #   backgroundColor: red
-    style:
-
-    # InputText classes separated by (,)
-    #
-    # Examples
-    #
-    # class: class-name
-    class: 
-
-    # InputText data array
-    #
-    # Examples
-    #
-    # data:
-    #   foo: bar
-    data: 
-
-    # InputText placeholder
-    #
-    # The placeholder attribute specifies a short hint that describes the expected value of an input 
-    # field (e.g. a sample value or a short description of the expected format).
-    #
-    # The short hint is displayed in the input field before the user enters a value.
-    placeholder:
-
-    # InputText value
-    #
-    # Specifies the value of an InputText.
-    #
-    # Examples
-    #
-    # value: Save
-    value:  
-
-    # InputText disabled state
-    #
-    # Specifies that an InputText should be disabled.
-    # Default is false.
-    #
-    # Examples
-    #
-    # disabled: true
-    disabled:  
-
-    # InputText events
-    # 
-    # variants: onkeyup, onmousedown, onmousemove, onmouseout,
-    #           onmouseover, onmouseup, onkeypress, onclick, ondblclick,
-    #           onkeydown, onblur
-    #
-    # Examples
-    #
-    # events: 
-    #   onclick: "alert('Lorem');"
-    events: 
-
-    # InputText type
-    # default is primary
-    #
-    # variants: primary, secondary, sucess, info, warning, danger
-    #
-    # Examples
-    #
-    # type: primary
-    type: 
-
-    # InputText readonly
-    # default is false
-    #
-    # Specifies that an input field is read-only.
-    #
-    # Examples
-    #
-    # readonly: true
-    readonly: 
-
-    # InputText help message
-    help: 
-
-    # InputText label
-    label:
-
-      # InputText label value
-      value: 
-
-      # InputText label class
-      class: 
-
-      # InputText label style
-      style: 
-
-    # InputText validation
-    validation: 
-
-      # Specifies error message
-      errorMessage: 
-
-      # Specifies the maximum length of textual data (strings)
-      maxlength: 
-
-      # Specifies the minimum length of textual data (strings)
-      minlength: 
-
-      # Specifies whether a form field needs to be filled in before the form can be submitted.
-      required: 
-
-      # Specifies a regular expression that defines a pattern the entered data needs to follow.
-      # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
-      pattern: 
-```
-
-#### InputText
-
-Creates email input for user form.
+Creates text input for user form.
 
 ```yaml
 - type: InputText
@@ -2218,7 +2086,7 @@ Creates email input for user form.
       pattern: 
 ```
 
-#### InputTextarea
+#### <a name="blocks-InputTextarea"></a> InputTextarea
 
 Creates textarea input for user form.
 
@@ -2350,7 +2218,7 @@ Creates textarea input for user form.
       pattern: 
 ```
 
-#### Row
+#### <a name="blocks-Row"></a> Row
 
 Creates row block.
 
@@ -2390,7 +2258,7 @@ Creates row block.
     blocks:
 ```
 
-#### Tabs
+#### <a name="blocks-Tabs"></a> Tabs
 
 Creates tabs block.
 
@@ -2438,9 +2306,9 @@ Creates tabs block.
         blocks: 
 ```
 
-### Handling
+### <a name="blocks-Handling"></a> Handling
 
-#### Methods
+#### <a name="blocks-Methods"></a> Methods
 
 <table>
     <thead>
