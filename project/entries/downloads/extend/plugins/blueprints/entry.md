@@ -294,6 +294,10 @@ Provide contextual feedback messages for typical user actions with the handful o
 - type: Alert
   properties:
 
+    # Alert visibility property
+    # Default is true
+    visible: 
+
     # Alert unique ID 
     id: 
     
@@ -370,6 +374,10 @@ Creates a clickable text.
 - type: Anchor
   properties:
 
+    # Anchor visibility property
+    # Default is true
+    visible: 
+
     # Anchor unique ID 
     id: 
     
@@ -429,6 +437,10 @@ Creates button for actions in forms, dialogs, and more with support for multiple
 ```yaml
 - type: Button
   properties:
+
+    # Button visibility property
+    # Default is true
+    visible: 
 
     # Button unique ID 
     id: 
@@ -507,6 +519,10 @@ Creates group a series of buttons together on a single line or stack them in a v
 - type: ButtonGroup
   properties:
 
+    # ButtonGroup visibility property
+    # Default is true
+    visible: 
+
     # ButtonGroup unique ID 
     id: 
     
@@ -566,6 +582,11 @@ Creates group a series of buttons together on a single line or stack them in a v
     buttons:
       - type: Button
         properties:
+
+          # Button visibility property
+          # Default is true
+          visible: 
+
           # Button unique ID 
           id: 
           
@@ -694,6 +715,10 @@ Creates group a series of buttons together on a single line or stack them in a v
               # Item href is an attribute of the anchor tag.
             - href: 
 
+              # Item visibility property
+              # Default is true
+              visible:
+              
               # Item unique ID 
               id: 
               
@@ -751,6 +776,10 @@ Creates column block.
 - type: Column
   properties:
 
+    # Column visibility property
+    # Default is true
+    visible:
+    
     # Column unique ID 
     id: 
     
@@ -805,6 +834,10 @@ Creates container block the fundamental building block of your layouts.
 - type: Container
   properties:
 
+    # Container visibility property
+    # Default is true
+    visible:
+
     # Container unique ID 
     id: 
     
@@ -852,6 +885,10 @@ Creates horizontal line to separate blocks.
 - type: Divider
   properties:
 
+    # Divider visibility property
+    # Default is true
+    visible:
+
     # Divider unique ID 
     id: 
     
@@ -895,6 +932,10 @@ Creates form for user input.
 ```yaml
 - type: Form
   properties:
+
+    # Form visibility property
+    # Default is true
+    visible:
 
     # Form unique ID 
     id: 
@@ -1030,6 +1071,10 @@ Creates heading.
 - type: Heading
   properties:
   
+    # Heading visibility property
+    # Default is true
+    visible:
+
     # Heading unique ID 
     id: 
 
@@ -1077,6 +1122,10 @@ Creates image.
 ```yaml
 - type: Image
   properties:
+
+    # Image visibility property
+    # Default is true
+    visible:
 
     # Image unique ID 
     id: 
@@ -1165,6 +1214,10 @@ Creates input button for user form.
 - type: InputButton
   properties:
 
+    # InputButton visibility property
+    # Default is true
+    visible:
+
     # InputButton unique ID 
     id: 
 
@@ -1252,6 +1305,10 @@ Creates email input for user form.
 ```yaml
 - type: InputEmail
   properties:
+
+    # InputEmail visibility property
+    # Default is true
+    visible:
 
     # InputEmail unique ID 
     id: 
@@ -1385,6 +1442,10 @@ Creates hidden input for user form.
 - type: InputHidden
   properties:
 
+    # InputHidden visibility property
+    # Default is true
+    visible:
+
     # InputHidden unique ID 
     id: 
 
@@ -1423,6 +1484,10 @@ Creates number input for user form.
 ```yaml
 - type: InputNumber
   properties:
+
+    # InputNumber visibility property
+    # Default is true
+    visible:
 
     # InputNumber unique ID 
     id: 
@@ -1556,6 +1621,10 @@ Creates password input for user form.
 - type: InputPassword
   properties:
 
+    # InputPassword visibility property
+    # Default is true
+    visible:
+
     # InputPassword unique ID 
     id: 
 
@@ -1688,6 +1757,10 @@ Creates input reset button for user form.
 - type: InputReset
   properties:
 
+    # InputReset visibility property
+    # Default is true
+    visible:
+
     # InputReset unique ID 
     id: 
 
@@ -1775,6 +1848,10 @@ Creates input select for user form.
 ```yaml
 - type: InputSelect
   properties:
+
+    # InputSelect visibility property
+    # Default is true
+    visible:
 
     # InputSelect unique ID 
     id: 
@@ -1874,6 +1951,10 @@ Creates input submit button for user form.
 - type: InputSubmit
   properties:
 
+    # InputSubmit visibility property
+    # Default is true
+    visible:
+
     # InputSubmit unique ID 
     id: 
 
@@ -1961,6 +2042,10 @@ Creates text input for user form.
 ```yaml
 - type: InputText
   properties:
+
+    # InputText visibility property
+    # Default is true
+    visible:
 
     # InputText unique ID 
     id: 
@@ -2094,6 +2179,10 @@ Creates textarea input for user form.
 - type: InputTextarea
   properties:
 
+    # InputTextarea visibility property
+    # Default is true
+    visible:
+
     # InputText unique ID 
     id: 
 
@@ -2226,6 +2315,10 @@ Creates row block.
 - type: Row
   properties:
 
+    # Row visibility property
+    # Default is true
+    visible:
+
     # Row unique ID 
     id: 
     
@@ -2265,6 +2358,10 @@ Creates tabs block.
 ```yaml
 - type: Tabs
   properties:
+
+    # Tabs visibility property
+    # Default is true
+    visible:
 
     # Tabs unique ID 
     id: 
@@ -2768,13 +2865,13 @@ $storage = flextype('blueprints')->storage();
 Get blueprint storage and set new variable.
 
 ```php
-flextype('blueprints')->storage()->set('vars.foo', 'Foo');
+flextype('blueprints')->registry()->set('vars.foo', 'Foo');
 ```
 
 Get blueprint storage and get variable `foo`.
 
 ```php
-$foo = flextype('blueprints')->storage()->get('vars.foo');
+$foo = flextype('blueprints')->registry()->get('vars.foo');
 ```
 
 Blueprints storage is extending [Arrays Component](https://atomastic.com/components/arrays). All methods of Arrays Component are available when using Blueprints storage in your projects for manipulations with Blueprints storage.
@@ -2796,7 +2893,7 @@ Render blueprint
  * @access public
  */
 public function render(string $id, array $values = [], array $vars = []): void
-``` 
+```
 
 **Examples**
 
